@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ústní zkouška — 25 okruhů | Reprodukční grafik</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-card:#F4F6F8;
+    --line:#DCE2E7;
+    --text:#16222B;
+    --text-dim:#54626D;
+    --cyan:#0B7A85;
+    --cyan-dim:#D9F0F1;
+    --cyan-border:#BFE4E6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 70px;}
+
+  header.hero{
+    padding:52px 20px 36px;
+    background:
+      radial-gradient(120% 90% at 20% -10%, rgba(11,122,133,0.08), transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--cyan);
+    margin:0 0 14px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(28px,6.5vw,40px);
+    line-height:1.1;
+    margin:0 0 14px;
+  }
+  .hero p{color:var(--text-dim);font-size:15.5px;max-width:56ch;margin:0;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:36px 0;
+  }
+  @media(min-width:560px){
+    .grid{grid-template-columns:1fr 1fr;}
+  }
+
+  a.card{
+    display:block;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 16px 15px;
+    text-decoration:none;
+    color:var(--text);
+    transition:border-color .15s ease, transform .1s ease;
+  }
+  a.card:active{transform:scale(0.98);}
+  a.card:hover{border-color:var(--cyan-border);}
+  .card .tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--cyan);
+    background:var(--cyan-dim);
+    border:1px solid var(--cyan-border);
+    padding:3px 9px;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .card .title{
+    font-size:15px;
+    font-weight:600;
+    line-height:1.35;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 20px 10px;
+    color:var(--text-dim);
+    font-size:12.5px;
+    font-family:'IBM Plex Mono',monospace;
+    border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">34-53-H/01 Reprodukční grafik · ústní zkouška</p>
+  <h1>25 okruhů ústní zkoušky</h1>
+  <p>Rozcestník na jednotlivá témata odborné části ústní zkoušky. Klikněte na okruh a otevře se výuková lekce k danému tématu.</p>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+
+    <a class="card" href="tema-01-pismo-a-papir/">
+      <span class="tag">Téma č. 1</span>
+      <div class="title">Písmo a jeho význam, typografická měrná soustava; Historie výroby papíru, papyrus, pergamen</div>
+    </a>
+
+    <a class="card" href="tema-02-polygraficka-montaz-a-knihy/">
+      <span class="tag">Téma č. 2</span>
+      <div class="title">Polygrafická montáž, vyřazování stran, maketa; Knihařská výroba, knižní vazba, zušlechťování desek</div>
+    </a>
+
+    <a class="card" href="tema-03-dtp-studio-a-knizni-vazba/">
+      <span class="tag">Téma č. 3</span>
+      <div class="title">DTP studio a jeho vybavení, ergonomie; Knižní vazba a její dělení</div>
+    </a>
+
+    <a class="card" href="tema-04-software-a-cena-tisku/">
+      <span class="tag">Téma č. 4</span>
+      <div class="title">Grafický software pro sazbu a archovou montáž; Tvorba ceny polygrafických výrobků, kalkulace</div>
+    </a>
+
+    <a class="card" href="tema-05-predtiskova-priprava/">
+      <span class="tag">Téma č. 5</span>
+      <div class="title">Archová montáž, kontrola tiskových dat, RIP; Dělení tiskových technik</div>
+    </a>
+
+    <a class="card" href="tema-06-predlohy-a-rastr/">
+      <span class="tag">Téma č. 6</span>
+      <div class="title">Obrazové předlohy, rastr, natočení rastru, barevné výtažky; Tiskové techniky</div>
+    </a>
+
+    <a class="card" href="tema-07-polygrafie-a-dokoncovani/">
+      <span class="tag">Téma č. 7</span>
+      <div class="title">Polygrafie a její části (prepress, press, postpress); Dokončující zpracování tiskovin</div>
+    </a>
+
+    <a class="card" href="tema-08-barevna-reprodukce/">
+      <span class="tag">Téma č. 8</span>
+      <div class="title">Barevná reprodukce, RGB, CMYK, přímé barvy, separace, soutisk; Tisk z výšky</div>
+    </a>
+
+    <a class="card" href="tema-09-teorie-barevnosti/">
+      <span class="tag">Téma č. 9</span>
+      <div class="title">Teorie barevnosti, vnímání barev, aditivní a subtraktivní míchání; Tisk z plochy</div>
+    </a>
+
+    <a class="card" href="tema-10-color-management/">
+      <span class="tag">Téma č. 10</span>
+      <div class="title">Správa a nastavení barev, barvové prostory, ICC profily; Litografie a ofsetový tisk</div>
+    </a>
+
+    <a class="card" href="tema-11-ctf-ctp-ctpr-cts/">
+      <span class="tag">Téma č. 11</span>
+      <div class="title">Computer to Film, Plate, Print, Screen; Tisk z hloubky</div>
+    </a>
+
+    <a class="card" href="tema-12-casti-publikace-a-prutisk/">
+      <span class="tag">Téma č. 12</span>
+      <div class="title">Kniha — popis částí a knižní dvoustrany; Průtisk</div>
+    </a>
+
+    <a class="card" href="tema-13-bitmapova-a-vektorova-grafika/">
+      <span class="tag">Téma č. 13</span>
+      <div class="title">Bitmapová a vektorová grafika, formáty souborů; Sítotisk</div>
+    </a>
+
+    <a class="card" href="tema-14-pdf-pro-tisk/">
+      <span class="tag">Téma č. 14</span>
+      <div class="title">PDF pro tisk, druhy PDF, kontrola tiskového PDF; Výroba vláknin</div>
+    </a>
+
+    <a class="card" href="tema-15-predlohy-a-papirovina/">
+      <span class="tag">Téma č. 15</span>
+      <div class="title">Předlohy pro reprodukci; Papírovina — výroba, plnidla, klížidla, barviva</div>
+    </a>
+
+    <a class="card" href="tema-16-barvove-prostory-a-vazby/">
+      <span class="tag">Téma č. 16</span>
+      <div class="title">Barvové prostory, RGB/CMYK, výtažkování; Tuhé knižní vazby</div>
+    </a>
+
+    <a class="card" href="tema-17-typografie-a-tisk/">
+      <span class="tag">Téma č. 17</span>
+      <div class="title">Počítačová typografie, druhy písma, font; Digitální tisk vs. konvenční techniky</div>
+    </a>
+
+    <a class="card" href="tema-18-akcidencni-tiskovina/">
+      <span class="tag">Téma č. 18</span>
+      <div class="title">Akcidenční tiskovina — postup výroby vizitky; Hlubotisk</div>
+    </a>
+
+    <a class="card" href="tema-19-casopis/">
+      <span class="tag">Téma č. 19</span>
+      <div class="title">Časopis — grafická úprava, předtisková příprava, výroba; Tamponový tisk</div>
+    </a>
+
+    <a class="card" href="tema-20-firemni-tiskoviny/">
+      <span class="tag">Téma č. 20</span>
+      <div class="title">Firemní tiskoviny, logo a jednotný vizuální styl; Flexotisk</div>
+    </a>
+
+    <a class="card" href="tema-21-propagacni-tiskoviny/">
+      <span class="tag">Téma č. 21</span>
+      <div class="title">Propagační tiskoviny — leták, plakát, velkoformát; Tiskové formy</div>
+    </a>
+
+    <a class="card" href="tema-22-nahled-a-natisk/">
+      <span class="tag">Téma č. 22</span>
+      <div class="title">Náhled, nátisk, certifikovaný digitální nátisk; Měkké knižní vazby (V1, V2)</div>
+    </a>
+
+    <a class="card" href="tema-23-prebal-knihy/">
+      <span class="tag">Téma č. 23</span>
+      <div class="title">Přebal knihy a jeho zušlechťování; Ofsetový tisk</div>
+    </a>
+
+    <a class="card" href="tema-24-historicky-vyvoj-tisku/">
+      <span class="tag">Téma č. 24</span>
+      <div class="title">Historický vývoj zhotovení textu a obrazu; Polotuhé knižní vazby, leporelo</div>
+    </a>
+
+    <a class="card" href="tema-25-osobni-tiskoviny/">
+      <span class="tag">Téma č. 25</span>
+      <div class="title">Osobní tiskoviny — příklady a postup výroby; Vlastnosti papírových materiálů</div>
+    </a>
+
+  </div>
+</div>
+
+<footer>34-53-H/01 Reprodukční grafik · jednotné zadání závěrečných zkoušek, odborná část</footer>
+
+</body>
+</html>
