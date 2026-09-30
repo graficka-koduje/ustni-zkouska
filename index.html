@@ -250,7 +250,6 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
     <a href="#montaz">Archová montáž</a>
     <a href="#rip">RIP a CtP</a>
     <a href="#techniky">Tiskové techniky</a>
-    <a href="#svp">Co musím umět</a>
     <a href="#test">Test psaním</a>
     <a href="#kviz">Kvíz</a>
   </div>
@@ -960,26 +959,6 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
   <details class="qa"><summary>Může padnout: Kdy ofset a kdy digitální tisk?</summary><div class="ans">Ofset má drahou přípravu (desky, seřízení stroje), ale levný tisk každého dalšího kusu, takže se vyplatí u vyšších nákladů (orientačně od stovek kusů). Digitální tisk nemá tiskovou formu, zvládne 1 kus a <b>personalizaci</b> (každý výtisk jiný) a je rychlý, ale na kus dražší.</div></details>
 </section>
 
-<!-- ============ ŠVP ============ -->
-<section id="svp">
-  <div class="sec-head"><span class="dot c"></span><span class="kicker">Podle ŠVP</span></div>
-  <h2>Co musíš umět (odškrtej si)</h2>
-  <p class="muted">Výsledky vzdělávání z ŠVP (Technologie, Odborný výcvik, Všeobecná polygrafie), které k této otázce patří. Zaškrtnutí si zapamatuje tvůj prohlížeč.</p>
-  <ul class="check" id="svpList">
-    <li><input type="checkbox" id="s1"><label for="s1">Určím způsob provedení montáží a vypracuji <b>jednoduché i složité způsoby vyřazování stran</b>.</label></li>
-    <li><input type="checkbox" id="s2"><label for="s2">Popíšu <b>archovou elektronickou montáž</b> pro výrobu tiskových forem v tiskových technikách.</label></li>
-    <li><input type="checkbox" id="s3"><label for="s3">Vysvětlím <b>digitální workflow</b> a orientuji se ve formátech souborů (PostScript, PDF, PDF/X).</label></li>
-    <li><input type="checkbox" id="s4"><label for="s4">Znám programy pro <b>kompletaci a kontrolu datových tiskových dokumentů</b> a určím způsoby náhledů.</label></li>
-    <li><input type="checkbox" id="s5"><label for="s5">Určím způsob provedení <b>verifikovaného (certifikovaného) nátisku</b> a znám druhy náhledových a nátiskových zařízení.</label></li>
-    <li><input type="checkbox" id="s6"><label for="s6">Provádím <b>vstupní, mezioperační a výstupní kontrolu</b> a orientuji se v polygrafických normách a standardizaci tisku.</label></li>
-    <li><input type="checkbox" id="s7"><label for="s7">Vysvětlím <b>rastrování</b> (AM, FM, lineatura, úhly) a funkci <b>RIPu</b>.</label></li>
-    <li><input type="checkbox" id="s8"><label for="s8">Popíšu princip <b>osvitových jednotek a CtP</b> a orientuji se v jejich vývoji (CtF → CtP → DI).</label></li>
-    <li><input type="checkbox" id="s9"><label for="s9">Rozliším techniky na principu tisku <b>z výšky, z plochy, z hloubky a průtisku</b> a popíšu základní postup výroby jejich tiskových forem.</label></li>
-    <li><input type="checkbox" id="s10"><label for="s10"><b>Porovnám tiskové techniky</b>: technologickou a ekonomickou výhodnost a vliv techniky na grafickou úpravu tiskoviny.</label></li>
-  </ul>
-  <p class="small muted" id="svpCount"></p>
-</section>
-
 <!-- ============ TEST PSANÍM ============ -->
 <section id="test">
   <div class="sec-head"><span class="dot m"></span><span class="kicker">Ověř se vlastními slovy</span></div>
@@ -1008,7 +987,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
   <div class="wrap">
     <div class="cmyk-bar" style="margin-bottom:14px;border-radius:3px"></div>
     Ústní zkouška · obor Reprodukční grafik (34-53-H/01) · Téma č. 5.<br>
-    Zpracováno z výukových materiálů vyučující (archová montáž, náhledy a nátisky, tiskové PDF, workflow a JDF, rastry) a ze ŠVP. Ilustrační obrázky pocházejí z těchto podkladů.
+    Zpracováno z výukových materiálů vyučující (archová montáž, náhledy a nátisky, tiskové PDF, workflow a JDF, rastry). Ilustrační obrázky pocházejí z těchto podkladů.
     <br><a class="back" href="../" style="margin-top:10px">← zpět na rozcestník</a>
   </div>
 </footer>
@@ -1147,18 +1126,6 @@ const MAP = [
     cell.setAttribute('aria-label','Tónová buňka 16 krát 16, tón '+p+' procent, rozsvíceno '+n+' z 256 políček');
   }
   rng.addEventListener('input',draw);draw();
-})();
-
-/* ---------- ŠVP checklist ---------- */
-(function(){
-  const boxes=[...document.querySelectorAll('#svpList input')];
-  const out=document.getElementById('svpCount');
-  function load(){try{return JSON.parse(localStorage.getItem('t5-svp')||'{}')}catch(e){return {}}}
-  function save(st){try{localStorage.setItem('t5-svp',JSON.stringify(st))}catch(e){}}
-  const st=load();
-  function upd(){const n=boxes.filter(b=>b.checked).length;out.textContent='Umím: '+n+' / '+boxes.length+(n===boxes.length?' 🎉 Jsi připraven/a!':'');}
-  boxes.forEach(b=>{b.checked=!!st[b.id];b.addEventListener('change',()=>{st[b.id]=b.checked;save(st);upd();});});
-  upd();
 })();
 
 /* ---------- KVÍZ ---------- */
