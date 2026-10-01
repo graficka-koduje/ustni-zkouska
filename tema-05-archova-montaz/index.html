@@ -181,6 +181,68 @@ audio{width:100%;margin-top:8px}
 footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
 .theme-toggle{position:fixed;right:14px;bottom:14px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow)}
 @media print{nav.toc,.theme-toggle,.mm-tools{display:none} .hint{display:block} details.qa .ans{display:block}}
+
+/* ===== doplňky pro téma 2 ===== */
+.fab-map{position:fixed;left:14px;bottom:14px;z-index:30;display:none;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.9rem;border:0;border-radius:99px;padding:11px 16px 11px 13px;background:var(--m);color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.fab-map.show{display:inline-flex}
+.fab-map .ar{font-size:1.15rem;line-height:1}
+.ret{display:inline-block;margin:6px 0 0;font-size:.85rem;font-weight:600;color:var(--m-ink);text-decoration:none}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.calc .st{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.calc .st:last-child{border-bottom:0}
+.calc .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+.calc .res{font-weight:800;background:var(--y-soft);padding:2px 8px;border-radius:6px}
+.eq{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:600;background:var(--surface2);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.sim-ctrl{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.sim-ctrl button{font:inherit;font-weight:700;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 13px;cursor:pointer}
+.sim-ctrl button.on{background:var(--m);border-color:var(--m);color:#fff}
+.sheets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.sheet .h{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sheet .row{display:flex;align-items:center;gap:6px;margin:4px 0;font-size:.82rem}
+.sheet .row .lb{width:30px;color:var(--muted);font-weight:700}
+.sheet .pg{flex:1;display:flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden}
+.sheet .pg span{flex:1;text-align:center;font-weight:800;padding:5px 0}
+.sheet .pg span:first-child{border-right:1.5px dashed var(--m)}
+.sheet .sum{font-size:.75rem;color:var(--muted);margin-top:4px}
+.inline-in{font:inherit;font-weight:700;width:90px;padding:7px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+/* test psaním */
+.wt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.wt .qt{font-weight:800;font-size:1.05rem;margin-bottom:4px}
+.wt .qh{font-size:.88rem;color:var(--muted);margin-bottom:10px}
+.wt textarea{width:100%;min-height:150px;font:inherit;font-size:16px;line-height:1.5;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical}
+.wt textarea:focus{outline:none;border-color:var(--m)}
+.wt .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.wt .acts .wc{font-size:.82rem;color:var(--muted);margin-left:auto}
+button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
+.wt .out{display:none;margin-top:14px}
+.wt .out.show{display:block}
+.meter{height:12px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:6px 0 4px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--c),var(--m));border-radius:99px;transition:width .5s}
+.verdict{font-weight:800;font-size:1.02rem}
+.fbbox{border-radius:12px;padding:10px 14px;margin:10px 0}
+.fbbox h4{margin:0 0 6px;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase}
+.fbbox ul{margin:0;padding-left:1.1em}
+.fbbox li{margin:.3em 0;font-size:.94rem}
+.fb-ok{background:color-mix(in srgb,var(--ok) 12%,transparent)} .fb-ok h4{color:var(--ok)}
+.fb-miss{background:var(--y-soft)} .fb-miss h4{color:var(--y-ink)}
+.fb-err{background:var(--m-soft)} .fb-err h4{color:var(--m-ink)}
+.star{color:var(--m);font-weight:800}
+.model{display:none;border-left:5px solid var(--c);background:var(--c-soft);border-radius:0 12px 12px 0;padding:12px 16px;margin-top:10px;font-size:.96rem}
+.model.show{display:block}
+.model b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--c-ink);margin-bottom:4px}
+.svgfig text{font-family:Inter,system-ui,sans-serif}
+.legend-row{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted);margin-top:6px}
+@media print{.fab-map{display:none!important}}
+
+.svgfig.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:700px){.svgfig.wide svg{min-width:640px}.svgfig.wide::after{content:"↔ obrázek posuň do strany";display:block;font-size:.78rem;color:var(--muted);margin-top:4px;position:sticky;left:0}}
+
+.check li{flex-wrap:wrap}.check li label{flex:1 1 220px}
+.svp-go{margin-left:auto;align-self:center;white-space:nowrap;font-size:.82rem;font-weight:700;color:var(--m-ink);text-decoration:none;padding:2px 0 2px 30px}
+
+.check li{flex-wrap:wrap}.check li label{flex:1 1 220px}
+.svp-go{margin-left:auto;align-self:center;white-space:nowrap;font-size:.82rem;font-weight:700;color:var(--m-ink);text-decoration:none;padding:2px 0 2px 30px}
 </style>
 </head>
 <body>
@@ -204,6 +266,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
     <a href="#rip">RIP a CtP</a>
     <a href="#techniky">Tiskové techniky</a>
     <a href="#svp">Co musím umět</a>
+    <a href="#test">Test psaním</a>
     <a href="#kviz">Kvíz</a>
   </div>
 </nav>
@@ -351,6 +414,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
   <details class="qa"><summary>Může padnout: Jaký je rozdíl mezi náhledem a nátiskem?</summary><div class="ans">Náhled je vizuální kontrola, buď na monitoru, nebo jako výtisk na běžné tiskárně. Slouží hlavně ke kontrole obsahu a není závazný pro barvy. Nátisk je <b>fyzická kopie, která simuluje výsledný tisk</b> (stejné barvy, profil, ideálně i papír). Má technický i právní význam: zákazník ho schválí a tiskárna podle něj tiskne.</div></details>
   <details class="qa"><summary>Může padnout: Co je preflight a proč se dělá?</summary><div class="ans">Automatická kontrola tiskových dat před osvitem. Hlídá formát PDF/X, spadávku a značky, rozlišení obrázků, barevný prostor (CMYK), přímé barvy, krytí barvou, vložená písma a průhlednosti. Odhalí chyby dřív, než se vyrobí desky a potiskne papír, a tím šetří čas i peníze.</div></details>
   <details class="qa"><summary>Může padnout: Co je FOGRA39?</summary><div class="ans">ICC profil (Coated FOGRA39) popisující standardizovaný ofsetový tisk na natíraný papír podle normy <b>ISO 12647-2</b>. Fogra je německý výzkumný ústav pro polygrafii. Profil zajistí, že barvy v PDF odpovídají tomu, co dokáže vytisknout kalibrovaný stroj.</div></details>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
 <!-- ============ MONTÁŽ ============ -->
@@ -530,6 +594,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
   <details class="qa"><summary>Může padnout: Jaký je rozdíl mezi montáží na obrátku a na klopení?</summary><div class="ans">U obrácení se arch otáčí kolem osy souběžné se směrem tisku a do stroje jde <b>stejnou čelní hranou</b>, mění se jen boční náložka. U klopení se arch překlápí kolem osy kolmé na směr tisku, takže se <b>mění čelní hrana</b>. Obrácení je přesnější, protože arch je pořád zakládán za stejnou hranu.</div></details>
   <details class="qa"><summary>Může padnout: Proč se horní řada stran na archu tiskne vzhůru nohama?</summary><div class="ans">Protože se arch skládá křížovým lomem. Po složení se horní strany překlopí a otočí do správné polohy. Montáž tedy vypadá „rozházeně“, ale po složení a ořezu jde všechno po sobě.</div></details>
   <details class="qa"><summary>Může padnout: Jaký software se používá?</summary><div class="ans">Specializované programy pro vyřazování (impozici), např. <b>Montax Imposer</b>, nebo moduly workflow systémů tiskáren. Jednodušší montáž se dá udělat i ručně v InDesignu. Data zadává operátor předtiskové přípravy podle možností stroje a charakteru zakázky.</div></details>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
 <!-- ============ RIP ============ -->
@@ -593,6 +658,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
 
   <details class="qa"><summary>Může padnout: Co je RIP a co v něm nastavuji?</summary><div class="ans">Raster Image Processor je program pro elektronické rastrování. Interpretuje PDF, rozdělí ho na barevné výtažky a každý převede na rastr tiskových bodů. Nastavuje se počet separací, typ rastru (AM/FM), lineatura, úhly natočení sítí a tvar bodu. Výstupem jsou jednobitové bitmapy pro CtP nebo pro digitální tiskový stroj.</div></details>
   <details class="qa"><summary>Může padnout: Proč se sítě natáčejí pod různými úhly?</summary><div class="ans">Kdyby všechny čtyři barvy měly stejný úhel, body by se různě překrývaly a vznikl by rušivý vzor <b>moaré</b>. Natočením (K 45°, M 15°, C 75°, Y 90°) vznikne pravidelná <b>rozeta</b>. Černá je na 45°, protože tento úhel oko vnímá nejméně. Žlutá je nejsvětlejší, a proto může mít „nejhorší“ úhel.</div></details>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
 <!-- ============ TECHNIKY ============ -->
@@ -698,31 +764,41 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
   <details class="qa"><summary>Může padnout: Jak rozdělujeme tiskové techniky podle principu tisku?</summary><div class="ans">Podle vzájemné polohy tisknoucích a netisknoucích míst na formě: <b>z výšky</b> (tisknoucí místa vyvýšená: knihtisk, flexotisk), <b>z plochy</b> (v jedné rovině, liší se fyzikálně-chemicky: ofset), <b>z hloubky</b> (zahloubená: hlubotisk, tampon) a <b>průtisk</b> (barva prochází šablonou: sítotisk). Samostatně stojí <b>digitální tisk</b> bez hmotné formy (elektrofotografie, inkjet).</div></details>
   <details class="qa"><summary>Může padnout: Proč je ofset nepřímý tisk a co z toho plyne?</summary><div class="ans">Barva se z tiskové desky přenese nejdřív na <b>gumový (ofsetový) válec</b> a teprve z něj na papír. Guma se dobře přizpůsobí povrchu papíru a deska se méně opotřebí. Obraz na desce je <b>čitelný</b> (u přímého tisku je forma zrcadlově převrácená).</div></details>
   <details class="qa"><summary>Může padnout: Kdy ofset a kdy digitální tisk?</summary><div class="ans">Ofset má drahou přípravu (desky, seřízení stroje), ale levný tisk každého dalšího kusu, takže se vyplatí u vyšších nákladů (orientačně od stovek kusů). Digitální tisk nemá tiskovou formu, zvládne 1 kus a <b>personalizaci</b> (každý výtisk jiný) a je rychlý, ale na kus dražší.</div></details>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
 <!-- ============ ŠVP ============ -->
 <section id="svp">
   <div class="sec-head"><span class="dot c"></span><span class="kicker">Podle ŠVP</span></div>
   <h2>Co musíš umět (odškrtej si)</h2>
-  <p class="muted">Výsledky vzdělávání z ŠVP (Technologie, Odborný výcvik, Všeobecná polygrafie), které k této otázce patří. Zaškrtnutí si zapamatuje tvůj prohlížeč.</p>
+  <p class="muted">Výsledky vzdělávání z ŠVP (Technologie, Odborný výcvik, Všeobecná polygrafie), které k této otázce patří. Odkaz „kde to najdu“ tě pošle přímo do správné části. Zaškrtnutí si zapamatuje tvůj prohlížeč.</p>
   <ul class="check" id="svpList">
-    <li><input type="checkbox" id="s1"><label for="s1">Určím způsob provedení montáží a vypracuji <b>jednoduché i složité způsoby vyřazování stran</b>.</label></li>
-    <li><input type="checkbox" id="s2"><label for="s2">Popíšu <b>archovou elektronickou montáž</b> pro výrobu tiskových forem v tiskových technikách.</label></li>
-    <li><input type="checkbox" id="s3"><label for="s3">Vysvětlím <b>digitální workflow</b> a orientuji se ve formátech souborů (PostScript, PDF, PDF/X).</label></li>
-    <li><input type="checkbox" id="s4"><label for="s4">Znám programy pro <b>kompletaci a kontrolu datových tiskových dokumentů</b> a určím způsoby náhledů.</label></li>
-    <li><input type="checkbox" id="s5"><label for="s5">Určím způsob provedení <b>verifikovaného (certifikovaného) nátisku</b> a znám druhy náhledových a nátiskových zařízení.</label></li>
-    <li><input type="checkbox" id="s6"><label for="s6">Provádím <b>vstupní, mezioperační a výstupní kontrolu</b> a orientuji se v polygrafických normách a standardizaci tisku.</label></li>
-    <li><input type="checkbox" id="s7"><label for="s7">Vysvětlím <b>rastrování</b> (AM, FM, lineatura, úhly) a funkci <b>RIPu</b>.</label></li>
-    <li><input type="checkbox" id="s8"><label for="s8">Popíšu princip <b>osvitových jednotek a CtP</b> a orientuji se v jejich vývoji (CtF → CtP → DI).</label></li>
-    <li><input type="checkbox" id="s9"><label for="s9">Rozliším techniky na principu tisku <b>z výšky, z plochy, z hloubky a průtisku</b> a popíšu základní postup výroby jejich tiskových forem.</label></li>
-    <li><input type="checkbox" id="s10"><label for="s10"><b>Porovnám tiskové techniky</b>: technologickou a ekonomickou výhodnost a vliv techniky na grafickou úpravu tiskoviny.</label></li>
+    <li><input type="checkbox" id="s1"><label for="s1">Určím způsob provedení montáží a vypracuji <b>jednoduché i složité způsoby vyřazování stran</b>.</label><a class="svp-go" href="#montaz">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s2"><label for="s2">Popíšu <b>archovou elektronickou montáž</b> pro výrobu tiskových forem v tiskových technikách.</label><a class="svp-go" href="#montaz">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s3"><label for="s3">Vysvětlím <b>digitální workflow</b> a orientuji se ve formátech souborů (PostScript, PDF, PDF/X).</label><a class="svp-go" href="#cesta">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s4"><label for="s4">Znám programy pro <b>kompletaci a kontrolu datových tiskových dokumentů</b> a určím způsoby náhledů.</label><a class="svp-go" href="#kontrola">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s5"><label for="s5">Určím způsob provedení <b>verifikovaného (certifikovaného) nátisku</b> a znám druhy náhledových a nátiskových zařízení.</label><a class="svp-go" href="#kontrola">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s6"><label for="s6">Provádím <b>vstupní, mezioperační a výstupní kontrolu</b> a orientuji se v polygrafických normách a standardizaci tisku.</label><a class="svp-go" href="#kontrola">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s7"><label for="s7">Vysvětlím <b>rastrování</b> (AM, FM, lineatura, úhly) a funkci <b>RIPu</b>.</label><a class="svp-go" href="#rip">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s8"><label for="s8">Popíšu princip <b>osvitových jednotek a CtP</b> a orientuji se v jejich vývoji (CtF → CtP → DI).</label><a class="svp-go" href="#rip">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s9"><label for="s9">Rozliším techniky na principu tisku <b>z výšky, z plochy, z hloubky a průtisku</b> a popíšu základní postup výroby jejich tiskových forem.</label><a class="svp-go" href="#techniky">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s10"><label for="s10"><b>Porovnám tiskové techniky</b>: technologickou a ekonomickou výhodnost a vliv techniky na grafickou úpravu tiskoviny.</label><a class="svp-go" href="#techniky">→ kde to najdu</a></li>
   </ul>
   <p class="small muted" id="svpCount"></p>
 </section>
 
+<!-- ============ TEST PSANÍM ============ -->
+<section id="test">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">Ověř se · 1</span></div>
+  <h2>Test psaním: odpověz vlastními slovy</h2>
+  <p>U zkoušky nedostaneš na výběr z možností, musíš mluvit sám/sama. Napiš proto odpověď tak, jak bys ji řekl/a komisi. Pak klepni na <b>Vyhodnotit</b>. Uvidíš, co jsi zmínil/a ✔, co důležitého ti chybí, případné chyby a nakonec vzorovou odpověď. Body označené <span class="star">★</span> jsou nejdůležitější.</p>
+  <div class="tip"><b class="t">Jak na to</b>Piš celé věty, klidně s chybami v pravopisu. Test hledá <b>odborné pojmy a souvislosti</b>, ne krásný sloh. Tvoje odpověď se průběžně ukládá v tomto prohlížeči.</div>
+  <div id="writeTest"></div>
+</section>
+
 <!-- ============ KVÍZ ============ -->
 <section id="kviz">
-  <div class="sec-head"><span class="dot m"></span><span class="kicker">Ověř se</span></div>
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">Ověř se · 2</span></div>
   <h2>Rychlý kvíz</h2>
   <p>10 otázek. Klepni na odpověď a hned uvidíš vysvětlení.</p>
   <div id="quiz"></div>
@@ -741,6 +817,7 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
   </div>
 </footer>
 
+<button class="fab-map" id="fabMap" aria-label="Zpět na myšlenkovou mapu"><span class="ar">↑</span> Zpět na mapu</button>
 <button class="theme-toggle" id="themeBtn" aria-label="Přepnout světlý / tmavý režim">◐</button>
 
 <script>
@@ -785,6 +862,7 @@ const MAP = [
     ['Klasický × digitální × digitalizovaný','Forma mimo stroj / žádná forma / forma osvícená ve stroji.']
   ]}
 ];
+let lastBranch=null;
 (function buildMap(){
   const root=document.getElementById('mindmap');
   const center=document.createElement('div');
@@ -797,7 +875,7 @@ const MAP = [
     const el=document.createElement('div');
     el.className='mm-branch '+b.k+' '+b.side;
     if(window.matchMedia('(min-width:861px)').matches){el.style.gridColumn=pos[b.k][0];el.style.gridRow=pos[b.k][1];}
-    el.dataset.k=b.k;
+    el.dataset.k=b.k;el.id='mm-'+b.k;
     let h='<h4><span class="num">'+b.n+'</span>'+b.t+'</h4><div class="chips">';
     b.items.forEach((it,i)=>{h+='<button class="chip" aria-expanded="false" data-i="'+i+'">'+it[0]+'</button>';});
     h+='</div><div class="hint" aria-live="polite"></div><a class="goto" href="'+b.link+'">→ podrobně v souhrnu</a>';
@@ -811,9 +889,10 @@ const MAP = [
         ch.setAttribute('aria-expanded','true');
         const it=b.items[+ch.dataset.i];
         hint.innerHTML='<b>'+it[0]+'</b>'+it[1];
-        hint.classList.add('show');
+        hint.classList.add('show');lastBranch=el;
       });
     });
+    el.querySelector('.goto').addEventListener('click',()=>{lastBranch=el;});
     el._b=b;
     root.appendChild(el);
   });
@@ -909,11 +988,186 @@ const QUIZ=[
   render();document.getElementById('quizReset').onclick=render;
 })();
 
+
+/* ---------- bezpečné úložiště ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- plovoucí šipka zpět na mapu ---------- */
+(function(){
+  const fab=document.getElementById('fabMap'),mapa=document.getElementById('mapa');
+  function goBack(e){
+    if(e)e.preventDefault();
+    const t=lastBranch||mapa;
+    t.scrollIntoView({behavior:'smooth',block:lastBranch?'center':'start'});
+  }
+  fab.addEventListener('click',goBack);
+  document.querySelectorAll('[data-ret]').forEach(a=>a.addEventListener('click',goBack));
+  function upd(){fab.classList.toggle('show', mapa.getBoundingClientRect().bottom < 0);}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+/* ---------- TEST PSANÍM ---------- */
+/* p: [popisek, [vzory], důležité?, rada když chybí] · vzor "a&&b" = musí platit a i b (bez diakritiky, malá písmena) */
+const WT=[
+ {q:'Jak se kontrolují tisková data? Popiš, co musí mít tiskové PDF, co je preflight a jaký je rozdíl mezi náhledem a nátiskem.',
+  h:'Tip: vstupní – mezioperační – výstupní kontrola, PDF/X, preflight, náhled × nátisk, druhy nátisku.',
+  p:[
+   ['Tiskové PDF/X',['pdf ?/ ?x|pdfx|x-1a|x-4'],1,'Řekni, že tiskárna chce tiskové PDF podle normy PDF/X (nejčastěji PDF/X-1a).'],
+   ['Barvy v CMYK (FOGRA39)',['cmyk|fogra'],1,'Barvy musí být v CMYK s profilem Coated FOGRA39, ne v RGB.'],
+   ['Rozlišení obrázků 300 dpi',['300|rozlis|dpi|ppi'],1,'Obrázky pro tisk mají rozlišení 300 dpi.'],
+   ['Spadávka a ořezové značky',['spadav|orezov'],1,'Tiskové PDF má spadávku (3 mm) a ořezové značky.'],
+   ['Vložená písma',['pism|font'],0,'Bonus: písma musí být v PDF vložená.'],
+   ['Preflight = kontrola dat před osvitem',['preflight|predletov|predtiskov\\w* kontrol'],1,'Vysvětli preflight: automatická „předletová“ kontrola PDF před výrobou desek (Acrobat Pro, InDesign).'],
+   ['Náhled (na monitoru / tištěný)',['nahled|soft ?proof'],1,'Zmiň náhled: kontrola na zkalibrovaném monitoru nebo tištěný náhled, rychlý a levný, ne závazný.'],
+   ['Nátisk = závazný vzor barev',['natisk'],1,'Nátisk je fyzický zkušební výtisk, který simuluje tisk. Zákazník ho schválí jako závazný vzor barev.'],
+   ['Druhy nátisku',['cromalin|kromalin|digitaln\\w* natisk|certifik|12647|analog|na tiskovem stroji'],0,'Bonus: druhy nátisku: na stroji, analogový (Cromalin), digitální, certifikovaný podle ISO 12647-7.'],
+   ['Měření barev',['denzitometr|spektrofotometr|lab\\b'],0,'Bonus: denzitometr (optická hustota) × spektrofotometr (L*a*b*, ΔE).'],
+   ['Vstupní / mezioperační / výstupní kontrola',['vstupn|mezioperac|vystupn'],0,'Bonus: kontrola se dělá na vstupu, mezioperačně a na výstupu.']
+  ],
+  e:[
+   ['natisk\\w*[^.,;]{0,25}(na )?monitor','Na monitoru je náhled (soft proof), ne nátisk. Nátisk je fyzický výtisk.'],
+   ['tiskov\\w* pdf[^.,;]{0,30}\\brgb','Pro tisk se barvy převádějí do CMYK (profil FOGRA39), ne do RGB.'],
+   ['72 ?dpi[^.,;]{0,25}(staci|tisk|spravn|idealn)','72 dpi je rozlišení pro web. Pro tisk je potřeba 300 dpi.'],
+   ['pdf ?/ ?a\\b[^.,;]{0,25}tisk','PDF/A je archivní formát. Pro tisk se používá PDF/X.'],
+   ['maket\\w*[^.,;]{0,30}(kontrol|schval)\\w* barev','Maketa neslouží ke kontrole barev, na to je nátisk.']
+  ],
+  m:'Tisková data se kontrolují <b>na vstupu</b>, <b>mezioperačně</b> a <b>na výstupu</b>. Tiskárna chce <b>tiskové PDF/X</b>, nejčastěji PDF/X-1a: barvy v <b>CMYK</b> s profilem <b>Coated FOGRA39</b>, obrázky v rozlišení <b>300 dpi</b>, <b>vložená písma</b>, sloučenou průhlednost, <b>spadávku 3 mm</b> a <b>ořezové značky</b> mimo čistý formát. Na vstupu se dělá <b>preflight</b>, „předletová kontrola“ v Acrobatu Pro nebo v InDesignu. Odhalí RGB, chybějící písma, nízké rozlišení, registrační černou nebo velké krytí barvou dřív, než se vyrobí desky. Pak následuje <b>náhled</b>: kontrola na zkalibrovaném monitoru (soft proof) nebo tištěný náhled. Je rychlý a levný, ale pro barvy není závazný. <b>Nátisk</b> je fyzický zkušební výtisk, který simuluje výsledný tisk. Zákazník ho podepíše a tiskař podle něj tiskne. Nátisk může být na tiskovém stroji, analogový (Cromalin), digitální nebo <b>certifikovaný</b> podle ISO 12647-7, proměřený spektrofotometrem. Na výstupu se barvy měří <b>denzitometrem</b> a <b>spektrofotometrem</b>.'},
+ {q:'Co je archová montáž? Co musím vědět, než začnu montovat, a jaké značky patří na tiskový arch?',
+  h:'Tip: definice, 5–6 věcí, které potřebuji znát, formáty, značky, software.',
+  p:[
+   ['Rozmístění stran / tiskovin na tiskový arch',['arch&&(stran|tiskovin|rozmist)'],1,'Definice: archová montáž rozmístí strany nebo tiskoviny na tiskový arch.'],
+   ['Podklad pro tiskovou formu / tisk',['ctp|tiskov\\w* (desk|form)|osvit|rip\\b|digitaln\\w* tisk'],0,'Řekni, k čemu je: podle ní se vyrobí tisková forma, nebo se tiskne digitálně.'],
+   ['Formát tiskoviny a spadávka',['format&&(tiskovin|spadav|cist)','spadav'],1,'Musím znát formát tiskoviny (čistý formát) se spadávkou 3 mm.'],
+   ['Formát archu / stroj, oboustranný tisk',['format\\w* (arch|papir)|stroj|oboustrann|perfektor|chytac|nakladac'],1,'Musím znát formát archu a možnosti stroje (oboustranný tisk, okraj pro chytače).'],
+   ['Počet stran a kusů',['pocet (stran|kus)|naklad|kolik (stran|kus)'],0,'Musím znát počet stran a náklad (počet kusů).'],
+   ['Směr vlákna papíru',['vlakn'],0,'Bonus: u knih vlákno vždy rovnoběžně se hřbetem.'],
+   ['Čistý / hrubý / superhrubý formát',['cist\\w* format|hrub|sra'],0,'Bonus: čistý formát (po ořezu), hrubý R (se spadávkou), superhrubý SR (arch, např. SRA3).'],
+   ['Tiskové značky',['znac|terc'],1,'Na arch patří tiskové značky.'],
+   ['Ořezové značky',['orez'],1,'Ořezové značky ukazují, kde se arch řeže.'],
+   ['Soutiskové značky',['soutisk'],1,'Soutiskové značky kontrolují přesné překrytí barev CMYK.'],
+   ['Další značky: lomové, škála, signatura, popiska',['lomov|skal|signatur|popisk|naloz'],0,'Bonus: lomové značky, barevná škála, hřbetní signatura, popiska, náložky.'],
+   ['Software',['montax|impos|signa|preps|indesign'],0,'Bonus: program pro montáž, např. Montax Imposer.']
+  ],
+  e:[
+   ['orezov\\w* znac\\w*[^.,;]{0,30}(uvnitr|v cistem|do cisteho)','Ořezové značky leží MIMO čistý formát i mimo spadávku.'],
+   ['spadav\\w*[^.,;]{0,20}\\b(1|5|10|20) ?mm','Spadávka je obvykle 3 mm.'],
+   ['soutisk\\w* znac\\w*[^.,;]{0,30}(rez|orez)','Soutiskové značky kontrolují překrytí barev. Kde se řeže, ukazují ořezové značky.']
+  ],
+  m:'<b>Archová montáž</b> (imposition) je rozmístění stran nebo tiskovin na <b>tiskový arch</b> tak, aby po tisku, složení a ořezu šly ve správném pořadí. Doplňují se k ní tiskové a knihařské značky. Z výsledku se přes RIP a <b>CtP</b> vyrobí tisková forma, nebo se rovnou tiskne digitálně. Dělá ji operátor prepressu v programu jako <b>Montax Imposer</b>. Před montáží musím znát <b>formát tiskoviny se spadávkou</b> (3 mm), <b>formát archu</b> a jestli <b>stroj</b> tiskne oboustranně, <b>počet stran a kusů</b>, <b>okraj pro chytače</b> (čelní hrana se netiskne) a u knih <b>směr vlákna</b> rovnoběžně se hřbetem. Rozlišuji <b>čistý</b> formát (po ořezu), <b>hrubý R</b> (se spadávkou) a <b>superhrubý SR</b> (arch, např. SRA3). Na arch patří značky <b>ořezové</b>, značky spadávky, <b>soutiskové</b> terčíky, <b>lomové</b>, hřbetní <b>signatura</b>, <b>barevná škála</b>, náložky a <b>popiska</b> zakázky.'},
+ {q:'Vysvětli vyřazování stran a oboustranný tisk: jaký je rozdíl mezi obracením a klopením archu a co znamená tisk „na obrátku“?',
+  h:'Tip: složky, kontrolní součet, čelní hrana, líc i rub z jedné formy, kdy se to vyplatí.',
+  p:[
+   ['Vyřazování = strany ve správném pořadí po složení',['poradi|po sobe|za sebou|navazuj'],1,'Vyřazování rozmístí strany tak, aby po složení šly po sobě.'],
+   ['Složky 4 · 8 · 16 · 32 stran',['slozk&&\\b(4|8|16|32)\\b'],1,'Arch se skládá do složek po 4, 8, 16 nebo 32 stranách.'],
+   ['Kontrolní součet (+ 1)',['soucet|\\+ ?1|plus jedn|secte'],0,'Bonus: strany vedle sebe dávají součet = počet stran složky + 1.'],
+   ['Strany vzhůru nohama',['vzhuru nohama|otocen|hlavou dolu'],0,'Bonus: horní řada stran je na archu vzhůru nohama, po složení se otočí.'],
+   ['Obracení',['obrac|obrat'],1,'Popiš obracení archu.'],
+   ['Klopení',['klop'],1,'Popiš klopení archu.'],
+   ['Čelní (nakládací) hrana',['celn\\w* hran|nakladac\\w* hran'],1,'Klíčový rozdíl: u obracení zůstává stejná čelní hrana, u klopení se mění.'],
+   ['Na obrátku: líc i rub z jedné formy',['(jedn|stejn)\\w* (form|desk)|na obratku'],1,'Na obrátku: líc i rub jsou na jedné tiskové formě vedle sebe.'],
+   ['Úspora desek / dva výrobky z archu',['setr|uspor|mene desek|4 desky|polovin|dva (stejn|vyrob)|rozrizn|rozrez'],0,'Bonus: ušetří se polovina desek, arch se rozřízne na dva stejné výrobky.'],
+   ['Kdy ne',['nevejd|velk\\w* naklad|4 ?\\+ ?1|cernobil'],0,'Bonus: kdy ne: líc a rub se nevejdou, líc barevný a rub černobílý, obrovské náklady.']
+  ],
+  e:[
+   ['obrac\\w*[^.,;]{0,40}men\\w*[^.,;]{0,15}celn','Při obracení zůstává čelní hrana STEJNÁ. Mění se u klopení.'],
+   ['klop\\w*[^.,;]{0,40}(stejn|nemen)\\w*[^.,;]{0,15}celn','Při klopení se čelní hrana MĚNÍ (arch se překlopí „přes hlavu“).'],
+   ['slozk\\w*[^.,;]{0,30}\\b(3|5|6|7|9|10|12|14)\\b ?stran','Složka má 4, 8, 16 nebo 32 stran. Každý lom počet zdvojnásobí.']
+  ],
+  m:'<b>Vyřazování stran</b> je rozmístění stran na arch tak, aby po složení a ořezu šly <b>ve správném pořadí</b>. Arch se skládá do <b>složek</b> po 4, 8, 16 nebo 32 stranách. Horní řada stran je proto na archu <b>vzhůru nohama</b>. Kontroluji to součtem: strany vedle sebe dávají <b>počet stran složky + 1</b> (u 16 stran 17). U oboustranného tisku musím předem vědět, jak se arch otočí. Při <b>obracení</b> se arch otočí kolem osy souběžné se směrem tisku a jde do stroje <b>stejnou čelní hranou</b>, mění se jen boční náložka. Je to přesnější. Při <b>klopení</b> se arch překlopí „přes hlavu“ a <b>čelní hrana se mění</b>. Tisk <b>na obrátku</b> znamená, že <b>líc i rub</b> jsou vedle sebe na <b>jedné formě</b>. Po prvním průchodu se arch obrátí a tiskne se znovu stejnou deskou. Pak se rozřízne na <b>dva stejné oboustranné výrobky</b>. Ušetří se polovina desek. Nevyplatí se, když se líc a rub na arch nevejdou, když je líc barevný a rub černobílý (4 + 1 desky) nebo u obrovských nákladů.'},
+ {q:'Co je RIP a co v něm nastavuji? Vysvětli rozdíl mezi AM a FM rastrem a jak se data dostanou na tiskovou desku.',
+  h:'Tip: interpretace – separace – rastrování, lineatura, úhly, AM × FM, CtF → CtP → DI.',
+  p:[
+   ['RIP převádí data na rastr tiskových bodů',['raster image|rastr|tiskov\\w* bod'],1,'RIP (Raster Image Processor) převede PDF na rastr tiskových bodů.'],
+   ['Separace na výtažky CMYK',['separac|vytaz'],1,'RIP rozdělí obraz na barevné výtažky C, M, Y, K.'],
+   ['Jednobitová bitmapa',['bitmap|1 ?bit|jednobit'],0,'Bonus: výstupem je pro každou barvu jednobitová bitmapa.'],
+   ['Lineatura (lpi)',['lineatur|lpi'],1,'Nastavuji lineaturu (hustotu rastru v lpi), v ofsetu asi 150 lpi.'],
+   ['Úhly natočení sítí',['uhl|natoc|45'],1,'Nastavuji úhly natočení: K 45°, M 15°, C 75°, Y 90°.'],
+   ['Rozeta × moaré',['moar|rozet'],0,'Bonus: správné úhly dají rozetu, špatné dají moaré.'],
+   ['AM rastr = mění se velikost bodu',['\\bam\\b[^.,;]{0,40}(velikost|vetsi|mensi)','amplitud[^.,;]{0,60}(velikost|vetsi|mensi)'],1,'AM: pravidelná mřížka, mění se velikost bodu.'],
+   ['FM rastr = mění se hustota bodů',['\\bfm\\b[^.,;]{0,40}(hustot|pocet|nahodn)','frekvenc[^.,;]{0,60}(hustot|pocet)','stochast'],1,'FM: body stejně malé, mění se jejich hustota (stochastický rastr).'],
+   ['CtP: laser osvítí přímo desku',['ctp|computer to plate|osvit'],1,'CtP: laser osvítí přímo tiskovou desku, bez filmu.'],
+   ['CtF / DI',['ctf|film|\\bdi\\b|digitalizovan'],0,'Bonus: dřív CtF přes film, dnes CtP, u DI se desky osvítí přímo ve stroji.'],
+   ['Tvar bodu, nárůst bodu',['tvar bodu|narust|kalibrac'],0,'Bonus: tvar bodu a kompenzace nárůstu tiskového bodu.']
+  ],
+  e:[
+   ['\\bam\\b[^.,;]{0,40}(hustot|frekvenc|nahodn)','U AM rastru se mění VELIKOST bodu v pravidelné mřížce. Hustota se mění u FM.'],
+   ['\\bfm\\b[^.,;]{0,40}velikost','U FM jsou body stejně malé, mění se jejich HUSTOTA.'],
+   ['ctp[^.,;]{0,30}(na |pres )film','CtP osvěcuje přímo desku, bez filmu. Přes film se pracovalo u CtF.'],
+   ['rip[^.,;]{0,30}(kontrol|preflight)','RIP data nekontroluje, převádí je na rastr. Kontrola dat je preflight.']
+  ],
+  m:'<b>RIP</b> (Raster Image Processor) je software, který „přeloží“ PDF do řeči <b>tiskových bodů</b>. Nejdřív PDF <b>interpretuje</b>, pak ho <b>separuje</b> na barevné výtažky C, M, Y, K (a přímé barvy) a nakonec každý výtažek <b>zrastruje</b> na jednobitovou bitmapu. Nastavuji v něm počet separací, typ rastru, <b>lineaturu</b> (ofset asi 150 lpi), <b>úhly natočení</b> sítí (K 45°, M 15°, C 75°, Y 90°), tvar bodu a kompenzaci nárůstu bodu. Správné úhly dají <b>rozetu</b>, špatné dají <b>moaré</b>. <b>AM rastr</b> má pravidelnou mřížku a mění se <b>velikost bodu</b>. <b>FM rastr</b> (stochastický) má body stejně malé a mění se jejich <b>hustota</b>, nevzniká moaré. Z RIPu jdou data do <b>CtP</b>: laser osvítí přímo tiskovou desku. Dřív se pracovalo přes film (<b>CtF</b>). U <b>digitalizovaného tisku (DI)</b> se desky osvítí přímo ve stroji a u digitálního tisku jdou data rovnou do stroje.'},
+ {q:'Jak dělíme tiskové techniky? Ke každé uveď princip tiskové formy a příklad tiskoviny.',
+  h:'Tip: z výšky, z plochy, z hloubky, průtisk + digitální tisk. Přidej přímý × nepřímý.',
+  p:[
+   ['Dělení podle tiskové formy',['tiskov\\w* form|tisknouc'],1,'Řekni, podle čeho dělíme: podle tiskové formy (poloha tisknoucích a netisknoucích míst).'],
+   ['Tisk z výšky',['z vysky'],1,'Tisk z výšky: tisknoucí místa jsou vyvýšená.'],
+   ['Knihtisk / flexotisk',['knihtisk|flexo'],0,'Příklad tisku z výšky: knihtisk, flexotisk (obaly, etikety).'],
+   ['Tisk z plochy',['z plochy'],1,'Tisk z plochy: tisknoucí a netisknoucí místa jsou v jedné rovině.'],
+   ['Ofset',['ofset'],1,'Příklad tisku z plochy: ofset (knihy, časopisy, letáky).'],
+   ['Oleofilní × hydrofilní',['oleofil|hydrofil|vod|vlhc|mastn'],0,'Bonus: v ofsetu tisknoucí místa přijímají barvu (oleofilní), netisknoucí vodu (hydrofilní).'],
+   ['Tisk z hloubky',['z hloubky'],1,'Tisk z hloubky: barva je v zahloubených jamkách, rakle stírá povrch.'],
+   ['Hlubotisk / tampon',['hlubotisk|tampon'],0,'Příklad tisku z hloubky: hlubotisk, tampónový tisk.'],
+   ['Průtisk / sítotisk',['prutisk|sitotisk'],1,'Průtisk: barva prochází sítem (sítotisk – trička, sklo).'],
+   ['Digitální tisk bez formy',['digitaln'],1,'Digitální tisk nemá hmotnou tiskovou formu (toner, inkjet).'],
+   ['Přímý × nepřímý tisk',['neprim|gum|ofsetov\\w* valec'],0,'Bonus: ofset tiskne nepřímo přes gumový (ofsetový) válec.'],
+   ['Archový × kotoučový',['archov|kotouc|role'],0,'Bonus: archové a kotoučové stroje.']
+  ],
+  e:[
+   ['ofset[^.,;]{0,30}(z vysky|z hloubky|prutisk)','Ofset je tisk Z PLOCHY.'],
+   ['flexo\\w*[^.,;]{0,30}(z plochy|z hloubky|prutisk)','Flexotisk je tisk Z VÝŠKY.'],
+   ['sitotisk[^.,;]{0,30}(z vysky|z plochy|z hloubky)','Sítotisk je PRŮTISK.'],
+   ['hlubotisk[^.,;]{0,30}(z vysky|z plochy)','Hlubotisk je tisk Z HLOUBKY.'],
+   ['digitaln\\w* tisk (ma|pouziva|vyzaduje|potrebuje)[^.,;]{0,20}(desk|tiskov\\w* form)','Digitální tisk nemá hmotnou tiskovou formu (desku).']
+  ],
+  m:'Tiskové techniky dělíme hlavně <b>podle tiskové formy</b>, tedy podle toho, kde leží tisknoucí místa vůči netisknoucím. <b>Tisk z výšky</b>: tisknoucí místa jsou vyvýšená. Patří sem <b>knihtisk</b> a <b>flexotisk</b> s pružnou fotopolymerní deskou na obaly, etikety a fólie. <b>Tisk z plochy</b>: obojí je v jedné rovině, tisknoucí místa jsou <b>oleofilní</b> (berou barvu) a netisknoucí <b>hydrofilní</b> (berou vlhčicí roztok). Je to <b>ofset</b> na knihy, časopisy a letáky. Je <b>nepřímý</b>, barva jde z desky na gumový válec a teprve pak na papír. <b>Tisk z hloubky</b>: barva je v zahloubených jamkách a <b>rakle</b> ji setře z povrchu. To je <b>hlubotisk</b> na velkonákladové časopisy a tapety a <b>tampónový tisk</b> na propisky a hrnky. <b>Průtisk</b>: barva prochází otvory v šabloně na sítu, to je <b>sítotisk</b> na trička a sklo. Zvlášť stojí <b>digitální tisk</b> bez hmotné formy (toner nebo inkjet), vhodný pro malé náklady a personalizaci. Stroje dělíme ještě na <b>archové</b> a <b>kotoučové</b>.'}
+];
+(function(){
+  const root=document.getElementById('writeTest');
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ');
+  const test=(t,alts)=>alts.some(a=>a.split('&&').every(part=>{try{return new RegExp(part).test(t)}catch(e){return false}}));
+  WT.forEach((w,i)=>{
+    const d=document.createElement('div');d.className='wt';
+    d.innerHTML='<div class="qt">'+(i+1)+'. '+w.q+'</div><div class="qh">'+w.h+'</div>'+
+      '<textarea placeholder="Napiš odpověď vlastními slovy, jako bys mluvil/a u zkoušky…" aria-label="Odpověď na otázku '+(i+1)+'"></textarea>'+
+      '<div class="acts"><button class="btn pri" data-a="eval">Vyhodnotit</button><button class="btn" data-a="model">Ukázat vzorovou odpověď</button><button class="btn" data-a="clear">Smazat</button><span class="wc">0 slov</span></div>'+
+      '<div class="out"></div><div class="model"><b class="t">Vzorová odpověď</b>'+w.m+'</div>';
+    const ta=d.querySelector('textarea'),out=d.querySelector('.out'),model=d.querySelector('.model'),wc=d.querySelector('.wc');
+    const key='t5-wt-'+i;
+    ta.value=store.get(key,'');
+    const count=()=>{const n=(ta.value.trim().match(/\S+/g)||[]).length;wc.textContent=n+(n===1?' slovo':n>=2&&n<=4?' slova':' slov');return n;};
+    count();
+    ta.addEventListener('input',()=>{store.set(key,ta.value);count();});
+    d.querySelector('[data-a=eval]').onclick=()=>{
+      const n=count();
+      if(n<12){out.innerHTML='<div class="fbbox fb-miss"><h4>Napiš víc</h4>Na vyhodnocení je to zatím málo ('+n+' slov). U zkoušky mluvíš několik minut. Zkus aspoň 3–4 věty.</div>';out.classList.add('show');return;}
+      const t=norm(ta.value);
+      const hit=[],miss=[];
+      w.p.forEach(p=>{(test(t,p[1])?hit:miss).push(p);});
+      const errs=w.e.filter(e=>{try{return new RegExp(e[0]).test(t)}catch(x){return false}});
+      const core=w.p.filter(p=>p[2]),coreHit=hit.filter(p=>p[2]).length;
+      const pct=Math.round(hit.length/w.p.length*100);
+      let v;
+      if(coreHit===core.length&&!errs.length) v='🎉 Výborně! Máš všechny hlavní body'+(miss.length?', přidej ještě bonusy níže.':' i všechny bonusy.');
+      else if(coreHit>=Math.ceil(core.length*0.6)) v='👍 Dobrý základ. Doplň chybějící body a odpověď bude na jedničku.';
+      else v='💪 Zatím chybí dost důležitých věcí. Projdi si souhrn a zkus to znovu.';
+      let h='<div class="verdict">'+v+'</div><div class="meter"><i style="width:'+pct+'%"></i></div><div class="small muted">Zmínil/a jsi '+hit.length+' z '+w.p.length+' bodů · hlavních '+coreHit+' z '+core.length+'</div>';
+      if(hit.length)h+='<div class="fbbox fb-ok"><h4>✔ Zmínil/a jsi</h4><ul>'+hit.map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+p[0]+'</li>').join('')+'</ul></div>';
+      if(miss.length)h+='<div class="fbbox fb-miss"><h4>✚ Chybí ti</h4><ul>'+miss.sort((a,b)=>b[2]-a[2]).map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+'<b>'+p[0]+'</b>: '+p[3]+'</li>').join('')+'</ul></div>';
+      if(errs.length)h+='<div class="fbbox fb-err"><h4>⚠ Zkontroluj, jestli tu nemáš chybu</h4><ul>'+errs.map(e=>'<li>'+e[1]+'</li>').join('')+'</ul></div>';
+      h+='<p class="small muted">Vyhodnocení hledá klíčová slova, takže není dokonalé. Porovnej si svou odpověď se vzorovou.</p>';
+      out.innerHTML=h;out.classList.add('show');model.classList.add('show');
+    };
+    d.querySelector('[data-a=model]').onclick=()=>model.classList.toggle('show');
+    d.querySelector('[data-a=clear]').onclick=()=>{ta.value='';store.set(key,'');count();out.classList.remove('show');model.classList.remove('show');};
+    root.appendChild(d);
+  });
+})();
+
 /* ---------- navigace: aktivní sekce ---------- */
 (function(){
   const links=[...document.querySelectorAll('nav.toc a')];
   const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',inline:'center'});}}});},{rootMargin:'-45% 0px -50% 0px'});
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a){a.classList.add('active');const w=a.parentElement;w.scrollTo({left:a.offsetLeft-w.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});}}});},{rootMargin:'-45% 0px -50% 0px'});
   document.querySelectorAll('main section').forEach(s=>obs.observe(s));
 })();
 
