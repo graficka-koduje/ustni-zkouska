@@ -1445,5 +1445,76 @@ const WT=[
   }
 })();
 </script>
+<script id="mm-jump">
+/* ---------- skok z pojmu v myšlenkové mapě přímo na jeho podnadpis v souhrnu ----------
+   MM_T: pro každou větev (c, m, y, k) seznam cílů ve stejném pořadí jako pojmy v mapě.
+   Cíl = začátek textu podnadpisu (nebo zvýrazněné položky); "@selektor" = prvek podle CSS. */
+(function(){
+  const MM_T={"c": ["Pérová předloha", "Pérová × tónová předloha", "Náležitosti předlohy: co musí grafik vědět", "Jak se obraz zapisuje do bitů – krok za krokem", "Barvová hloubka pro jednotlivé předlohy", "Bitová × barvová hloubka", "Barvový prostor", "Rozlišení: dpi, ppi, lpi"], "y": ["Barevný výtažek", "Jak vznikají barevné výtažky (separace)", "Proč je v CMYK černá (K)", "přímé barvy", "Natočení rastru", "Rozeta", "Rozeta × moaré"], "m": ["Proč se vůbec rastruje", "Elektronický bod a rozlišení osvitu", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "AM", "AM, FM a hybridní rastr", "Hybrid (XM)"], "k": ["Ofset archový", "Ofset kotoučový novinový", "Flexotisk", "Může padnout: Proč má hlubotisk rastrovaný i text?", "Sítotisk", "digitální tisk", "Pravidlo pro volbu rastru"]};
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
+  const HEAD='h2,h3,h4,h5,summary';
+  const ANY=HEAD+',.nm,.t,.lbl,dt,th,figcaption,b,strong,li,p,dd,td';
+  const LINKS=new Set([...document.querySelectorAll('.mm-branch .goto')].map(a=>a.getAttribute('href').slice(1)));
+  const END=new Set(['svp','test','kviz','potitko','mapa','cesta']);
+  function scopeOf(sec){
+    const all=[...document.querySelectorAll('section[id]')];let i=all.indexOf(sec);
+    if(i<0)return [sec];const out=[sec];
+    for(i++;i<all.length;i++){const id=all[i].id;if(LINKS.has(id)||END.has(id))break;out.push(all[i]);}
+    return out;
+  }
+  const bad=el=>el.closest('.mm-branch,#mapa,#svp,#test,#kviz');
+  function locate(roots,target){
+    if(target.charAt(0)==='@'){for(const r of roots){const e=r.querySelector(target.slice(1));if(e&&!bad(e))return e;}return null;}
+    const n=norm(target);
+    for(const sel of [HEAD,ANY]){
+      for(const r of roots){
+        const els=[...r.querySelectorAll(sel)].filter(e=>!bad(e));
+        const ex=els.find(e=>norm(e.textContent)===n);if(ex)return ex;
+        const st=els.find(e=>norm(e.textContent).startsWith(n));if(st)return st;
+      }
+    }
+    return null;
+  }
+  function findTarget(br,i){
+    const list=MM_T[br.dataset.k];if(!list||!list[i])return null;
+    const sec=document.querySelector(br.querySelector('.goto').getAttribute('href'));if(!sec)return null;
+    return locate(scopeOf(sec),list[i])||locate([document.body],list[i]);
+  }
+  function reveal(el){
+    if(el.tagName==='SUMMARY'&&el.parentElement.tagName==='DETAILS')el.parentElement.open=true;
+    let d=el.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+  }
+  function blockOf(el){
+    if(/^(H2|H3|H4|H5|SUMMARY)$/.test(el.tagName))return el;
+    return el.closest('li,dt,tr,p,figure,.card,.warn,.mnemo,.oneliner,.step,details')||el;
+  }
+  const css=document.createElement('style');
+  css.textContent='.hint b:not(:first-child){display:inline;margin:0}.mm-branch .hint b{display:block;margin-bottom:2px}.mm-flash{animation:mmflash 2.4s ease-out;border-radius:8px}@keyframes mmflash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0);background:transparent}}';
+  document.head.appendChild(css);
+  document.querySelectorAll('.mm-branch').forEach(br=>{
+    const go=br.querySelector('.goto');if(!go)return;
+    const base=go.textContent;
+    const sel=()=>[...br.querySelectorAll('.chip[aria-expanded="true"]')];
+    const upd=()=>{const ch=sel();go.textContent=ch.length===1?'→ „'+ch[0].textContent+'“ podrobně v souhrnu':base;};
+    br.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>setTimeout(upd,0)));
+    ['mmOpen','mmClose'].forEach(id=>{const b=document.getElementById(id);if(b)b.addEventListener('click',()=>setTimeout(upd,0));});
+    go.addEventListener('click',e=>{
+      const ch=sel();if(ch.length!==1)return; /* žádný nebo všechny pojmy → začátek tématu jako dřív */
+      const hit=findTarget(br,+ch[0].dataset.i);if(!hit)return;
+      e.preventDefault();
+      reveal(hit);
+      const blk=blockOf(hit);
+      const top=blk.getBoundingClientRect().top+window.scrollY-80;
+      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      blk.classList.remove('mm-flash');void blk.offsetWidth;blk.classList.add('mm-flash');
+      setTimeout(()=>blk.classList.remove('mm-flash'),2600);
+    });
+  });
+  window.__mmTarget=findTarget;
+})();
+</script>
+
+
+
 </body>
 </html>
