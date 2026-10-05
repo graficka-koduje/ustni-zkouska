@@ -1181,5 +1181,59 @@ const WT=[
   };
 })();
 </script>
+<!-- ===== návrat mezi tématy (tlačítko „Zpět na téma“) ===== -->
+<style>
+.nav-back{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.92rem;border:0;border-radius:99px;padding:11px 18px 11px 14px;background:#00a3e0;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28);max-width:calc(100% - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-back .ar{font-size:1.15rem;line-height:1}
+.nav-back .x{margin-left:6px;opacity:.75;font-weight:800;padding:0 2px}
+@media (max-width:520px){.nav-back{bottom:68px;left:14px;transform:none;max-width:calc(100% - 28px)}}
+@media print{.nav-back{display:none!important}}
+</style>
+<script>
+(function(){
+  const ss={get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}};
+  const norm=p=>p.replace(/index\.html$/,'').replace(/\/?$/,'/');
+  const here=norm(location.pathname);
+  const badge=document.querySelector('.badge');
+  const m=((badge&&badge.textContent)||document.title).match(/Téma č\. ?(\d+)/);
+  const name=m?'téma č. '+m[1]:'předchozí téma';
+  let st=[];try{st=JSON.parse(ss.get('navBackStack')||'[]')}catch(e){}
+  const save=()=>ss.set('navBackStack',JSON.stringify(st.slice(-10)));
+  /* vrátil/a jsem se sem: obnov místo čtení */
+  let r=null;try{r=JSON.parse(ss.get('navRestore')||'null')}catch(e){}
+  if(r&&r.path===here){
+    ss.set('navRestore','null');
+    const go=()=>window.scrollTo({top:r.y,left:0,behavior:'instant'});
+    go();window.addEventListener('load',()=>{go();setTimeout(go,250);});
+  }
+  /* záznamy, které začínají na této stránce, jsou už vyřízené */
+  while(st.length&&st[st.length-1].path===here)st.pop();
+  save();
+  /* proklik na jiné téma: zapamatuj si, odkud jdu */
+  document.addEventListener('click',e=>{
+    const a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
+    let u;try{u=new URL(a.href,location.href)}catch(x){return}
+    if(u.origin!==location.origin)return;
+    const to=norm(u.pathname);
+    if(to===here||!/\/tema-\d+[^/]*\/$/.test(to))return;
+    st.push({path:here,href:location.href.split('#')[0],y:Math.round(window.scrollY),name:name,to:to});save();
+  },true);
+  /* přišel/přišla jsem odjinud: ukaž tlačítko zpět */
+  const top=st[st.length-1];
+  if(top&&top.to===here){
+    const b=document.createElement('button');
+    b.className='nav-back';b.type='button';
+    b.setAttribute('aria-label','Zpět na '+top.name+' tam, kde jsi četl/a');
+    b.innerHTML='<span class="ar">←</span> Zpět na '+top.name+'<span class="x" title="Skrýt" aria-label="Skrýt">×</span>';
+    b.addEventListener('click',e=>{
+      if(e.target.classList.contains('x')){st.pop();save();b.remove();return;}
+      st.pop();save();
+      ss.set('navRestore',JSON.stringify({path:top.path,y:top.y}));
+      location.href=top.href;
+    });
+    document.body.appendChild(b);
+  }
+})();
+</script>
 </body>
 </html>
