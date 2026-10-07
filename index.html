@@ -98,6 +98,14 @@
     font-family:'IBM Plex Mono',monospace;
     border-top:1px solid var(--line);
   }
+
+  .easy{margin:30px 0 0;background:#fde6f2;border:1px solid #f6b8d8;border-radius:14px;padding:16px}
+  .easy h2{font-family:'Fraunces',serif;font-size:21px;margin:0 0 4px}
+  .easy p{margin:0 0 12px;color:var(--text-dim);font-size:14.5px}
+  .easy-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  @media(min-width:560px){.easy-grid{grid-template-columns:repeat(4,1fr)}}
+  .easy-grid a{display:block;background:#fff;border:1px solid #f6b8d8;border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--text);font-weight:600;font-size:14px;line-height:1.3}
+  .easy-grid a b{display:block;color:#a8005c;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600}
 </style>
 </head>
 <body>
@@ -109,6 +117,21 @@
 </header>
 
 <div class="wrap">
+  <section class="easy" aria-labelledby="easyh">
+    <h2 id="easyh">⚡ Jednoduše: jen to hlavní</h2>
+    <p>Zkrácené verze otázek: obrázky, hesla a samozkoušení. Pro rychlé opakování. <a href="jednoduse/" style="color:#a8005c;font-weight:600">Samostatný rozcestník jednoduše ›</a></p>
+    <div class="easy-grid">
+      <a href="tema-01-pismo-a-papir/jednoduse.html"><b>Téma č. 1</b>Písmo a papír</a>
+      <a href="tema-02-polygraficka-montaz-a-knihy/jednoduse.html"><b>Téma č. 2</b>Montáž a knihy</a>
+      <a href="tema-03-dtp-studio-a-knizni-vazba/jednoduse.html"><b>Téma č. 3</b>DTP a vazby</a>
+      <a href="tema-04-software-a-cena-tisku/jednoduse.html"><b>Téma č. 4</b>Software a cena</a>
+      <a href="tema-05-archova-montaz/jednoduse.html"><b>Téma č. 5</b>Archová montáž</a>
+      <a href="tema-06-predlohy-a-rastr/jednoduse.html"><b>Téma č. 6</b>Předlohy a rastr</a>
+      <a href="tema-07-polygrafie-a-dokoncovani/jednoduse.html"><b>Téma č. 7</b>Polygrafie</a>
+      <a href="tema-08-barevna-reprodukce/jednoduse.html"><b>Téma č. 8</b>Barvy a tisk z výšky</a>
+    </div>
+  </section>
+
   <div class="grid">
 
     <a class="card" href="tema-01-pismo-a-papir/">

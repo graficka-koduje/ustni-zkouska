@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ústní zkouška jednoduše</title>
+<meta name="theme-color" content="#e6007e">
+<style>
+:root{--bg:#f7f7f4;--surface:#fff;--ink:#1b1c1f;--muted:#5d6068;--line:#dcdcd6;--m:#e6007e;--m-soft:#fde6f2;--m-ink:#a8005c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#131417;--surface:#1c1d21;--ink:#ececec;--muted:#a3a6ad;--line:#34363c;--m-soft:#3a0f25;--m-ink:#ff6fb9}}
+:root[data-theme="dark"]{--bg:#131417;--surface:#1c1d21;--ink:#ececec;--muted:#a3a6ad;--line:#34363c;--m-soft:#3a0f25;--m-ink:#ff6fb9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.bar{height:6px;background:linear-gradient(90deg,#00a3e0 0 25%,#e6007e 25% 50%,#f2c500 50% 75%,#1b1c1f 75%)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header{background:var(--surface);border-bottom:1px solid var(--line);padding:28px 0 22px}
+.badge{display:inline-block;background:var(--m);color:#fff;font-weight:800;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:99px}
+h1{font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.1;margin:.4em 0 .3em;font-weight:900}
+header p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr;gap:12px;padding:24px 0}
+@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
+.card{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:2px solid var(--line);border-left:8px solid var(--m);border-radius:14px;padding:14px 16px;text-decoration:none;color:inherit}
+a.card:hover{border-color:var(--m)}
+.tag{font-weight:800;font-size:.85rem;color:var(--m-ink)}
+.title{font-weight:700;line-height:1.35}
+.go{font-weight:800;color:var(--m-ink);font-size:.95rem}
+.soon{opacity:.5;border-left-color:var(--line)}.soon .go{color:var(--muted);font-weight:600}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:10px 0 40px}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<div class="bar"></div>
+<header><div class="wrap">
+  <span class="badge">Ústní zkouška · jednoduše</span>
+  <h1>Okruhy jednoduše</h1>
+  <p>Jen to hlavní: obrázky, hesla a samozkoušení. Klepni na okruh, který se chceš naučit.</p>
+</div></header>
+<main class="wrap"><div class="grid">
+    <a class="card" href="../tema-01-pismo-a-papir/jednoduse.html"><span class="tag">Téma č. 1</span><div class="title">Písmo a jeho význam, typografická měrná soustava; Historie výroby papíru, papyrus, pergamen</div><span class="go">Otevřít ›</span></a>
+    <a class="card" href="../tema-02-polygraficka-montaz-a-knihy/jednoduse.html"><span class="tag">Téma č. 2</span><div class="title">Polygrafická montáž, vyřazování stran, maketa; Knihařská výroba, knižní vazba, zušlechťování desek</div><span class="go">Otevřít ›</span></a>
+    <a class="card" href="../tema-03-dtp-studio-a-knizni-vazba/jednoduse.html"><span class="tag">Téma č. 3</span><div class="title">DTP studio a jeho vybavení, ergonomie; Knižní vazba a její dělení</div><span class="go">Otevřít ›</span></a>
+    <a class="card" href="../tema-04-software-a-cena-tisku/jednoduse.html"><span class="tag">Téma č. 4</span><div class="title">Grafický software pro sazbu a archovou montáž; Tvorba ceny polygrafických výrobků, kalkulace</div><span class="go">Otevřít ›</span></a>
+    <a class="card" href="../tema-05-archova-montaz/jednoduse.html"><span class="tag">Téma č. 5</span><div class="title">Archová montáž, kontrola tiskových dat, RIP; Dělení tiskových technik</div><span class="go">Otevřít ›</span></a>
+    <a class="card" href="../tema-06-predlohy-a-rastr/jednoduse.html"><span class="tag">Téma č. 6</span><div class="title">Obrazové předlohy, rastr, natočení rastru, barevné výtažky; Tiskové techniky</div><span class="go">Otevřít ›</span></a>
+    <a class="card" href="../tema-07-polygrafie-a-dokoncovani/jednoduse.html"><span class="tag">Téma č. 7</span><div class="title">Polygrafie a její části (prepress, press, postpress); Dokončující zpracování tiskovin</div><span class="go">Otevřít ›</span></a>
+    <a class="card" href="../tema-08-barevna-reprodukce/jednoduse.html"><span class="tag">Téma č. 8</span><div class="title">Barevná reprodukce, RGB, CMYK, přímé barvy, separace, soutisk; Tisk z výšky</div><span class="go">Otevřít ›</span></a>
+    <div class="card soon"><span class="tag">Téma č. 9</span><div class="title">Teorie barevnosti, vnímání barev, aditivní a subtraktivní míchání; Tisk z plochy</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 10</span><div class="title">Správa a nastavení barev, barvové prostory, ICC profily; Litografie a ofsetový tisk</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 11</span><div class="title">Computer to Film, Plate, Print, Screen; Tisk z hloubky</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 12</span><div class="title">Kniha — popis částí a knižní dvoustrany; Průtisk</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 13</span><div class="title">Bitmapová a vektorová grafika, formáty souborů; Sítotisk</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 14</span><div class="title">PDF pro tisk, druhy PDF, kontrola tiskového PDF; Výroba vláknin</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 15</span><div class="title">Předlohy pro reprodukci; Papírovina — výroba, plnidla, klížidla, barviva</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 16</span><div class="title">Barvové prostory, RGB/CMYK, výtažkování; Tuhé knižní vazby</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 17</span><div class="title">Počítačová typografie, druhy písma, font; Digitální tisk vs. konvenční techniky</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 18</span><div class="title">Akcidenční tiskovina — postup výroby vizitky; Hlubotisk</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 19</span><div class="title">Časopis — grafická úprava, předtisková příprava, výroba; Tamponový tisk</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 20</span><div class="title">Firemní tiskoviny, logo a jednotný vizuální styl; Flexotisk</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 21</span><div class="title">Propagační tiskoviny — leták, plakát, velkoformát; Tiskové formy</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 22</span><div class="title">Náhled, nátisk, certifikovaný digitální nátisk; Měkké knižní vazby (V1, V2)</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 23</span><div class="title">Přebal knihy a jeho zušlechťování; Ofsetový tisk</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 24</span><div class="title">Historický vývoj zhotovení textu a obrazu; Polotuhé knižní vazby, leporelo</div><span class="go">připravujeme</span></div>
+    <div class="card soon"><span class="tag">Téma č. 25</span><div class="title">Osobní tiskoviny — příklady a postup výroby; Vlastnosti papírových materiálů</div><span class="go">připravujeme</span></div>
+</div></main>
+<footer class="wrap">Chceš víc? <a href="../">Podrobné lekce ke všem okruhům</a></footer>
+</body>
+</html>
