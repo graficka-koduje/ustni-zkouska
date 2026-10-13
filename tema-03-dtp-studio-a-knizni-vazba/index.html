@@ -396,6 +396,68 @@ figure.web.noimg .fallback{display:flex}
 .lep td:first-child{min-width:118px}
 .sp-g:empty{display:none}
 @media (max-width:560px){.sp-dots{order:-1;flex-basis:100%;margin-bottom:6px}}
+
+/* ===== archová montáž v obrázcích (am-) ===== */
+.am-fig{background:#fff;color:#1b1c1f;border:1px solid var(--line);border-radius:12px;padding:8px}
+.am-fig>svg,.am-fig>span>svg{display:block;width:100%;height:auto}
+.am-nr{display:none}.am-w,.am-nr{width:100%}
+@media(max-width:600px){.am-w{display:none}.am-nr{display:block}.am-fig.am-wide .am-nr svg{max-width:400px;margin:0 auto}}
+.am-fig.am-wide{max-width:760px;margin:12px auto}
+.am-fig.am-narrow{max-width:360px;margin:0 auto}
+.am-row{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;align-items:start;margin:12px 0}
+.am-tiles3{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.am-row .am-tiles3{grid-template-columns:1fr 1fr}
+.am-tiles3:not(.am-row .am-tiles3){grid-template-columns:repeat(3,1fr);margin:10px 0}
+.am-t{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:.93rem}
+.am-t .am-ic{font-size:1.4rem;line-height:1}
+.am-t b{font-size:1rem}
+.am-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.am-tile{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;font-size:.92rem}
+.am-tile:nth-child(2){border-top-color:var(--m)}.am-tile:nth-child(3){border-top-color:var(--y)}.am-tile:nth-child(4){border-top-color:var(--k)}.am-tile:nth-child(5){border-top-color:var(--m)}.am-tile:nth-child(6){border-top-color:var(--c)}
+.am-tile .am-pic{background:#fff;padding:6px 10px}
+.am-tile .am-pic svg{display:block;width:100%;max-height:120px}
+.am-tile b{padding:8px 12px 0;font-size:1.02rem}
+.am-tile span{padding:2px 12px 10px;color:var(--muted)}
+.am-steps{list-style:none;padding:0;margin:12px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;counter-reset:none}
+.am-step{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;border-top:5px solid var(--m)}
+.am-steps.c .am-step{border-top-color:var(--c)}
+.am-step .am-pic{background:#fff;padding:6px 8px;height:150px;display:flex;align-items:center;justify-content:center}
+.am-step .am-pic svg{width:100%;height:100%}
+.am-sb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;font-size:.93rem}
+.am-sb b{font-size:1.04rem}
+.am-n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--m);color:#fff;font-weight:800;font-size:.85rem;flex:0 0 auto}
+.am-steps.c .am-n{background:var(--c)}
+.am-note{font-size:.95rem;color:var(--muted)}
+.am-ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.am-calc{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:12px;padding:14px 16px;margin:14px 0}
+.am-calc>b{display:block;margin-bottom:8px}
+.am-st{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+.am-st .am-n{background:var(--c)}
+.am-eq{background:var(--surface2);border-radius:6px;padding:1px 6px;font-weight:700;white-space:nowrap}
+.am-res{background:#1f8a4c;color:#fff;border-radius:6px;padding:1px 8px;font-weight:800}
+.am-in{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.am-in label{display:flex;flex-direction:column;font-size:.85rem;font-weight:700;color:var(--muted)}
+.am-in input{font:inherit;font-size:1.05rem;padding:8px 10px;border-radius:8px;border:2px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.am-presets{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.am-btn{font:inherit;font-size:.85rem;font-weight:700;border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:var(--surface2);color:var(--ink);cursor:pointer}
+.am-calcgrid{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;align-items:start}
+.am-fig.am-mini{max-width:260px;justify-self:center;width:100%}
+.am-warn{background:var(--m-soft);border-radius:12px;padding:12px 16px;margin:14px 0}
+.am-warn b{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--m-ink)}
+.am-say{background:var(--y-soft);border-radius:12px;padding:12px 16px;margin:14px 0}
+.am-say b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--y-ink)}
+.am-h{font-size:1.15rem;margin:24px 0 6px;display:flex;align-items:center;gap:8px;border-left:5px solid var(--m);padding-left:10px}
+.am-h .am-n{background:var(--k);color:var(--bg)}
+.am-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px auto;max-width:560px}
+@media(max-width:760px){
+  .am-row,.am-two,.am-calcgrid{grid-template-columns:1fr}
+  .am-tiles,.am-steps,.am-tiles3:not(.am-row .am-tiles3){grid-template-columns:1fr 1fr}
+  .am-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:430px){
+  .am-steps,.am-tiles3:not(.am-row .am-tiles3){grid-template-columns:1fr}
+}
+@media print{.am-try{display:none}.am-step,.am-tile{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -704,27 +766,7 @@ figure.web.noimg .fallback{display:flex}
 
   <h3 id="snaseni">Snášení složek: do sebe × na sebe</h3>
   <div class="grid2">
-    <figure class="svgfig stage-w" style="margin:0" aria-label="Snášení do sebe a na sebe v řezu">
-      <svg viewBox="0 0 420 200" role="img">
-        <rect width="420" height="200" rx="8" fill="#fff"/>
-        <text x="105" y="22" font-size="13" font-weight="800" text-anchor="middle" fill="#1b1c1f">do sebe (V1)</text>
-        <g fill="none" stroke="#1b1c1f" stroke-width="1.6">
-          <path d="M60 40 L105 150 L150 40"/><path d="M68 40 L105 140 L142 40"/><path d="M76 40 L105 130 L134 40"/><path d="M84 40 L105 120 L126 40"/>
-        </g>
-        <path d="M105 106 V160" stroke="#e6007e" stroke-width="4"/>
-        <text x="105" y="182" font-size="11" text-anchor="middle" fill="#a8005c">skobka prochází všemi dvoulisty</text>
-        <text x="310" y="22" font-size="13" font-weight="800" text-anchor="middle" fill="#1b1c1f">na sebe (V2, V4, V8)</text>
-        <g fill="none" stroke="#1b1c1f" stroke-width="1.6">
-          <path d="M240 40 V150 H262 V40 M245 40 V145 H257 V40"/>
-          <path d="M270 40 V150 H292 V40 M275 40 V145 H287 V40"/>
-          <path d="M300 40 V150 H322 V40 M305 40 V145 H317 V40"/>
-          <path d="M330 40 V150 H352 V40 M335 40 V145 H347 V40"/>
-          <path d="M360 40 V150 H382 V40 M365 40 V145 H377 V40"/>
-        </g>
-        <text x="310" y="172" font-size="11" text-anchor="middle" fill="#1b1c1f">složky leží vedle sebe (na sebe),</text>
-        <text x="310" y="186" font-size="11" text-anchor="middle" fill="#1b1c1f">hřbet je dole, blok má rovný hřbet</text>
-      </svg>
-    </figure>
+    <div><div class="am-fig"><svg viewBox="0 0 260 240" role="img" aria-label="Snášení do sebe u vazby V1: dvoulisty jsou vložené jeden do druhého, uzavřené, sešité skobkami ve hřbetu, vpravo se ořízne přední strana" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif"><text x="130" y="22" font-size="15" font-weight="800" text-anchor="middle" fill="#a8005c">DO SEBE (V1)</text><path d="M200 50 H70 Q40.0 110.0 70 170 H200" fill="none" stroke="#e6007e" stroke-width="3.2" stroke-linecap="round" transform="translate(0.0 0)"/><path d="M204 59 H70 Q41.8 110.0 70 161 H204" fill="none" stroke="#00a3e0" stroke-width="3.2" stroke-linecap="round" transform="translate(8.1 0)"/><path d="M208 68 H70 Q43.6 110.0 70 152 H208" fill="none" stroke="#f2c500" stroke-width="3.2" stroke-linecap="round" transform="translate(16.2 0)"/><path d="M212 77 H70 Q45.4 110.0 70 143 H212" fill="none" stroke="#1b1c1f" stroke-width="3.2" stroke-linecap="round" transform="translate(24.3 0)"/><path d="M58 92 h-14 v36 h14" fill="none" stroke="#5d6068" stroke-width="4" stroke-linejoin="round"/><text x="8" y="40" font-size="11" font-weight="700" text-anchor="start" fill="#5d6068">skobka</text><path d="M30 44 L46 90" stroke="#5d6068" stroke-width="1.2"/><line x1="214" y1="40" x2="214" y2="180" stroke="#1b1c1f" stroke-width="1.5" stroke-dasharray="5 4"/><text x="214" y="194" font-size="11" font-weight="700" text-anchor="middle" fill="#1b1c1f">ořez</text><text x="130" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="#1b1c1f">dvoulisty vložené jeden do druhého</text><text x="130" y="230" font-size="12" font-weight="600" text-anchor="middle" fill="#5d6068">hřbet vlevo, sešito skobkami</text></svg></div><div class="am-fig" style="margin-top:10px"><svg viewBox="0 0 300 240" role="img" aria-label="Snášení na sebe u vazeb V2, V4 a V8: uzavřené složky leží jedna za druhou a tvoří knižní blok, hřbetní signatury tvoří schody" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif"><text x="150" y="22" font-size="15" font-weight="800" text-anchor="middle" fill="#006e98">NA SEBE (V2, V4, V8)</text><polygon points="71.6,165.8 71.6,61.8 121.6,39.8 121.6,143.8" fill="#fff" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><polygon points="68.4,167.2 68.4,63.2 118.4,41.2 118.4,145.2" fill="#fff" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><polygon points="65.2,168.6 65.2,64.6 115.2,42.599999999999994 115.2,146.6" fill="#fff" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><polygon points="62.0,170.0 62.0,66.0 112.0,44.0 112.0,148.0" fill="#e3f5fc" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><path d="M62 66 q-3 52.0 0 104" fill="none" stroke="#00a3e0" stroke-width="3"/><path d="M62 66 L71.6 61.8" stroke="#00a3e0" stroke-width="3"/><path d="M62 170 L71.6 165.8" stroke="#00a3e0" stroke-width="3"/><rect x="59" y="74" width="5" height="12" fill="#1b1c1f"/><polygon points="103.6,165.8 103.6,61.8 153.6,39.8 153.6,143.8" fill="#fff" stroke="#e6007e" stroke-width="1.6" stroke-linejoin="round"/><polygon points="100.4,167.2 100.4,63.2 150.4,41.2 150.4,145.2" fill="#fff" stroke="#e6007e" stroke-width="1.6" stroke-linejoin="round"/><polygon points="97.2,168.6 97.2,64.6 147.2,42.599999999999994 147.2,146.6" fill="#fff" stroke="#e6007e" stroke-width="1.6" stroke-linejoin="round"/><polygon points="94.0,170.0 94.0,66.0 144.0,44.0 144.0,148.0" fill="#fde6f2" stroke="#e6007e" stroke-width="1.6" stroke-linejoin="round"/><path d="M94 66 q-3 52.0 0 104" fill="none" stroke="#e6007e" stroke-width="3"/><path d="M94 66 L103.6 61.8" stroke="#e6007e" stroke-width="3"/><path d="M94 170 L103.6 165.8" stroke="#e6007e" stroke-width="3"/><rect x="91" y="94" width="5" height="12" fill="#1b1c1f"/><polygon points="135.6,165.8 135.6,61.8 185.6,39.8 185.6,143.8" fill="#fff" stroke="#f2c500" stroke-width="1.6" stroke-linejoin="round"/><polygon points="132.4,167.2 132.4,63.2 182.4,41.2 182.4,145.2" fill="#fff" stroke="#f2c500" stroke-width="1.6" stroke-linejoin="round"/><polygon points="129.2,168.6 129.2,64.6 179.2,42.599999999999994 179.2,146.6" fill="#fff" stroke="#f2c500" stroke-width="1.6" stroke-linejoin="round"/><polygon points="126.0,170.0 126.0,66.0 176.0,44.0 176.0,148.0" fill="#fff8d6" stroke="#f2c500" stroke-width="1.6" stroke-linejoin="round"/><path d="M126 66 q-3 52.0 0 104" fill="none" stroke="#f2c500" stroke-width="3"/><path d="M126 66 L135.6 61.8" stroke="#f2c500" stroke-width="3"/><path d="M126 170 L135.6 165.8" stroke="#f2c500" stroke-width="3"/><rect x="123" y="114" width="5" height="12" fill="#1b1c1f"/><polygon points="167.6,165.8 167.6,61.8 217.6,39.8 217.6,143.8" fill="#fff" stroke="#5d6068" stroke-width="1.6" stroke-linejoin="round"/><polygon points="164.4,167.2 164.4,63.2 214.4,41.2 214.4,145.2" fill="#fff" stroke="#5d6068" stroke-width="1.6" stroke-linejoin="round"/><polygon points="161.2,168.6 161.2,64.6 211.2,42.599999999999994 211.2,146.6" fill="#fff" stroke="#5d6068" stroke-width="1.6" stroke-linejoin="round"/><polygon points="158.0,170.0 158.0,66.0 208.0,44.0 208.0,148.0" fill="#ececea" stroke="#5d6068" stroke-width="1.6" stroke-linejoin="round"/><path d="M158 66 q-3 52.0 0 104" fill="none" stroke="#5d6068" stroke-width="3"/><path d="M158 66 L167.6 61.8" stroke="#5d6068" stroke-width="3"/><path d="M158 170 L167.6 165.8" stroke="#5d6068" stroke-width="3"/><rect x="155" y="134" width="5" height="12" fill="#1b1c1f"/><polygon points="199.6,165.8 199.6,61.8 249.6,39.8 249.6,143.8" fill="#fff" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><polygon points="196.4,167.2 196.4,63.2 246.4,41.2 246.4,145.2" fill="#fff" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><polygon points="193.2,168.6 193.2,64.6 243.2,42.599999999999994 243.2,146.6" fill="#fff" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><polygon points="190.0,170.0 190.0,66.0 240.0,44.0 240.0,148.0" fill="#e3f5fc" stroke="#00a3e0" stroke-width="1.6" stroke-linejoin="round"/><path d="M190 66 q-3 52.0 0 104" fill="none" stroke="#00a3e0" stroke-width="3"/><path d="M190 66 L199.6 61.8" stroke="#00a3e0" stroke-width="3"/><path d="M190 170 L199.6 165.8" stroke="#00a3e0" stroke-width="3"/><rect x="187" y="154" width="5" height="12" fill="#1b1c1f"/><path d="M30 196 H272" stroke="#1b1c1f" stroke-width="2"/><text x="150" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="#1b1c1f">uzavřené složky leží jedna za druhou</text><text x="150" y="230" font-size="12" font-weight="600" text-anchor="middle" fill="#5d6068">černé značky na hřbetu tvoří schody</text></svg></div><p class="small muted" style="margin:6px 2px 0">Do sebe: dvoulisty vložené jeden do druhého. Na sebe: uzavřené složky leží jedna za druhou a tvoří knižní blok.</p></div>
     <div class="card" style="margin:0">
       <b>Lepidla pro knižní vazbu</b>
       <div class="tablewrap lep" style="margin-top:8px"><table style="min-width:0">
