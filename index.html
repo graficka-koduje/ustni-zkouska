@@ -3,1068 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Téma 9 – Teorie barevnosti a tisk z plochy</title>
+<title>Ústní zkouška — 25 okruhů | Reprodukční grafik</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f6f5f2; --card:#fff; --ink:#1d1d24; --muted:#5d5d6b; --line:#dedbd3;
-  --c:#00a0e3; --m:#e5007e; --y:#ffd500; --k:#1d1d24;
-  --r:#e53935; --g:#2e9e48; --b:#1e5bd8;
-  --accent:#6a3fd0; --ok:#1f8a4c; --bad:#c62828; --warn:#b26a00;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:17px}
-.wrap{max-width:920px;margin:0 auto;padding:0 14px 90px}
-header.top{background:linear-gradient(120deg,var(--c),var(--m) 55%,var(--y));color:#fff;padding:26px 14px 20px}
-header.top .wrap{padding-bottom:0}
-header.top small{opacity:.9;font-weight:600;letter-spacing:.04em}
-header.top h1{margin:.2em 0 .1em;font-size:1.65em;line-height:1.2;text-shadow:0 1px 3px rgba(0,0,0,.25)}
-header.top p{margin:0;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,.25)}
-nav.menu{position:sticky;top:0;z-index:20;background:rgba(246,245,242,.96);backdrop-filter:blur(4px);border-bottom:1px solid var(--line)}
-nav.menu .wrap{display:flex;gap:6px;overflow-x:auto;padding:8px 14px}
-nav.menu a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.88em;font-weight:600}
-nav.menu a.hl{background:var(--ink);color:#fff;border-color:var(--ink)}
-h2{font-size:1.4em;margin:1.6em 0 .5em;padding-top:8px}
-h2 .num{display:inline-block;background:var(--ink);color:#fff;border-radius:8px;padding:0 9px;margin-right:6px;font-size:.85em}
-h3{font-size:1.12em;margin:1.4em 0 .4em;scroll-margin-top:60px}
-section, h2, h3, .card{scroll-margin-top:58px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
-.part-a{border-left:6px solid var(--m)}
-.part-b{border-left:6px solid var(--c)}
-.key{background:#fff8d6;border:1px solid #f1df8a;border-radius:10px;padding:10px 12px;margin:10px 0}
-.key b:first-child{color:#7a5a00}
-.pozor{background:#fdecec;border:1px solid #f3baba;border-radius:10px;padding:10px 12px;margin:10px 0}
-.term{background:#eef3ff;border:1px solid #c9d6fb;border-radius:10px;padding:10px 12px;margin:10px 0}
-.term b:first-child{color:#2a49a8}
-figure{margin:12px 0;text-align:center}
-figure svg{max-width:100%;height:auto}
-figcaption{font-size:.85em;color:var(--muted);margin-top:4px}
-table{border-collapse:collapse;width:100%;font-size:.95em}
-th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
-th{background:#f0eee8}
-.tablewrap{overflow-x:auto}
-a{color:var(--accent)}
-.xlink{display:inline-block;background:#f1ecff;border:1px solid #d8ccfa;border-radius:8px;padding:1px 8px;text-decoration:none;font-size:.9em;font-weight:600}
-.xlink::before{content:"↗ "}
-ul.tight li{margin:3px 0}
-/* myšlenková mapa */
-.mapa{display:grid;grid-template-columns:1fr;gap:12px}
-@media(min-width:760px){.mapa{grid-template-columns:1fr 1fr}}
-.mapa .center{grid-column:1/-1;text-align:center;background:var(--ink);color:#fff;border-radius:14px;padding:12px;font-weight:700}
-.mapa .center span{display:block;font-weight:400;font-size:.88em;opacity:.85}
-.branch{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
-.branch.a{border-color:var(--m)}
-.branch.b{border-color:var(--c)}
-.branch h4{margin:.1em 0 .5em;font-size:1.05em}
-.branch .q{font-size:.86em;color:var(--muted);margin:.2em 0 .5em}
-.nodes{display:flex;flex-wrap:wrap;gap:6px}
-.nodes a{text-decoration:none;color:var(--ink);background:#f6f5f2;border:1px solid var(--line);border-radius:9px;padding:4px 9px;font-size:.92em}
-.branch.a .nodes a:hover{background:#fde6f2}
-.branch.b .nodes a:hover{background:#e3f4fc}
-.step{font-weight:700;color:var(--accent)}
-/* checklist */
-.check label{display:flex;gap:9px;align-items:flex-start;padding:5px 0;border-bottom:1px dashed var(--line)}
-.check input{width:20px;height:20px;margin-top:3px;flex:0 0 auto}
-.check a{font-weight:600}
-/* výpočty */
-.calc{background:#f3fbf6;border:1px solid #bfe3cc;border-radius:12px;padding:12px 14px;margin:12px 0}
-.calc ol{margin:.3em 0 .3em 1.2em;padding:0}
-.calc li{margin:5px 0}
-.calc .res{display:inline-block;background:#1f8a4c;color:#fff;border-radius:8px;padding:2px 10px;font-weight:700}
-code.m{background:#fff;border:1px solid #cfe9d8;border-radius:6px;padding:0 6px;font-family:inherit;font-weight:700}
-/* míchání */
-.mixer{display:grid;grid-template-columns:1fr;gap:10px;align-items:center}
-@media(min-width:600px){.mixer{grid-template-columns:1fr 150px}}
-.mixer .sw{height:120px;border-radius:12px;border:1px solid var(--line)}
-.mixer label{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.92em}
-.mixer input[type=range]{flex:1}
-.mixer output{width:46px;text-align:right;font-variant-numeric:tabular-nums}
-/* výluh */
-.vyluh-grid{display:grid;grid-template-columns:1fr;gap:10px}
-@media(min-width:620px){.vyluh-grid{grid-template-columns:1fr 1fr}}
-.vk{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px;display:flex;gap:10px;align-items:center}
-.vk svg{flex:0 0 92px;width:92px;height:92px}
-.vk .t b{display:block;font-size:1.08em}
-.vk .t span{font-size:.95em}
-.vk a{font-size:.82em}
-.say{background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;margin:12px 0}
-.say b{color:var(--y)}
-.flips{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media(min-width:620px){.flips{grid-template-columns:repeat(3,1fr)}}
-.flip{perspective:700px;height:140px;cursor:pointer;border:0;background:none;padding:0}
-.flip .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
-.flip.on .in{transform:rotateY(180deg)}
-.flip .f,.flip .bk{position:absolute;inset:0;border-radius:14px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;padding:6px;text-align:center}
-.flip .bk{transform:rotateY(180deg);background:#fff8d6;font-weight:800;font-size:1.05em}
-.flip svg{width:100%;height:100%}
-.qq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:8px 0}
-.qq summary{cursor:pointer;font-weight:700}
-.qq p{margin:.4em 0 0;color:var(--ok);font-weight:700}
-/* test psaním */
-.wt textarea{width:100%;min-height:110px;font:inherit;font-size:16px;padding:10px;border:1px solid var(--line);border-radius:10px}
-.btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:9px 16px;background:var(--ink);color:#fff;cursor:pointer;margin:6px 6px 0 0}
-.btn.light{background:#ece9e1;color:var(--ink)}
-.fb{margin-top:10px}
-.fb .ok{color:var(--ok)} .fb .no{color:var(--bad)} .fb .wr{color:var(--warn)}
-.fb ul{margin:.3em 0;padding-left:1.2em}
-.vzor{background:#f3fbf6;border:1px solid #bfe3cc;border-radius:10px;padding:10px 12px;margin-top:8px}
-.score{font-weight:800}
-/* kvíz */
-.kq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:10px 0}
-.kq p{margin:.2em 0 .5em;font-weight:700}
-.kq button{display:block;width:100%;text-align:left;font:inherit;background:#f6f5f2;border:1px solid var(--line);border-radius:9px;padding:8px 10px;margin:5px 0;cursor:pointer}
-.kq button.good{background:#dff3e6;border-color:#8fd0a8}
-.kq button.badc{background:#fbe0e0;border-color:#eca3a3}
-.kq .ex{font-size:.92em;color:var(--muted);display:none}
-.kq.done .ex{display:block}
-#kvizScore{font-weight:800;font-size:1.1em}
-/* plovoucí šipka */
-#back{position:fixed;right:14px;bottom:16px;z-index:30;background:var(--accent);color:#fff;border:0;border-radius:30px;padding:11px 16px;font:inherit;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer;display:none}
-#back.show{display:block}
-footer{color:var(--muted);font-size:.85em;text-align:center;margin-top:40px}
-/* tisk výluhu */
-@media print{
-  body.tisk-vyluh *{visibility:hidden}
-  body.tisk-vyluh #vyluh, body.tisk-vyluh #vyluh *{visibility:visible}
-  body.tisk-vyluh #vyluh{position:absolute;left:0;top:0;width:100%;font-size:11px}
-  body.tisk-vyluh .noprint{display:none!important}
-  body.tisk-vyluh .vk svg{flex-basis:60px;width:60px;height:60px}
-  body.tisk-vyluh .vyluh-grid{grid-template-columns:1fr 1fr;gap:5px}
-  body.tisk-vyluh .vk{padding:5px;border-width:1px;break-inside:avoid}
-  body.tisk-vyluh .say{background:#fff;color:#000;border:2px solid #000;padding:6px 8px;margin:6px 0}
-  body.tisk-vyluh .say b{color:#000}
-  nav.menu,#back{display:none!important}
-}
+  :root{
+    --bg:#FFFFFF;
+    --bg-card:#F4F6F8;
+    --line:#DCE2E7;
+    --text:#16222B;
+    --text-dim:#54626D;
+    --cyan:#0B7A85;
+    --cyan-dim:#D9F0F1;
+    --cyan-border:#BFE4E6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 70px;}
+
+  header.hero{
+    padding:52px 20px 36px;
+    background:
+      radial-gradient(120% 90% at 20% -10%, rgba(11,122,133,0.08), transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--cyan);
+    margin:0 0 14px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(28px,6.5vw,40px);
+    line-height:1.1;
+    margin:0 0 14px;
+  }
+  .hero p{color:var(--text-dim);font-size:15.5px;max-width:56ch;margin:0;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:36px 0;
+  }
+  @media(min-width:560px){
+    .grid{grid-template-columns:1fr 1fr;}
+  }
+
+  a.card{
+    display:block;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 16px 15px;
+    text-decoration:none;
+    color:var(--text);
+    transition:border-color .15s ease, transform .1s ease;
+  }
+  a.card:active{transform:scale(0.98);}
+  a.card:hover{border-color:var(--cyan-border);}
+  .card .tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--cyan);
+    background:var(--cyan-dim);
+    border:1px solid var(--cyan-border);
+    padding:3px 9px;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .card .title{
+    font-size:15px;
+    font-weight:600;
+    line-height:1.35;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 20px 10px;
+    color:var(--text-dim);
+    font-size:12.5px;
+    font-family:'IBM Plex Mono',monospace;
+    border-top:1px solid var(--line);
+  }
+
+  .easy{margin:30px 0 0;background:#fde6f2;border:1px solid #f6b8d8;border-radius:14px;padding:16px}
+  .easy h2{font-family:'Fraunces',serif;font-size:21px;margin:0 0 4px}
+  .easy p{margin:0 0 12px;color:var(--text-dim);font-size:14.5px}
+  .easy-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  @media(min-width:560px){.easy-grid{grid-template-columns:repeat(4,1fr)}}
+  .easy-grid a{display:block;background:#fff;border:1px solid #f6b8d8;border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--text);font-weight:600;font-size:14px;line-height:1.3}
+  .easy-grid a b{display:block;color:#a8005c;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600}
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <small>ÚSTNÍ ZKOUŠKA · REPRODUKČNÍ GRAFIK · TÉMA Č. 9</small>
-    <h1>Teorie barevnosti, vnímání barev, aditivní a subtraktivní míchání · Tisk z plochy</h1>
-    <p>Mapa → souhrn → výluh → test → kvíz</p>
-  </div>
+<header class="hero">
+  <p class="eyebrow">34-53-H/01 Reprodukční grafik · ústní zkouška</p>
+  <h1>25 okruhů ústní zkoušky</h1>
+  <p>Rozcestník na jednotlivá témata odborné části ústní zkoušky. Klikněte na okruh a otevře se výuková lekce k danému tématu.</p>
 </header>
 
-<nav class="menu">
-  <div class="wrap">
-    <a href="#mapa" class="hl">🗺️ Mapa</a>
-    <a href="#vyluh">⭐ Výluh</a>
-    <a href="#umet">✅ Co mám umět</a>
-    <a href="#cast-a">🎨 Barvy</a>
-    <a href="#cast-b">🖨️ Tisk z plochy</a>
-    <a href="#vypocty">🧮 Výpočty</a>
-    <a href="#test">✍️ Test psaním</a>
-    <a href="#kviz">❓ Kvíz</a>
-  </div>
-</nav>
-
-<main class="wrap">
-
-<!-- ================= MAPA ================= -->
-<section id="mapa">
-  <h2><span class="num">1</span>Myšlenková mapa</h2>
-  <div class="key"><b>Na potítku:</b> jdi po větvích <b>shora dolů</b>. Ke každému pojmu řekni <b>1–2 věty</b>. Klikni na pojem = podrobnosti.</div>
-
-  <div class="mapa">
-    <div class="center">TÉMA 9<span>barvy (jak vznikají a jak je mícháme) + tisk z plochy (ofset)</span></div>
-
-    <div class="branch a">
-      <h4>🎨 A) Teorie barevnosti</h4>
-      <p class="q"><span class="step">1.</span> Co je barva?</p>
-      <div class="nodes">
-        <a href="#a-svetlo" data-map="a1">světlo 380–780 nm</a>
-        <a href="#a-svetlo" data-map="a1b">spektrum</a>
-        <a href="#a-podminky" data-map="a2">zdroj + předmět + oko</a>
-      </div>
-      <p class="q"><span class="step">2.</span> Jak barvy vidíme?</p>
-      <div class="nodes">
-        <a href="#a-oko" data-map="a3">oko, sítnice</a>
-        <a href="#a-oko" data-map="a4">čípky × tyčinky</a>
-        <a href="#a-poruchy" data-map="a5">barvoslepost</a>
-      </div>
-      <p class="q"><span class="step">3.</span> Jak barvu popíšeme?</p>
-      <div class="nodes">
-        <a href="#a-vlastnosti" data-map="a6">odstín · sytost · jas</a>
-        <a href="#a-vlastnosti" data-map="a6b">pestré × nepestré</a>
-        <a href="#a-osvetleni" data-map="a7">D50, metamerie</a>
-        <a href="#a-kontrast" data-map="a7b">kontrast okolí</a>
-      </div>
-      <p class="q"><span class="step">4.</span> Jak barvy mícháme?</p>
-      <div class="nodes">
-        <a href="#a-aditivni" data-map="a8">aditivní RGB</a>
-        <a href="#a-subtraktivni" data-map="a9">subtraktivní CMYK</a>
-        <a href="#a-cerna" data-map="a9b">proč K (černá)</a>
-        <a href="#a-doplnkove" data-map="a10">doplňkové barvy</a>
-        <a href="#a-psychologie" data-map="a10b">psychologie barev</a>
-      </div>
-      <p class="q"><span class="step">5.</span> Barvy v praxi grafika</p>
-      <div class="nodes">
-        <a href="#a-gamut" data-map="a11">gamut RGB × CMYK</a>
-        <a href="#a-modely" data-map="a12">RGB, CMY, CIELAB, ICC</a>
-        <a href="#a-mereni" data-map="a13">měření barev</a>
-      </div>
+<div class="wrap">
+  <section class="easy" aria-labelledby="easyh">
+    <h2 id="easyh">⚡ Jednoduše: jen to hlavní</h2>
+    <p>Zkrácené verze otázek: obrázky, hesla a samozkoušení. Pro rychlé opakování. <a href="jednoduse/" style="color:#a8005c;font-weight:600">Samostatný rozcestník jednoduše ›</a></p>
+    <div class="easy-grid">
+      <a href="tema-01-pismo-a-papir/jednoduse.html"><b>Téma č. 1</b>Písmo a papír</a>
+      <a href="tema-02-polygraficka-montaz-a-knihy/jednoduse.html"><b>Téma č. 2</b>Montáž a knihy</a>
+      <a href="tema-03-dtp-studio-a-knizni-vazba/jednoduse.html"><b>Téma č. 3</b>DTP a vazby</a>
+      <a href="tema-04-software-a-cena-tisku/jednoduse.html"><b>Téma č. 4</b>Software a cena</a>
+      <a href="tema-05-archova-montaz/jednoduse.html"><b>Téma č. 5</b>Archová montáž</a>
+      <a href="tema-06-predlohy-a-rastr/jednoduse.html"><b>Téma č. 6</b>Předlohy a rastr</a>
+      <a href="tema-07-polygrafie-a-dokoncovani/jednoduse.html"><b>Téma č. 7</b>Polygrafie</a>
+      <a href="tema-08-barevna-reprodukce/jednoduse.html"><b>Téma č. 8</b>Barvy a tisk z výšky</a>
     </div>
+  </section>
 
-    <div class="branch b">
-      <h4>🖨️ B) Tisk z plochy</h4>
-      <p class="q"><span class="step">1.</span> Kam patří?</p>
-      <div class="nodes">
-        <a href="#b-techniky" data-map="b1">4 tiskové techniky</a>
-      </div>
-      <p class="q"><span class="step">2.</span> Na jakém principu tiskne?</p>
-      <div class="nodes">
-        <a href="#b-princip" data-map="b2">jedna rovina</a>
-        <a href="#b-princip" data-map="b3">voda × mastná barva</a>
-        <a href="#b-historie" data-map="b4">litografie, Senefelder</a>
-      </div>
-      <p class="q"><span class="step">3.</span> Jak funguje ofset?</p>
-      <div class="nodes">
-        <a href="#b-ofset" data-map="b5">nepřímý tisk</a>
-        <a href="#b-valce" data-map="b6">3 válce</a>
-        <a href="#b-vlhceni" data-map="b7">vlhčení + barvení</a>
-        <a href="#b-desky" data-map="b8">tiskové desky</a>
-        <a href="#b-barvy" data-map="b8b">barvy a papíry</a>
-      </div>
-      <p class="q"><span class="step">4.</span> Jaké jsou stroje?</p>
-      <div class="nodes">
-        <a href="#b-stroje" data-map="b9">archové × kotoučové</a>
-        <a href="#b-stroje" data-map="b9b">heatset × coldset</a>
-        <a href="#b-stroje" data-map="b9c">malý ofset</a>
-        <a href="#b-suchy" data-map="b10">suchý ofset</a>
-      </div>
-      <p class="q"><span class="step">5.</span> Kvalita a hodnocení</p>
-      <div class="nodes">
-        <a href="#b-vady" data-map="b11">vady tisku</a>
-        <a href="#b-kontrola" data-map="b12">kontrola barev</a>
-        <a href="#b-vyhody" data-map="b13">výhody × nevýhody</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <div class="grid">
 
-<!-- ================= CO MÁM UMĚT ================= -->
-<section id="umet">
-  <h2><span class="num">2</span>Co mám umět</h2>
-  <p style="margin:.2em 0 .4em;color:var(--muted);font-size:.9em">Podle ŠVP: Technologie 2. roč. (Barva) a Všeobecná polygrafie 1. a 2. roč. (tiskové techniky, Ofset).</p>
-  <div class="card check" id="checklist">
-    <label><input type="checkbox"><span>Popíšu <a href="#a-svetlo">fyzikální základ barvy</a> a <a href="#a-podminky">vznik barevného vjemu</a>.</span></label>
-    <label><input type="checkbox"><span>Vysvětlím <a href="#a-oko">vnímání barev okem</a> a <a href="#a-poruchy">poruchy barvocitu</a>.</span></label>
-    <label><input type="checkbox"><span>Popíšu <a href="#a-vlastnosti">vlastnosti barev</a> a vliv <a href="#a-osvetleni">osvětlení</a> a <a href="#a-kontrast">okolí</a>.</span></label>
-    <label><input type="checkbox"><span>Vysvětlím <a href="#a-aditivni">aditivní</a> a <a href="#a-subtraktivni">subtraktivní míšení barev</a> a <a href="#a-cerna">proč se tiskne černá</a>.</span></label>
-    <label><input type="checkbox"><span>Charakterizuji <a href="#a-doplnkove">výrazové možnosti barev</a>, jejich <a href="#a-psychologie">symboliku a psychologické působení</a>.</span></label>
-    <label><input type="checkbox"><span>Orientuji se v <a href="#a-modely">barvových prostorech RGB, CMY (přístrojově závislé) a CIELAB (nezávislý)</a> a v <a href="#a-gamut">gamutu</a>.</span></label>
-    <label><input type="checkbox"><span>Znám <a href="#a-mereni">denzitometrické a kolorimetrické měření barev</a> a přístroje.</span></label>
-    <label><input type="checkbox"><span>Rozliším <a href="#b-techniky">tisk z výšky, z plochy, z hloubky a průtisk</a>.</span></label>
-    <label><input type="checkbox"><span>Vysvětlím <a href="#b-princip">princip tisku z plochy</a> a jeho <a href="#b-historie">historii</a>.</span></label>
-    <label><input type="checkbox"><span>Popíšu <a href="#b-ofset">ofset</a>: <a href="#b-valce">stroj a válce</a>, <a href="#b-vlhceni">vlhčení</a>, <a href="#b-desky">výrobu tiskových forem</a>.</span></label>
-    <label><input type="checkbox"><span>Znám <a href="#b-barvy">ofsetové tiskové barvy a potiskované materiály</a>.</span></label>
-    <label><input type="checkbox"><span>Popíšu <a href="#b-stroje">stroje (archové, kotoučové, malonákladové)</a> a <a href="#b-suchy">suchý ofset</a>.</span></label>
-    <label><input type="checkbox"><span>Posoudím <a href="#b-vady">kvalitu tisku</a> a <a href="#b-kontrola">kontrolu podle norem</a>.</span></label>
-    <label><input type="checkbox"><span>Zhodnotím <a href="#b-vyhody">výhodnost ofsetu</a> a spočítám <a href="#vypocty">příklady</a>.</span></label>
-  </div>
-</section>
+    <a class="card" href="tema-01-pismo-a-papir/">
+      <span class="tag">Téma č. 1</span>
+      <div class="title">Písmo a jeho význam, typografická měrná soustava; Historie výroby papíru, papyrus, pergamen</div>
+    </a>
 
-<!-- ================= ČÁST A ================= -->
-<section id="cast-a">
-<h2><span class="num">3</span>A) Teorie barevnosti a vnímání barev</h2>
+    <a class="card" href="tema-02-polygraficka-montaz-a-knihy/">
+      <span class="tag">Téma č. 2</span>
+      <div class="title">Polygrafická montáž, vyřazování stran, maketa; Knihařská výroba, knižní vazba, zušlechťování desek</div>
+    </a>
 
-<div class="card part-a">
-<h3 id="a-svetlo">Světlo a barva</h3>
-<p><b>Světlo</b> je elektromagnetické záření. Oko vidí jen jeho malou část – <b>viditelné světlo</b> o vlnové délce zhruba <b>380–780 nm</b> (nanometrů).</p>
-<p><b>Barva</b> není vlastnost předmětu, ale <b>vjem</b>. Vzniká v <b>mozku</b> na základě světla, které dopadne do oka.</p>
-<figure>
-<svg viewBox="0 0 640 150" role="img" aria-label="Viditelné spektrum od 380 do 780 nanometrů">
-  <defs><linearGradient id="spec" x1="0" x2="1">
-    <stop offset="0" stop-color="#4b0082"/><stop offset=".15" stop-color="#3a3aff"/>
-    <stop offset=".3" stop-color="#00a0ff"/><stop offset=".42" stop-color="#00c060"/>
-    <stop offset=".55" stop-color="#9be000"/><stop offset=".62" stop-color="#ffe000"/>
-    <stop offset=".72" stop-color="#ff8c00"/><stop offset=".85" stop-color="#ff1a00"/>
-    <stop offset="1" stop-color="#7a0000"/></linearGradient></defs>
-  <text x="10" y="62" font-size="13" fill="#5d5d6b">UV</text>
-  <text x="604" y="62" font-size="13" fill="#5d5d6b">IR</text>
-  <rect x="40" y="35" width="560" height="45" rx="6" fill="url(#spec)"/>
-  <g font-size="13" fill="#1d1d24" text-anchor="middle">
-    <text x="40" y="100">380</text><text x="152" y="100">450</text><text x="264" y="100">500</text>
-    <text x="376" y="100">580</text><text x="488" y="100">650</text><text x="600" y="100">780 nm</text>
-  </g>
-  <g font-size="13" font-weight="700" text-anchor="middle">
-    <text x="95" y="25" fill="#4b0082">fialová</text><text x="210" y="25" fill="#1e5bd8">modrá</text>
-    <text x="320" y="25" fill="#2e9e48">zelená</text><text x="410" y="25" fill="#b08a00">žlutá</text>
-    <text x="465" y="25" fill="#e07000">oranžová</text><text x="555" y="25" fill="#c00">červená</text>
-  </g>
-  <text x="320" y="135" font-size="13" text-anchor="middle" fill="#5d5d6b">krátké vlny ← → dlouhé vlny</text>
-</svg>
-<figcaption>Viditelné spektrum. Bílé světlo obsahuje všechny vlnové délky (rozloží ho hranol – duha).</figcaption>
-</figure>
-<div class="term"><b>Proč je jablko červené?</b> Na jablko dopadá bílé světlo. Povrch jablka většinu vlnových délek <b>pohltí</b> a <b>odrazí</b> hlavně červenou. Ta dopadne do oka → mozek vytvoří vjem „červená“.</div>
+    <a class="card" href="tema-03-dtp-studio-a-knizni-vazba/">
+      <span class="tag">Téma č. 3</span>
+      <div class="title">DTP studio a jeho vybavení, ergonomie; Knižní vazba a její dělení</div>
+    </a>
 
-<h3 id="a-podminky">Podmínky vzniku barevného vjemu</h3>
-<p>Aby člověk viděl barvu, musí být splněny <b>tři podmínky</b>:</p>
-<ol class="tight">
-  <li><b>zdroj světla</b> (slunce, žárovka, LED),</li>
-  <li><b>předmět</b>, který světlo odráží, propouští nebo pohlcuje,</li>
-  <li><b>pozorovatel</b> – oko a mozek.</li>
-</ol>
-<p>Když se změní kterákoli z nich, změní se i barva, kterou vidíme. Proto se v tiskárně barvy hodnotí vždy <a href="#a-osvetleni">při stejném, normovaném světle</a>.</p>
+    <a class="card" href="tema-04-software-a-cena-tisku/">
+      <span class="tag">Téma č. 4</span>
+      <div class="title">Grafický software pro sazbu a archovou montáž; Tvorba ceny polygrafických výrobků, kalkulace</div>
+    </a>
 
-<h3 id="a-oko">Vnímání barev okem</h3>
-<figure>
-<svg viewBox="0 0 560 240" role="img" aria-label="Zjednodušený řez okem">
-  <ellipse cx="270" cy="120" rx="150" ry="100" fill="#fff" stroke="#1d1d24" stroke-width="3"/>
-  <path d="M 395 55 A 150 100 0 0 1 395 185" fill="none" stroke="#e5007e" stroke-width="9"/>
-  <path d="M120 85 Q 95 120 120 155" fill="#cfeefc" stroke="#00a0e3" stroke-width="3"/>
-  <ellipse cx="150" cy="120" rx="16" ry="38" fill="#ffe680" stroke="#b08a00" stroke-width="2"/>
-  <circle cx="419" cy="120" r="8" fill="#ffd500" stroke="#7a5a00"/>
-  <rect x="418" y="140" width="120" height="16" fill="#ccc"/>
-  <line x1="20" y1="100" x2="410" y2="118" stroke="#ff8c00" stroke-width="2" stroke-dasharray="6 4"/>
-  <line x1="20" y1="140" x2="410" y2="122" stroke="#ff8c00" stroke-width="2" stroke-dasharray="6 4"/>
-  <g font-size="14" fill="#1d1d24">
-    <text x="60" y="40">rohovka</text><line x1="100" y1="45" x2="112" y2="90" stroke="#1d1d24"/>
-    <text x="140" y="225">čočka</text><line x1="160" y1="210" x2="152" y2="158" stroke="#1d1d24"/>
-    <text x="430" y="40" font-weight="700" fill="#e5007e">sítnice</text><line x1="440" y1="45" x2="410" y2="70" stroke="#e5007e"/>
-    <text x="438" y="112" font-weight="700">žlutá skvrna</text>
-    <text x="440" y="175">zrakový nerv → mozek</text>
-  </g>
-</svg>
-<figcaption>Světlo projde rohovkou a čočkou a dopadne na sítnici. Signál jde zrakovým nervem do mozku.</figcaption>
-</figure>
-<p>Na <b>sítnici</b> jsou buňky citlivé na světlo:</p>
-<div class="tablewrap"><table>
-<tr><th></th><th>Čípky</th><th>Tyčinky</th></tr>
-<tr><td>Co vnímají</td><td><b>barvy</b> a detaily</td><td>jen <b>světlo a tmu</b> (černobíle)</td></tr>
-<tr><td>Kdy pracují</td><td>za <b>dne</b>, při dobrém světle</td><td>za <b>šera</b> a v noci</td></tr>
-<tr><td>Počet</td><td>asi 6–7 milionů</td><td>asi 120 milionů</td></tr>
-<tr><td>Kde jsou</td><td>hlavně ve <b>žluté skvrně</b> (místo nejostřejšího vidění)</td><td>hlavně na okraji sítnice</td></tr>
-</table></div>
-<div class="key"><b>Tři druhy čípků:</b> citlivé na <b style="color:var(--r)">červenou</b>, <b style="color:var(--g)">zelenou</b> a <b style="color:var(--b)">modrou</b> část spektra. Mozek z jejich signálů „složí“ všechny barvy. Tomu se říká <b>trichromatická teorie</b> (Young–Helmholtz). Proto i monitor stačí míchat ze tří barev <a href="#a-aditivni">RGB</a>.</div>
-<p>Místo, kde ze sítnice vychází zrakový nerv, nemá čípky ani tyčinky – je to <b>slepá skvrna</b>.</p>
-<p>Za šera pracují jen tyčinky, proto večer „všechny kočky šedé“ – barvy skoro nerozlišíme.</p>
+    <a class="card" href="tema-05-archova-montaz/">
+      <span class="tag">Téma č. 5</span>
+      <div class="title">Archová montáž, kontrola tiskových dat, RIP; Dělení tiskových technik</div>
+    </a>
 
-<h3 id="a-poruchy">Poruchy barvocitu</h3>
-<ul class="tight">
-  <li><b>Barvoslepost (daltonismus)</b> – nejčastěji člověk špatně rozlišuje <b>červenou a zelenou</b>. Týká se asi 8 % mužů a méně než 1 % žen.</li>
-  <li>Úplná barvoslepost (vidí jen odstíny šedi) je velmi vzácná.</li>
-  <li>Test barvocitu: <b>pseudoizochromatické tabulky</b> (Ishiharovy) – čísla složená z barevných teček.</li>
-</ul>
-<div class="pozor"><b>Pro grafika:</b> Informace nesmí být předaná jen barvou (např. červená = chyba, zelená = OK). Přidej i tvar, ikonu nebo text.</div>
+    <a class="card" href="tema-06-predlohy-a-rastr/">
+      <span class="tag">Téma č. 6</span>
+      <div class="title">Obrazové předlohy, rastr, natočení rastru, barevné výtažky; Tiskové techniky</div>
+    </a>
 
-<h3 id="a-vlastnosti">Vlastnosti barvy</h3>
-<figure>
-<svg viewBox="0 0 600 200" role="img" aria-label="Odstín, sytost a jas">
-  <g font-size="15" font-weight="700"><text x="10" y="35">odstín</text><text x="10" y="100">sytost</text><text x="10" y="165">jas</text></g>
-  <g transform="translate(90,12)">
-    <rect width="80" height="36" fill="#e53935"/><rect x="85" width="80" height="36" fill="#ff9800"/><rect x="170" width="80" height="36" fill="#ffd500"/>
-    <rect x="255" width="80" height="36" fill="#2e9e48"/><rect x="340" width="80" height="36" fill="#1e5bd8"/><rect x="425" width="80" height="36" fill="#8e24aa"/>
-  </g>
-  <g transform="translate(90,78)">
-    <rect width="80" height="36" fill="#9a8f8f"/><rect x="85" width="80" height="36" fill="#b07a78"/><rect x="170" width="80" height="36" fill="#c4625e"/>
-    <rect x="255" width="80" height="36" fill="#d24c46"/><rect x="340" width="80" height="36" fill="#df3a33"/><rect x="425" width="80" height="36" fill="#f01e14"/>
-  </g>
-  <g transform="translate(90,144)">
-    <rect width="80" height="36" fill="#2a0807"/><rect x="85" width="80" height="36" fill="#6b1512"/><rect x="170" width="80" height="36" fill="#a8221d"/>
-    <rect x="255" width="80" height="36" fill="#e53935"/><rect x="340" width="80" height="36" fill="#ef8784"/><rect x="425" width="80" height="36" fill="#f9d2d1"/>
-  </g>
-</svg>
-<figcaption>Odstín = „jaká“ barva. Sytost = jak je čistá (šedá → zářivá). Jas = jak je světlá (tmavá → světlá).</figcaption>
-</figure>
-<ul class="tight">
-  <li><b>Odstín (tón, angl. hue)</b> – určuje, o jakou barvu jde: červená, žlutá, modrá…</li>
-  <li><b>Sytost (saturace)</b> – čistota barvy. Čím víc šedi, tím menší sytost.</li>
-  <li><b>Jas (světlost)</b> – jak je barva světlá nebo tmavá.</li>
-</ul>
-<p>Podle těchto tří vlastností funguje model <b>HSB</b> (Hue, Saturation, Brightness) ve výběru barvy ve Photoshopu.</p>
-<p><b>Barvy pestré</b> (chromatické) mají odstín – červená, modrá… <b>Barvy nepestré</b> (achromatické) odstín nemají – <b>bílá, šedé a černá</b>.</p>
+    <a class="card" href="tema-07-polygrafie-a-dokoncovani/">
+      <span class="tag">Téma č. 7</span>
+      <div class="title">Polygrafie a její části (prepress, press, postpress); Dokončující zpracování tiskovin</div>
+    </a>
 
-<h3 id="a-osvetleni">Vliv osvětlení: D50 a metamerie</h3>
-<p>Každý zdroj světla má jinou „barvu“. Popisuje ji <b>teplota chromatičnosti</b> v <b>kelvinech (K)</b>: žárovka asi 2 700 K (teplé, žlutavé světlo), denní světlo asi 5 000–6 500 K (bílé až namodralé).</p>
-<div class="term"><b>D50</b> – normované světlo o teplotě <b>5 000 K</b>. V polygrafii se při něm hodnotí tisk a nátisky (prohlížecí box, normované osvětlení). Díky tomu vidí tiskař i zákazník barvy stejně.</div>
-<div class="term"><b>Metamerie</b> – dvě barvy vypadají při jednom světle <b>stejně</b>, ale při jiném světle <b>různě</b>. Příklad: dva kusy látky jsou v obchodě stejně šedé, na denním světle je jeden do zelena. Proto se barvy porovnávají pod D50.</div>
+    <a class="card" href="tema-08-barevna-reprodukce/">
+      <span class="tag">Téma č. 8</span>
+      <div class="title">Barevná reprodukce, RGB, CMYK, přímé barvy, separace, soutisk; Tisk z výšky</div>
+    </a>
 
-<h3 id="a-kontrast">Vliv okolí (simultánní kontrast)</h3>
-<figure>
-<svg viewBox="0 0 400 130" role="img" aria-label="Stejný šedý čtverec na tmavém a světlém pozadí">
-  <rect x="0" y="0" width="200" height="130" fill="#222"/><rect x="200" y="0" width="200" height="130" fill="#eee"/>
-  <rect x="65" y="30" width="70" height="70" fill="#888"/><rect x="265" y="30" width="70" height="70" fill="#888"/>
-</svg>
-<figcaption>Oba čtverce jsou úplně stejně šedé. Na tmavém pozadí vypadá světlejší.</figcaption>
-</figure>
-<p>Barva se jeví jinak podle barev kolem sebe. Proto se barevnost nehodnotí na pestrém pozadí, ale na neutrálně šedém.</p>
+    <a class="card" href="tema-09-teorie-barevnosti/">
+      <span class="tag">Téma č. 9</span>
+      <div class="title">Teorie barevnosti, vnímání barev, aditivní a subtraktivní míchání; Tisk z plochy</div>
+    </a>
 
-<h3 id="a-aditivni">Aditivní míchání barev (RGB)</h3>
-<figure>
-<svg viewBox="0 0 300 260" role="img" aria-label="Aditivní míchání: červená, zelená a modrá světla se sčítají do bílé">
-  <rect width="300" height="260" rx="12" fill="#000"/>
-  <g style="mix-blend-mode:screen;isolation:isolate">
-    <circle cx="150" cy="95" r="70" fill="#ff0000" style="mix-blend-mode:screen"/>
-    <circle cx="110" cy="160" r="70" fill="#00ff00" style="mix-blend-mode:screen"/>
-    <circle cx="190" cy="160" r="70" fill="#0000ff" style="mix-blend-mode:screen"/>
-  </g>
-  <g font-size="13" font-weight="700" text-anchor="middle">
-    <text x="150" y="60" fill="#fff">R</text><text x="70" y="200" fill="#000">G</text><text x="232" y="200" fill="#fff">B</text>
-    <text x="150" y="140" fill="#000">bílá</text>
-  </g>
-</svg>
-<figcaption>Na černém pozadí (tma) se sčítají světla.</figcaption>
-</figure>
-<ul class="tight">
-  <li><b>Aditivní</b> = sčítací (lat. <i>addere</i> = přidat). Mícháme <b>světla</b>.</li>
-  <li>Základní barvy: <b style="color:var(--r)">R</b> (červená), <b style="color:var(--g)">G</b> (zelená), <b style="color:var(--b)">B</b> (modrá).</li>
-  <li>Začínáme od <b>tmy (černé)</b>. Čím víc světla přidáme, tím je barva světlejší.</li>
-  <li><b>R + G + B = bílá</b>. Žádné světlo = černá.</li>
-</ul>
-<div class="tablewrap"><table>
-<tr><th>Smícháme světla</th><th>Vznikne</th></tr>
-<tr><td>R + G</td><td><b>žlutá (Y)</b></td></tr>
-<tr><td>G + B</td><td><b>azurová (C)</b></td></tr>
-<tr><td>R + B</td><td><b>purpurová (M)</b></td></tr>
-<tr><td>R + G + B</td><td><b>bílá</b></td></tr>
-</table></div>
-<p><b>Kde se používá:</b> monitory, mobily, televize, projektory, digitální fotoaparáty, skenery – všechno, co <b>vyzařuje</b> nebo <b>snímá</b> světlo.</p>
-<div class="card" style="background:#fafafa">
-  <b>Vyzkoušej si: míchání světel RGB</b>
-  <div class="mixer" id="rgbMix">
-    <div>
-      <label style="color:var(--r)">R <input type="range" min="0" max="255" value="255" data-ch="r"><output>255</output></label>
-      <label style="color:var(--g)">G <input type="range" min="0" max="255" value="200" data-ch="g"><output>200</output></label>
-      <label style="color:var(--b)">B <input type="range" min="0" max="255" value="0" data-ch="b"><output>0</output></label>
-    </div>
-    <div class="sw" id="rgbSw"></div>
+    <a class="card" href="tema-10-color-management/">
+      <span class="tag">Téma č. 10</span>
+      <div class="title">Správa a nastavení barev, barvové prostory, ICC profily; Litografie a ofsetový tisk</div>
+    </a>
+
+    <a class="card" href="tema-11-ctf-ctp-ctpr-cts/">
+      <span class="tag">Téma č. 11</span>
+      <div class="title">Computer to Film, Plate, Print, Screen; Tisk z hloubky</div>
+    </a>
+
+    <a class="card" href="tema-12-casti-publikace-a-prutisk/">
+      <span class="tag">Téma č. 12</span>
+      <div class="title">Kniha — popis částí a knižní dvoustrany; Průtisk</div>
+    </a>
+
+    <a class="card" href="tema-13-bitmapova-a-vektorova-grafika/">
+      <span class="tag">Téma č. 13</span>
+      <div class="title">Bitmapová a vektorová grafika, formáty souborů; Sítotisk</div>
+    </a>
+
+    <a class="card" href="tema-14-pdf-pro-tisk/">
+      <span class="tag">Téma č. 14</span>
+      <div class="title">PDF pro tisk, druhy PDF, kontrola tiskového PDF; Výroba vláknin</div>
+    </a>
+
+    <a class="card" href="tema-15-predlohy-a-papirovina/">
+      <span class="tag">Téma č. 15</span>
+      <div class="title">Předlohy pro reprodukci; Papírovina — výroba, plnidla, klížidla, barviva</div>
+    </a>
+
+    <a class="card" href="tema-16-barvove-prostory-a-vazby/">
+      <span class="tag">Téma č. 16</span>
+      <div class="title">Barvové prostory, RGB/CMYK, výtažkování; Tuhé knižní vazby</div>
+    </a>
+
+    <a class="card" href="tema-17-typografie-a-tisk/">
+      <span class="tag">Téma č. 17</span>
+      <div class="title">Počítačová typografie, druhy písma, font; Digitální tisk vs. konvenční techniky</div>
+    </a>
+
+    <a class="card" href="tema-18-akcidencni-tiskovina/">
+      <span class="tag">Téma č. 18</span>
+      <div class="title">Akcidenční tiskovina — postup výroby vizitky; Hlubotisk</div>
+    </a>
+
+    <a class="card" href="tema-19-casopis/">
+      <span class="tag">Téma č. 19</span>
+      <div class="title">Časopis — grafická úprava, předtisková příprava, výroba; Tamponový tisk</div>
+    </a>
+
+    <a class="card" href="tema-20-firemni-tiskoviny/">
+      <span class="tag">Téma č. 20</span>
+      <div class="title">Firemní tiskoviny, logo a jednotný vizuální styl; Flexotisk</div>
+    </a>
+
+    <a class="card" href="tema-21-propagacni-tiskoviny/">
+      <span class="tag">Téma č. 21</span>
+      <div class="title">Propagační tiskoviny — leták, plakát, velkoformát; Tiskové formy</div>
+    </a>
+
+    <a class="card" href="tema-22-nahled-a-natisk/">
+      <span class="tag">Téma č. 22</span>
+      <div class="title">Náhled, nátisk, certifikovaný digitální nátisk; Měkké knižní vazby (V1, V2)</div>
+    </a>
+
+    <a class="card" href="tema-23-prebal-knihy/">
+      <span class="tag">Téma č. 23</span>
+      <div class="title">Přebal knihy a jeho zušlechťování; Ofsetový tisk</div>
+    </a>
+
+    <a class="card" href="tema-24-historicky-vyvoj-tisku/">
+      <span class="tag">Téma č. 24</span>
+      <div class="title">Historický vývoj zhotovení textu a obrazu; Polotuhé knižní vazby, leporelo</div>
+    </a>
+
+    <a class="card" href="tema-25-osobni-tiskoviny/">
+      <span class="tag">Téma č. 25</span>
+      <div class="title">Osobní tiskoviny — příklady a postup výroby; Vlastnosti papírových materiálů</div>
+    </a>
+
   </div>
 </div>
 
-<h3 id="a-subtraktivni">Subtraktivní míchání barev (CMY, CMYK)</h3>
-<figure>
-<svg viewBox="0 0 300 260" role="img" aria-label="Subtraktivní míchání: azurová, purpurová a žlutá se překrývají do tmavé">
-  <rect width="300" height="260" rx="12" fill="#fff" stroke="#dedbd3"/>
-  <g style="isolation:isolate">
-    <circle cx="150" cy="95" r="70" fill="#00aeef" style="mix-blend-mode:multiply"/>
-    <circle cx="110" cy="160" r="70" fill="#ec008c" style="mix-blend-mode:multiply"/>
-    <circle cx="190" cy="160" r="70" fill="#fff200" style="mix-blend-mode:multiply"/>
-  </g>
-  <g font-size="13" font-weight="700" text-anchor="middle">
-    <text x="150" y="60" fill="#000">C</text><text x="70" y="200" fill="#fff">M</text><text x="232" y="200" fill="#000">Y</text>
-    <text x="150" y="140" fill="#fff">tmavá</text>
-  </g>
-</svg>
-<figcaption>Na bílém papíře se barvy překrývají a pohlcují světlo.</figcaption>
-</figure>
-<ul class="tight">
-  <li><b>Subtraktivní</b> = odečítací (lat. <i>subtrahere</i> = odebrat). Mícháme <b>barvy (pigmenty)</b>.</li>
-  <li>Základní barvy: <b style="color:var(--c)">C</b> – azurová (cyan), <b style="color:var(--m)">M</b> – purpurová (magenta), <b style="color:#b08a00">Y</b> – žlutá (yellow).</li>
-  <li>Začínáme od <b>bílého papíru</b>. Každá barva část světla <b>pohltí</b> (odečte). Čím víc barvy, tím je výsledek tmavší.</li>
-</ul>
-<div class="tablewrap"><table>
-<tr><th>Tisková barva</th><th>Pohltí (odečte)</th><th>Odrazí</th></tr>
-<tr><td><b style="color:var(--c)">azurová C</b></td><td>červenou R</td><td>zelenou + modrou</td></tr>
-<tr><td><b style="color:var(--m)">purpurová M</b></td><td>zelenou G</td><td>červenou + modrou</td></tr>
-<tr><td><b style="color:#b08a00">žlutá Y</b></td><td>modrou B</td><td>červenou + zelenou</td></tr>
-</table></div>
-<div class="tablewrap" style="margin-top:8px"><table>
-<tr><th>Přetiskneme</th><th>Vznikne</th></tr>
-<tr><td>C + M</td><td><b>modrá (B)</b></td></tr>
-<tr><td>M + Y</td><td><b>červená (R)</b></td></tr>
-<tr><td>C + Y</td><td><b>zelená (G)</b></td></tr>
-<tr><td>C + M + Y</td><td>teoreticky černá, ve skutečnosti <b>tmavě hnědá</b></td></tr>
-</table></div>
-<div class="key"><b>Všimni si:</b> RGB a CMY jsou „obrácené“. Ze dvou světel RGB vznikne barva CMY. Ze dvou tiskových barev CMY vznikne barva RGB.</div>
-<p><b>Kde se používá:</b> tisk (ofset, digitální tisk, inkoustové tiskárny), malování barvami.</p>
-<div class="card" style="background:#fafafa">
-  <b>Vyzkoušej si: přetisk barev CMY (v %)</b>
-  <div class="mixer" id="cmyMix">
-    <div>
-      <label style="color:var(--c)">C <input type="range" min="0" max="100" value="100" data-ch="c"><output>100</output></label>
-      <label style="color:var(--m)">M <input type="range" min="0" max="100" value="0" data-ch="m"><output>0</output></label>
-      <label style="color:#b08a00">Y <input type="range" min="0" max="100" value="100" data-ch="y"><output>100</output></label>
-    </div>
-    <div class="sw" id="cmySw"></div>
-  </div>
-  <small style="color:var(--muted)">Jen zjednodušená simulace na monitoru.</small>
-</div>
+<footer>34-53-H/01 Reprodukční grafik · jednotné zadání závěrečných zkoušek, odborná část</footer>
 
-<h3 id="a-cerna">Proč se přidává černá K</h3>
-<p>Tiskové barvy nejsou dokonale čisté, a proto <b>C + M + Y nedá čistou černou</b>, ale tmavě hnědou. Proto se tiskne <b>čtvrtá barva – černá K</b> (z angl. <i>key</i> – klíčová deska, podle které se soutiskují ostatní).</p>
-<ul class="tight">
-  <li><b>hlubší, opravdu černá</b> barva,</li>
-  <li><b>ostrý text</b> – malé písmo se tiskne jen černou, nehrozí nesoutisk,</li>
-  <li><b>úspora</b> barev C, M, Y (černá je levnější),</li>
-  <li>méně barvy na papíře → <b>rychlejší schnutí</b>, méně obtiskávání (viz <a href="#v-kryti">celkové krytí</a>).</li>
-</ul>
-<div class="pozor"><b>Pozor:</b> Text a tenké linky dávej v <b>100 % K</b>, ne ve „čtyřbarevné černé“ (C+M+Y+K). Ta se rozmaže při sebemenším nesoutisku.</div>
-
-<h3 id="a-doplnkove">Doplňkové (komplementární) barvy</h3>
-<figure>
-<svg viewBox="0 0 260 260" role="img" aria-label="Barevný kruh s doplňkovými barvami naproti sobě">
-  <g transform="translate(130,130)">
-    <path d="M0 0 L0 -100 A100 100 0 0 1 86.6 -50 Z" fill="#ff0000"/>
-    <path d="M0 0 L86.6 -50 A100 100 0 0 1 86.6 50 Z" fill="#ff00ff"/>
-    <path d="M0 0 L86.6 50 A100 100 0 0 1 0 100 Z" fill="#0000ff"/>
-    <path d="M0 0 L0 100 A100 100 0 0 1 -86.6 50 Z" fill="#00ffff"/>
-    <path d="M0 0 L-86.6 50 A100 100 0 0 1 -86.6 -50 Z" fill="#00ff00"/>
-    <path d="M0 0 L-86.6 -50 A100 100 0 0 1 0 -100 Z" fill="#ffff00"/>
-    <circle r="34" fill="#fff"/>
-    <g font-size="15" font-weight="800" text-anchor="middle">
-      <text x="30" y="-58">R</text><text x="66" y="5">M</text><text x="30" y="70" fill="#fff">B</text>
-      <text x="-30" y="70">C</text><text x="-66" y="5">G</text><text x="-30" y="-58">Y</text>
-    </g>
-    <text y="5" font-size="11" text-anchor="middle" fill="#1d1d24">naproti</text>
-  </g>
-</svg>
-<figcaption>Doplňkové barvy leží v kruhu naproti sobě: R–C, G–M, B–Y.</figcaption>
-</figure>
-<p>Doplňkové barvy dají při aditivním míchání <b>bílou</b> a při subtraktivním míchání <b>tmavou (černou)</b>. Vedle sebe vytvářejí <b>největší kontrast</b>. Využití: plakáty, upoutávky, ale také korekce barev – např. žlutý nádech fotografie se opraví přidáním modré.</p>
-
-<h3 id="a-psychologie">Psychologie a symbolika barev</h3>
-<p>Barvy na člověka působí – vyvolávají <b>pocity a asociace</b>. Grafik to využívá hlavně v <b>reklamě</b> a na obalech.</p>
-<div class="tablewrap"><table>
-<tr><th>Barva</th><th>Působení, asociace</th><th>Použití</th></tr>
-<tr><td><b style="color:var(--r)">červená</b></td><td>energie, láska, ale i nebezpečí; přitahuje pozornost</td><td>slevy, výstrahy, potraviny</td></tr>
-<tr><td><b style="color:#e07000">oranžová</b></td><td>radost, teplo, aktivita</td><td>sport, dětské výrobky</td></tr>
-<tr><td><b style="color:#b08a00">žlutá</b></td><td>slunce, optimismus, upozornění</td><td>výstražné značky, upoutávky</td></tr>
-<tr><td><b style="color:var(--g)">zelená</b></td><td>příroda, zdraví, klid, ekologie</td><td>bio výrobky, lékárny</td></tr>
-<tr><td><b style="color:var(--b)">modrá</b></td><td>důvěra, chlad, voda, spolehlivost</td><td>banky, technika, čisticí prostředky</td></tr>
-<tr><td><b style="color:#8e24aa">fialová</b></td><td>luxus, tajemno</td><td>kosmetika</td></tr>
-<tr><td><b>černá</b></td><td>elegance, vážnost, smutek</td><td>luxusní výrobky</td></tr>
-<tr><td><b>bílá</b></td><td>čistota, jednoduchost</td><td>zdravotnictví, design</td></tr>
-</table></div>
-<ul class="tight">
-  <li><b>Teplé barvy</b> (červená, oranžová, žlutá) působí, jako by byly blíž – <b>vystupují</b>.</li>
-  <li><b>Studené barvy</b> (modrá, zelenomodrá) působí vzdáleně – <b>ustupují</b> a uklidňují.</li>
-  <li>Symbolika se liší podle kultury: u nás je bílá barvou svatby, v některých asijských zemích barvou smutku.</li>
-</ul>
-
-<h3 id="a-gamut">Gamut – barevný rozsah</h3>
-<figure>
-<svg viewBox="0 0 320 250" role="img" aria-label="Schéma: rozsah barev oka je největší, RGB menší, CMYK nejmenší">
-  <path d="M60 220 C 20 150, 60 40, 120 20 C 170 5, 250 60, 290 210 Z" fill="#f0eee8" stroke="#888" stroke-width="2"/>
-  <polygon points="85,205 135,45 270,200" fill="rgba(30,91,216,.18)" stroke="#1e5bd8" stroke-width="3"/>
-  <polygon points="105,190 130,95 175,70 235,150 230,195 150,205" fill="rgba(229,0,126,.2)" stroke="#e5007e" stroke-width="3"/>
-  <circle cx="125" cy="62" r="7" fill="#00c060" stroke="#000"/>
-  <g font-size="13" font-weight="700">
-    <text x="190" y="35" fill="#555">co vidí oko</text>
-    <text x="232" y="225" fill="#1e5bd8">RGB</text>
-    <text x="150" y="170" fill="#e5007e">CMYK</text>
-    <text x="20" y="62" fill="#1d1d24" font-weight="400">zářivá zelená →</text>
-  </g>
-</svg>
-<figcaption>Zjednodušené schéma. Zářivá zelená je v RGB, ale ne v CMYK – nedá se vytisknout.</figcaption>
-</figure>
-<p><b>Gamut</b> je soubor všech barev, které dokáže zařízení zobrazit nebo vytisknout. Gamut <b>RGB</b> (monitor) je <b>větší</b> než gamut <b>CMYK</b> (tisk). Zářivé zelené, oranžové a modré z monitoru se proto v tisku „ztratí“ a zešednou.</p>
-<p>Převod z RGB do CMYK se nazývá <b>separace</b>. Dělá se před tiskem, nejlépe s ICC profilem tiskového stroje a papíru.</p>
-
-<h3 id="a-modely">Lab, ICC profil, přímé barvy</h3>
-<div class="key"><b>Barvové prostory:</b> <b>RGB</b> a <b>CMY(K)</b> jsou <b>přístrojově závislé</b> – stejná čísla vypadají na každém monitoru nebo stroji trochu jinak. <b>CIELAB</b> je <b>přístrojově nezávislý</b> – popisuje barvu tak, jak ji vidí člověk.</div>
-<div class="term"><b>Lab (CIELAB)</b> – barevný model <b>nezávislý na zařízení</b>. Popisuje barvu tak, jak ji vidí člověk: <b>L</b> = světlost, <b>a</b> = osa zelená ↔ červená, <b>b</b> = osa modrá ↔ žlutá. Používá se při převodech barev a při měření spektrofotometrem.</div>
-<div class="term"><b>ICC profil</b> – soubor, který popisuje, jak barvy „vidí“ konkrétní zařízení (monitor, tiskový stroj + papír). Podle profilů se barvy převádějí, aby vypadaly všude co nejpodobněji. Celé řízení se jmenuje <b>správa barev</b> (color management).</div>
-<div class="term"><b>Přímá barva (spot color, např. Pantone)</b> – hotová, předem namíchaná tisková barva. Tiskne se samostatnou deskou. Použití: logo, firemní barvy, zlatá, stříbrná, neonové barvy – barvy, které z CMYK nesložíme.</div>
-<h3 id="a-mereni">Měření barev: denzitometrie, kolorimetrie, spektrofotometrie</h3>
-<div class="tablewrap"><table>
-<tr><th>Metoda</th><th>Přístroj</th><th>Co měří</th><th>Použití</th></tr>
-<tr><td><b>denzitometrie</b></td><td>denzitometr</td><td><b>optickou hustotu (denzitu)</b> – kolik barvy je na papíře; také plošné krytí rastru a přírůstek tónových hodnot</td><td>řízení množství barvy při tisku</td></tr>
-<tr><td><b>kolorimetrie</b></td><td>kolorimetr</td><td><b>barvu</b> tak, jak ji vnímá člověk – výsledek jako čísla (např. Lab)</td><td>porovnání barvy s předlohou</td></tr>
-<tr><td><b>spektrofotometrie</b></td><td>spektrofotometr</td><td>kolik světla se odráží v <b>každé vlnové délce</b>; z toho vypočítá Lab i denzitu</td><td>nejpřesnější měření, tvorba ICC profilů, kalibrace</td></tr>
-</table></div>
-<div class="term"><b>ΔE (delta E)</b> – číslo, které říká, jak moc se dvě barvy liší. Čím menší ΔE, tím jsou si barvy podobnější. Rozdíl kolem 1 člověk téměř nepozná.</div>
-<p>Měří se na <a href="#b-kontrola">kontrolním proužku</a>. Monitor se kalibruje sondou (kolorimetrem).</p>
-
-<p>Jak se z barevné předlohy dělají rastrové body, najdeš v <a class="xlink" href="../tema-06-predlohy-a-rastr/">Téma 6 – předlohy a rastr</a>.</p>
-</div>
-</section>
-
-<!-- ================= ČÁST B ================= -->
-<section id="cast-b">
-<h2><span class="num">4</span>B) Tisk z plochy</h2>
-<div class="card part-b">
-
-<h3 id="b-techniky">Kam tisk z plochy patří</h3>
-<p>Tiskové techniky se dělí podle toho, jak leží <b>tisknoucí</b> a <b>netisknoucí</b> místa na tiskové formě:</p>
-<figure>
-<svg viewBox="0 0 640 170" role="img" aria-label="Čtyři tiskové techniky: z výšky, z hloubky, z plochy a průtisk">
-  <g font-size="14" font-weight="700" text-anchor="middle">
-    <g transform="translate(10,10)">
-      <rect y="70" width="140" height="35" fill="#bbb"/><rect x="15" y="50" width="30" height="20" fill="#bbb"/><rect x="85" y="50" width="30" height="20" fill="#bbb"/>
-      <rect x="15" y="44" width="30" height="6" fill="#1d1d24"/><rect x="85" y="44" width="30" height="6" fill="#1d1d24"/>
-      <text x="70" y="130">z výšky</text><text x="70" y="150" font-weight="400" font-size="12">flexotisk, knihtisk</text>
-    </g>
-    <g transform="translate(170,10)">
-      <rect y="50" width="140" height="55" fill="#bbb"/><rect x="15" y="50" width="30" height="20" fill="#1d1d24"/><rect x="85" y="50" width="30" height="20" fill="#1d1d24"/>
-      <text x="70" y="130">z hloubky</text><text x="70" y="150" font-weight="400" font-size="12">hlubotisk</text>
-    </g>
-    <g transform="translate(330,10)">
-      <rect x="-6" y="42" width="152" height="68" rx="8" fill="none" stroke="#00a0e3" stroke-width="4"/>
-      <rect y="55" width="140" height="50" fill="#bbb"/><rect x="15" y="50" width="30" height="5" fill="#1d1d24"/><rect x="85" y="50" width="30" height="5" fill="#1d1d24"/>
-      <rect x="50" y="51" width="30" height="4" fill="#00a0e3"/><rect x="0" y="51" width="15" height="4" fill="#00a0e3"/><rect x="120" y="51" width="20" height="4" fill="#00a0e3"/>
-      <text x="70" y="130" fill="#0077aa">z plochy</text><text x="70" y="150" font-weight="400" font-size="12">ofset</text>
-    </g>
-    <g transform="translate(490,10)">
-      <rect y="50" width="140" height="10" fill="#bbb"/><rect x="20" y="50" width="25" height="10" fill="#fff" stroke="#bbb"/><rect x="90" y="50" width="25" height="10" fill="#fff" stroke="#bbb"/>
-      <rect x="20" y="62" width="25" height="5" fill="#1d1d24"/><rect x="90" y="62" width="25" height="5" fill="#1d1d24"/>
-      <text x="70" y="130">průtisk</text><text x="70" y="150" font-weight="400" font-size="12">sítotisk</text>
-    </g>
-  </g>
-</svg>
-<figcaption>Černě = tisková barva. Modře = vlhčicí roztok (voda). U tisku z plochy je všechno v jedné rovině.</figcaption>
-</figure>
-<p>Přehled všech technik a celé výroby: <a class="xlink" href="../tema-07-polygrafie-a-dokoncovani/">Téma 7 – polygrafie</a></p>
-
-<h3 id="b-princip">Princip tisku z plochy</h3>
-<div class="key"><b>Hlavní myšlenka:</b> tisknoucí i netisknoucí místa leží <b>v jedné rovině</b>. Odliší se <b>chemicky</b>: <b>voda a mastná barva se navzájem odpuzují</b>.</div>
-<figure>
-<svg viewBox="0 0 600 190" role="img" aria-label="Řez ofsetovou deskou: tisknoucí místa drží barvu, netisknoucí vodu">
-  <rect x="20" y="110" width="560" height="45" fill="#c9ccd1" stroke="#888"/>
-  <text x="300" y="139" font-size="14" text-anchor="middle">hliníková deska</text>
-  <rect x="20" y="100" width="560" height="10" fill="#e0e3e7"/>
-  <rect x="90" y="100" width="130" height="10" fill="#7a7f87"/><rect x="360" y="100" width="150" height="10" fill="#7a7f87"/>
-  <path d="M90 100 q65 -26 130 0 Z" fill="#1d1d24"/><path d="M360 100 q75 -28 150 0 Z" fill="#1d1d24"/>
-  <path d="M20 100 q35 -10 70 0 Z" fill="#7fd0f5"/><path d="M220 100 q70 -14 140 0 Z" fill="#7fd0f5"/><path d="M510 100 q35 -10 70 0 Z" fill="#7fd0f5"/>
-  <g font-size="13" text-anchor="middle">
-    <text x="155" y="60" font-weight="700">tisknoucí místo</text><text x="155" y="76">přijímá mastnou barvu</text>
-    <text x="290" y="60" font-weight="700" fill="#0077aa">netisknoucí místo</text><text x="290" y="76" fill="#0077aa">přijímá vodu</text>
-    <text x="435" y="60" font-weight="700">tisknoucí místo</text><text x="435" y="76">přijímá mastnou barvu</text>
-  </g>
-  <text x="300" y="180" font-size="12" text-anchor="middle" fill="#5d5d6b">Výškový rozdíl je jen několik mikrometrů – prakticky jedna rovina.</text>
-</svg>
-</figure>
-<div class="tablewrap"><table>
-<tr><th>Tisknoucí místa</th><th>Netisknoucí místa</th></tr>
-<tr><td><b>oleofilní</b> – přijímají mastnou barvu<br><b>hydrofobní</b> – odpuzují vodu</td><td><b>hydrofilní</b> – přijímají vodu<br><b>oleofobní</b> – odpuzují barvu</td></tr>
-</table></div>
-<p>Postup: deska se nejdřív navlhčí <b>vlhčicím roztokem</b> (voda drží jen na netisknoucích místech), potom se nabarví (barva se chytí jen na tisknoucích místech).</p>
-<div class="term"><b>Slovníček:</b> <i>hydro</i> = voda, <i>oleo</i> = olej (mastnota), <i>-filní</i> = má rád, přijímá, <i>-fobní</i> = nemá rád, odpuzuje.</div>
-
-<h3 id="b-historie">Historie: litografie (kamenotisk)</h3>
-<ul class="tight">
-  <li>Tisk z plochy vynalezl <b>Alois Senefelder</b> v Mnichově na konci 18. století (1796–1798).</li>
-  <li>Tiskovou formou byl <b>litografický kámen</b> (jemnozrnný vápenec). Obraz se kreslil mastnou tuší nebo křídou, kámen se vlhčil vodou a barvil.</li>
-  <li>Tiskovou formou byl kámen, proto <b>litografie</b> (řecky <i>lithos</i> = kámen, <i>grafein</i> = psát).</li>
-  <li>Na začátku 20. století vznikl <b>ofsetový tisk</b> (I. W. Rubel, USA, 1904) – nepřímý tisk z plochy přes pryžový válec. Kámen nahradily tenké kovové desky.</li>
-  <li>Dnes se litografie používá jako <b>umělecká grafická technika</b>.</li>
-</ul>
-
-<h3 id="b-ofset">Ofset – nepřímý tisk z plochy</h3>
-<p><b>Ofset</b> je dnes nejrozšířenější tisková technika. Je to <b>nepřímý</b> tisk: barva nejde z desky přímo na papír, ale přes <b>pryžový (ofsetový) potah</b>.</p>
-<div class="key"><b>Cesta barvy:</b> deska → pryžový potah → papír. <br>Obraz na desce je <b>čitelný</b>, na pryži <b>zrcadlově obrácený</b>, na papíře zase <b>čitelný</b>.</div>
-<p><b>Proč nepřímo?</b></p>
-<ul class="tight">
-  <li>deska se nedotýká papíru → <b>méně se opotřebuje</b>, vydrží velký náklad,</li>
-  <li>pružná pryž se <b>přizpůsobí povrchu papíru</b> → kvalitní tisk i na hrubší papír,</li>
-  <li>na papír se přenese <b>méně vody</b>.</li>
-</ul>
-
-<h3 id="b-valce">Tisková jednotka: tři válce</h3>
-<figure>
-<svg viewBox="0 0 600 330" role="img" aria-label="Schéma ofsetové tiskové jednotky">
-  <defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1d1d24"/></marker></defs>
-  <!-- vlhčení -->
-  <circle cx="115" cy="60" r="18" fill="#7fd0f5" stroke="#0077aa" stroke-width="2"/>
-  <circle cx="150" cy="95" r="14" fill="#bde7fa" stroke="#0077aa" stroke-width="2"/>
-  <rect x="80" y="20" width="60" height="14" rx="3" fill="#7fd0f5"/>
-  <!-- barvení -->
-  <circle cx="300" cy="35" r="16" fill="#555" stroke="#1d1d24" stroke-width="2"/>
-  <circle cx="270" cy="70" r="14" fill="#777" stroke="#1d1d24" stroke-width="2"/>
-  <circle cx="325" cy="72" r="14" fill="#777" stroke="#1d1d24" stroke-width="2"/>
-  <!-- formový -->
-  <circle cx="225" cy="150" r="58" fill="#d9dde2" stroke="#1d1d24" stroke-width="3"/>
-  <path d="M 225 92 A 58 58 0 0 1 283 150" fill="none" stroke="#7a7f87" stroke-width="7"/>
-  <!-- ofsetový -->
-  <circle cx="335" cy="225" r="58" fill="#3b3b44" stroke="#1d1d24" stroke-width="3"/>
-  <!-- tlakový -->
-  <circle cx="440" cy="295" r="58" fill="#eceae4" stroke="#1d1d24" stroke-width="3"/>
-  <!-- papír -->
-  <line x1="300" y1="290" x2="590" y2="248" stroke="#00a0e3" stroke-width="5" marker-end="url(#ar)"/>
-  <!-- popisky -->
-  <g font-size="13">
-    <text x="20" y="100" fill="#0077aa" font-weight="700">vlhčicí</text><text x="20" y="116" fill="#0077aa" font-weight="700">zařízení</text>
-    <text x="350" y="30" font-weight="700">barevnice</text><text x="350" y="46">(válečky s barvou)</text>
-    <text x="175" y="145" font-weight="700">formový</text><text x="190" y="162">válec</text><text x="177" y="178" font-size="11">(s deskou)</text>
-    <text x="300" y="220" fill="#fff" font-weight="700">ofsetový</text><text x="310" y="236" fill="#fff">válec</text><text x="303" y="252" fill="#fff" font-size="11">(s pryží)</text>
-    <text x="410" y="305" font-weight="700">tlakový</text><text x="418" y="321">válec</text>
-    <text x="490" y="235" fill="#0077aa" font-weight="700">papír</text>
-  </g>
-</svg>
-<figcaption>Formový válec předá barvu ofsetovému válci, ten ji otiskne na papír. Tlakový válec papír přitlačuje.</figcaption>
-</figure>
-<ol class="tight">
-  <li><b>Formový (deskový) válec</b> – je na něm upnutá tisková <b>deska</b>. Dotýkají se ho válečky vlhčicího zařízení a barevnice.</li>
-  <li><b>Ofsetový (přenosový) válec</b> – má <b>pryžový potah</b> (ofsetovou gumu). Barvu z desky převezme a předá na papír.</li>
-  <li><b>Tlakový (protitlakový) válec</b> – přitlačuje papír k ofsetovému válci.</li>
-</ol>
-<p>Pro barevný tisk CMYK potřebuje stroj <b>čtyři tiskové jednotky</b> za sebou – jednu pro každou barvu. Často se tiskne v pořadí <b>K – C – M – Y</b>. Za nimi může být ještě <b>lakovací věž</b>.</p>
-
-<h3 id="b-vlhceni">Vlhčení a barvení</h3>
-<ul class="tight">
-  <li><b>Vlhčicí roztok</b> = voda + přísady (dříve hlavně <b>isopropylalkohol IPA</b>, dnes se jeho množství snižuje), mírně kyselý (pH asi 5–5,5). Snižuje povrchové napětí, aby se voda lépe rozlila po desce.</li>
-  <li><b>Barevnice</b> = soustava válečků, které barvu z kalamáře roztírají na tenkou, rovnoměrnou vrstvu. Ofsetové barvy jsou <b>husté a mastné (pastózní)</b>.</li>
-  <li>Nejdůležitější je <b>rovnováha barva – voda</b>. Málo vody → barva jde i na netisknoucí místa (<a href="#b-vady">tónování</a>). Moc vody → barva je slabá a nestejnoměrná.</li>
-</ul>
-
-<h3 id="b-desky">Tiskové desky</h3>
-<ul class="tight">
-  <li>Materiál: tenký <b>hliník</b> (asi 0,15–0,3 mm). Povrch je <b>zdrsněný (zrněný)</b> a <b>eloxovaný</b> – lépe drží vodu a je odolnější.</li>
-  <li>Na hliníku je <b>světlocitlivá (nebo tepelně citlivá) vrstva</b>. Po osvitu a vyvolání z ní zůstanou tisknoucí místa.</li>
-  <li>Dnes se desky osvěcují přímo z dat laserem – technologie <b>CtP</b> (Computer to Plate). Existují i <b>bezprocesové desky</b>, které se nevyvolávají v chemii.</li>
-  <li>Pro každou barvu je jedna deska. Kolik desek je potřeba, spočítáš v <a href="#v-desky">příkladu 3</a>.</li>
-</ul>
-<p>Podrobněji o osvitu desek: <a class="xlink" href="../tema-11-ctf-ctp-ctpr-cts/">Téma 11 – CtF, CtP, CtPr, CtS</a></p>
-
-<h3 id="b-barvy">Ofsetové tiskové barvy a potiskované materiály</h3>
-<ul class="tight">
-  <li>Ofsetová barva = <b>pigment</b> (dává barvu) + <b>pojivo</b> (oleje, pryskyřice – drží pigment a přilne k papíru) + <b>přísady</b> (sikativy urychlují schnutí, vosky…).</li>
-  <li>Je <b>hustá, mastná (pastózní)</b> a nesmí se mísit s vodou.</li>
-  <li><b>Schnutí:</b> vsakováním do papíru, oxidací (barva tvrdne na vzduchu), u heatsetu odpařením horkým vzduchem, u <b>UV barev</b> okamžitě UV zářením.</li>
-  <li>Barvy pro tisk CMYK se vyrábějí podle normy (Euroskála, ISO 2846-1), aby všude vypadaly stejně.</li>
-  <li><b>Nebezpečí:</b> barvy, rozpouštědla a mycí prostředky dráždí kůži a dýchací cesty → rukavice, větrání. Zbytky a hadry od barvy jsou <b>nebezpečný odpad</b>.</li>
-</ul>
-<p><b>Materiály:</b> papíry <b>natírané (křídové)</b> – lesklé, matné; <b>nenatírané (ofsetové)</b> – kancelářské, knižní; <b>novinový papír</b>; lepenky a kartony na obaly; u UV ofsetu i fólie a plasty. Papír musí mít správnou vlhkost a směr vláken, jinak se deformuje (<a href="#b-vady">nesoutisk</a>).</p>
-
-<h3 id="b-stroje">Archové a kotoučové stroje</h3>
-<div class="tablewrap"><table>
-<tr><th></th><th>Archový ofset</th><th>Kotoučový (rotační) ofset</th></tr>
-<tr><td>Papír</td><td>jednotlivé <b>archy</b></td><td>papír z <b>kotouče (role)</b>, po tisku se řeže a skládá</td></tr>
-<tr><td>Náklad</td><td>malé a střední</td><td><b>velké</b></td></tr>
-<tr><td>Rychlost</td><td>asi 10 000–18 000 archů za hodinu</td><td>mnohem vyšší</td></tr>
-<tr><td>Použití</td><td>letáky, plakáty, knihy, katalogy, obaly</td><td><b>noviny</b>, časopisy, reklamní tiskoviny</td></tr>
-</table></div>
-<p><b>Malonákladové stroje (malý ofset)</b> – menší archové stroje (např. formát A3–B3), často jedno- nebo dvoubarevné. Pro hlavičkové papíry, formuláře, vizitky, malé letáky. Dnes je z velké části nahradil <b>digitální tisk</b>.</p>
-<p>Kotoučový ofset se dělí na:</p>
-<ul class="tight">
-  <li><b>heatset</b> – barva se suší <b>horkým vzduchem</b> v sušárně. Pro časopisy a katalogy na lesklém (křídovém) papíru.</li>
-  <li><b>coldset</b> – <b>bez sušárny</b>, barva se vsákne do savého papíru. Pro <b>noviny</b>.</li>
-</ul>
-<p>Pro archový tisk se data připravují vyřazením na arch: <a class="xlink" href="../tema-05-archova-montaz/">Téma 5 – archová montáž</a></p>
-
-<h3 id="b-suchy">Suchý ofset (bez vlhčení)</h3>
-<p><b>Suchý ofset</b> (angl. <i>waterless</i>) tiskne <b>bez vlhčicího roztoku</b>. Netisknoucí místa desky tvoří <b>silikonová vrstva</b>, která barvu odpuzuje. Výhody: ostřejší body, sytější barvy, není třeba hlídat rovnováhu barva – voda. Nevýhody: dražší desky a barvy, potřeba chlazení stroje.</p>
-
-<h3 id="b-vady">Vady ofsetového tisku</h3>
-<div class="tablewrap"><table>
-<tr><th>Vada</th><th>Co uvidím</th><th>Příčina</th></tr>
-<tr><td><b>tónování</b></td><td>barva i na netisknoucích místech (šedý závoj)</td><td>málo vlhčení</td></tr>
-<tr><td><b>přemokření</b></td><td>slabé, nestejnoměrné barvy</td><td>moc vlhčení</td></tr>
-<tr><td><b>nesoutisk</b></td><td>barvy na sobě přesně nesedí, barevné okraje</td><td>posun papíru, deformace papíru, špatné nastavení</td></tr>
-<tr><td><b>zdvojení (dublování)</b></td><td>tečky nebo čáry jsou dvakrát vedle sebe</td><td>posun papíru nebo potahu při přenosu</td></tr>
-<tr><td><b>přírůstek tónových hodnot</b></td><td>tisk je tmavší, body jsou větší</td><td>roztlačení barvy, savý papír</td></tr>
-<tr><td><b>obtiskávání</b></td><td>barva se otiskne na rub dalšího archu</td><td>moc barvy, barva nestihne zaschnout</td></tr>
-</table></div>
-<p>Přírůstek tónových hodnot souvisí s rastrem – viz <a class="xlink" href="../tema-06-predlohy-a-rastr/">Téma 6</a></p>
-
-<h3 id="b-kontrola">Kontrola kvality a barev</h3>
-<ul class="tight">
-  <li><b>Kontrolní (měrný) proužek</b> na okraji archu – políčka všech barev, která se měří.</li>
-  <li><b>Denzitometr</b> měří optickou hustotu (denzitu) barvy – jestli je jí na archu správné množství.</li>
-  <li><b>Spektrofotometr</b> měří barvu přesně, výsledek udává v hodnotách <a href="#a-modely">Lab</a>.</li>
-  <li><b>Soutiskové značky</b> – kontrola, jestli barvy na sobě přesně sedí.</li>
-  <li>Archy se hodnotí pod <b>normovaným světlem <a href="#a-osvetleni">D50</a></b> a porovnávají s <b>nátiskem</b> schváleným zákazníkem (imprimatur).</li>
-  <li>Pro ofset platí norma <b>ISO 12647-2</b> – určuje, jak mají vypadat barvy a přírůstek tónových hodnot.</li>
-</ul>
-
-<h3 id="b-vyhody">Výhody a nevýhody ofsetu</h3>
-<div class="tablewrap"><table>
-<tr><th>✅ Výhody</th><th>❌ Nevýhody</th></tr>
-<tr><td>vysoká kvalita a ostrost<br>nízká cena za kus při velkém nákladu<br>tisk na různé papíry<br>vysoká rychlost<br>lze tisknout přímé barvy a laky</td><td>drahá a dlouhá příprava (desky, seřízení)<br>nevýhodný pro malé náklady → tam je lepší digitální tisk<br>makulatura (zkušební archy) při seřizování<br>nutná rovnováha barva – voda<br>nelze tisknout proměnná data (každý kus jinak)</td></tr>
-</table></div>
-</div>
-</section>
-
-<!-- ================= VÝPOČTY ================= -->
-<section id="vypocty">
-<h2><span class="num">5</span>Výpočty krok za krokem</h2>
-
-<div class="calc" id="v-rgb">
-<b>Příklad 1: Kolik barev zobrazí monitor v RGB (8 bitů na kanál)?</b>
-<ol>
-  <li>Každý kanál (R, G, B) má hodnoty <b>0 až 255</b>. Počítáme i nulu, takže je to <code class="m">256</code> hodnot.</li>
-  <li>Všechny tři kanály můžeme libovolně kombinovat → hodnoty <b>vynásobíme</b>.</li>
-  <li>Nejdřív R × G: <code class="m">256 × 256 = 65 536</code></li>
-  <li>Výsledek krát B: <code class="m">65 536 × 256 = 16 777 216</code></li>
-</ol>
-<span class="res">≈ 16,7 milionu barev</span>
-</div>
-
-<div class="calc" id="v-kryti">
-<b>Příklad 2: Celkové krytí barvou (TAC)</b>
-<p style="margin:.3em 0">Celkové krytí = součet procent všech čtyř barev v jednom místě. Když je ho moc, barva neschne a obtiskává se.</p>
-<p style="margin:.3em 0">Barva ve tmavém místě fotky: <b>C 75 %, M 65 %, Y 60 %, K 90 %</b>.</p>
-<ol>
-  <li>Sečteme C a M: <code class="m">75 + 65 = 140</code></li>
-  <li>Přičteme Y: <code class="m">140 + 60 = 200</code></li>
-  <li>Přičteme K: <code class="m">200 + 90 = 290</code></li>
-  <li>Porovnáme s limitem. Pro křídový papír se obvykle uvádí <b>asi 300–330 %</b>, pro novinový papír méně (asi 240–260 %).</li>
-</ol>
-<span class="res">290 % → na křídový papír v pořádku, na noviny je to moc</span>
-<p style="margin:.5em 0 0;font-size:.92em">Maximum je 4 × 100 % = 400 %. To se ale nikdy netiskne.</p>
-</div>
-
-<div class="calc" id="v-desky">
-<b>Příklad 3: Kolik tiskových desek potřebuji?</b>
-<p style="margin:.3em 0">Zápis <b>4/4</b> znamená: líc 4 barvy / rub 4 barvy. Pro každou barvu na každé straně je jedna deska.</p>
-<ol>
-  <li>Leták <b>4/4</b>: líc 4 + rub 4 → <code class="m">4 + 4 = 8</code> desek.</li>
-  <li>Leták <b>4/1</b> (rub jen černě): <code class="m">4 + 1 = 5</code> desek.</li>
-  <li>Leták <b>4/0</b> (rub nepotištěný): <code class="m">4 + 0 = 4</code> desky.</li>
-  <li>Leták 4/4 + logo v přímé barvě Pantone na líci: <code class="m">(4 + 1) + 4 = 9</code> desek.</li>
-</ol>
-<span class="res">4/4 = 8 desek</span>
-</div>
-</section>
-
-<!-- ================= VÝLUH ================= -->
-<section id="vyluh">
-<h2><span class="num">⭐</span>Výluh: tohle musí zaznít</h2>
-<div class="noprint" style="margin-bottom:8px"><button class="btn light" onclick="tiskVyluh()">🖨️ Vytisknout výluh (A4)</button></div>
-
-<div class="vyluh-grid">
-  <div class="vk"><svg viewBox="0 0 92 92"><defs><linearGradient id="vs" x1="0" x2="1"><stop offset="0" stop-color="#5000a0"/><stop offset=".3" stop-color="#0090ff"/><stop offset=".5" stop-color="#00c060"/><stop offset=".7" stop-color="#ffe000"/><stop offset="1" stop-color="#ff1a00"/></linearGradient></defs><rect x="4" y="30" width="84" height="32" rx="5" fill="url(#vs)"/><text x="46" y="80" font-size="11" text-anchor="middle">380–780 nm</text></svg>
-    <div class="t"><b>Světlo</b><span>Barvu vidíme ze světla. Barva vzniká v mozku.</span> <a href="#a-svetlo">více</a></div></div>
-
-  <div class="vk"><svg viewBox="0 0 92 92"><circle cx="46" cy="46" r="36" fill="#fff" stroke="#1d1d24" stroke-width="3"/><circle cx="46" cy="46" r="15" fill="#3a6"/><circle cx="46" cy="46" r="7" fill="#000"/></svg>
-    <div class="t"><b>Čípky × tyčinky</b><span>Čípky = barvy (den). Tyčinky = šero.</span> <a href="#a-oko">více</a></div></div>
-
-  <div class="vk"><svg viewBox="0 0 92 92"><rect x="6" y="10" width="80" height="20" fill="#e53935"/><rect x="6" y="36" width="40" height="20" fill="#a08a8a"/><rect x="46" y="36" width="40" height="20" fill="#f01e14"/><rect x="6" y="62" width="40" height="20" fill="#5a1210"/><rect x="46" y="62" width="40" height="20" fill="#f5b5b3"/></svg>
-    <div class="t"><b>Odstín · sytost · jas</b><span>Tři vlastnosti každé barvy.</span> <a href="#a-vlastnosti">více</a></div></div>
-
-  <div class="vk"><svg viewBox="0 0 92 92"><rect width="92" height="92" rx="8" fill="#000"/><g style="isolation:isolate"><circle cx="46" cy="34" r="22" fill="#f00" style="mix-blend-mode:screen"/><circle cx="34" cy="56" r="22" fill="#0f0" style="mix-blend-mode:screen"/><circle cx="58" cy="56" r="22" fill="#00f" style="mix-blend-mode:screen"/></g></svg>
-    <div class="t"><b>Aditivní RGB</b><span>Světla se sčítají. Vše = bílá. Monitor.</span> <a href="#a-aditivni">více</a></div></div>
-
-  <div class="vk"><svg viewBox="0 0 92 92"><rect width="92" height="92" rx="8" fill="#fff" stroke="#ccc"/><g style="isolation:isolate"><circle cx="46" cy="34" r="22" fill="#00aeef" style="mix-blend-mode:multiply"/><circle cx="34" cy="56" r="22" fill="#ec008c" style="mix-blend-mode:multiply"/><circle cx="58" cy="56" r="22" fill="#fff200" style="mix-blend-mode:multiply"/></g></svg>
-    <div class="t"><b>Subtraktivní CMYK</b><span>Barvy pohlcují světlo. Tisk. K = černá.</span> <a href="#a-subtraktivni">více</a></div></div>
-
-  <div class="vk"><svg viewBox="0 0 92 92"><polygon points="10,82 40,8 86,80" fill="rgba(30,91,216,.2)" stroke="#1e5bd8" stroke-width="3"/><polygon points="26,74 40,36 66,38 70,74" fill="rgba(229,0,126,.25)" stroke="#e5007e" stroke-width="3"/></svg>
-    <div class="t"><b>Gamut</b><span>RGB má víc barev než CMYK. Hodnotit pod D50.</span> <a href="#a-gamut">více</a></div></div>
-
-  <div class="vk"><svg viewBox="0 0 92 92"><rect x="4" y="54" width="84" height="22" fill="#c9ccd1"/><path d="M10 54 q14 -14 28 0Z" fill="#1d1d24"/><path d="M38 54 q12 -8 24 0Z" fill="#7fd0f5"/><path d="M62 54 q12 -14 24 0Z" fill="#1d1d24"/><text x="46" y="30" font-size="12" text-anchor="middle">barva × voda</text></svg>
-    <div class="t"><b>Tisk z plochy</b><span>Vše v jedné rovině. Voda a mastná barva se odpuzují.</span> <a href="#b-princip">více</a></div></div>
-
-  <div class="vk"><svg viewBox="0 0 92 92"><circle cx="28" cy="26" r="17" fill="#d9dde2" stroke="#000" stroke-width="2"/><circle cx="50" cy="50" r="17" fill="#3b3b44" stroke="#000" stroke-width="2"/><circle cx="72" cy="74" r="15" fill="#eceae4" stroke="#000" stroke-width="2"/><line x1="40" y1="78" x2="92" y2="62" stroke="#00a0e3" stroke-width="3"/></svg>
-    <div class="t"><b>Ofset</b><span>Deska → guma → papír. Nepřímý tisk.</span> <a href="#b-ofset">více</a></div></div>
-</div>
-
-<div class="say"><b>Řekni u zkoušky:</b> „Barva je vjem, který vzniká v mozku ze světla 380–780 nm. Vnímáme ji čípky v sítnici. Aditivní míchání RGB sčítá světla – monitor. Subtraktivní míchání CMYK odečítá světlo – tisk. Tisk z plochy je ofset: tisknoucí i netisknoucí místa jsou v jedné rovině, odliší se tím, že voda a mastná barva se odpuzují. Ofset je nepřímý tisk: deska – pryžový válec – papír.“</div>
-
-<h3 class="noprint">Otoč kartičku: obrázek → pojem</h3>
-<div class="flips noprint">
-  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><rect width="92" height="92" rx="8" fill="#000"/><g style="isolation:isolate"><circle cx="46" cy="34" r="22" fill="#f00" style="mix-blend-mode:screen"/><circle cx="34" cy="56" r="22" fill="#0f0" style="mix-blend-mode:screen"/><circle cx="58" cy="56" r="22" fill="#00f" style="mix-blend-mode:screen"/></g></svg></div><div class="bk">aditivní míchání RGB</div></div></button>
-  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><rect width="92" height="92" rx="8" fill="#fff"/><g style="isolation:isolate"><circle cx="46" cy="34" r="22" fill="#00aeef" style="mix-blend-mode:multiply"/><circle cx="34" cy="56" r="22" fill="#ec008c" style="mix-blend-mode:multiply"/><circle cx="58" cy="56" r="22" fill="#fff200" style="mix-blend-mode:multiply"/></g></svg></div><div class="bk">subtraktivní míchání CMY(K)</div></div></button>
-  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><circle cx="46" cy="46" r="36" fill="#fff" stroke="#000" stroke-width="3"/><path d="M 72 21 A 36 36 0 0 1 72 71" fill="none" stroke="#e5007e" stroke-width="6"/></svg></div><div class="bk">sítnice (čípky a tyčinky)</div></div></button>
-  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><rect x="4" y="54" width="84" height="22" fill="#c9ccd1"/><path d="M10 54 q14 -14 28 0Z" fill="#1d1d24"/><path d="M38 54 q12 -8 24 0Z" fill="#7fd0f5"/><path d="M62 54 q12 -14 24 0Z" fill="#1d1d24"/></svg></div><div class="bk">tisk z plochy (voda × barva)</div></div></button>
-  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><circle cx="28" cy="26" r="17" fill="#d9dde2" stroke="#000" stroke-width="2"/><circle cx="50" cy="50" r="17" fill="#3b3b44" stroke="#000" stroke-width="2"/><circle cx="72" cy="74" r="15" fill="#eceae4" stroke="#000" stroke-width="2"/></svg></div><div class="bk">ofset: formový, ofsetový, tlakový válec</div></div></button>
-  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><rect x="8" y="20" width="76" height="52" rx="6" fill="#fffbe8" stroke="#b08a00" stroke-width="3"/><text x="46" y="54" font-size="20" font-weight="800" text-anchor="middle">5000 K</text></svg></div><div class="bk">D50 – normované světlo</div></div></button>
-</div>
-
-<h3 class="noprint">Rychlé otázky</h3>
-<div class="noprint">
-  <details class="qq"><summary>Co vznikne smícháním všech světel RGB?</summary><p>bílá</p></details>
-  <details class="qq"><summary>Proč se k CMY přidává K?</summary><p>C + M + Y dá jen tmavě hnědou → černá je hlubší, text ostrý, úspora barev</p></details>
-  <details class="qq"><summary>Které buňky v oku vnímají barvy?</summary><p>čípky</p></details>
-  <details class="qq"><summary>Co se odpuzuje u tisku z plochy?</summary><p>voda a mastná barva</p></details>
-  <details class="qq"><summary>Proč je ofset „nepřímý“?</summary><p>barva jde z desky na pryžový válec a teprve z něj na papír</p></details>
-</div>
-</section>
-
-<!-- ================= TEST PSANÍM ================= -->
-<section id="test">
-<h2><span class="num">6</span>Test psaním</h2>
-<div class="key"><b>Úkol:</b> odpověz <b>vlastními slovy</b> → klikni <b>Zkontrolovat</b> → doplň, co chybí.</div>
-<div id="wtBox"></div>
-</section>
-
-<!-- ================= KVÍZ ================= -->
-<section id="kviz">
-<h2><span class="num">7</span>Kvíz</h2>
-<div id="kvizBox"></div>
-<p id="kvizScore"></p>
-<button class="btn light" onclick="resetKviz()">Začít znovu</button>
-</section>
-
-<footer>Téma 9 · Ústní zkouška – reprodukční grafik · <a href="../">zpět na rozcestník</a></footer>
-</main>
-
-<button id="back" type="button">⬆ Zpět na mapu</button>
-
-<script>
-/* ---------- plovoucí šipka zpět ---------- */
-(function(){
-  var back=document.getElementById('back'), origin=null;
-  var names={mapa:'na mapu',umet:'na „Co mám umět“',vyluh:'na výluh'};
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href^="#"]'); if(!a) return;
-    var id=a.getAttribute('href').slice(1); if(!id) return;
-    var from=a.closest('section');
-    if(from && names[from.id]){ origin=a; back.textContent='⬆ Zpět '+names[from.id]; }
-    else if(a.closest('nav.menu')){ origin=null; back.textContent='⬆ Zpět na mapu'; }
-  });
-  back.addEventListener('click',function(){
-    var t=origin||document.getElementById('mapa');
-    t.scrollIntoView({behavior:'smooth',block:'center'});
-    if(origin){ origin.style.outline='3px solid #6a3fd0'; var o=origin; setTimeout(function(){o.style.outline='';},1500); }
-    origin=null; back.textContent='⬆ Zpět na mapu';
-  });
-  function upd(){
-    var m=document.getElementById('mapa').getBoundingClientRect();
-    back.classList.toggle('show', m.bottom<0);
-  }
-  window.addEventListener('scroll',upd,{passive:true}); upd();
-})();
-
-/* ---------- checklist (uložení) ---------- */
-(function(){
-  var boxes=document.querySelectorAll('#checklist input'), key='t09-check';
-  var saved=[]; try{ saved=JSON.parse(localStorage.getItem(key)||'[]'); }catch(e){}
-  boxes.forEach(function(b,i){ b.checked=!!saved[i];
-    b.addEventListener('change',function(){ var s=[]; boxes.forEach(function(x){s.push(x.checked)}); try{localStorage.setItem(key,JSON.stringify(s));}catch(e){} });
-  });
-})();
-
-/* ---------- míchání ---------- */
-function mixer(id,cb){
-  var box=document.getElementById(id), inputs=box.querySelectorAll('input');
-  function run(){ var v={}; inputs.forEach(function(i){ v[i.dataset.ch]=+i.value; i.nextElementSibling.textContent=i.value; }); cb(v); }
-  inputs.forEach(function(i){ i.addEventListener('input',run); }); run();
-}
-mixer('rgbMix',function(v){ document.getElementById('rgbSw').style.background='rgb('+v.r+','+v.g+','+v.b+')'; });
-mixer('cmyMix',function(v){
-  var r=255*(1-v.c/100*0.95), g=255*(1-v.m/100*0.9), b=255*(1-v.y/100*0.95);
-  // nedokonalost pigmentů: azurová trochu pohlcuje zelenou, purpurová modrou
-  g*= (1-v.c/100*0.25); b*=(1-v.m/100*0.45);
-  document.getElementById('cmySw').style.background='rgb('+Math.round(r)+','+Math.round(g)+','+Math.round(b)+')';
-});
-
-/* ---------- otočné kartičky ---------- */
-document.querySelectorAll('.flip').forEach(function(f){ f.addEventListener('click',function(){ f.classList.toggle('on'); }); });
-
-/* ---------- tisk výluhu ---------- */
-function tiskVyluh(){ document.body.classList.add('tisk-vyluh'); window.print(); setTimeout(function(){document.body.classList.remove('tisk-vyluh');},500); }
-
-/* ---------- test psaním ---------- */
-function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
-var WT=[
- {q:'Vysvětli aditivní míchání barev.',
-  keys:[
-   {l:'mícháme světla (sčítání)',p:/svetl|scit|pricit|aditiv/},
-   {l:'základní barvy R, G, B (červená, zelená, modrá)',p:/rgb|(cerven.*zelen.*modr)|(r\s*,?\s*g\s*,?\s*b)/},
-   {l:'všechny dohromady = bílá',p:/bil/},
-   {l:'použití: monitor, displej, projektor…',p:/monitor|displej|obrazovk|projektor|televiz|mobil|telefon|fotoapar|sken/}],
-  err:[{p:/cmyk|azur|purpur/,m:'Azurová, purpurová, CMYK patří k subtraktivnímu míchání. U aditivního jsou základní R, G, B.'},
-       {p:/(vsechn|dohromady|smichan)[^.]{0,40}cern/,m:'Všechna světla RGB dohromady dají bílou, ne černou.'}],
-  vzor:'Aditivní míchání je sčítání světel. Základní barvy jsou červená, zelená a modrá (RGB). Začínáme od tmy, přidáváním světla je barva světlejší. Všechna tři světla dohromady dají bílou. Používá se v monitorech, mobilech, projektorech a fotoaparátech.'},
- {q:'Vysvětli subtraktivní míchání barev. Proč se tiskne i černá?',
-  keys:[
-   {l:'základní barvy C, M, Y (azurová, purpurová, žlutá)',p:/cmy|azur|purpur|cyan|magent/},
-   {l:'barvy pohlcují (odečítají) světlo',p:/pohlc|odecit|odebir|absorb|subtrakt/},
-   {l:'použití: tisk',p:/tisk/},
-   {l:'C + M + Y nedá čistou černou (jen hnědou)',p:/hned|necist|nedokonal|spinav|neni (to )?(cist|opravdov)|tmave/},
-   {l:'K = černá (ostrý text, hlubší černá, úspora)',p:/cern|key|\bk\b/}],
-  err:[{p:/(vsechn|dohromady|smichan)[^.]{0,40}bil/,m:'Tiskové barvy dohromady nedají bílou – bílá je papír. Dohromady dají tmavou barvu.'},
-       {p:/monitor|displej/,m:'Zkontroluj: monitor pracuje s RGB (aditivně), ne s CMYK.'}],
-  vzor:'Subtraktivní míchání je míchání barev (pigmentů). Základní barvy jsou azurová, purpurová a žlutá (CMY). Každá barva část světla pohltí, odečte. Začínáme od bílého papíru, čím víc barvy, tím je výsledek tmavší. Používá se v tisku. C + M + Y nedá čistou černou, jen tmavě hnědou, proto se přidává černá K – je hlubší, text je ostrý a ušetří se barvy.'},
- {q:'Jak vnímá barvy lidské oko?',
-  keys:[
-   {l:'světlo 380–780 nm',p:/nm|nanometr|vlnov|380|780/},
-   {l:'sítnice',p:/sitnic/},
-   {l:'čípky – barvy, za dne',p:/cip/},
-   {l:'tyčinky – šero, černobíle',p:/tycin/},
-   {l:'signál jde do mozku',p:/mozek|mozk|nerv/}],
-  err:[{p:/tycin\w*[^.]{0,25}(barv|barev)/,m:'Pozor: barvy vnímají čípky. Tyčinky vnímají jen světlo a tmu.'}],
-  vzor:'Oko vidí světlo o vlnové délce asi 380–780 nm. Světlo projde rohovkou a čočkou a dopadne na sítnici. Na sítnici jsou čípky, které vnímají barvy a pracují za dne – jsou tři druhy (pro červenou, zelenou a modrou). Tyčinky vnímají jen světlo a tmu a pracují za šera. Signál jde zrakovým nervem do mozku, kde vzniká vjem barvy.'},
- {q:'Vysvětli princip tisku z plochy.',
-  keys:[
-   {l:'tisknoucí i netisknoucí místa v jedné rovině',p:/rovin|jedne urovni|stejne vysk|plos/},
-   {l:'voda a mastná barva se odpuzují',p:/odpuz|nemichaj|voda a (mastn|olej)|mastn/},
-   {l:'tisknoucí místa přijímají barvu',p:/tisknouc|oleofil|prijima\w* barv/},
-   {l:'netisknoucí místa přijímají vodu',p:/netisknouc|hydrofil|prijima\w* vod/},
-   {l:'litografie / Senefelder / ofset',p:/litograf|kamenotisk|senefeld|ofset/}],
-  err:[{p:/vyvyse|vyssi|vystupuj/,m:'U tisku z plochy nejsou tisknoucí místa vyvýšená – to je tisk z výšky.'},
-       {p:/prohlub|hloubk/,m:'Zkontroluj: prohloubená tisknoucí místa má hlubotisk, ne tisk z plochy.'}],
-  vzor:'U tisku z plochy leží tisknoucí i netisknoucí místa v jedné rovině. Odliší se chemicky – voda a mastná barva se odpuzují. Netisknoucí místa jsou hydrofilní, přijímají vodu. Tisknoucí místa jsou oleofilní, přijímají mastnou barvu. Deska se nejdřív vlhčí a pak barví. Vynalezl ho Alois Senefelder (litografie), dnes je to ofset.'},
- {q:'Jak funguje ofsetový tiskový stroj?',
-  keys:[
-   {l:'nepřímý tisk',p:/neprim/},
-   {l:'formový válec s deskou',p:/formov|deskov|desk/},
-   {l:'ofsetový válec s pryží (gumou)',p:/ofsetov\w* val|prenos|pryz|gum/},
-   {l:'tlakový válec přitlačuje papír',p:/tlakov|protitlak|pritlac/},
-   {l:'vlhčení a barvení desky',p:/vlhc/}],
-  err:[{p:/(^|[^e])prim\w* tisk|primo na papir/,m:'Ofset je nepřímý tisk – barva jde z desky nejdřív na pryžový válec.'},
-       {p:/zrcadl\w*[^.]{0,30}desk|desk\w*[^.]{0,30}zrcadl/,m:'Zkontroluj: obraz na ofsetové desce je čitelný, zrcadlově obrácený je na pryži.'}],
-  vzor:'Ofset je nepřímý tisk z plochy. Deska je upnutá na formovém válci. Válečky ji nejdřív navlhčí vlhčicím roztokem a pak nabarví. Barva se z desky přenese na ofsetový válec s pryžovým potahem a z něj na papír. Papír k ofsetovému válci přitlačuje tlakový válec. Pro CMYK jsou za sebou čtyři tiskové jednotky.'},
- {q:'Porovnej archový a kotoučový ofset.',
-  keys:[
-   {l:'archový: jednotlivé archy',p:/arch/},
-   {l:'kotoučový: papír z role (kotouče)',p:/kotouc|role|rotac/},
-   {l:'náklad (malý/střední × velký)',p:/naklad|kus|mnozstv/},
-   {l:'použití: noviny, časopisy × letáky, knihy',p:/novin|casopis/},
-   {l:'heatset × coldset (sušení)',p:/heatset|coldset|sus/}],
-  err:[{p:/novin\w*[^.]{0,30}archov|archov\w*[^.]{0,30}novin/,m:'Zkontroluj: noviny se tisknou na kotoučových strojích (coldset).'}],
-  vzor:'Archový ofset tiskne na jednotlivé archy, hodí se pro malé a střední náklady – letáky, plakáty, knihy. Kotoučový ofset tiskne na papír z role, je rychlejší a hodí se pro velké náklady – noviny a časopisy. Kotoučový se dělí na heatset (sušení horkým vzduchem, časopisy) a coldset (bez sušení, noviny).'}
-];
-(function(){
-  var box=document.getElementById('wtBox');
-  WT.forEach(function(t,i){
-    var d=document.createElement('div'); d.className='card wt';
-    d.innerHTML='<b>'+(i+1)+'. '+t.q+'</b><textarea id="wt'+i+'" placeholder="Napiš odpověď…"></textarea>'+
-      '<button class="btn" data-i="'+i+'">Zkontrolovat</button><button class="btn light" data-v="'+i+'">Vzorová odpověď</button><div class="fb" id="fb'+i+'"></div>';
-    box.appendChild(d);
-  });
-  box.addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b) return;
-    if(b.dataset.v!==undefined){ var j=+b.dataset.v, f=document.getElementById('fb'+j);
-      var ex=f.querySelector('.vzor'); if(ex){ex.remove();return;}
-      f.insertAdjacentHTML('beforeend','<div class="vzor"><b>Vzor:</b> '+WT[j].vzor+'</div>'); return; }
-    if(b.dataset.i===undefined) return;
-    var i=+b.dataset.i, t=WT[i], txt=norm(document.getElementById('wt'+i).value), fb=document.getElementById('fb'+i);
-    if(txt.trim().length<10){ fb.innerHTML='<p class="wr">Napiš aspoň jednu celou větu.</p>'; return; }
-    var ok=[],no=[],er=[];
-    t.keys.forEach(function(k){ (k.p.test(txt)?ok:no).push(k.l); });
-    t.err.forEach(function(e){ if(e.p.test(txt)) er.push(e.m); });
-    var h='<p class="score">Máš '+ok.length+' z '+t.keys.length+' důležitých bodů.</p>';
-    if(ok.length) h+='<p class="ok"><b>✅ Zmínil/a jsi:</b></p><ul>'+ok.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
-    if(no.length) h+='<p class="no"><b>❌ Chybí:</b></p><ul>'+no.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
-    if(er.length) h+='<p class="wr"><b>⚠️ Pozor na chybu:</b></p><ul>'+er.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
-    h+='<div class="vzor"><b>Vzor:</b> '+t.vzor+'</div>';
-    fb.innerHTML=h;
-  });
-})();
-
-/* ---------- kvíz ---------- */
-var KV=[
- {q:'Jaký je rozsah viditelného světla?',a:['asi 38–78 nm','asi 380–780 nm','asi 3 800–7 800 nm'],c:1,e:'Viditelné světlo má vlnovou délku zhruba 380–780 nm.'},
- {q:'Které buňky v oku vnímají barvy?',a:['tyčinky','čípky','čočka'],c:1,e:'Barvy vnímají čípky. Tyčinky pracují za šera.'},
- {q:'Co vznikne aditivním smícháním R + G?',a:['žlutá','azurová','purpurová'],c:0,e:'Červené + zelené světlo = žlutá.'},
- {q:'Co vznikne přetiskem C + Y?',a:['modrá','červená','zelená'],c:2,e:'Azurová + žlutá = zelená.'},
- {q:'Kterou barvu světla pohlcuje azurová (C)?',a:['červenou','zelenou','modrou'],c:0,e:'Azurová je doplňková k červené – červenou pohltí.'},
- {q:'Proč se k CMY přidává černá K?',a:['protože CMY nejde tisknout','C + M + Y dá jen tmavě hnědou','černá je nejdražší'],c:1,e:'Tiskové barvy nejsou dokonale čisté, černá je hlubší a text ostrý.'},
- {q:'Co je D50?',a:['normované světlo 5 000 K','barevný profil monitoru','druh tiskové desky'],c:0,e:'D50 je normované světlo, při kterém se v polygrafii hodnotí barvy.'},
- {q:'Dvě barvy vypadají stejně jen při jednom světle. Jak se tomu říká?',a:['gamut','metamerie','separace'],c:1,e:'Metamerie – barvy jsou stejné jen při určitém osvětlení.'},
- {q:'Který gamut je větší?',a:['CMYK','RGB','jsou stejné'],c:1,e:'RGB (monitor) zobrazí víc barev, než lze vytisknout v CMYK.'},
- {q:'Na čem stojí princip tisku z plochy?',a:['tisknoucí místa jsou vyvýšená','voda a mastná barva se odpuzují','barva prochází sítem'],c:1,e:'Tisknoucí i netisknoucí místa jsou v jedné rovině, odliší je voda × mastná barva.'},
- {q:'Jaký je správný přenos barvy v ofsetu?',a:['deska → papír','deska → pryžový válec → papír','pryžový válec → deska → papír'],c:1,e:'Ofset je nepřímý tisk – přes pryžový (ofsetový) válec.'},
- {q:'Co je tónování?',a:['barva i na netisknoucích místech','slabá barva z velkého množství vody','posun barev'],c:0,e:'Tónování vzniká hlavně při nedostatku vlhčení.'},
- {q:'Na jakém stroji se tisknou noviny?',a:['archový ofset','kotoučový ofset coldset','kotoučový ofset heatset'],c:1,e:'Noviny: kotoučový ofset bez sušení – coldset.'},
- {q:'Kdo vynalezl litografii?',a:['Johannes Gutenberg','Alois Senefelder','Ira W. Rubel'],c:1,e:'Alois Senefelder, konec 18. století. Rubel stojí za ofsetem.'},
- {q:'Který barvový prostor je přístrojově nezávislý?',a:['RGB','CMYK','CIELAB'],c:2,e:'CIELAB popisuje barvu jako člověk, nezávisle na zařízení.'},
- {q:'Co měří denzitometr?',a:['optickou hustotu barvy','vlnovou délku světla zdroje','tloušťku papíru'],c:0,e:'Denzitometr měří denzitu – kolik barvy je na papíře.'},
- {q:'Která barva působí uklidňujícím a vzdáleným dojmem?',a:['červená','modrá','oranžová'],c:1,e:'Modrá je studená barva – ustupuje a uklidňuje.'},
- {q:'Kolik desek potřebuje leták 4/4?',a:['4','6','8'],c:2,e:'4 desky na líc + 4 na rub = 8.'}
-];
-var kvOk=0,kvDone=0;
-function renderKviz(){
-  var box=document.getElementById('kvizBox'); box.innerHTML=''; kvOk=0; kvDone=0;
-  KV.forEach(function(k,i){
-    var d=document.createElement('div'); d.className='kq';
-    d.innerHTML='<p>'+(i+1)+'. '+k.q+'</p>'+k.a.map(function(a,j){return '<button data-j="'+j+'">'+a+'</button>'}).join('')+'<div class="ex">'+k.e+'</div>';
-    d.addEventListener('click',function(e){
-      var b=e.target.closest('button'); if(!b||d.classList.contains('done')) return;
-      d.classList.add('done'); kvDone++;
-      var j=+b.dataset.j; d.querySelectorAll('button')[k.c].classList.add('good');
-      if(j===k.c) kvOk++; else b.classList.add('badc');
-      document.getElementById('kvizScore').textContent='Výsledek: '+kvOk+' / '+kvDone+(kvDone===KV.length?(kvOk>=14?' 🎉 Výborně!':' – projdi si vysvětlení a zkus to znovu.'):'');
-    });
-    box.appendChild(d);
-  });
-  document.getElementById('kvizScore').textContent='';
-}
-function resetKviz(){ renderKviz(); document.getElementById('kviz').scrollIntoView({behavior:'smooth'}); }
-renderKviz();
-</script>
 </body>
 </html>
