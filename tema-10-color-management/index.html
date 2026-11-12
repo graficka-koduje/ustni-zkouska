@@ -186,6 +186,36 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
 .lab3 div{background:#fff;border:3px solid var(--accent);border-radius:14px;padding:10px;text-align:center}
 .lab3 span{display:block;font-size:2em}
 .lab3 b{display:block;font-size:1.08em}
+
+/* ===== 📝 PÍSEMKA – jednotný zelený rámeček ===== */
+.pis{border:3px solid #0f766e;background:#effaf8;color:#1b1c1f;border-radius:14px;padding:0 12px 10px;margin:14px 0}
+.pis-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;background:#0f766e;color:#fff;margin:0 -12px 8px;border-radius:10px 10px 0 0;padding:6px 12px;font-weight:800;font-size:.92em;letter-spacing:.02em}
+.pis-q{font-weight:700;margin:.3em 0}
+.pis ul,.pis ol{margin:.3em 0;padding-left:1.4em}
+.pis details{margin-top:8px}
+.pis summary{cursor:pointer;font-weight:800;color:#0f766e}
+.pis details>p{background:#fff;color:#1b1c1f;border:1px solid #bfe3dc;border-radius:10px;padding:8px 12px;margin:6px 0 0}
+.pis-legend{display:flex;gap:10px;align-items:center;background:#effaf8;color:#1b1c1f;border:2px dashed #0f766e;border-radius:12px;padding:10px 12px;margin:16px 0 0}
+.pis-badge{background:#0f766e;color:#fff;padding:3px 9px;border-radius:8px;font-weight:800;white-space:nowrap}
+.pis-list{display:grid;grid-template-columns:1fr;gap:8px;margin:10px 0}
+.pis-list a{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#fff;color:#1b1c1f;border:2px solid #0f766e;border-radius:10px;padding:8px 12px;text-decoration:none}
+.pis-list a span{background:#0f766e;color:#fff;border-radius:8px;padding:1px 8px;font-weight:800;font-size:.85em;white-space:nowrap}
+.pis-list a.ext{border-style:dashed}
+.pis-simple{background:#e8f6ee;color:#1b1c1f;border:2px solid #2e9e48;border-radius:12px;padding:10px 12px;margin:10px 0;font-size:1.03em}
+.pis-simple b:first-child{color:#1f6e3a}
+.pis-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+.pis-grid div{background:#fff;color:#1b1c1f;border:2px solid #dcdcd6;border-radius:12px;padding:8px;text-align:center;font-weight:700;font-size:.93em}
+.pis-grid span{display:block;font-size:1.6em}
+.pis-table{width:100%;border-collapse:collapse;background:#fff;color:#1b1c1f;font-size:.95em;margin:8px 0}
+.pis-table th,.pis-table td{border:1px solid #dcdcd6;padding:6px 8px;text-align:left;vertical-align:top}
+.pis-table th{background:#effaf8}
+.pis-wrap{overflow-x:auto}
+.pis-fig{margin:10px 0;text-align:center}
+.pis-fig svg{width:100%;max-width:620px;height:auto;background:#fff;border-radius:10px}
+.pis-fig figcaption{font-size:.88em;color:#5d6068}
+.pis-more{font-size:.92em}
+@media(min-width:620px){.pis-list{grid-template-columns:1fr 1fr}.pis-grid{grid-template-columns:repeat(4,1fr)}}
+@media print{.pis details{display:none}}
 </style>
 </head>
 <body>
@@ -205,6 +235,7 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
     <a href="#mapa" class="hl">🗺️ Mapa</a>
     <a href="#vyluh">⭐ Výluh</a>
     <a href="#umet">✅ Co mám umět</a>
+    <a href="#pisemka">📝 Písemka</a>
     <a href="#cast-a">🎨 Správa barev</a>
     <a href="#a-lab">🌐 CIELAB</a>
     <a href="#cast-b">🪨 Litografie a ofset</a>
@@ -216,10 +247,15 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
 
 <main class="wrap">
 
+<div class="pis-legend">
+  <span class="pis-badge">📝 PÍSEMKA</span>
+  <span><b>Zelený rámeček se značkou 📝</b> = <b>stejné učivo je i v písemné závěrečné zkoušce.</b> Naučíš se ho jednou a použiješ ho dvakrát: u písemky i u ústní zkoušky.</span>
+</div>
+
 <!-- ================= MAPA ================= -->
 <section id="mapa">
   <h2><span class="num">1</span>Myšlenková mapa</h2>
-  <div class="key"><b>Na potítku:</b> jdi po větvích <b>shora dolů</b>. Ke každému pojmu řekni <b>1–2 věty</b>. Klikni na pojem = podrobnosti. <b>Žluté pojmy</b> jsou nejdůležitější.</div>
+  <div class="key"><b>Na potítku:</b> jdi po větvích <b>shora dolů</b>. Ke každému pojmu řekni <b>1–2 věty</b>. Klikni na pojem = podrobnosti. <b>Žluté pojmy</b> jsou nejdůležitější. Pojmy se značkou <b>📝</b> jsou i v písemce.</div>
 
   <div class="mapa">
     <div class="center">TÉMA 10<span>aby barvy vypadaly všude stejně (pomáhá Lab) + litografie a ofset</span></div>
@@ -280,10 +316,12 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
         <a href="#b-priprava">příprava a tisk</a>
         <a href="#b-suseni">sušení, lak, UV</a>
         <a href="#b-stroje">typy strojů</a>
+        <a href="#b-kotoucovy">📝 kotoučový ofset – co tiskne</a>
       </div>
       <p class="q"><span class="step">5.</span> Kvalita a hodnocení</p>
       <div class="nodes">
         <a href="#b-standard">standardizovaný tisk</a>
+        <a href="#b-kontrola">📝 jak se měří kvalita (denzitometr)</a>
         <a href="#b-vady">vady tisku</a>
         <a href="#b-vyhody">výhody × nevýhody</a>
         <a href="#b-pouziti">použití</a>
@@ -309,9 +347,18 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
     <label><input type="checkbox"><span>Popíšu <a href="#b-senefelder">historii</a> a <a href="#b-postup">postup litografie</a> a vím, <a href="#b-litodnes">kde se používá dnes</a>.</span></label>
     <label><input type="checkbox"><span>Popíšu <a href="#b-ofset">ofset</a>: <a href="#b-jednotka">tiskovou jednotku</a>, <a href="#b-vlhceni">vlhčení</a> a <a href="#b-desky">výrobu tiskových forem</a>.</span></label>
     <label><input type="checkbox"><span>Popíšu <a href="#b-priprava">průběh zakázky na ofsetovém stroji</a>, <a href="#b-suseni">sušení a zušlechťování</a> a <a href="#b-stroje">typy strojů</a>.</span></label>
+    <label><input type="checkbox"><span>📝 Vyjmenuji aspoň 6 výrobků, <a href="#b-kotoucovy">které se tisknou kotoučovým ofsetem</a>.</span></label>
     <label><input type="checkbox"><span>Vysvětlím <a href="#b-standard">kontrolu kvality podle norem</a>, poznám <a href="#b-vady">vady tisku</a> a zhodnotím <a href="#b-vyhody">výhody a nevýhody ofsetu</a>.</span></label>
+    <label><input type="checkbox"><span>📝 Vysvětlím, <a href="#b-kontrola">jak se měří kvalita tisku</a> (denzitometr, měrný proužek).</span></label>
     <label><input type="checkbox"><span>Spočítám <a href="#vypocty">barevnou odchylku ΔE a celkové krytí barvou</a>.</span></label>
   </div>
+</section>
+
+<!-- ================= PÍSEMKA ================= -->
+<section id="pisemka">
+  <h2><span class="num">📝</span>Co z tohoto tématu je i v písemce</h2>
+  <p>Tyto otázky se objevují v <b>písemné závěrečné zkoušce</b>. V lekci je najdeš v <b>zeleném rámečku 📝</b> – vysvětlené jednoduše, s obrázkem a se <b>vzorovou odpovědí do písemky</b>.</p>
+  <div class="pis-list"><a href="#b-kontrola"><b>Kontrola kvality tisku</b><span>2 body</span></a><a href="#b-kotoucovy"><b>Uplatnění kotoučového ofsetu</b><span>6 bodů</span></a><a href="../tema-07-polygrafie-a-dokoncovani/#kvalita" class="ext"><b>Faktory ovlivňující kvalitu → téma 7</b><span>5 bodů</span></a><a href="../tema-07-polygrafie-a-dokoncovani/#hodnoceni" class="ext"><b>Hodnotící prvky kvality → téma 7</b><span>3 body</span></a></div><p style="font-size:.9em;opacity:.8">V tomto tématu 8 bodů. Čárkované odkazy vedou do tématu 7, kde je zbytek písemkových otázek o kvalitě tisku.</p>
 </section>
 
 <!-- ================= ČÁST A ================= -->
@@ -812,6 +859,17 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
 </table></div>
 <p>Stroje se dělí také podle <b>formátu</b> (malo-, středo-, velkoformátové) a podle <b>počtu tiskových jednotek</b>. Zvláštní druh je <b>suchý ofset</b> (bez vlhčení, netisknoucí místa tvoří silikonová vrstva). Podrobně: <a class="xlink" href="../tema-09-teorie-barevnosti/#b-stroje">Téma 9 – typy strojů</a></p>
 
+<h4 id="b-kotoucovy">📝 Kotoučový ofset – co se jím tiskne</h4>
+<div class="pis-simple"><b>🟢 Jednoduše:</b> kotoučový ofset tiskne z <b>role papíru</b> velké náklady – hlavně <b>noviny a časopisy</b>. Pozor: <b>noviny = kotoučový ofset</b>, ne hlubotisk.</div>
+<div class="pis-grid"><div><span>📰</span>noviny</div><div><span>📖</span>časopisy</div><div><span>🚆</span>jízdní řády</div><div><span>☎️</span>telefonní seznamy</div><div><span>💶</span>ceniny</div><div><span>🛍️</span>katalogy</div><div><span>📚</span>publikace</div><div><span>📣</span>reklamní tiskoviny</div></div>
+<div class="pis">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Uplatnění kotoučového ofsetu · 6 bodů</span></div>
+  <p class="pis-q">Jaké výrobky se tisknou kotoučovým ofsetem? Uveďte alespoň šest.</p>
+  <p>noviny · časopisy · jízdní řády · telefonní seznamy · ceniny · katalogy · publikace · reklamní tiskoviny</p>
+  <details><summary>Odpověď do písemky (vzor)</summary><p>Kotoučovým ofsetem se tisknou noviny, časopisy, jízdní řády, telefonní seznamy, ceniny, katalogy, publikace a reklamní tiskoviny.</p></details>
+</div>
+<p class="pis-more">Čím se liší od hlubotisku (časopisy, katalogy, obaly v obrovských nákladech): <a class="xlink" href="../tema-11-ctf-ctp-ctpr-cts/#b-pouziti">Téma 11 – co tiskne hlubotisk</a></p>
+
 <h3 id="b-standard">Standardizovaný ofsetový tisk a kontrola kvality</h3>
 <div class="key"><b>Tady se spojují obě části otázky:</b> grafik převede data podle profilu <b>FOGRA</b> (např. PSO Coated v3), nátisk se udělá podle stejného profilu a tiskárna tiskne podle normy <b>ISO 12647-2</b>. Když všichni dodrží stejný standard, tisk bude odpovídat nátisku.</div>
 <ul class="tight">
@@ -823,6 +881,35 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
   <li>Tiskárny se mohou certifikovat podle <b>PSO</b> – dokazují, že tisknou podle normy stále stejně.</li>
 </ul>
 <p>Měřicí metody podrobně: <a class="xlink" href="../tema-09-teorie-barevnosti/#a-mereni">Téma 9 – měření barev</a></p>
+
+<h4 id="b-kontrola">📝 Jak se měří kvalita tisku</h4>
+<div class="pis-simple"><b>🟢 Jednoduše:</b> na okraji archu se tiskne <b>měrný proužek</b> s barevnými políčky. Tiskař ho měří <b>denzitometrem</b> a zjistí, jestli jsou barvy správné.</div>
+<figure class="pis-fig"><svg viewBox="0 0 620 230" role="img" aria-label="Tiskový arch s měrným proužkem na výběhové straně a denzitometr" font-family="system-ui,sans-serif">
+<rect x="20" y="10" width="400" height="200" fill="#fff" stroke="#1d1d24" stroke-width="2"/>
+<g fill="#eee" stroke="#ccc"><rect x="40" y="28" width="170" height="130"/><rect x="230" y="28" width="170" height="130"/></g>
+<text x="220" y="100" text-anchor="middle" font-size="14" fill="#888">tiskový arch (TA)</text>
+<g><rect x="28" y="172" width="16" height="24" fill="#00a0e3"/><rect x="44" y="172" width="16" height="24" fill="#e5007e"/><rect x="60" y="172" width="16" height="24" fill="#ffd500"/><rect x="76" y="172" width="16" height="24" fill="#1d1d24"/><rect x="92" y="172" width="16" height="24" fill="#66c6ee"/><rect x="108" y="172" width="16" height="24" fill="#ee66b2"/><rect x="124" y="172" width="16" height="24" fill="#ffe566"/><rect x="140" y="172" width="16" height="24" fill="#777"/><rect x="156" y="172" width="16" height="24" fill="#2d7fb8"/><rect x="172" y="172" width="16" height="24" fill="#b5005f"/><rect x="188" y="172" width="16" height="24" fill="#d9b300"/><rect x="204" y="172" width="16" height="24" fill="#333"/><rect x="220" y="172" width="16" height="24" fill="#00a0e3"/><rect x="236" y="172" width="16" height="24" fill="#e5007e"/><rect x="252" y="172" width="16" height="24" fill="#ffd500"/><rect x="268" y="172" width="16" height="24" fill="#1d1d24"/><rect x="284" y="172" width="16" height="24" fill="#66c6ee"/><rect x="300" y="172" width="16" height="24" fill="#ee66b2"/><rect x="316" y="172" width="16" height="24" fill="#ffe566"/><rect x="332" y="172" width="16" height="24" fill="#777"/><rect x="348" y="172" width="16" height="24" fill="#2d7fb8"/><rect x="364" y="172" width="16" height="24" fill="#b5005f"/><rect x="380" y="172" width="16" height="24" fill="#d9b300"/><rect x="396" y="172" width="16" height="24" fill="#333"/></g>
+<g stroke="#1d1d24" stroke-width="1.5"><circle cx="408" cy="22" r="7" fill="none"/><path d="M408 12 v20 M398 22 h20"/></g>
+<path d="M430 184 h20" stroke="#6a3fd0" stroke-width="3"/>
+<text x="520" y="160" text-anchor="middle" font-size="13" font-weight="800">měrný proužek</text><text x="520" y="178" text-anchor="middle" font-size="12" fill="#5d5d6b">po celé šířce archu,</text><text x="520" y="194" text-anchor="middle" font-size="12" fill="#5d5d6b">na výběhové straně</text>
+<rect x="470" y="20" width="100" height="80" rx="14" fill="#1d1d24"/><rect x="484" y="32" width="72" height="26" rx="4" fill="#9fe3b0"/><text x="520" y="50" text-anchor="middle" font-size="14" font-weight="800">D 1,45</text><text x="520" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">denzitometr</text>
+<text x="420" y="16" font-size="10" fill="#5d5d6b">soutiskový křížek</text>
+</svg><figcaption>Měrný proužek je po celé šířce tiskového archu na výběhové straně. Měří se denzitometrem.</figcaption></figure>
+<div class="pis-wrap"><table class="pis-table">
+<tr><th>Co se měří</th><th>Na čem</th><th>Jednoduše</th></tr>
+<tr><td><b>plošná vyrovnanost</b></td><td>100% políčka</td><td>barva je <b>stejně sytá po celé šířce</b> archu</td></tr>
+<tr><td><b>tiskový kontrast</b></td><td>100% a 80% políčka</td><td>jak dobře jsou vidět <b>detaily v tmavých místech</b></td></tr>
+<tr><td><b>nárůst tiskového bodu</b></td><td>40% a 80% políčka</td><td>body se při tisku <b>trochu roztečou</b> a tisk je tmavší – jak moc</td></tr>
+<tr><td><b>CMYK</b></td><td>políčka C, M, Y, K</td><td>sytost každé barvy</td></tr>
+<tr><td><b>soutisk</b></td><td>soutisková znaménka (křížky)</td><td>barvy jsou <b>přesně na sobě</b></td></tr>
+</table></div>
+<div class="pis">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Kontrola kvality tisku · 2 body</span></div>
+  <p class="pis-q">Jakým způsobem se měří parametry kvality tisku?</p>
+  <ul><li><b>Denzitometrem</b> na políčkách <b>měrného proužku (škály)</b>.</li><li>Proužek je <b>po celé šířce archu</b> na <b>výběhové straně</b>; má políčka 100 %, 40 %, 80 % a CMYK.</li></ul>
+  <details><summary>Odpověď do písemky (vzor)</summary><p>Parametry kvality tisku se měří na políčkách měrného proužku (škály) denzitometrem. Měrný proužek je umístěn po celé šířce tiskového archu (TA) na výběhové straně. Obsahuje políčka 100 %, 40 %, 80 % a políčka CMYK. Na 100% políčkách se měří plošná vyrovnanost, dále tiskový kontrast, nárůst tiskového bodu a CMYK. Na soutiskových znaménkách se kontroluje překrývání barev – soutisk.</p></details>
+</div>
+<p class="pis-more">Co kvalitu ovlivňuje a co se na tiskovině hodnotí: <a class="xlink" href="../tema-07-polygrafie-a-dokoncovani/#kvalita">Téma 7 – kvalita tisku</a></p>
 
 <h3 id="b-vady">Nejčastější vady ofsetového tisku</h3>
 <div class="tablewrap"><table>
@@ -978,6 +1065,12 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
 
   <div class="vk"><svg viewBox="0 0 92 92"><rect x="6" y="16" width="80" height="60" rx="6" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="46" y="44" font-size="13" font-weight="800" text-anchor="middle">ISO</text><text x="46" y="62" font-size="13" font-weight="800" text-anchor="middle" fill="#e5007e">12647-2</text></svg>
     <div class="t"><b>Standardní ofset</b><span>Norma ISO 12647-2, profil FOGRA, kontrolní proužek, ΔE.</span> <a href="#b-standard">více</a></div></div>
+
+  <div class="vk" style="border-color:#0f766e;border-width:3px"><svg viewBox="0 0 100 100" role="img" aria-label="Měrný proužek a denzitometr"><rect x="6" y="10" width="88" height="62" fill="#fff" stroke="#1d1d24" stroke-width="2"/><rect x="9" y="58" width="9" height="10" fill="#00a0e3"/><rect x="19" y="58" width="9" height="10" fill="#e5007e"/><rect x="29" y="58" width="9" height="10" fill="#ffd500"/><rect x="39" y="58" width="9" height="10" fill="#1d1d24"/><rect x="49" y="58" width="9" height="10" fill="#00a0e3"/><rect x="59" y="58" width="9" height="10" fill="#e5007e"/><rect x="69" y="58" width="9" height="10" fill="#ffd500"/><rect x="79" y="58" width="9" height="10" fill="#1d1d24"/><rect x="54" y="20" width="34" height="30" rx="6" fill="#1d1d24"/><rect x="59" y="25" width="24" height="10" rx="2" fill="#9fe3b0"/><path d="M71 50 v8" stroke="#1d1d24" stroke-width="4"/><text x="50" y="90" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">denzitometr</text></svg>
+    <div class="t"><b>📝 Kontrola kvality tisku</b><span><strong>Denzitometr</strong> měří políčka <strong>měrného proužku</strong> (po celé šířce archu, na výběhové straně).</span> <a href="#b-kontrola">více</a></div></div>
+
+  <div class="vk" style="border-color:#0f766e;border-width:3px"><svg viewBox="0 0 100 100" role="img" aria-label="Role papíru a noviny"><circle cx="22" cy="42" r="16" fill="#fff" stroke="#1d1d24" stroke-width="3"/><circle cx="22" cy="42" r="4" fill="#1d1d24"/><path d="M22 26 H50" stroke="#1d1d24" stroke-width="3"/><rect x="48" y="18" width="46" height="52" rx="2" fill="#fff" stroke="#1d1d24" stroke-width="2.5"/><text x="71" y="31" font-size="8" font-weight="900" text-anchor="middle" font-family="system-ui,sans-serif">NOVINY</text><rect x="53" y="36" width="18" height="14" fill="#b8bec6"/><path d="M74 38 h16 M74 44 h16 M74 50 h14 M53 58 h37" stroke="#9aa0a8" stroke-width="2.5"/><text x="50" y="90" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">kotoučový ofset</text></svg>
+    <div class="t"><b>📝 Kotoučový ofset</b><span>Tiskne z role: <strong>noviny</strong>, časopisy, jízdní řády, telefonní seznamy, ceniny, katalogy, publikace, reklamu.</span> <a href="#b-kotoucovy">více</a></div></div>
 </div>
 
 <div class="say"><b>Řekni u zkoušky:</b> „Každé zařízení zobrazuje barvy jinak. Správa barev (CMS) zajistí, aby vypadaly všude co nejpodobněji: každé zařízení má svůj ICC profil a barvy se převádějí přes Lab. Hlavní roli má <b>CIELAB</b>: je to barvový model <b>nezávislý na zařízení</b>, obsahuje <b>všechny barvy, které vidí oko</b>, a slouží jako <b>překladač</b> – barvy se z RGB do CMYK převádějí přes Lab. Lab si představím jako kouli: osa L je světlost (nahoře bílá, dole černá), osa a vede od zelené k červené, osa b od modré ke žluté. Každé zařízení má ICC profil. Při převodu volím perceptuální (fotky) nebo relativní kolorimetrický převod (nejčastější). Barvy ověřuje <b>verifikovaný nátisk</b> – změřený spektrofotometrem a hodnocený pod světlem D50. Litografie je kamenotisk, vynalezl ji Senefelder. Je to tisk z plochy: voda a mastná barva se odpuzují. Z litografie vznikl ofset – nepřímý tisk z hliníkové desky přes gumový válec na papír.“</div>
@@ -993,6 +1086,8 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
   <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><path d="M8 40 L68 32 L86 46 L26 56 Z" fill="#e8dcc0" stroke="#8a7a50" stroke-width="2"/><path d="M26 56 L86 46 L86 62 L26 74 Z" fill="#cbbd9c" stroke="#8a7a50" stroke-width="2"/><path d="M8 40 L26 56 L26 74 L8 58 Z" fill="#b8aa88" stroke="#8a7a50" stroke-width="2"/></svg></div><div class="bk">litografický kámen</div></div></button>
   <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><rect x="4" y="54" width="84" height="22" fill="#c9ccd1"/><path d="M10 54 q14 -14 28 0Z" fill="#1d1d24"/><path d="M38 54 q12 -8 24 0Z" fill="#7fd0f5"/><path d="M62 54 q12 -14 24 0Z" fill="#1d1d24"/></svg></div><div class="bk">tisk z plochy (voda × barva)</div></div></button>
   <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 92 92"><circle cx="28" cy="26" r="17" fill="#d9dde2" stroke="#000" stroke-width="2"/><circle cx="50" cy="50" r="17" fill="#3b3b44" stroke="#000" stroke-width="2"/><circle cx="72" cy="74" r="15" fill="#eceae4" stroke="#000" stroke-width="2"/></svg></div><div class="bk">ofset: formový, přenosový, tlakový válec</div></div></button>
+  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 100 100" role="img" aria-label="Měrný proužek a denzitometr"><rect x="6" y="10" width="88" height="62" fill="#fff" stroke="#1d1d24" stroke-width="2"/><rect x="9" y="58" width="9" height="10" fill="#00a0e3"/><rect x="19" y="58" width="9" height="10" fill="#e5007e"/><rect x="29" y="58" width="9" height="10" fill="#ffd500"/><rect x="39" y="58" width="9" height="10" fill="#1d1d24"/><rect x="49" y="58" width="9" height="10" fill="#00a0e3"/><rect x="59" y="58" width="9" height="10" fill="#e5007e"/><rect x="69" y="58" width="9" height="10" fill="#ffd500"/><rect x="79" y="58" width="9" height="10" fill="#1d1d24"/><rect x="54" y="20" width="34" height="30" rx="6" fill="#1d1d24"/><rect x="59" y="25" width="24" height="10" rx="2" fill="#9fe3b0"/><path d="M71 50 v8" stroke="#1d1d24" stroke-width="4"/></svg></div><div class="bk">📝 denzitometr – měří měrný proužek</div></div></button>
+  <button class="flip"><div class="in"><div class="f"><svg viewBox="0 0 100 100" role="img" aria-label="Role papíru a noviny"><circle cx="22" cy="42" r="16" fill="#fff" stroke="#1d1d24" stroke-width="3"/><circle cx="22" cy="42" r="4" fill="#1d1d24"/><path d="M22 26 H50" stroke="#1d1d24" stroke-width="3"/><rect x="48" y="18" width="46" height="52" rx="2" fill="#fff" stroke="#1d1d24" stroke-width="2.5"/><text x="71" y="31" font-size="8" font-weight="900" text-anchor="middle" font-family="system-ui,sans-serif">NOVINY</text><rect x="53" y="36" width="18" height="14" fill="#b8bec6"/><path d="M74 38 h16 M74 44 h16 M74 50 h14 M53 58 h37" stroke="#9aa0a8" stroke-width="2.5"/></svg></div><div class="bk">📝 kotoučový ofset – noviny</div></div></button>
 </div>
 
 <h3 class="noprint">Rychlé otázky</h3>
@@ -1003,6 +1098,8 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
   <details class="qq"><summary>Který nátisk je závazný?</summary><p>verifikovaný nátisk s kontrolním proužkem, schválený zákazníkem</p></details>
   <details class="qq"><summary>Proč se na litografický kámen kreslí zrcadlově?</summary><p>z kamene se tiskne přímo na papír, obraz se při tisku otočí</p></details>
   <details class="qq"><summary>Proč je ofset nepřímý tisk?</summary><p>barva jde z desky nejdřív na gumový přenosový válec a teprve z něj na papír</p></details>
+  <details class="qq"><summary>📝 Čím a na čem se měří kvalita tisku?</summary><p>denzitometrem na měrném proužku (po celé šířce archu na výběhové straně)</p></details>
+  <details class="qq"><summary>📝 Kterým tiskem se tisknou noviny?</summary><p>kotoučovým ofsetem (ne hlubotiskem)</p></details>
 </div>
 </section>
 
@@ -1179,7 +1276,28 @@ var WT=[
    {l:'měření: kontrolní proužek, denzitometr, spektrofotometr, ΔE',p:/prouz|denzit|spektro|delta|mer/},
    {l:'hodnocení pod D50',p:/d50|5000|prohliz/}],
   err:[],
-  vzor:'Grafik převádí data do CMYK podle profilu, který popisuje ofset na daný papír – např. Coated FOGRA39 nebo PSO Coated v3 pro křídový papír. Podle stejného profilu se dělá nátisk. Tiskárna tiskne podle normy ISO 12647-2 (prakticky podle PSO). Kvalita se kontroluje na kontrolním proužku denzitometrem (denzita, přírůstek tónových hodnot) a spektrofotometrem (Lab, odchylka ΔE). Archy se porovnávají s nátiskem pod světlem D50. Když všichni dodrží standard, tisk odpovídá nátisku.'}
+  vzor:'Grafik převádí data do CMYK podle profilu, který popisuje ofset na daný papír – např. Coated FOGRA39 nebo PSO Coated v3 pro křídový papír. Podle stejného profilu se dělá nátisk. Tiskárna tiskne podle normy ISO 12647-2 (prakticky podle PSO). Kvalita se kontroluje na kontrolním proužku denzitometrem (denzita, přírůstek tónových hodnot) a spektrofotometrem (Lab, odchylka ΔE). Archy se porovnávají s nátiskem pod světlem D50. Když všichni dodrží standard, tisk odpovídá nátisku.'},
+ {q:'📝 Jak se měří kvalita tisku?',
+  keys:[
+   {l:'denzitometr',p:/denzitometr/},
+   {l:'měrný proužek (škála)',p:/prouz|skal/},
+   {l:'po celé šířce archu na výběhové straně',p:/sirc|vybeh/},
+   {l:'plošná vyrovnanost, tiskový kontrast, nárůst bodu',p:/vyrovnan|kontrast|narust/},
+   {l:'soutisková znaménka – soutisk',p:/soutisk/}],
+  err:[],
+  vzor:'Kvalita tisku se měří denzitometrem na políčkách měrného proužku (škály). Proužek je po celé šířce tiskového archu na výběhové straně a má políčka 100 %, 40 %, 80 % a CMYK. Měří se plošná vyrovnanost, tiskový kontrast, nárůst tiskového bodu a sytost CMYK. Na soutiskových znaménkách se kontroluje soutisk.'},
+ {q:'📝 Jaké výrobky se tisknou kotoučovým ofsetem? Uveď aspoň šest.',
+  keys:[
+   {l:'noviny',p:/novin/},
+   {l:'časopisy',p:/casopis/},
+   {l:'jízdní řády',p:/jizdn|rad/},
+   {l:'telefonní seznamy',p:/telefon|seznam/},
+   {l:'ceniny',p:/cenin/},
+   {l:'katalogy',p:/katalog/},
+   {l:'publikace',p:/publikac|knih/},
+   {l:'reklamní tiskoviny',p:/reklam|letak/}],
+  err:[{p:/novin\w*[^.]{0,30}hlubotisk/,m:'Zkontroluj: noviny se tisknou kotoučovým ofsetem, ne hlubotiskem.'}],
+  vzor:'Kotoučovým ofsetem se tisknou noviny, časopisy, jízdní řády, telefonní seznamy, ceniny, katalogy, publikace a reklamní tiskoviny.'}
 ];
 (function(){
   var box=document.getElementById('wtBox');
@@ -1236,7 +1354,9 @@ var KV=[
  {q:'Z jakého materiálu je ofsetová deska?',a:['z hliníku','z vápence','z gumy'],c:0,e:'Tenký zrněný a eloxovaný hliník.'},
  {q:'K čemu slouží pudrování archů?',a:['k lesku','aby se barva neobtiskla na další arch','ke zvýšení gamutu'],c:1,e:'Jemný prášek oddělí archy ve stohu.'},
  {q:'Podle jaké normy probíhá standardizovaný ofsetový tisk?',a:['ISO 12647-2','ISO 9001','ČSN 01 6910'],c:0,e:'ISO 12647-2 určuje barvy, přírůstek tónových hodnot a tolerance ofsetu.'},
- {q:'Rozdíly Lab jsou 2, 1 a 2. Kolik je ΔE?',a:['5','3','9'],c:1,e:'4 + 1 + 4 = 9, odmocnina z 9 = 3.'}
+ {q:'Rozdíly Lab jsou 2, 1 a 2. Kolik je ΔE?',a:['5','3','9'],c:1,e:'4 + 1 + 4 = 9, odmocnina z 9 = 3.'},
+ {q:'📝 Čím se měří kvalita tisku na měrném proužku?',a:['pravítkem','denzitometrem','lupou'],c:1,e:'Měrný proužek je po celé šířce archu na výběhové straně.'},
+ {q:'📝 Kterým tiskem se tisknou noviny?',a:['hlubotiskem','kotoučovým ofsetem','tampónovým tiskem'],c:1,e:'Noviny = kotoučový ofset (coldset). Hlubotiskem se tisknou přílohy a letáky.'}
 ];
 var kvOk=0,kvDone=0;
 function renderKviz(){

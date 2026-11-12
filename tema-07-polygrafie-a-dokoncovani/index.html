@@ -296,6 +296,36 @@ figure.pic img{max-height:340px}
 #ppiOut .st:last-child{border-bottom:0}
 #ppiOut .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
 h4{font-size:1.02rem;margin-top:1.3em}
+
+/* ===== 📝 PÍSEMKA – jednotný zelený rámeček ===== */
+.pis{border:3px solid #0f766e;background:#effaf8;color:#1b1c1f;border-radius:14px;padding:0 12px 10px;margin:14px 0}
+.pis-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;background:#0f766e;color:#fff;margin:0 -12px 8px;border-radius:10px 10px 0 0;padding:6px 12px;font-weight:800;font-size:.92em;letter-spacing:.02em}
+.pis-q{font-weight:700;margin:.3em 0}
+.pis ul,.pis ol{margin:.3em 0;padding-left:1.4em}
+.pis details{margin-top:8px}
+.pis summary{cursor:pointer;font-weight:800;color:#0f766e}
+.pis details>p{background:#fff;color:#1b1c1f;border:1px solid #bfe3dc;border-radius:10px;padding:8px 12px;margin:6px 0 0}
+.pis-legend{display:flex;gap:10px;align-items:center;background:#effaf8;color:#1b1c1f;border:2px dashed #0f766e;border-radius:12px;padding:10px 12px;margin:16px 0 0}
+.pis-badge{background:#0f766e;color:#fff;padding:3px 9px;border-radius:8px;font-weight:800;white-space:nowrap}
+.pis-list{display:grid;grid-template-columns:1fr;gap:8px;margin:10px 0}
+.pis-list a{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#fff;color:#1b1c1f;border:2px solid #0f766e;border-radius:10px;padding:8px 12px;text-decoration:none}
+.pis-list a span{background:#0f766e;color:#fff;border-radius:8px;padding:1px 8px;font-weight:800;font-size:.85em;white-space:nowrap}
+.pis-list a.ext{border-style:dashed}
+.pis-simple{background:#e8f6ee;color:#1b1c1f;border:2px solid #2e9e48;border-radius:12px;padding:10px 12px;margin:10px 0;font-size:1.03em}
+.pis-simple b:first-child{color:#1f6e3a}
+.pis-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+.pis-grid div{background:#fff;color:#1b1c1f;border:2px solid #dcdcd6;border-radius:12px;padding:8px;text-align:center;font-weight:700;font-size:.93em}
+.pis-grid span{display:block;font-size:1.6em}
+.pis-table{width:100%;border-collapse:collapse;background:#fff;color:#1b1c1f;font-size:.95em;margin:8px 0}
+.pis-table th,.pis-table td{border:1px solid #dcdcd6;padding:6px 8px;text-align:left;vertical-align:top}
+.pis-table th{background:#effaf8}
+.pis-wrap{overflow-x:auto}
+.pis-fig{margin:10px 0;text-align:center}
+.pis-fig svg{width:100%;max-width:620px;height:auto;background:#fff;border-radius:10px}
+.pis-fig figcaption{font-size:.88em;color:#5d6068}
+.pis-more{font-size:.92em}
+@media(min-width:620px){.pis-list{grid-template-columns:1fr 1fr}.pis-grid{grid-template-columns:repeat(4,1fr)}}
+@media print{.pis details{display:none}}
 </style>
 </head>
 <body>
@@ -319,15 +349,22 @@ h4{font-size:1.02rem;margin-top:1.3em}
     <a href="#prepress">Prepress</a>
     <a href="#data">Kvalita dat</a>
     <a href="#press">Press</a>
+    <a href="#kvalita">📝 Kvalita tisku</a>
     <a href="#zuslechtovani">Zušlechťování</a>
     <a href="#zpracovani">Řezání a tvarování</a>
     <a href="#svp">Co musím umět</a>
+    <a href="#pisemka">📝 Písemka</a>
     <a href="#test">Test psaním</a>
     <a href="#kviz">Kvíz</a>
   </div>
 </nav>
 
 <main class="wrap">
+
+<div class="pis-legend">
+  <span class="pis-badge">📝 PÍSEMKA</span>
+  <span><b>Zelený rámeček se značkou 📝</b> = <b>stejné učivo je i v písemné závěrečné zkoušce.</b> Naučíš se ho jednou a použiješ ho dvakrát: u písemky i u ústní zkoušky.</span>
+</div>
 
 <!-- ============ POTÍTKO ============ -->
 <section id="potitko">
@@ -770,6 +807,25 @@ h4{font-size:1.02rem;margin-top:1.3em}
     </div>
   </div>
   <div class="warn"><b class="t">Vliv materiálu na grafickou úpravu</b>Na savém <b>recyklovaném (novinovém) papíře</b> se text rozpíjí a barevné fotografie vyjdou tmavší. Čím je papír <b>hladší</b>, tím jemnější detaily lze vytisknout. Proto se grafik musí ještě před sazbou zeptat, na jaký papír se bude tisknout.</div>
+
+  <h3 id="kvalita">📝 Kvalita tisku: co ji ovlivňuje a co se hodnotí</h3>
+  <div class="pis-simple"><b>🟢 Jednoduše:</b> kvalitu ovlivňuje <b>celá cesta zakázky – od návrhu po knihaře</b>. Pomůcka – projdi cestu tiskoviny: <b>co → jak velké → návrh → papír → postup → příprava → tisk → dokončení</b>.</div>
+  <div class="pis-grid"><div><span>📄</span>typ tiskoviny</div><div><span>📐</span>formát</div><div><span>🎨</span>grafický návrh (text, kresby, fotky)</div><div><span>🧻</span>papír (gramáž, povrch)</div><div><span>🛠️</span>technologický postup</div><div><span>💻</span>předtisková příprava</div><div><span>🖨️</span>tisk (barevnost)</div><div><span>✨</span>zušlechtění a dokončení</div></div>
+  <div class="pis">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Faktory ovlivňující kvalitu · 5 bodů</span></div>
+  <p class="pis-q">Které faktory ovlivňují kvalitu tisku a vzhled tiskovin? (stačí 5)</p>
+  <ol><li>typ tiskoviny</li><li>formát tiskoviny</li><li>grafický návrh (rozsah textu, kresby nebo fotografie)</li><li>kvalita a typ potiskovaného materiálu (plošná hmotnost, povrchová úprava)</li><li>technologický postup výroby</li><li>předtisková příprava</li><li>tisk (barevnost tisku)</li><li>zušlechťování (ražba, lakování, výsek) a dokončování (knihařské zpracování)</li></ol>
+  <details><summary>Odpověď do písemky (vzor)</summary><p>Kvalitu tisku a vzhled tiskovin ovlivňuje typ tiskoviny, formát tiskoviny, grafický návrh (rozsah textu, kresby nebo fotografie), kvalita a typ potiskovaného materiálu (plošná hmotnost, povrchová úprava), technologický postup výroby, předtisková příprava, tisk (barevnost tisku), zušlechťování (ražba, lakování, výsek) a dokončování (knihařské zpracování).</p></details>
+</div>
+  <h4 id="hodnoceni">📝 Co se na hotové tiskovině hodnotí</h4>
+  <div class="pis-grid"><div><span>👀</span>vzhled</div><div><span>🔤</span>obraz a text</div><div><span>✨</span>povrchová úprava</div><div><span>🧰</span>užitné vlastnosti</div><div><span>⚖️</span>hygiena a bezpečnost (předpisy)</div><div><span>☀️</span>odolnost vůči prostředí</div></div>
+  <div class="pis">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Hodnotící prvky kvality · 3 body</span></div>
+  <p class="pis-q">Vyjmenujte alespoň tři vlastnosti tiskového výrobku, které se hodnotí.</p>
+  <ul><li>vzhled</li><li>obrazové a textové informace</li><li>povrchová úprava</li><li>užitné vlastnosti</li><li>soulad s předpisy hygieny a bezpečného používání</li><li>odolnost vůči vlivům prostředí</li></ul>
+  <details><summary>Odpověď do písemky (vzor)</summary><p>Na tiskovém výrobku se hodnotí vzhled, obrazové a textové informace, povrchová úprava, užitné vlastnosti, soulad s předpisy hygieny a bezpečného používání a odolnost vůči vlivům prostředí.</p></details>
+</div>
+  <p class="pis-more">Jak se kvalita měří (denzitometr, měrný proužek): <a href="../tema-10-color-management/#b-kontrola">Téma 10 – kontrola kvality tisku</a></p>
   <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
@@ -1003,6 +1059,13 @@ h4{font-size:1.02rem;margin-top:1.3em}
 </section>
 
 <!-- ============ ŠVP ============ -->
+<section id="pisemka">
+  <div class="sec-head"><span class="kicker">📝 Písemka</span></div>
+  <h2>📝 Co z tohoto tématu je i v písemce</h2>
+  <p>Tyto otázky se objevují v <b>písemné závěrečné zkoušce</b>. V lekci je najdeš v <b>zeleném rámečku 📝</b> – vysvětlené jednoduše, s obrázky a se <b>vzorovou odpovědí do písemky</b>.</p>
+  <div class="pis-list"><a href="#kvalita"><b>Faktory ovlivňující kvalitu tisku</b><span>5 bodů</span></a><a href="#hodnoceni"><b>Hodnotící prvky kvality tisku</b><span>3 body</span></a><a href="../tema-10-color-management/#b-kontrola" class="ext"><b>Kontrola kvality tisku → téma 10</b><span>2 body</span></a></div><p style="font-size:.9em;opacity:.8">V tomto tématu 8 bodů. Čárkovaný odkaz vede do tématu 10.</p>
+</section>
+
 <section id="svp">
   <div class="sec-head"><span class="dot c"></span><span class="kicker">Podle ŠVP</span></div>
   <h2>Co musíš umět (odškrtej si)</h2>
@@ -1019,6 +1082,7 @@ h4{font-size:1.02rem;margin-top:1.3em}
     <li><input type="checkbox" id="s9"><label for="s9">Popíšu druhy řezaček, části <b>stohové řezačky</b> a <b>zásady bezpečnosti</b> při řezání.</label><a class="svp-go" href="#rezani">→ kde to najdu</a></li>
     <li><input type="checkbox" id="s10"><label for="s10">Vysvětlím <b>výsek, násek, perforaci, rýhování a vrtání</b> a uvedu jejich použití.</label><a class="svp-go" href="#vysek">→ kde to najdu</a></li>
     <li><input type="checkbox" id="s11"><label for="s11">Navrhnu <b>pořadí operací</b> dokončujícího zpracování pro konkrétní tiskovinu.</label><a class="svp-go" href="#poradi">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s12"><label for="s12">📝 Vyjmenuji, <b>co ovlivňuje kvalitu tisku</b> a <b>co se na tiskovině hodnotí</b>.</label><a class="svp-go" href="#kvalita">→ kde to najdu</a></li>
   </ul>
   <p class="small muted" id="svpCount"></p>
 </section>
@@ -1083,7 +1147,8 @@ const MAP = [
     ['Tisk','Tiskař založí desky a papír, nastaví stroj, kontroluje archy, barevnost (spektrofotometr) a soutisk.'],
     ['JDF','Zakázkový list: zákazník, termín, náklad, materiál, operace v pořadí. Podklad pro kalkulaci.'],
     ["Formáty tisk × web","Tisk: TIFF, PDF, PSD, AI, EPS. Web: JPEG, PNG, SVG, GIF."],
-    ["Písmo na křivky","Písmo v logu převedu na křivky, aby se v tiskárně nezměnilo."]
+    ["Písmo na křivky","Písmo v logu převedu na křivky, aby se v tiskárně nezměnilo."],
+    ['📝 Kvalita tisku','Ovlivňuje ji: typ, formát, návrh, papír, postup, příprava, tisk, dokončení. Hodnotí se: vzhled, obraz a text, povrch, užitné vlastnosti, hygiena, odolnost.']
   ]},
   {k:'y', side:'right', n:'Y', t:'Zušlechťování', link:'#zuslechtovani', items:[
     ['Proč a kdy','Chrání a zkrášluje. Laminace a lak jsou vždy první, před řezem, ohybem a výsekem.'],
@@ -1276,7 +1341,9 @@ const QUIZ=[
  ['Rýhování (bigování) se dělá…',['aby se karton dal přesně ohnout a v ohybu nepraskal','aby šla tiskovina odtrhnout','pro ochranu před vodou','jen u papíru pod 80 g/m²'],0,'Rýha usnadní ohyb kartonu nad 170 g/m². Pro snadné oddělení slouží perforace.'],
  ["Co patří do předvýrobní fáze?", ["osvit desek", "poptávka, kalkulace a schválení návrhu", "laminace", "tisk"], 1, "Předvýrobní fáze je domluva se zákazníkem; výroba = prepress, press, postpress."],
  ["Který formát se hodí pro web, ne pro tisk?", ["TIFF", "PNG", "PSD", "EPS"], 1, "PNG a JPEG jsou webové formáty v RGB. TIFF, PSD a EPS jsou pro tisk."],
- ["Proč se písmo v logu převádí na křivky?", ["aby bylo barevnější", "aby se logo nezměnilo, když tiskárna nemá písmo", "aby šlo snadno přepsat", "aby měl soubor víc stran"], 1, "Křivky vypadají všude stejně, písmo by se mohlo nahradit jiným."]
+ ["Proč se písmo v logu převádí na křivky?", ["aby bylo barevnější", "aby se logo nezměnilo, když tiskárna nemá písmo", "aby šlo snadno přepsat", "aby měl soubor víc stran"], 1, "Křivky vypadají všude stejně, písmo by se mohlo nahradit jiným."],
+ ["📝 Co z toho NEovlivňuje kvalitu tisku?", ["papír (gramáž, povrch)", "předtisková příprava", "jméno zákazníka", "grafický návrh"], 2, "Kvalitu ovlivňuje celá cesta zakázky: typ, formát, návrh, papír, postup, příprava, tisk, dokončení."],
+ ["📝 Co se na hotové tiskovině hodnotí?", ["vzhled, obraz a text, povrchová úprava, užitné vlastnosti", "jen cena", "jen počet stran", "jen rychlost tisku"], 0, "Hodnotí se také soulad s předpisy hygieny a bezpečnosti a odolnost vůči prostředí."]
 ];
 (function(){
   const box=document.getElementById('quiz'),sc=document.getElementById('score');
@@ -1439,7 +1506,24 @@ const WT=[
   e:[
    ['vysek[^.;]{0,40}(potom|pak|nasledn)\\w*[^.;]{0,20}laminac','Pozor na pořadí: laminace musí být PŘED výsekem.']
   ],
-  m:'Krabička se vyrobí z <b>kartonu</b> (asi 300 g/m²) potištěného ofsetem. Jako <b>první</b> se celý arch <b>zalaminuje matnou fólií</b>: chrání před vlhkostí a mastnotou a dá matný povrch. Musí to být první, protože po výseku a rýhování by se jednotlivé kusy už laminovat nedaly. Potom se logo zvýrazní <b>horkou ražbou zlatou fólií</b> (případně ještě parciálním lesklým UV lakem). Následuje <b>výsek</b> přířezu krabičky výsekovou formou a současně <b>rýhování (bigování)</b> míst ohybu, aby se karton ohnul přesně a nepraskal. Přířez se v lepicím a skládacím stroji <b>složí a slepí</b>. Nakonec se krabičky spočítají, <b>zabalí</b> a odešlou (<b>expedice</b>). Pořadí odpovídá pravidlu Povrch – Tvar – Sklad – Balení.'}
+  m:'Krabička se vyrobí z <b>kartonu</b> (asi 300 g/m²) potištěného ofsetem. Jako <b>první</b> se celý arch <b>zalaminuje matnou fólií</b>: chrání před vlhkostí a mastnotou a dá matný povrch. Musí to být první, protože po výseku a rýhování by se jednotlivé kusy už laminovat nedaly. Potom se logo zvýrazní <b>horkou ražbou zlatou fólií</b> (případně ještě parciálním lesklým UV lakem). Následuje <b>výsek</b> přířezu krabičky výsekovou formou a současně <b>rýhování (bigování)</b> míst ohybu, aby se karton ohnul přesně a nepraskal. Přířez se v lepicím a skládacím stroji <b>složí a slepí</b>. Nakonec se krabičky spočítají, <b>zabalí</b> a odešlou (<b>expedice</b>). Pořadí odpovídá pravidlu Povrch – Tvar – Sklad – Balení.'},
+ {q:'📝 Které faktory ovlivňují kvalitu tisku a vzhled tiskovin? Uveď aspoň pět. Co se na hotové tiskovině hodnotí (aspoň tři)? <span class="pill">8 bodů</span>',
+  h:'Tip: projdi cestu tiskoviny: co → jak velké → návrh → papír → postup → příprava → tisk → dokončení.',
+  p:[
+   ['Typ tiskoviny',['typ'],0,'Faktor: typ tiskoviny.'],
+   ['Formát',['format'],0,'Faktor: formát tiskoviny.'],
+   ['Grafický návrh',['navrh|text|kresb|fotograf'],1,'Faktor: grafický návrh (rozsah textu, kresby, fotografie).'],
+   ['Papír (materiál)',['papir|material|gramaz|plosn\\w* hmot'],1,'Faktor: kvalita a typ potiskovaného materiálu (plošná hmotnost, povrchová úprava).'],
+   ['Technologický postup',['postup|technolog'],0,'Faktor: technologický postup výroby.'],
+   ['Předtisková příprava',['priprav|prepress'],1,'Faktor: předtisková příprava.'],
+   ['Tisk (barevnost)',['barevnost|tisk'],1,'Faktor: tisk (barevnost tisku).'],
+   ['Zušlechtění a dokončení',['zuslecht|dokonc|lakov|razb|vysek|knihar'],1,'Faktor: zušlechťování a dokončování.'],
+   ['Hodnotí se: vzhled',['vzhled'],1,'Hodnotí se vzhled.'],
+   ['Hodnotí se: obraz a text, povrch, užitné vlastnosti',['obraz|povrch|uzitn'],1,'Hodnotí se obrazové a textové informace, povrchová úprava, užitné vlastnosti.'],
+   ['Hodnotí se: hygiena, bezpečnost, odolnost',['hygien|bezpec|odoln|predpis'],0,'Bonus: soulad s předpisy hygieny a bezpečnosti, odolnost vůči prostředí.']
+  ],
+  e:[],
+  m:'Kvalitu tisku a vzhled tiskovin ovlivňuje <b>typ tiskoviny</b>, <b>formát</b>, <b>grafický návrh</b> (rozsah textu, kresby nebo fotografie), <b>kvalita a typ potiskovaného materiálu</b> (plošná hmotnost, povrchová úprava), <b>technologický postup</b> výroby, <b>předtisková příprava</b>, <b>tisk</b> (barevnost) a <b>zušlechťování a dokončování</b>. Na hotové tiskovině se hodnotí <b>vzhled</b>, <b>obrazové a textové informace</b>, <b>povrchová úprava</b>, <b>užitné vlastnosti</b>, soulad s předpisy <b>hygieny a bezpečnosti</b> a <b>odolnost</b> vůči vlivům prostředí.'}
 ];
 (function(){
   const root=document.getElementById('writeTest');
@@ -1561,7 +1645,7 @@ const WT=[
    MM_T: pro každou větev (c, m, y, k) seznam cílů ve stejném pořadí jako pojmy v mapě.
    Cíl = začátek textu podnadpisu (nebo zvýrazněné položky); "@selektor" = prvek podle CSS. */
 (function(){
-  const MM_T={"c": ["Polygrafie", "Fáze", "Krok 1: zadání zakázky", "Krok 2: zpracování obrazu a sazba", "Krok 3: export tiskového PDF – spadávka a ořezové ", "korektury", "Krok 5: kontrola tiskových dat v tiskárně (DTP)", "Krok 6 a 7: archová montáž a osvit desek (CtP)", "Předvýrobní fáze: ještě před prepressem"], "y": ["Postpress I: zušlechťování tiskovin", "Laminace", "Laminace za studena", "Termolaminace (za tepla)", "Lakování", "Parciální (výběrové) lakování", "Ražba, slepotisk a horká ražba", "Horká ražba"], "m": ["Jedna stránka, tři druhy grafiky: fotografie (obra", "Tonalita", "Barevnost", "Kvalita obrazu 3: detail – rozlišení a ostrost", "Přechody", "PDF/X-1a, nebo PDF/X-4?", "Press: tisk", "Zakázkový list (JDF)", "Obrazové formáty pro tisk a pro web", "Písmo v logu převést na křivky"], "k": ["Řezání", "Druhy řezacích strojů", "Části stohové jednonožové řezačky", "Bezpečnost u stohové řezačky", "Výsek a násek", "Stroje na výsek", "Perforace, rýhování a vrtání", "Správné pořadí operací v postpressu"]};
+  const MM_T={"c": ["Polygrafie", "Fáze", "Krok 1: zadání zakázky", "Krok 2: zpracování obrazu a sazba", "Krok 3: export tiskového PDF – spadávka a ořezové ", "korektury", "Krok 5: kontrola tiskových dat v tiskárně (DTP)", "Krok 6 a 7: archová montáž a osvit desek (CtP)", "Předvýrobní fáze: ještě před prepressem"], "y": ["Postpress I: zušlechťování tiskovin", "Laminace", "Laminace za studena", "Termolaminace (za tepla)", "Lakování", "Parciální (výběrové) lakování", "Ražba, slepotisk a horká ražba", "Horká ražba"], "m": ["Jedna stránka, tři druhy grafiky: fotografie (obra", "Tonalita", "Barevnost", "Kvalita obrazu 3: detail – rozlišení a ostrost", "Přechody", "PDF/X-1a, nebo PDF/X-4?", "Press: tisk", "Zakázkový list (JDF)", "Obrazové formáty pro tisk a pro web", "Písmo v logu převést na křivky", "@#kvalita"], "k": ["Řezání", "Druhy řezacích strojů", "Části stohové jednonožové řezačky", "Bezpečnost u stohové řezačky", "Výsek a násek", "Stroje na výsek", "Perforace, rýhování a vrtání", "Správné pořadí operací v postpressu"]};
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
   const HEAD='h2,h3,h4,h5,summary';
   const ANY=HEAD+',.nm,.t,.lbl,dt,th,figcaption,b,strong,li,p,dd,td';
