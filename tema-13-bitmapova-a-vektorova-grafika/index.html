@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Téma č. 13 – Bitmapová a vektorová grafika – použití, výhody a nevýhody, programy pro jejich zpracování, formáty souborů · Sítotisk – popis tiskové techniky, výhody a nevýhody, použití, výroba tiskové formy</title><style>:root{--modra:#1e40af;--modra2:#3b82f6;--ruz:#be185d;--ruz2:#ec4899;--zel:#15803d;--sed:#64748b;--bg:#f1f5f9;--text:#1f2937}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;font-size:17px}
+header{background:linear-gradient(135deg,#1e40af,#7c3aed 55%,#be185d);color:#fff;padding:20px 16px 18px}
+header .wrap{max-width:900px;margin:0 auto}
+header .cislo{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:2px 12px;font-size:14px;font-weight:700;letter-spacing:.5px}
+header h1{margin:8px 0 6px;font-size:24px;line-height:1.25}
+header .zneni{font-size:15px;opacity:.95;margin:4px 0}
+header .zneni b{color:#fde68a}
+main{max-width:900px;margin:0 auto;padding:10px 12px 80px}
+nav.menu{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btn{display:inline-block;border:0;border-radius:10px;padding:9px 13px;background:#fff;color:var(--modra);font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.15);cursor:pointer;font-family:inherit}
+.btn:hover{background:#e0e7ff}
+.btn.hlavni{background:var(--modra);color:#fff}
+.btn.vyluh{background:#f59e0b;color:#111}
+section{background:#fff;border-radius:14px;padding:14px 16px;margin:14px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+h2{margin:4px 0 10px;font-size:22px;color:var(--modra)}
+h3{margin:22px 0 8px;font-size:19px;scroll-margin-top:12px;padding:6px 10px;border-radius:8px}
+h3.a{background:#dbeafe;color:#1e3a8a}
+h3.b{background:#fce7f3;color:#831843}
+.cast{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-top:22px;padding:8px 10px;border-radius:8px;color:#fff}
+.cast.a{background:var(--modra)}.cast.b{background:var(--ruz)}
+.obr{margin:10px 0;text-align:center}
+.obr svg{width:100%;max-width:460px;height:auto;display:block;margin:0 auto}
+.obr .popis{font-size:13px;color:var(--sed);margin-top:2px}
+.klic{background:#fef3c7;border-left:6px solid #f59e0b;padding:10px 12px;border-radius:8px;margin:12px 0;font-weight:600}
+.klic::before{content:"⭐ Zapamatuj si: ";color:#b45309}
+.rekni{background:#ecfeff;border-left:6px solid #06b6d4;padding:8px 12px;border-radius:8px;margin:10px 0}
+.rekni::before{content:"🗣️ Řekni u zkoušky: ";font-weight:700;color:#0e7490}
+.pisemka{border:3px solid var(--zel);border-radius:12px;padding:8px 12px 10px;margin:14px 0;background:#f0fdf4}
+.pisemka>.stitek{display:block;color:var(--zel);font-weight:800;font-size:14px;margin-bottom:4px}
+.rozsir{display:inline-block;background:#e5e7eb;color:#374151;font-size:13px;font-weight:700;border-radius:6px;padding:2px 8px;margin:4px 0}
+.box-rozsir{border:2px dashed #9ca3af;border-radius:10px;padding:6px 12px;margin:12px 0;background:#f9fafb}
+.proklik{display:inline-block;background:#ede9fe;color:#5b21b6;border-radius:6px;padding:1px 8px;font-weight:700;text-decoration:none;font-size:15px}
+.proklik:hover{background:#ddd6fe}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:15px}
+th,td{border:1px solid #cbd5e1;padding:7px 8px;vertical-align:top;text-align:left}
+th{background:#eef2ff}
+th.a{background:#dbeafe}th.b{background:#fef3c7}
+.tabwrap{overflow-x:auto}
+ul.kroky{list-style:none;padding:0;counter-reset:k}
+ul.kroky li{counter-increment:k;position:relative;padding:6px 6px 6px 44px;margin:6px 0;background:#fdf2f8;border-radius:8px}
+ul.kroky li::before{content:counter(k);position:absolute;left:8px;top:6px;width:26px;height:26px;border-radius:50%;background:var(--ruz);color:#fff;font-weight:800;text-align:center;line-height:26px}
+.tag-plus{color:#15803d;font-weight:800}.tag-minus{color:#b91c1c;font-weight:800}
+/* myšlenková mapa */
+.mapa{display:grid;grid-template-columns:1fr;gap:12px}
+.mapa .stred{background:linear-gradient(135deg,#1e40af,#be185d);color:#fff;text-align:center;border-radius:14px;padding:12px;font-weight:800;font-size:18px}
+.vetev{border-radius:14px;padding:10px}
+.vetev.a{background:#eff6ff;border:2px solid #93c5fd}
+.vetev.b{background:#fdf2f8;border:2px solid #f9a8d4}
+.vetev .nazev{font-weight:800;margin-bottom:6px}
+.vetev.a .nazev{color:#1e3a8a}.vetev.b .nazev{color:#831843}
+.uzly{display:flex;flex-wrap:wrap;gap:7px}
+.uzel{display:inline-block;background:#fff;border-radius:20px;padding:6px 12px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.vetev.a .uzel{color:#1e40af;border:2px solid #3b82f6}
+.vetev.b .uzel{color:#9d174d;border:2px solid #ec4899}
+.uzel small{display:block;font-weight:500;font-size:12px;color:#475569}
+.tip{background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:8px 12px;font-size:15px}
+@media(min-width:720px){.mapa{grid-template-columns:1fr 1fr}.mapa .stred,.mapa .tip{grid-column:1/3}}
+/* co musíš umět */
+.umet label{display:flex;gap:10px;align-items:flex-start;padding:6px 4px;border-bottom:1px solid #e5e7eb}
+.umet input{width:22px;height:22px;flex:none;margin-top:2px}
+.umet a{color:var(--modra);font-weight:600}
+/* testy */
+.otazka{border:1px solid #cbd5e1;border-radius:12px;padding:10px 12px;margin:12px 0;background:#fafafa}
+.otazka .zadani{font-weight:700;margin-bottom:6px}
+textarea{width:100%;min-height:110px;font-size:16px;font-family:inherit;padding:8px;border-radius:8px;border:1px solid #94a3b8}
+.vysledek{margin-top:8px;font-size:15px}
+.vysledek .ok{color:#15803d}.vysledek .chybi{color:#b91c1c}.vysledek .pozor{color:#b45309;background:#fffbeb;border-radius:6px;padding:4px 8px;margin:4px 0}
+.vysledek ul{margin:4px 0;padding-left:20px}
+details{margin-top:6px}
+summary{cursor:pointer;font-weight:700;color:var(--modra)}
+.vzor{background:#eef2ff;border-radius:8px;padding:8px 10px;margin-top:6px}
+.kviz .moznost{display:block;width:100%;text-align:left;margin:5px 0;padding:9px 12px;border-radius:9px;border:2px solid #cbd5e1;background:#fff;font-size:16px;font-family:inherit;cursor:pointer}
+.kviz .moznost.spravne{border-color:#16a34a;background:#dcfce7}
+.kviz .moznost.spatne{border-color:#dc2626;background:#fee2e2}
+.kviz .vysv{font-size:15px;margin-top:4px;display:none}
+.skore{font-weight:800;font-size:18px;color:var(--modra)}
+/* karty výluhu */
+.karty{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.karta{border:2px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;display:flex;flex-direction:column}
+.karta.a{border-color:#93c5fd}.karta.b{border-color:#f9a8d4}
+.karta .c{font-size:12px;font-weight:800;color:#fff;border-radius:10px;padding:0 7px;align-self:flex-start}
+.karta.a .c{background:var(--modra2)}.karta.b .c{background:var(--ruz2)}
+.karta svg{width:100%;height:auto;max-height:130px;margin:4px 0}
+.karta .pojem{font-weight:800;font-size:18px}
+.karta .veta{font-size:15px}
+.karta .rk{font-size:13.5px;background:#ecfeff;border-radius:6px;padding:4px 6px;margin-top:6px}
+.karta .rk b{color:#0e7490}
+.karta a.vice{font-size:13px;margin-top:4px;color:var(--modra)}
+/* plovoucí tlačítka */
+.plov{position:fixed;right:14px;bottom:14px;z-index:50;display:none;background:var(--modra);color:#fff;border:0;border-radius:30px;padding:11px 15px;font-weight:800;font-size:15px;box-shadow:0 3px 10px rgba(0,0,0,.3);cursor:pointer;text-decoration:none}
+.plov.zpet{right:auto;left:14px;background:#7c3aed}
+.blik{animation:blik 1.6s ease 1}
+@keyframes blik{0%,100%{box-shadow:none}30%{box-shadow:0 0 0 5px #facc15}}
+footer{text-align:center;color:var(--sed);font-size:13px;padding:10px}
+
+h4{margin:16px 0 6px;font-size:17px;color:#334155}
+</style></head><body>
+<header><div class="wrap">
+<span class="cislo">ÚSTNÍ ZKOUŠKA · TÉMA č. 13</span>
+<h1>Bitmapová a vektorová grafika – použití, výhody a nevýhody, programy pro jejich zpracování, formáty souborů · Sítotisk – popis tiskové techniky, výhody a nevýhody, použití, výroba tiskové formy</h1>
+</div></header>
+<main>
+<nav class="menu">
+<a class="btn hlavni" href="#mapa">🧠 Myšlenková mapa</a>
+<a class="btn" href="#souhrn">📚 Souhrn</a>
+<a class="btn" href="#umet">✅ Co musíš umět</a>
+<a class="btn" href="#test">✍️ Test psaním</a>
+<a class="btn" href="#kviz">🎯 Kvíz</a>
+<a class="btn vyluh" href="#vyluh">⚡ Výluh</a>
+<a class="btn" href="jednoduse.html">🟡 Jednoduchá verze</a>
+<a class="btn" href="../">🏠 Rozcestník</a>
+</nav>
+
+<!-- ============ MYŠLENKOVÁ MAPA ============ -->
+<section id="mapa">
+<h2>🧠 Myšlenková mapa</h2>
+<div class="mapa">
+<div class="stred">Téma 13<br><span style="font-weight:500;font-size:15px">Bitmapa × vektor · Sítotisk</span></div>
+<div class="vetev a"><div class="nazev">1️⃣ Bitmapová a vektorová grafika</div><div class="uzly">
+<a class="uzel" href="#a1">Co to je<small>pixely × body a křivky</small></a>
+<a class="uzel" href="#a2">Rozlišení a velikost obrazu<small>72 ppi × 300 dpi, px</small></a>
+<a class="uzel" href="#a3">Barevný režim<small>RGB × CMYK, barevná hloubka</small></a>
+<a class="uzel" href="#a4">Použití<small>fotka × logo</small></a>
+<a class="uzel" href="#a5">Výhody a nevýhody<small>zvětšení, velikost dat</small></a>
+<a class="uzel" href="#a6">Programy<small>Photoshop × Illustrator</small></a>
+<a class="uzel" href="#a7">Komprese<small>ztrátová × bezztrátová</small></a>
+<a class="uzel" href="#a8">Formáty pro tisk<small>TIFF, PSD, JPG, PDF</small></a>
+<a class="uzel" href="#a9">Formáty pro web<small>JPG, PNG, GIF, WebP, SVG</small></a>
+<a class="uzel" href="#a10">Převody<small>rastrování, vektorizace</small></a>
+</div></div>
+<div class="vetev b"><div class="nazev">2️⃣ Sítotisk</div><div class="uzly">
+<a class="uzel" href="#b1">Popis techniky<small>průtisk, těrka</small></a>
+<a class="uzel" href="#b2">Tisková forma<small>rám, síto, šablona</small></a>
+<a class="uzel" href="#b3">Výroba tiskové formy<small>emulze → osvit → vymytí</small></a>
+<a class="uzel" href="#b4">Stroje, barvy, materiály</a>
+<a class="uzel" href="#b5">Podklady pro sítotisk<small>vektor, 1 barva = 1 film</small></a>
+<a class="uzel" href="#b6">Výhody a nevýhody</a>
+<a class="uzel" href="#b7">Použití<small>trička, sklo, cedule</small></a>
+</div></div>
+<div class="tip"><b>Jak na potítku přemýšlet:</b><br>
+<b>1. část</b> – odpovídej jako <b>srovnání</b>: u každého bodu řekni nejdřív <b>bitmapu</b>, potom <b>vektor</b>. Pak řekni, co platí <b>pro tisk</b> (300 dpi, CMYK, TIFF, PDF) a co <b>pro web</b> (pixely, RGB, JPG, WebP, SVG).<br>
+<b>2. část</b> – představ si, že tiskneš <b>tričko</b>: jak se tiskne (princip) → co k tomu potřebuješ (forma) → jak formu vyrobíš → proč sítotisk (výhody, nevýhody) → co se tak tiskne (použití).<br>
+<b>Most mezi částmi:</b> podklady pro sítotisk se nejlépe připravují <b>ve vektoru</b>.</div>
+</div>
+</section>
+
+<!-- ============ SOUHRN ============ -->
+<section id="souhrn">
+<h2>📚 Souhrn vědomostí</h2>
+<div class="cast a">Část 1 · Bitmapová a vektorová grafika</div>
+
+<h3 class="a" id="a1">Co je bitmapová a co vektorová grafika</h3>
+<p>Počítač umí uložit obrázek dvěma způsoby.</p>
+<p><b>Bitmapová grafika</b> (říká se jí také <b>rastrová grafika</b>) je obrázek složený z obrazových bodů – <b>pixelů</b>. Pixely jsou uspořádané do <b>mřížky</b> (řad a sloupců).</p>
+<p><b>Pixel</b> = nejmenší část bitmapového obrázku. U každého pixelu je přesně uloženo, <b>kde leží</b> a <b>jakou má barvu</b>.</p>
+<div class="obr" data-img="bitmapa"><div class="popis">Kruh v bitmapě – při zvětšení vidíme jednotlivé pixely.</div></div>
+<p><b>Jak bitmapa vzniká:</b> fotoaparátem, mobilem, skenerem nebo malováním v bitmapovém programu (Photoshop).</p>
+<p><b>Vektorová grafika</b> je obrázek popsaný <b>matematicky</b> (příkazy a rovnicemi). Skládá se z <b>kotevních bodů</b> (uzlů), <b>křivek</b> mezi nimi (tzv. Bézierovy křivky) a <b>tvarů</b>. Každý tvar (objekt) má <b>obrys</b> (tah) a <b>výplň</b>.</p>
+<div class="obr" data-img="vektor"><div class="popis">Kruh ve vektoru – jen 4 kotevní body a křivky mezi nimi.</div></div>
+<p><b>Příklad:</b> černé kolečko si vektor zapamatuje jen jako <b>3 informace</b>: tvar = kruh, poloměr, barva = černá. Bitmapa musí uložit <b>každý pixel zvlášť</b>.</p>
+<p><b>Jak vektor vzniká:</b> nakreslí se v grafickém programu (Illustrator, CorelDRAW) nebo se bitmapa převede na vektor (<a href="#a10">vektorizace</a>). Vektor nejde vyfotit ani naskenovat.</p>
+<div class="klic">Bitmapa = pixely (fotka). Vektor = body a křivky (matematika).</div>
+
+<h3 class="a" id="a2">Rozlišení a velikost obrazu</h3>
+<p><b>Rozlišení</b> říká, kolik obrazových bodů je na délce <b>1 palce</b>.</p>
+<p><b>Palec</b> (inch) = jednotka délky. <b>1 palec = 2,54 cm.</b></p>
+<div class="obr" data-img="rozliseni"><div class="popis">Na stejném palci: málo bodů = horší obraz, hodně bodů = lepší obraz.</div></div>
+<ul>
+<li><b>ppi</b> (pixels per inch) = pixely na palec. Používá se pro <b>obrazovku (web)</b>.</li>
+<li><b>dpi</b> (dots per inch) = tiskové body na palec. Používá se pro <b>tisk</b>. V praxi se obě zkratky často zaměňují.</li>
+<li><b>Méně bodů = horší obraz</b> (obraz je „podrastrovaný“, hrany mají zuby). <b>Více bodů = lepší obraz.</b></li>
+</ul>
+<div class="tabwrap"><table><tr><th></th><th>Pro web (obrazovku)</th><th>Pro tisk</th></tr>
+<tr><td><b>Rozlišení</b></td><td><b>72 ppi</b></td><td><b>300 dpi</b> ve skutečné velikosti</td></tr>
+<tr><td><b>Příklad</b> (obrázek 5 × 5 cm)</td><td>72 ppi → asi <b>59 kB</b>, hrany zubaté</td><td>300 dpi → asi <b>1 023 kB</b>, hrany hladké</td></tr></table></div>
+<div class="klic">Tisk: 300 dpi. Web: 72 ppi. Čím víc bodů, tím lepší obraz – ale větší soubor.</div>
+
+<p><b>Velikost obrazu</b> = kolik má obrázek pixelů na šířku a na výšku, např. <b>1920 × 1080 px</b>.</p>
+<h4>Velikost obrazu pro web</h4>
+<p>Na webu <b>rozhoduje počet pixelů</b> (rozměr v px). Prohlížeč číslo ppi nepoužívá – obrázek 1200 px široký se zobrazí stejně při 72 i při 300 ppi. Obrázek má být <b>tak velký, jak se na stránce zobrazí</b> – ne zbytečně větší.</p>
+<div class="obr" data-img="webVelikost"></div>
+<div class="tabwrap"><table><tr><th>Kde na webu</th><th>Šířka obrázku</th></tr>
+<tr><td>obrázek přes celou šířku obrazovky (úvodní banner)</td><td><b>1920 px</b></td></tr>
+<tr><td>obrázek v článku</td><td><b>800–1200 px</b></td></tr>
+<tr><td>náhled (miniatura), fotka v galerii</td><td><b>150–400 px</b></td></tr>
+<tr><td>příspěvek na Instagram (čtverec)</td><td><b>1080 × 1080 px</b></td></tr>
+<tr><td>logo, ikony</td><td>nejlépe vektor <b>SVG</b> (je ostrý na každém displeji)</td></tr></table></div>
+<p>Displeje mobilů a nových notebooků mají velmi hustou mřížku (např. Retina). Aby tam byl obrázek ostrý, dává se někdy <b>2× větší</b> počet pixelů. Fotka na web má mít co nejmenší datovou velikost – orientačně <b>do 200–300 kB</b>, aby se stránka rychle načetla.</p>
+
+<h4>Kolik pixelů potřebuji pro tisk – výpočet krok za krokem</h4>
+<div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span>
+<p style="margin:4px 0"><b>Vzorec:</b> počet pixelů = (rozměr v cm ÷ 2,54) × 300</p>
+<p style="margin:8px 0 2px"><b>Příklad 1:</b> fotka 10 × 15 cm pro tisk</p>
+<ul class="kroky">
+<li><b>Šířka na palce:</b> 10 cm ÷ 2,54 = <b>3,94 palce</b> (na kalkulačce: 10 ÷ 2,54).</li>
+<li><b>Krát 300:</b> 3,94 × 300 = <b>1 182 px</b>.</li>
+<li><b>Výška na palce:</b> 15 cm ÷ 2,54 = <b>5,91 palce</b>.</li>
+<li><b>Krát 300:</b> 5,91 × 300 = <b>1 773 px</b>.</li>
+<li><b>Výsledek:</b> fotka musí mít aspoň <b>1 182 × 1 773 px</b>.</li>
+</ul>
+<p style="margin:8px 0 2px"><b>Příklad 2:</b> celá strana A4 (21 × 29,7 cm)</p>
+<ul class="kroky">
+<li>21 ÷ 2,54 = 8,27 palce → 8,27 × 300 = <b>2 481 px</b></li>
+<li>29,7 ÷ 2,54 = 11,69 palce → 11,69 × 300 = <b>3 507 px</b></li>
+<li><b>Výsledek:</b> A4 pro tisk potřebuje <b>2 481 × 3 507 px</b>.</li>
+</ul>
+<p style="margin:8px 0 2px"><b>Příklad 3 – obráceně:</b> jak velkou fotku vytisknu z obrázku širokého 1920 px?</p>
+<ul class="kroky">
+<li><b>Vydělím 300:</b> 1920 ÷ 300 = <b>6,4 palce</b>.</li>
+<li><b>Krát 2,54:</b> 6,4 × 2,54 = <b>16,3 cm</b>.</li>
+<li><b>Výsledek:</b> kvalitně ji vytisknu nejvýš asi <b>16 cm</b> široké.</li>
+</ul></div>
+<div class="box-rozsir"><span class="rozsir">➕ Rozšiřující učivo – podrobně patří k tématu č. 15</span><br>Požadavky na kvalitu předloh a rozlišení: <a class="proklik" data-tema="15" href="#">Téma č. 15 – předlohy a rozlišení ›</a></div>
+
+<h3 class="a" id="a3">Barevný režim a barevná hloubka</h3>
+<div class="obr" data-img="rezim"></div>
+<div class="tabwrap"><table><tr><th>Barevný režim (model)</th><th>K čemu</th></tr>
+<tr><td><b>RGB</b> – červená, zelená, modrá (světlo)</td><td>zařízení, která <b>svítí</b>: monitory, mobily, projektory, televize → <b>web</b></td></tr>
+<tr><td><b>CMYK</b> – azurová, purpurová, žlutá, černá (tiskové barvy)</td><td><b>tisk</b></td></tr></table></div>
+<p>Fotka z fotoaparátu je v RGB. <b>Před tiskem</b> se převede do CMYK (ve Photoshopu: <i>Obraz → Režim → Barvy CMYK</i>). Některé zářivé barvy z monitoru CMYK nevytiskne – po převodu zešednou.</p>
+<div class="klic">Web = RGB. Tisk = CMYK.</div>
+<p>Více o barvách: <a class="proklik" data-tema="16" href="#">Téma č. 16 – barvové prostory ›</a></p>
+<p><b>Barevná hloubka</b> = kolik bitů má jeden pixel na zápis barvy. Čím víc bitů, tím víc odstínů.</p>
+<ul>
+<li><b>1 bit</b> = jen 2 barvy (černá a bílá),</li>
+<li><b>8 bitů na kanál</b> (RGB = 3 kanály × 8 = 24 bitů) = asi <b>16,7 milionu barev</b> – běžná fotka,</li>
+<li><b>16 bitů na kanál</b> (48 bitů) = asi 281 bilionů barev – pro náročné úpravy fotek.</li>
+</ul>
+
+<h3 class="a" id="a4">Použití</h3>
+<div class="obr" data-img="pouziti"></div>
+<div class="tabwrap"><table><tr><th class="a">Bitmapa – použití</th><th class="b">Vektor – použití</th></tr>
+<tr><td>fotografie<br>naskenované obrázky<br>malby, kresby s jemnými přechody<br>retuše a fotomontáže<br>obrázky na web, televize, displeje</td>
+<td>loga a firemní značky<br>písmo (fonty jsou vektorové)<br>ilustrace, ikony, piktogramy<br>schémata, mapy, grafy<br>podklady pro řezací plotr, sítotisk a velkoformátovou reklamu</td></tr></table></div>
+<div class="klic">Fotka → bitmapa. Logo a písmo → vektor.</div>
+<p>Mnoho tiskovin <b>kombinuje obojí</b>: v letáku je fotka (bitmapa), logo a text (vektor). Spojují se v sazebním programu a výsledkem je tiskové PDF.</p>
+
+<h3 class="a" id="a5">Výhody a nevýhody bitmapové a vektorové grafiky</h3>
+<div class="obr" data-img="zvetseni"><div class="popis">Po zvětšení se bitmapa rozpadne na „schody“, vektor zůstane ostrý.</div></div>
+<div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span>
+<div class="tabwrap"><table><tr><th></th><th class="a">Bitmapa</th><th class="b">Vektor</th></tr>
+<tr><td><b>Z čeho je</b></td><td>z pixelů</td><td>z bodů, křivek a tvarů (matematický popis)</td></tr>
+<tr><td class="tag-plus">Výhody</td><td>věrně zobrazí <b>fotografii</b><br>jemné přechody barev a stínů<br><b>rychlé pořízení</b> – vyfotím nebo naskenuji<br>umí ji zobrazit každé zařízení</td><td>zvětšení i zmenšení <b>bez ztráty kvality</b><br>s každým objektem pracuji <b>zvlášť</b><br><b>malé soubory</b> u jednoduchých obrázků<br>snadná úprava tvaru a barvy, ostré hrany</td></tr>
+<tr><td class="tag-minus">Nevýhody</td><td>zvětšením <b>ztrácí kvalitu</b> (zuby, kostičky)<br><b>velké soubory</b><br>pevné rozlišení<br>těžko se upravují jednotlivé tvary</td><td><b>nehodí se na fotografie</b><br><b>složitější pořízení</b> – musím ho nakreslit<br>velmi složitý obrázek je náročný na paměť a procesor</td></tr>
+</table></div></div>
+<div class="rekni">„Vektor můžu zvětšit bez ztráty kvality, třeba logo na billboard. Bitmapa se zvětšením rozpadne na pixely, ale hodí se na fotky.“</div>
+
+<h3 class="a" id="a6">Programy pro zpracování</h3>
+<div class="obr" data-img="programy"></div>
+<ul>
+<li><b>Bitmapová grafika:</b> Adobe Photoshop, GIMP (zdarma), Affinity Photo, Corel PHOTO-PAINT.</li>
+<li><b>Vektorová grafika:</b> Adobe Illustrator, CorelDRAW, Inkscape (zdarma), Affinity Designer.</li>
+<li><b>Sazba – spojí obojí:</b> Adobe InDesign, QuarkXPress, Affinity Publisher. Do sazby se fotky a loga <b>umísťují</b> (importují).</li>
+</ul>
+<p>Více o všech grafických programech: <a class="proklik" data-tema="4" href="#">Téma č. 4 – grafický software ›</a></p>
+
+<h3 class="a" id="a7">Komprese – zmenšení souboru</h3>
+<p><b>Komprese</b> = zmenšení datové velikosti souboru při ukládání.</p>
+<div class="obr" data-img="komprese"></div>
+<ul>
+<li><b>Bezztrátová komprese</b> – soubor se zmenší, ale <b>žádná informace se neztratí</b>. Obraz je stejný jako předtím. Např. TIFF, PNG, GIF.</li>
+<li><b>Ztrátová komprese</b> – část informací se <b>vypustí</b>. Při malé kompresi to oko nepozná, při silné kompresi se obraz zhorší. Např. JPG.</li>
+<li>U JPG se při silné kompresi objeví „špína“ kolem ostrých hran a na velkých jednobarevných plochách (odborně <b>Gibbsův jev</b>). <b>Každým dalším uložením</b> JPG se kvalita zhoršuje.</li>
+</ul>
+<div class="klic">Bezztrátová = nic se neztratí (TIFF, PNG). Ztrátová = menší soubor, horší kvalita (JPG).</div>
+
+<h3 class="a" id="a8">Formáty souborů pro tisk</h3>
+<div class="obr" data-img="formatyTisk"></div>
+<div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span>
+<div class="tabwrap"><table><tr><th>Formát</th><th class="tag-plus">✓ Výhody</th><th class="tag-minus">✗ Nevýhody</th></tr>
+<tr><th colspan="3" class="a">Rastrové formáty vhodné pro tisk</th></tr>
+<tr><td><b>TIFF</b><br><small>Tagged Image File Format</small></td><td>vysoká kvalita, bezztrátová komprese, umí CMYK, navržený pro DTP</td><td>velké soubory, nehodí se na web</td></tr>
+<tr><td><b>PSD</b><br><small>formát Photoshopu</small></td><td>uchová vrstvy a průhlednost, RGB i CMYK, vysoká barevná hloubka; po vložení do InDesignu ho lze dál upravovat</td><td>velké soubory, otevře ho hlavně Photoshop</td></tr>
+<tr><td><b>JPG (JPEG)</b><br><small>Joint Photographic Experts Group</small></td><td>malé soubory, nastavitelná komprese, otevře ho každý program; vhodný na fotky</td><td>ztrátová komprese, každým uložením horší kvalita; neumí průhlednost ani vrstvy. Do tisku jen <b>v nejvyšší kvalitě</b></td></tr>
+<tr><th colspan="3" class="b">Vektorový formát vhodný pro tisk</th></tr>
+<tr><td><b>PDF</b><br><small>Portable Document Format</small></td><td>obsahuje text, písma, vektor i bitmapu; zobrazí se na všech zařízeních stejně; je založený na jazyku PostScript; verze <b>PDF/X</b> (např. PDF/X-1a, PDF/X-4) slouží ke spolehlivému předání tiskových dat</td><td>obtížně se upravuje – úpravy se dělají ve zdrojovém programu</td></tr>
+<tr><th colspan="3">Formáty, které se do tiskárny nepředávají</th></tr>
+<tr><td><b>AI</b>, <b>CDR</b></td><td>pracovní soubory Illustratoru a CorelDRAW – plně upravitelné</td><td>otevře je hlavně jejich program → do tisku se předává <b>PDF</b></td></tr>
+<tr><td><b>EPS</b></td><td>starší výměnný formát, otevře ho většina programů</td><td>zastaralý, špatně pracuje s průhledností; dnes ho nahradilo PDF</td></tr>
+<tr><td><b>PNG, GIF, WebP</b></td><td>vhodné pro web</td><td>jen RGB, neumí CMYK → <b>nevhodné pro tisk</b></td></tr>
+<tr><td><b>RAW</b></td><td>„surová“ data z fotoaparátu, nejlepší úpravy expozice a vyvážení bílé (Camera Raw)</td><td>velké soubory, každý výrobce má jiný; musí se převést do TIFF nebo JPG</td></tr>
+<tr><td><b>BMP</b></td><td>jednoduchý formát</td><td>obrovské soubory, v polygrafii se nepoužívá</td></tr>
+</table></div></div>
+<div class="rekni">„Fotku do tisku uložím jako TIFF nebo PSD v CMYK a 300 dpi. Hotovou tiskovinu předám do tiskárny v PDF.“</div>
+<p>Tiskové PDF podrobně: <a class="proklik" data-tema="14" href="#">Téma č. 14 – PDF pro tisk ›</a></p>
+
+<h3 class="a" id="a9">Formáty souborů pro web</h3>
+<div class="obr" data-img="formatyWeb"></div>
+<div class="tabwrap"><table><tr><th>Formát</th><th class="tag-plus">✓ Výhody</th><th class="tag-minus">✗ Nevýhody</th><th>Použij na</th></tr>
+<tr><th colspan="4" class="a">Rastrové formáty pro web</th></tr>
+<tr><td><b>JPG</b></td><td>malé soubory, umí ho každý prohlížeč</td><td>ztrátová komprese, bez průhlednosti</td><td>fotografie</td></tr>
+<tr><td><b>PNG</b><br><small>Portable Network Graphic</small></td><td>bezztrátová komprese, <b>průhlednost</b> (i poloprůhlednost), velká barevná hloubka</td><td>u fotek velké soubory</td><td>loga a grafika s průhledným pozadím, snímky obrazovky</td></tr>
+<tr><td><b>GIF</b></td><td><b>animace</b>, průhledné pozadí, malé soubory u jednoduchých obrázků</td><td>jen <b>256 barev</b>, na fotky se nehodí</td><td>jednoduché animace</td></tr>
+<tr><td><b>WebP</b><br><small>moderní formát (Google)</small></td><td>ztrátová i bezztrátová komprese, průhlednost i animace, soubory asi o <b>25–35 % menší</b> než JPG a PNG; umí ho všechny současné prohlížeče</td><td>nehodí se pro tisk; některé starší programy ho neotevřou</td><td>fotky i grafika – dnes nejčastější volba</td></tr>
+<tr><td><b>AVIF</b><br><small>nejnovější formát</small></td><td>ještě menší soubory než WebP při dobré kvalitě</td><td>pomalejší ukládání, ne všechny programy ho umí</td><td>fotky na moderních webech</td></tr>
+<tr><th colspan="4" class="b">Vektorový formát pro web</th></tr>
+<tr><td><b>SVG</b><br><small>Scalable Vector Graphics</small></td><td>ostrý na každém displeji, malé soubory, zapsaný v jazyce XML, umí animace a interaktivitu</td><td>nehodí se na fotky ani pro tisk</td><td>loga, ikony, grafy</td></tr>
+</table></div>
+<div class="klic">Web: fotka → JPG nebo WebP, průhledné pozadí → PNG, animace → GIF, logo → SVG. Vždy RGB.</div>
+
+<h3 class="a" id="a10">Převody: rastrování a vektorizace</h3>
+<div class="obr" data-img="prevod"></div>
+<ul>
+<li><b>Vektor → bitmapa = rastrování</b> (rasterizace). Je snadné, např. export loga do JPG nebo PNG. Před tiskem převádí všechno na body také <b>RIP</b> <a class="proklik" data-tema="5" data-kotva="rip" href="#">Téma č. 5 – RIP ›</a></li>
+<li><b>Bitmapa → vektor = vektorizace</b> (trasování, „obkreslení“). Výsledek je jen <b>přibližný</b>.</li>
+</ul>
+<div class="tabwrap"><table><tr><th></th><th>Softwarová vektorizace</th><th>Ruční vektorizace</th></tr>
+<tr><td><b>Jak</b></td><td>program obkreslí obrys sám (Illustrator: <i>Obrazová stopa</i>, CorelDRAW: PowerTRACE)</td><td>grafik obkreslí obrázek perem (nástrojem Pero) sám</td></tr>
+<tr><td class="tag-plus">Výhody</td><td>rychlé pořízení</td><td>čistý výsledek, vhodná pro ilustrace a loga, menší objem dat</td></tr>
+<tr><td class="tag-minus">Nevýhody</td><td>hodně bodů → větší objem dat; nehodí se pro ilustrace</td><td>pomalá práce</td></tr></table></div>
+<div class="klic">Pozor na dvě různá slova: <b>rastrová grafika</b> = bitmapa (pixely). <b>Tiskový rastr</b> = body, kterými se tiskne obraz.</div>
+<p>Tiskový rastr: <a class="proklik" data-tema="6" data-kotva="rastr" href="#">Téma č. 6 – rastr ›</a></p>
+
+<div class="cast b">Část 2 · Sítotisk</div>
+
+<h3 class="b" id="b1">Popis tiskové techniky</h3>
+<div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span>
+<p style="margin:4px 0">Sítotisk patří do skupiny <b>průtisk</b>. Barva <b>prochází</b> (protlačí se) přes tiskovou formu na potiskovaný materiál.</p></div>
+<div class="obr" data-img="princip"><div class="popis">Řez sítotiskem: těrka tlačí barvu přes otevřená místa síta.</div></div>
+<ul class="kroky">
+<li>Tisková forma je <b>síto</b> – jemná tkanina (síťovina) napnutá na <b>rámu</b>.</li>
+<li>Na sítu je <b>šablona</b>: místa, která netisknou, jsou ucpaná. Místa, která tisknou, jsou <b>otevřená</b>.</li>
+<li>Síto leží těsně nad materiálem (malá mezera = <b>odtrh</b>). Na síto se nalije <b>barva</b>.</li>
+<li><b>Těrka</b> (také <b>tříč</b> nebo stěrka – držadlo s pryžovým břitem) táhne barvu po sítu a <b>protlačí</b> ji otevřenými místy na materiál.</li>
+<li>Síto se zvedne, výtisk se <b>suší</b> (teplem nebo UV zářením).</li>
+</ul>
+<div class="klic">Sítotisk = průtisk. Těrka protlačí barvu přes otevřená místa síta.</div>
+<p><b>Pozor na záměnu:</b> u hlubotisku stírá barvu <b>rakle</b>, u sítotisku barvu protlačuje <b>těrka</b>. <a class="proklik" data-tema="11" data-kotva="b-rakle" href="#">Téma č. 11 – rakle ›</a></p>
+<p>Starší název je <b>serigrafie</b> (síta se dříve dělala z hedvábí, anglicky „silk screen“). Průtisk obecně: <a class="proklik" data-tema="12" data-kotva="b-princip" href="#">Téma č. 12 – průtisk ›</a></p>
+
+<h3 class="b" id="b2">Tisková forma</h3>
+<div class="obr" data-img="forma"><div class="popis">Síto shora: modrá šablona netiskne, otevřená hvězda tiskne.</div></div>
+<ul>
+<li><b>Rám</b> – hliníkový (nejčastěji), ocelový nebo dřevěný.</li>
+<li><b>Síťovina</b> – tkanina z polyesteru, polyamidu nebo z kovových vláken. Musí být pevně a rovnoměrně <b>napnutá</b>.</li>
+<li><b>Hustota síta</b> = počet vláken na 1 cm. <b>Řidší síto</b> → silná vrstva barvy (např. textil). <b>Hustší síto</b> → jemnější detaily, tenčí vrstva.</li>
+<li><b>Šablona</b> – ztvrdlá světlocitlivá emulze (nebo vyřezaná fólie), která ucpe netisknoucí místa.</li>
+</ul>
+<div class="rekni">„Tisková forma je rám s napnutou síťovinou a šablonou. Kde je síto otevřené, tam se tiskne.“</div>
+
+<h3 class="b" id="b3">Výroba tiskové formy</h3>
+<div class="obr" data-img="vyroba"><div class="popis">Výroba šablony fotomechanickou cestou (nejčastější způsob).</div></div>
+<ul class="kroky">
+<li><b>Napnutí</b> síťoviny na rám (napínací zařízení) a <b>odmaštění</b> síta.</li>
+<li><b>Nanesení emulze</b> – síto se natře světlocitlivou (kopírovací) emulzí pomocí žlabu a suší se <b>ve tmě</b>.</li>
+<li><b>Osvit</b> – na síto se položí <b>film</b> (pozitiv: motiv je černý na průhledné fólii) a osvítí se <b>UV světlem</b>. Kde světlo dopadne, emulze <b>ztvrdne</b>.</li>
+<li><b>Vymytí</b> – síto se opláchne <b>vodou</b>. <b>Neosvícená</b> emulze (pod černým motivem filmu) se vymyje → vzniknou <b>otevřená místa</b>, která budou tisknout.</li>
+<li><b>Sušení a retuš</b> – drobné dírky se zakryjí. Síto je připravené k tisku.</li>
+</ul>
+<p><b>Moderně bez filmu:</b> motiv se na emulzi osvítí přímo z počítače – <b>Computer to Screen (CtS)</b>. <a class="proklik" data-tema="11" data-kotva="a-cts" href="#">Téma č. 11 – CtS ›</a></p>
+<p><b>Po tisku</b> se šablona chemicky odstraní (<b>odšablonování</b>) a síto lze použít znovu.</p>
+<div class="klic">Emulze → osvit UV přes film → vymytí vodou. Vymyjí se NEosvícená místa.</div>
+
+<h3 class="b" id="b4">Stroje, barvy a materiály</h3>
+<ul>
+<li><b>Ruční sítotiskový stůl</b> – malé náklady, zkušební tisky.</li>
+<li><b>Poloautomat a automat</b> – stroj pohybuje těrkou sám; větší náklady, archy, desky.</li>
+<li><b>Karuselový stroj</b> – „kolotoč“ s několika síty pro vícebarevný potisk textilu (triček).</li>
+<li><b>Rotační sítotisk</b> – síto má tvar válce; textil, tapety, etikety.</li>
+<li><b>Barvy:</b> hustší než v ofsetu; ředitelné vodou, rozpouštědlové, <b>UV barvy</b> (schnou UV zářením), <b>plastisol</b> na textil; i speciální: metalické, fluorescenční, reliéfní, UV lak.</li>
+<li><b>Materiály:</b> papír, karton, textil, plasty, sklo, kov, dřevo, keramika.</li>
+</ul>
+<p>Stroje a barvy s fotkami: <a class="proklik" data-tema="12" data-kotva="b-sitotisk" href="#">Téma č. 12 – sítotiskové stroje ›</a></p>
+
+<h3 class="b" id="b5">Příprava podkladů pro sítotisk</h3>
+<div class="obr" data-img="podklady"></div>
+<ul>
+<li>Motiv se nejlépe připravuje <b>ve vektoru</b> – ostré hrany a čisté plochy (most k 1. části tématu).</li>
+<li>Tiskne se <b>přímými barvami</b>: <b>každá barva = vlastní film = vlastní síto</b>.</li>
+<li>Film je vždy <b>černý motiv</b> na průhledné fólii, i když se tiskne jinou barvou.</li>
+<li>Příliš tenké čáry a drobné písmo se nemusí vytisknout – motiv nesmí být moc jemný.</li>
+<li>Barvy na sebe musí přesně navazovat – <b>soutisk</b>.</li>
+</ul>
+<div class="rekni">„Podklady pro sítotisk připravím ve vektoru. Každá barva má svůj film a své síto.“</div>
+
+<h3 class="b" id="b6">Výhody a nevýhody sítotisku</h3>
+<div class="obr" data-img="vyhody"></div>
+<div class="tabwrap"><table><tr><th class="tag-plus">✓ Výhody</th><th class="tag-minus">✗ Nevýhody</th></tr>
+<tr><td>tiskne <b>skoro na jakýkoli materiál</b><br>tiskne i na <b>zakřivené tvary</b> (láhve, hrnky)<br><b>silná vrstva barvy</b> – sytá, krycí, odolná (i venku)<br>světlá barva i na <b>tmavý podklad</b><br>speciální barvy (metalické, reliéfní, lak)<br>velké formáty, levná forma pro malé náklady</td>
+<td><b>každá barva potřebuje vlastní síto</b><br><b>pomalejší</b> tisk, pracná příprava<br><b>méně jemné detaily</b> než ofset<br>barva déle schne<br>u velkých nákladů a fotografií se nevyplatí</td></tr></table></div>
+
+<h3 class="b" id="b7">Použití sítotisku</h3>
+<div class="obr" data-img="pouzitiSito"></div>
+<ul>
+<li><b>textil</b> – trička, mikiny, tašky, dresy</li>
+<li><b>reklamní předměty</b> – propisky, hrnky, láhve, zapalovače</li>
+<li><b>sklo a keramika</b> – láhve, sklenice, obtisky na porcelán</li>
+<li><b>cedule, značky, plakáty</b>, potisk plastových a kovových desek</li>
+<li><b>elektronika</b> – plošné spoje, ovládací panely přístrojů</li>
+<li><b>zušlechtění</b> tiskovin – parciální (částečný) UV lak, reliéfní lak, Braillovo písmo</li>
+<li><b>umění</b> – serigrafie, autorské grafické listy</li>
+</ul>
+<div class="klic">Trička, sklo, cedule, reklamní předměty, plošné spoje.</div>
+</section>
+
+<!-- ============ CO MUSÍŠ UMĚT ============ -->
+<section id="umet" class="umet">
+<h2>✅ Co musíš umět (podle ŠVP)</h2>
+<p style="font-size:15px;color:#475569">Odškrtni, co už umíš. Kliknutím na odkaz se dostaneš k učivu.</p>
+<div id="umetSeznam"></div>
+</section>
+
+<!-- ============ TEST PSANÍM ============ -->
+<section id="test">
+<h2>✍️ Test psaním – odpověz vlastními slovy</h2>
+<p style="font-size:15px;color:#475569">Napiš odpověď, jako bys mluvil u zkoušky. Test ukáže, co jsi zmínil, co chybí a na co si dát pozor. Nakonec si přečti vzorovou odpověď.</p>
+<div id="testOtazky"></div>
+</section>
+
+<!-- ============ KVÍZ ============ -->
+<section id="kviz" class="kviz">
+<h2>🎯 Kvíz</h2>
+<div id="kvizOtazky"></div>
+<p class="skore" id="kvizSkore"></p>
+<button class="btn" onclick="kvizZnovu()">🔄 Zkusit znovu</button>
+</section>
+
+<!-- ============ VÝLUH ============ -->
+<section id="vyluh">
+<h2>⚡ Výluh: tohle musí zaznít</h2>
+<p style="font-size:15px">Stejné karty jako v <a href="jednoduse.html">jednoduché verzi</a>. Tam si je můžeš i procvičit.</p>
+<div class="karty" id="kartyVyluh"></div>
+</section>
+<footer>Téma č. 13 · ústní zkouška 34-53-H/01 Reprodukční grafik</footer>
+</main>
+<a class="plov" id="naMapu" href="#mapa">⬆ Zpět na mapu</a>
+<a class="plov zpet" id="zpetTema" href="#">↩ Zpět, odkud jsi přišel</a>
+
+<script>/* ===== Společná data a obrázky pro téma 13 (podrobná lekce i výluh) ===== */
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9\s.,;!?\n-]/g,' ');}
+function pixMriz(x0,y0,n,cell,fn,barva){let s='';for(let i=0;i<n;i++)for(let j=0;j<n;j++){if(fn(i,j,n))s+=`<rect x="${x0+i*cell}" y="${y0+j*cell}" width="${cell}" height="${cell}" fill="${barva}"/>`;}
+ for(let k=0;k<=n;k++){s+=`<line x1="${x0+k*cell}" y1="${y0}" x2="${x0+k*cell}" y2="${y0+n*cell}" stroke="#94a3b8" stroke-width=".5"/><line x1="${x0}" y1="${y0+k*cell}" x2="${x0+n*cell}" y2="${y0+k*cell}" stroke="#94a3b8" stroke-width=".5"/>`;}return s;}
+const kruhFn=(i,j,n)=>((i+.5-n/2)**2+(j+.5-n/2)**2)<(n/2-.6)**2;
+const T=(x,y,t,o={})=>`<text x="${x}" y="${y}" font-size="${o.s||9}" font-weight="${o.w||700}" fill="${o.f||'#1f2937'}" text-anchor="${o.a||'middle'}" font-family="system-ui,Arial,sans-serif">${t}</text>`;
+const triko=(x,y,k,barva)=>`<g transform="translate(${x},${y}) scale(${k})"><path d="M14 4 L26 0 Q32 6 38 0 L50 4 L58 16 L48 21 L45 16 L45 56 L19 56 L19 16 L16 21 L6 16 Z" fill="${barva}" stroke="#334155" stroke-width="1.2"/></g>`;
+const lahev=(x,y,k)=>`<g transform="translate(${x},${y}) scale(${k})"><path d="M10 0 h8 v10 q8 6 8 16 v28 q0 4 -4 4 h-16 q-4 0 -4 -4 v-28 q0 -10 8 -16z" fill="#a7f3d0" stroke="#334155" stroke-width="1.2"/><rect x="5" y="30" width="18" height="12" fill="#be185d"/></g>`;
+const cedule=(x,y,k)=>`<g transform="translate(${x},${y}) scale(${k})"><rect x="0" y="0" width="50" height="30" rx="3" fill="#fef08a" stroke="#334155" stroke-width="1.2"/><rect x="23" y="30" width="4" height="20" fill="#64748b"/><text x="25" y="20" font-size="13" font-weight="800" text-anchor="middle" fill="#b91c1c" font-family="Arial">STOP</text></g>`;
+const spoj=(x,y,k)=>`<g transform="translate(${x},${y}) scale(${k})"><rect width="46" height="34" rx="2" fill="#15803d" stroke="#334155"/><path d="M6 8 h16 v10 h16 M6 26 h10 v-6 M30 28 h10" stroke="#fde68a" stroke-width="2" fill="none"/><circle cx="22" cy="8" r="2.5" fill="#fde68a"/><circle cx="38" cy="18" r="2.5" fill="#fde68a"/><circle cx="16" cy="20" r="2.5" fill="#fde68a"/></g>`;
+const ramBok=(x,y,w)=>`<rect x="${x}" y="${y}" width="6" height="14" fill="#64748b"/><rect x="${x+w-6}" y="${y}" width="6" height="14" fill="#64748b"/><line x1="${x+6}" y1="${y+14}" x2="${x+w-6}" y2="${y+14}" stroke="#334155" stroke-width="1.4" stroke-dasharray="2 1.5"/>`;
+
+const soubor=(x,y,t,b)=>`<path d="M${x} ${y} h22 l8 8 v28 h-30z" fill="#fff" stroke="${b}" stroke-width="1.6"/><path d="M${x+22} ${y} v8 h8" fill="none" stroke="${b}" stroke-width="1.2"/>`+T(x+15,y+26,t,{s:t.length>3?7:8.5,f:b,w:800});
+const IMG={
+bitmapa:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">${pixMriz(20,12,12,8,kruhFn,'#3b82f6')}<rect x="76" y="12" width="8" height="8" fill="none" stroke="#dc2626" stroke-width="2"/><path d="M86 18 L140 30" stroke="#dc2626" stroke-width="1.4"/>${T(170,28,'1 pixel',{s:12,f:'#dc2626'})}${T(170,50,'= 1 čtvereček',{s:10,w:500})}${T(170,64,'s jednou barvou',{s:10,w:500})}${T(170,96,'BITMAPA',{s:13,f:'#1e40af'})}</svg>`,
+vektor:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><path d="M68 14 C93 14 114 35 114 60 C114 85 93 106 68 106 C43 106 22 85 22 60 C22 35 43 14 68 14Z" fill="#fde68a" stroke="#b45309" stroke-width="2.5"/><line x1="44" y1="14" x2="92" y2="14" stroke="#64748b" stroke-width="1.2"/><circle cx="44" cy="14" r="3" fill="#64748b"/><circle cx="92" cy="14" r="3" fill="#64748b"/>${[[68,14],[114,60],[68,106],[22,60]].map(p=>`<rect x="${p[0]-4}" y="${p[1]-4}" width="8" height="8" fill="#fff" stroke="#1e40af" stroke-width="2"/>`).join('')}<path d="M118 58 L140 40" stroke="#1e40af" stroke-width="1.2"/>${T(172,36,'kotevní bod',{s:11,f:'#1e40af'})}<path d="M104 30 L140 64" stroke="#b45309" stroke-width="1.2"/>${T(172,70,'křivka',{s:11,f:'#b45309'})}${T(172,98,'VEKTOR',{s:13,f:'#b45309'})}</svg>`,
+zvetseni:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="96" height="84" rx="6" fill="#fff" stroke="#94a3b8"/>${pixMriz(14,12,8,10,(i,j,n)=>j>=n-1-i,'#3b82f6')}<rect x="116" y="8" width="96" height="84" rx="6" fill="#fff" stroke="#94a3b8"/><path d="M124 92 L204 12 L204 92 Z" fill="#f59e0b"/><rect x="116" y="8" width="96" height="84" rx="6" fill="none" stroke="#94a3b8"/>${T(56,108,'bitmapa: kostičky ✗',{s:11,f:'#b91c1c'})}${T(164,108,'vektor: ostré ✓',{s:11,f:'#15803d'})}<circle cx="190" cy="26" r="0"/></svg>`,
+pouziti:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="nebe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#e0f2fe"/></linearGradient></defs><rect x="8" y="10" width="96" height="70" rx="4" fill="url(#nebe)" stroke="#334155"/><circle cx="82" cy="28" r="9" fill="#facc15"/><path d="M8 80 L36 42 L54 62 L70 46 L104 80 Z" fill="#4d7c0f"/><path d="M36 42 L42 50 L30 50Z" fill="#fff"/>${T(56,98,'fotografie',{s:11})}${T(56,112,'→ BITMAPA',{s:11,f:'#1e40af'})}<circle cx="146" cy="44" r="26" fill="#be185d"/><path d="M134 54 L146 28 L158 54 Z" fill="#fff"/>${T(194,52,'Aa',{s:26,w:800,f:'#1e40af'})}${T(166,98,'logo, písmo',{s:11})}${T(166,112,'→ VEKTOR',{s:11,f:'#b45309'})}</svg>`,
+programy:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="100" height="108" rx="8" fill="#dbeafe"/><rect x="114" y="6" width="100" height="108" rx="8" fill="#fef3c7"/>${T(56,24,'BITMAPA',{s:12,f:'#1e40af'})}${T(164,24,'VEKTOR',{s:12,f:'#b45309'})}${['Photoshop','GIMP','Affinity Photo'].map((p,i)=>`<rect x="14" y="${34+i*25}" width="84" height="19" rx="5" fill="#fff"/>`+T(56,47+i*25,p,{s:10.5})).join('')}${['Illustrator','CorelDRAW','Inkscape'].map((p,i)=>`<rect x="122" y="${34+i*25}" width="84" height="19" rx="5" fill="#fff"/>`+T(164,47+i*25,p,{s:10.5})).join('')}</svg>`,
+formatyTisk:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="208" height="20" rx="6" fill="#334155"/>${T(110,20,'PRO TISK',{s:11,f:'#fff'})}<rect x="6" y="30" width="122" height="84" rx="8" fill="#dbeafe"/><rect x="132" y="30" width="82" height="84" rx="8" fill="#fef3c7"/>${T(67,44,'RASTR',{s:10,f:'#1e40af'})}${T(173,44,'VEKTOR',{s:10,f:'#b45309'})}${soubor(14,54,'TIFF','#1e40af')}${soubor(52,54,'PSD','#1e40af')}${soubor(90,54,'JPG','#1e40af')}${soubor(160,54,'PDF','#b45309')}${T(67,106,'JPG jen v max. kvalitě',{s:7.5,w:500})}${T(173,106,'hotová tiskovina',{s:7.5,w:500})}</svg>`,
+formatyWeb:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="208" height="20" rx="6" fill="#0e7490"/><circle cx="16" cy="16" r="3" fill="#fca5a5"/><circle cx="25" cy="16" r="3" fill="#fde68a"/><circle cx="34" cy="16" r="3" fill="#86efac"/>${T(118,20,'PRO WEB',{s:11,f:'#fff'})}<rect x="6" y="30" width="150" height="84" rx="8" fill="#dbeafe"/><rect x="160" y="30" width="54" height="84" rx="8" fill="#fef3c7"/>${T(81,44,'RASTR',{s:10,f:'#1e40af'})}${T(187,44,'VEKTOR',{s:10,f:'#b45309'})}${soubor(12,54,'JPG','#1e40af')}${soubor(48,54,'PNG','#1e40af')}${soubor(84,54,'GIF','#1e40af')}${soubor(120,54,'WEBP','#15803d')}${soubor(175,54,'SVG','#b45309')}${T(81,106,'WebP = moderní, malé soubory',{s:7.5,w:600,f:'#15803d'})}${T(187,106,'logo',{s:7.5,w:500})}</svg>`,
+rozliseni:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><path d="M20 12 h70 M20 9 v6 M90 9 v6" stroke="#334155"/>${T(55,9,'1 palec = 2,54 cm',{s:7.5,w:600})}${pixMriz(20,18,8,70/8,kruhFn,'#3b82f6')}<path d="M130 12 h70 M130 9 v6 M200 9 v6" stroke="#334155"/>${T(165,9,'1 palec = 2,54 cm',{s:7.5,w:600})}${pixMriz(130,18,20,3.5,kruhFn,'#3b82f6').replace(/stroke-width=".5"/g,'stroke-width=".15"')}${T(55,102,'72 ppi',{s:12,f:'#0e7490'})}${T(55,114,'WEB – málo bodů',{s:8.5,w:600})}${T(165,102,'300 dpi',{s:12,f:'#be185d'})}${T(165,114,'TISK – hodně bodů',{s:8.5,w:600})}</svg>`,
+rezim:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="96" height="66" rx="4" fill="#111827"/><g style="mix-blend-mode:screen"><circle cx="48" cy="36" r="15" fill="#ff0000"/><circle cx="68" cy="36" r="15" fill="#00ff00" style="mix-blend-mode:screen"/><circle cx="58" cy="54" r="15" fill="#0000ff" style="mix-blend-mode:screen"/></g><rect x="50" y="76" width="16" height="10" fill="#64748b"/><rect x="38" y="86" width="40" height="4" fill="#64748b"/>${T(58,104,'RGB',{s:13,f:'#0e7490'})}${T(58,115,'web, monitor, mobil',{s:8,w:600})}<rect x="128" y="8" width="72" height="84" fill="#fff" stroke="#94a3b8"/><g><circle cx="155" cy="38" r="14" fill="#00aeef" style="mix-blend-mode:multiply"/><circle cx="173" cy="38" r="14" fill="#ec008c" style="mix-blend-mode:multiply"/><circle cx="164" cy="54" r="14" fill="#fff200" style="mix-blend-mode:multiply"/></g><rect x="154" y="72" width="20" height="10" fill="#111"/>${T(164,104,'CMYK',{s:13,f:'#be185d'})}${T(164,115,'tisk',{s:8,w:600})}</svg>`,
+webVelikost:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="212" height="112" rx="6" fill="#fff" stroke="#94a3b8"/><rect x="4" y="4" width="212" height="14" rx="6" fill="#e2e8f0"/><circle cx="12" cy="11" r="2.5" fill="#f87171"/><circle cx="20" cy="11" r="2.5" fill="#fbbf24"/><circle cx="28" cy="11" r="2.5" fill="#4ade80"/><rect x="10" y="24" width="200" height="22" fill="#93c5fd"/>${T(110,38,'1920 px – obrázek přes celou šířku',{s:8.5})}<rect x="10" y="52" width="125" height="22" fill="#a7f3d0"/>${T(72,66,'1200 px – obrázek v článku',{s:8})}<rect x="10" y="80" width="42" height="22" fill="#fde68a"/>${T(31,94,'400 px',{s:8})}${T(132,94,'← náhled (miniatura)',{s:8,w:500})}${T(110,112,'na webu rozhoduje počet pixelů',{s:8,w:700,f:'#be185d'})}</svg>`,
+komprese:()=>{const ost=(i,j,n)=>((i+.5-n/2)**2+(j+.5-n/2)**2)<(n/2-2)**2;const art=(i,j,n)=>{const d=Math.sqrt((i+.5-n/2)**2+(j+.5-n/2)**2)-(n/2-2);return d<0||(d<1.6&&((i*7+j*3)%4===0));};
+ return `<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="10" width="84" height="84" fill="#fef9c3"/>${pixMriz(14,10,14,6,ost,'#be185d').replace(/<line[^>]*>/g,'')}<rect x="122" y="10" width="84" height="84" fill="#fef9c3"/>${pixMriz(122,10,14,6,art,'#be185d').replace(/<line[^>]*>/g,'')}${pixMriz(122,10,14,6,(i,j,n)=>{const d=Math.sqrt((i+.5-n/2)**2+(j+.5-n/2)**2)-(n/2-2);return d>0&&d<2.6&&((i+j*5)%3===0);},'#d6a5b8').replace(/<line[^>]*>/g,'')}${T(56,106,'bezztrátová ✓',{s:9.5,f:'#15803d'})}${T(164,106,'ztrátová (silná) ✗',{s:9.5,f:'#b91c1c'})}${T(164,117,'„špína“ kolem hran',{s:7.5,w:500})}</svg>`;},
+prevod:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><marker id="sip" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#334155"/></marker></defs><rect x="6" y="40" width="64" height="40" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>${T(38,64,'VEKTOR',{s:11,f:'#b45309'})}<rect x="150" y="40" width="64" height="40" rx="8" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>${T(182,64,'BITMAPA',{s:11,f:'#1e40af'})}<path d="M72 46 Q110 14 148 46" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#sip)"/>${T(110,18,'rastrování ✓ snadné',{s:10,f:'#15803d'})}<path d="M148 76 Q110 108 72 76" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#sip)"/>${T(110,114,'vektorizace (trasování) – jen přibližně',{s:9.5,f:'#b45309'})}</svg>`,
+princip:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><marker id="sip2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#b45309"/></marker></defs><rect x="8" y="100" width="204" height="12" fill="#e2e8f0" stroke="#94a3b8"/><rect x="66" y="94" width="20" height="6" fill="#db2777"/><rect x="110" y="94" width="20" height="6" fill="#db2777"/><rect x="12" y="52" width="10" height="26" fill="#64748b"/><rect x="198" y="52" width="10" height="26" fill="#64748b"/><line x1="22" y1="72" x2="198" y2="72" stroke="#334155" stroke-width="1.5" stroke-dasharray="2 2"/><rect x="22" y="69" width="44" height="7" fill="#3b82f6"/><rect x="86" y="69" width="24" height="7" fill="#3b82f6"/><rect x="130" y="69" width="68" height="7" fill="#3b82f6"/><path d="M28 68 Q36 56 52 60 Q60 62 58 68Z" fill="#db2777"/><path d="M76 74 L76 92 M120 74 L120 92" stroke="#db2777" stroke-width="1.5" stroke-dasharray="3 2"/><polygon points="62,14 74,14 70,68 64,68" fill="#f59e0b" stroke="#92400e"/><path d="M80 26 L104 26" stroke="#b45309" stroke-width="2" marker-end="url(#sip2)"/>${T(92,20,'tah',{s:8,f:'#b45309'})}${T(40,12,'těrka',{s:10,f:'#92400e'})}${T(40,50,'barva',{s:9,f:'#be185d'})}${T(164,62,'šablona',{s:9,f:'#1e40af'})}${T(164,88,'síto (síťovina)',{s:9,f:'#334155'})}${T(30,94,'rám',{s:8,f:'#475569'})}${T(160,110,'potiskovaný materiál',{s:8.5,w:600,f:'#334155'})}</svg>`,
+forma:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sit" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0 L4 0 M0 0 L0 4" stroke="#94a3b8" stroke-width=".6"/></pattern></defs><rect x="14" y="10" width="110" height="100" fill="#64748b"/><rect x="24" y="20" width="90" height="80" fill="url(#sit)"/><rect x="24" y="20" width="90" height="80" fill="none"/><path fill-rule="evenodd" d="M24 20 h90 v80 h-90z M69 34 L76 52 L96 52 L80 64 L86 84 L69 72 L52 84 L58 64 L42 52 L62 52 Z" fill="#3b82f6" opacity=".85"/><path d="M128 18 L150 18" stroke="#334155"/>${T(185,22,'rám',{s:11,f:'#334155'})}<path d="M100 40 L150 46" stroke="#334155"/>${T(185,50,'šablona',{s:11,f:'#1e40af'})}<path d="M76 60 L150 76" stroke="#334155"/>${T(185,74,'otevřené síto',{s:10,f:'#be185d'})}${T(185,86,'= tady se tiskne',{s:9,w:500,f:'#be185d'})}</svg>`,
+vyroba:()=>{const P=(i,t)=>`<rect x="${i*44+2}" y="2" width="40" height="96" rx="6" fill="#fdf2f8" stroke="#f9a8d4"/><circle cx="${i*44+10}" cy="11" r="7" fill="#be185d"/>`+T(i*44+10,14.5,String(i+1),{s:9,f:'#fff'})+T(i*44+22,92,t,{s:7.5});
+ return `<svg viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">${P(0,'napnutí')}${P(1,'emulze')}${P(2,'osvit UV')}${P(3,'vymytí')}${P(4,'hotovo')}
+ <rect x="6" y="40" width="4" height="10" fill="#64748b"/><rect x="34" y="40" width="4" height="10" fill="#64748b"/><line x1="10" y1="50" x2="34" y2="50" stroke="#334155" stroke-dasharray="2 1"/><path d="M8 62 L2 62 M36 62 L42 62" stroke="#be185d" stroke-width="2"/><path d="M4 59 L1 62 L4 65 M40 59 L43 62 L40 65" stroke="#be185d" fill="none" stroke-width="1.5"/>
+ ${ramBok(48,36,36)}<rect x="54" y="48" width="24" height="5" fill="#3b82f6"/><polygon points="62,58 74,58 70,70 60,70" fill="#94a3b8"/>
+ <circle cx="110" cy="30" r="7" fill="#facc15"/><path d="M104 40 L102 52 M110 40 L110 52 M116 40 L118 52" stroke="#eab308" stroke-width="1.6"/><rect x="104" y="54" width="12" height="4" fill="#111"/>${ramBok(92,52,36)}<rect x="98" y="64" width="24" height="5" fill="#1d4ed8"/><rect x="104" y="64" width="12" height="5" fill="#93c5fd"/>
+ ${ramBok(136,36,36)}<rect x="142" y="48" width="8" height="5" fill="#1d4ed8"/><rect x="158" y="48" width="8" height="5" fill="#1d4ed8"/><path d="M154 58 q-3 5 0 8 q3 -3 0 -8z M146 64 q-3 5 0 8 q3 -3 0 -8z M162 64 q-3 5 0 8 q3 -3 0 -8z" fill="#38bdf8"/>
+ ${ramBok(180,40,36)}<rect x="186" y="52" width="8" height="5" fill="#1d4ed8"/><rect x="202" y="52" width="8" height="5" fill="#1d4ed8"/>${T(198,72,'✓',{s:14,f:'#15803d'})}</svg>`;},
+vyhody:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="104" height="112" rx="8" fill="#dcfce7"/><rect x="112" y="4" width="104" height="112" rx="8" fill="#fee2e2"/>${T(56,20,'✓ VÝHODY',{s:11,f:'#15803d'})}${T(164,20,'✗ NEVÝHODY',{s:11,f:'#b91c1c'})}<rect x="14" y="74" width="40" height="6" fill="#cbd5e1"/><rect x="20" y="58" width="28" height="16" fill="#db2777"/>${T(34,92,'silná vrstva',{s:8})}${triko(62,34,.62,'#1f2937')}<rect x="76" y="48" width="12" height="10" fill="#fff"/>${T(82,92,'i na tmavé',{s:8})}${T(56,108,'tiskne skoro na vše',{s:8.5,w:600})}${[0,1,2].map(i=>`<rect x="${122+i*30}" y="34" width="26" height="22" fill="none" stroke="#64748b" stroke-width="4"/><rect x="${126+i*30}" y="38" width="18" height="14" fill="${['#06b6d4','#db2777','#facc15'][i]}"/>`).join('')}${T(164,72,'1 barva = 1 síto',{s:9.5,f:'#b91c1c'})}${T(164,90,'pomalejší',{s:9,w:600})}${T(164,104,'méně jemné detaily',{s:9,w:600})}</svg>`,
+pouzitiSito:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">${triko(6,14,.8,'#fde68a')}<circle cx="31" cy="38" r="7" fill="#be185d"/>${lahev(68,14,1)}${cedule(108,14,.9)}${spoj(166,20,1)}${T(31,100,'trička',{s:9})}${T(82,100,'sklo',{s:9})}${T(131,100,'cedule',{s:9})}${T(189,100,'plošné spoje',{s:9})}${T(110,116,'+ reklamní předměty, plakáty, plasty',{s:8.5,w:500})}</svg>`,
+podklady:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="50" r="28" fill="#06b6d4"/><path d="M28 60 L40 32 L52 60Z" fill="#db2777"/>${T(40,96,'motiv: 2 barvy',{s:9})}<path d="M76 50 L96 50" stroke="#334155" stroke-width="2"/><path d="M92 45 L98 50 L92 55" fill="none" stroke="#334155" stroke-width="2"/><rect x="104" y="18" width="50" height="62" fill="#f8fafc" stroke="#94a3b8"/><circle cx="129" cy="49" r="19" fill="#111"/><path d="M121 56 L129 37 L137 56Z" fill="#f8fafc"/>${T(129,94,'film 1 – modrá',{s:7.5})}<rect x="162" y="18" width="50" height="62" fill="#f8fafc" stroke="#94a3b8"/><path d="M179 56 L187 37 L195 56Z" fill="#111"/>${T(187,94,'film 2 – růžová',{s:7.5})}${T(158,112,'každá barva = vlastní černý film',{s:8.5,w:600,f:'#be185d'})}</svg>`
+};
+
+/* Karty výluhu – STEJNÉ v podrobné lekci i v jednoduse.html */
+const CARDS=[
+{v:'a',img:'bitmapa',pojem:'Bitmapa = pixely',veta:'Obrázek je složený z malých čtverečků – pixelů.',rekni:'Bitmapová (rastrová) grafika je složená z pixelů.',ot:'Z čeho je složená bitmapa?',hesla:['pixel','ctverec','ctverc','obrazov'],kotva:'a1'},
+{v:'a',img:'vektor',pojem:'Vektor = body a křivky',veta:'Obrázek je popsaný matematicky – body a křivkami.',rekni:'Vektorová grafika je složená z kotevních bodů a křivek.',ot:'Z čeho je složený vektor?',hesla:['krivk','matemat','body','bodu','bod','uzl','cary','car'],kotva:'a1'},
+{v:'a',img:'zvetseni',pojem:'Zvětšení',veta:'Bitmapa se rozpadne na kostičky. Vektor zůstane ostrý.',rekni:'Vektor zvětším bez ztráty kvality, bitmapa kvalitu ztrácí.',ot:'Který obrázek zůstane po zvětšení ostrý?',hesla:['vektor'],kotva:'a5'},
+{v:'a',img:'pouziti',pojem:'Kdy co použít',veta:'Fotka → bitmapa. Logo a písmo → vektor.',rekni:'Na fotografie použiji bitmapu, na logo a písmo vektor.',ot:'Na co použiješ vektor?',hesla:['logo','pism','ikon','ilustr','piktogram','text','font'],kotva:'a4'},
+{v:'a',img:'rozliseni',pojem:'Rozlišení: web × tisk',veta:'Tisk: 300 dpi. Web: 72 ppi – rozhoduje počet pixelů.',rekni:'Pro tisk potřebuji 300 dpi, pro web stačí 72 ppi.',ot:'Kolik dpi potřebuje obrázek pro tisk?',hesla:['300'],kotva:'a2'},
+{v:'a',img:'rezim',pojem:'Barevný režim: web × tisk',veta:'Web a monitory: RGB. Tisk: CMYK.',rekni:'Pro web používám RGB, pro tisk CMYK.',ot:'Jaký barevný režim použiješ pro tisk?',hesla:['cmyk'],kotva:'a3'},
+{v:'a',img:'programy',pojem:'Programy',veta:'Bitmapa: Photoshop, GIMP. Vektor: Illustrator, CorelDRAW, Inkscape.',rekni:'Bitmapu upravuji ve Photoshopu, vektor kreslím v Illustratoru.',ot:'Napiš jeden program na vektorovou grafiku.',hesla:['illustrator','ilustrator','corel','inkscape','designer'],kotva:'a6'},
+{v:'a',img:'formatyTisk',pojem:'Formáty pro tisk',veta:'Rastr: TIFF, PSD, JPG. Vektor: PDF.',rekni:'Fotku do tisku uložím jako TIFF, hotovou tiskovinu předám v PDF.',ot:'V jakém formátu předáš hotovou tiskovinu do tiskárny?',hesla:['pdf'],kotva:'a8'},
+{v:'a',img:'formatyWeb',pojem:'Formáty pro web',veta:'Rastr: JPG, PNG, GIF, WebP. Vektor: SVG.',rekni:'Na web dám fotku jako JPG nebo WebP, logo jako SVG.',ot:'Napiš moderní webový formát, který má menší soubory než JPG.',hesla:['webp','avif'],kotva:'a9'},
+{v:'b',img:'princip',pojem:'Sítotisk = průtisk',veta:'Těrka protlačí barvu přes otevřená místa síta.',rekni:'Sítotisk patří do průtisku. Barvu protlačí těrka přes síto na materiál.',ot:'Do které skupiny tiskových technik patří sítotisk?',hesla:['prutisk'],kotva:'b1'},
+{v:'b',img:'forma',pojem:'Tisková forma',veta:'Rám + napnutá síťovina + šablona.',rekni:'Tisková forma je rám s napnutou síťovinou a se šablonou.',ot:'Na co se napíná síťovina?',hesla:['ram'],kotva:'b2'},
+{v:'b',img:'vyroba',pojem:'Výroba formy',veta:'Emulze → osvit UV přes film → vymytí vodou.',rekni:'Síto natřu světlocitlivou emulzí, osvítím přes film a neosvícená místa vymyji vodou.',ot:'Co se nanáší na síto před osvitem?',hesla:['emulz','svetlocitl','kopirovac'],kotva:'b3'},
+{v:'b',img:'vyhody',pojem:'Výhody × nevýhody',veta:'✓ Silná vrstva, tiskne skoro na vše. ✗ Každá barva má vlastní síto.',rekni:'Výhoda: tiskne na různé materiály silnou vrstvou. Nevýhoda: každá barva potřebuje vlastní síto.',ot:'Kolik sít potřebuješ na tisk ve 3 barvách?',hesla:['3','tri'],kotva:'b6'},
+{v:'b',img:'pouzitiSito',pojem:'Použití sítotisku',veta:'Trička, sklo, cedule, reklamní předměty, plošné spoje.',rekni:'Sítotiskem se potiskují trička, sklo, cedule a reklamní předměty.',ot:'Napiš jeden výrobek ze sítotisku.',hesla:['tric','trik','textil','lahv','sklo','sklen','cedul','plakat','hrn','propisk','reklam','plosn','obleceni','task','mikin','tabul'],kotva:'b7'}
+];
+
+function hesloOK(odp,hesla){const n=norm(odp).trim();if(!n)return false;const tok=n.split(/[\s.,;!?-]+/);
+ return hesla.some(h=>h.length<=2?tok.includes(h):n.includes(h));}
+
+function vykresliKarty(el,odkazNa){el.innerHTML=CARDS.map((k,i)=>`<div class="karta ${k.v}" id="karta${i+1}"><span class="c">${i+1} · ${k.v==='a'?'bitmapa × vektor':'sítotisk'}</span>${IMG[k.img]()}<div class="pojem">${k.pojem}</div><div class="veta">${k.veta}</div><div class="rk"><b>Řekni u zkoušky:</b> „${k.rekni}“</div>${odkazNa?`<a class="vice" href="${odkazNa}#${k.kotva}">Podrobně ›</a>`:''}</div>`).join('');}
+function vyplnObrazky(){document.querySelectorAll('[data-img]').forEach(d=>{d.insertAdjacentHTML('afterbegin',IMG[d.dataset.img]());});}
+
+/* ===== Prokliky na jiná témata =====
+   Název složky doplň podle rozcestníku. Prázdné '' = odkaz vede na rozcestník. */
+const SLOZKY={4:'tema-04-software-a-cena-tisku',5:'tema-05-archova-montaz',6:'tema-06-predlohy-a-rastr',11:'tema-11-ctf-ctp-ctpr-cts',12:'tema-12-casti-publikace-a-prutisk',14:'',15:'',16:''};
+document.querySelectorAll('a.proklik[data-tema]').forEach((a,i)=>{
+ if(!a.id)a.id='proklik'+i;
+ const s=SLOZKY[a.dataset.tema];
+ const zpet=encodeURIComponent(location.pathname+'#'+a.id);
+ a.href=(s?'../'+s+'/':'../')+'?zpet='+zpet+(s&&a.dataset.kotva?'#'+a.dataset.kotva:'');
+});
+/* návrat z jiného tématu: ?zpet=cesta#kotva */
+(function(){const p=new URLSearchParams(location.search).get('zpet');if(!p)return;const b=document.getElementById('zpetTema');b.href=p;b.style.display='block';})();
+/* návrat na místo v mapě */
+let posledniUzel=null;
+document.querySelectorAll('#mapa a.uzel').forEach(a=>a.addEventListener('click',()=>{posledniUzel=a;}));
+const naMapu=document.getElementById('naMapu');
+naMapu.addEventListener('click',e=>{e.preventDefault();const cil=posledniUzel||document.getElementById('mapa');cil.scrollIntoView({behavior:'smooth',block:'center'});if(posledniUzel){posledniUzel.classList.remove('blik');void posledniUzel.offsetWidth;posledniUzel.classList.add('blik');}});
+window.addEventListener('scroll',()=>{const m=document.getElementById('mapa');naMapu.style.display=(m.getBoundingClientRect().bottom<0)?'block':'none';});
+
+/* ===== Co musíš umět ===== */
+const UMET=[
+['Vysvětlit, co je bitmapová a co vektorová grafika a jak vznikají.','a1'],
+['Vysvětlit rozlišení (ppi, dpi), velikost obrazu a spočítat pixely pro tisk.','a2'],
+['Říct, kolik pixelů potřebuje obrázek na web.','a2'],
+['Říct, jaký barevný režim je pro web a jaký pro tisk; vysvětlit barevnou hloubku.','a3'],
+['Říct, k čemu se bitmapa a vektor používají.','a4'],
+['Porovnat výhody a nevýhody bitmapy a vektoru.','a5'],
+['Vyjmenovat programy pro bitmapu, vektor a sazbu.','a6'],
+['Vysvětlit ztrátovou a bezztrátovou kompresi.','a7'],
+['Vyjmenovat formáty pro tisk s jejich výhodami a nevýhodami.','a8'],
+['Vyjmenovat formáty pro web (i WebP) s jejich výhodami a nevýhodami.','a9'],
+['Vysvětlit rastrování a vektorizaci.','a10'],
+['Popsat princip sítotisku (průtisk, síto, šablona, těrka).','b1'],
+['Popsat tiskovou formu pro sítotisk.','b2'],
+['Popsat postup výroby tiskové formy.','b3'],
+['Uvést stroje, barvy a materiály pro sítotisk.','b4'],
+['Připravit podklady pro sítotisk.','b5'],
+['Říct výhody a nevýhody sítotisku.','b6'],
+['Uvést příklady použití sítotisku.','b7']];
+document.getElementById('umetSeznam').innerHTML=UMET.map((u,i)=>`<label><input type="checkbox"> <span>${u[0]} <a href="#${u[1]}">učivo ›</a></span></label>`).join('');
+
+/* ===== Test psaním ===== */
+const TEST=[
+{z:'1. Co je bitmapová grafika? Kdy ji použiješ a jaké má nevýhody?',
+ body:[['z pixelů (čtverečků)',['pixel','ctverec','ctverc']],['mřížka / rastrová grafika',['mriz','rastr']],['rozlišení (ppi, dpi)',['rozliseni','ppi','dpi']],['použití: fotografie',['fot']],['zvětšením ztrácí kvalitu',['ztrac','ztrat','rozpad','kostick','zubat','schod','rozmaz','pixelizac']],['velké soubory',['velk','hodne mista','vic mista','hodne dat']]],
+ chyby:[[/krivk|matemat|kotevn/,'Křivky, kotevní body a matematický popis patří k <b>vektorové</b> grafice, ne k bitmapě.']],
+ vzor:'Bitmapová (rastrová) grafika je obrázek složený z mřížky pixelů. Každý pixel má jednu barvu. Kvalitu určuje rozlišení (pro tisk 300 ppi). Používá se na fotografie a obrázky s jemnými přechody barev. Nevýhoda: při zvětšení ztrácí kvalitu – rozpadne se na kostičky. Soubory bývají velké.'},
+{z:'2. Co je vektorová grafika? Kdy ji použiješ, jaké má výhody a nevýhody?',
+ body:[['matematický popis',['matemat','vzorc','rovnic','souradnic']],['body (uzly) a křivky',['krivk','bod','uzl','bezier','cest']],['zvětšení bez ztráty kvality',['bez ztrat','neztrac','libovoln','nerozpad','ostr']],['použití: logo, písmo',['logo','pism','ikon','piktogram','ilustr']],['malé soubory',['maly','male','mala','malo mista','mensi']],['nevýhoda: nehodí se na fotografie',['fot']]],
+ chyby:[[/pixel/,'Vektorová grafika <b>není</b> složená z pixelů. (Pokud jsi napsal, že není, je to v pořádku.)']],
+ vzor:'Vektorová grafika je obrázek popsaný matematicky – skládá se z kotevních bodů a křivek, tvary mají obrys a výplň. Výhody: dá se zvětšit bez ztráty kvality, soubory jsou malé, tvary a barvy se snadno upraví. Používá se na loga, písmo, ilustrace a schémata. Nevýhoda: nehodí se na fotografie.'},
+{z:'3. Jaké rozlišení a jaký barevný režim použiješ pro web a pro tisk? Kolik pixelů má mít obrázek na web?',
+ body:[['tisk: 300 dpi',['300']],['web: 72 ppi',['72']],['na webu rozhoduje počet pixelů (např. 1920 px, 1200 px)',['px','pixel','1920','1200','800','sirk','rozmer']],['web: RGB',['rgb']],['tisk: CMYK',['cmyk']],['palec = 2,54 cm',['palec','palc','2,54','2.54','inch']]],
+ rezim:true,
+ vzor:'Rozlišení říká, kolik bodů je na 1 palci (2,54 cm). Pro tisk potřebuji 300 dpi ve skutečné velikosti, pro web stačí 72 ppi. Na webu ale rozhoduje počet pixelů: obrázek přes celou šířku obrazovky má asi 1920 px, obrázek v článku 800–1200 px, náhled 150–400 px. Pro web používám barevný režim RGB, pro tisk CMYK.'},
+{z:'4. Vyjmenuj programy a formáty souborů pro tisk a pro web. Řekni výhody a nevýhody formátů.',
+ body:[['program na bitmapu (Photoshop, GIMP…)',['photoshop','gimp','affinity photo','photo-paint','photo paint']],['program na vektor (Illustrator, CorelDRAW, Inkscape…)',['illustrator','ilustrator','corel','inkscape','designer']],['rastrové formáty pro tisk (TIFF, PSD, JPG)',['tif','psd']],['PDF pro tisk',['pdf']],['rastrové formáty pro web (JPG, PNG, GIF)',['png','gif']],['moderní WebP',['webp','avif']],['SVG pro web',['svg']],['výhody/nevýhody (komprese, průhlednost, velikost…)',['kompres','pruhledn','animac','vrstv','velk','mal','kvalit','256']]],
+ vety:true,
+ vzor:'Bitmapu upravuji ve Photoshopu nebo GIMPu, vektor kreslím v Illustratoru, CorelDRAW nebo Inkscape. Pro tisk: TIFF (vysoká kvalita, bezztrátový, ale velký soubor), PSD (vrstvy, otevře ho hlavně Photoshop), JPG v nejvyšší kvalitě (malý, ale ztrátová komprese) a hotová tiskovina v PDF (zobrazí se všude stejně). Pro web: JPG na fotky, PNG s průhledností (u fotek velké soubory), GIF na animace (jen 256 barev), moderní WebP (o čtvrtinu až třetinu menší soubory, umí průhlednost) a vektorové SVG na loga.'},
+{z:'5. Popiš princip sítotisku.',
+ body:[['patří do průtisku',['prutisk']],['síto (síťovina na rámu)',['sito','sita','sitem','situ','sitovin']],['šablona zakryje netisknoucí místa',['sablon','emulz','zakryt','ucpan','uzavren']],['barva projde otevřenými místy',['otevren','volna mista','otvor','diry','propust']],['těrka (tříč, stěrka) protlačí barvu',['terk','sterk','rakl']],['tiskne se na materiál, pak se suší',['material','susi','suseni','schne']]],
+ chyby:[[/z vysky|z plochy|z hloubky/,'Sítotisk <b>není</b> tisk z výšky, z plochy ani z hloubky – patří do <b>průtisku</b>. (Pokud jsi to psal jako srovnání, je to v pořádku.)'],[/valec|valcem/,'V běžném sítotisku barvu netlačí válec, ale <b>těrka</b> (válcové síto má jen rotační sítotisk).']],
+ vzor:'Sítotisk patří do průtisku. Tisková forma je síto – síťovina napnutá na rámu. Na sítu je šablona, která ucpe netisknoucí místa; tisknoucí místa zůstanou otevřená. Na síto se nalije barva a těrka ji protlačí otevřenými místy na potiskovaný materiál. Výtisk se pak suší.'},
+{z:'6. Jak se vyrábí tisková forma pro sítotisk?',
+ body:[['napnutí síťoviny na rám',['napn','napin','ram']],['nanesení světlocitlivé emulze',['emulz','svetlocitl','kopirovaci']],['osvit UV světlem',['osvit','osvic','uv','ultrafial']],['přes film (pozitiv) nebo přímo z dat (CtS)',['film','pozitiv','folie','cts','computer to screen']],['vymytí vodou',['vymy','vyvol','vod']],['sušení, retuš',['suseni','susi','suchu','retus']]],
+ chyby:[[/\bosvicen\w*\s+(mist\w*|emulz\w*)\s+(se\s+)?vymy/,'Pozor: vodou se vymyjí <b>neosvícená</b> místa (pod motivem filmu). Osvícená emulze ztvrdne.'],[/negativ/,'Pro sítotisk se používá <b>pozitivní</b> film – motiv je černý na průhledné fólii.']],
+ vzor:'Síťovina se napne na rám a odmastí. Pak se natře světlocitlivou emulzí a suší se ve tmě. Na síto se položí film (pozitiv) a osvítí se UV světlem – osvícená emulze ztvrdne. Neosvícená místa pod motivem se vymyjí vodou, a tak vzniknou otevřená tisknoucí místa. Síto se usuší a zretušuje. Moderně lze motiv osvítit přímo z počítače – CtS.'},
+{z:'7. Jaké má sítotisk výhody, nevýhody a kde se používá?',
+ body:[['výhoda: různé materiály',['material','textil','sklo','kov','plast','drev','keramik','ruzn','cokoli','vsechno','vse']],['výhoda: silná, krycí vrstva barvy',['siln','tlust','kryt','syt','vrstv','odoln']],['výhoda: i zakřivené tvary',['tvar','zakriv','valcov','nerovn']],['nevýhoda: každá barva = vlastní síto',['kazda barva','kazdou barvu','vlastni sit','jedno sit','vice sit','vic sit','kolik barev']],['nevýhoda: pomalejší, méně detailů',['pomal','detail','jemn','zdlouhav','dlouho','pracn']],['použití: trička, sklo, cedule…',['tric','trik','obleceni','reklam','cedul','plakat','lahv','plosn','hrn','propisk','task','mikin']]],
+ vzor:'Výhody: sítotisk tiskne skoro na jakýkoli materiál (textil, sklo, plast, kov, dřevo) i na zakřivené tvary. Vrstva barvy je silná, sytá a odolná, světlou barvu lze tisknout i na tmavý podklad. Nevýhody: každá barva potřebuje vlastní síto, tisk je pomalejší a nezvládne tak jemné detaily jako ofset. Použití: trička, reklamní předměty, láhve a sklo, cedule, plakáty, plošné spoje.'}
+];
+function obsahuje(n,vzory){return vzory.some(v=>v.length<=2?new RegExp('\\b'+v+'\\b').test(n):n.includes(v));}
+document.getElementById('testOtazky').innerHTML=TEST.map((q,i)=>`<div class="otazka"><div class="zadani">${q.z}</div><textarea id="odp${i}" placeholder="Piš sem…"></textarea><button class="btn hlavni" onclick="vyhodnot(${i})">Vyhodnotit</button><div class="vysledek" id="vys${i}"></div><details><summary>Vzorová odpověď</summary><div class="vzor">${q.vzor}</div></details></div>`).join('');
+function vyhodnot(i){const q=TEST[i];const n=' '+norm(document.getElementById('odp'+i).value)+' ';const el=document.getElementById('vys'+i);
+ if(n.trim().length<5){el.innerHTML='<span class="chybi">Nejdřív napiš odpověď.</span>';return;}
+ const ok=[],chybi=[];q.body.forEach(b=>(obsahuje(n,b[1].map(x=>x.trim()))?ok:chybi).push(b[0]));
+ const poz=[];(q.chyby||[]).forEach(c=>{if(c[0].test(n))poz.push(c[1]);});
+ if(q.rezim){n.split(/[.;\n]/).forEach(v=>{if(/tisk/.test(v)&&/rgb/.test(v)&&!/cmyk|\bne\b|neni|nevhod|nehod/.test(v))poz.push('Pro tisk se používá <b>CMYK</b>, ne RGB.');if(/tisk/.test(v)&&/\b72\b/.test(v)&&!/300/.test(v))poz.push('Pro tisk nestačí 72 ppi – potřebuješ <b>300 dpi</b>.');if(/\bweb(?!p)/.test(v)&&/cmyk/.test(v)&&!/rgb|\bne\b|neni/.test(v))poz.push('Pro web se používá <b>RGB</b>, ne CMYK.');});}
+ if(q.vety){n.split(/[.;\n]/).forEach(v=>{const web=/\bweb(?!p)/.test(v),neg=/nevhod|nehod|\bne\b|neni|neumi/.test(v);if(/tisk/.test(v)&&!web&&!neg&&/png|gif|webp|svg/.test(v))poz.push('PNG, GIF, WebP a SVG se pro tisk nehodí (jen RGB, web).');if(web&&!/tisk/.test(v)&&!neg&&/tiff?\b|psd|cmyk/.test(v))poz.push('TIFF, PSD a CMYK patří do tisku, ne na web.');});}
+ if(q.vety){n.split(/[.;\n]/).forEach(v=>{if(/vektor/.test(v)&&!/bitmap|rastr/.test(v)&&/photoshop|gimp/.test(v))poz.push('Ve větě o vektoru máš bitmapový program (Photoshop a GIMP patří k <b>bitmapě</b>).');if(/bitmap|rastr/.test(v)&&!/vektor/.test(v)&&/illustrator|corel|inkscape/.test(v))poz.push('Ve větě o bitmapě máš vektorový program (Illustrator, CorelDRAW a Inkscape patří k <b>vektoru</b>).');});}
+ el.innerHTML=`<b>Zmínil jsi ${ok.length} z ${q.body.length} důležitých bodů.</b>`+(ok.length?`<ul class="ok">${ok.map(x=>'<li>✓ '+x+'</li>').join('')}</ul>`:'')+(chybi.length?`<div class="chybi"><b>Zapomněl jsi:</b></div><ul class="chybi">${chybi.map(x=>'<li>✗ '+x+'</li>').join('')}</ul>`:'<div class="ok"><b>Výborně, nic důležitého nechybí!</b></div>')+[...new Set(poz)].map(p=>`<div class="pozor">⚠️ ${p}</div>`).join('')+'<div style="font-size:14px;color:#475569">Porovnej se vzorovou odpovědí níže.</div>';
+ el.parentNode.querySelector('details').open=true;}
+
+/* ===== Kvíz ===== */
+const KVIZ=[
+['Z čeho se skládá bitmapová grafika?',['z pixelů','z křivek','z kotevních bodů','z obrysů a výplní'],'Bitmapa je mřížka pixelů. Křivky a body má vektor.'],
+['Co se stane s vektorovým logem po zvětšení na billboard?',['zůstane ostré','rozpadne se na pixely','rozmaže se na krajích','změní se mu barvy'],'Vektor je popsaný matematicky, proto ho zvětšíš bez ztráty kvality.'],
+['Kolik je 1 palec?',['2,54 cm','1 cm','25,4 cm','10 cm'],'1 palec (inch) = 2,54 cm. Rozlišení udává počet bodů na 1 palec.'],
+['Jaké rozlišení potřebuje fotka pro tisk?',['300 dpi','72 ppi','30 dpi','96 ppi'],'Pro tisk 300 dpi ve skutečné velikosti. 72 ppi stačí jen pro web.'],
+['Co je na webu u obrázku nejdůležitější?',['počet pixelů (rozměr v px)','číslo ppi v souboru','barevný režim CMYK','formát TIFF'],'Prohlížeč se řídí rozměrem v pixelech, např. 1200 px na šířku.'],
+['Jaký barevný režim použiješ pro tisk?',['CMYK','RGB','web RGB','sRGB'],'Tiskne se barvami CMYK. RGB je pro monitory a web.'],
+['Který program je hlavně na vektorovou grafiku?',['Adobe Illustrator','Adobe Photoshop','GIMP','Affinity Photo'],'Illustrator kreslí vektor. Photoshop, GIMP a Affinity Photo upravují bitmapu.'],
+['Který formát má ztrátovou kompresi?',['JPG','TIFF','PNG','GIF'],'JPG při ukládání vypouští část dat. TIFF, PNG a GIF jsou bezztrátové.'],
+['Ve kterém formátu předáš hotovou tiskovinu do tiskárny?',['PDF','PNG','GIF','SVG'],'PDF obsahuje text, písma, vektor i bitmapu a zobrazí se všude stejně.'],
+['Proč se PNG nehodí pro tisk?',['neumí barvy CMYK','neumí průhlednost','má jen 256 barev','je to vektorový formát'],'PNG je jen v RGB – je určený pro web.'],
+['Který formát je moderní webový formát s menšími soubory?',['WebP','BMP','TIFF','EPS'],'WebP má asi o 25–35 % menší soubory než JPG a PNG a umí průhlednost.'],
+['Který formát je vektorový pro web?',['SVG','JPG','PNG','GIF'],'SVG je vektorová grafika zapsaná v jazyce XML – ideální na loga a ikony.'],
+['Jak se jmenuje převod bitmapy na vektor?',['vektorizace','rastrování','separace','kalibrace'],'Vektorizace (trasování) obkreslí bitmapu křivkami. Opačný převod je rastrování.'],
+['Do které skupiny tiskových technik patří sítotisk?',['průtisk','tisk z výšky','tisk z plochy','tisk z hloubky'],'Barva v sítotisku prochází přes formu – je to průtisk.'],
+['Čím se v sítotisku protlačuje barva přes síto?',['těrkou','rytým válcem','tamponem','tryskami'],'Těrka (tříč) má pryžový břit a protlačuje barvu sítem. Rakle stírá barvu u hlubotisku.'],
+['Co se při výrobě šablony vymyje vodou?',['neosvícená emulze','osvícená emulze','napnutá síťovina','hliníkový rám'],'Osvícená emulze ztvrdne. Neosvícená (pod motivem filmu) se vymyje – vzniknou tisknoucí místa.'],
+['Co je typický výrobek sítotisku?',['potisk trička','denní noviny','kapesní kniha','katalog s fotkami'],'Sítotisk tiskne na textil a různé materiály. Noviny a katalogy se tisknou ofsetem.'],
+['Co je nevýhoda sítotisku?',['každá barva má vlastní síto','nejde tisknout na textil','tiskne jen na papír','barva je moc slabá'],'Pro každou barvu se musí vyrobit vlastní síto, proto je vícebarevný tisk pracný.']];
+let kvizBody=0,kvizHotovo=0;
+function michej(a){return a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);}
+function kvizZnovu(){kvizBody=0;kvizHotovo=0;document.getElementById('kvizSkore').textContent='';
+ document.getElementById('kvizOtazky').innerHTML=KVIZ.map((q,i)=>`<div class="otazka"><div class="zadani">${i+1}. ${q[0]}</div>${michej(q[1].map((m,j)=>({m,j}))).map(o=>`<button class="moznost" data-q="${i}" data-s="${o.j===0?1:0}">${o.m}</button>`).join('')}<div class="vysv" id="kv${i}">${q[2]}</div></div>`).join('');
+ document.querySelectorAll('#kvizOtazky .moznost').forEach(b=>b.addEventListener('click',()=>{const i=b.dataset.q;const tl=document.querySelectorAll(`#kvizOtazky .moznost[data-q="${i}"]`);if(tl[0].disabled)return;tl.forEach(t=>{t.disabled=true;if(t.dataset.s==='1')t.classList.add('spravne');});if(b.dataset.s==='1')kvizBody++;else b.classList.add('spatne');document.getElementById('kv'+i).style.display='block';kvizHotovo++;if(kvizHotovo===KVIZ.length)document.getElementById('kvizSkore').textContent=`Výsledek: ${kvizBody} z ${KVIZ.length} bodů`;}));}
+kvizZnovu();
+vyplnObrazky();
+vykresliKarty(document.getElementById('kartyVyluh'),'');
+document.querySelectorAll('#kartyVyluh .karta').forEach((k,i)=>{k.insertAdjacentHTML('beforeend',`<a class="vice" href="#${CARDS[i].kotva}">Podrobně ›</a>`);});
+</script></body></html>

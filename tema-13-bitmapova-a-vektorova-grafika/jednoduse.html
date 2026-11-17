@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Téma č. 13 jednoduše – Bitmapová a vektorová grafika – použití, výhody a nevýhody, programy pro jejich zpracování, formáty souborů · Sítotisk – popis tiskové techniky, výhody a nevýhody, použití, výroba tiskové formy</title><style>:root{--modra:#1e40af;--modra2:#3b82f6;--ruz:#be185d;--ruz2:#ec4899;--zel:#15803d;--sed:#64748b;--bg:#f1f5f9;--text:#1f2937}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;font-size:17px}
+header{background:linear-gradient(135deg,#1e40af,#7c3aed 55%,#be185d);color:#fff;padding:20px 16px 18px}
+header .wrap{max-width:900px;margin:0 auto}
+header .cislo{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:2px 12px;font-size:14px;font-weight:700;letter-spacing:.5px}
+header h1{margin:8px 0 6px;font-size:24px;line-height:1.25}
+header .zneni{font-size:15px;opacity:.95;margin:4px 0}
+header .zneni b{color:#fde68a}
+main{max-width:900px;margin:0 auto;padding:10px 12px 80px}
+nav.menu{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btn{display:inline-block;border:0;border-radius:10px;padding:9px 13px;background:#fff;color:var(--modra);font-weight:700;text-decoration:none;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.15);cursor:pointer;font-family:inherit}
+.btn:hover{background:#e0e7ff}
+.btn.hlavni{background:var(--modra);color:#fff}
+.btn.vyluh{background:#f59e0b;color:#111}
+section{background:#fff;border-radius:14px;padding:14px 16px;margin:14px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+h2{margin:4px 0 10px;font-size:22px;color:var(--modra)}
+h3{margin:22px 0 8px;font-size:19px;scroll-margin-top:12px;padding:6px 10px;border-radius:8px}
+h3.a{background:#dbeafe;color:#1e3a8a}
+h3.b{background:#fce7f3;color:#831843}
+.cast{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-top:22px;padding:8px 10px;border-radius:8px;color:#fff}
+.cast.a{background:var(--modra)}.cast.b{background:var(--ruz)}
+.obr{margin:10px 0;text-align:center}
+.obr svg{width:100%;max-width:460px;height:auto;display:block;margin:0 auto}
+.obr .popis{font-size:13px;color:var(--sed);margin-top:2px}
+.klic{background:#fef3c7;border-left:6px solid #f59e0b;padding:10px 12px;border-radius:8px;margin:12px 0;font-weight:600}
+.klic::before{content:"⭐ Zapamatuj si: ";color:#b45309}
+.rekni{background:#ecfeff;border-left:6px solid #06b6d4;padding:8px 12px;border-radius:8px;margin:10px 0}
+.rekni::before{content:"🗣️ Řekni u zkoušky: ";font-weight:700;color:#0e7490}
+.pisemka{border:3px solid var(--zel);border-radius:12px;padding:8px 12px 10px;margin:14px 0;background:#f0fdf4}
+.pisemka>.stitek{display:block;color:var(--zel);font-weight:800;font-size:14px;margin-bottom:4px}
+.rozsir{display:inline-block;background:#e5e7eb;color:#374151;font-size:13px;font-weight:700;border-radius:6px;padding:2px 8px;margin:4px 0}
+.box-rozsir{border:2px dashed #9ca3af;border-radius:10px;padding:6px 12px;margin:12px 0;background:#f9fafb}
+.proklik{display:inline-block;background:#ede9fe;color:#5b21b6;border-radius:6px;padding:1px 8px;font-weight:700;text-decoration:none;font-size:15px}
+.proklik:hover{background:#ddd6fe}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:15px}
+th,td{border:1px solid #cbd5e1;padding:7px 8px;vertical-align:top;text-align:left}
+th{background:#eef2ff}
+th.a{background:#dbeafe}th.b{background:#fef3c7}
+.tabwrap{overflow-x:auto}
+ul.kroky{list-style:none;padding:0;counter-reset:k}
+ul.kroky li{counter-increment:k;position:relative;padding:6px 6px 6px 44px;margin:6px 0;background:#fdf2f8;border-radius:8px}
+ul.kroky li::before{content:counter(k);position:absolute;left:8px;top:6px;width:26px;height:26px;border-radius:50%;background:var(--ruz);color:#fff;font-weight:800;text-align:center;line-height:26px}
+.tag-plus{color:#15803d;font-weight:800}.tag-minus{color:#b91c1c;font-weight:800}
+/* myšlenková mapa */
+.mapa{display:grid;grid-template-columns:1fr;gap:12px}
+.mapa .stred{background:linear-gradient(135deg,#1e40af,#be185d);color:#fff;text-align:center;border-radius:14px;padding:12px;font-weight:800;font-size:18px}
+.vetev{border-radius:14px;padding:10px}
+.vetev.a{background:#eff6ff;border:2px solid #93c5fd}
+.vetev.b{background:#fdf2f8;border:2px solid #f9a8d4}
+.vetev .nazev{font-weight:800;margin-bottom:6px}
+.vetev.a .nazev{color:#1e3a8a}.vetev.b .nazev{color:#831843}
+.uzly{display:flex;flex-wrap:wrap;gap:7px}
+.uzel{display:inline-block;background:#fff;border-radius:20px;padding:6px 12px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.vetev.a .uzel{color:#1e40af;border:2px solid #3b82f6}
+.vetev.b .uzel{color:#9d174d;border:2px solid #ec4899}
+.uzel small{display:block;font-weight:500;font-size:12px;color:#475569}
+.tip{background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:8px 12px;font-size:15px}
+@media(min-width:720px){.mapa{grid-template-columns:1fr 1fr}.mapa .stred,.mapa .tip{grid-column:1/3}}
+/* co musíš umět */
+.umet label{display:flex;gap:10px;align-items:flex-start;padding:6px 4px;border-bottom:1px solid #e5e7eb}
+.umet input{width:22px;height:22px;flex:none;margin-top:2px}
+.umet a{color:var(--modra);font-weight:600}
+/* testy */
+.otazka{border:1px solid #cbd5e1;border-radius:12px;padding:10px 12px;margin:12px 0;background:#fafafa}
+.otazka .zadani{font-weight:700;margin-bottom:6px}
+textarea{width:100%;min-height:110px;font-size:16px;font-family:inherit;padding:8px;border-radius:8px;border:1px solid #94a3b8}
+.vysledek{margin-top:8px;font-size:15px}
+.vysledek .ok{color:#15803d}.vysledek .chybi{color:#b91c1c}.vysledek .pozor{color:#b45309;background:#fffbeb;border-radius:6px;padding:4px 8px;margin:4px 0}
+.vysledek ul{margin:4px 0;padding-left:20px}
+details{margin-top:6px}
+summary{cursor:pointer;font-weight:700;color:var(--modra)}
+.vzor{background:#eef2ff;border-radius:8px;padding:8px 10px;margin-top:6px}
+.kviz .moznost{display:block;width:100%;text-align:left;margin:5px 0;padding:9px 12px;border-radius:9px;border:2px solid #cbd5e1;background:#fff;font-size:16px;font-family:inherit;cursor:pointer}
+.kviz .moznost.spravne{border-color:#16a34a;background:#dcfce7}
+.kviz .moznost.spatne{border-color:#dc2626;background:#fee2e2}
+.kviz .vysv{font-size:15px;margin-top:4px;display:none}
+.skore{font-weight:800;font-size:18px;color:var(--modra)}
+/* karty výluhu */
+.karty{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.karta{border:2px solid #e2e8f0;border-radius:12px;padding:8px 10px;background:#fff;display:flex;flex-direction:column}
+.karta.a{border-color:#93c5fd}.karta.b{border-color:#f9a8d4}
+.karta .c{font-size:12px;font-weight:800;color:#fff;border-radius:10px;padding:0 7px;align-self:flex-start}
+.karta.a .c{background:var(--modra2)}.karta.b .c{background:var(--ruz2)}
+.karta svg{width:100%;height:auto;max-height:130px;margin:4px 0}
+.karta .pojem{font-weight:800;font-size:18px}
+.karta .veta{font-size:15px}
+.karta .rk{font-size:13.5px;background:#ecfeff;border-radius:6px;padding:4px 6px;margin-top:6px}
+.karta .rk b{color:#0e7490}
+.karta a.vice{font-size:13px;margin-top:4px;color:var(--modra)}
+/* plovoucí tlačítka */
+.plov{position:fixed;right:14px;bottom:14px;z-index:50;display:none;background:var(--modra);color:#fff;border:0;border-radius:30px;padding:11px 15px;font-weight:800;font-size:15px;box-shadow:0 3px 10px rgba(0,0,0,.3);cursor:pointer;text-decoration:none}
+.plov.zpet{right:auto;left:14px;background:#7c3aed}
+.blik{animation:blik 1.6s ease 1}
+@keyframes blik{0%,100%{box-shadow:none}30%{box-shadow:0 0 0 5px #facc15}}
+footer{text-align:center;color:var(--sed);font-size:13px;padding:10px}
+
+h4{margin:16px 0 6px;font-size:17px;color:#334155}
+header.hl{background:linear-gradient(135deg,#f59e0b,#be185d)}
+.hesloRadek{display:grid;grid-template-columns:28px 1fr;gap:4px 8px;align-items:center;padding:8px 0;border-bottom:1px solid #e5e7eb}
+.hesloRadek .hc{grid-row:1/3;background:#f59e0b;color:#111;border-radius:50%;width:26px;height:26px;text-align:center;font-weight:800;line-height:26px}
+.hesloRadek label{font-weight:600}
+.hesloRadek input{font-size:17px;padding:7px;border-radius:8px;border:1px solid #94a3b8;width:100%;max-width:320px}
+.hesloRadek .hv{grid-column:2}
+.ok{color:#15803d;font-weight:800}.chybi{color:#b91c1c;font-weight:700}
+.otocne{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.otoc{min-height:150px;border-radius:12px;border:2px solid #cbd5e1;background:#fff;cursor:pointer;font-family:inherit;font-size:15px;padding:6px}
+.otoc.a{border-color:#93c5fd}.otoc.b{border-color:#f9a8d4}
+.otoc svg{width:100%;height:auto;max-height:100px}
+.otoc .zadni{display:none}
+.otoc.obr .predni{display:none}.otoc.obr .zadni{display:block}
+.otoc.obr{background:#fef3c7}
+.otoc b{font-size:17px}
+@media print{
+ @page{size:A4;margin:8mm}
+ body{background:#fff;font-size:10pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .nepis,.plov{display:none!important}
+ header.hl{padding:4px 8px;background:#fff!important;color:#111;border-bottom:3px solid #be185d}
+ header h1{font-size:11pt;margin:2px 0;line-height:1.25}header .zneni{margin:0;font-size:9.5pt}header .zneni b{color:#be185d}
+ header .cislo{background:#fde68a;color:#111;font-size:8pt}
+ main{padding:0;max-width:none}
+ section{box-shadow:none;padding:0;margin:4px 0}
+ section h2{display:none}
+ .karty{grid-template-columns:repeat(4,1fr);gap:4px}
+ .karta{padding:3px 6px;break-inside:avoid;border-width:1.5px}
+ .karta svg{max-height:26mm}
+ .karta .pojem{font-size:11pt}.karta .veta{font-size:8.6pt;line-height:1.25}
+ .karta .rk{font-size:7.8pt;line-height:1.2;padding:2px 4px;margin-top:2px}
+ .karta a.vice{display:none}
+ .karta .c{font-size:7pt}
+}
+</style></head><body>
+<header class="hl"><div class="wrap">
+<span class="cislo">⚡ VÝLUH · TÉMA č. 13</span>
+<h1>Bitmapová a vektorová grafika – použití, výhody a nevýhody, programy pro jejich zpracování, formáty souborů · Sítotisk – popis tiskové techniky, výhody a nevýhody, použití, výroba tiskové formy</h1>
+<p class="zneni">Tohle musí zaznít. <b>14 hesel.</b></p>
+</div></header>
+<main>
+<nav class="menu nepis">
+<a class="btn hlavni" href="#karty">🃏 Karty</a>
+<a class="btn" href="#heslo">✏️ Napiš heslo</a>
+<a class="btn" href="#otocne">🔄 Otoč kartičku</a>
+<a class="btn" href="#umim">☑️ Umím</a>
+<a class="btn" href="#rychle">⚡ Rychlé otázky</a>
+<a class="btn" href="index.html">📚 Podrobná lekce</a>
+<a class="btn" href="../jednoduse/">🏠 Rozcestník</a>
+<button class="btn" onclick="window.print()">🖨️ Tisk A4</button>
+</nav>
+
+<section id="karty">
+<h2>🃏 Karty – 14 hesel</h2>
+<div class="karty" id="kartyEl"></div>
+</section>
+
+<section id="heslo" class="nepis">
+<h2>✏️ Napiš heslo</h2>
+<p>Napiš jedno slovo. Pak klikni na <b>Zkontrolovat</b>.</p>
+<div id="hesloEl"></div>
+<button class="btn hlavni" onclick="zkontrolujHesla()">Zkontrolovat</button>
+<p class="skore" id="hesloSkore"></p>
+</section>
+
+<section id="otocne" class="nepis">
+<h2>🔄 Otoč kartičku</h2>
+<p>Podívej se na obrázek. Řekni pojem. Klikni a zkontroluj se.</p>
+<div class="otocne" id="otocneEl"></div>
+</section>
+
+<section id="umim" class="nepis umet">
+<h2>☑️ Umím</h2>
+<div id="umimEl"></div>
+<p class="skore" id="umimSkore">Umíš 0 z 14.</p>
+</section>
+
+<section id="rychle" class="nepis kviz">
+<h2>⚡ Rychlé otázky</h2>
+<div id="rychleEl"></div>
+<p class="skore" id="rychleSkore"></p>
+</section>
+<footer class="nepis">Téma č. 13 · výluh · <a href="index.html">podrobná lekce</a></footer>
+</main>
+
+<script>/* ===== Společná data a obrázky pro téma 13 (podrobná lekce i výluh) ===== */
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9\s.,;!?\n-]/g,' ');}
+function pixMriz(x0,y0,n,cell,fn,barva){let s='';for(let i=0;i<n;i++)for(let j=0;j<n;j++){if(fn(i,j,n))s+=`<rect x="${x0+i*cell}" y="${y0+j*cell}" width="${cell}" height="${cell}" fill="${barva}"/>`;}
+ for(let k=0;k<=n;k++){s+=`<line x1="${x0+k*cell}" y1="${y0}" x2="${x0+k*cell}" y2="${y0+n*cell}" stroke="#94a3b8" stroke-width=".5"/><line x1="${x0}" y1="${y0+k*cell}" x2="${x0+n*cell}" y2="${y0+k*cell}" stroke="#94a3b8" stroke-width=".5"/>`;}return s;}
+const kruhFn=(i,j,n)=>((i+.5-n/2)**2+(j+.5-n/2)**2)<(n/2-.6)**2;
+const T=(x,y,t,o={})=>`<text x="${x}" y="${y}" font-size="${o.s||9}" font-weight="${o.w||700}" fill="${o.f||'#1f2937'}" text-anchor="${o.a||'middle'}" font-family="system-ui,Arial,sans-serif">${t}</text>`;
+const triko=(x,y,k,barva)=>`<g transform="translate(${x},${y}) scale(${k})"><path d="M14 4 L26 0 Q32 6 38 0 L50 4 L58 16 L48 21 L45 16 L45 56 L19 56 L19 16 L16 21 L6 16 Z" fill="${barva}" stroke="#334155" stroke-width="1.2"/></g>`;
+const lahev=(x,y,k)=>`<g transform="translate(${x},${y}) scale(${k})"><path d="M10 0 h8 v10 q8 6 8 16 v28 q0 4 -4 4 h-16 q-4 0 -4 -4 v-28 q0 -10 8 -16z" fill="#a7f3d0" stroke="#334155" stroke-width="1.2"/><rect x="5" y="30" width="18" height="12" fill="#be185d"/></g>`;
+const cedule=(x,y,k)=>`<g transform="translate(${x},${y}) scale(${k})"><rect x="0" y="0" width="50" height="30" rx="3" fill="#fef08a" stroke="#334155" stroke-width="1.2"/><rect x="23" y="30" width="4" height="20" fill="#64748b"/><text x="25" y="20" font-size="13" font-weight="800" text-anchor="middle" fill="#b91c1c" font-family="Arial">STOP</text></g>`;
+const spoj=(x,y,k)=>`<g transform="translate(${x},${y}) scale(${k})"><rect width="46" height="34" rx="2" fill="#15803d" stroke="#334155"/><path d="M6 8 h16 v10 h16 M6 26 h10 v-6 M30 28 h10" stroke="#fde68a" stroke-width="2" fill="none"/><circle cx="22" cy="8" r="2.5" fill="#fde68a"/><circle cx="38" cy="18" r="2.5" fill="#fde68a"/><circle cx="16" cy="20" r="2.5" fill="#fde68a"/></g>`;
+const ramBok=(x,y,w)=>`<rect x="${x}" y="${y}" width="6" height="14" fill="#64748b"/><rect x="${x+w-6}" y="${y}" width="6" height="14" fill="#64748b"/><line x1="${x+6}" y1="${y+14}" x2="${x+w-6}" y2="${y+14}" stroke="#334155" stroke-width="1.4" stroke-dasharray="2 1.5"/>`;
+
+const soubor=(x,y,t,b)=>`<path d="M${x} ${y} h22 l8 8 v28 h-30z" fill="#fff" stroke="${b}" stroke-width="1.6"/><path d="M${x+22} ${y} v8 h8" fill="none" stroke="${b}" stroke-width="1.2"/>`+T(x+15,y+26,t,{s:t.length>3?7:8.5,f:b,w:800});
+const IMG={
+bitmapa:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">${pixMriz(20,12,12,8,kruhFn,'#3b82f6')}<rect x="76" y="12" width="8" height="8" fill="none" stroke="#dc2626" stroke-width="2"/><path d="M86 18 L140 30" stroke="#dc2626" stroke-width="1.4"/>${T(170,28,'1 pixel',{s:12,f:'#dc2626'})}${T(170,50,'= 1 čtvereček',{s:10,w:500})}${T(170,64,'s jednou barvou',{s:10,w:500})}${T(170,96,'BITMAPA',{s:13,f:'#1e40af'})}</svg>`,
+vektor:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><path d="M68 14 C93 14 114 35 114 60 C114 85 93 106 68 106 C43 106 22 85 22 60 C22 35 43 14 68 14Z" fill="#fde68a" stroke="#b45309" stroke-width="2.5"/><line x1="44" y1="14" x2="92" y2="14" stroke="#64748b" stroke-width="1.2"/><circle cx="44" cy="14" r="3" fill="#64748b"/><circle cx="92" cy="14" r="3" fill="#64748b"/>${[[68,14],[114,60],[68,106],[22,60]].map(p=>`<rect x="${p[0]-4}" y="${p[1]-4}" width="8" height="8" fill="#fff" stroke="#1e40af" stroke-width="2"/>`).join('')}<path d="M118 58 L140 40" stroke="#1e40af" stroke-width="1.2"/>${T(172,36,'kotevní bod',{s:11,f:'#1e40af'})}<path d="M104 30 L140 64" stroke="#b45309" stroke-width="1.2"/>${T(172,70,'křivka',{s:11,f:'#b45309'})}${T(172,98,'VEKTOR',{s:13,f:'#b45309'})}</svg>`,
+zvetseni:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="96" height="84" rx="6" fill="#fff" stroke="#94a3b8"/>${pixMriz(14,12,8,10,(i,j,n)=>j>=n-1-i,'#3b82f6')}<rect x="116" y="8" width="96" height="84" rx="6" fill="#fff" stroke="#94a3b8"/><path d="M124 92 L204 12 L204 92 Z" fill="#f59e0b"/><rect x="116" y="8" width="96" height="84" rx="6" fill="none" stroke="#94a3b8"/>${T(56,108,'bitmapa: kostičky ✗',{s:11,f:'#b91c1c'})}${T(164,108,'vektor: ostré ✓',{s:11,f:'#15803d'})}<circle cx="190" cy="26" r="0"/></svg>`,
+pouziti:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="nebe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#e0f2fe"/></linearGradient></defs><rect x="8" y="10" width="96" height="70" rx="4" fill="url(#nebe)" stroke="#334155"/><circle cx="82" cy="28" r="9" fill="#facc15"/><path d="M8 80 L36 42 L54 62 L70 46 L104 80 Z" fill="#4d7c0f"/><path d="M36 42 L42 50 L30 50Z" fill="#fff"/>${T(56,98,'fotografie',{s:11})}${T(56,112,'→ BITMAPA',{s:11,f:'#1e40af'})}<circle cx="146" cy="44" r="26" fill="#be185d"/><path d="M134 54 L146 28 L158 54 Z" fill="#fff"/>${T(194,52,'Aa',{s:26,w:800,f:'#1e40af'})}${T(166,98,'logo, písmo',{s:11})}${T(166,112,'→ VEKTOR',{s:11,f:'#b45309'})}</svg>`,
+programy:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="100" height="108" rx="8" fill="#dbeafe"/><rect x="114" y="6" width="100" height="108" rx="8" fill="#fef3c7"/>${T(56,24,'BITMAPA',{s:12,f:'#1e40af'})}${T(164,24,'VEKTOR',{s:12,f:'#b45309'})}${['Photoshop','GIMP','Affinity Photo'].map((p,i)=>`<rect x="14" y="${34+i*25}" width="84" height="19" rx="5" fill="#fff"/>`+T(56,47+i*25,p,{s:10.5})).join('')}${['Illustrator','CorelDRAW','Inkscape'].map((p,i)=>`<rect x="122" y="${34+i*25}" width="84" height="19" rx="5" fill="#fff"/>`+T(164,47+i*25,p,{s:10.5})).join('')}</svg>`,
+formatyTisk:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="208" height="20" rx="6" fill="#334155"/>${T(110,20,'PRO TISK',{s:11,f:'#fff'})}<rect x="6" y="30" width="122" height="84" rx="8" fill="#dbeafe"/><rect x="132" y="30" width="82" height="84" rx="8" fill="#fef3c7"/>${T(67,44,'RASTR',{s:10,f:'#1e40af'})}${T(173,44,'VEKTOR',{s:10,f:'#b45309'})}${soubor(14,54,'TIFF','#1e40af')}${soubor(52,54,'PSD','#1e40af')}${soubor(90,54,'JPG','#1e40af')}${soubor(160,54,'PDF','#b45309')}${T(67,106,'JPG jen v max. kvalitě',{s:7.5,w:500})}${T(173,106,'hotová tiskovina',{s:7.5,w:500})}</svg>`,
+formatyWeb:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="208" height="20" rx="6" fill="#0e7490"/><circle cx="16" cy="16" r="3" fill="#fca5a5"/><circle cx="25" cy="16" r="3" fill="#fde68a"/><circle cx="34" cy="16" r="3" fill="#86efac"/>${T(118,20,'PRO WEB',{s:11,f:'#fff'})}<rect x="6" y="30" width="150" height="84" rx="8" fill="#dbeafe"/><rect x="160" y="30" width="54" height="84" rx="8" fill="#fef3c7"/>${T(81,44,'RASTR',{s:10,f:'#1e40af'})}${T(187,44,'VEKTOR',{s:10,f:'#b45309'})}${soubor(12,54,'JPG','#1e40af')}${soubor(48,54,'PNG','#1e40af')}${soubor(84,54,'GIF','#1e40af')}${soubor(120,54,'WEBP','#15803d')}${soubor(175,54,'SVG','#b45309')}${T(81,106,'WebP = moderní, malé soubory',{s:7.5,w:600,f:'#15803d'})}${T(187,106,'logo',{s:7.5,w:500})}</svg>`,
+rozliseni:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><path d="M20 12 h70 M20 9 v6 M90 9 v6" stroke="#334155"/>${T(55,9,'1 palec = 2,54 cm',{s:7.5,w:600})}${pixMriz(20,18,8,70/8,kruhFn,'#3b82f6')}<path d="M130 12 h70 M130 9 v6 M200 9 v6" stroke="#334155"/>${T(165,9,'1 palec = 2,54 cm',{s:7.5,w:600})}${pixMriz(130,18,20,3.5,kruhFn,'#3b82f6').replace(/stroke-width=".5"/g,'stroke-width=".15"')}${T(55,102,'72 ppi',{s:12,f:'#0e7490'})}${T(55,114,'WEB – málo bodů',{s:8.5,w:600})}${T(165,102,'300 dpi',{s:12,f:'#be185d'})}${T(165,114,'TISK – hodně bodů',{s:8.5,w:600})}</svg>`,
+rezim:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="96" height="66" rx="4" fill="#111827"/><g style="mix-blend-mode:screen"><circle cx="48" cy="36" r="15" fill="#ff0000"/><circle cx="68" cy="36" r="15" fill="#00ff00" style="mix-blend-mode:screen"/><circle cx="58" cy="54" r="15" fill="#0000ff" style="mix-blend-mode:screen"/></g><rect x="50" y="76" width="16" height="10" fill="#64748b"/><rect x="38" y="86" width="40" height="4" fill="#64748b"/>${T(58,104,'RGB',{s:13,f:'#0e7490'})}${T(58,115,'web, monitor, mobil',{s:8,w:600})}<rect x="128" y="8" width="72" height="84" fill="#fff" stroke="#94a3b8"/><g><circle cx="155" cy="38" r="14" fill="#00aeef" style="mix-blend-mode:multiply"/><circle cx="173" cy="38" r="14" fill="#ec008c" style="mix-blend-mode:multiply"/><circle cx="164" cy="54" r="14" fill="#fff200" style="mix-blend-mode:multiply"/></g><rect x="154" y="72" width="20" height="10" fill="#111"/>${T(164,104,'CMYK',{s:13,f:'#be185d'})}${T(164,115,'tisk',{s:8,w:600})}</svg>`,
+webVelikost:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="212" height="112" rx="6" fill="#fff" stroke="#94a3b8"/><rect x="4" y="4" width="212" height="14" rx="6" fill="#e2e8f0"/><circle cx="12" cy="11" r="2.5" fill="#f87171"/><circle cx="20" cy="11" r="2.5" fill="#fbbf24"/><circle cx="28" cy="11" r="2.5" fill="#4ade80"/><rect x="10" y="24" width="200" height="22" fill="#93c5fd"/>${T(110,38,'1920 px – obrázek přes celou šířku',{s:8.5})}<rect x="10" y="52" width="125" height="22" fill="#a7f3d0"/>${T(72,66,'1200 px – obrázek v článku',{s:8})}<rect x="10" y="80" width="42" height="22" fill="#fde68a"/>${T(31,94,'400 px',{s:8})}${T(132,94,'← náhled (miniatura)',{s:8,w:500})}${T(110,112,'na webu rozhoduje počet pixelů',{s:8,w:700,f:'#be185d'})}</svg>`,
+komprese:()=>{const ost=(i,j,n)=>((i+.5-n/2)**2+(j+.5-n/2)**2)<(n/2-2)**2;const art=(i,j,n)=>{const d=Math.sqrt((i+.5-n/2)**2+(j+.5-n/2)**2)-(n/2-2);return d<0||(d<1.6&&((i*7+j*3)%4===0));};
+ return `<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="10" width="84" height="84" fill="#fef9c3"/>${pixMriz(14,10,14,6,ost,'#be185d').replace(/<line[^>]*>/g,'')}<rect x="122" y="10" width="84" height="84" fill="#fef9c3"/>${pixMriz(122,10,14,6,art,'#be185d').replace(/<line[^>]*>/g,'')}${pixMriz(122,10,14,6,(i,j,n)=>{const d=Math.sqrt((i+.5-n/2)**2+(j+.5-n/2)**2)-(n/2-2);return d>0&&d<2.6&&((i+j*5)%3===0);},'#d6a5b8').replace(/<line[^>]*>/g,'')}${T(56,106,'bezztrátová ✓',{s:9.5,f:'#15803d'})}${T(164,106,'ztrátová (silná) ✗',{s:9.5,f:'#b91c1c'})}${T(164,117,'„špína“ kolem hran',{s:7.5,w:500})}</svg>`;},
+prevod:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><marker id="sip" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#334155"/></marker></defs><rect x="6" y="40" width="64" height="40" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>${T(38,64,'VEKTOR',{s:11,f:'#b45309'})}<rect x="150" y="40" width="64" height="40" rx="8" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>${T(182,64,'BITMAPA',{s:11,f:'#1e40af'})}<path d="M72 46 Q110 14 148 46" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#sip)"/>${T(110,18,'rastrování ✓ snadné',{s:10,f:'#15803d'})}<path d="M148 76 Q110 108 72 76" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#sip)"/>${T(110,114,'vektorizace (trasování) – jen přibližně',{s:9.5,f:'#b45309'})}</svg>`,
+princip:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><marker id="sip2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#b45309"/></marker></defs><rect x="8" y="100" width="204" height="12" fill="#e2e8f0" stroke="#94a3b8"/><rect x="66" y="94" width="20" height="6" fill="#db2777"/><rect x="110" y="94" width="20" height="6" fill="#db2777"/><rect x="12" y="52" width="10" height="26" fill="#64748b"/><rect x="198" y="52" width="10" height="26" fill="#64748b"/><line x1="22" y1="72" x2="198" y2="72" stroke="#334155" stroke-width="1.5" stroke-dasharray="2 2"/><rect x="22" y="69" width="44" height="7" fill="#3b82f6"/><rect x="86" y="69" width="24" height="7" fill="#3b82f6"/><rect x="130" y="69" width="68" height="7" fill="#3b82f6"/><path d="M28 68 Q36 56 52 60 Q60 62 58 68Z" fill="#db2777"/><path d="M76 74 L76 92 M120 74 L120 92" stroke="#db2777" stroke-width="1.5" stroke-dasharray="3 2"/><polygon points="62,14 74,14 70,68 64,68" fill="#f59e0b" stroke="#92400e"/><path d="M80 26 L104 26" stroke="#b45309" stroke-width="2" marker-end="url(#sip2)"/>${T(92,20,'tah',{s:8,f:'#b45309'})}${T(40,12,'těrka',{s:10,f:'#92400e'})}${T(40,50,'barva',{s:9,f:'#be185d'})}${T(164,62,'šablona',{s:9,f:'#1e40af'})}${T(164,88,'síto (síťovina)',{s:9,f:'#334155'})}${T(30,94,'rám',{s:8,f:'#475569'})}${T(160,110,'potiskovaný materiál',{s:8.5,w:600,f:'#334155'})}</svg>`,
+forma:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sit" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0 L4 0 M0 0 L0 4" stroke="#94a3b8" stroke-width=".6"/></pattern></defs><rect x="14" y="10" width="110" height="100" fill="#64748b"/><rect x="24" y="20" width="90" height="80" fill="url(#sit)"/><rect x="24" y="20" width="90" height="80" fill="none"/><path fill-rule="evenodd" d="M24 20 h90 v80 h-90z M69 34 L76 52 L96 52 L80 64 L86 84 L69 72 L52 84 L58 64 L42 52 L62 52 Z" fill="#3b82f6" opacity=".85"/><path d="M128 18 L150 18" stroke="#334155"/>${T(185,22,'rám',{s:11,f:'#334155'})}<path d="M100 40 L150 46" stroke="#334155"/>${T(185,50,'šablona',{s:11,f:'#1e40af'})}<path d="M76 60 L150 76" stroke="#334155"/>${T(185,74,'otevřené síto',{s:10,f:'#be185d'})}${T(185,86,'= tady se tiskne',{s:9,w:500,f:'#be185d'})}</svg>`,
+vyroba:()=>{const P=(i,t)=>`<rect x="${i*44+2}" y="2" width="40" height="96" rx="6" fill="#fdf2f8" stroke="#f9a8d4"/><circle cx="${i*44+10}" cy="11" r="7" fill="#be185d"/>`+T(i*44+10,14.5,String(i+1),{s:9,f:'#fff'})+T(i*44+22,92,t,{s:7.5});
+ return `<svg viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">${P(0,'napnutí')}${P(1,'emulze')}${P(2,'osvit UV')}${P(3,'vymytí')}${P(4,'hotovo')}
+ <rect x="6" y="40" width="4" height="10" fill="#64748b"/><rect x="34" y="40" width="4" height="10" fill="#64748b"/><line x1="10" y1="50" x2="34" y2="50" stroke="#334155" stroke-dasharray="2 1"/><path d="M8 62 L2 62 M36 62 L42 62" stroke="#be185d" stroke-width="2"/><path d="M4 59 L1 62 L4 65 M40 59 L43 62 L40 65" stroke="#be185d" fill="none" stroke-width="1.5"/>
+ ${ramBok(48,36,36)}<rect x="54" y="48" width="24" height="5" fill="#3b82f6"/><polygon points="62,58 74,58 70,70 60,70" fill="#94a3b8"/>
+ <circle cx="110" cy="30" r="7" fill="#facc15"/><path d="M104 40 L102 52 M110 40 L110 52 M116 40 L118 52" stroke="#eab308" stroke-width="1.6"/><rect x="104" y="54" width="12" height="4" fill="#111"/>${ramBok(92,52,36)}<rect x="98" y="64" width="24" height="5" fill="#1d4ed8"/><rect x="104" y="64" width="12" height="5" fill="#93c5fd"/>
+ ${ramBok(136,36,36)}<rect x="142" y="48" width="8" height="5" fill="#1d4ed8"/><rect x="158" y="48" width="8" height="5" fill="#1d4ed8"/><path d="M154 58 q-3 5 0 8 q3 -3 0 -8z M146 64 q-3 5 0 8 q3 -3 0 -8z M162 64 q-3 5 0 8 q3 -3 0 -8z" fill="#38bdf8"/>
+ ${ramBok(180,40,36)}<rect x="186" y="52" width="8" height="5" fill="#1d4ed8"/><rect x="202" y="52" width="8" height="5" fill="#1d4ed8"/>${T(198,72,'✓',{s:14,f:'#15803d'})}</svg>`;},
+vyhody:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="104" height="112" rx="8" fill="#dcfce7"/><rect x="112" y="4" width="104" height="112" rx="8" fill="#fee2e2"/>${T(56,20,'✓ VÝHODY',{s:11,f:'#15803d'})}${T(164,20,'✗ NEVÝHODY',{s:11,f:'#b91c1c'})}<rect x="14" y="74" width="40" height="6" fill="#cbd5e1"/><rect x="20" y="58" width="28" height="16" fill="#db2777"/>${T(34,92,'silná vrstva',{s:8})}${triko(62,34,.62,'#1f2937')}<rect x="76" y="48" width="12" height="10" fill="#fff"/>${T(82,92,'i na tmavé',{s:8})}${T(56,108,'tiskne skoro na vše',{s:8.5,w:600})}${[0,1,2].map(i=>`<rect x="${122+i*30}" y="34" width="26" height="22" fill="none" stroke="#64748b" stroke-width="4"/><rect x="${126+i*30}" y="38" width="18" height="14" fill="${['#06b6d4','#db2777','#facc15'][i]}"/>`).join('')}${T(164,72,'1 barva = 1 síto',{s:9.5,f:'#b91c1c'})}${T(164,90,'pomalejší',{s:9,w:600})}${T(164,104,'méně jemné detaily',{s:9,w:600})}</svg>`,
+pouzitiSito:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">${triko(6,14,.8,'#fde68a')}<circle cx="31" cy="38" r="7" fill="#be185d"/>${lahev(68,14,1)}${cedule(108,14,.9)}${spoj(166,20,1)}${T(31,100,'trička',{s:9})}${T(82,100,'sklo',{s:9})}${T(131,100,'cedule',{s:9})}${T(189,100,'plošné spoje',{s:9})}${T(110,116,'+ reklamní předměty, plakáty, plasty',{s:8.5,w:500})}</svg>`,
+podklady:()=>`<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="50" r="28" fill="#06b6d4"/><path d="M28 60 L40 32 L52 60Z" fill="#db2777"/>${T(40,96,'motiv: 2 barvy',{s:9})}<path d="M76 50 L96 50" stroke="#334155" stroke-width="2"/><path d="M92 45 L98 50 L92 55" fill="none" stroke="#334155" stroke-width="2"/><rect x="104" y="18" width="50" height="62" fill="#f8fafc" stroke="#94a3b8"/><circle cx="129" cy="49" r="19" fill="#111"/><path d="M121 56 L129 37 L137 56Z" fill="#f8fafc"/>${T(129,94,'film 1 – modrá',{s:7.5})}<rect x="162" y="18" width="50" height="62" fill="#f8fafc" stroke="#94a3b8"/><path d="M179 56 L187 37 L195 56Z" fill="#111"/>${T(187,94,'film 2 – růžová',{s:7.5})}${T(158,112,'každá barva = vlastní černý film',{s:8.5,w:600,f:'#be185d'})}</svg>`
+};
+
+/* Karty výluhu – STEJNÉ v podrobné lekci i v jednoduse.html */
+const CARDS=[
+{v:'a',img:'bitmapa',pojem:'Bitmapa = pixely',veta:'Obrázek je složený z malých čtverečků – pixelů.',rekni:'Bitmapová (rastrová) grafika je složená z pixelů.',ot:'Z čeho je složená bitmapa?',hesla:['pixel','ctverec','ctverc','obrazov'],kotva:'a1'},
+{v:'a',img:'vektor',pojem:'Vektor = body a křivky',veta:'Obrázek je popsaný matematicky – body a křivkami.',rekni:'Vektorová grafika je složená z kotevních bodů a křivek.',ot:'Z čeho je složený vektor?',hesla:['krivk','matemat','body','bodu','bod','uzl','cary','car'],kotva:'a1'},
+{v:'a',img:'zvetseni',pojem:'Zvětšení',veta:'Bitmapa se rozpadne na kostičky. Vektor zůstane ostrý.',rekni:'Vektor zvětším bez ztráty kvality, bitmapa kvalitu ztrácí.',ot:'Který obrázek zůstane po zvětšení ostrý?',hesla:['vektor'],kotva:'a5'},
+{v:'a',img:'pouziti',pojem:'Kdy co použít',veta:'Fotka → bitmapa. Logo a písmo → vektor.',rekni:'Na fotografie použiji bitmapu, na logo a písmo vektor.',ot:'Na co použiješ vektor?',hesla:['logo','pism','ikon','ilustr','piktogram','text','font'],kotva:'a4'},
+{v:'a',img:'rozliseni',pojem:'Rozlišení: web × tisk',veta:'Tisk: 300 dpi. Web: 72 ppi – rozhoduje počet pixelů.',rekni:'Pro tisk potřebuji 300 dpi, pro web stačí 72 ppi.',ot:'Kolik dpi potřebuje obrázek pro tisk?',hesla:['300'],kotva:'a2'},
+{v:'a',img:'rezim',pojem:'Barevný režim: web × tisk',veta:'Web a monitory: RGB. Tisk: CMYK.',rekni:'Pro web používám RGB, pro tisk CMYK.',ot:'Jaký barevný režim použiješ pro tisk?',hesla:['cmyk'],kotva:'a3'},
+{v:'a',img:'programy',pojem:'Programy',veta:'Bitmapa: Photoshop, GIMP. Vektor: Illustrator, CorelDRAW, Inkscape.',rekni:'Bitmapu upravuji ve Photoshopu, vektor kreslím v Illustratoru.',ot:'Napiš jeden program na vektorovou grafiku.',hesla:['illustrator','ilustrator','corel','inkscape','designer'],kotva:'a6'},
+{v:'a',img:'formatyTisk',pojem:'Formáty pro tisk',veta:'Rastr: TIFF, PSD, JPG. Vektor: PDF.',rekni:'Fotku do tisku uložím jako TIFF, hotovou tiskovinu předám v PDF.',ot:'V jakém formátu předáš hotovou tiskovinu do tiskárny?',hesla:['pdf'],kotva:'a8'},
+{v:'a',img:'formatyWeb',pojem:'Formáty pro web',veta:'Rastr: JPG, PNG, GIF, WebP. Vektor: SVG.',rekni:'Na web dám fotku jako JPG nebo WebP, logo jako SVG.',ot:'Napiš moderní webový formát, který má menší soubory než JPG.',hesla:['webp','avif'],kotva:'a9'},
+{v:'b',img:'princip',pojem:'Sítotisk = průtisk',veta:'Těrka protlačí barvu přes otevřená místa síta.',rekni:'Sítotisk patří do průtisku. Barvu protlačí těrka přes síto na materiál.',ot:'Do které skupiny tiskových technik patří sítotisk?',hesla:['prutisk'],kotva:'b1'},
+{v:'b',img:'forma',pojem:'Tisková forma',veta:'Rám + napnutá síťovina + šablona.',rekni:'Tisková forma je rám s napnutou síťovinou a se šablonou.',ot:'Na co se napíná síťovina?',hesla:['ram'],kotva:'b2'},
+{v:'b',img:'vyroba',pojem:'Výroba formy',veta:'Emulze → osvit UV přes film → vymytí vodou.',rekni:'Síto natřu světlocitlivou emulzí, osvítím přes film a neosvícená místa vymyji vodou.',ot:'Co se nanáší na síto před osvitem?',hesla:['emulz','svetlocitl','kopirovac'],kotva:'b3'},
+{v:'b',img:'vyhody',pojem:'Výhody × nevýhody',veta:'✓ Silná vrstva, tiskne skoro na vše. ✗ Každá barva má vlastní síto.',rekni:'Výhoda: tiskne na různé materiály silnou vrstvou. Nevýhoda: každá barva potřebuje vlastní síto.',ot:'Kolik sít potřebuješ na tisk ve 3 barvách?',hesla:['3','tri'],kotva:'b6'},
+{v:'b',img:'pouzitiSito',pojem:'Použití sítotisku',veta:'Trička, sklo, cedule, reklamní předměty, plošné spoje.',rekni:'Sítotiskem se potiskují trička, sklo, cedule a reklamní předměty.',ot:'Napiš jeden výrobek ze sítotisku.',hesla:['tric','trik','textil','lahv','sklo','sklen','cedul','plakat','hrn','propisk','reklam','plosn','obleceni','task','mikin','tabul'],kotva:'b7'}
+];
+
+function hesloOK(odp,hesla){const n=norm(odp).trim();if(!n)return false;const tok=n.split(/[\s.,;!?-]+/);
+ return hesla.some(h=>h.length<=2?tok.includes(h):n.includes(h));}
+
+function vykresliKarty(el,odkazNa){el.innerHTML=CARDS.map((k,i)=>`<div class="karta ${k.v}" id="karta${i+1}"><span class="c">${i+1} · ${k.v==='a'?'bitmapa × vektor':'sítotisk'}</span>${IMG[k.img]()}<div class="pojem">${k.pojem}</div><div class="veta">${k.veta}</div><div class="rk"><b>Řekni u zkoušky:</b> „${k.rekni}“</div>${odkazNa?`<a class="vice" href="${odkazNa}#${k.kotva}">Podrobně ›</a>`:''}</div>`).join('');}
+function vyplnObrazky(){document.querySelectorAll('[data-img]').forEach(d=>{d.insertAdjacentHTML('afterbegin',IMG[d.dataset.img]());});}
+
+vykresliKarty(document.getElementById('kartyEl'),'index.html');
+/* Napiš heslo */
+document.getElementById('hesloEl').innerHTML=CARDS.map((k,i)=>`<div class="hesloRadek"><span class="hc">${i+1}</span><label for="h${i}">${k.ot}</label><input id="h${i}" autocomplete="off"><span class="hv" id="hv${i}"></span></div>`).join('');
+function zkontrolujHesla(){let b=0;CARDS.forEach((k,i)=>{const v=document.getElementById('h'+i).value;const ok=hesloOK(v,k.hesla);if(ok)b++;document.getElementById('hv'+i).innerHTML=ok?'<span class="ok">✓</span>':`<span class="chybi">✗ ${k.pojem}</span>`;});document.getElementById('hesloSkore').textContent=`Správně: ${b} z ${CARDS.length}`;}
+/* Otočné kartičky */
+document.getElementById('otocneEl').innerHTML=CARDS.map((k,i)=>`<button class="otoc ${k.v}" onclick="this.classList.toggle('obr')"><span class="predni">${IMG[k.img]()}<small>❓ Co to je?</small></span><span class="zadni"><b>${k.pojem}</b><br>${k.veta}</span></button>`).join('');
+/* Umím */
+document.getElementById('umimEl').innerHTML=CARDS.map((k,i)=>`<label><input type="checkbox" class="um"> <span>${i+1}. ${k.pojem} <a href="#karta${i+1}">karta ›</a></span></label>`).join('');
+document.querySelectorAll('.um').forEach(c=>c.addEventListener('change',()=>{const n=[...document.querySelectorAll('.um')].filter(x=>x.checked).length;document.getElementById('umimSkore').textContent=`Umíš ${n} z ${CARDS.length}.`;}));
+/* Rychlé otázky */
+const RYCHLE=[['Logo na billboard nakreslíš jako…',['vektor','bitmapu']],['Fotka pro tisk potřebuje rozlišení…',['300 dpi','72 ppi']],['Pro tisk použiješ barevný režim…',['CMYK','RGB']],['Barvu přes síto protlačí…',['těrka','válec']],['Každá barva v sítotisku potřebuje…',['vlastní síto','stejné síto']]];
+let rb=0,rh=0;
+document.getElementById('rychleEl').innerHTML=RYCHLE.map((q,i)=>`<div class="otazka"><div class="zadani">${i+1}. ${q[0]}</div>${(Math.random()<.5?[0,1]:[1,0]).map(j=>`<button class="moznost" data-q="${i}" data-s="${j===0?1:0}">${q[1][j]}</button>`).join('')}</div>`).join('');
+document.querySelectorAll('#rychleEl .moznost').forEach(b=>b.addEventListener('click',()=>{const tl=document.querySelectorAll(`#rychleEl .moznost[data-q="${b.dataset.q}"]`);if(tl[0].disabled)return;tl.forEach(t=>{t.disabled=true;if(t.dataset.s==='1')t.classList.add('spravne');});if(b.dataset.s==='1')rb++;else b.classList.add('spatne');rh++;if(rh===RYCHLE.length)document.getElementById('rychleSkore').textContent=`Výsledek: ${rb} z ${RYCHLE.length}`;}));
+</script></body></html>
