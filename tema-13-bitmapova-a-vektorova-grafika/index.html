@@ -215,7 +215,7 @@ h4{margin:16px 0 6px;font-size:17px;color:#334155}
 <li><b>Krát 2,54:</b> 6,4 × 2,54 = <b>16,3 cm</b>.</li>
 <li><b>Výsledek:</b> kvalitně ji vytisknu nejvýš asi <b>16 cm</b> široké.</li>
 </ul></div>
-<div class="box-rozsir"><span class="rozsir">➕ Rozšiřující učivo – podrobně patří k tématu č. 15</span><br>Požadavky na kvalitu předloh a rozlišení: <a class="proklik" data-tema="15" href="#">Téma č. 15 – předlohy a rozlišení ›</a></div>
+<div class="box-rozsir"><span class="rozsir">➕ Rozšiřující učivo – podrobně patří k tématu č. 15</span><br>Požadavky na kvalitu předloh a rozlišení: <a class="proklik" data-tema="15" data-kotva="a8" href="#">Téma č. 15 – předlohy a rozlišení ›</a></div>
 
 <h3 class="a" id="a3">Barevný režim a barevná hloubka</h3>
 <div class="obr" data-img="rezim"></div>
@@ -498,7 +498,7 @@ function vyplnObrazky(){document.querySelectorAll('[data-img]').forEach(d=>{d.in
 
 /* ===== Prokliky na jiná témata =====
    Název složky doplň podle rozcestníku. Prázdné '' = odkaz vede na rozcestník. */
-const SLOZKY={4:'tema-04-software-a-cena-tisku',5:'tema-05-archova-montaz',6:'tema-06-predlohy-a-rastr',11:'tema-11-ctf-ctp-ctpr-cts',12:'tema-12-casti-publikace-a-prutisk',14:'tema-14-pdf-pro-tisk',15:'',16:''};
+const SLOZKY={4:'tema-04-software-a-cena-tisku',5:'tema-05-archova-montaz',6:'tema-06-predlohy-a-rastr',11:'tema-11-ctf-ctp-ctpr-cts',12:'tema-12-casti-publikace-a-prutisk',14:'tema-14-pdf-pro-tisk',15:'tema-15-predlohy-a-papirovina',16:''};
 document.querySelectorAll('a.proklik[data-tema]').forEach((a,i)=>{
  if(!a.id)a.id='proklik'+i;
  const s=SLOZKY[a.dataset.tema];

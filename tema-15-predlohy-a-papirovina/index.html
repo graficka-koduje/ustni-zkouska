@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Téma č. 15 – Předlohy pro reprodukci (fyzické a digitální); obrazové předlohy (perokresba, polotónová předloha); požadavky na kvalitu obrazu (rozlišení) · Papírovina – výroba papíru na papírenském stroji, úprava povrchu papíru</title>
+<meta name="description" content="Příprava k ústní zkoušce, obor reprodukční grafik: barevná reprodukce, RGB a CMYK, gamut, přímé barvy, separace, soutisk; tisk z výšky: historie knihtisku, Gutenberg, liteřina a odlévání liter, vývoj sazby, flexotisk a jeho použití.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f4; --surface:#ffffff; --surface2:#f0f0ec; --ink:#1b1c1f; --muted:#5d6068; --line:#dcdcd6;
+  --c:#00a3e0; --c-soft:#e3f5fc; --c-ink:#006e98;
+  --m:#e6007e; --m-soft:#fde6f2; --m-ink:#a8005c;
+  --y:#f2c500; --y-soft:#fff8d6; --y-ink:#806600;
+  --k:#1b1c1f; --k-soft:#ececea; --k-ink:#1b1c1f;
+  --ok:#1f8a4c; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131417; --surface:#1c1d21; --surface2:#24262b; --ink:#ececec; --muted:#a3a6ad; --line:#34363c;
+    --c-soft:#0c2a36; --c-ink:#5fd0ff; --m-soft:#3a0f25; --m-ink:#ff6fb9;
+    --y-soft:#342b06; --y-ink:#ffd84d; --k:#e4e4e4; --k-soft:#2a2b30; --k-ink:#f0f0f0;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131417; --surface:#1c1d21; --surface2:#24262b; --ink:#ececec; --muted:#a3a6ad; --line:#34363c;
+  --c-soft:#0c2a36; --c-ink:#5fd0ff; --m-soft:#3a0f25; --m-ink:#ff6fb9;
+  --y-soft:#342b06; --y-ink:#ffd84d; --k:#e4e4e4; --k-soft:#2a2b30; --k-ink:#f0f0f0;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto;display:block;border-radius:10px;margin:0 auto}
+figure.pic img{max-height:420px;width:auto}
+h1,h2,h3,h4{line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.45rem,4vw,2rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700;margin-top:1.4em}
+p{margin:.4em 0 .9em}
+ul{padding-left:1.2em;margin:.3em 0 1em} li{margin:.2em 0}
+b,strong{font-weight:700}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+
+/* registrační proužek */
+.cmyk-bar{height:6px;background:linear-gradient(90deg,var(--c) 0 25%,var(--m) 25% 50%,var(--y) 50% 75%,#1b1c1f 75%)}
+
+/* hero */
+header.hero{padding:34px 0 26px;background:var(--surface);border-bottom:1px solid var(--line)}
+.back{display:inline-block;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.back:hover{color:var(--ink)}
+.badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:var(--k);color:var(--bg);padding:4px 10px;border-radius:99px}
+.hero h1{font-size:clamp(1.7rem,5.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin:.35em 0 .3em}
+.hero h1 .sep{color:var(--m)}
+.hero p.lead{font-size:1.08rem;color:var(--muted);max-width:720px;margin:0}
+.reg{display:inline-block;width:22px;height:22px;vertical-align:-3px;margin-right:6px}
+
+/* nav */
+nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:.88rem;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+nav.toc a.active{background:var(--k);color:var(--bg);border-color:var(--k)}
+
+section{padding:44px 0 10px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+.dot.c{background:var(--c)} .dot.m{background:var(--m)} .dot.y{background:var(--y)} .dot.k{background:var(--k)}
+.kicker{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.grid2>.card,.grid3>.card{margin:0}
+
+.oneliner{border-left:6px solid var(--k);background:var(--surface);padding:14px 18px;border-radius:0 12px 12px 0;font-size:1.05rem;margin:14px 0;box-shadow:var(--shadow)}
+.oneliner .lbl{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.oneliner.c{border-color:var(--c)} .oneliner.m{border-color:var(--m)} .oneliner.y{border-color:var(--y)} .oneliner.k{border-color:var(--k)}
+
+.tip,.warn,.say{border-radius:12px;padding:12px 16px;margin:14px 0;font-size:.97rem}
+.tip{background:var(--c-soft)} .warn{background:var(--m-soft)} .say{background:var(--y-soft)}
+.tip b.t,.warn b.t,.say b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.tip b.t{color:var(--c-ink)} .warn b.t{color:var(--m-ink)} .say b.t{color:var(--y-ink)}
+
+figure{margin:14px 0}
+figure.pic{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px}
+figcaption{font-size:.86rem;color:var(--muted);margin-top:6px;padding:0 4px}
+figure.pic figcaption{color:#5d6068}
+.svgfig{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.svgfig svg{width:100%;height:auto;display:block}
+
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tablewrap table{min-width:640px}
+
+details.qa{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:8px 0}
+details.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none;position:relative;padding-right:40px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+";position:absolute;right:16px;top:9px;font-size:1.3rem;color:var(--muted)}
+details.qa[open] summary::after{content:"–"}
+details.qa .ans{padding:0 16px 14px;color:var(--ink)}
+
+/* MYŠLENKOVÁ MAPA */
+.mm-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+button.btn{font:inherit;font-weight:600;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:7px 14px;cursor:pointer}
+button.btn:hover{border-color:var(--ink)}
+.mindmap{display:grid;grid-template-columns:1fr 240px 1fr;grid-template-rows:auto auto;gap:18px 34px;align-items:start;position:relative}
+.mm-center{grid-column:2;grid-row:1 / span 2;align-self:center;text-align:center;background:var(--k);color:var(--bg);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:26px;position:relative;z-index:2}
+.mm-center .n{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.mm-center .t{font-weight:800;font-size:1.12rem;line-height:1.25;margin:6px 0}
+.mm-center .s{font-size:.8rem;opacity:.85}
+.mm-branch{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:14px 14px 12px;position:relative;box-shadow:var(--shadow)}
+.mm-branch.c{border-color:var(--c)} .mm-branch.m{border-color:var(--m)} .mm-branch.y{border-color:var(--y)} .mm-branch.k{border-color:var(--k)}
+.mm-branch::after{content:"";position:absolute;top:50%;width:34px;height:3px}
+.mm-branch.left::after{right:-36px} .mm-branch.right::after{left:-36px}
+.mm-branch.c::after{background:var(--c)} .mm-branch.m::after{background:var(--m)} .mm-branch.y::after{background:var(--y)} .mm-branch.k::after{background:var(--k)}
+.mm-branch h4{display:flex;align-items:center;gap:8px;font-size:1.02rem;margin:0 0 10px}
+.mm-branch h4 .num{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex:0 0 auto}
+.mm-branch.c .num{background:var(--c)} .mm-branch.m .num{background:var(--m)} .mm-branch.y .num{background:var(--y);color:#1b1c1f} .mm-branch.k .num{background:#1b1c1f}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:.85rem;font-weight:600;border-radius:99px;padding:5px 11px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;text-align:left}
+.mm-branch.c .chip[aria-expanded="true"]{background:var(--c);color:#fff;border-color:var(--c)}
+.mm-branch.m .chip[aria-expanded="true"]{background:var(--m);color:#fff;border-color:var(--m)}
+.mm-branch.y .chip[aria-expanded="true"]{background:var(--y);color:#1b1c1f;border-color:var(--y)}
+.mm-branch.k .chip[aria-expanded="true"]{background:#1b1c1f;color:#fff;border-color:#1b1c1f}
+.hint{font-size:.9rem;margin-top:10px;padding:9px 11px;border-radius:10px;background:var(--surface2);display:none}
+.hint.show{display:block}
+.hint b{display:block;margin-bottom:2px}
+.mm-branch .goto{display:inline-block;margin-top:10px;font-size:.84rem;font-weight:600;color:var(--muted)}
+@media (max-width:860px){
+  .mindmap{grid-template-columns:1fr;gap:14px;padding-left:18px}
+  .mindmap::before{content:"";position:absolute;left:4px;top:40px;bottom:30px;width:3px;background:linear-gradient(var(--k),var(--c),var(--m),var(--y),var(--k));border-radius:3px}
+  .mm-center{grid-column:1;grid-row:auto;border-radius:18px;aspect-ratio:auto;padding:18px}
+  .mm-branch.left::after,.mm-branch.right::after{left:-16px;right:auto;width:14px}
+}
+
+/* cesta zakázky */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:12px 0}
+.step{flex:1 1 120px;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:10px 12px;position:relative}
+.step .no{font-size:.72rem;font-weight:800;color:var(--muted)}
+.step .nm{font-weight:800;font-size:1rem}
+.step .ds{font-size:.82rem;color:var(--muted);line-height:1.35}
+.step.c{border-top-color:var(--c)} .step.m{border-top-color:var(--m)} .step.y{border-top-color:var(--y)} .step.k{border-top-color:var(--k)}
+.mnemo{font-size:1.15rem;font-weight:700;background:var(--surface);border:2px dashed var(--line);border-radius:14px;padding:14px 18px;margin:14px 0}
+.mnemo span.L{font-size:1.4rem;font-weight:800}
+
+/* timeline potítko */
+.timeline{list-style:none;padding:0;margin:10px 0}
+.timeline li{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.timeline .tm{font-weight:800;font-variant-numeric:tabular-nums}
+.bar{height:12px;border-radius:99px;overflow:hidden;display:flex;margin:6px 0 2px}
+.bar i{display:block;height:100%}
+
+/* checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--m);flex:0 0 auto}
+
+/* kvíz */
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:12px 0}
+.q .qt{font-weight:700;margin-bottom:10px}
+.q .opts{display:grid;gap:7px}
+.q button.o{font:inherit;text-align:left;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.q button.o.right{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+.q button.o.wrong{background:#c62828;border-color:#c62828;color:#fff}
+.q .fb{display:none;margin-top:10px;font-size:.93rem}
+.q.done .fb{display:block}
+.score{font-weight:800;font-size:1.1rem}
+
+.pill{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);border:1px solid var(--line);margin:2px 2px 2px 0}
+.kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+audio{width:100%;margin-top:8px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
+.theme-toggle{position:fixed;right:14px;bottom:14px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow)}
+@media print{nav.toc,.theme-toggle,.mm-tools{display:none} .hint{display:block} details.qa .ans{display:block}}
+
+/* ===== doplňky pro téma 2 ===== */
+.fab-map{position:fixed;left:14px;bottom:14px;z-index:30;display:none;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.9rem;border:0;border-radius:99px;padding:11px 16px 11px 13px;background:var(--m);color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.fab-map.show{display:inline-flex}
+.fab-map .ar{font-size:1.15rem;line-height:1}
+.ret{display:inline-block;margin:6px 0 0;font-size:.85rem;font-weight:600;color:var(--m-ink);text-decoration:none}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.calc .st{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.calc .st:last-child{border-bottom:0}
+.calc .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+.calc .res{font-weight:800;background:var(--y-soft);padding:2px 8px;border-radius:6px}
+.eq{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:600;background:var(--surface2);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.sim-ctrl{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.sim-ctrl button{font:inherit;font-weight:700;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 13px;cursor:pointer}
+.sim-ctrl button.on{background:var(--m);border-color:var(--m);color:#fff}
+.sheets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.sheet .h{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sheet .row{display:flex;align-items:center;gap:6px;margin:4px 0;font-size:.82rem}
+.sheet .row .lb{width:30px;color:var(--muted);font-weight:700}
+.sheet .pg{flex:1;display:flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden}
+.sheet .pg span{flex:1;text-align:center;font-weight:800;padding:5px 0}
+.sheet .pg span:first-child{border-right:1.5px dashed var(--m)}
+.sheet .sum{font-size:.75rem;color:var(--muted);margin-top:4px}
+.inline-in{font:inherit;font-weight:700;width:90px;padding:7px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+/* test psaním */
+.wt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.wt .qt{font-weight:800;font-size:1.05rem;margin-bottom:4px}
+.wt .qh{font-size:.88rem;color:var(--muted);margin-bottom:10px}
+.wt textarea{width:100%;min-height:150px;font:inherit;font-size:16px;line-height:1.5;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical}
+.wt textarea:focus{outline:none;border-color:var(--m)}
+.wt .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.wt .acts .wc{font-size:.82rem;color:var(--muted);margin-left:auto}
+button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
+.wt .out{display:none;margin-top:14px}
+.wt .out.show{display:block}
+.meter{height:12px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:6px 0 4px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--c),var(--m));border-radius:99px;transition:width .5s}
+.verdict{font-weight:800;font-size:1.02rem}
+.fbbox{border-radius:12px;padding:10px 14px;margin:10px 0}
+.fbbox h4{margin:0 0 6px;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase}
+.fbbox ul{margin:0;padding-left:1.1em}
+.fbbox li{margin:.3em 0;font-size:.94rem}
+.fb-ok{background:color-mix(in srgb,var(--ok) 12%,transparent)} .fb-ok h4{color:var(--ok)}
+.fb-miss{background:var(--y-soft)} .fb-miss h4{color:var(--y-ink)}
+.fb-err{background:var(--m-soft)} .fb-err h4{color:var(--m-ink)}
+.star{color:var(--m);font-weight:800}
+.model{display:none;border-left:5px solid var(--c);background:var(--c-soft);border-radius:0 12px 12px 0;padding:12px 16px;margin-top:10px;font-size:.96rem}
+.model.show{display:block}
+.model b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--c-ink);margin-bottom:4px}
+.svgfig text{font-family:Inter,system-ui,sans-serif}
+.legend-row{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted);margin-top:6px}
+@media print{.fab-map{display:none!important}}
+
+.svgfig.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:700px){.svgfig.wide svg{min-width:640px}.svgfig.wide::after{content:"↔ obrázek posuň do strany";display:block;font-size:.78rem;color:var(--muted);margin-top:4px;position:sticky;left:0}}
+
+
+.check li{flex-wrap:wrap}.check li label{flex:1 1 220px}
+.svp-go{margin-left:auto;align-self:center;white-space:nowrap;font-size:.82rem;font-weight:700;color:var(--m-ink);text-decoration:none;padding:2px 0 2px 30px}
+/* ===== doplňky pro téma 6 ===== */
+.ctrl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:8px 0 12px}
+.ctrl label{font-size:.9rem;font-weight:600}
+.ctrl input[type=range]{flex:1 1 200px;accent-color:var(--m)}
+.ctrl output{font-weight:800;min-width:70px}
+canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#fff;border:1px solid var(--line)}
+.bits{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;letter-spacing:.04em}
+.bits i{font-style:normal;display:inline-block;min-width:1.05em;text-align:center;border-radius:4px;margin:1px}
+.bits i.b1{background:#1b1c1f;color:#fff}.bits i.b0{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.pxgrid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;max-width:260px;margin:6px auto}
+.pxgrid span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;border:1px solid #c9ccd1}
+.steps-bar{display:flex;height:46px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.steps-bar i{flex:1;display:block}
+.big{font-size:1.5rem;font-weight:800}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+.pro{color:var(--ok);font-weight:700}.con{color:var(--bad);font-weight:700}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid rgba(0,0,0,.15)}
+.calc,.card{overflow-wrap:anywhere}
+@media (max-width:560px){.eq{white-space:normal}}
+.angle-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.angle-row .a{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 4px}
+.angle-row .a b{display:block;font-size:1.25rem}
+.angle-row svg{width:56px;height:56px;display:block;margin:0 auto 4px}
+@media (max-width:420px){.angle-row{grid-template-columns:repeat(2,1fr)}}
+/* ===== doplňky pro téma 7 ===== */
+.photo-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:16px 0}
+.photo-strip figure{margin:0}
+.photo-strip img{aspect-ratio:4/3;object-fit:cover;width:100%;max-height:none}
+@media (max-width:860px){.photo-strip{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){.photo-strip{grid-template-columns:repeat(2,1fr)}}
+figure.pic img{max-height:340px}
+.game{background:var(--surface);border:2px dashed var(--line);border-radius:16px;padding:16px 18px;margin:18px 0}
+.game-h{display:flex;flex-direction:column;gap:2px;margin-bottom:10px}
+.og-done{margin:0 0 10px;padding-left:1.6em;display:grid;gap:4px}
+.og-done li{font-weight:600;font-size:.92rem;padding:4px 10px;border-radius:8px;background:var(--surface2);border-left:5px solid var(--k)}
+.og-done li.c{border-left-color:var(--c)} .og-done li.m{border-left-color:var(--m)} .og-done li.k{border-left-color:#1b1c1f}
+.og-pool{display:flex;flex-wrap:wrap;gap:8px}
+.og-card{font:inherit;font-weight:600;font-size:.9rem;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.og-card:hover{border-color:var(--ink)}
+.shake{animation:shake .4s;background:#c62828!important;color:#fff!important;border-color:#c62828!important}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.sg-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.sg-t{font-weight:600;font-size:.95rem}
+.sg-b{display:flex;gap:5px;flex-wrap:wrap}
+.sg-b button{font:inherit;font-size:.82rem;font-weight:700;padding:5px 10px;border-radius:99px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.sg-b button.right{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+.sg-b button.wrong{background:#c62828;border-color:#c62828;color:#fff}
+.sg-f{grid-column:1 / -1;display:none}
+.sg-row.done .sg-f{display:block}
+@media (max-width:560px){.sg-row{grid-template-columns:1fr}}
+#ppiOut .st{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+#ppiOut .st:last-child{border-bottom:0}
+#ppiOut .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+h4{font-size:1.02rem;margin-top:1.3em}
+/* ===== doplňky pro téma 8 ===== */
+select.inline-in{width:auto}
+.svgfig svg circle[role=button]:focus{outline:none;stroke:#888;stroke-width:3}
+#sepSvg,#regSvg{max-height:360px}
+.castStep:focus{outline:none}
+.mir{display:flex;flex-wrap:wrap;gap:3px;margin:6px 0;min-height:52px}
+.mir span{display:inline-flex;align-items:center;justify-content:center;width:34px;height:46px;border-radius:4px;font:700 1.5rem/1 Georgia,serif}
+.mir:not(.print) span{background:#8fb8a3;color:#5b3d12;border:1px solid #3f6b55}
+.mir:not(.print) span i{font-style:normal;display:inline-block;transform:scaleX(-1)}
+.mir.print span{background:#fff;color:#1b1c1f;border:1px dashed var(--line);width:28px}
+.timeline.evo li{grid-template-columns:96px 1fr}
+@media (max-width:480px){.timeline.evo li{grid-template-columns:1fr;gap:2px}}
+#fpSvg [data-p]{transition:opacity .3s}
+
+/* ===== doplňky pro téma 15 ===== */
+figure.pic>div>svg,figure.pic>div{display:block;width:100%}
+figure.pic svg{width:100%;height:auto;display:block;max-height:340px}
+#obrStroj svg{max-height:none}
+@media (max-width:700px){figure.svgfig.wide #obrStroj svg{min-width:560px}}
+figure.pic.svgfig{background:#fff}
+.pisemka{border:2px solid #1f8a4c;background:color-mix(in srgb,#1f8a4c 9%,var(--surface));border-radius:12px;padding:10px 14px;margin:14px 0;font-size:.95rem}
+.pisemka .stitek{display:block;font-size:.76rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1f8a4c;margin-bottom:4px}
+:root[data-theme="dark"] .pisemka .stitek{color:#5fd38d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pisemka .stitek{color:#5fd38d}}
+.pro{color:var(--ok)} .con{color:var(--bad)}
+.sim-ctrl{justify-content:center}
+h4[id]{margin-top:1.2em;font-size:1.02rem}
+.am-in{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.am-in label{display:flex;flex-direction:column;font-size:.85rem;font-weight:700;color:var(--muted);gap:4px}
+@media(max-width:600px){.am-in{grid-template-columns:1fr}}
+.tablewrap[style] table{min-width:var(--mw)}
+</style>
+</head>
+<body>
+<div class="cmyk-bar"></div>
+<header class="hero">
+  <div class="wrap">
+    <a class="back" href="../">← zpět na rozcestník</a><br>
+    <span class="badge">Ústní zkouška · Téma č. 15</span>
+    <h1>Předlohy pro reprodukci (fyzické a digitální); obrazové předlohy (perokresba, polotónová předloha); požadavky na kvalitu obrazu (rozlišení) <span class="sep">/</span> Papírovina – výroba papíru na papírenském stroji, úprava povrchu papíru</h1>
+    <p class="lead">Všechno, co potřebuješ, abys u zkoušky 15 minut mluvil/a v souvislostech a ne v heslech. Nejdřív si přečti, o čem otázka je, pak si projdi myšlenkovou mapu, potom souhrn a nakonec se vyzkoušej.</p>
+    <a class="easy-link" href="jednoduse.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:6px;background:#e6007e;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:12px;font-size:1.02rem">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Obsah">
+  <div class="wrap">
+    <a href="jednoduse.html">⚡ Jednoduše</a>
+    <a href="#potitko">Jak na potítko</a>
+    <a href="#mapa">Myšlenková mapa</a>
+    <a href="#cesta">Cesta obrázku</a>
+    <a href="#predlohy">Předlohy</a>
+    <a href="#obraz">Kvalita a rozlišení</a>
+    <a href="#papirovina">Papírovina a stroj</a>
+    <a href="#povrch">Směr vlákna a povrch</a>
+    <a href="#svp">Co musím umět</a>
+    <a href="#test">Test psaním</a>
+    <a href="#kviz">Kvíz</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ POTÍTKO ============ -->
+<section id="potitko">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">Než začneš</span></div>
+  <h2>Jak o otázce přemýšlet na potítku</h2>
+  <p>Otázka má dvě části a vypadají jako dvě různá témata: <b>předlohy</b> a <b>papír</b>. Ve skutečnosti jde o <b>jeden příběh</b>: z čeho vznikne pěkný obrázek v tisku. Potřebuješ k tomu dvě věci – <b>dobrou předlohu</b> (obraz) a <b>vhodný papír</b> (na co se tiskne).</p>
+  <p>Nejdřív vyprávěj, jak se předloha dostane do počítače a co musí splnit, aby byla v tisku kvalitní. Pak vyprávěj, jak se vyrobí papír, na který se bude tisknout. Obě části spojuje <b>rastr</b>: čím hladší papír, tím jemnější rastr – a tím větší rozlišení musí mít předloha.</p>
+
+  <div class="oneliner k"><span class="lbl">Tvoje úvodní věta</span>„Aby byl obrázek v tisku kvalitní, potřebuji <b>kvalitní předlohu</b> s dostatečným <b>rozlišením</b> a <b>vhodný papír</b>. Předloha může být <b>fyzická</b>, nebo <b>digitální</b>, <b>perokresba</b>, nebo <b>polotónová</b>. Papír se vyrábí z <b>papíroviny</b> na <b>papírenském stroji</b> a jeho <b>povrch</b> se upravuje.“</div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Co si načrtnout na papír (5 minut)</h3>
+      <ol>
+        <li><b>Šipku:</b> fyzická předloha → skener → digitální soubor.</li>
+        <li><b>Dva obdélníčky:</b> perokresba (čára, 1 bit) × fotka (plynulé přechody).</li>
+        <li><b>Vzorec</b> dpi = lpi × 2 a pod něj <b>300 dpi</b>.</li>
+        <li><b>Papírenský stroj</b> jako řadu: nátok → síto → lisy | sušení → klížení → kalandr → role.</li>
+        <li><b>Arch</b> se šipkou směru vlákna a nápisem „se hřbetem“.</li>
+      </ol>
+      <p class="muted small">Náčrtek je tvůj tahák: když se zasekneš, podíváš se na něj a pokračuješ dál.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Rozvrh 15 minut mluvení</h3>
+      <div class="bar" aria-hidden="true"><i style="flex:1;background:#888"></i><i style="flex:3;background:var(--c)"></i><i style="flex:4;background:var(--m)"></i><i style="flex:4;background:var(--y)"></i><i style="flex:2;background:#1b1c1f"></i><i style="flex:1;background:#888"></i></div>
+      <ul class="timeline">
+        <li><span class="tm">0–1</span><span>Úvod: kvalitní tisk = <b>dobrá předloha + vhodný papír</b></span></li>
+        <li><span class="tm">1–4</span><span><b>Předlohy</b> (C): textová × obrazová, fyzická × digitální, <b>skener</b> a jeho parametry</span></li>
+        <li><span class="tm">4–8</span><span><b>Obraz a rozlišení</b> (M): perokresba × polotónová předloha, náležitosti, kvalita, <b>300 dpi</b>, dpi = lpi × 2</span></li>
+        <li><span class="tm">8–12</span><span><b>Papírovina a stroj</b> (Y): složky papíroviny, <b>mokrá a suchá část</b> stroje</span></li>
+        <li><span class="tm">12–14</span><span><b>Papír</b> (K): <b>směr vlákna</b>, klížení, kalandr, natírání</span></li>
+        <li><span class="tm">14–15</span><span>Závěr: hladší papír → jemnější rastr → víc dpi</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAPA ============ -->
+<section id="mapa">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">1 · Myšlenková mapa</span></div>
+  <h2>Mapa otázky ve čtyřech barvách CMYK</h2>
+  <p>Každá větev má jednu tiskovou barvu a <b>mluv v pořadí C → M → Y → K</b>, stejně jako se barvy tisknou. Klepni na heslo a uvidíš, co k němu říct. Když je vybrané jedno heslo, odkaz pod větví tě pošle přímo na jeho podnadpis v souhrnu.</p>
+  <div class="mm-tools">
+    <button class="btn" id="mmOpen">Rozbalit všechna hesla</button>
+    <button class="btn" id="mmClose">Sbalit</button>
+  </div>
+  <div class="mindmap" id="mindmap"></div>
+</section>
+
+<!-- ============ CESTA ============ -->
+<section id="cesta">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">Červená nit</span></div>
+  <h2>Cesta obrázku do tisku</h2>
+  <p>Tohle je pořadí, ve kterém o otázce mluvíš. Předloha se dostane do počítače a upraví se. Rastr se zvolí podle papíru. Papír se vyrobí na papírenském stroji a upraví se jeho povrch.</p>
+  <div class="flow">
+    <div class="step c"><div class="no">1</div><div class="nm">Předloha</div><div class="ds">fotka, kresba, text – fyzická nebo digitální</div></div>
+    <div class="step c"><div class="no">2</div><div class="nm">Skener</div><div class="ds">fyzickou předlohu převede na čísla</div></div>
+    <div class="step m"><div class="no">3</div><div class="nm">Úprava</div><div class="ds">rozměr, režim, kontrast, ostrost</div></div>
+    <div class="step m"><div class="no">4</div><div class="nm">Rozlišení</div><div class="ds">300 dpi = lpi × 2</div></div>
+    <div class="step y"><div class="no">5</div><div class="nm">Papír</div><div class="ds">z papíroviny na papírenském stroji</div></div>
+    <div class="step k"><div class="no">6</div><div class="nm">Povrch</div><div class="ds">klížení, hlazení, natírání</div></div>
+    <div class="step k"><div class="no">7</div><div class="nm">Tisk</div><div class="ds">rastr podle papíru</div></div>
+  </div>
+  <div class="tip"><b class="t">Most mezi oběma částmi</b>Povrch papíru určí hustotu rastru: noviny <b>100 lpi</b>, ofsetový papír <b>150 lpi</b>, křídový papír <b>175 lpi</b>. Podle hustoty rastru spočítám rozlišení předlohy: <b>dpi = lpi × 2</b>.</div>
+</section>
+
+<!-- ============ C: PŘEDLOHY ============ -->
+<section id="predlohy">
+  <div class="sec-head"><span class="dot c"></span><span class="kicker">2 · Souhrn · větev C</span></div>
+  <h2>Předlohy pro reprodukci</h2>
+  <div class="oneliner c"><span class="lbl">Jednou větou</span><b>Předloha</b> je originál, podle kterého se tiskne – <b>textová</b> (rukopis) nebo <b>obrazová</b>. <b>Fyzickou</b> předlohu musím <b>naskenovat</b> nebo vyfotit, <b>digitální</b> je už soubor v počítači.</div>
+
+  <h3 id="a1">Co je předloha</h3>
+  <figure class="pic"><div data-img="predloha"></div></figure>
+  <p><b>Předloha</b> = <b>originál</b>, podle kterého se tiskovina vyrábí. Grafik ji dostane od zákazníka, nebo ji sám vytvoří.</p>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th></th><th>Textová předloha</th><th>Obrazová předloha</th></tr>
+    <tr><td><b>Co to je</b></td><td>text – článek, kniha, leták</td><td>fotografie, kresba, malba, logo, graf</td></tr>
+    <tr><td><b>Jak se jmenuje</b></td><td><b>rukopis</b></td><td>pérová nebo tónová předloha</td></tr>
+    <tr><td><b>Formáty souborů</b></td><td>DOC, DOCX, TXT</td><td>TIFF, PSD, JPEG · AI, EPS, SVG · PDF</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Polygrafie</b> je výrobní obor, který zpracovává a tiskem rozmnožuje <b>textové a obrazové předlohy</b>.</div>
+  <h4 id="a1r">Rukopis – textová předloha</h4>
+  <ul>
+    <li><b>Rukopis</b> = text, který autor odevzdá nakladateli nebo tiskárně, aby se z něj připravila publikace.</li>
+    <li>Dnes je to nejčastěji <b>soubor z Wordu</b> nebo text vytištěný z počítače. Dříve to byl strojopis.</li>
+    <li>Musí být <b>jazykově správný</b>. Přikládá se k němu <b>předpis sazby</b>: formát strany, zrcadlo sazby, písmo, formátování odstavců.</li>
+  </ul>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Rukopis</b> = text (textová předloha) odevzdaný vydavateli či tiskaři kvůli přípravě publikace, obvykle jako strojopis nebo text vytištěný z počítače. <b>Náležitosti:</b> musí být <b>jazykově správný</b>, přikládá se k němu <b>předpis sazby</b> (formát strany, zrcadlo sazby, informace o písmu, formátování odstavců aj.).</div>
+
+  <h3 id="a2">Fyzické a digitální předlohy</h3>
+  <figure class="pic"><div data-img="fyzDig"></div></figure>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th></th><th>🖐️ Fyzická (analogová)</th><th>💻 Digitální</th></tr>
+    <tr><td><b>Co to je</b></td><td>předloha, kterou můžu vzít do ruky</td><td>soubor v počítači</td></tr>
+    <tr><td><b>Příklady</b></td><td>fotografie na papíře, kresba, malba, diapozitiv, negativ, už vytištěný obrázek</td><td>fotka z digitálního fotoaparátu, obrázek z Photoshopu, logo z Illustratoru, text z Wordu</td></tr>
+    <tr><td><b>Co s ní udělám</b></td><td>musím ji <b>digitalizovat</b> – naskenovat nebo vyfotit</td><td>zkontroluji <b>rozměr, rozlišení a barevný režim</b></td></tr>
+  </table></div>
+  <ul>
+    <li><b>Podle barevnosti:</b> černobílá (pérová) · jednobarevná stínovaná (stupně šedi) · barevná.</li>
+  </ul>
+  <h4 id="a2o">Odrazová × průhledná předloha</h4>
+  <figure class="pic"><div data-img="odrazPruh"></div></figure>
+  <ul>
+    <li><b>Odrazová</b> – světlo se od ní <b>odráží</b>: fotografie na papíře, kresba, malba.</li>
+    <li><b>Průhledná</b> – světlo jí <b>prochází</b>: <b>pozitivní</b> (diapozitiv) a <b>negativní</b> (negativ).</li>
+  </ul>
+  <div class="warn"><b class="t">Pozor na už vytištěnou předlohu</b>Obrázek z časopisu v sobě má rastr. Při dalším rastrování vznikne <b>moaré</b> (rušivý vzor). Musí se <b>odrastrovat</b> (funkce descreening ve skeneru). Lepší je sehnat originál. Víc v <a href="../tema-06-predlohy-a-rastr/#predlohy">tématu 6 – předlohy a moaré</a>. Formáty souborů: <a href="../tema-13-bitmapova-a-vektorova-grafika/#a8">téma 13</a>.</div>
+
+  <h3 id="a3">Skener – digitalizace fyzické předlohy</h3>
+  <figure class="pic"><div data-img="skener"></div><figcaption>Plochý skener: světlo z lampy se odrazí od předlohy a dopadne na čidlo.</figcaption></figure>
+  <p><b>Skener</b> = <b>vstupní zařízení</b>, které se používá k <b>digitalizaci analogových (fyzických) předloh</b>.</p>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div>Předlohu položím na <b>skleněnou desku</b> lícem dolů – ke snímacímu čidlu.</div></div>
+    <div class="st"><span class="n">2</span><div>Pod sklem jede <b>vozík s lampou</b> a se <b>snímacím řádkovým čidlem</b> (CCD).</div></div>
+    <div class="st"><span class="n">3</span><div><b>Světlo odražené</b> od předlohy (u diapozitivu <b>prošlé</b> předlohou) dopadá na čidlo.</div></div>
+    <div class="st"><span class="n">4</span><div>Čidlo změní světlo na <b>elektrický signál</b>.</div></div>
+    <div class="st"><span class="n">5</span><div><b>Analogově-digitální (A/D) převodník</b> změní signál na <b>číselný kód</b> – vznikne obraz z pixelů.</div></div>
+  </div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Skener</b> je vstupní zařízení, které se používá k digitalizaci analogových předloh. <b>Princip plochého skeneru:</b> papírová nebo filmová předloha se položí na desku skeneru směrem ke snímacímu řádkovému čidlu. Světlo odražené nebo prošlé předlohou dopadá na čidlo, kde se mění na elektrický signál. Ten se v analogově-digitálním převodníku zpracuje na číselný kód.</div>
+  <h4 id="a3d">Druhy skenerů</h4>
+  <figure class="pic"><div data-img="druhySkeneru"></div></figure>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Skener</th><th>Jak pracuje a k čemu je</th></tr>
+    <tr><td><b>ruční</b></td><td>přiloží se na předlohu a táhne se po ní – amatérské skenování</td></tr>
+    <tr><td><b>stolní (plochý)</b></td><td>předloha se položí na <b>skleněnou desku</b> – nejběžnější, v kanceláři i v DTP studiu</td></tr>
+    <tr><td><b>bubnový (válcový)</b></td><td>předloha se upevní na povrch průhledného <b>akrylátového válce</b>, který se rychle točí; <b>nejvyšší kvalita</b>, předloha musí být <b>ohebná</b></td></tr>
+    <tr><td><b>filmový</b></td><td>jen pro obraz na filmu – <b>diapozitivy a negativy</b></td></tr>
+    <tr><td><b>knižní</b></td><td>digitalizace <b>knih, časopisů, katalogů, atlasů</b> – kniha se nemusí rozebrat</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Dělení skenerů podle snímaných předloh:</b> ruční · stolní ploché (předloha na skleněné desce) · bubnové (válcové; předloha na povrchu dutého akrylátového válce, široká škála předloh) · filmové · knižní (knihy, časopisy, katalogy, atlasy).</div>
+  <p><b>Digitální fotoaparát</b> je také vstupní zařízení. Použiji ho na předlohy, které nejdou naskenovat: velké obrazy, sochy, výrobky. Vybavení DTP studia: <a href="../tema-03-dtp-studio-a-knizni-vazba/#hw-dalsi">téma 3</a>.</p>
+
+  <h3 id="a4">Parametry skenování</h3>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Parametr</th><th>Co nastavím</th></tr>
+    <tr><td><b>procento reprodukce</b></td><td>o kolik se předloha v tisku <b>zvětší nebo zmenší</b> – hlavně při zvětšování, aby měla správné rozlišení (<a href="#a9">výpočet</a>)</td></tr>
+    <tr><td><b>barevný režim</b> (bitová hloubka)</td><td><b>černobílý</b> (pérovka) · <b>stupně šedi</b> (256 odstínů) · <b>duplex</b> (černá + přímá barva) · <b>barevný</b> (RGB, CMYK – 16,7 milionu barev)</td></tr>
+    <tr><td><b>typ předlohy</b></td><td><b>odrazová</b> · <b>průhledná</b> – pozitivní (diapozitiv), negativní (negativ)</td></tr>
+    <tr><td><b>rozlišení</b></td><td>v <b>dpi</b>: dpi = lpi × 2. Pro tisk obvykle <b>300 dpi</b>, pro internet 72 dpi, perokresba <b>1 200 dpi</b></td></tr>
+    <tr><td><b>odrastrování</b></td><td>jen u už vytištěné předlohy – descreening proti moaré</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Procento reprodukce</b> – nastavuje se hlavně při zvětšování, aby se předloha naskenovala ve správném rozlišení. <b>Barevný režim:</b> černobílý · duplex (stínovaný obraz ve dvou barvách – černé a doplňkové přímé) · stupně šedi (256 odstínů) · čtyřbarvotisk CMYK (každá barva 256 odstínů, celkem 16,7 milionu barev). <b>Typ předlohy:</b> odrazová · průhledná – pozitivní, negativní. <b>Rozlišení</b> v dpi: <b>dpi = lpi × f</b> (f = faktor kvality, obvykle 2). Pro tisk obvykle <b>300 dpi</b>, pro internet <b>72 dpi</b>.</div>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Při skenování nastavím procento reprodukce, barevný režim, typ předlohy – odrazová, nebo průhledná – a rozlišení. Pro tisk 300 dpi.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ M: OBRAZ ============ -->
+<section id="obraz">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">2 · Souhrn · větev M</span></div>
+  <h2>Obrazové předlohy a kvalita obrazu</h2>
+  <div class="oneliner m"><span class="lbl">Jednou větou</span><b>Perokresba</b> má jen čáru a papír, <b>polotónová předloha</b> (fotka) má plynulé přechody a musí se zrastrovat. Kvalitní obraz je <b>ostrý</b>, má <b>kontrast</b> a pro tisk <b>300 dpi</b> – rozlišení spočítám jako <b>dpi = lpi × 2</b>.</div>
+
+  <h3 id="a5">Perokresba × polotónová předloha</h3>
+  <div class="grid2">
+    <figure class="pic" style="margin:0"><div data-img="perova"></div></figure>
+    <figure class="pic" style="margin:0"><div data-img="tonova"></div></figure>
+  </div>
+  <div class="tablewrap" style="margin-top:14px"><table>
+    <tr><th></th><th>✒️ Pérová předloha (perokresba)</th><th>📷 Tónová (polotónová) předloha</th></tr>
+    <tr><td><b>Jak vypadá</b></td><td><b>ostrá kresba</b>, velký kontrast; jen plochy a čáry, <b>bez tónových přechodů</b></td><td><b>plynulé tónové přechody</b> mezi světly a stíny</td></tr>
+    <tr><td><b>Kolik hodnot</b></td><td>jen <b>2 optické hustoty</b>: barva a papír</td><td>mnoho odstínů</td></tr>
+    <tr><td><b>Příklady</b></td><td>perokresba, logo, text, technický výkres, čárový kód</td><td>fotografie, malba, kresba tužkou, diapozitiv, negativ</td></tr>
+    <tr><td><b>V počítači</b></td><td>vektor (Illustrator), nebo bitmapa 1 bit</td><td>pixelová grafika – Photoshop</td></tr>
+    <tr><td><b>Skenuji v</b></td><td><b>1 200 dpi</b> – ostré hrany</td><td><b>300 dpi</b></td></tr>
+    <tr><td><b>Pro tisk</b></td><td><b>nerastruje se</b> – plná barva</td><td><b>musí se zrastrovat</b></td></tr>
+  </table></div>
+  <p><b>Optická hustota (denzita)</b> = jak moc materiál pohlcuje světlo. Čím je tmavší, tím vyšší denzita.</p>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Pérová předloha</b> se vyznačuje ostrou kresbou a velkým kontrastem oproti pozadí. Skládá se ze souvislých ploch a čar, neobsahuje tónové přechody. Má jen <b>dvě hodnoty optických hustot</b> – maximální (čáry a plochy) a minimální (podložka). Zpracovává se ve vektorových programech. <b>Tónová předloha</b> má <b>plynulé tónové přechody</b> mezi světly a stíny, širokou stupnici polotónů – fotografie, diapozitivy, negativy, malby. V počítači jde o bodovou (pixelovou) grafiku.</div>
+  <h4 id="a5b">Barvová hloubka</h4>
+  <figure class="pic"><div data-img="hloubka"></div></figure>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Předloha</th><th>Kanály</th><th>Barvová hloubka</th><th>Odstínů</th></tr>
+    <tr><td><b>pérová</b></td><td>1</td><td><b>1 bit</b></td><td>2¹ = <b>2</b></td></tr>
+    <tr><td><b>stupně šedi</b></td><td>1</td><td><b>8 bitů</b></td><td>2⁸ = <b>256</b></td></tr>
+    <tr><td><b>barevná RGB</b></td><td>3</td><td>8 × 3 = <b>24 bitů</b></td><td><b>16,7 milionu</b></td></tr>
+    <tr><td><b>barevná CMYK</b></td><td>4</td><td>8 × 4 = <b>32 bitů</b></td><td>každá barva 256</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span>Pérová předloha – 1 kanál, <b>1 bit</b> = 2 barvy. Stupně šedi – 1 kanál, <b>8 bitů</b> = 256 odstínů. Barevná RGB – 3 kanály, 8 × 3 = <b>24 bitů</b> = 16,7 milionu barev; CMYK – 4 kanály, 8 × 4 = <b>32 bitů</b>. Bity krok za krokem: <a href="../tema-06-predlohy-a-rastr/#predlohy">téma 6</a>.</div>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Pérová předloha, třeba perokresba nebo logo, má jen dvě hodnoty – barvu a papír – a nerastruje se. Tónová předloha, třeba fotografie, má plynulé přechody a pro tisk se musí zrastrovat.“</div>
+
+  <h3 id="a6">Náležitosti obrazové předlohy</h3>
+  <figure class="pic"><div data-img="nalezitosti"></div></figure>
+  <ul>
+    <li><b>konečný rozměr</b> (<b>% reprodukce</b>) – jak velký bude obrázek v tisku,</li>
+    <li><b>barevný režim</b> – CMYK, stupně šedi, duplex, přímé barvy (Pantone),</li>
+    <li><b>rozlišení</b> – aby obrázek v tisku nebyl kostičkovaný,</li>
+    <li><b>výřezy</b> – kterou část předlohy použít.</li>
+  </ul>
+  <div class="mnemo">🧠 Pomůcka: <span class="L">3 × R</span> + <span class="L">V</span><br><span class="muted small">Rozměr – Režim – Rozlišení – Výřez</span></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Náležitosti obrazových předloh:</b> konečný rozměr (% reprodukce) · barevný režim (CMYK, stupně šedi, duplex, direktní barvy) · rozlišení · výřezy. <b>Direktní (přímá) barva</b> = barva namíchaná předem, např. Pantone.</div>
+
+  <h3 id="a7">Požadavky na kvalitu obrazu</h3>
+  <figure class="pic"><div data-img="kvalita"></div></figure>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>✔ Kvalitní předloha</th><th>✘ Špatná předloha</th></tr>
+    <tr><td><b>ostrá</b></td><td>rozmazaná, roztřesená</td></tr>
+    <tr><td><b>dobrý kontrast</b></td><td>šedivá, bez kontrastu</td></tr>
+    <tr><td><b>kresba ve světlech i ve stínech</b></td><td>„vypálená“ bílá místa, „slité“ stíny</td></tr>
+    <tr><td><b>věrné barvy</b></td><td>barevný nádech</td></tr>
+    <tr><td><b>300 dpi</b> ve skutečné velikosti</td><td>kostičky – obrázek z webu (72 ppi)</td></tr>
+    <tr><td><b>bez šumu</b> a chyb z komprese</td><td>zrnitá, „čtverečky“ z JPEG</td></tr>
+    <tr><td><b>nepoškozený originál</b></td><td>prach, škrábance; vytištěná předloha → moaré</td></tr>
+  </table></div>
+  <h4 id="a7h">🧪 Vyzkoušej si: histogram</h4>
+  <figure class="pic"><div id="obrHist"></div></figure>
+  <p style="text-align:center"><label style="font-weight:700">Jas fotky: <input type="range" id="jasHist" min="-80" max="80" step="10" value="0" style="width:200px;vertical-align:middle"></label></p>
+  <ul>
+    <li><b>Histogram</b> = graf, který ukazuje, jak jsou v obrázku <b>rozloženy jasy</b> pixelů. Vlevo <b>stíny</b>, vpravo <b>světla</b>.</li>
+    <li>Hora vlevo = <b>tmavá</b> fotka, vpravo = <b>světlá</b>, úzká uprostřed = <b>málo kontrastu</b>. Jasy po celé šířce = <b>dobrá</b> fotka.</li>
+  </ul>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Histogram</b> ukazuje, jak jsou v obrázku rozloženy <b>jasové hodnoty obrazových bodů</b>. Je to graf, který pro každou úroveň intenzity ukazuje, kolik pixelů ji má. Čím vyšší je pro danou úroveň, tím víc je tam obrazových bodů a detailů.</div>
+  <h4 id="a7u">Úprava fotografií v DTP studiu</h4>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div><b>Převzorkuji</b> na rozměr v mm a <b>300 dpi</b>.</div></div>
+    <div class="st"><span class="n">2</span><div>Upravím <b>kontrast</b> podle histogramu (Úrovně, Křivky).</div></div>
+    <div class="st"><span class="n">3</span><div>Upravím <b>ostrost</b>.</div></div>
+    <div class="st"><span class="n">4</span><div>Nastavím <b>barevný režim</b>: CMYK, duplex, přímá barva, stupně šedi.</div></div>
+    <div class="st"><span class="n">5</span><div>Udělám <b>retuš</b> (prach, škrábance), <b>efekty</b> a <b>výřezy</b>.</div></div>
+  </div>
+  <div class="warn"><b class="t">Pozor</b>Když malému obrázku z webu zvýším rozlišení ve Photoshopu, kvalitnější nebude. Nové pixely program jen <b>dopočítá</b> – obrázek bude rozmazaný.</div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Úprava fotografií v DTP studiu:</b> většinou v Adobe Photoshopu – převzorkovat na správný rozměr v mm a nastavit dpi (pro tisk <b>300 dpi</b>), upravit <b>kontrast</b>, <b>ostrost</b>, nastavit <b>barevný režim</b> (CMYK, duplex, přímá barva, stupně šedi), <b>retuš</b>, <b>efekty</b>, <b>výřezy</b>.</div>
+
+  <h3 id="a8">Rozlišení: dpi, ppi, lpi</h3>
+  <figure class="pic"><div data-img="dpiLpiPpi"></div></figure>
+  <p><b>Rozlišení</b> říká, kolik bodů je na délce <b>1 palce</b> (= <b>2,54 cm</b>). Čím víc bodů, tím jemnější obraz – ale tím větší soubor.</p>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Zkratka</th><th>Co znamená</th><th>Kde</th></tr>
+    <tr><td><b>dpi</b> (dots per inch)</td><td>obrazové body na palec – <b>rozlišení předlohy</b></td><td>předloha, skener, tiskárna</td></tr>
+    <tr><td><b>ppi</b> (pixels per inch)</td><td>pixely na palec</td><td><b>monitor</b></td></tr>
+    <tr><td><b>lpi</b> (lines per inch)</td><td>linky tiskových bodů na palec = <b>hustota rastru</b></td><td><b>tisk</b></td></tr>
+  </table></div>
+  <h4 id="a8z">🧪 Vyzkoušej si: stejný kruh, jiné rozlišení</h4>
+  <figure class="pic"><div id="obrRozl"></div></figure>
+  <div class="sim-ctrl" id="rozlBtns"></div>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Co</th><th>Rozlišení</th></tr>
+    <tr><td>fotografie pro tisk</td><td><b>300 dpi</b> ve skutečné velikosti</td></tr>
+    <tr><td>perokresba, vektor v PDF</td><td><b>1 200 dpi</b></td></tr>
+    <tr><td>web, obrazovka</td><td><b>72 ppi</b></td></tr>
+    <tr><td>rastr – noviny · ofsetový papír · křídový papír</td><td><b>100 · 150 · 175 lpi</b></td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>dpi</b> – u digitalizovaných předloh počet obrazových bodů na délku jednoho palce (2,54 cm); rozlišení obrazové předlohy. <b>lpi</b> – u rastrů počet linek tiskových bodů na palec; hustota rastru. Volí se podle papíru: noviny 100 lpi, ofsetový papír 150 lpi, křídový papír 175 lpi. <b>ppi</b> – u monitorů počet pixelů na palec.</div>
+  <p class="small">Kolik pixelů potřebuji na fotku v cm: <a href="../tema-13-bitmapova-a-vektorova-grafika/#a2">téma 13</a> · Rastr: <a href="../tema-06-predlohy-a-rastr/#rastr">téma 6</a></p>
+
+  <h3 id="a9">Kolik dpi potřebuji – výpočty krok za krokem</h3>
+  <figure class="pic"><div data-img="vzorec"></div></figure>
+  <h4 id="a9a">1) Vztah lpi a dpi</h4>
+  <p>Na jeden tiskový bod rastru potřebuji aspoň <b>2 obrazové body</b> předlohy. Proto: <span class="eq">dpi = lpi × 2</span>. Číslu 2 se říká <b>faktor kvality</b>. U velkých souborů stačí <span class="eq">dpi = lpi × 1,5</span>.</p>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div>Rastr <b>100 lpi</b>: <span class="eq">100 × 2</span> = vezmu číslo dvakrát: 100 + 100 = <span class="res">200 dpi</span></div></div>
+    <div class="st"><span class="n">2</span><div>Rastr <b>150 lpi</b>: <span class="eq">150 × 2</span> = 150 + 150 = <span class="res">300 dpi</span></div></div>
+    <div class="st"><span class="n">3</span><div>Rastr <b>200 lpi</b> s faktorem 1,5: „jednou a ještě půlka“ = 200 + 100 = <span class="res">300 dpi</span></div></div>
+  </div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Vztah lpi a dpi:</b> pro ofsetový tisk se používá pomůcka (ne závazný vzorec) <b>dpi = lpi × 2</b> (faktor kvality); u mnohamegových souborů <b>dpi = lpi × 1,5</b>. <b>Výpočet:</b> lpi 100 → 200 dpi · lpi 150 → 300 dpi · lpi 200 → 200 × 1,5 = 300 dpi.</div>
+  <h4 id="a9b">2) Zvětšení předlohy (procento reprodukce)</h4>
+  <figure class="pic"><div data-img="zvetseni"></div></figure>
+  <p>Fotka <b>10 × 15 cm</b> se bude tisknout jako <b>20 × 30 cm</b>:</p>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div>O kolik se zvětší? <span class="eq">20 : 10 = 2</span> → 2× větší = <b>200 %</b>.</div></div>
+    <div class="st"><span class="n">2</span><div>V tisku potřebuji <b>300 dpi</b>.</div></div>
+    <div class="st"><span class="n">3</span><div>Na skeneru nastavím <span class="eq">300 × 2</span> = 300 + 300 = <span class="res">600 dpi</span></div></div>
+  </div>
+  <p>Zmenšení na <b>50 %</b> (polovinu): <span class="eq">300 × 0,5</span> = polovina z 300 = <b>150 dpi</b>.</p>
+  <div class="calc" id="kalk">
+    <b>🧮 Kalkulačka – vyzkoušej si</b>
+    <div class="am-in" style="margin-top:8px">
+      <label>Hustota rastru<select id="kLpi" class="inline-in" style="width:100%"><option value="100">100 lpi (noviny)</option><option value="150" selected>150 lpi (ofsetový)</option><option value="175">175 lpi (křídový)</option><option value="200">200 lpi</option></select></label>
+      <label>Faktor kvality<select id="kF" class="inline-in" style="width:100%"><option value="2" selected>2</option><option value="1.5">1,5</option></select></label>
+      <label>Zvětšení<select id="kPr" class="inline-in" style="width:100%"><option value="50">50 %</option><option value="100" selected>100 %</option><option value="150">150 %</option><option value="200">200 %</option><option value="300">300 %</option></select></label>
+    </div>
+    <div id="kOut"></div>
+  </div>
+  <h4 id="a9c">3) Rozlišení osvitové jednotky</h4>
+  <figure class="pic"><div data-img="osvit"></div></figure>
+  <p>Osvitová jednotka skládá každý tiskový bod z <b>mřížky malých osvitových bodů</b>. Aby rastr uměl <b>256 stupňů šedi</b>, potřebuje mřížku <b>16 × 16 = 256</b>. Proto <span class="eq">dpi = lpi × 16</span>.</p>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div><span class="eq">16 × 16 = 256</span> – mřížka má 256 políček = 256 stupňů šedi.</div></div>
+    <div class="st"><span class="n">2</span><div>Rastr 150 lpi: <span class="eq">150 × 16</span>. Násobím po částech: 150 × 10 = 1 500 a 150 × 6 = 900.</div></div>
+    <div class="st"><span class="n">3</span><div>Sečtu: 1 500 + 900 = <span class="res">2 400 dpi</span></div></div>
+  </div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Rozlišení osvitové jednotky pro 150 lpi:</b> dpi = lpi × √256 (256 = stupně šedi, √256 = 16) → 150 × 16 = <b>2 400 dpi</b>. Osvitové jednotky: <a href="../tema-11-ctf-ctp-ctpr-cts/#a-ctp">téma 11</a>.</div>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Fotka pro tisk potřebuje 300 dpi ve skutečné velikosti. Rozlišení spočítám jako hustota rastru krát dvě: 150 lpi krát 2 je 300 dpi. Když předlohu zvětšuji na 200 %, skenuji s dvojnásobným rozlišením.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ Y: PAPÍROVINA ============ -->
+<section id="papirovina">
+  <div class="sec-head"><span class="dot y"></span><span class="kicker">2 · Souhrn · větev Y</span></div>
+  <h2>Papírovina a papírenský stroj</h2>
+  <div class="oneliner y"><span class="lbl">Jednou větou</span><b>Papírovina</b> je řídká vodní suspenze vláken. Na <b>papírenském stroji</b> z ní v <b>mokré části</b> odteče a vymačká se voda a v <b>suché části</b> se papír usuší, zaklíží, uhladí a navine do role.</div>
+
+  <h3 id="b1">Co je papírovina a z čeho je</h3>
+  <figure class="pic"><div data-img="papirovina"></div></figure>
+  <p><b>Papírovina</b> = <b>řídká vodní suspenze</b>, ze které se vyrábí papír. <b>Suspenze</b> = kapalina, ve které plavou drobné pevné částice (vlákna) – nerozpustí se. Vody je v ní <b>víc než 90 %</b>, na začátku papírenského stroje asi 99 %.</p>
+  <h4 id="b1s">Složky papíroviny</h4>
+  <figure class="pic"><div data-img="slozky"></div></figure>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Složka</th><th>Co dělá</th></tr>
+    <tr><td>🧶 <b>vláknina</b></td><td><b>základní surovina</b>, nejčastěji ze dřeva, rozemletá, případně vybělená</td></tr>
+    <tr><td>⚪ <b>plnidla</b></td><td>jemné bílé prášky (kaolin, uhličitan vápenatý) – <b>vyplňují mezery mezi vlákny</b>; papír je hladší, bělejší, méně průsvitný</td></tr>
+    <tr><td>🧴 <b>klížidla</b></td><td><b>spojují vlákninu a plnidla</b>, zvyšují <b>odolnost proti vodě</b></td></tr>
+    <tr><td>🎨 <b>barviva</b></td><td>určují <b>barvu papíru</b>, zvyšují <b>bělost</b></td></tr>
+    <tr><td>💧 <b>voda</b></td><td><b>ředí</b> papírovinu – víc než 90 %</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Papírovina</b> je řídká vodní suspenze, která je surovinou pro výrobu papíru. <b>Složky a funkce:</b> rostlinná vlákna (vláknina) – základní surovina · plnidla – vyplňují mezery mezi vlákny, zlepšují tiskové vlastnosti · klížidla – spojují vlákniny a plnidla, zvyšují odolnost proti vodě · barviva – barva papíru, bělost · voda – ředění, víc než 90 %. <b>Vlákniny:</b> dřevovina a buničina.</div>
+  <div class="warn"><b class="t">Pozor na chyták</b>Do papíroviny <b>nepatří VOC látky</b> (těkavé organické látky) – patří k tiskovým barvám a rozpouštědlům. Jak se vyrábí vláknina: <a href="../tema-14-pdf-pro-tisk/#b1">téma 14</a>.</div>
+
+  <h3 id="b2">Příprava papíroviny</h3>
+  <figure class="pic"><div data-img="priprava"></div></figure>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div><b>Rozvláknění</b> – buničina, dřevovina nebo sběrový papír se ve velké nádrži s vodou rozmíchá na vlákna.</div></div>
+    <div class="st"><span class="n">2</span><div><b>Mletí</b> – vlákna projdou mlýny, zkrátí se a <b>roztřepí</b>. Pak se lépe propletou – papír je pevnější.</div></div>
+    <div class="st"><span class="n">3</span><div><b>Míchání</b> – přidají se <b>plnidla, klížidla a barviva</b>.</div></div>
+    <div class="st"><span class="n">4</span><div><b>Ředění a čištění</b> – papírovina se zředí vodou a teče do nátoku stroje.</div></div>
+  </div>
+  <figure class="pic"><div data-img="mleti"></div></figure>
+
+  <h3 id="b3">Papírenský stroj</h3>
+  <p><b>Papírenský stroj</b> vyrábí papír v nekonečném pásu. Bývá dlouhý i přes 100 metrů, pás je široký až 10 metrů a moderní stroj vyrobí víc než 1 000 metrů papíru za minutu. Má <b>mokrou</b> a <b>suchou</b> část.</p>
+  <h4 id="b3s">🧪 Vyzkoušej si: projdi stroj krok za krokem</h4>
+  <figure class="pic svgfig wide"><div id="obrStroj"></div></figure>
+  <div class="sim-ctrl" id="strojBtns"></div>
+  <div class="tip" id="strojPopis"></div>
+  <div class="mnemo">🧠 Pomůcka: <span class="L">N</span>aše <span class="L">S</span>estra <span class="L">L</span>ída <span class="L">S</span>uší <span class="L">K</span>ytky <span class="L">K</span>aždé <span class="L">R</span>áno.<br><span class="muted small">Nátok – Síto – Lisy – Sušení – Klížení – Kalandr – Role</span></div>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Část</th><th>Úkol</th><th>Vody v papíru</th></tr>
+    <tr><td><b>💧 mokrá</b>: nátok · síto · lisy</td><td>odstranit vodu, vytvořit pás papíru</td><td>z 99 % na asi 50 %</td></tr>
+    <tr><td><b>🔥 suchá</b>: sušení · klížicí lis · kalandr · navíjení</td><td>usušit, zaklížit povrch, uhladit, navinout</td><td>z 50 % na 5–8 %</td></tr>
+  </table></div>
+  <p class="small">Ruční výroba a staré papírny: <a href="../tema-01-pismo-a-papir/#rucni">téma 1</a> · Ruční × strojní výroba: <a href="../tema-14-pdf-pro-tisk/#b9">téma 14</a></p>
+
+  <h3 id="b4">Mokrá část</h3>
+  <figure class="pic"><div data-img="mokra"></div></figure>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div><b>Nátok</b> – papírovina (asi 99 % vody) vytéká úzkou štěrbinou <b>rovnoměrně po celé šíři</b> na síto.</div></div>
+    <div class="st"><span class="n">2</span><div><b>Sítová část</b> – <b>nekonečné síto</b> běží dokola, voda odtéká a odsává se, vlákna se propletou a vznikne <b>mokrý pás papíru</b>. Vlákna se uloží ve směru pohybu síta → <a href="#b6">směr vlákna</a>.</div></div>
+    <div class="st"><span class="n">3</span><div><b>Lisovací část</b> – pás jede na <b>plstěncích</b> mezi válci, <b>válce vymačkají vodu</b> (zbude asi 50 %).</div></div>
+  </div>
+  <details class="qa"><summary>➕ Rozšiřující učivo: vodoznak</summary><div class="ans">V sítové části se do mokrého papíru vtlačí válec s reliéfem (<b>egutér</b>). Na tom místě je méně vláken a proti světlu prosvítá obrázek – <b>vodoznak</b> (bankovky, cenné papíry).</div></details>
+
+  <h3 id="b5">Suchá část</h3>
+  <figure class="pic"><div data-img="sucha"></div></figure>
+  <div class="calc">
+    <div class="st"><span class="n">4</span><div><b>Sušicí část</b> – desítky válců vyhřívaných <b>párou</b>; zbude 5–8 % vody.</div></div>
+    <div class="st"><span class="n">5</span><div><b>Klížicí lis</b> – na povrch se nanese klížidlo (<b>škrob</b>) = <a href="#b7">povrchové klížení</a>.</div></div>
+    <div class="st"><span class="n">6</span><div><b>Kalandr</b> – hladké válce papír <b>tlakem a teplem uhladí</b>.</div></div>
+    <div class="st"><span class="n">7</span><div><b>Navíjení</b> – pás se navine do velké <b>role</b>.</div></div>
+  </div>
+  <p>Potom (mimo stroj) se papír podle potřeby <a href="#b9">natírá</a>, <a href="#b8">superkalandruje</a> a <b>řeže</b> na role pro kotoučové stroje, nebo na archy pro archové stroje.</p>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„V mokré části vyteče papírovina z nátoku na síto, voda odteče a lisy ji vymačkají. V suché části se papír usuší na válcích vyhřívaných párou, zaklíží, uhladí v kalandru a navine do role.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ K: POVRCH ============ -->
+<section id="povrch">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
+  <h2>Směr vlákna a úprava povrchu papíru</h2>
+  <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Směr vlákna</b> vzniká ve směru pohybu síta. Povrch papíru se upravuje <b>klížením</b> (nesaje), <b>hlazením v kalandru</b> a <b>natíráním</b> (křídový papír) – čím hladší papír, tím jemnější rastr.</div>
+
+  <h3 id="b6">Směr vlákna papíru</h3>
+  <figure class="pic"><div data-img="smer"></div></figure>
+  <p><b>Směr vlákna papíru</b> = směr uložení vláken, který vzniká při výrobě na papírenském stroji <b>ve směru pohybu síta</b>. Ve směru vlákna se papír lépe ohýbá a skládá. Když navlhne, roztáhne se víc napříč vlákna a zkroutí se.</p>
+  <h4 id="b6z">Jak zjistím směr vlákna</h4>
+  <figure class="pic"><div data-img="smerZkousky"></div></figure>
+  <ul>
+    <li><b>Trhání</b> – ve směru vlákna se papír trhá <b>rovně</b>, napříč <b>zubatě</b>.</li>
+    <li><b>Ohyb</b> – ve směru vlákna se papír ohne <b>snáz</b>.</li>
+    <li><b>Navlhčení</b> – proužek se zkroutí do ruličky, její osa vede <b>ve směru vlákna</b>.</li>
+    <li><b>Nehty</b> – okraj napříč vlákna se zvlní, okraj ve směru vlákna zůstane rovný.</li>
+  </ul>
+  <h4 id="b6p">Proč je směr vlákna důležitý</h4>
+  <figure class="pic"><div data-img="smerPouziti"></div></figure>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Výrobek</th><th>Kudy vlákno</th><th>Proč</th></tr>
+    <tr><td>📚 <b>kniha</b></td><td><b>rovnoběžně se hřbetem</b></td><td>složky se lépe skládají, kniha se nekroutí</td></tr>
+    <tr><td>🖨️ <b>tiskový stroj</b></td><td><b>rovnoběžně s osou válců</b></td><td>papír se nevytahuje ve směru tisku – sedí soutisk</td></tr>
+    <tr><td>📅 <b>nástěnný kalendář</b></td><td><b>svisle</b></td><td>listy se nekroutí</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Směr vlákna papíru</b> je směr uložení vláken, který vzniká při výrobě na papírenském stroji ve směru pohybu síta. <b>3 příklady:</b> knihy – rovnoběžně se hřbetem (lépe se skládají složky, nekroutí se) · tisk – rovnoběžně s osou válců (papír se nevytahuje ve směru tisku) · nástěnné kalendáře – svisle (nekroutí se).</div>
+  <details class="qa"><summary>➕ Rozšiřující učivo: úzká a široká dráha</summary><div class="ans"><b>Úzká dráha (ÚD)</b> – vlákna vedou rovnoběžně s <b>delší</b> stranou archu. <b>Široká dráha (ŠD)</b> – rovnoběžně s <b>kratší</b> stranou. Směr vlákna bývá vyznačený na obalu balíku papíru. Montáž knihy: <a href="../tema-05-archova-montaz/#am-v8">téma 5</a>.</div></details>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Směr vlákna vzniká na papírenském stroji ve směru pohybu síta. U knihy vede rovnoběžně se hřbetem, v tiskovém stroji s osou válců a u kalendáře svisle – jinak se papír kroutí.“</div>
+
+  <h3 id="b7">Klížení</h3>
+  <figure class="pic"><div data-img="klizeni"></div></figure>
+  <p><b>Klížení</b> = úprava, po které papír <b>nesaje vodu ani inkoust</b>. Bez klížení by se barva rozpíjela jako na pijáku.</p>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th></th><th>Klížení ve hmotě</th><th>Povrchové klížení</th></tr>
+    <tr><td><b>Kdy</b></td><td>klížidlo se přidá do <b>papíroviny</b></td><td>škrob se nanese na <b>povrch</b> v <b>klížicím lisu</b></td></tr>
+    <tr><td><b>Co dá</b></td><td>celý papír odolává vodě</td><td>pevnější povrch – při tisku se netrhají vlákna</td></tr>
+  </table></div>
+  <p><b>Nezaklížené papíry</b> musí sát: piják, kapesníky, toaletní a filtrační papír.</p>
+
+  <h3 id="b8">Hlazení – kalandr</h3>
+  <figure class="pic"><div data-img="hlazeni"></div></figure>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th></th><th>Strojní kalandr</th><th>Superkalandr (satinace)</th></tr>
+    <tr><td><b>Kde</b></td><td>na konci papírenského stroje</td><td>samostatný stroj</td></tr>
+    <tr><td><b>Válce</b></td><td>několik hladkých ocelových</td><td>mnoho válců, střídavě tvrdé a měkké</td></tr>
+    <tr><td><b>Jak</b></td><td>tlak + teplo</td><td>tlak + teplo + tření → <b>lesk</b></td></tr>
+    <tr><td><b>Výsledek</b></td><td>hladší papír, stejná tloušťka</td><td><b>SC papír</b> – velmi hladký, lesklý</td></tr>
+  </table></div>
+
+  <h3 id="b9">Natírání – křídový papír</h3>
+  <figure class="pic"><div data-img="natirani"></div></figure>
+  <p><b>Natírání</b> (křídování) = na povrch se nanese tenká vrstva <b>nátěru</b>, která vyplní nerovnosti mezi vlákny.</p>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div><b>Nátěrová směs:</b> pigment (kaolin, uhličitan vápenatý = křída) + pojivo (latex, škrob) + voda.</div></div>
+    <div class="st"><span class="n">2</span><div><b>Nanesení</b> na jednu nebo obě strany a srovnání stěrkou.</div></div>
+    <div class="st"><span class="n">3</span><div><b>Usušení</b>.</div></div>
+    <div class="st"><span class="n">4</span><div><b>Kalandrování</b> → papír <b>lesklý</b>, <b>polomatný</b>, nebo <b>matný</b>.</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><b class="pro">✔ Výhody</b><br>hladký, bílý; barva zůstane na povrchu → <b>ostrý tisk</b>, živé barvy, jemný rastr <b>175 lpi</b></div>
+    <div class="card"><b class="con">✘ Nevýhody</b><br><b>dražší</b>, těžší; lesk odráží světlo (dlouhý text se hůř čte), hůř se na něj píše</div>
+  </div>
+  <p><b>Natíraný bezdřevý papír = křídový papír</b> (100–300 g/m²) – katalogy, kvalitní časopisy, obálky. ICC profil: natíraný <b>Coated FOGRA39</b>, nenatíraný <b>FOGRA52</b> – <a href="../tema-10-color-management/#a-cmykprof">téma 10</a>.</p>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Povrch papíru se upravuje klížením, aby nesál inkoust, hlazením v kalandru a natíráním. Natíraný, neboli křídový, papír má nátěr z pigmentu a pojiva, je hladký a tisk je na něm ostrý.“</div>
+
+  <h3 id="b10">Druhy papíru podle povrchové úpravy</h3>
+  <figure class="pic"><div data-img="povrchDruhy"></div></figure>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Papír</th><th>Použití</th></tr>
+    <tr><td><b>natíraný bezdřevý</b> (křídový)</td><td>katalogy, kvalitní časopisy, obálky</td></tr>
+    <tr><td><b>nenatíraný bezdřevý</b> (ofsetový)</td><td>kancelářský papír, knihy, sešity</td></tr>
+    <tr><td><b>natíraný dřevitý</b> (LWC…)</td><td>časopisy, letáky</td></tr>
+    <tr><td><b>nenatíraný dřevitý</b></td><td>noviny</td></tr>
+    <tr><td><b>nenatíraný dřevitý superkalandrovaný (SC)</b></td><td>časopisy a letáky z kotoučových strojů</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Papír podle povrchové úpravy:</b> natírané bezdřevé · nenatírané bezdřevé · natírané dřevité · nenatírané dřevité · nenatírané dřevité superkalandrované (SC).</div>
+  <h4 id="b10c">Papír pro tisk časopisů</h4>
+  <figure class="pic"><div data-img="casopisy"></div></figure>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Papíry pro časopisy:</b> nenatírané dřevité superkalandrované (SC) – nízká plošná hmotnost, kotoučový tisk · natírané dřevité – ULWC (50 g/m²), LWC (70 g/m²), MWC (do 100 g/m²), HWC (nad 100 g/m²) · natírané bezdřevé (křídové) – lesklé nebo matné, 100–300 g/m² · nenatírané bezdřevé a nenatírané dřevité.</div>
+  <p class="small">Časopis podrobně: téma 19 · Dělení papíru podle plošné hmotnosti a vlákninového složení: téma 25 (obě témata připravujeme).</p>
+  <h4 id="b10m">Most k předlohám: papír → rastr → rozlišení</h4>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Papír</th><th>Rastr</th><th>Předloha (lpi × 2)</th></tr>
+    <tr><td>novinový</td><td><b>100 lpi</b></td><td>100 × 2 = <b>200 dpi</b></td></tr>
+    <tr><td>ofsetový</td><td><b>150 lpi</b></td><td>150 × 2 = <b>300 dpi</b></td></tr>
+    <tr><td>křídový</td><td><b>175 lpi</b></td><td>175 × 2 = <b>350 dpi</b></td></tr>
+  </table></div>
+  <div class="say"><b class="t">Řekni u zkoušky (závěr)</b>„Čím hladší papír, tím jemnější rastr: noviny 100 lpi, křídový papír 175 lpi. A podle hustoty rastru spočítám rozlišení předlohy: dpi je lpi krát dvě.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ ŠVP ============ -->
+<section id="svp">
+  <div class="sec-head"><span class="dot c"></span><span class="kicker">Podle ŠVP</span></div>
+  <h2>Co musíš umět (odškrtej si)</h2>
+  <p class="muted">Technologie 1. roč. (typy předloh, náležitosti rukopisu, technická příprava obrazových předloh) a 3. roč. (vstupní periferie), Odborný výcvik 1. a 2. roč. (úpravy obrazu, skenery), Všeobecná polygrafie 1. roč. (papír – strojní výroba, druhy a vlastnosti) a 3. roč. (papírové materiály). Odkaz „kde to najdu“ tě pošle do správné části.</p>
+  <ul class="check" id="svpList"><li><input type="checkbox" id="s1"><label for="s1">Vysvětlím, co je <b>předloha</b>, rozdělím předlohy na textové a obrazové a popíšu <b>rukopis</b> a jeho náležitosti.</label><a class="svp-go" href="#a1">→ kde to najdu</a></li><li><input type="checkbox" id="s2"><label for="s2">Rozliším <b>fyzické a digitální</b> předlohy a předlohu <b>odrazovou a průhlednou</b>.</label><a class="svp-go" href="#a2">→ kde to najdu</a></li><li><input type="checkbox" id="s3"><label for="s3">Vysvětlím, co je <b>skener</b>, popíšu princip plochého skeneru a rozdělím skenery.</label><a class="svp-go" href="#a3">→ kde to najdu</a></li><li><input type="checkbox" id="s4"><label for="s4">Popíšu <b>parametry skenování</b> (procento reprodukce, barevný režim, typ předlohy, rozlišení).</label><a class="svp-go" href="#a4">→ kde to najdu</a></li><li><input type="checkbox" id="s5"><label for="s5">Popíšu <b>perokresbu</b> a <b>polotónovou předlohu</b> a uvedu jejich <b>barvovou hloubku</b>.</label><a class="svp-go" href="#a5">→ kde to najdu</a></li><li><input type="checkbox" id="s6"><label for="s6">Vyjmenuji <b>náležitosti obrazové předlohy</b>.</label><a class="svp-go" href="#a6">→ kde to najdu</a></li><li><input type="checkbox" id="s7"><label for="s7">Popíšu <b>požadavky na kvalitu obrazu</b>, úpravu fotografií a vysvětlím <b>histogram</b>.</label><a class="svp-go" href="#a7">→ kde to najdu</a></li><li><input type="checkbox" id="s8"><label for="s8">Vysvětlím zkratky <b>dpi, ppi, lpi</b> a uvedu rozlišení pro tisk, web a perokresbu.</label><a class="svp-go" href="#a8">→ kde to najdu</a></li><li><input type="checkbox" id="s9"><label for="s9">Spočítám rozlišení předlohy (<b>dpi = lpi × 2</b>), rozlišení při zvětšení a rozlišení osvitové jednotky.</label><a class="svp-go" href="#a9">→ kde to najdu</a></li><li><input type="checkbox" id="s10"><label for="s10">Vysvětlím pojem <b>papírovina</b>, vyjmenuji její <b>složky</b> a jejich funkci.</label><a class="svp-go" href="#b1">→ kde to najdu</a></li><li><input type="checkbox" id="s11"><label for="s11">Popíšu <b>přípravu papíroviny</b> (rozvláknění, mletí, míchání, ředění).</label><a class="svp-go" href="#b2">→ kde to najdu</a></li><li><input type="checkbox" id="s12"><label for="s12">Popíšu <b>papírenský stroj</b> a pořadí jeho částí.</label><a class="svp-go" href="#b3">→ kde to najdu</a></li><li><input type="checkbox" id="s13"><label for="s13">Popíšu <b>mokrou část</b> stroje (nátok, síto, lisy).</label><a class="svp-go" href="#b4">→ kde to najdu</a></li><li><input type="checkbox" id="s14"><label for="s14">Popíšu <b>suchou část</b> stroje (sušení, klížicí lis, kalandr, navíjení).</label><a class="svp-go" href="#b5">→ kde to najdu</a></li><li><input type="checkbox" id="s15"><label for="s15">Vysvětlím <b>směr vlákna</b>, jak se zjistí a proč je důležitý (3 příklady).</label><a class="svp-go" href="#b6">→ kde to najdu</a></li><li><input type="checkbox" id="s16"><label for="s16">Vysvětlím <b>klížení</b> papíru (ve hmotě a povrchové).</label><a class="svp-go" href="#b7">→ kde to najdu</a></li><li><input type="checkbox" id="s17"><label for="s17">Popíšu <b>hlazení</b> – kalandr a superkalandr (SC papír).</label><a class="svp-go" href="#b8">→ kde to najdu</a></li><li><input type="checkbox" id="s18"><label for="s18">Popíšu <b>natírání</b> a vlastnosti <b>křídového</b> papíru.</label><a class="svp-go" href="#b9">→ kde to najdu</a></li><li><input type="checkbox" id="s19"><label for="s19">Rozdělím papír <b>podle povrchové úpravy</b> a uvedu papíry pro časopisy.</label><a class="svp-go" href="#b10">→ kde to najdu</a></li></ul>
+  <p class="small muted" id="svpCount"></p>
+</section>
+
+<!-- ============ TEST PSANÍM ============ -->
+<section id="test">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">Ověř se · 1</span></div>
+  <h2>Test psaním: odpověz vlastními slovy</h2>
+  <p>Otázky odpovídají <b>písemnému testu</b> a ústní zkoušce. Napiš odpověď a klepni na <b>Vyhodnotit</b>. Uvidíš, co jsi zmínil/a ✔, co ti chybí, případné chyby a vzorovou odpověď. Body označené <span class="star">★</span> jsou nejdůležitější.</p>
+  <div class="tip"><b class="t">Jak na to</b>Piš celé věty, klidně s chybami v pravopisu. Test hledá <b>odborné pojmy a souvislosti</b>. Odpověď se průběžně ukládá v tomto prohlížeči.</div>
+  <div id="writeTest"></div>
+</section>
+
+<!-- ============ KVÍZ ============ -->
+<section id="kviz">
+  <div class="sec-head"><span class="dot y"></span><span class="kicker">Ověř se · 2</span></div>
+  <h2>Rychlý kvíz</h2>
+  <p><span id="qCount"></span> otázek. Klepni na odpověď a hned uvidíš vysvětlení.</p>
+  <div id="quiz"></div>
+  <p class="score" id="score"></p>
+  <button class="btn" id="quizReset">Zkusit znovu</button>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cmyk-bar" style="margin-bottom:14px;border-radius:3px"></div>
+    Ústní zkouška · obor Reprodukční grafik (34-53-H/01) · Téma č. 15.<br>
+    Zpracováno z podkladů vyučující k písemné a ústní zkoušce a podle ŠVP. Schémata jsou zjednodušená.
+    <br><a class="back" href="../" style="margin-top:10px">← zpět na rozcestník</a>
+  </div>
+</footer>
+
+<button class="fab-map" id="fabMap" aria-label="Zpět na myšlenkovou mapu"><span class="ar">↑</span> Zpět na mapu</button>
+<button class="theme-toggle" id="themeBtn" aria-label="Přepnout světlý / tmavý režim">◐</button>
+
+<script>
+/* ---------- bezpečné úložiště ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const fmt=(n,d=0)=>(Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toLocaleString('cs-CZ');
+
+
+/* ===== Společná data a obrázky pro téma 15 (podrobná lekce i výluh) ===== */
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9\s.,;!?\n%-]/g,' ').replace(/[ \t]+/g,' ');}
+const T=(x,y,t,o={})=>`<text x="${x}" y="${y}" font-size="${o.s||9}" font-weight="${o.w||700}" fill="${o.f||'#1f2937'}" text-anchor="${o.a||'middle'}" font-family="system-ui,Arial,sans-serif"${o.k?' class="keep"':''}>${t}</text>`;
+const SIP=(id,b)=>`<defs><marker id="${id}" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="${b}"/></marker></defs>`;
+const S=(vb,obsah)=>`<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${obsah}</svg>`;
+const fajf=(x,y,ok)=>ok?`<circle cx="${x}" cy="${y}" r="5.5" fill="#16a34a"/><path d="M${x-3} ${y} l2 2.4 l4 -4.6" stroke="#fff" stroke-width="1.6" fill="none"/>`:`<circle cx="${x}" cy="${y}" r="5.5" fill="#dc2626"/><path d="M${x-2.5} ${y-2.5} l5 5 M${x+2.5} ${y-2.5} l-5 5" stroke="#fff" stroke-width="1.6"/>`;
+const vlakna=(cx,cy,r,n,del,barva,sem)=>{let s='';let z=sem||7;const rnd=()=>{z=(z*9301+49297)%233280;return z/233280;};for(let i=0;i<n;i++){const a=rnd()*Math.PI,x=cx+(rnd()-.5)*r*1.4,y=cy+(rnd()-.5)*r*1.4,dx=Math.cos(a)*del/2,dy=Math.sin(a)*del/2;s+=`<path d="M${(x-dx).toFixed(1)} ${(y-dy).toFixed(1)} Q${(x+dy*.4).toFixed(1)} ${(y-dx*.4).toFixed(1)} ${(x+dx).toFixed(1)} ${(y+dy).toFixed(1)}" stroke="${barva}" stroke-width="1.3" fill="none" stroke-linecap="round"/>`;}return s;};
+/* malá „fotka“ krajiny */
+const fotka=(x,y,w,h)=>`<g transform="translate(${x},${y})"><rect width="${w}" height="${h}" fill="#bfdbfe" stroke="#334155" stroke-width=".8"/><circle cx="${(w*.74).toFixed(1)}" cy="${(h*.3).toFixed(1)}" r="${(Math.min(w,h)*.13).toFixed(1)}" fill="#facc15"/><path d="M0 ${(h*.8).toFixed(1)} L${(w*.3).toFixed(1)} ${(h*.42).toFixed(1)} L${(w*.5).toFixed(1)} ${(h*.66).toFixed(1)} L${(w*.68).toFixed(1)} ${(h*.5).toFixed(1)} L${w} ${(h*.78).toFixed(1)} V${h} H0Z" fill="#64748b"/><rect y="${(h*.82).toFixed(1)}" width="${w}" height="${(h*.18).toFixed(1)}" fill="#65a30d"/></g>`;
+const soubor=(x,y,k,t,b)=>`<g transform="translate(${x},${y}) scale(${k})"><path d="M0 0 h26 l10 10 v36 h-36z" fill="#fff" stroke="${b}" stroke-width="1.6"/><path d="M26 0 v10 h10" fill="none" stroke="${b}" stroke-width="1.2"/><rect x="-3" y="26" width="34" height="12" rx="2" fill="${b}"/>${T(14,35,t,{s:t.length>3?7:8,f:'#fff',w:800,k:1})}</g>`;
+const casopis=(x,y)=>`<g transform="translate(${x},${y})"><rect width="44" height="58" fill="#fdf2f8" stroke="#334155"/><rect x="4" y="4" width="36" height="8" fill="#be185d"/>${fotka(4,15,36,26)}<rect x="4" y="45" width="30" height="2.4" fill="#64748b"/><rect x="4" y="50" width="22" height="2.4" fill="#64748b"/></g>`;
+const kapka=(x,y)=>`<path d="M${x} ${y} q2 4 0 7 q-2 -3 0 -7z" fill="#38bdf8"/>`;
+/* histogram – sloupce */
+const histBars=(x,y,w,h,posun,rozptyl)=>{const n=32,sd=rozptyl||7,c=n/2-.5+posun/8;let s=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#f1f5f9" stroke="#94a3b8" stroke-width=".5"/>`;for(let i=0;i<n;i++){const v=Math.exp(-((i-c)**2)/(2*sd*sd));const bh=Math.max(.6,v*(h-3));s+=`<rect x="${(x+i*w/n+.2).toFixed(1)}" y="${(y+h-bh).toFixed(1)}" width="${(w/n-.5).toFixed(2)}" height="${bh.toFixed(1)}" fill="#334155"/>`;}return s;};
+function histSVG(j){j=+j||0;let s=fotka(8,8,84,62);
+ s+=j>0?`<rect x="8" y="8" width="84" height="62" fill="#fff" opacity="${(j/100).toFixed(2)}"/>`:j<0?`<rect x="8" y="8" width="84" height="62" fill="#000" opacity="${(-j/100).toFixed(2)}"/>`:'';
+ s+=histBars(104,10,110,60,j,j===0?7:5);
+ s+=T(104,80,'◀ stíny',{s:7,a:'start',w:600})+T(214,80,'světla ▶',{s:7,a:'end',w:600})+T(50,80,'fotka',{s:7,w:600});
+ const t=j<=-40?'tmavá fotka – histogram je vlevo':j>=40?'světlá fotka – histogram je vpravo':'dobrá fotka – jasy po celé šířce';
+ s+=T(110,100,t,{s:8.5,f:(j<=-40||j>=40)?'#b91c1c':'#15803d'});
+ return S('0 0 220 108',s);}
+/* kruh poskládaný z obrazových bodů */
+function mrizkaKruh(x,y,w,n,barva){let s='';const d=w/n,r=w/2-1;for(let i=0;i<n;i++)for(let j=0;j<n;j++){const cx=(i+.5)*d-w/2,cy=(j+.5)*d-w/2;if(cx*cx+cy*cy<=r*r)s+=`<rect x="${(x+i*d).toFixed(2)}" y="${(y+j*d).toFixed(2)}" width="${(d+.06).toFixed(2)}" height="${(d+.06).toFixed(2)}" fill="${barva}"/>`;}return s+`<rect x="${x}" y="${y}" width="${w}" height="${w}" fill="none" stroke="#cbd5e1"/>`;}
+function rozlSVG(ppi){const n=Math.max(3,Math.round(ppi/300*30));let s=mrizkaKruh(14,6,90,n,'#be185d');
+ s+=T(164,38,ppi+' ppi',{s:17,f:'#1e40af',w:800})+T(164,58,ppi>=300?'✓ stačí pro tisk':ppi>=150?'✗ pro tisk málo':'✗ jen pro obrazovku',{s:8.5,f:ppi>=300?'#15803d':'#b91c1c'})+T(164,74,'pořád stejný kruh,',{s:7,w:500})+T(164,84,'jen jiný počet bodů',{s:7,w:500});
+ return S('0 0 220 102',s);}
+/* papírenský stroj: akt = 0 nic, 1–7 část, 'm' mokrá, 's' suchá */
+const STROJ_BOX={1:[5,38,30,30],2:[30,62,76,28],3:[107,49,44,42],4:[157,38,76,56],5:[237,36,19,50],6:[259,30,16,48],7:[274,52,25,26]};
+function strojSVG(akt){let s=`<rect x="2" y="16" width="152" height="96" rx="6" fill="#e0f2fe"/><rect x="154" y="16" width="144" height="96" rx="6" fill="#ffedd5"/>`;
+ s+=T(78,27,'💧 MOKRÁ ČÁST',{s:8.5,f:'#0369a1',w:800})+T(220,27,'🔥 SUCHÁ ČÁST',{s:8.5,f:'#c2410c',w:800});
+ if(akt==='m')s+=`<rect x="3" y="17" width="150" height="94" rx="6" fill="none" stroke="#eab308" stroke-width="3"/>`;
+ if(akt==='s')s+=`<rect x="155" y="17" width="142" height="94" rx="6" fill="none" stroke="#eab308" stroke-width="3"/>`;
+ if(STROJ_BOX[akt]){const b=STROJ_BOX[akt];s+=`<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}" rx="5" fill="#fde047" opacity=".6"/>`;}
+ /* 1 nátok */
+ s+=`<rect x="8" y="42" width="22" height="16" fill="#94a3b8" stroke="#334155"/><path d="M22 58 L35 65 L30 58Z" fill="#94a3b8" stroke="#334155" stroke-width=".7"/>`;
+ /* 2 síto */
+ s+=`<path d="M36 68 H100 M36 76 H100" stroke="#0e7490" stroke-width="1.2"/><circle cx="36" cy="72" r="4" fill="#fff" stroke="#0e7490"/><circle cx="100" cy="72" r="4" fill="#fff" stroke="#0e7490"/>`+[48,60,72,84].map(x=>kapka(x,80)).join('');
+ /* 3 lisy */
+ s+=`<path d="M110 53 H148 M110 87 H148" stroke="#a8a29e" stroke-width="2"/>`+[[118,62],[118,78],[140,62],[140,78]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="7" fill="#64748b" stroke="#334155"/>`).join('');
+ /* 4 sušicí válce */
+ s+=[168,186,204,222].map(x=>`<circle cx="${x}" cy="50" r="8" fill="#cbd5e1" stroke="#c2410c" stroke-width="1.4"/>`).join('')+[177,195,213].map(x=>`<circle cx="${x}" cy="82" r="8" fill="#cbd5e1" stroke="#c2410c" stroke-width="1.4"/>`).join('');
+ /* 5 klížicí lis */
+ s+=`<circle cx="246" cy="58" r="6" fill="#64748b"/><circle cx="246" cy="72" r="6" fill="#64748b"/><path d="M238 80 h16 v4 h-16z" fill="#fde68a" stroke="#b45309" stroke-width=".6"/>`;
+ /* 6 kalandr */
+ s+=[38,49,60,71].map(y=>`<circle cx="267" cy="${y}" r="5.4" fill="#e2e8f0" stroke="#334155"/>`).join('');
+ /* 7 navíjení */
+ s+=`<circle cx="287" cy="66" r="10" fill="#fef3c7" stroke="#a16207"/><circle cx="287" cy="66" r="6" fill="none" stroke="#d4b483"/><circle cx="287" cy="66" r="2" fill="#a16207"/>`;
+ /* pás papíru */
+ s+=`<path d="M34 66 L100 66 L118 70 L140 70 L160 59 L168 58 L177 74 L186 58 L195 74 L204 58 L213 74 L222 58 L234 65 L254 65 L272 65.5 L280 72" fill="none" stroke="#b08850" stroke-width="1.6"/>`;
+ /* čísla */
+ [[19,34],[68,58],[129,45],[195,36],[246,44],[281,30],[287,50]].forEach(([x,y],i)=>{const a=(akt===i+1);s+=`<circle cx="${x}" cy="${y}" r="6" fill="${a?'#facc15':'#1e40af'}" stroke="#fff"/>`+T(x,y+2.8,i+1,{s:7.5,f:a?'#111':'#fff',w:800});});
+ s+=T(19,101,'nátok',{s:6.5,w:600})+T(68,101,'síto',{s:6.5,w:600})+T(129,101,'lisy',{s:6.5,w:600})+T(195,101,'sušení (pára)',{s:6.5,w:600})+T(267,101,'kalandr',{s:6.5,w:600})+T(246,109,'klížení',{s:6.5,w:600})+T(287,109,'role',{s:6.5,w:600});
+ s+=T(4,125,'vody:',{s:7,a:'start',w:600,f:'#0369a1'})+T(40,125,'99 %',{s:7.5,f:'#0369a1'})+T(104,125,'≈ 80 %',{s:7.5,f:'#0369a1'})+T(152,125,'≈ 50 %',{s:7.5,f:'#0369a1'})+T(282,125,'5–8 %',{s:7.5,f:'#c2410c'});
+ return S('0 0 300 130',s);}
+
+const IMG={
+predloha:()=>{let s=SIP('sipP1','#334155');
+ s+=`<rect x="8" y="10" width="44" height="58" fill="#fff" stroke="#334155"/>`+[18,25,32,39,46,53,60].map((y,i)=>`<rect x="14" y="${y}" width="${i===6?18:32}" height="2.4" fill="#64748b"/>`).join('');
+ s+=T(30,80,'textová',{s:8.5,f:'#1e40af'})+T(30,89,'(rukopis)',{s:7,w:500});
+ s+=fotka(62,10,46,58)+T(85,80,'obrazová',{s:8.5,f:'#1e40af'})+T(85,89,'(fotka, kresba)',{s:7,w:500});
+ s+=`<path d="M114 46 H140" stroke="#334155" stroke-width="1.8" marker-end="url(#sipP1)"/>`+T(126,36,'tisk',{s:7.5,w:600});
+ s+=casopis(150,10)+T(172,80,'tiskovina',{s:8.5,f:'#be185d'});
+ s+=`<rect x="14" y="98" width="192" height="14" rx="7" fill="#dbeafe"/>`+T(110,108,'předloha = originál, podle kterého se tiskne',{s:7.8,f:'#1e3a8a'});
+ return S('0 0 220 118',s);},
+fyzDig:()=>{let s=SIP('sipFD','#334155');
+ s+=`<rect x="4" y="4" width="86" height="96" rx="8" fill="#fef3c7"/>`+T(47,15,'FYZICKÁ',{s:8,f:'#92400e',w:800});
+ s+=fotka(10,22,34,26)+T(27,57,'fotka',{s:6.5,w:600});
+ s+=`<rect x="52" y="22" width="32" height="26" fill="#fff" stroke="#334155" stroke-width=".8"/><path d="M57 42 q6 -16 12 -6 t10 -6" stroke="#111" stroke-width="1.4" fill="none"/>`+T(68,57,'kresba',{s:6.5,w:600});
+ s+=`<rect x="28" y="63" width="34" height="26" rx="2" fill="#e5e7eb" stroke="#334155"/>`+fotka(34,68,22,16)+T(45,97,'diapozitiv',{s:6.5,w:600});
+ s+=`<path d="M92 50 H104" stroke="#334155" stroke-width="1.6" marker-end="url(#sipFD)"/>`;
+ s+=`<rect x="106" y="38" width="26" height="16" rx="2" fill="#64748b"/><rect x="108" y="35" width="22" height="3" fill="#94a3b8"/><rect x="109" y="44" width="20" height="2" fill="#fde047"/>`+T(119,63,'skener',{s:6.5,w:600});
+ s+=`<g transform="translate(110,70)"><rect width="18" height="12" rx="2" fill="#334155"/><rect x="3" y="-3" width="6" height="3" fill="#334155"/><circle cx="9" cy="6" r="3.6" fill="#94a3b8" stroke="#fff"/></g>`+T(119,92,'fotoaparát',{s:6.5,w:600});
+ s+=`<path d="M134 50 H146" stroke="#334155" stroke-width="1.6" marker-end="url(#sipFD)"/>`;
+ s+=`<rect x="148" y="4" width="68" height="96" rx="8" fill="#dbeafe"/>`+T(182,15,'DIGITÁLNÍ',{s:8,f:'#1e3a8a',w:800});
+ s+=soubor(156,24,.6,'TIFF','#1e40af')+soubor(186,24,.6,'JPG','#be185d')+soubor(156,62,.6,'AI','#ea580c')+soubor(186,62,.6,'PDF','#b91c1c');
+ s+=T(110,114,'fyzickou předlohu musím naskenovat nebo vyfotit',{s:7.5,f:'#1e40af'});
+ return S('0 0 220 120',s);},
+odrazPruh:()=>{let s=SIP('sipOP','#f59e0b');
+ s+=`<rect x="4" y="4" width="104" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>`+T(56,17,'ODRAZOVÁ',{s:8.5,f:'#1e40af',w:800});
+ s+=`<circle cx="20" cy="34" r="8" fill="#fde047" stroke="#ca8a04"/>`+fotka(34,68,44,24);
+ s+=`<path d="M26 40 L50 66" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#sipOP)"/><path d="M60 66 L82 42" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#sipOP)"/>`;
+ s+=`<rect x="78" y="28" width="22" height="10" rx="2" fill="#334155"/>`+T(89,25,'čidlo',{s:6.5,w:600});
+ s+=T(56,100,'světlo se odrazí: fotka, kresba',{s:6.5,w:600});
+ s+=`<rect x="112" y="4" width="104" height="100" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>`+T(164,17,'PRŮHLEDNÁ',{s:8.5,f:'#be185d',w:800});
+ s+=`<circle cx="164" cy="86" r="8" fill="#fde047" stroke="#ca8a04"/><rect x="146" y="50" width="36" height="22" rx="2" fill="#e5e7eb" stroke="#334155"/>`+fotka(151,54,26,14);
+ s+=`<path d="M164 77 V73" stroke="#f59e0b" stroke-width="1.8"/><path d="M164 49 V38" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#sipOP)"/>`;
+ s+=`<rect x="153" y="24" width="22" height="10" rx="2" fill="#334155"/>`+T(192,32,'čidlo',{s:6.5,w:600});
+ s+=T(164,100,'světlo projde: diapozitiv, negativ',{s:6.5,w:600});
+ return S('0 0 220 108',s);},
+skener:()=>{let s=SIP('sipSk','#334155');
+ s+=T(60,9,'předloha lícem dolů',{s:7,w:600})+fotka(30,13,60,14);
+ s+=`<rect x="10" y="27" width="120" height="4" fill="#a5f3fc" stroke="#0e7490" stroke-width=".6"/><rect x="10" y="31" width="120" height="54" rx="3" fill="#cbd5e1" stroke="#334155"/>`+T(134,31,'sklo',{s:7,a:'start',w:600,f:'#0e7490'});
+ s+=`<rect x="42" y="62" width="36" height="12" rx="2" fill="#475569"/><rect x="45" y="58" width="11" height="4" fill="#fde047"/><rect x="64" y="58" width="11" height="4" fill="#111"/>`;
+ s+=`<path d="M50 58 L57 33" stroke="#f59e0b" stroke-width="1.5"/><path d="M61 33 L68 56" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#sipSk)"/>`;
+ s+=T(104,52,'↔ vozík jede',{s:6.2,w:600,f:'#334155'})+T(104,60,'pod sklem',{s:6.2,w:600,f:'#334155'});
+ s+=`<path d="M50 89 V64 M70 89 V64" stroke="#64748b" stroke-width=".6"/>`+T(46,96,'lampa',{s:6.5,w:600,a:'end'})+T(74,96,'čidlo (CCD)',{s:6.5,w:600,a:'start'});
+ s+=`<path d="M132 58 H148" stroke="#334155" stroke-width="1.5" marker-end="url(#sipSk)"/><rect x="151" y="47" width="32" height="22" rx="3" fill="#1e40af"/>`+T(167,57,'A/D',{s:8,f:'#fff',w:800})+T(167,65,'převodník',{s:5.5,f:'#fff',w:600});
+ s+=`<path d="M185 58 H195" stroke="#334155" stroke-width="1.5" marker-end="url(#sipSk)"/>`+T(208,55,'0101',{s:8,f:'#15803d',w:800})+T(208,64,'1100',{s:8,f:'#15803d',w:800});
+ s+=T(110,112,'světlo → čidlo → elektrický signál → čísla',{s:7.8,f:'#1e40af'});
+ return S('0 0 220 118',s);},
+druhySkeneru:()=>{let s=SIP('sipDS','#b45309');['ruční','plochý','bubnový','filmový','knižní'].forEach((t,i)=>{const x=i*44;s+=`<rect x="${x+2}" y="4" width="40" height="78" rx="6" fill="${i===2?'#fef3c7':'#f8fafc'}" stroke="${i===2?'#f59e0b':'#cbd5e1'}"/>`+T(x+22,94,t,{s:7.5});});
+ s+=`<rect x="8" y="50" width="28" height="22" fill="#fff" stroke="#94a3b8"/><rect x="10" y="38" width="24" height="9" rx="4" fill="#475569" transform="rotate(-8 22 42)"/><rect x="12" y="47" width="20" height="2" fill="#fde047"/>`;
+ s+=`<path d="M50 40 L78 22 L82 26 L56 44Z" fill="#94a3b8" stroke="#334155" stroke-width=".7"/><rect x="50" y="44" width="36" height="18" rx="2" fill="#64748b"/><rect x="53" y="44" width="30" height="3" fill="#a5f3fc"/>`;
+ s+=`<rect x="98" y="30" width="24" height="34" fill="#bae6fd" stroke="#0e7490"/><ellipse cx="110" cy="64" rx="12" ry="4" fill="#bae6fd" stroke="#0e7490"/><ellipse cx="110" cy="30" rx="12" ry="4" fill="#e0f2fe" stroke="#0e7490"/>`+fotka(103,38,14,16)+`<path d="M97 22 q13 -9 26 0" stroke="#b45309" stroke-width="1.3" fill="none" marker-end="url(#sipDS)"/>`;
+ s+=`<rect x="138" y="40" width="32" height="22" rx="3" fill="#64748b"/><rect x="142" y="26" width="12" height="22" fill="#1f2937"/>`+[29,35,41].map(y=>`<rect x="143.5" y="${y}" width="2" height="2" fill="#fff"/><rect x="150.5" y="${y}" width="2" height="2" fill="#fff"/>`).join('');
+ s+=`<path d="M184 22 H210" stroke="#64748b" stroke-width="2"/><rect x="194" y="22" width="8" height="5" fill="#334155"/><path d="M198 27 L188 54 M198 27 L208 54" stroke="#f59e0b" stroke-width=".8" stroke-dasharray="2 1.5"/><path d="M182 62 L198 56 L214 62 L214 66 L198 60 L182 66Z" fill="#fff" stroke="#334155" stroke-width=".8"/><path d="M198 56 V60" stroke="#334155"/>`;
+ s+=T(110,112,'nejlepší kvalita: bubnový · nejběžnější: plochý',{s:7.5,f:'#1e40af'});
+ return S('0 0 220 118',s);},
+perova:()=>{let s=`<rect x="6" y="6" width="120" height="96" fill="#fff" stroke="#cbd5e1"/>`;
+ s+=`<path d="M66 18 V70" stroke="#111" stroke-width="2.4"/><path d="M68 22 L100 66 H68Z" fill="#111"/><path d="M63 28 L38 66 H63Z" fill="none" stroke="#111" stroke-width="2.2"/><path d="M30 72 H104 L94 84 H40Z" fill="#111"/>`;
+ s+=`<path d="M14 93 q8 -5 16 0 t16 0 t16 0 t16 0 t16 0 t16 0 t16 0" stroke="#111" stroke-width="2" fill="none"/><circle cx="26" cy="26" r="9" fill="none" stroke="#111" stroke-width="2"/>`;
+ s+=`<rect x="140" y="20" width="30" height="30" fill="#111"/><rect x="176" y="20" width="30" height="30" fill="#fff" stroke="#334155"/>`+T(155,62,'barva',{s:8})+T(191,62,'papír',{s:8})+T(173,80,'jen 2 hodnoty',{s:8.5,f:'#be185d'})+T(173,91,'bez přechodů · 1 bit',{s:7.5,w:600});
+ s+=T(110,114,'pérová předloha (perokresba): logo, text, výkres',{s:7.5,f:'#1e40af'});
+ return S('0 0 220 120',s);},
+tonova:()=>{let s=`<defs><radialGradient id="gKoule" cx="35%" cy="32%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#94a3b8"/><stop offset="1" stop-color="#0f172a"/></radialGradient><linearGradient id="gPrech" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#111"/></linearGradient></defs>`;
+ s+=`<rect x="6" y="6" width="120" height="96" fill="#e2e8f0" stroke="#cbd5e1"/><ellipse cx="72" cy="88" rx="36" ry="6" fill="#94a3b8" opacity=".6"/><circle cx="66" cy="50" r="34" fill="url(#gKoule)"/>`;
+ s+=`<rect x="138" y="24" width="72" height="22" fill="url(#gPrech)" stroke="#334155" stroke-width=".6"/>`+T(138,56,'světlo',{s:7,a:'start',w:600})+T(210,56,'stín',{s:7,a:'end',w:600})+T(174,74,'plynulé přechody',{s:8.5,f:'#be185d'})+T(174,85,'mnoho odstínů, rastruje se',{s:6.4,w:600});
+ s+=T(110,114,'tónová (polotónová) předloha: fotka, malba',{s:7.5,f:'#1e40af'});
+ return S('0 0 220 120',s);},
+hloubka:()=>{let s=`<defs><linearGradient id="gSed" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient><linearGradient id="gDuha" x1="0" x2="1"><stop offset="0" stop-color="#ef4444"/><stop offset=".2" stop-color="#f59e0b"/><stop offset=".4" stop-color="#eab308"/><stop offset=".6" stop-color="#22c55e"/><stop offset=".8" stop-color="#3b82f6"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>`;
+ [['1 bit','2 barvy','pérová'],['8 bitů','256 odstínů','stupně šedi'],['24 bitů','16,7 milionu','barevná RGB']].forEach((x,i)=>{const y=6+i*34;s+=T(6,y+16,x[0],{s:9,a:'start',w:800,f:'#1e40af'})+T(6,y+26,x[2],{s:6.5,a:'start',w:500});
+  if(i===0)s+=`<rect x="58" y="${y+4}" width="60" height="22" fill="#111"/><rect x="118" y="${y+4}" width="60" height="22" fill="#fff" stroke="#334155"/>`;
+  if(i===1)s+=`<rect x="58" y="${y+4}" width="120" height="22" fill="url(#gSed)" stroke="#334155" stroke-width=".5"/>`;
+  if(i===2)s+=`<rect x="58" y="${y+4}" width="120" height="22" fill="url(#gDuha)"/>`;
+  s+=T(182,y+18,x[1],{s:7,a:'start',w:700});});
+ return S('0 0 232 108',s);},
+nalezitosti:()=>{let s=SIP('sipNa','#be185d');[4,58,112,166].forEach(x=>s+=`<rect x="${x}" y="6" width="50" height="78" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>`);
+ s+=fotka(10,14,16,12)+`<path d="M27 27 L32 33" stroke="#be185d" stroke-width="1.4" marker-end="url(#sipNa)"/>`+fotka(18,36,30,24)+T(29,74,'150 %',{s:9,f:'#be185d',w:800});
+ ['#00aeef','#ec008c','#fff200','#111'].forEach((c,i)=>s+=`<circle cx="${74+(i%2)*18}" cy="${28+Math.floor(i/2)*18}" r="7" fill="${c}" stroke="#334155" stroke-width=".5"/>`);s+=T(83,74,'CMYK',{s:9,f:'#1e40af',w:800});
+ for(let i=0;i<7;i++)for(let j=0;j<7;j++)s+=`<rect x="${120+i*5}" y="${18+j*5}" width="5" height="5" fill="${(i-3)**2+(j-3)**2<9.5?'#1e40af':'#fff'}" stroke="#cbd5e1" stroke-width=".3"/>`;s+=T(137,74,'300 dpi',{s:9,f:'#1e40af',w:800});
+ s+=fotka(172,16,38,30)+`<rect x="180" y="19" width="22" height="24" fill="none" stroke="#be185d" stroke-width="1.6" stroke-dasharray="3 2"/>`+T(191,74,'výřez',{s:9,f:'#be185d',w:800});
+ s+=T(29,96,'rozměr',{s:7})+T(83,96,'barevný režim',{s:7})+T(137,96,'rozlišení',{s:7})+T(191,96,'výřezy',{s:7});
+ s+=T(110,113,'4 náležitosti obrazové předlohy',{s:8,f:'#1e40af'});return S('0 0 220 118',s);},
+kvalita:()=>{let s=`<defs><filter id="fRoz"><feGaussianBlur stdDeviation="1.6"/></filter></defs>`;
+ s+=fotka(6,10,46,34)+fajf(48,12,1)+T(29,56,'ostrá',{s:7.5,f:'#15803d'});
+ s+=`<g filter="url(#fRoz)">${fotka(60,10,46,34)}</g>`+fajf(102,12,0)+T(83,56,'rozmazaná',{s:7.5,f:'#b91c1c'});
+ s+=`<g opacity=".4">${fotka(114,10,46,34)}</g><rect x="114" y="10" width="46" height="34" fill="#94a3b8" opacity=".35"/>`+fajf(156,12,0)+T(137,56,'bez kontrastu',{s:7.5,f:'#b91c1c'});
+ const px=[['b','b','b','b','b','b'],['b','b','b','b','y','b'],['b','g','b','b','g','b'],['g','g','g','g','g','g'],['z','z','z','z','z','z']],C={b:'#bfdbfe',y:'#facc15',g:'#64748b',z:'#65a30d'};
+ px.forEach((r,j)=>r.forEach((c,i)=>s+=`<rect x="${(168+i*46/6).toFixed(2)}" y="${(10+j*34/5).toFixed(2)}" width="${(46/6+.2).toFixed(2)}" height="${(34/5+.2).toFixed(2)}" fill="${C[c]}"/>`));
+ s+=`<rect x="168" y="10" width="46" height="34" fill="none" stroke="#334155" stroke-width=".8"/>`+fajf(210,12,0)+T(191,56,'kostičky',{s:7.5,f:'#b91c1c'});
+ s+=histBars(44,66,132,26,0,7)+T(110,104,'histogram: jasy po celé šířce = dobrá fotka',{s:7,w:600,f:'#1e40af'});
+ return S('0 0 220 110',s);},
+histogram:()=>histSVG(0),
+rozliseni:()=>{let s=mrizkaKruh(14,6,76,8,'#1e40af')+mrizkaKruh(130,6,76,28,'#1e40af');
+ s+=T(52,96,'málo bodů (72 ppi)',{s:7.5,f:'#b91c1c'})+T(52,106,'kostičky, zuby',{s:7,w:500})+T(168,96,'hodně bodů (300 dpi)',{s:7.5,f:'#15803d'})+T(168,106,'hladké hrany',{s:7,w:500});
+ return S('0 0 220 112',s);},
+dpiLpiPpi:()=>{let s='';[4,76,148].forEach(x=>s+=`<rect x="${x}" y="4" width="68" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>`);
+ s+=T(38,19,'dpi',{s:11,f:'#1e40af',w:800});for(let i=0;i<6;i++)for(let j=0;j<5;j++)s+=`<rect x="${20+i*6}" y="${26+j*6}" width="6" height="6" fill="${['#bfdbfe','#93c5fd','#64748b','#65a30d','#4d7c0f'][j]}" stroke="#fff" stroke-width=".4"/>`;
+ s+=T(38,68,'body předlohy',{s:6.8,w:600})+T(38,78,'(skener, fotka)',{s:6.3,w:500});
+ s+=T(110,19,'ppi',{s:11,f:'#7c3aed',w:800})+`<rect x="88" y="26" width="44" height="28" rx="2" fill="#1f2937"/><rect x="91" y="29" width="38" height="22" fill="#e0e7ff"/>`;for(let i=0;i<7;i++)for(let j=0;j<4;j++)s+=`<rect x="${(92+i*5.3).toFixed(1)}" y="${(30+j*5.2).toFixed(1)}" width="4.6" height="4.6" fill="${(i+j)%3?'#c7d2fe':'#a5b4fc'}"/>`;s+=`<rect x="106" y="54" width="8" height="5" fill="#64748b"/>`+T(110,68,'pixely monitoru',{s:6.8,w:600})+T(110,78,'(obrazovka, web)',{s:6.3,w:500});
+ s+=T(182,19,'lpi',{s:11,f:'#be185d',w:800});for(let i=0;i<6;i++)for(let j=0;j<5;j++)s+=`<circle cx="${164+i*7}" cy="${29+j*7}" r="${(.8+i*.5).toFixed(1)}" fill="#111"/>`;s+=`<path d="M158 63 H204" stroke="#be185d" stroke-width=".8"/>`+T(182,71,'linky rastru',{s:6.8,w:600})+T(182,80,'(tisk)',{s:6.3,w:500});
+ s+=T(110,104,'vše se měří na 1 palec = 2,54 cm',{s:8,f:'#1e40af'});return S('0 0 220 110',s);},
+vzorec:()=>{let s=`<rect x="20" y="6" width="180" height="34" rx="10" fill="#1e40af"/>`+T(110,29,'dpi = lpi × 2',{s:17,f:'#fff',w:800});
+ [['📰','noviny','100 lpi','200 dpi'],['📄','ofsetový papír','150 lpi','300 dpi'],['✨','křídový papír','175 lpi','350 dpi']].forEach((x,i)=>{const y=58+i*18;s+=T(20,y,x[0],{s:10,w:400})+T(32,y,x[1],{s:7.8,a:'start',w:600})+T(126,y,x[2],{s:8,f:'#be185d',k:1})+T(150,y,'→',{s:9})+T(180,y,x[3],{s:8.5,f:'#1e40af',w:800});});
+ return S('0 0 220 110',s);},
+zvetseni:()=>{let s=SIP('sipZv','#be185d');
+ s+=fotka(8,30,30,44)+T(23,84,'10 × 15 cm',{s:7,w:600});
+ s+=`<path d="M44 52 H72" stroke="#be185d" stroke-width="2" marker-end="url(#sipZv)"/>`+T(58,40,'200 %',{s:9,f:'#be185d',w:800});
+ s+=fotka(80,6,52,76)+T(106,92,'20 × 30 cm',{s:7,w:600});
+ s+=`<rect x="142" y="20" width="72" height="46" rx="8" fill="#fef3c7" stroke="#f59e0b"/>`+T(178,34,'naskenuj:',{s:7.5,w:600})+T(178,48,'300 × 2',{s:9})+T(178,60,'= 600 dpi',{s:9,f:'#1e40af',w:800});
+ s+=T(110,108,'zvětšuji 2× → potřebuji 2× víc dpi',{s:7.8,f:'#1e40af'});return S('0 0 220 114',s);},
+osvit:()=>{let s='';for(let i=0;i<16;i++)for(let j=0;j<16;j++){const cx=i-7.5,cy=j-7.5;s+=`<rect x="${8+i*5}" y="${6+j*5}" width="5" height="5" fill="${cx*cx+cy*cy<20?'#111':'#fff'}" stroke="#cbd5e1" stroke-width=".3"/>`;}
+ s+=`<rect x="8" y="6" width="80" height="80" fill="none" stroke="#be185d" stroke-width="1.5"/>`+T(48,98,'1 tiskový bod = 16 × 16',{s:7,w:600});
+ s+=T(158,22,'16 × 16 = 256',{s:10,f:'#be185d',w:800})+T(158,34,'stupňů šedi',{s:7.5,w:600})+`<rect x="102" y="44" width="112" height="32" rx="8" fill="#1e40af"/>`+T(158,58,'dpi = lpi × 16',{s:10,f:'#fff',w:800})+T(158,70,'150 × 16 = 2 400 dpi',{s:8,f:'#fde68a',w:800});
+ s+=T(158,94,'rozlišení osvitové jednotky',{s:7.5,w:600});return S('0 0 220 104',s);},
+papirovina:()=>{let s=`<path d="M14 20 H96 L90 94 H20Z" fill="#e0f2fe" stroke="#334155" stroke-width="1.4"/><path d="M16 34 H94" stroke="#7dd3fc"/>`;
+ s+=`<clipPath id="clipKad"><path d="M16 35 H94 L90 93 H20Z"/></clipPath><g clip-path="url(#clipKad)">${vlakna(55,64,30,26,16,'#a16207',5)}${[...Array(14)].map((_,i)=>`<circle cx="${24+(i*37)%64}" cy="${42+(i*23)%46}" r="1.3" fill="#94a3b8"/>`).join('')}</g>`;
+ s+=T(55,108,'řídká vodní kaše',{s:8,f:'#0369a1'});
+ s+=`<rect x="118" y="14" width="24" height="80" fill="#38bdf8"/><rect x="118" y="14" width="24" height="6" fill="#a16207"/>`+T(130,52,'víc',{s:7,f:'#fff'})+T(130,61,'než',{s:7,f:'#fff'})+T(130,70,'90 %',{s:7.5,f:'#fff',w:800})+T(130,79,'vody',{s:7,f:'#fff'});
+ s+=`<path d="M144 17 H154" stroke="#a16207"/>`+T(156,15,'vláknina,',{s:7,a:'start',f:'#a16207'})+T(156,24,'plnidla, klížidla,',{s:6.5,a:'start',w:500})+T(156,32,'barviva',{s:6.5,a:'start',w:500});
+ s+=T(156,62,'PAPÍROVINA',{s:9,a:'start',f:'#1e40af',w:800})+T(156,73,'= suspenze',{s:7.5,a:'start',w:600});
+ return S('0 0 226 114',s);},
+slozky:()=>{let s='';[['🧶','vláknina','základ papíru','#a16207'],['⚪','plnidla','vyplní mezery','#64748b'],['🧴','klížidla','proti vodě','#0e7490'],['🎨','barviva','barva, bělost','#be185d'],['💧','voda','ředí (víc než 90 %)','#0284c7']].forEach((x,i)=>{const y=8+i*20;s+=`<rect x="4" y="${y}" width="212" height="18" rx="9" fill="${i%2?'#f8fafc':'#eff6ff'}"/>`+T(16,y+13,x[0],{s:10,w:400})+T(30,y+13,x[1],{s:8.5,a:'start',f:x[3],w:800})+T(94,y+13,'→ '+x[2],{s:8,a:'start',w:600});});
+ return S('0 0 220 110',s);},
+priprava:()=>{let s=SIP('sipPp','#334155');
+ s+=`<path d="M6 30 H44 V70 H6Z" fill="#e0f2fe" stroke="#334155"/><path d="M25 70 V54 M16 54 H34" stroke="#334155" stroke-width="2"/>`+vlakna(25,42,10,8,8,'#a16207',3)+T(25,82,'rozvláknění',{s:6.5});
+ s+=`<path d="M46 50 H56" stroke="#334155" stroke-width="1.4" marker-end="url(#sipPp)"/><rect x="60" y="36" width="6" height="28" fill="#64748b"/><rect x="69" y="36" width="6" height="28" fill="#94a3b8"/><path d="M62 31 a6 3 0 1 1 11 0" fill="none" stroke="#b45309" stroke-width="1.2"/>`+T(68,82,'mletí',{s:6.5});
+ s+=`<path d="M78 50 H90" stroke="#334155" stroke-width="1.4" marker-end="url(#sipPp)"/><path d="M94 30 H136 V70 H94Z" fill="#e0f2fe" stroke="#334155"/><path d="M115 24 V58 M105 58 H125" stroke="#334155" stroke-width="2"/>`+T(115,82,'míchání',{s:6.5});
+ s+=T(115,13,'+ plnidla, klížidla, barviva',{s:6.5,f:'#be185d'})+`<path d="M106 16 L108 28 M124 16 L122 28" stroke="#be185d" stroke-width=".8"/>`;
+ s+=`<path d="M138 50 H148" stroke="#334155" stroke-width="1.4" marker-end="url(#sipPp)"/><path d="M152 38 h24 v24 h-24z" fill="#bae6fd" stroke="#334155"/>`+T(164,54,'+ 💧',{s:8,w:400})+T(164,82,'ředění',{s:6.5});
+ s+=`<path d="M178 50 H188" stroke="#334155" stroke-width="1.4" marker-end="url(#sipPp)"/><rect x="191" y="38" width="24" height="16" fill="#94a3b8" stroke="#334155"/><path d="M191 54 L215 54 L205 62 Z" fill="#94a3b8" stroke="#334155"/>`+T(203,82,'na stroj',{s:6.5});
+ s+=T(110,104,'z vlákniny se připraví papírovina',{s:7.8,f:'#1e40af'});return S('0 0 220 110',s);},
+mleti:()=>{let s=`<path d="M14 40 C40 30 70 50 100 40" stroke="#a16207" stroke-width="4" fill="none" stroke-linecap="round"/>`+T(57,64,'před mletím: hladké vlákno',{s:7.5,w:600});
+ s+=`<path d="M122 40 C148 30 178 50 206 40" stroke="#a16207" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+ [128,138,148,158,168,178,188,198].forEach((x,i)=>{const y=40+(i%2?-2:2);s+=`<path d="M${x} ${y} l${i%2?4:-3} ${i%2?-10:10}" stroke="#ca8a04" stroke-width="1.1"/><path d="M${x+3} ${y} l${i%2?-3:5} ${i%2?9:-9}" stroke="#ca8a04" stroke-width=".9"/>`;});
+ s+=T(164,64,'po mletí: roztřepené vlákno',{s:7.5,w:600});
+ s+=T(110,90,'roztřepená vlákna se lépe propletou → pevnější papír',{s:7.6,f:'#1e40af'});return S('0 0 220 98',s);},
+stroj:()=>strojSVG(0),
+mokra:()=>{let s=SIP('sipMk','#0369a1')+`<rect x="2" y="2" width="216" height="104" rx="8" fill="#e0f2fe"/>`;
+ s+=`<rect x="8" y="26" width="22" height="16" fill="#94a3b8" stroke="#334155"/><path d="M20 42 L33 51 L28 42Z" fill="#94a3b8" stroke="#334155" stroke-width=".7"/>`;
+ s+=`<path d="M34 54 H120 M34 62 H120" stroke="#0e7490" stroke-width="1.4"/><circle cx="34" cy="58" r="4.5" fill="#fff" stroke="#0e7490"/><circle cx="120" cy="58" r="4.5" fill="#fff" stroke="#0e7490"/><path d="M36 52 H120" stroke="#b08850" stroke-width="2.2"/>`;
+ s+=[44,56,68,80,92,104].map(x=>kapka(x,66)).join('');
+ s+=`<path d="M58 44 H96" stroke="#0369a1" stroke-width="1.4" marker-end="url(#sipMk)"/>`+T(77,40,'síto běží',{s:7,f:'#0369a1'});
+ s+=`<path d="M120 52 L150 56 L198 56" stroke="#b08850" stroke-width="2.2" fill="none"/>`+[[158,47],[158,65],[184,47],[184,65]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="8" fill="#64748b" stroke="#334155"/>`).join('');
+ s+=[152,166,176,190].map(x=>kapka(x,76)).join('');
+ s+=T(19,20,'nátok',{s:7.5})+T(77,88,'sítová část',{s:7.5})+T(171,92,'lisy',{s:7.5});
+ s+=T(19,58,'99 %',{s:7,f:'#0369a1'})+T(134,46,'80 %',{s:7,f:'#0369a1'})+T(207,50,'50 %',{s:7,f:'#0369a1'});
+ s+=T(110,102,'voda odteče a vymačká se → vznikne pás papíru',{s:7.5,f:'#1e40af'});return S('0 0 220 108',s);},
+sucha:()=>{let s=`<rect x="2" y="2" width="216" height="104" rx="8" fill="#ffedd5"/>`;
+ s+=[18,42,66].map(x=>`<circle cx="${x}" cy="36" r="8" fill="#cbd5e1" stroke="#c2410c" stroke-width="1.5"/>`).join('')+[30,54,78].map(x=>`<circle cx="${x}" cy="68" r="8" fill="#cbd5e1" stroke="#c2410c" stroke-width="1.5"/>`).join('');
+ s+=[18,42,66].map(x=>`<path d="M${x} 24 q3 -4 0 -8 q-3 -4 0 -8" stroke="#f97316" stroke-width="1" fill="none"/>`).join('');
+ s+=`<circle cx="104" cy="44" r="6" fill="#64748b"/><circle cx="104" cy="58" r="6" fill="#64748b"/>`;
+ s+=[34,45,56,67].map(y=>`<circle cx="132" cy="${y}" r="5.5" fill="#e2e8f0" stroke="#334155"/>`).join('');
+ s+=`<circle cx="180" cy="58" r="15" fill="#fef3c7" stroke="#a16207"/><circle cx="180" cy="58" r="10" fill="none" stroke="#d4b483"/><circle cx="180" cy="58" r="5" fill="none" stroke="#d4b483"/><circle cx="180" cy="58" r="2" fill="#a16207"/>`;
+ s+=`<path d="M4 44 L18 44 L30 60 L42 44 L54 60 L66 44 L78 60 L90 51 L112 51 L126 50.5 L138 50.5 L166 46" fill="none" stroke="#b08850" stroke-width="2"/>`;
+ s+=T(42,88,'sušicí válce (pára)',{s:7.2})+T(104,76,'klížicí lis',{s:7.2})+T(132,84,'kalandr',{s:7.2})+T(180,88,'role',{s:7.2})+T(182,30,'zbude 5–8 % vody',{s:7,f:'#c2410c'});
+ s+=T(110,103,'papír se usuší, uhladí a navine do role',{s:7.5,f:'#1e40af'});return S('0 0 220 108',s);},
+smer:()=>{let s=SIP('sipSm','#be185d')+`<rect x="10" y="8" width="150" height="80" fill="#fffbeb" stroke="#334155"/>`;
+ let z=11;const rnd=()=>{z=(z*9301+49297)%233280;return z/233280;};
+ for(let i=0;i<70;i++){const x=16+rnd()*120,y=14+rnd()*68,a=(rnd()-.5)*.5,l=10+rnd()*10;s+=`<path d="M${x.toFixed(1)} ${y.toFixed(1)} l${(Math.cos(a)*l).toFixed(1)} ${(Math.sin(a)*l).toFixed(1)}" stroke="#a16207" stroke-width="1.1" stroke-linecap="round"/>`;}
+ s+=`<path d="M20 100 H148" stroke="#be185d" stroke-width="2.4" marker-end="url(#sipSm)"/>`+T(85,114,'směr pohybu síta = směr vlákna',{s:8,f:'#be185d'});
+ s+=`<rect x="168" y="18" width="48" height="62" rx="6" fill="#fff" stroke="#cbd5e1"/>`+T(192,32,'vlákna',{s:7.5})+T(192,43,'leží hlavně',{s:7,w:500})+T(192,53,'ve směru',{s:7,w:500})+T(192,63,'pohybu',{s:7,w:500})+T(192,73,'síta',{s:7,w:500});
+ return S('0 0 220 120',s);},
+smerZkousky:()=>{let s='';[4,76,148].forEach(x=>s+=`<rect x="${x}" y="4" width="68" height="84" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>`);
+ s+=`<rect x="12" y="14" width="22" height="50" fill="#fff" stroke="#334155" stroke-width=".8"/><path d="M23 14 V64" stroke="#be185d" stroke-width="1.4"/><rect x="42" y="14" width="22" height="50" fill="#fff" stroke="#334155" stroke-width=".8"/><path d="M53 14 l4 6 l-6 6 l5 6 l-5 7 l6 6 l-5 7 l3 6" stroke="#be185d" stroke-width="1.4" fill="none"/>`;
+ s+=T(23,75,'rovně',{s:6.5,f:'#15803d'})+T(53,75,'zubatě',{s:6.5,f:'#b91c1c'})+T(38,100,'trhání',{s:8});
+ s+=`<path d="M86 62 Q110 18 134 62" fill="none" stroke="#334155" stroke-width="2.2"/><path d="M88 62 H132" stroke="#94a3b8" stroke-dasharray="2 2"/>`+T(110,75,'ve směru vlákna',{s:6.3,w:600})+T(110,83,'se ohne snáz',{s:6.3,w:600})+T(110,100,'ohyb',{s:8});
+ s+=`<path d="M160 34 Q160 62 180 62 Q200 62 200 34" fill="none" stroke="#334155" stroke-width="2.2"/>`+kapka(172,18)+kapka(188,18)+T(180,75,'zkroutí se',{s:6.3,w:600})+T(180,83,'podél vlákna',{s:6.3,w:600})+T(182,100,'navlhčení',{s:8});
+ s+=T(110,114,'jak zjistím směr vlákna',{s:7.8,f:'#1e40af'});return S('0 0 220 120',s);},
+smerPouziti:()=>{let s='';[4,76,148].forEach(x=>s+=`<rect x="${x}" y="4" width="68" height="94" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>`);
+ s+=`<rect x="20" y="12" width="40" height="52" fill="#fff" stroke="#334155"/><rect x="15" y="12" width="6" height="52" fill="#1e40af"/>`+[28,34,40,46,52].map(x=>`<path d="M${x} 18 V58" stroke="#a16207" stroke-width=".9" stroke-dasharray="5 3"/>`).join('')+T(38,75,'kniha',{s:7.5})+T(38,85,'rovnoběžně',{s:6.3,f:'#be185d'})+T(38,93,'se hřbetem',{s:6.3,f:'#be185d'});
+ s+=`<rect x="84" y="18" width="52" height="18" rx="9" fill="#94a3b8" stroke="#334155"/><path d="M80 27 H140" stroke="#334155" stroke-dasharray="3 2"/><rect x="88" y="42" width="44" height="22" fill="#fff" stroke="#334155"/>`+[47,52,57,62].map(y=>`<path d="M92 ${y-1} H128" stroke="#a16207" stroke-width=".9" stroke-dasharray="5 3"/>`).join('')+T(110,75,'tiskový stroj',{s:7.5})+T(110,85,'rovnoběžně',{s:6.3,f:'#be185d'})+T(110,93,'s osou válců',{s:6.3,f:'#be185d'});
+ s+=`<rect x="164" y="16" width="36" height="48" fill="#fff" stroke="#334155"/><rect x="164" y="16" width="36" height="9" fill="#be185d"/><path d="M171 16 v-5 M193 16 v-5" stroke="#334155" stroke-width="2"/>`+[172,180,188,196].map(x=>`<path d="M${x} 28 V60" stroke="#a16207" stroke-width=".9" stroke-dasharray="5 3"/>`).join('')+T(182,75,'kalendář',{s:7.5})+T(182,89,'svisle',{s:6.8,f:'#be185d'});
+ s+=T(110,111,'- - -  = směr vlákna',{s:7.8,f:'#a16207'});return S('0 0 220 116',s);},
+klizeni:()=>{let s=`<rect x="4" y="4" width="104" height="84" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><rect x="112" y="4" width="104" height="84" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>`;
+ s+=`<rect x="14" y="16" width="84" height="50" fill="#fff" stroke="#94a3b8"/><path d="M56 26 C70 24 78 34 74 42 C84 46 76 60 62 56 C56 64 42 60 44 50 C32 50 34 36 44 36 C42 28 50 24 56 26Z" fill="#1e40af" opacity=".5"/><circle cx="56" cy="42" r="6" fill="#1e40af"/>`+T(56,79,'nezaklížený: rozpije se',{s:7,f:'#b91c1c'});
+ s+=`<rect x="122" y="16" width="84" height="50" fill="#fff" stroke="#94a3b8"/><circle cx="164" cy="38" r="6.5" fill="#1e40af"/><path d="M136 56 q14 -10 28 0 t28 0" stroke="#111" stroke-width="1.6" fill="none"/>`+T(164,79,'zaklížený: ostrý',{s:7,f:'#15803d'});
+ s+=T(110,104,'klížení = papír nesaje vodu ani inkoust',{s:7.8,f:'#1e40af'});return S('0 0 220 110',s);},
+hlazeni:()=>{let s=SIP('sipHl','#334155');
+ s+=`<path d="M6 58 l5 -4 l5 5 l5 -6 l5 6 l5 -5 l5 5 l5 -6 l5 5 l5 -4 l5 4" fill="none" stroke="#a16207" stroke-width="2"/>`+T(32,78,'drsný',{s:7.5,f:'#b91c1c'});
+ s+=`<path d="M64 57 H78" stroke="#334155" stroke-width="1.4" marker-end="url(#sipHl)"/><circle cx="104" cy="44" r="12" fill="#e2e8f0" stroke="#334155" stroke-width="1.4"/><circle cx="104" cy="70" r="12" fill="#e2e8f0" stroke="#334155" stroke-width="1.4"/><path d="M82 57 H128" stroke="#b08850" stroke-width="2"/>`+T(104,96,'kalandr',{s:7.5})+T(104,24,'tlak + teplo',{s:7,f:'#c2410c'});
+ s+=`<path d="M132 57 H146" stroke="#334155" stroke-width="1.4" marker-end="url(#sipHl)"/><path d="M150 57 H212" stroke="#a16207" stroke-width="2"/><path d="M172 48 l3 -5 l1 5 l4 -3" stroke="#eab308" stroke-width="1.4" fill="none"/>`+T(181,78,'hladký, lesklý',{s:7.5,f:'#15803d'});
+ s+=T(110,112,'superkalandr: víc válců → SC papír',{s:7.8,f:'#1e40af'});return S('0 0 220 118',s);},
+natirani:()=>{let s=`<defs><clipPath id="clN"><rect x="12" y="44" width="88" height="22"/></clipPath><clipPath id="clK"><rect x="120" y="44" width="88" height="22"/></clipPath></defs><rect x="4" y="4" width="104" height="88" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><rect x="112" y="4" width="104" height="88" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>`;
+ s+=`<rect x="12" y="44" width="88" height="22" fill="#fef9c3"/><g clip-path="url(#clN)">${vlakna(56,55,30,34,14,'#a16207',9)}</g><path d="M12 44 l6 -3 l6 3 l6 -4 l6 4 l6 -3 l6 3 l6 -4 l6 4 l6 -3 l6 3 l6 -4 l6 4 l4 -2" fill="none" stroke="#a16207"/>`;
+ s+=`<ellipse cx="56" cy="43" rx="14" ry="4" fill="#be185d" opacity=".5"/><path d="M48 45 q2 6 -2 10 M63 45 q2 6 -1 9" stroke="#be185d" stroke-width="1.3" opacity=".6" fill="none"/>`+T(56,22,'NENATÍRANÝ',{s:7.5,f:'#475569',w:800})+T(56,80,'barva se vsákne',{s:7,f:'#b91c1c'});
+ s+=`<rect x="120" y="44" width="88" height="22" fill="#fef9c3"/><g clip-path="url(#clK)">${vlakna(164,55,30,34,14,'#a16207',9)}</g><rect x="120" y="36" width="88" height="8" fill="#fff" stroke="#94a3b8" stroke-width=".8"/><circle cx="164" cy="32" r="4.5" fill="#be185d"/>`+T(164,22,'NATÍRANÝ (křídový)',{s:7.5,f:'#1e40af',w:800})+T(197,33,'nátěr',{s:6,w:600})+T(164,80,'bod zůstane ostrý',{s:7,f:'#15803d'});
+ s+=T(110,106,'nátěr = pigment (kaolin, křída) + pojivo',{s:7.6,f:'#1e40af'});return S('0 0 220 112',s);},
+povrchDruhy:()=>{let s=`<defs><linearGradient id="gLesk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".95"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`;
+ [['#e0f2fe',1,'natírané','bezdřevé'],['#f8fafc',0,'nenatírané','bezdřevé'],['#fef9c3',1,'natírané','dřevité'],['#e7e5e4',0,'nenatírané','dřevité'],['#fef3c7',1,'SC – super-','kalandrované']].forEach((x,i)=>{const X=6+i*43;s+=`<rect x="${X}" y="10" width="36" height="48" fill="${x[0]}" stroke="#334155" stroke-width=".8"/>`+(x[1]?`<rect x="${X}" y="10" width="36" height="48" fill="url(#gLesk)"/>`:'')+(i===3?[18,24,30,36,42].map(y=>`<rect x="${X+4}" y="${y}" width="28" height="1.6" fill="#78716c"/>`).join(''):'')+T(X+18,70,x[2],{s:6.3,w:700})+T(X+18,79,x[3],{s:6.3,w:500});});
+ s+=T(110,97,'papír podle povrchové úpravy',{s:7.8,f:'#1e40af'});return S('0 0 220 104',s);},
+casopisy:()=>{let s='';[['ULWC','50 g/m²',1],['LWC','70 g/m²',2],['MWC','do 100 g/m²',3],['HWC','nad 100 g/m²',4]].forEach((x,i)=>{const X=8+i*52;for(let k=x[2]*2;k>=0;k--)s+=`<rect x="${X+k}" y="${18-k}" width="36" height="48" fill="${k?'#fce7f3':'#fdf2f8'}" stroke="#94a3b8" stroke-width=".5"/>`;s+=`<rect x="${X+4}" y="22" width="28" height="6" fill="#be185d"/>`+fotka(X+4,31,28,20)+T(X+20,80,x[0],{s:9,f:'#be185d',w:800})+T(X+20,90,x[1],{s:6.8,w:600});});
+ s+=T(110,106,'natírané dřevité papíry pro časopisy',{s:7.6,f:'#1e40af'});return S('0 0 220 112',s);}
+};
+
+
+/* ---------- MYŠLENKOVÁ MAPA ---------- */
+const MAP=[{"k": "c", "side": "left", "n": "C", "t": "Předlohy pro reprodukci", "link": "#predlohy", "items": [["Předloha", "Originál, podle kterého se tiskne. Textová = rukopis, obrazová = fotka, kresba, logo."], ["Rukopis", "Text pro sazbu. Musí být jazykově správný, přikládá se předpis sazby (formát, zrcadlo, písmo)."], ["Fyzická × digitální", "Fyzickou (fotka, kresba, diapozitiv) musím digitalizovat. Digitální je soubor: TIFF, JPEG, PSD, AI, PDF."], ["Odrazová × průhledná", "Od odrazové se světlo odráží (fotka na papíře), průhlednou prochází (diapozitiv, negativ)."], ["Skener", "Vstupní zařízení: světlo → čidlo → elektrický signál → A/D převodník → čísla."], ["Druhy skenerů", "Ruční, plochý (nejběžnější), bubnový (nejvyšší kvalita, ohebná předloha), filmový, knižní."], ["Parametry skenování", "Procento reprodukce, barevný režim, typ předlohy (odrazová / průhledná), rozlišení."]]}, {"k": "m", "side": "left", "n": "M", "t": "Obraz, kvalita a rozlišení", "link": "#obraz", "items": [["Perokresba", "Pérová předloha: ostrá kresba, jen 2 hodnoty (barva a papír), 1 bit. Nerastruje se, skenuje se 1 200 dpi."], ["Polotónová předloha", "Tónová: plynulé přechody světla a stínu – fotka, malba. Musí se zrastrovat."], ["Barvová hloubka", "Pérová 1 bit (2 barvy), stupně šedi 8 bitů (256), RGB 24 bitů (16,7 milionu), CMYK 32 bitů."], ["Náležitosti", "Konečný rozměr (%), barevný režim, rozlišení, výřezy. Pomůcka: 3 × R + V."], ["Kvalita obrazu", "Ostrý, s kontrastem, kresba ve světlech i stínech, věrné barvy, bez šumu a moaré."], ["Histogram", "Graf rozložení jasů: vlevo stíny, vpravo světla. Jasy po celé šířce = dobrá fotka."], ["dpi, ppi, lpi", "dpi = body předlohy, ppi = pixely monitoru, lpi = linky rastru. 1 palec = 2,54 cm."], ["300 dpi", "Fotka pro tisk 300 dpi ve skutečné velikosti, web 72 ppi, perokresba 1 200 dpi."], ["dpi = lpi × 2", "150 lpi × 2 = 300 dpi. Zvětšení na 200 % → skenuji 600 dpi. Osvitová jednotka: lpi × 16."]]}, {"k": "y", "side": "right", "n": "Y", "t": "Papírovina a papírenský stroj", "link": "#papirovina", "items": [["Papírovina", "Řídká vodní suspenze pro výrobu papíru – víc než 90 % vody."], ["Složky papíroviny", "Vláknina (základ), plnidla (mezery), klížidla (proti vodě), barviva (barva, bělost), voda."], ["Příprava papíroviny", "Rozvláknění → mletí (vlákna se roztřepí) → míchání s přísadami → ředění."], ["Papírenský stroj", "Nátok → síto → lisy → sušení → klížení → kalandr → role. Naše Sestra Lída Suší Kytky Každé Ráno."], ["Mokrá část", "Nátok, síto, lisy: voda odteče a vymačká se, vznikne pás papíru (z 99 % na 50 % vody)."], ["Suchá část", "Sušicí válce (pára), klížicí lis, kalandr, navíjení do role (zbude 5–8 % vody)."]]}, {"k": "k", "side": "right", "n": "K", "t": "Směr vlákna a povrch papíru", "link": "#povrch", "items": [["Směr vlákna", "Vzniká ve směru pohybu síta. Kniha: se hřbetem, tiskový stroj: s osou válců, kalendář: svisle."], ["Jak zjistím směr", "Trhání (po směru rovně), ohyb (po směru snáz), navlhčení (zkroutí se podél vlákna)."], ["Klížení", "Papír nesaje vodu ani inkoust. Ve hmotě, nebo povrchově v klížicím lisu (škrob)."], ["Kalandr", "Válce papír tlakem a teplem uhladí. Superkalandr přidá lesk → SC papír."], ["Natírání", "Nátěr z pigmentu (kaolin, křída) a pojiva → křídový papír: hladký, ostrý tisk, 175 lpi."], ["Druhy papíru", "Natírané × nenatírané, bezdřevé × dřevité, SC. Časopisy: SC a LWC (70 g/m²)."], ["Most k předlohám", "Hladší papír → jemnější rastr → víc dpi: noviny 100 lpi, křídový papír 175 lpi."]]}];
+let lastBranch=null;
+(function buildMap(){
+  const root=document.getElementById('mindmap');
+  const center=document.createElement('div');
+  center.className='mm-center';
+  center.innerHTML='<div class="n">Otázka č. 15</div><div class="t">Předloha + papír = kvalitní obrázek v&nbsp;tisku</div><div class="s">C → M → Y → K<br>mluv v pořadí barev</div>';
+  const pos={c:[1,1],m:[1,2],y:[3,1],k:[3,2]};
+  [MAP[0],center,MAP[2],MAP[1],MAP[3]].forEach(b=>{
+    if(b===center){root.appendChild(center);return;}
+    const el=document.createElement('div');
+    el.className='mm-branch '+b.k+' '+b.side;
+    el.dataset.k=b.k;el.id='mm-'+b.k;
+    let h='<h4><span class="num">'+b.n+'</span>'+b.t+'</h4><div class="chips">';
+    b.items.forEach((it,i)=>{h+='<button class="chip" aria-expanded="false" data-i="'+i+'">'+it[0]+'</button>';});
+    h+='</div><div class="hint" aria-live="polite"></div><a class="goto" href="'+b.link+'">→ podrobně v souhrnu</a>';
+    el.innerHTML=h;
+    const hint=el.querySelector('.hint');
+    el.querySelectorAll('.chip').forEach(ch=>{
+      ch.addEventListener('click',()=>{
+        const open=ch.getAttribute('aria-expanded')==='true';
+        el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+        if(open){hint.classList.remove('show');return;}
+        ch.setAttribute('aria-expanded','true');
+        const it=b.items[+ch.dataset.i];
+        hint.innerHTML='<b>'+it[0]+'</b>'+it[1];
+        hint.classList.add('show');lastBranch=el;
+      });
+    });
+    el.querySelector('.goto').addEventListener('click',()=>{lastBranch=el;});
+    el._b=b;
+    root.appendChild(el);
+  });
+  function reorder(){
+    const wide=window.matchMedia('(min-width:861px)').matches;
+    root.querySelectorAll('.mm-branch').forEach(el=>{
+      const k=el.dataset.k;
+      el.style.gridColumn=wide?pos[k][0]:'';el.style.gridRow=wide?pos[k][1]:'';
+      el.style.order=wide?'':({c:1,m:2,y:3,k:4})[k];
+    });
+    center.style.order=wide?'':0;
+  }
+  reorder();window.addEventListener('resize',reorder);
+  document.getElementById('mmOpen').onclick=()=>{
+    root.querySelectorAll('.mm-branch').forEach(el=>{
+      const b=el._b;const hint=el.querySelector('.hint');
+      hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[1]).join('<br style="margin-bottom:6px">');
+      hint.classList.add('show');
+      el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','true'));
+    });
+  };
+  document.getElementById('mmClose').onclick=()=>{
+    root.querySelectorAll('.hint').forEach(h=>h.classList.remove('show'));
+    root.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+  };
+})();
+
+
+/* ---------- ŠVP checklist ---------- */
+(function(){
+  const boxes=[...document.querySelectorAll('#svpList input')];
+  const out=document.getElementById('svpCount');
+  let st={};try{st=JSON.parse(store.get('t15-svp','{}'))}catch(e){}
+  function upd(){const n=boxes.filter(b=>b.checked).length;out.textContent='Umím: '+n+' / '+boxes.length+(n===boxes.length?' 🎉 Jsi připraven/a!':'');}
+  boxes.forEach(b=>{b.checked=!!st[b.id];b.addEventListener('change',()=>{st[b.id]=b.checked;store.set('t15-svp',JSON.stringify(st));upd();});});
+  upd();
+})();
+
+
+/* ---------- KVÍZ ---------- */
+const QUIZ=[["Co je předloha?", ["tisková forma pro ofsetový stroj", "originál, podle kterého se tiskne", "zkušební tisk pro zákazníka", "hotový výtisk z tiskového stroje"], 1, "Předloha = originál textu nebo obrázku, který se reprodukuje tiskem."], ["Jak se jmenuje textová předloha?", ["rukopis", "imprimatur", "korektura", "předpis sazby"], 0, "Rukopis je text pro sazbu. Přikládá se k němu předpis sazby."], ["Která předloha je průhledná?", ["kresba tužkou", "olejomalba", "diapozitiv", "fotografie na papíře"], 2, "Průhlednou předlohou světlo prochází – diapozitiv, negativ."], ["Co je skener?", ["výstupní zařízení pro tisk", "program pro úpravu fotografií", "zařízení pro osvit desek", "vstupní zařízení pro digitalizaci"], 3, "Skener převádí fyzické (analogové) předlohy do počítače."], ["Co ve skeneru změní elektrický signál na čísla?", ["snímací čidlo", "lampa vozíku", "A/D převodník", "skleněná deska"], 2, "Čidlo změní světlo na signál, A/D převodník na číselný kód."], ["U kterého skeneru musí být předloha ohebná?", ["u ručního", "u bubnového", "u knižního", "u plochého"], 1, "U bubnového skeneru se předloha upevní na válec. Dává nejvyšší kvalitu."], ["Proč se nastavuje procento reprodukce?", ["aby skenování proběhlo rychleji", "aby se z předlohy odstranil prach", "aby měla předloha správné rozlišení", "aby se předloha převedla do CMYK"], 2, "Při zvětšení se musí skenovat s vyšším rozlišením."], ["Jakou barvovou hloubku má perokresba?", ["32 bitů", "24 bitů", "8 bitů", "1 bit"], 3, "Jen 2 hodnoty = 1 bit = 2¹ = 2 barvy."], ["Která předloha je polotónová?", ["fotografie", "technický výkres", "logo z čar", "čárový kód"], 0, "Fotografie má plynulé tónové přechody."], ["Kolik odstínů mají stupně šedi (8 bitů)?", ["16", "64", "1 024", "256"], 3, "2⁸ = 256 odstínů."], ["Co ukazuje histogram?", ["rozložení jasů pixelů", "rozlišení obrázku v dpi", "počet barev v obrázku", "velikost souboru v MB"], 0, "Histogram: vlevo stíny, vpravo světla."], ["Histogram je nahromaděný vlevo. Jaká je fotka?", ["ostrá", "tmavá", "barevná", "světlá"], 1, "Vlevo jsou stíny – fotka je tmavá."], ["Co udává lpi?", ["hustotu rastru na palec", "počet pixelů monitoru", "počet barev obrázku", "rozlišení skeneru"], 0, "lpi = linky tiskových bodů na palec."], ["Jaký je vztah mezi lpi a dpi?", ["dpi = lpi × 10", "dpi = lpi × 2", "dpi = lpi : 2", "lpi = dpi × 2"], 1, "Rozlišení předlohy = hustota rastru × faktor kvality 2."], ["Rastr 150 lpi. Kolik dpi má mít předloha?", ["75 dpi", "600 dpi", "150 dpi", "300 dpi"], 3, "150 × 2 = 300 dpi."], ["Fotku zvětšíš na 200 %. Jaké rozlišení nastavíš na skeneru?", ["400 dpi", "300 dpi", "600 dpi", "150 dpi"], 2, "200 % = dvakrát: 300 × 2 = 600 dpi."], ["Jaké je rozlišení osvitové jednotky pro 150 lpi?", ["1 200 dpi", "2 400 dpi", "3 600 dpi", "4 800 dpi"], 1, "dpi = lpi × 16: 150 × 16 = 2 400."], ["Co je papírovina?", ["řídká vodní suspenze vláken", "nátěr na povrchu papíru", "hotový pás papíru na sítu", "suchá směs vláken a křídy"], 0, "Papírovina – víc než 90 % je voda."], ["K čemu jsou v papírovině klížidla?", ["ředí papírovinu vodou", "vyplňují mezery mezi vlákny", "zvyšují odolnost proti vodě", "určují barvu papíru"], 2, "Klížidla spojují vlákninu a plnidla, papír nesaje."], ["K čemu jsou v papírovině plnidla?", ["chrání papír proti vodě", "ředí papírovinu na nátoku", "určují barvu papíru", "vyplňují mezery mezi vlákny"], 3, "Plnidla (kaolin, uhličitan vápenatý) zlepší tiskové vlastnosti."], ["Co patří do papíroviny?", ["barviva", "VOC látky", "ofsetový lak", "tisková barva"], 0, "Složky: vláknina, plnidla, klížidla, barviva, voda."], ["Co se děje s vlákny při mletí?", ["rozpustí se ve vodě", "zkrátí se a roztřepí", "spojí se s ligninem", "obarví se a vybělí"], 1, "Roztřepená vlákna se lépe propletou – pevnější papír."], ["Která část papírenského stroje je první?", ["sušicí část", "sítová část", "lisovací část", "nátok"], 3, "Nátok – Síto – Lisy – Sušení – Klížení – Kalandr – Role."], ["Co se děje v lisovací části?", ["nanese se nátěr", "pára papír vysuší", "válce vymačkají vodu", "papír se navine"], 2, "Lisovací část patří do mokré části."], ["Do které části stroje patří kalandr?", ["do suché části", "do lisovací části", "do sítové části", "do mokré části"], 0, "Suchá část: sušení → klížicí lis → kalandr → navíjení."], ["Jak vzniká směr vlákna?", ["při natírání papíru", "při řezání na archy", "ve směru pohybu síta", "kolmo na pohyb síta"], 2, "Síto běží dopředu, vlákna se uloží po jeho směru."], ["Kudy má vést směr vlákna u knihy?", ["na směru nezáleží", "kolmo na hřbet knihy", "šikmo pod úhlem 45°", "rovnoběžně se hřbetem"], 3, "Složky se lépe skládají, kniha se nekroutí."], ["Co je papír SC?", ["nenatíraný dřevitý superkalandrovaný", "ručně vyráběný z hadrů", "natíraný bezdřevý s leskem", "nezaklížený savý papír"], 0, "SC = superkalandrovaný, hladký a lesklý. Časopisy."], ["Z čeho je nátěr natíraného papíru?", ["z barvy a laku", "z vody a ligninu", "z buničiny a dřevoviny", "z pigmentu a pojiva"], 3, "Pigment (kaolin, křída) + pojivo (latex, škrob)."], ["Jak se jinak říká natíranému bezdřevému papíru?", ["ofsetový papír", "novinový papír", "křídový papír", "pijákový papír"], 2, "Křídový papír: hladký, lesklý nebo matný, 100–300 g/m²."], ["Jakou plošnou hmotnost má papír LWC?", ["asi 70 g/m²", "asi 250 g/m²", "asi 120 g/m²", "asi 50 g/m²"], 0, "ULWC 50, LWC 70, MWC do 100, HWC nad 100 g/m²."]];
+(function(){
+  const box=document.getElementById('quiz'),sc=document.getElementById('score');
+  document.getElementById('qCount').textContent=QUIZ.length;
+  let right=0,done=0;
+  function render(){
+    box.innerHTML='';right=0;done=0;sc.textContent='';
+    QUIZ.forEach((q,qi)=>{
+      const d=document.createElement('div');d.className='q';
+      d.innerHTML='<div class="qt">'+(qi+1)+'. '+q[0]+'</div><div class="opts">'+q[1].map((o,i)=>'<button class="o" data-i="'+i+'">'+o+'</button>').join('')+'</div><div class="fb"></div>';
+      d.querySelectorAll('.o').forEach(b=>b.addEventListener('click',()=>{
+        if(d.classList.contains('done'))return;
+        d.classList.add('done');done++;
+        const i=+b.dataset.i;
+        d.querySelectorAll('.o')[q[2]].classList.add('right');
+        if(i===q[2]){right++;d.querySelector('.fb').innerHTML='<b style="color:var(--ok)">Správně!</b> '+q[3];}
+        else{b.classList.add('wrong');d.querySelector('.fb').innerHTML='<b style="color:var(--bad)">Tentokrát ne.</b> '+q[3];}
+        if(done===QUIZ.length)sc.textContent='Výsledek: '+right+' / '+QUIZ.length+(right>=QUIZ.length*0.9?' · výborně, jsi připraven/a!':right>=QUIZ.length*0.7?' · dobrý výsledek, projdi si ještě otázky, ve kterých jsi chyboval/a.':' · vrať se k myšlenkové mapě a zkus to znovu.');
+      }));
+      box.appendChild(d);
+    });
+  }
+  render();document.getElementById('quizReset').onclick=render;
+})();
+
+
+/* ---------- plovoucí šipka zpět na mapu ---------- */
+(function(){
+  const fab=document.getElementById('fabMap'),mapa=document.getElementById('mapa');
+  function goBack(e){if(e)e.preventDefault();const t=lastBranch||mapa;t.scrollIntoView({behavior:'smooth',block:lastBranch?'center':'start'});}
+  fab.addEventListener('click',goBack);
+  document.querySelectorAll('[data-ret]').forEach(a=>a.addEventListener('click',goBack));
+  function upd(){fab.classList.toggle('show', mapa.getBoundingClientRect().bottom < 0);}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+
+/* ---------- TEST PSANÍM ---------- */
+const WT=[{"q": "Co je předloha a jak se předlohy dělí? Popiš i rukopis. <span class=\"pill\">6 bodů</span>", "h": "Tip: originál, textová × obrazová, fyzická × digitální, odrazová × průhledná, rukopis.", "p": [["předloha = originál pro tisk", ["original"], 1, "Předloha je originál, podle kterého se tiskne."], ["textová (rukopis) × obrazová", ["textov&&obrazov", "rukopis&&obraz"], 1, "Rozděl předlohy na textové (rukopis) a obrazové."], ["fyzická × digitální", ["fyzick|analog&&digital"], 1, "Fyzickou předlohu musím digitalizovat, digitální je soubor."], ["fyzickou musím naskenovat", ["sken|digitaliz|vyfot"], 1, "Fyzická předloha se naskenuje nebo vyfotí."], ["odrazová × průhledná", ["odraz|pruhl|diapoz|negativ"], 0, "Bonus: odrazová (fotka) × průhledná (diapozitiv, negativ)."], ["rukopis: jazykově správný + předpis sazby", ["jazyk|predpis|zrcadl"], 0, "Bonus: rukopis musí být jazykově správný, přikládá se předpis sazby."]], "e": [["fotograf\\w*( na papire)? (je|jsou) (predloha )?pruhledn", "Fotografie na papíře je předloha ODRAZOVÁ. Průhledný je diapozitiv nebo negativ."]], "m": "Předloha je originál textu nebo obrázku, podle kterého se tiskovina vyrábí. Dělí se na textové (rukopis) a obrazové (fotografie, kresby, loga). Podle původu jsou fyzické (analogové) – ty musím naskenovat nebo vyfotit – a digitální (soubor v počítači). Podle průhlednosti jsou odrazové (fotografie na papíře) a průhledné (diapozitiv, negativ). Rukopis je text pro sazbu – musí být jazykově správný a přikládá se k němu předpis sazby (formát strany, zrcadlo sazby, písmo)."}, {"q": "Co je skener? Popiš princip plochého skeneru a vyjmenuj druhy skenerů. <span class=\"pill\">5 bodů</span>", "h": "Tip: vstupní zařízení, sklo, světlo, čidlo, signál, převodník, druhy.", "p": [["vstupní zařízení", ["vstupn"], 1, "Skener je vstupní zařízení."], ["digitalizuje analogové předlohy", ["digitaliz|analog|fyzick"], 1, "Skener digitalizuje analogové (fyzické) předlohy."], ["světlo odražené / prošlé dopadá na čidlo", ["cidl|ccd|senzor|snimac"], 1, "Světlo z předlohy dopadá na snímací čidlo."], ["elektrický signál → číselný kód (A/D převodník)", ["signal|prevodnik|cisl|kod"], 1, "Čidlo změní světlo na signál, A/D převodník na čísla."], ["druhy: ruční, plochý, bubnový, filmový, knižní", ["bubnov|valcov&&ploch|stoln", "filmov|knizn"], 1, "Vyjmenuj druhy skenerů: ruční, plochý, bubnový, filmový, knižní."], ["bubnový = nejvyšší kvalita", ["nejvys|nejlep|kvalit"], 0, "Bonus: bubnový skener dává nejvyšší kvalitu."]], "e": [["skener[^.;]{0,20}vystupn", "Skener je VSTUPNÍ zařízení – data z něj vstupují do počítače."]], "m": "Skener je vstupní zařízení, které se používá k digitalizaci analogových předloh. U plochého skeneru se předloha položí na skleněnou desku lícem ke snímacímu řádkovému čidlu. Světlo odražené od předlohy (nebo prošlé předlohou) dopadá na čidlo, kde se mění na elektrický signál. Analogově-digitální převodník ho změní na číselný kód. Druhy skenerů: ruční, stolní (ploché), bubnové (nejvyšší kvalita, předloha musí být ohebná), filmové a knižní."}, {"q": "Jaké parametry nastavíš při skenování? <span class=\"pill\">5 bodů</span>", "h": "Tip: procento, režim, typ předlohy, rozlišení.", "p": [["procento reprodukce", ["procent|%|reprodukc|zvets"], 1, "Nastav procento reprodukce – hlavně při zvětšování."], ["barevný režim", ["rezim|bitov|hloubk"], 1, "Nastav barevný režim (bitovou hloubku)."], ["černobílý, stupně šedi, duplex, CMYK", ["cernobil|sed|duplex|cmyk"], 0, "Bonus: černobílý, stupně šedi, duplex, CMYK."], ["typ předlohy: odrazová / průhledná", ["odraz|pruhl"], 1, "Uveď typ předlohy: odrazová, nebo průhledná."], ["rozlišení v dpi", ["rozlis|dpi"], 1, "Nastav rozlišení v dpi."], ["pro tisk 300 dpi", ["300"], 1, "Pro tisk obvykle 300 dpi."]], "e": [["tisk\\w*\\s*(je|ma|staci|se)?\\s*72", "72 dpi je pro internet. Pro tisk potřebuješ 300 dpi."]], "m": "Při skenování nastavím procento reprodukce – hlavně při zvětšování, aby se předloha naskenovala ve správném rozlišení. Dál barevný režim: černobílý, stupně šedi, duplex nebo barevný (CMYK). Zvolím typ předlohy: odrazová, nebo průhledná – pozitivní či negativní. Nakonec rozlišení: dpi = lpi × 2, pro tisk obvykle 300 dpi, pro internet 72 dpi. Už vytištěnou předlohu odrastruji."}, {"q": "Charakterizuj perokresbu (pérovou předlohu) a polotónovou (tónovou) předlohu. Jakou mají barvovou hloubku? <span class=\"pill\">6 bodů</span>", "h": "Tip: ostrost, počet hodnot, příklady, rastrování, bity.", "p": [["pérová: ostrá kresba, velký kontrast", ["ostr|kontrast"], 1, "Pérová předloha má ostrou kresbu a velký kontrast."], ["pérová: 2 hodnoty, bez přechodů", ["2 hodnot|dve hodnot|bez prechod|bez tonov|car"], 1, "Pérová předloha má jen dvě hodnoty – barvu a papír, bez přechodů."], ["příklady pérové: perokresba, logo, text", ["perokresb|logo|vykres|text"], 0, "Bonus: perokresba, logo, text, výkres."], ["tónová: plynulé přechody", ["plynul|prechod"], 1, "Tónová předloha má plynulé tónové přechody."], ["příklady tónové: fotografie, malba", ["fotograf|fotk|malb|diapoz"], 1, "Tónová předloha je fotka, malba, diapozitiv."], ["tónová se rastruje", ["rastr"], 0, "Bonus: tónová předloha se musí zrastrovat."], ["pérová 1 bit, šedá 8 bitů (256), RGB 24 bitů", ["1 bit|jeden bit|8 bit|256|24"], 1, "Uveď barvovou hloubku: 1 bit, 8 bitů, 24 bitů."]], "e": [["perov[^.;]{0,40}(fotograf|plynul)", "Fotografie a plynulé přechody patří k TÓNOVÉ předloze. (Pokud jsi to psal/a jako srovnání, je to v pořádku.)"]], "m": "Pérová předloha (perokresba) má ostrou kresbu a velký kontrast. Skládá se z ploch a čar a má jen dvě hodnoty optické hustoty – barvu a papír, bez tónových přechodů. Příklady: perokresba, logo, text, výkres. Nerastruje se, barvová hloubka je 1 bit. Tónová (polotónová) předloha má plynulé tónové přechody mezi světly a stíny – fotografie, malba, diapozitiv. Pro tisk se musí zrastrovat. Ve stupních šedi má 8 bitů (256 odstínů), barevná RGB 24 bitů (16,7 milionu barev), CMYK 32 bitů."}, {"q": "Jaké jsou náležitosti obrazové předlohy a požadavky na kvalitu obrazu? Co je histogram? <span class=\"pill\">6 bodů</span>", "h": "Tip: 3 × R + V, ostrost, kontrast, histogram.", "p": [["konečný rozměr (% reprodukce)", ["rozmer|procent|%"], 1, "Náležitost: konečný rozměr (% reprodukce)."], ["barevný režim", ["rezim|barevnost|cmyk"], 1, "Náležitost: barevný režim."], ["rozlišení", ["rozlis|dpi"], 1, "Náležitost: rozlišení."], ["výřezy", ["vyrez|orez"], 1, "Náležitost: výřezy."], ["ostrost a kontrast", ["ostr|kontrast"], 1, "Kvalitní obraz je ostrý a má kontrast."], ["kresba ve světlech i stínech, věrné barvy", ["svetl|stin|detail|barv"], 0, "Bonus: kresba ve světlech i stínech, věrné barvy."], ["histogram = graf rozložení jasů", ["histogram&&(graf|jas|rozloz)"], 1, "Histogram je graf rozložení jasů pixelů."]], "e": [], "m": "Náležitosti obrazové předlohy jsou konečný rozměr (procento reprodukce), barevný režim (CMYK, stupně šedi, duplex, přímé barvy), rozlišení a výřezy. Kvalitní obraz je ostrý, má dobrý kontrast, kresbu ve světlech i ve stínech, věrné barvy, nemá šum a má rozlišení 300 dpi ve skutečné velikosti. Histogram je graf, který ukazuje rozložení jasů pixelů – vlevo stíny, vpravo světla. Fotografie upravuji ve Photoshopu: převzorkuji na rozměr a 300 dpi, upravím kontrast a ostrost, nastavím barevný režim, udělám retuš a výřezy."}, {"q": "Co znamenají zkratky dpi, ppi a lpi? Jaký je vztah mezi lpi a dpi? Spočítej dpi pro rastr 150 lpi. <span class=\"pill\">7 bodů</span>", "h": "Tip: body, pixely, linky, palec, faktor kvality.", "p": [["dpi = body předlohy na palec", ["dots|bod|predloh"], 1, "dpi = počet obrazových bodů předlohy na palec."], ["ppi = pixely monitoru", ["pixel|monitor|obrazovk"], 1, "ppi = pixely na palec u monitoru."], ["lpi = linky rastru, hustota rastru", ["lines|link|hustot"], 1, "lpi = linky tiskových bodů na palec = hustota rastru."], ["1 palec = 2,54 cm", ["2,54|2\\.54|palec|palc"], 0, "Bonus: 1 palec = 2,54 cm."], ["dpi = lpi × 2 (faktor kvality)", ["faktor|lpi\\W+(x|krat)?\\W*2|2\\W*(x|krat)?\\W*lpi|dvakrat"], 1, "Vztah: dpi = lpi × 2 (faktor kvality)."], ["150 × 2 = 300 dpi", ["300"], 1, "Výsledek: 150 × 2 = 300 dpi."]], "e": [["\\blpi\\W+(je\\W+)?dpi\\W+(x\\W+|krat\\W+)?2\\b", "Obráceně: dpi = lpi × 2 (rozlišení předlohy je dvakrát větší než hustota rastru)."], ["\\b75\\b", "150 × 2 = 300 – násobíš, ne dělíš."]], "m": "dpi (dots per inch) je počet obrazových bodů na palec – rozlišení digitalizované předlohy. ppi (pixels per inch) je počet pixelů na palec u monitoru. lpi (lines per inch) je počet linek tiskových bodů na palec – hustota rastru; noviny 100 lpi, ofsetový papír 150 lpi, křídový papír 175 lpi. 1 palec = 2,54 cm. Vztah: dpi = lpi × 2 (faktor kvality), u velkých souborů lpi × 1,5. Pro rastr 150 lpi: 150 × 2 = 300 dpi."}, {"q": "Co je papírovina? Co obsahuje a jakou funkci mají jednotlivé složky? <span class=\"pill\">8 bodů</span>", "h": "Tip: suspenze, 5 složek a ke každé funkce.", "p": [["řídká vodní suspenze", ["suspenz|kase|vodn"], 1, "Papírovina je řídká vodní suspenze."], ["vláknina – základní surovina", ["vlakn"], 1, "Vláknina je základní surovina."], ["plnidla – vyplňují mezery", ["plnid|pln"], 1, "Plnidla vyplňují mezery mezi vlákny."], ["klížidla – proti vodě, spojují", ["klizid"], 1, "Klížidla spojují a zvyšují odolnost proti vodě."], ["barviva – barva, bělost", ["barvi|belost"], 1, "Barviva určují barvu a bělost."], ["voda – víc než 90 %", ["90|99|redi"], 1, "Voda ředí – víc než 90 %."]], "e": [["\\bvoc\\b", "VOC látky do papíroviny NEPATŘÍ – patří k tiskovým barvám a rozpouštědlům."]], "m": "Papírovina je řídká vodní suspenze, která je surovinou pro výrobu papíru. Obsahuje vlákninu – základní surovinu, nejčastěji ze dřeva. Plnidla vyplňují mezery mezi vlákny a zlepšují tiskové vlastnosti. Klížidla spojují vlákninu a plnidla a zvyšují odolnost proti vodě. Barviva určují barvu papíru a zvyšují bělost. Voda papírovinu ředí – je jí víc než 90 %."}, {"q": "Popiš výrobu papíru na papírenském stroji – mokrou a suchou část. <span class=\"pill\">6 bodů</span>", "h": "Tip: Naše Sestra Lída Suší Kytky Každé Ráno.", "p": [["mokrá a suchá část", ["mokr&&such"], 1, "Rozděl stroj na mokrou a suchou část."], ["nátok", ["natok"], 1, "Začíná se nátokem."], ["síto – voda odtéká, vznikne pás", ["sit"], 1, "Na sítu voda odteče a vznikne pás papíru."], ["lisy vymačkají vodu", ["lis"], 1, "Lisy vymačkají vodu."], ["sušení na válcích s párou", ["susen|susic|par"], 1, "Papír se suší na válcích vyhřívaných párou."], ["klížicí lis", ["kliz"], 0, "Bonus: klížicí lis – povrchové klížení."], ["kalandr uhladí", ["kalandr|hlad"], 1, "Kalandr papír uhladí."], ["navíjení do role", ["navij|rol"], 1, "Nakonec se papír navine do role."]], "e": [["kalandr[^.;]{0,40}\\bmokr", "Kalandr patří do SUCHÉ části. (Pokud jsi to psal/a jako srovnání, je to v pořádku.)"]], "m": "Papír se vyrábí na papírenském stroji z papíroviny. Stroj má mokrou a suchou část. V mokré části papírovina vytéká z nátoku na nekonečné síto, voda odtéká, vlákna se propletou a vznikne pás papíru. Lisy s plstěnci vymačkají další vodu. V suché části se papír suší na válcích vyhřívaných párou, v klížicím lisu se zaklíží povrch, v kalandru se uhladí a navine se do role."}, {"q": "Co je směr vlákna papíru? Jak ho zjistíš a proč je důležitý? Uveď 3 příklady. <span class=\"pill\">4 body</span>", "h": "Tip: síto, zkoušky, kniha, tiskový stroj, kalendář.", "p": [["vzniká na papírenském stroji ve směru pohybu síta", ["sit"], 1, "Směr vlákna vzniká ve směru pohybu síta."], ["zkouška: trhání, ohyb, navlhčení", ["trh|ohyb|ohn|navlh|neht"], 0, "Bonus: zjistím ho trháním, ohybem nebo navlhčením."], ["kniha – rovnoběžně se hřbetem", ["hrbet"], 1, "U knihy vede vlákno rovnoběžně se hřbetem."], ["tiskový stroj – s osou válců", ["osou|osa|valc"], 1, "V tiskovém stroji vede rovnoběžně s osou válců."], ["kalendář – svisle", ["kalendar|svisl"], 1, "U nástěnného kalendáře vede svisle."]], "e": [["kolm\\w*\\s*(na|s|ke)\\s*hrbet", "U knihy má směr vlákna vést ROVNOBĚŽNĚ se hřbetem."]], "m": "Směr vlákna papíru je směr uložení vláken, který vzniká při výrobě na papírenském stroji ve směru pohybu síta. Zjistím ho trhací zkouškou (po směru se trhá rovně), ohybem nebo navlhčením. U knih má vést rovnoběžně se hřbetem (složky se lépe skládají, kniha se nekroutí), při tisku rovnoběžně s osou válců (papír se nevytahuje) a u nástěnných kalendářů svisle (listy se nekroutí)."}, {"q": "Jak se upravuje povrch papíru? Jak dělíme papír podle povrchové úpravy? <span class=\"pill\">6 bodů</span>", "h": "Tip: klížení, kalandr, natírání, natírané × nenatírané, SC.", "p": [["klížení – papír nesaje", ["kliz"], 1, "Klížení – papír nesaje vodu ani inkoust."], ["hlazení v kalandru", ["kalandr|hlaz|hlad"], 1, "Hlazení v kalandru."], ["natírání – nátěr pigment + pojivo", ["natir|nater|pigment|pojiv"], 1, "Natírání – nátěr z pigmentu a pojiva."], ["křídový papír", ["kridov"], 0, "Bonus: natíraný bezdřevý = křídový papír."], ["natírané × nenatírané", ["nenatir"], 1, "Papír dělíme na natírané a nenatírané."], ["bezdřevé × dřevité, SC", ["bezdrev|drevit|\\bsc\\b|superkalandr"], 1, "… bezdřevé a dřevité, SC."]], "e": [], "m": "Povrch papíru se upravuje klížením – papír pak nesaje vodu ani inkoust (ve hmotě nebo povrchově v klížicím lisu). Hlazením v kalandru – válce papír tlakem a teplem uhladí; superkalandr přidá lesk (SC papír). A natíráním – na povrch se nanese nátěr z pigmentu (kaolin, křída) a pojiva; vznikne natíraný (křídový) papír – lesklý, polomatný nebo matný. Podle povrchové úpravy dělíme papír na natírané bezdřevé, nenatírané bezdřevé, natírané dřevité, nenatírané dřevité a nenatírané dřevité superkalandrované (SC)."}];
+(function(){
+  const root=document.getElementById('writeTest');
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ');
+  const test=(t,alts)=>alts.some(a=>a.split('&&').every(part=>{try{return new RegExp(part).test(t)}catch(e){return false}}));
+  WT.forEach((w,i)=>{
+    const d=document.createElement('div');d.className='wt';
+    d.innerHTML='<div class="qt">'+(i+1)+'. '+w.q+'</div><div class="qh">'+w.h+'</div>'+
+      '<textarea placeholder="Napiš odpověď vlastními slovy, jako bys psal/a test nebo mluvil/a u zkoušky…" aria-label="Odpověď na otázku '+(i+1)+'"></textarea>'+
+      '<div class="acts"><button class="btn pri" data-a="eval">Vyhodnotit</button><button class="btn" data-a="model">Ukázat vzorovou odpověď</button><button class="btn" data-a="clear">Smazat</button><span class="wc">0 slov</span></div>'+
+      '<div class="out"></div><div class="model"><b class="t">Vzorová odpověď</b>'+w.m+'</div>';
+    const ta=d.querySelector('textarea'),out=d.querySelector('.out'),model=d.querySelector('.model'),wc=d.querySelector('.wc');
+    const key='t15-wt-'+i;
+    ta.value=store.get(key,'');
+    const count=()=>{const n=(ta.value.trim().match(/\S+/g)||[]).length;wc.textContent=n+(n===1?' slovo':n>=2&&n<=4?' slova':' slov');return n;};
+    count();
+    ta.addEventListener('input',()=>{store.set(key,ta.value);count();});
+    d.querySelector('[data-a=eval]').onclick=()=>{
+      const n=count();
+      if(n<10){out.innerHTML='<div class="fbbox fb-miss"><h4>Napiš víc</h4>Na vyhodnocení je to zatím málo (počet slov: '+n+'). Napiš aspoň 3–4 věty.</div>';out.classList.add('show');return;}
+      const t=norm(ta.value);
+      const hit=[],miss=[];
+      w.p.forEach(p=>{(test(t,p[1])?hit:miss).push(p);});
+      const errs=w.e.filter(e=>{try{return new RegExp(e[0]).test(t)}catch(x){return false}});
+      const core=w.p.filter(p=>p[2]),coreHit=hit.filter(p=>p[2]).length;
+      const pct=Math.round(hit.length/w.p.length*100);
+      let v;
+      if(coreHit===core.length&&!errs.length) v='🎉 Výborně! Máš všechny hlavní body'+(miss.length?', přidej ještě bonusy níže.':' i všechny bonusy.');
+      else if(coreHit>=Math.ceil(core.length*0.6)) v='👍 Dobrý základ. Doplň chybějící body a odpověď bude na jedničku.';
+      else v='💪 Zatím chybí dost důležitých věcí. Projdi si souhrn a zkus to znovu.';
+      let h='<div class="verdict">'+v+'</div><div class="meter"><i style="width:'+pct+'%"></i></div><div class="small muted">Zmínil/a jsi '+hit.length+' z '+w.p.length+' bodů · hlavních '+coreHit+' z '+core.length+'</div>';
+      if(hit.length)h+='<div class="fbbox fb-ok"><h4>✔ Zmínil/a jsi</h4><ul>'+hit.map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+p[0]+'</li>').join('')+'</ul></div>';
+      if(miss.length)h+='<div class="fbbox fb-miss"><h4>✚ Chybí ti</h4><ul>'+miss.sort((a,b)=>b[2]-a[2]).map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+'<b>'+p[0]+'</b>: '+p[3]+'</li>').join('')+'</ul></div>';
+      if(errs.length)h+='<div class="fbbox fb-err"><h4>⚠ Zkontroluj, jestli tu nemáš chybu</h4><ul>'+errs.map(e=>'<li>'+e[1]+'</li>').join('')+'</ul></div>';
+      h+='<p class="small muted">Vyhodnocení hledá klíčová slova, takže není dokonalé. Porovnej si svou odpověď se vzorovou.</p>';
+      out.innerHTML=h;out.classList.add('show');model.classList.add('show');
+    };
+    d.querySelector('[data-a=model]').onclick=()=>model.classList.toggle('show');
+    d.querySelector('[data-a=clear]').onclick=()=>{ta.value='';store.set(key,'');count();out.classList.remove('show');model.classList.remove('show');};
+    root.appendChild(d);
+  });
+})();
+
+
+
+function vyplnObrazky(){document.querySelectorAll('[data-img]').forEach(d=>{d.innerHTML=IMG[d.dataset.img]();});}
+vyplnObrazky();
+/* histogram */
+(function(){const o=document.getElementById('obrHist'),r=document.getElementById('jasHist');const u=()=>o.innerHTML=histSVG(r.value);r.addEventListener('input',u);u();})();
+/* rozlišení */
+(function(){const o=document.getElementById('obrRozl'),bx=document.getElementById('rozlBtns');bx.innerHTML=[36,72,150,300].map(v=>'<button data-ppi="'+v+'">'+v+' ppi</button>').join('');
+ const show=v=>{o.innerHTML=rozlSVG(v);bx.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.ppi===v));};
+ bx.querySelectorAll('button').forEach(b=>b.onclick=()=>show(+b.dataset.ppi));show(72);})();
+/* kalkulačka */
+(function(){const cz=n=>n.toLocaleString('cs-CZ',{maximumFractionDigits:2});
+ function k(){const l=+document.getElementById('kLpi').value,f=+document.getElementById('kF').value,p=+document.getElementById('kPr').value,d=l*f,q=p/100,v=d*q;
+  const s2=p===100?'100 % = stejná velikost = <b>1krát</b>. Rozlišení zůstane.':p>100?'Zvětšení <b>'+p+' %</b> = '+p+' : 100 = <b>'+cz(q)+'krát</b>. Při zvětšení potřebuji víc dpi.':'Zmenšení na <b>'+p+' %</b> = '+p+' : 100 = <b>'+cz(q)+'krát</b> (polovina). Stačí méně dpi.';
+  document.getElementById('kOut').innerHTML='<div class="st"><span class="n">1</span><div>Pro 100 %: <span class="eq">'+l+' × '+cz(f)+' = '+cz(d)+'</span> dpi</div></div><div class="st"><span class="n">2</span><div>'+s2+'</div></div><div class="st"><span class="n">3</span><div>Na skeneru: <span class="eq">'+cz(d)+' × '+cz(q)+'</span> = <span class="res">'+cz(v)+' dpi</span></div></div>';}
+ ['kLpi','kF','kPr'].forEach(i=>document.getElementById(i).addEventListener('change',k));k();})();
+/* papírenský stroj */
+(function(){const ST=[['Nátok','Zředěná papírovina (asi 99 % vody) vytéká úzkou štěrbinou rovnoměrně po celé šíři na síto.','💧 mokrá část'],['Sítová část','Nekonečné síto běží dokola. Voda odtéká a odsává se, vlákna se propletou a vznikne mokrý pás papíru. Vlákna se uloží ve směru pohybu síta – tak vzniká směr vlákna.','💧 mokrá část'],['Lisovací část','Pás jede na plstěncích mezi válci. Válce vymačkají vodu – zbude asi 50 %.','💧 mokrá část'],['Sušicí část','Desítky válců vyhřívaných párou papír vysuší. Zbude asi 5–8 % vody.','🔥 suchá část'],['Klížicí lis','Na povrch se nanese klížidlo (škrob) – povrchové klížení.','🔥 suchá část'],['Kalandr','Hladké válce papír tlakem a teplem uhladí.','🔥 suchá část'],['Navíjení','Hotový pás se navine do role. Pak se řeže na menší role nebo na archy.','🔥 suchá část']];
+ const o=document.getElementById('obrStroj'),bx=document.getElementById('strojBtns'),pp=document.getElementById('strojPopis');let s=1;
+ bx.innerHTML='<button data-k="p">◀</button>'+ST.map((x,i)=>'<button data-k="'+(i+1)+'">'+(i+1)+'</button>').join('')+'<button data-k="n">▶</button>';
+ function show(i){s=i<1?7:i>7?1:i;o.innerHTML=strojSVG(s);const x=ST[s-1];pp.innerHTML='<b class="t">'+s+'. '+x[0]+' · '+x[2]+'</b>'+x[1];bx.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.k===s));}
+ bx.querySelectorAll('button').forEach(b=>b.onclick=()=>show(b.dataset.k==='p'?s-1:b.dataset.k==='n'?s+1:+b.dataset.k));show(1);})();
+
+/* ---------- navigace: aktivní sekce ---------- */
+(function(){
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a){a.classList.add('active');const w=a.parentElement;w.scrollTo({left:a.offsetLeft-w.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});}}});},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section').forEach(s=>obs.observe(s));
+})();
+
+/* ---------- přepínač motivu ---------- */
+(function(){
+  const btn=document.getElementById('themeBtn'),r=document.documentElement;
+  const t=store.get('t15-theme','');if(t)r.setAttribute('data-theme',t);
+  btn.onclick=()=>{
+    const dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const n=dark?'light':'dark';r.setAttribute('data-theme',n);store.set('t15-theme',n);
+  };
+})();
+
+
+</script>
+<!-- ===== návrat mezi tématy (tlačítko „Zpět na téma“) ===== -->
+<style>
+.nav-back{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.92rem;border:0;border-radius:99px;padding:11px 18px 11px 14px;background:#00a3e0;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28);max-width:calc(100% - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-back .ar{font-size:1.15rem;line-height:1}
+.nav-back .x{margin-left:6px;opacity:.75;font-weight:800;padding:0 2px}
+@media (max-width:520px){.nav-back{bottom:68px;left:14px;transform:none;max-width:calc(100% - 28px)}}
+@media print{.nav-back{display:none!important}}
+</style>
+<script>
+(function(){
+  const ss={get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}};
+  const norm=p=>p.replace(/index\.html$/,'').replace(/\/?$/,'/');
+  const here=norm(location.pathname);
+  const badge=document.querySelector('.badge');
+  const m=((badge&&badge.textContent)||document.title).match(/Téma č\. ?(\d+)/);
+  const name=m?'téma č. '+m[1]:'předchozí téma';
+  let st=[];try{st=JSON.parse(ss.get('navBackStack')||'[]')}catch(e){}
+  const save=()=>ss.set('navBackStack',JSON.stringify(st.slice(-10)));
+  /* vrátil/a jsem se sem: obnov místo čtení */
+  let r=null;try{r=JSON.parse(ss.get('navRestore')||'null')}catch(e){}
+  if(r&&r.path===here){
+    ss.set('navRestore','null');
+    const go=()=>window.scrollTo({top:r.y,left:0,behavior:'instant'});
+    go();window.addEventListener('load',()=>{go();setTimeout(go,250);});
+  }
+  /* záznamy, které začínají na této stránce, jsou už vyřízené */
+  while(st.length&&st[st.length-1].path===here)st.pop();
+  save();
+  /* proklik na jiné téma: zapamatuj si, odkud jdu */
+  document.addEventListener('click',e=>{
+    const a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
+    let u;try{u=new URL(a.href,location.href)}catch(x){return}
+    if(u.origin!==location.origin)return;
+    const to=norm(u.pathname);
+    if(to===here||!/\/tema-\d+[^/]*\/$/.test(to))return;
+    st.push({path:here,href:location.href.split('#')[0],y:Math.round(window.scrollY),name:name,to:to});save();
+  },true);
+  /* přišel/přišla jsem odjinud: ukaž tlačítko zpět */
+  const top=st[st.length-1];
+  if(top&&top.to===here){
+    const b=document.createElement('button');
+    b.className='nav-back';b.type='button';
+    b.setAttribute('aria-label','Zpět na '+top.name+' tam, kde jsi četl/a');
+    b.innerHTML='<span class="ar">←</span> Zpět na '+top.name+'<span class="x" title="Skrýt" aria-label="Skrýt">×</span>';
+    b.addEventListener('click',e=>{
+      if(e.target.classList.contains('x')){st.pop();save();b.remove();return;}
+      st.pop();save();
+      ss.set('navRestore',JSON.stringify({path:top.path,y:top.y}));
+      location.href=top.href;
+    });
+    document.body.appendChild(b);
+  }
+})();
+</script>
+<script id="mm-jump">
+/* ---------- skok z pojmu v myšlenkové mapě přímo na jeho podnadpis v souhrnu ----------
+   MM_T: pro každou větev (c, m, y, k) seznam cílů ve stejném pořadí jako pojmy v mapě.
+   Cíl = začátek textu podnadpisu (nebo zvýrazněné položky); "@selektor" = prvek podle CSS. */
+(function(){
+  const MM_T={"c": ["@#a1", "@#a1r", "@#a2", "@#a2o", "@#a3", "@#a3d", "@#a4"], "m": ["@#a5", "@#a5", "@#a5b", "@#a6", "@#a7", "@#a7h", "@#a8", "@#a8", "@#a9"], "y": ["@#b1", "@#b1s", "@#b2", "@#b3", "@#b4", "@#b5"], "k": ["@#b6", "@#b6z", "@#b7", "@#b8", "@#b9", "@#b10", "@#b10m"]};
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
+  const HEAD='h2,h3,h4,h5,summary';
+  const ANY=HEAD+',.nm,.t,.lbl,dt,th,figcaption,b,strong,li,p,dd,td';
+  const LINKS=new Set([...document.querySelectorAll('.mm-branch .goto')].map(a=>a.getAttribute('href').slice(1)));
+  const END=new Set(['svp','test','kviz','potitko','mapa','cesta']);
+  function scopeOf(sec){
+    const all=[...document.querySelectorAll('section[id]')];let i=all.indexOf(sec);
+    if(i<0)return [sec];const out=[sec];
+    for(i++;i<all.length;i++){const id=all[i].id;if(LINKS.has(id)||END.has(id))break;out.push(all[i]);}
+    return out;
+  }
+  const bad=el=>el.closest('.mm-branch,#mapa,#svp,#test,#kviz');
+  function locate(roots,target){
+    if(target.charAt(0)==='@'){for(const r of roots){const e=r.querySelector(target.slice(1));if(e&&!bad(e))return e;}return null;}
+    const n=norm(target);
+    for(const sel of [HEAD,ANY]){
+      for(const r of roots){
+        const els=[...r.querySelectorAll(sel)].filter(e=>!bad(e));
+        const ex=els.find(e=>norm(e.textContent)===n);if(ex)return ex;
+        const st=els.find(e=>norm(e.textContent).startsWith(n));if(st)return st;
+      }
+    }
+    return null;
+  }
+  function findTarget(br,i){
+    const list=MM_T[br.dataset.k];if(!list||!list[i])return null;
+    const sec=document.querySelector(br.querySelector('.goto').getAttribute('href'));if(!sec)return null;
+    return locate(scopeOf(sec),list[i])||locate([document.body],list[i]);
+  }
+  function reveal(el){
+    if(el.tagName==='SUMMARY'&&el.parentElement.tagName==='DETAILS')el.parentElement.open=true;
+    let d=el.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+  }
+  function blockOf(el){
+    if(/^(H2|H3|H4|H5|SUMMARY)$/.test(el.tagName))return el;
+    return el.closest('li,dt,tr,p,figure,.card,.warn,.mnemo,.oneliner,.step,details')||el;
+  }
+  const css=document.createElement('style');
+  css.textContent='.hint b:not(:first-child){display:inline;margin:0}.mm-branch .hint b{display:block;margin-bottom:2px}.mm-flash{animation:mmflash 2.4s ease-out;border-radius:8px}@keyframes mmflash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0);background:transparent}}';
+  document.head.appendChild(css);
+  document.querySelectorAll('.mm-branch').forEach(br=>{
+    const go=br.querySelector('.goto');if(!go)return;
+    const base=go.textContent;
+    const sel=()=>[...br.querySelectorAll('.chip[aria-expanded="true"]')];
+    const upd=()=>{const ch=sel();go.textContent=ch.length===1?'→ „'+ch[0].textContent+'“ podrobně v souhrnu':base;};
+    br.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>setTimeout(upd,0)));
+    ['mmOpen','mmClose'].forEach(id=>{const b=document.getElementById(id);if(b)b.addEventListener('click',()=>setTimeout(upd,0));});
+    go.addEventListener('click',e=>{
+      const ch=sel();if(ch.length!==1)return; /* žádný nebo všechny pojmy → začátek tématu jako dřív */
+      const hit=findTarget(br,+ch[0].dataset.i);if(!hit)return;
+      e.preventDefault();
+      reveal(hit);
+      const blk=blockOf(hit);
+      const top=blk.getBoundingClientRect().top+window.scrollY-80;
+      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      blk.classList.remove('mm-flash');void blk.offsetWidth;blk.classList.add('mm-flash');
+      setTimeout(()=>blk.classList.remove('mm-flash'),2600);
+    });
+  });
+  window.__mmTarget=findTarget;
+})();
+</script>
+</body>
+</html>

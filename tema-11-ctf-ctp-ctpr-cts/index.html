@@ -1348,5 +1348,7 @@ function resetKviz(){ renderKviz(); document.getElementById('kviz').scrollIntoVi
 renderKviz();
 
 </script>
+<script>/* otočné kartičky: na přední straně jen obrázek – popisky by prozradily odpověď (text s class="keep" zůstane) */
+document.querySelectorAll('.flip .f text:not(.keep)').forEach(t=>{if(/[A-Za-z\u00C0-\u017F]/.test(t.textContent))t.remove();});</script>
 </body>
 </html>
