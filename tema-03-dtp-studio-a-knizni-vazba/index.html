@@ -459,6 +459,12 @@ figure.web.noimg .fallback{display:flex}
 }
 @media print{.am-try{display:none}.am-step,.am-tile{break-inside:avoid}}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -819,7 +825,8 @@ figure.web.noimg .fallback{display:flex}
         <li>Obálka nad 110 g/m² se ve hřbetním lomu <b>1× rýhuje</b>.</li>
       </ul>
     </div>
-    <div class="card" style="margin:0">
+    <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – kalkulačka: lze brožuru svázat ve V1?<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="card" style="margin:0">
       <b>Kalkulačka: lze brožuru svázat ve V1?</b>
       <div class="form">
         <label>Počet stran<input type="number" id="v1S" value="30" min="4" inputmode="numeric"></label>
@@ -829,7 +836,8 @@ figure.web.noimg .fallback{display:flex}
         </label>
       </div>
       <div id="v1Out"></div>
-    </div>
+    </div></details>
+
   </div>
   <details class="qa"><summary>Může padnout: Proč se u silné brožury V1 vnitřní listy „vysouvají“?</summary><div class="ans">Při snášení do sebe obepíná každý dvoulist všechny dvoulisty uvnitř. Vnitřní dvoulisty proto po složení vyčnívají na přední straně víc než vnější. Při ořezu se jim pak odřízne víc a okraje stran se posunou. Proto má V1 omezený počet listů a montáž u silnějších brožur stránky posouvá (creep, posun stran).</div></details>
   <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
@@ -899,7 +907,8 @@ figure.web.noimg .fallback{display:flex}
 <section id="potah">
   <div class="sec-head"><span class="dot m"></span><span class="kicker">Výpočet · potah desek V8</span></div>
   <h2>Navrhni potah na desky V8 z počtu stran</h2>
-  <p>Zákazník ti řekne: „Kniha A5, 240 stran.“ Ty z toho musíš spočítat, <b>jak velký kus potahu</b> (papíru, plátna) se má uříznout. Postup má 6 kroků. Ke každému kroku je vysvětlení, proč se to tak počítá.</p>
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: hřbet a potah desek V8 z počtu stran (kalkulačka a trenažér)<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<p>Zákazník ti řekne: „Kniha A5, 240 stran.“ Ty z toho musíš spočítat, <b>jak velký kus potahu</b> (papíru, plátna) se má uříznout. Postup má 6 kroků. Ke každému kroku je vysvětlení, proč se to tak počítá.</p>
 
   <div class="grid2">
     <figure class="svgfig stage-w" style="margin:0" aria-label="Řez knihou: blok, dvě lepenky a hřbet">
@@ -966,7 +975,8 @@ figure.web.noimg .fallback{display:flex}
     </div>
     <div class="acts" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="trCheck">Zkontrolovat</button><button class="btn" id="trNew">Nové zadání</button><button class="btn" id="trSol">Ukázat řešení</button></div>
     <div id="trOut" style="margin-top:10px"></div>
-  </div>
+  </div></details>
+
   <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
@@ -997,7 +1007,8 @@ figure.web.noimg .fallback{display:flex}
   </figure>
   <div class="tip"><b class="t">Rozteč otvorů</b><b>3:1</b> = 3 otvory na 1 palec (vzdálenost otvorů 8,47 mm), pro tenčí publikace s kroužkem do 14,3 mm. Na delší straně A4 je <b>34 otvorů</b>. <b>2:1</b> = 2 otvory na palec (12,7 mm), pro silnější publikace s většími kroužky. Na delší straně A4 je <b>23 otvorů</b>. Rohové otvory musí mít od kraje dost místa, jinak se papír utrhne.</div>
 
-  <h3>Kalkulačka: jaký kroužek objednat?</h3>
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – kalkulačka: jaký kroužek objednat<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<h3>Kalkulačka: jaký kroužek objednat?</h3>
   <div class="calc">
     <div class="form">
       <label>Počet stran<input type="number" id="krS" value="120" inputmode="numeric"></label>
@@ -1006,7 +1017,8 @@ figure.web.noimg .fallback{display:flex}
       <label class="wide"><span><input type="checkbox" id="krO" checked style="width:auto;vertical-align:-2px"> přidat fólii vpředu a karton vzadu (asi 0,5 mm)</span></label>
     </div>
     <div id="krOut"></div>
-  </div>
+  </div></details>
+
   <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
@@ -2025,5 +2037,15 @@ const WT=[
 
 
 
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
+})();
+</script>
 </body>
 </html>

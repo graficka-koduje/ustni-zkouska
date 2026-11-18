@@ -292,6 +292,12 @@ section.v1 h3{font-size:1.1rem;font-weight:700;margin:0 0 .5em}
 @keyframes v1flash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0)}}
 html{scroll-padding-top:64px}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 
@@ -969,6 +975,7 @@ html{scroll-padding-top:64px}
 <section id="vypocty">
 <h2><span class="num">5</span>Výpočty krok za krokem</h2>
 
+<details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočty: barevná odchylka ΔE a celkové krytí barvou<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
 <div class="calc" id="v-de1">
 <b>Příklad 1: Jak moc se liší barva v tisku od nátisku? (ΔE)</b>
 <p style="margin:.3em 0">Spektrofotometr změřil logo na nátisku a na tiskovém archu:</p>
@@ -1019,7 +1026,8 @@ html{scroll-padding-top:64px}
 </ol>
 <span class="res">310 % → FOGRA39 ano, PSO Coated v3 ani noviny ne</span>
 <p style="margin:.5em 0 0;font-size:.92em">Řešení: převést fotku do CMYK znovu z RGB originálu <b>se správným profilem</b> – profil sám ubere barvu (GCR) a krytí sníží. Nepřevádět CMYK znovu do CMYK.</p>
-</div>
+</div></details>
+
 </section>
 
 <!-- ================= VÝLUH ================= -->
@@ -1454,6 +1462,16 @@ document.querySelectorAll('.flip .f text:not(.keep)').forEach(t=>{if(/[A-Za-z\u0
  reorder();window.addEventListener('resize',reorder);
  document.getElementById('v1Open').onclick=()=>els.forEach(el=>{const b=el._b;const hint=el.querySelector('.v1-hint');hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[2]).join('<br style="margin-bottom:6px">');hint.classList.add('show');el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','true'));});
  document.getElementById('v1Close').onclick=()=>{root.querySelectorAll('.v1-hint').forEach(h=>h.classList.remove('show'));root.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));};
+})();
+</script>
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
 })();
 </script>
 </body>

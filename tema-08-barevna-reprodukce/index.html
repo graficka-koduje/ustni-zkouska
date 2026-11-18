@@ -310,6 +310,12 @@ select.inline-in{width:auto}
 @media (max-width:480px){.timeline.evo li{grid-template-columns:1fr;gap:2px}}
 #fpSvg [data-p]{transition:opacity .3s}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -543,7 +549,8 @@ select.inline-in{width:auto}
 
   <h3 id="hex">HEX krok za krokem: jak přečíst #38C4F0</h3><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Pro zájemce, u zkoušky se nevyžaduje.</p>
   <p>HEX je jen jiný zápis RGB. Každé dva znaky jsou jedna složka (R, G, B) v <b>šestnáctkové soustavě</b>. Ta má kromě číslic 0–9 ještě písmena: <b>A = 10, B = 11, C = 12, D = 13, E = 14, F = 15</b>.</p>
-  <div class="calc">
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: převod HEX → RGB<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="calc">
     <div class="st"><span class="n">1</span><div>Rozdělím zápis na tři dvojice: <span class="eq">38 · C4 · F0</span> → R, G, B.</div></div>
     <div class="st"><span class="n">2</span><div>V každé dvojici <b>první znak vynásobím 16</b> a <b>přičtu druhý znak</b>.</div></div>
     <div class="st"><span class="n">3</span><div>R: <span class="eq">3 × 16 + 8 = 48 + 8 = 56</span></div></div>
@@ -557,7 +564,8 @@ select.inline-in{width:auto}
     <div id="hexOut"></div>
   </div>
 
-  <h3 id="gamut">Gamut: co zařízení umí a co ne</h3>
+  </details>
+<h3 id="gamut">Gamut: co zařízení umí a co ne</h3>
   <div class="grid2">
     <div class="svgfig">
       <svg viewBox="0 0 300 290" role="img" aria-label="Chromatický diagram s gamutem sRGB a gamutem tisku CMYK">
@@ -2730,5 +2738,15 @@ const WT=[
 
 
 
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
+})();
+</script>
 </body>
 </html>

@@ -222,6 +222,12 @@ section.v1 h3{font-size:1.1rem;font-weight:700;margin:0 0 .5em}
 @keyframes v1flash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0)}}
 html{scroll-padding-top:64px}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 
@@ -805,6 +811,7 @@ html{scroll-padding-top:64px}
 <section id="vypocty">
 <h2><span class="num">5</span>Výpočty krok za krokem</h2>
 
+<details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočty: počet barev RGB, celkové krytí barvou, počet tiskových desek<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
 <div class="calc" id="v-rgb">
 <b>Příklad 1: Kolik barev zobrazí monitor v RGB (8 bitů na kanál)?</b>
 <ol>
@@ -840,7 +847,8 @@ html{scroll-padding-top:64px}
   <li>Leták 4/4 + logo v přímé barvě Pantone na líci: <code class="m">(4 + 1) + 4 = 9</code> desek.</li>
 </ol>
 <span class="res">4/4 = 8 desek</span>
-</div>
+</div></details>
+
 </section>
 
 <!-- ================= VÝLUH ================= -->
@@ -1210,6 +1218,16 @@ renderKviz();
  reorder();window.addEventListener('resize',reorder);
  document.getElementById('v1Open').onclick=()=>els.forEach(el=>{const b=el._b;const hint=el.querySelector('.v1-hint');hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[2]).join('<br style="margin-bottom:6px">');hint.classList.add('show');el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','true'));});
  document.getElementById('v1Close').onclick=()=>{root.querySelectorAll('.v1-hint').forEach(h=>h.classList.remove('show'));root.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));};
+})();
+</script>
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
 })();
 </script>
 </body>

@@ -267,6 +267,12 @@ canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#
 .angle-row svg{width:56px;height:56px;display:block;margin:0 auto 4px}
 @media (max-width:420px){.angle-row{grid-template-columns:repeat(2,1fr)}}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -420,7 +426,8 @@ canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#
   <h3 id="bity">Jak se obraz zapisuje do bitů – krok za krokem</h3>
   <p>Počítač si obrázek rozdělí na <b>mřížku čtverečků – pixelů</b>. U každého pixelu si musí zapamatovat, jakou má barvu. Zapamatuje si to pomocí <b>bitů</b>. Jeden <b>bit</b> je nejmenší informace: buď <b>0</b>, nebo <b>1</b> (jako vypínač: vypnuto / zapnuto).</p>
 
-  <div class="calc">
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: kolik odstínů dá kolik bitů<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="calc">
     <div class="st"><span class="n">1</span><div><b>1 bit = 2 možnosti.</b> Bit je jen 0, nebo 1. Pro pérovou předlohu to stačí: <span class="eq">0 = bílá</span> (papír), <span class="eq">1 = černá</span> (barva).</div></div>
     <div class="st"><span class="n">2</span><div><b>Každý další bit počet možností zdvojnásobí.</b> 2 bity: 00, 01, 10, 11 = <b>4</b> možnosti. 3 bity = 8 možností. A tak dále: s každým dalším bitem násobím dvěma.</div></div>
     <div class="st"><span class="n">3</span><div><b>8 bitů = 256 odstínů.</b> <span class="eq">2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = 256</span>. Zapisuje se to jako <span class="eq">2⁸ = 256</span>. Odstíny mají čísla <b>0 až 255</b> (počítá se i nula, proto řada končí číslem 255, a ne 256). 8 bitů = <b>1 bajt</b>.</div></div>
@@ -433,6 +440,7 @@ canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#
     <div class="steps-bar" id="bitBar"></div>
     <p style="margin:.6em 0 0" id="bitTxt"></p>
   </div>
+</details>
 
   <h3>Bitová × barvová hloubka</h3>
   <div class="grid2">
@@ -477,14 +485,17 @@ canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#
     </div>
   </div>
 
-  <h3>Počítáme: proč je CMYK soubor „těžší“</h3>
-  <p>Fotografie o rozměru <b>10 × 15 cm</b> se bude tisknout v rozlišení <b>300 dpi</b>. Kolik místa zabere v počítači?</p>
+  <h3>Proč je CMYK soubor „těžší“</h3>
+  <p>CMYK má <b>4 kanály</b>, RGB jen <b>3</b>. Každý pixel v CMYK proto zabere víc místa (4 bajty místo 3) a soubor je větší.</p>
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: kolik místa zabere fotka v počítači<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<p>Fotografie o rozměru <b>10 × 15 cm</b> se bude tisknout v rozlišení <b>300 dpi</b>. Kolik místa zabere v počítači?</p>
   <div class="calc">
     <div class="st"><span class="n">1</span><div><b>Převedu cm na palce.</b> 1 palec = 2,54 cm. <span class="eq">10 : 2,54 = 3,94 palce</span> a <span class="eq">15 : 2,54 = 5,91 palce</span>.</div></div>
     <div class="st"><span class="n">2</span><div><b>Spočítám pixely na každé straně.</b> 300 dpi = 300 pixelů na palec. <span class="eq">3,94 × 300 = 1 181 px</span> a <span class="eq">5,91 × 300 = 1 772 px</span>.</div></div>
     <div class="st"><span class="n">3</span><div><b>Spočítám všechny pixely.</b> <span class="eq">1 181 × 1 772 = 2 092 732 px</span>, tedy asi <b>2,1 milionu pixelů</b>.</div></div>
     <div class="st"><span class="n">4</span><div><b>Vynásobím počtem bajtů na pixel</b> (1 bajt = 8 bitů):<br>šeď 1 bajt → <span class="res">2,1 MB</span> · RGB 3 bajty → <span class="res">6,3 MB</span> · CMYK 4 bajty → <span class="res">8,4 MB</span> · pérovka 1 bit (⅛ bajtu) → <span class="res">0,26 MB</span></div></div>
   </div>
+</details>
 
   <h3 id="gamut">Proč CMYK neumí víc barev, i když má víc bitů</h3>
   <p>Na první pohled to nedává smysl: CMYK má 32 bitů a 4,3 miliardy kombinací, RGB jen 24 bitů a 16,7 milionu. Přesto <b>RGB umí zářivější barvy</b>. Proč?</p>
@@ -1580,5 +1591,15 @@ const WT=[
 
 
 
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
+})();
+</script>
 </body>
 </html>

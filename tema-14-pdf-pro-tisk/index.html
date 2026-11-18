@@ -179,6 +179,12 @@ section.v1 h3{font-size:1.1rem;font-weight:700;margin:0 0 .5em}
 @keyframes v1flash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0)}}
 html{scroll-padding-top:64px}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head><body>
 <div class="v1-bar"></div>
 <header class="v1 v1-dk"><div class="v1-wrap">
@@ -320,6 +326,7 @@ html{scroll-padding-top:64px}
 </ul>
 <div class="obr" data-img="spadavka"><div class="popis">Klikni na tlačítko a podívej se, co udělá ořez, když spadávka chybí.</div></div>
 <div style="text-align:center;margin:6px 0 12px"><button class="btn hlavni" id="btnSpad">✂️ Ořízni BEZ spadávky</button> <button class="btn" id="btnSpad2">✂️ Ořízni SE spadávkou</button> <button class="btn" id="btnSpad0">↺ Znovu</button></div>
+<details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: jak velká je stránka se spadávkou<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
 <div class="pisemka" style="border-color:#94a3b8;background:#f8fafc"><span class="stitek" style="color:#334155">🧮 Výpočet krok za krokem: jak velká je stránka se spadávkou?</span>
 <p style="margin:4px 0"><b>Příklad:</b> leták A4 (210 × 297 mm), spadávka 3 mm</p>
 <ul class="kroky">
@@ -328,6 +335,7 @@ html{scroll-padding-top:64px}
 <li><b>Výška:</b> nahoře i dole je také 3 mm → 297 + 6 = <b>303 mm</b>.</li>
 <li><b>Výsledek:</b> stránka se spadávkou má <b>216 × 303 mm</b>. Po ořezu zbude čistý formát 210 × 297 mm.</li>
 </ul></div>
+</details>
 <div class="rekni">„Spadávka je přesah barvy 3 mm za okraj, aby po ořezu nezůstal bílý proužek. Ořezové značky ukazují, kde se řeže, a jsou mimo čistý formát.“</div>
 <p>Spadávka na tiskovém archu: <a class="proklik" data-tema="5" data-kotva="am-vizitky" href="#">Téma č. 5 – vizitky se spadávkou ›</a></p>
 
@@ -915,6 +923,16 @@ document.getElementById('btnPre').onclick=function(){const el=document.getElemen
  reorder();window.addEventListener('resize',reorder);
  document.getElementById('v1Open').onclick=()=>els.forEach(el=>{const b=el._b;const hint=el.querySelector('.v1-hint');hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[2]).join('<br style="margin-bottom:6px">');hint.classList.add('show');el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','true'));});
  document.getElementById('v1Close').onclick=()=>{root.querySelectorAll('.v1-hint').forEach(h=>h.classList.remove('show'));root.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));};
+})();
+</script>
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
 })();
 </script>
 </body></html>

@@ -327,6 +327,12 @@ h4{font-size:1.02rem;margin-top:1.3em}
 @media(min-width:620px){.pis-list{grid-template-columns:1fr 1fr}.pis-grid{grid-template-columns:repeat(4,1fr)}}
 @media print{.pis details{display:none}}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -683,7 +689,8 @@ h4{font-size:1.02rem;margin-top:1.3em}
   <h3 id="detail">Kvalita obrazu 3: detail – rozlišení a ostrost</h3>
   <p>Pro kvalitní výtisk je potřeba <b>dobré rozlišení</b> a <b>správná ostrost</b>. Rozlišení se udává v počtu pixelů (bodů) na palec. Ideální rozlišení bitmapy pro tisk je <b>300 ppi</b> (často se píše 300 dpi) <b>ve skutečné tiskové velikosti</b>.</p>
 
-  <div class="calc">
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: kolik pixelů potřebuji (podrobně patří k tématům č. 13 a 15)<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="calc">
     <b>Počítáme krok za krokem: kolik pixelů potřebuji?</b>
     <p class="small muted" style="margin:.3em 0 .6em">Palec (″) je délková míra: <b>1 palec = 2,54 cm</b>. „300 ppi“ znamená: na každý palec délky potřebuji 300 pixelů.</p>
     <div class="st"><span class="n">1</span><div>Obrázek má být v knize široký <b>15 cm</b>. Převedu centimetry na palce, tedy <b>vydělím 2,54</b>:<br><span class="eq">15 : 2,54 = 5,9 palce</span></div></div>
@@ -704,6 +711,7 @@ h4{font-size:1.02rem;margin-top:1.3em}
     <div class="ctrl" style="margin-top:8px"><label for="pxIn">Obrázek má pixelů na šířku:</label><input class="inline-in" id="pxIn" type="number" value="1200" min="1"><label for="cmIn">Chci tisknout široký (cm):</label><input class="inline-in" id="cmIn" type="number" value="15" min="0.5" step="0.5"></div>
     <div id="ppiOut"></div>
   </div>
+</details>
 
   <div class="grid2">
     <div>
@@ -1727,5 +1735,15 @@ const WT=[
 
 
 
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
+})();
+</script>
 </body>
 </html>

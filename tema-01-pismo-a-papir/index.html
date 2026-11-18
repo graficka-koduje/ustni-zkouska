@@ -347,6 +347,12 @@ dl.facts dd{margin:0}
 .fam .glyphs{font-family:Inter,system-ui,sans-serif;font-size:1rem;line-height:1.6;letter-spacing:.06em;overflow-wrap:anywhere;background:var(--surface);border-radius:10px;padding:8px 10px;margin-bottom:6px}
 @media (max-width:560px){.fam{flex-direction:column}.fam .fx{align-self:center}.fam .glyphs{font-size:.88rem;letter-spacing:.02em}}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -809,12 +815,14 @@ dl.facts dd{margin:0}
   <h3 id="prevody">Výpočty z písemky: čtverčík, odstavcová zarážka, proklad</h3>
   <div class="warn"><b class="t">Pozor: s čím se v písemce počítá</b>Velikost písma se udává v <b>bodech (pointech) angloamerické soustavy</b>. V písemce proto platí <b>1 bod = 1 point = 0,353 mm</b>. Hodnotu 0,3759 mm (bod Didot) do těchto výpočtů nepoužívej.</div>
 
-  <div class="calc">
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: odkud se vezme 0,353 mm<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="calc">
     <b>Odkud se vezme 0,353 mm?</b>
     <div class="st"><span class="n">1</span><div>1 palec (inch) = <b>25,4 mm</b> a do jednoho palce se vejde <b>72 pointů</b>.</div></div>
     <div class="st"><span class="n">2</span><div>Jeden point je tedy 72. díl palce: <span class="eq">25,4 mm : 72</span>.</div></div>
     <div class="st"><span class="n">3</span><div>Dělím: 25,4 : 72 = 0,3527… (72 se do 25 nevejde, proto je výsledek menší než 1). Zaokrouhlím na tři desetinná místa: <span class="res">1 pt ≈ 0,353 mm</span></div></div>
   </div>
+</details>
 
   <div class="grid2">
     <div class="card" style="margin:0"><b>Čtverčík</b><br><span class="small">Čtverec, jehož strana je stejně velká jako <b>velikost písma</b>. U 10bodového písma má čtverčík 10 × 10 bodů. Čtverčík je proto vždy „na míru“ písmu.</span></div>
@@ -842,7 +850,8 @@ dl.facts dd{margin:0}
     </svg>
   </div>
 
-  <div class="calc">
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočty: odstavcová zarážka, proklad, převody Didot ⇄ pica (počítá se v písemné zkoušce)<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="calc">
     <b>Příklad z písemky: Vypočtěte velikost odstavcové zarážky (jednoho čtverčíku) v mm a velikost meziřádkového prokladu v bodech pro 10bodové písmo.</b>
     <div class="st"><span class="n">1</span><div><b>Zarážka = 1 čtverčík.</b> Písmo má 10 bodů, takže čtverčík má také 10 bodů. Převedu na mm: <span class="eq">10 × 0,353</span>.</div></div>
     <div class="st"><span class="n">2</span><div>Násobení deseti: <b>desetinnou čárku posunu o jedno místo doprava</b>. 0,353 → 3,53. Výsledek: <span class="res">odstavcová zarážka = 3,53 mm</span></div></div>
@@ -884,6 +893,7 @@ dl.facts dd{margin:0}
       <p class="small muted">Hodnoty jsou zaokrouhlené na jedno desetinné místo. Ve starších tabulkách najdeš někdy čísla o desetinu vyšší, protože vznikla jiným zaokrouhlením.</p>
     </div>
   </details>
+</details>
 
   <div class="say"><b class="t">Do písemky napiš (Písmové pojmy 1 a výpočet)</b>„<b>Druh písma</b> je označení pro konkrétní písmo charakteristické kresby, pojmenované vlastním názvem (jménem autora nebo jménem, které autor zvolil). <b>Řez písma</b> je kresebná verze určitého druhu písma, odvozená od základního písma, liší se od něj kresbou a slouží ke zvýraznění; vyznačovací řezy: kurzíva, polotučné, tučné, velmi tučné písmo, tučná kurzíva a kapitálky. <b>Velikost písma</b> udává výšku písma v bodech (pointech) angloamerické soustavy. Jednotky: 1 stopa = 12 palců, 1 pica = 12 points, 1 palec = 6 pica = 72 points, 1 bod (point) = 25,4 mm : 72 = 0,353 mm. Výpočet pro 10bodové písmo: odstavcová zarážka 10 × 0,353 = 3,53 mm, meziřádkový proklad 10 × 1,2 = 12 bodů.“<br><br>„Didotův systém je evropský, zdokonalil ho F. A. Didot (1775), jednotkou je typografický bod: 1 b = 0,3759 mm, 12 b = 1 cicero, 2 660 b = 1 m.“</div>
   <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
@@ -1918,5 +1928,15 @@ document.querySelectorAll('a[href="#didotpica"]').forEach(a=>a.addEventListener(
 
 
 
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
+})();
+</script>
 </body>
 </html>

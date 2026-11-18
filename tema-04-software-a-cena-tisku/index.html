@@ -328,6 +328,12 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
 .gnote{grid-column:1 / -1;font-size:.84rem;color:var(--muted);margin:-2px 0 0}
 .hl{background:var(--y-soft);border-radius:4px;padding:0 4px;font-weight:700}
 </style>
+<style id="rozsir-vypocet-css">
+details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
+details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
+details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
+details.rozsir-vypocet[open]>summary{margin-bottom:8px}
+</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -589,7 +595,8 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
 
   <h3 id="uzitek">Montáž a cena: kolik archů spotřebuji</h3>
   <p>Montáž rozhoduje i o ceně. Čím víc tiskovin se vejde na jeden arch, tím méně archů tiskárna potiskne a tím je zakázka levnější. Ukážeme si to na <b>50 vizitkách</b> z příkladu vyučující (vizitka 90 × 50 mm, arch digitálního tisku SRA3 = 320 × 450 mm).</p>
-  <div class="calc">
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: kolik vizitek se vejde na arch a kolik archů spotřebuji<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="calc">
     <div class="st"><span class="n">1</span><div><b>Vizitka i se spadávkou.</b> Ke každé straně přidám 3 mm spadávky: <span class="eq">90 + 3 + 3 = 96 mm</span>, <span class="eq">50 + 3 + 3 = 56 mm</span>.</div></div>
     <div class="st"><span class="n">2</span><div><b>Kolik vizitek vedle sebe.</b> <span class="eq">320 : 96 = 3,33</span> → vejdou se <b>3</b> celé vizitky. Desetinnou část škrtnu, protože kousek vizitky nevytisknu.</div></div>
     <div class="st"><span class="n">3</span><div><b>Kolik řad pod sebe.</b> <span class="eq">450 : 56 = 8,03</span> → <b>8</b> řad.</div></div>
@@ -597,7 +604,8 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
     <div class="st"><span class="n">5</span><div><b>Počet archů.</b> <span class="eq">50 : 24 = 2,08</span>. Tady naopak <b>zaokrouhlím nahoru</b> na <span class="res">3 archy</span>. Na 2 archy by se vešlo jen 48 vizitek a 2 by chyběly.</div></div>
   </div>
   <p class="small muted">V praxi tiskárna počítá i s okraji archu pro stroj a s rezervou na seřízení (makulatura), takže skutečný užitek bývá o něco menší.</p>
-  <div class="say"><b class="t">Do písemky napiš</b>„Program pro archovou montáž (Kodak Preps, Heidelberg Signa Station, Montax Imposer) rozmístí strany z PDF na tiskový arch podle vazby, lomů a formátu stroje a přidá ořezové, soutiskové a lomové značky a kontrolní proužek. Výstup jde přes RIP na CtP. Celou zakázku může řídit JDF – elektronický popis zakázky, který předává údaje z kalkulace do výroby.“</div>
+  </details>
+<div class="say"><b class="t">Do písemky napiš</b>„Program pro archovou montáž (Kodak Preps, Heidelberg Signa Station, Montax Imposer) rozmístí strany z PDF na tiskový arch podle vazby, lomů a formátu stroje a přidá ořezové, soutiskové a lomové značky a kontrolní proužek. Výstup jde přes RIP na CtP. Celou zakázku může řídit JDF – elektronický popis zakázky, který předává údaje z kalkulace do výroby.“</div>
   <details class="qa"><summary>Může padnout: Kdo dělá archovou montáž a co k ní potřebuje vědět?</summary><div class="ans">Operátor předtiskové přípravy (prepress) v tiskárně. Potřebuje znát čistý formát a spadávku, formát archu a možnosti stroje, počet stran, druh vazby, způsob skládání (lomy), obracení nebo klopení archu a směr vlákna papíru. Podrobně to najdeš v <a href="../tema-05-archova-montaz/#montaz">tématu 5</a> a vyřazování stran v <a href="../tema-02-polygraficka-montaz-a-knihy/#vyrazovani">tématu 2</a>.</div></details>
   <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
@@ -666,7 +674,8 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
 <section id="kalkulace">
   <div class="sec-head"><span class="dot y"></span><span class="kicker">2 · Souhrn · větev Y · počítání</span></div>
   <h2>Kalkulace krok za krokem</h2>
-  <p>Na kalkulaci stačí <b>sčítat, násobit, dělit a umět procenta</b>. Kalkulačka v mobilu je dovolená. Projdi si tři malé lekce a potom celý příklad.</p>
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočty: procenta, hodinová sazba, cena za kus, celý příklad kalkulace a kalkulačka zakázky<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<p>Na kalkulaci stačí <b>sčítat, násobit, dělit a umět procenta</b>. Kalkulačka v mobilu je dovolená. Projdi si tři malé lekce a potom celý příklad.</p>
 
   <h3>Lekce 1: Procenta bez stresu</h3>
   <p><b>Procento</b> = jedna setina. „20 %“ znamená „20 dílů ze 100“. Nejjednodušší cesta vede přes <b>10 %</b>:</p>
@@ -728,7 +737,8 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
       <label>Zisk (%)<input type="number" id="kZisk" value="20" min="0" inputmode="decimal"></label>
     </div>
     <div class="calc" id="kOut" style="margin:6px 0 0"></div>
-  </div>
+  </div></details>
+
   <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
@@ -832,7 +842,8 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
 
   <h3 id="strany">Kniha: proč počet stran dělitelný 4</h3>
   <p>Jeden list papíru přeložený na půl má <b>4 strany</b> (2 vpředu, 2 vzadu). Kniha se skládá ze složek po 4, 8, 16 nebo 32 stranách. Když počet stran není dělitelný 4, doplní se <b>vakáty</b> (prázdné strany).</p>
-  <div class="calc">
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: kolik vakátů doplnit<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<div class="calc">
     <div class="st"><span class="n">1</span><div><b>Dělitelné = beze zbytku.</b> Vydělím a podívám se, jestli něco nezbylo. <span class="eq">84 : 4 = 21</span>, zbytek 0 ✔.</div></div>
     <div class="st"><span class="n">2</span><div><b>Když zbytek vyjde.</b> <span class="eq">86 : 4 = 21</span>, zbytek <b>2</b> (21 × 4 = 84 a do 86 chybí 2). Strany navíc se do celé složky nevejdou.</div></div>
     <div class="st"><span class="n">3</span><div><b>Doplním vakáty.</b> Do další čtyřky chybí <span class="eq">4 − 2 = 2</span> strany → kniha bude mít <span class="res">88 stran</span> (2 prázdné).</div></div>
@@ -842,7 +853,8 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
     <div class="ctrl"><label for="pgIn">Počet stran knihy:</label><input type="number" id="pgIn" class="inline-in" value="84" min="1" inputmode="numeric"></div>
     <div id="pgOut"></div>
   </div>
-  <p class="small">Vazby V1 až V8 podrobně najdeš v <a href="../tema-02-polygraficka-montaz-a-knihy/#vazby">tématu 2</a>. Pro poptávku stačí: <b>V1</b> sešitová (skobky), <b>V2</b> lepená brožura, <b>V4</b> šitá brožura, <b>V8</b> tuhá vazba (šitý blok, desky z lepenky). Čím vyšší číslo, tím pevnější a dražší vazba.</p>
+  </details>
+<p class="small">Vazby V1 až V8 podrobně najdeš v <a href="../tema-02-polygraficka-montaz-a-knihy/#vazby">tématu 2</a>. Pro poptávku stačí: <b>V1</b> sešitová (skobky), <b>V2</b> lepená brožura, <b>V4</b> šitá brožura, <b>V8</b> tuhá vazba (šitý blok, desky z lepenky). Čím vyšší číslo, tím pevnější a dražší vazba.</p>
 
   <h3 id="ukazky">Šest ukázkových poptávek (podle podkladů vyučující)</h3>
   <p>Všechny poptávky mají stejnou kostru: <b>pozdrav → co chci → kolik kusů a jaký rozměr → papír → barevnost → dokončení → poděkování → podpis a kontakt</b>. K e-mailu se přikládá <b>PDF v náhledové kvalitě</b> (malý soubor jen pro představu), ne tisková data.</p>
@@ -1691,5 +1703,15 @@ const WT=[
 
 
 
+<script id="rozsir-vypocet-js">
+(function(){
+  function openUp(el){while(el){if(el.tagName==='DETAILS'&&!el.open)el.open=true;el=el.parentElement;}}
+  function byHash(h){if(!h||h.length<2)return null;try{return document.getElementById(decodeURIComponent(h.slice(1)));}catch(e){return null;}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var t=byHash(a.getAttribute('href'));if(t)openUp(t);}},true);
+  function fromLoc(){var t=byHash(location.hash);if(t){openUp(t);setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',fromLoc);
+  if(document.readyState!=='loading')fromLoc();else document.addEventListener('DOMContentLoaded',fromLoc);
+})();
+</script>
 </body>
 </html>
