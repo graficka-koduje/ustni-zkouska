@@ -217,33 +217,94 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
 @media(min-width:620px){.pis-list{grid-template-columns:1fr 1fr}.pis-grid{grid-template-columns:repeat(4,1fr)}}
 @media print{.pis details{display:none}}
 .vk .t span b{display:inline;font-size:1em}.vk img{flex:0 0 92px;width:92px;height:92px;object-fit:contain}.flip .f img{max-width:100%;max-height:100%;object-fit:contain}</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="v1-styl">
+/* ===== 1. varianta (styl otázek 1–8): úvod, potítko, myšlenková mapa ===== */
+.v1{--v1-bg:#f7f7f4;--v1-s:#fff;--v1-s2:#f0f0ec;--v1-ink:#1b1c1f;--v1-mu:#5d6068;--v1-line:#dcdcd6;--v1-c:#00a3e0;--v1-m:#e6007e;--v1-y:#f2c500;--v1-k:#1b1c1f;--v1-sh:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--v1-ink)}
+@media (prefers-color-scheme: dark){.v1.v1-dk{--v1-bg:#131417;--v1-s:#1c1d21;--v1-s2:#24262b;--v1-ink:#ececec;--v1-mu:#a3a6ad;--v1-line:#34363c;--v1-k:#e4e4e4}}
+.v1 *{box-sizing:border-box}
+.v1-bar{height:6px;background:linear-gradient(90deg,#00a3e0 0 25%,#e6007e 25% 50%,#f2c500 50% 75%,#1b1c1f 75%)}
+.v1-wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.v1{padding:30px 0 24px;background:var(--v1-s);border-bottom:1px solid var(--v1-line)}
+header.v1 .v1-back{display:inline-block;font-size:.9rem;color:var(--v1-mu);text-decoration:none;margin-bottom:12px}
+header.v1 .v1-badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:#1b1c1f;color:#fff;padding:4px 10px;border-radius:99px}
+header.v1 h1{font-size:clamp(1.5rem,5vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:.35em 0 .3em;color:var(--v1-ink)}
+header.v1 h1 .sep{color:#e6007e}
+header.v1 .v1-lead{font-size:1.05rem;color:var(--v1-mu);max-width:720px;margin:0 0 6px;line-height:1.55}
+header.v1 .v1-easy{display:inline-flex;align-items:center;gap:8px;margin-top:6px;background:#e6007e;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:12px;font-size:1.02rem}
+nav.v1{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--v1-bg) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--v1-line)}
+nav.v1 .v1-wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.v1 .v1-wrap::-webkit-scrollbar{display:none}
+nav.v1 a{flex:0 0 auto;text-decoration:none;color:var(--v1-ink);font-size:.88rem;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--v1-s);border:1px solid var(--v1-line)}
+nav.v1 a.v1-pri{background:#e6007e;border-color:#e6007e;color:#fff}
+section.v1{padding:40px 0 10px;line-height:1.6}
+section.v1 p{margin:.4em 0 .9em}
+.v1-sh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.v1-dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+.v1-dot.c{background:var(--v1-c)}.v1-dot.m{background:var(--v1-m)}.v1-dot.y{background:var(--v1-y)}.v1-dot.k{background:var(--v1-k)}
+.v1-kick{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--v1-mu)}
+section.v1 h2{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:800;letter-spacing:-.01em;margin:0 0 .5em;line-height:1.2;border:0;padding:0;background:none;color:var(--v1-ink)}
+section.v1 h3{font-size:1.1rem;font-weight:700;margin:0 0 .5em}
+.v1-card{background:var(--v1-s);border:1px solid var(--v1-line);border-radius:14px;padding:16px 18px;box-shadow:var(--v1-sh)}
+.v1-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media (max-width:760px){.v1-g2{grid-template-columns:1fr}}
+.v1-one{border-left:6px solid var(--v1-k);background:var(--v1-s);padding:14px 18px;border-radius:0 12px 12px 0;font-size:1.04rem;margin:14px 0;box-shadow:var(--v1-sh)}
+.v1-one .lbl{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--v1-mu);margin-bottom:2px}
+.v1 ol{padding-left:1.3em;margin:.3em 0} .v1 ol li{margin:.25em 0}
+.v1-muted{color:var(--v1-mu);font-size:.88rem}
+.v1-tl{list-style:none;padding:0;margin:10px 0}
+.v1-tl li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--v1-line)}
+.v1-tl .tm{font-weight:800;font-variant-numeric:tabular-nums}
+.v1-tbar{height:12px;border-radius:99px;overflow:hidden;display:flex;margin:6px 0 2px}.v1-tbar i{display:block;height:100%}
+.v1-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.v1-btn{font:inherit;font-weight:600;font-size:.9rem;border:1px solid var(--v1-line);background:var(--v1-s);color:var(--v1-ink);border-radius:99px;padding:7px 14px;cursor:pointer}
+.v1-mm{display:grid;grid-template-columns:1fr 230px 1fr;grid-template-rows:auto auto;gap:18px 34px;align-items:start;position:relative}
+.v1-mc{grid-column:2;grid-row:1 / span 2;align-self:center;text-align:center;background:#1b1c1f;color:#fff;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:24px;position:relative;z-index:2}
+.v1-mc .n{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.v1-mc .t{font-weight:800;font-size:1.08rem;line-height:1.25;margin:6px 0}
+.v1-mc .s{font-size:.8rem;opacity:.85}
+.v1-br{background:var(--v1-s);border:2px solid var(--v1-line);border-radius:18px;padding:14px 14px 12px;position:relative;box-shadow:var(--v1-sh)}
+.v1-br.c{border-color:var(--v1-c)}.v1-br.m{border-color:var(--v1-m)}.v1-br.y{border-color:var(--v1-y)}.v1-br.k{border-color:#1b1c1f}
+.v1-br::after{content:"";position:absolute;top:50%;width:34px;height:3px}
+.v1-br.left::after{right:-36px}.v1-br.right::after{left:-36px}
+.v1-br.c::after{background:var(--v1-c)}.v1-br.m::after{background:var(--v1-m)}.v1-br.y::after{background:var(--v1-y)}.v1-br.k::after{background:#1b1c1f}
+.v1-br h4{display:flex;align-items:center;gap:8px;font-size:1.02rem;margin:0 0 10px;color:var(--v1-ink)}
+.v1-br h4 .num{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex:0 0 auto}
+.v1-br.c .num{background:var(--v1-c)}.v1-br.m .num{background:var(--v1-m)}.v1-br.y .num{background:var(--v1-y);color:#1b1c1f}.v1-br.k .num{background:#1b1c1f}
+.v1-chips{display:flex;flex-wrap:wrap;gap:6px}
+.v1-chip{font:inherit;font-size:.85rem;font-weight:600;border-radius:99px;padding:5px 11px;border:1px solid var(--v1-line);background:var(--v1-s2);color:var(--v1-ink);cursor:pointer;text-align:left}
+.v1-br.c .v1-chip[aria-expanded="true"]{background:var(--v1-c);color:#fff;border-color:var(--v1-c)}
+.v1-br.m .v1-chip[aria-expanded="true"]{background:var(--v1-m);color:#fff;border-color:var(--v1-m)}
+.v1-br.y .v1-chip[aria-expanded="true"]{background:var(--v1-y);color:#1b1c1f;border-color:var(--v1-y)}
+.v1-br.k .v1-chip[aria-expanded="true"]{background:#1b1c1f;color:#fff;border-color:#1b1c1f}
+.v1-hint{font-size:.92rem;margin-top:10px;padding:9px 11px;border-radius:10px;background:var(--v1-s2);display:none;line-height:1.45}
+.v1-hint.show{display:block}.v1-hint b{display:block;margin-bottom:2px}
+.v1-goto{display:inline-block;margin-top:10px;font-size:.86rem;font-weight:700;color:var(--v1-mu)}
+@media (max-width:860px){
+ .v1-mm{grid-template-columns:1fr;gap:14px;padding-left:18px}
+ .v1-mm::before{content:"";position:absolute;left:4px;top:40px;bottom:30px;width:3px;background:linear-gradient(#1b1c1f,#00a3e0,#e6007e,#f2c500,#1b1c1f);border-radius:3px}
+ .v1-mc{grid-column:1;grid-row:auto;border-radius:18px;aspect-ratio:auto;padding:18px}
+ .v1-br{grid-column:1!important;grid-row:auto!important}
+ .v1-br.left::after,.v1-br.right::after{left:-16px;right:auto;width:14px}
+}
+.v1-flash{animation:v1flash 2.4s ease-out;border-radius:8px}
+@keyframes v1flash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0)}}
+html{scroll-padding-top:64px}
+</style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <small>ÚSTNÍ ZKOUŠKA · REPRODUKČNÍ GRAFIK · TÉMA Č. 10</small>
-    <h1>Správa a nastavení barev (color management). Barvové prostory (RGB, CMYK). ICC profily · Litografie a ofsetový tisk – popis technik, rozdíl mezi technikami a jejich použití</h1>
-    <p>Mapa → souhrn → výluh → test → kvíz</p>
-    <a class="easy-link" href="jednoduse.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:#fff;color:#a8005c;font-weight:800;text-decoration:none;padding:10px 16px;border-radius:12px">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
-  </div>
-</header>
+<div class="v1-bar"></div>
+<header class="v1 v1-dk"><div class="v1-wrap">
+<a class="v1-back" href="../">← zpět na rozcestník</a><br>
+<span class="v1-badge">Ústní zkouška · Téma č. 10</span>
+<h1>Správa a nastavení barev (color management). Barvové prostory (RGB, CMYK). ICC profily <span class="sep">/</span> Litografie a ofsetový tisk – popis technik, rozdíl mezi technikami a jejich použití</h1>
+<p class="v1-lead">Všechno, co potřebuješ, abys u zkoušky 15 minut mluvil/a v souvislostech, a ne v heslech. Nejdřív si přečti, o čem otázka je, pak si projdi myšlenkovou mapu, potom souhrn a nakonec se vyzkoušej.</p>
+<a class="v1-easy" href="jednoduse.html">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
+</div></header>
+<nav class="v1 v1-dk" aria-label="Obsah"><div class="v1-wrap"><a class="v1-pri" href="jednoduse.html">⚡ Jednoduše</a><a href="#potitko">💡 Jak na potítko</a><a href="#mapa">🧠 Myšlenková mapa</a><a href="#vyluh">⭐ Výluh</a><a href="#umet">✅ Co mám umět</a><a href="#pisemka">📝 Písemka</a><a href="#cast-a">🎨 Správa barev</a><a href="#a-lab">🌐 CIELAB</a><a href="#cast-b">🪨 Litografie a ofset</a><a href="#vypocty">🧮 Výpočty</a><a href="#test">✍️ Test psaním</a><a href="#kviz">❓ Kvíz</a><a href="../">🏠 Rozcestník</a></div></nav>
 
-<nav class="menu">
-  <div class="wrap">
-    <a href="jednoduse.html" style="background:#e6007e;color:#fff;border-color:#e6007e">⚡ Jednoduše</a>
-    <a href="#mapa" class="hl">🗺️ Mapa</a>
-    <a href="#vyluh">⭐ Výluh</a>
-    <a href="#umet">✅ Co mám umět</a>
-    <a href="#pisemka">📝 Písemka</a>
-    <a href="#cast-a">🎨 Správa barev</a>
-    <a href="#a-lab">🌐 CIELAB</a>
-    <a href="#cast-b">🪨 Litografie a ofset</a>
-    <a href="#vypocty">🧮 Výpočty</a>
-    <a href="#test">✍️ Test psaním</a>
-    <a href="#kviz">❓ Kvíz</a>
-  </div>
-</nav>
 
 <main class="wrap">
 
@@ -253,83 +314,26 @@ details.extra>summary{cursor:pointer;font-weight:700;color:var(--muted)}
 </div>
 
 <!-- ================= MAPA ================= -->
-<section id="mapa">
-  <h2><span class="num">1</span>Myšlenková mapa</h2>
-  <div class="key"><b>Na potítku:</b> jdi po větvích <b>shora dolů</b>. Ke každému pojmu řekni <b>1–2 věty</b>. Klikni na pojem = podrobnosti. <b>Žluté pojmy</b> jsou nejdůležitější. Pojmy se značkou <b>📝</b> jsou i v písemce.</div>
+<!-- ============ POTÍTKO (1. varianta) ============ -->
+<section id="potitko" class="v1 v1-dk"><div class="v1-wrap">
+<div class="v1-sh"><span class="v1-dot k"></span><span class="v1-kick">Než začneš</span></div>
+<h2>Jak o otázce přemýšlet na potítku</h2>
+<p>Otázka má dvě části: <b>správu barev</b> a <b>litografii s ofsetem</b>. Spojuje je cíl: aby barva, kterou grafik vidí na monitoru, <b>vypadala stejně i v tisku</b>.</p><p>Nejdřív vysvětli, proč každé zařízení ukazuje barvy jinak a jak je „překládá“ <b>CIELAB</b> s ICC profily. Pak řekni, na čem se tiskne – od kamene <b>litografie</b> až po dnešní <b>ofset</b> – a jak se v tiskárně kontroluje barva.</p>
+<div class="v1-one"><span class="lbl">Tvoje úvodní věta</span>„Každé zařízení zobrazuje barvy jinak, proto se barvy spravují. Hlavní pojem je <b>CIELAB</b> – nezávislý model, který funguje jako <b>překladač</b> mezi RGB a CMYK. Tiskne se nejčastěji <b>ofsetem</b>, který vznikl z <b>litografie</b> – tisku z kamene.“</div>
+<div class="v1-g2">
+<div class="v1-card"><h3>Co si načrtnout na papír (5 minut)</h3><ol><li><b>Šipku</b>: RGB → <b>Lab</b> → CMYK (Lab uprostřed jako překladač).</li><li><b>Kouli Lab</b>: osa L (jas), osy a (zelená–červená) a b (modrá–žlutá).</li><li><b>Tři obrysy gamutu</b>: oko (Lab) > RGB > CMYK.</li><li><b>Kámen</b> s kresbou mastnou tuší a vodou kolem.</li><li><b>Tři válce ofsetu</b>: deska → guma → papír.</li></ol><p class="v1-muted">Náčrtek je tvůj tahák: když se zasekneš, podíváš se na něj a pokračuješ dál.</p></div>
+<div class="v1-card"><h3>Rozvrh 15 minut mluvení</h3><div class="v1-tbar" aria-hidden="true"><i style="flex:1;background:#888"></i><i style="flex:4;background:var(--v1-c)"></i><i style="flex:3;background:var(--v1-m)"></i><i style="flex:4;background:var(--v1-y)"></i><i style="flex:3;background:#1b1c1f"></i><i style="flex:1;background:#888"></i></div><ul class="v1-tl"><li><span class="tm">0–1</span><span>Úvod: stejná barva na monitoru i v tisku</span></li><li><span class="tm">1–5</span><span><b>CIELAB</b> (C): proč spravujeme barvy, závislé × nezávislé prostory, barvová koule</span></li><li><span class="tm">5–7</span><span><b>ICC profil a kontrola</b> (M): převod, kalibrace monitoru, náhled, nátisk, D50</span></li><li><span class="tm">7–10</span><span><b>Litografie</b> (Y): Senefelder, kámen, postup tisku, chromolitografie</span></li><li><span class="tm">10–14</span><span><b>Ofset</b> (K): nepřímý tisk, tisková jednotka, desky, stroje, kontrola kvality</span></li><li><span class="tm">14–15</span><span>Závěr: díky Lab a ICC profilu ofset vytiskne barvy, které schválil zákazník</span></li></ul></div>
+</div></div></section>
 
-  <div class="mapa">
-    <div class="center">TÉMA 10<span>aby barvy vypadaly všude stejně (pomáhá Lab) + litografie a ofset</span></div>
+<!-- ============ MAPA (1. varianta) ============ -->
+<section id="mapa" class="v1 v1-dk"><div class="v1-wrap">
+<div class="v1-sh"><span class="v1-dot m"></span><span class="v1-kick">1 · Myšlenková mapa</span></div>
+<h2>Mapa otázky ve čtyřech barvách CMYK</h2>
+<p>Mluv v pořadí <b>C → M → Y → K</b>, stejně jako se tisknou barvy. Klepni na heslo a uvidíš, co k němu říct. Odkaz pod větví tě pak pošle přímo na jeho podnadpis v souhrnu.</p>
+<div class="v1-tools"><button class="v1-btn" type="button" id="v1Open">Rozbalit všechna hesla</button><button class="v1-btn" type="button" id="v1Close">Sbalit</button></div>
+<div class="v1-mm" id="v1mm"></div>
+</div></section>
 
-    <div class="branch a">
-      <h4>🎨 A) Správa barev</h4>
-      <p class="q"><span class="step">1.</span> Proč barvy spravujeme?</p>
-      <div class="nodes">
-        <a href="#a-proc">každé zařízení jinak</a>
-        <a href="#a-prostory">RGB, CMYK = závislé</a>
-      </div>
-      <p class="q"><span class="step">2.</span> ⭐ CIELAB – hlavní pojem</p>
-      <div class="nodes">
-        <a href="#a-lab" class="labstar">nezávislý na zařízení</a>
-        <a href="#a-koule" class="labstar">barvová koule L, a, b</a>
-        <a href="#a-prevod" class="labstar">„překladač“ RGB ↔ CMYK</a>
-        <a href="#a-gamut" class="labstar">Lab = co vidí oko</a>
-      </div>
-      <p class="q"><span class="step">3.</span> ICC profil</p>
-      <div class="nodes">
-        <a href="#a-icc">co je ICC profil</a>
-        <a href="#a-intent">perceptuální × relativní</a>
-      </div>
-      <p class="q"><span class="step">4.</span> Kontrola barev</p>
-      <div class="nodes">
-        <a href="#a-kalibrace">kalibrace monitoru</a>
-        <a href="#a-nahled">náhled</a>
-        <a href="#a-natisk" class="labstar">verifikovaný nátisk</a>
-        <a href="#a-prohlizeni">světlo D50</a>
-      </div>
-    </div>
-
-    <div class="branch b">
-      <h4>🪨 B) Litografie a ofset</h4>
-      <p class="q"><span class="step">1.</span> Co to je?</p>
-      <div class="nodes">
-        <a href="#b-pojmy">tisk z plochy</a>
-        <a href="#b-princip" class="labstar">voda × mastná barva</a>
-      </div>
-      <p class="q"><span class="step">2.</span> Litografie (kamenotisk)</p>
-      <div class="nodes">
-        <a href="#b-senefelder" class="labstar">Senefelder 1796</a>
-        <a href="#b-kamen">litografický kámen</a>
-        <a href="#b-postup">postup tisku</a>
-        <a href="#b-chromo">chromolitografie, plakáty</a>
-        <a href="#b-litodnes">litografie dnes</a>
-      </div>
-      <p class="q"><span class="step">3.</span> Ofset – jak funguje</p>
-      <div class="nodes">
-        <a href="#b-vznik">vznik ofsetu 1904</a>
-        <a href="#b-ofset" class="labstar">nepřímý tisk</a>
-        <a href="#b-jednotka">tisková jednotka</a>
-        <a href="#b-vlhceni">vlhčení a barvení</a>
-        <a href="#b-desky">desky, CtP</a>
-      </div>
-      <p class="q"><span class="step">4.</span> Výroba v tiskárně</p>
-      <div class="nodes">
-        <a href="#b-priprava">příprava a tisk</a>
-        <a href="#b-suseni">sušení, lak, UV</a>
-        <a href="#b-stroje">typy strojů</a>
-        <a href="#b-kotoucovy">📝 kotoučový ofset – co tiskne</a>
-      </div>
-      <p class="q"><span class="step">5.</span> Kvalita a hodnocení</p>
-      <div class="nodes">
-        <a href="#b-standard">standardizovaný tisk</a>
-        <a href="#b-kontrola">📝 jak se měří kvalita (denzitometr)</a>
-        <a href="#b-vady">vady tisku</a>
-        <a href="#b-vyhody">výhody × nevýhody</a>
-        <a href="#b-pouziti">použití</a>
-      </div>
-    </div>
-  </div>
-  <div class="term" style="margin-top:12px"><b>Most mezi A a B:</b> grafik převede barvy do CMYK přes <b>Lab</b> podle profilu ofsetu (např. FOGRA39), tiskárna podle stejné normy tiskne. Proto spolu obě části otázky souvisejí.</div>
-</section>
 
 <!-- ================= CO MÁM UMĚT ================= -->
 <section id="umet">
@@ -1412,5 +1416,45 @@ renderKviz();
 </script>
 <script>/* otočné kartičky: na přední straně jen obrázek – popisky by prozradily odpověď (text s class="keep" zůstane) */
 document.querySelectorAll('.flip .f text:not(.keep)').forEach(t=>{if(/[A-Za-z\u00C0-\u017F]/.test(t.textContent))t.remove();});</script>
+
+<script id="v1-mapa">
+/* ---------- myšlenková mapa (1. varianta): heslo → krátké vysvětlení → proklik na podnadpis ---------- */
+(function(){
+ const M=[{"k": "c", "t": "Proč spravujeme barvy a CIELAB", "items": [["každé zařízení jinak", "a-proc", "Fotoaparát, monitor, mobil i tiskový stroj zobrazují stejnou barvu trochu jinak."], ["RGB, CMYK = závislé", "a-prostory", "RGB a CMYK jsou závislé na zařízení – stejná čísla vypadají na každém zařízení jinak."], ["nezávislý na zařízení", "a-lab", "CIELAB (Lab) popisuje barvu tak, jak ji vidí oko – nezávisle na zařízení. Zavedla ho CIE v roce 1976."], ["barvová koule L, a, b", "a-koule", "L = jas (černá–bílá), a = zelená–červená, b = modrá–žlutá."], ["„překladač“ RGB ↔ CMYK", "a-prevod", "Monitor „mluví“ RGB, tisk CMYK. Barva se převádí přes Lab: RGB → Lab → CMYK."], ["Lab = co vidí oko", "a-gamut", "Lab obsahuje všechny barvy, které vidí oko. RGB je menší, CMYK ještě menší."]]}, {"k": "m", "t": "ICC profil a kontrola barev", "items": [["co je ICC profil", "a-icc", "Soubor, který popisuje, jak barvy zobrazuje konkrétní zařízení – např. Coated FOGRA39 pro křídový papír."], ["perceptuální × relativní", "a-intent", "Dva způsoby převodu barev mimo gamut: perceptuální zachová vztahy barev, relativní přesné barvy uvnitř gamutu."], ["kalibrace monitoru", "a-kalibrace", "Sonda změří monitor a nastaví ho: bílý bod D50, správný jas a gama."], ["náhled", "a-nahled", "Kalibrovaný monitor ukáže, jak bude vypadat tisk (Photoshop: Nátisk barev)."], ["verifikovaný nátisk", "a-natisk", "Vytištěná zkušební kopie, která napodobí výsledný tisk. Zákazník ji schválí."], ["světlo D50", "a-prohlizeni", "Nátisky a archy se porovnávají pod normovaným světlem D50 (5 000 K) v neutrálním okolí."]]}, {"k": "y", "t": "Tisk z plochy a litografie", "items": [["tisk z plochy", "b-pojmy", "Tisknoucí i netisknoucí místa leží v jedné rovině. První technikou byla litografie."], ["voda × mastná barva", "b-princip", "Forma se navlhčí – voda zůstane na netisknoucích místech. Mastná barva přilne jen k tisknoucím."], ["Senefelder 1796", "b-senefelder", "Litografii vynalezl Alois Senefelder v Mnichově v letech 1796–1798."], ["litografický kámen", "b-kamen", "Tiskovou formou je deska z jemnozrnného vápence – nejlepší z bavorského Solnhofenu."], ["postup tisku", "b-postup", "Kresba mastnou tuší zrcadlově → preparace → vlhčení → barvení → tisk na lisu."], ["chromolitografie, plakáty", "b-chromo", "Barevná litografie: každá barva má vlastní kámen. Tak vznikaly barevné plakáty."], ["litografie dnes", "b-litodnes", "Dnes umělecká technika – každý výtisk je originál, umělec ho podepíše a očísluje."]]}, {"k": "k", "t": "Ofset", "items": [["vznik ofsetu 1904", "b-vznik", "Kámen nahradily ohebné kovové desky a gumový potah – vznikl ofset (1904)."], ["nepřímý tisk", "b-ofset", "Barva jde z desky na gumový válec a teprve z něj na papír. Deska se tolik neopotřebí."], ["tisková jednotka", "b-jednotka", "Barevník, vlhčicí zařízení, deskový, přenosový a tlakový válec."], ["vlhčení a barvení", "b-vlhceni", "Vlhčicí roztok je voda s přísadami, mírně kyselý. Potom barevník nanese barvu."], ["desky, CtP", "b-desky", "Tenká hliníková deska se zdrsněným povrchem, osvícená v CtP."], ["příprava a tisk", "b-priprava", "Data projdou RIPem, vyřadí se na arch a osvítí na desky. Pak se tiskne."], ["sušení, lak, UV", "b-suseni", "Barva schne vsakováním a oxidací, u heatsetu horkým vzduchem, UV barvy pod UV světlem."], ["typy strojů", "b-stroje", "Archové a kotoučové stroje, podle formátu a počtu tiskových jednotek."], ["kotoučový ofset – co tiskne", "b-kotoucovy", "Noviny, časopisy, katalogy, letáky, inzertní přílohy, knihy ve velkém nákladu."], ["standardizovaný tisk", "b-standard", "Tiskne se podle normy ISO 12647-2, na okraji archu je kontrolní proužek."], ["jak se měří kvalita", "b-kontrola", "Měrný proužek po celé šířce archu se měří denzitometrem."], ["vady tisku", "b-vady", "Tónování, nesoutisk, zdvojení – podrobně v tématu 9."], ["výhody × nevýhody", "b-vyhody", "Levný při větších nákladech, kvalitní. Drahá příprava pro malý náklad."], ["použití", "b-pouziti", "Knihy, časopisy, katalogy, letáky, plakáty, obaly – většina tiskovin."]]}], C={"n": 10, "t": "Stejná barva všude", "s": "monitor → Lab → tisk ofsetem"};
+ const root=document.getElementById('v1mm');if(!root)return;
+ const center=document.createElement('div');center.className='v1-mc';
+ center.innerHTML='<div class="n">Otázka č. '+C.n+'</div><div class="t">'+C.t+'</div><div class="s">'+C.s+'<br>C → M → Y → K</div>';
+ const pos={c:[1,1],m:[1,2],y:[3,1],k:[3,2]};
+ const els=[];
+ M.forEach(b=>{
+  const el=document.createElement('div');el.className='v1-br '+b.k+' '+(b.k==='c'||b.k==='m'?'left':'right');el.id='mm-'+b.k;
+  let h='<h4><span class="num">'+b.k.toUpperCase()+'</span>'+b.t+'</h4><div class="v1-chips">';
+  b.items.forEach((it,i)=>{h+='<button class="v1-chip" type="button" aria-expanded="false" data-i="'+i+'">'+it[0]+'</button>';});
+  h+='</div><div class="v1-hint" aria-live="polite"></div><a class="v1-goto" href="#'+b.items[0][1]+'">→ podrobně v souhrnu</a>';
+  el.innerHTML=h;
+  const hint=el.querySelector('.v1-hint'),go=el.querySelector('.v1-goto');
+  el.querySelectorAll('.v1-chip').forEach(ch=>ch.addEventListener('click',()=>{
+   const open=ch.getAttribute('aria-expanded')==='true';
+   el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+   if(open){hint.classList.remove('show');go.href='#'+b.items[0][1];go.textContent='→ podrobně v souhrnu';return;}
+   ch.setAttribute('aria-expanded','true');const it=b.items[+ch.dataset.i];
+   hint.innerHTML='<b>'+it[0]+'</b>'+it[2];hint.classList.add('show');
+   go.href='#'+it[1];go.textContent='→ „'+it[0]+'“ podrobně v souhrnu';
+  }));
+  go.addEventListener('click',e=>{const t=document.getElementById(go.getAttribute('href').slice(1));if(!t)return;
+   let d=t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+   setTimeout(()=>{t.classList.remove('v1-flash');void t.offsetWidth;t.classList.add('v1-flash');setTimeout(()=>t.classList.remove('v1-flash'),2600);},350);});
+  el._b=b;els.push(el);
+ });
+ const byK={};els.forEach(e=>byK[e._b.k]=e);
+ [byK.c,center,byK.y,byK.m,byK.k].forEach(e=>e&&root.appendChild(e));
+ function reorder(){const wide=window.matchMedia('(min-width:861px)').matches;
+  els.forEach(el=>{const k=el._b.k;el.style.gridColumn=wide?pos[k][0]:'';el.style.gridRow=wide?pos[k][1]:'';el.style.order=wide?'':({c:1,m:2,y:3,k:4})[k];});
+  center.style.order=wide?'':0;}
+ reorder();window.addEventListener('resize',reorder);
+ document.getElementById('v1Open').onclick=()=>els.forEach(el=>{const b=el._b;const hint=el.querySelector('.v1-hint');hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[2]).join('<br style="margin-bottom:6px">');hint.classList.add('show');el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','true'));});
+ document.getElementById('v1Close').onclick=()=>{root.querySelectorAll('.v1-hint').forEach(h=>h.classList.remove('show'));root.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));};
+})();
+</script>
 </body>
 </html>

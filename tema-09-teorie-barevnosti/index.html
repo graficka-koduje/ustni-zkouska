@@ -147,117 +147,118 @@ footer{color:var(--muted);font-size:.85em;text-align:center;margin-top:40px}
   nav.menu,#back{display:none!important}
 }
 .vk .t span b{display:inline;font-size:1em}.vk img{flex:0 0 92px;width:92px;height:92px;object-fit:contain}.flip .f img{max-width:100%;max-height:100%;object-fit:contain}</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="v1-styl">
+/* ===== 1. varianta (styl otázek 1–8): úvod, potítko, myšlenková mapa ===== */
+.v1{--v1-bg:#f7f7f4;--v1-s:#fff;--v1-s2:#f0f0ec;--v1-ink:#1b1c1f;--v1-mu:#5d6068;--v1-line:#dcdcd6;--v1-c:#00a3e0;--v1-m:#e6007e;--v1-y:#f2c500;--v1-k:#1b1c1f;--v1-sh:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--v1-ink)}
+@media (prefers-color-scheme: dark){.v1.v1-dk{--v1-bg:#131417;--v1-s:#1c1d21;--v1-s2:#24262b;--v1-ink:#ececec;--v1-mu:#a3a6ad;--v1-line:#34363c;--v1-k:#e4e4e4}}
+.v1 *{box-sizing:border-box}
+.v1-bar{height:6px;background:linear-gradient(90deg,#00a3e0 0 25%,#e6007e 25% 50%,#f2c500 50% 75%,#1b1c1f 75%)}
+.v1-wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.v1{padding:30px 0 24px;background:var(--v1-s);border-bottom:1px solid var(--v1-line)}
+header.v1 .v1-back{display:inline-block;font-size:.9rem;color:var(--v1-mu);text-decoration:none;margin-bottom:12px}
+header.v1 .v1-badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:#1b1c1f;color:#fff;padding:4px 10px;border-radius:99px}
+header.v1 h1{font-size:clamp(1.5rem,5vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:.35em 0 .3em;color:var(--v1-ink)}
+header.v1 h1 .sep{color:#e6007e}
+header.v1 .v1-lead{font-size:1.05rem;color:var(--v1-mu);max-width:720px;margin:0 0 6px;line-height:1.55}
+header.v1 .v1-easy{display:inline-flex;align-items:center;gap:8px;margin-top:6px;background:#e6007e;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:12px;font-size:1.02rem}
+nav.v1{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--v1-bg) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--v1-line)}
+nav.v1 .v1-wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.v1 .v1-wrap::-webkit-scrollbar{display:none}
+nav.v1 a{flex:0 0 auto;text-decoration:none;color:var(--v1-ink);font-size:.88rem;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--v1-s);border:1px solid var(--v1-line)}
+nav.v1 a.v1-pri{background:#e6007e;border-color:#e6007e;color:#fff}
+section.v1{padding:40px 0 10px;line-height:1.6}
+section.v1 p{margin:.4em 0 .9em}
+.v1-sh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.v1-dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+.v1-dot.c{background:var(--v1-c)}.v1-dot.m{background:var(--v1-m)}.v1-dot.y{background:var(--v1-y)}.v1-dot.k{background:var(--v1-k)}
+.v1-kick{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--v1-mu)}
+section.v1 h2{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:800;letter-spacing:-.01em;margin:0 0 .5em;line-height:1.2;border:0;padding:0;background:none;color:var(--v1-ink)}
+section.v1 h3{font-size:1.1rem;font-weight:700;margin:0 0 .5em}
+.v1-card{background:var(--v1-s);border:1px solid var(--v1-line);border-radius:14px;padding:16px 18px;box-shadow:var(--v1-sh)}
+.v1-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media (max-width:760px){.v1-g2{grid-template-columns:1fr}}
+.v1-one{border-left:6px solid var(--v1-k);background:var(--v1-s);padding:14px 18px;border-radius:0 12px 12px 0;font-size:1.04rem;margin:14px 0;box-shadow:var(--v1-sh)}
+.v1-one .lbl{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--v1-mu);margin-bottom:2px}
+.v1 ol{padding-left:1.3em;margin:.3em 0} .v1 ol li{margin:.25em 0}
+.v1-muted{color:var(--v1-mu);font-size:.88rem}
+.v1-tl{list-style:none;padding:0;margin:10px 0}
+.v1-tl li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--v1-line)}
+.v1-tl .tm{font-weight:800;font-variant-numeric:tabular-nums}
+.v1-tbar{height:12px;border-radius:99px;overflow:hidden;display:flex;margin:6px 0 2px}.v1-tbar i{display:block;height:100%}
+.v1-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.v1-btn{font:inherit;font-weight:600;font-size:.9rem;border:1px solid var(--v1-line);background:var(--v1-s);color:var(--v1-ink);border-radius:99px;padding:7px 14px;cursor:pointer}
+.v1-mm{display:grid;grid-template-columns:1fr 230px 1fr;grid-template-rows:auto auto;gap:18px 34px;align-items:start;position:relative}
+.v1-mc{grid-column:2;grid-row:1 / span 2;align-self:center;text-align:center;background:#1b1c1f;color:#fff;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:24px;position:relative;z-index:2}
+.v1-mc .n{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.v1-mc .t{font-weight:800;font-size:1.08rem;line-height:1.25;margin:6px 0}
+.v1-mc .s{font-size:.8rem;opacity:.85}
+.v1-br{background:var(--v1-s);border:2px solid var(--v1-line);border-radius:18px;padding:14px 14px 12px;position:relative;box-shadow:var(--v1-sh)}
+.v1-br.c{border-color:var(--v1-c)}.v1-br.m{border-color:var(--v1-m)}.v1-br.y{border-color:var(--v1-y)}.v1-br.k{border-color:#1b1c1f}
+.v1-br::after{content:"";position:absolute;top:50%;width:34px;height:3px}
+.v1-br.left::after{right:-36px}.v1-br.right::after{left:-36px}
+.v1-br.c::after{background:var(--v1-c)}.v1-br.m::after{background:var(--v1-m)}.v1-br.y::after{background:var(--v1-y)}.v1-br.k::after{background:#1b1c1f}
+.v1-br h4{display:flex;align-items:center;gap:8px;font-size:1.02rem;margin:0 0 10px;color:var(--v1-ink)}
+.v1-br h4 .num{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex:0 0 auto}
+.v1-br.c .num{background:var(--v1-c)}.v1-br.m .num{background:var(--v1-m)}.v1-br.y .num{background:var(--v1-y);color:#1b1c1f}.v1-br.k .num{background:#1b1c1f}
+.v1-chips{display:flex;flex-wrap:wrap;gap:6px}
+.v1-chip{font:inherit;font-size:.85rem;font-weight:600;border-radius:99px;padding:5px 11px;border:1px solid var(--v1-line);background:var(--v1-s2);color:var(--v1-ink);cursor:pointer;text-align:left}
+.v1-br.c .v1-chip[aria-expanded="true"]{background:var(--v1-c);color:#fff;border-color:var(--v1-c)}
+.v1-br.m .v1-chip[aria-expanded="true"]{background:var(--v1-m);color:#fff;border-color:var(--v1-m)}
+.v1-br.y .v1-chip[aria-expanded="true"]{background:var(--v1-y);color:#1b1c1f;border-color:var(--v1-y)}
+.v1-br.k .v1-chip[aria-expanded="true"]{background:#1b1c1f;color:#fff;border-color:#1b1c1f}
+.v1-hint{font-size:.92rem;margin-top:10px;padding:9px 11px;border-radius:10px;background:var(--v1-s2);display:none;line-height:1.45}
+.v1-hint.show{display:block}.v1-hint b{display:block;margin-bottom:2px}
+.v1-goto{display:inline-block;margin-top:10px;font-size:.86rem;font-weight:700;color:var(--v1-mu)}
+@media (max-width:860px){
+ .v1-mm{grid-template-columns:1fr;gap:14px;padding-left:18px}
+ .v1-mm::before{content:"";position:absolute;left:4px;top:40px;bottom:30px;width:3px;background:linear-gradient(#1b1c1f,#00a3e0,#e6007e,#f2c500,#1b1c1f);border-radius:3px}
+ .v1-mc{grid-column:1;grid-row:auto;border-radius:18px;aspect-ratio:auto;padding:18px}
+ .v1-br{grid-column:1!important;grid-row:auto!important}
+ .v1-br.left::after,.v1-br.right::after{left:-16px;right:auto;width:14px}
+}
+.v1-flash{animation:v1flash 2.4s ease-out;border-radius:8px}
+@keyframes v1flash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0)}}
+html{scroll-padding-top:64px}
+</style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <small>ÚSTNÍ ZKOUŠKA · REPRODUKČNÍ GRAFIK · TÉMA Č. 9</small>
-    <h1>Teorie barevnosti (světlo a barva). Vnímání barev, jak světlo ovlivňuje barvu? Aditivní a subtraktivní míchání barev · Tisk z plochy – popis, příklady tiskových technik, příklady použití tisku</h1>
-    <p>Mapa → souhrn → výluh → test → kvíz</p>
-    <a class="easy-link" href="jednoduse.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:#fff;color:#a8005c;font-weight:800;text-decoration:none;padding:10px 16px;border-radius:12px">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
-  </div>
-</header>
+<div class="v1-bar"></div>
+<header class="v1 v1-dk"><div class="v1-wrap">
+<a class="v1-back" href="../">← zpět na rozcestník</a><br>
+<span class="v1-badge">Ústní zkouška · Téma č. 9</span>
+<h1>Teorie barevnosti (světlo a barva). Vnímání barev, jak světlo ovlivňuje barvu? Aditivní a subtraktivní míchání barev <span class="sep">/</span> Tisk z plochy – popis, příklady tiskových technik, příklady použití tisku</h1>
+<p class="v1-lead">Všechno, co potřebuješ, abys u zkoušky 15 minut mluvil/a v souvislostech, a ne v heslech. Nejdřív si přečti, o čem otázka je, pak si projdi myšlenkovou mapu, potom souhrn a nakonec se vyzkoušej.</p>
+<a class="v1-easy" href="jednoduse.html">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
+</div></header>
+<nav class="v1 v1-dk" aria-label="Obsah"><div class="v1-wrap"><a class="v1-pri" href="jednoduse.html">⚡ Jednoduše</a><a href="#potitko">💡 Jak na potítko</a><a href="#mapa">🧠 Myšlenková mapa</a><a href="#vyluh">⭐ Výluh</a><a href="#umet">✅ Co mám umět</a><a href="#cast-a">🎨 Barvy</a><a href="#cast-b">🖨️ Tisk z plochy</a><a href="#vypocty">🧮 Výpočty</a><a href="#test">✍️ Test psaním</a><a href="#kviz">❓ Kvíz</a><a href="../">🏠 Rozcestník</a></div></nav>
 
-<nav class="menu">
-  <div class="wrap">
-    <a href="jednoduse.html" style="background:#e6007e;color:#fff;border-color:#e6007e">⚡ Jednoduše</a>
-    <a href="#mapa" class="hl">🗺️ Mapa</a>
-    <a href="#vyluh">⭐ Výluh</a>
-    <a href="#umet">✅ Co mám umět</a>
-    <a href="#cast-a">🎨 Barvy</a>
-    <a href="#cast-b">🖨️ Tisk z plochy</a>
-    <a href="#vypocty">🧮 Výpočty</a>
-    <a href="#test">✍️ Test psaním</a>
-    <a href="#kviz">❓ Kvíz</a>
-  </div>
-</nav>
 
 <main class="wrap">
 
 <!-- ================= MAPA ================= -->
-<section id="mapa">
-  <h2><span class="num">1</span>Myšlenková mapa</h2>
-  <div class="key"><b>Na potítku:</b> jdi po větvích <b>shora dolů</b>. Ke každému pojmu řekni <b>1–2 věty</b>. Klikni na pojem = podrobnosti.</div>
+<!-- ============ POTÍTKO (1. varianta) ============ -->
+<section id="potitko" class="v1 v1-dk"><div class="v1-wrap">
+<div class="v1-sh"><span class="v1-dot k"></span><span class="v1-kick">Než začneš</span></div>
+<h2>Jak o otázce přemýšlet na potítku</h2>
+<p>Otázka má dvě části: <b>teorii barev</b> a <b>tisk z plochy</b>. Spojuje je jedna myšlenka: <b>barva, kterou vidíme, je světlo</b> – a tiskař ji musí co nejvěrněji přenést na papír.</p><p>Nejdřív vysvětli, co je barva a jak ji vnímáme, jak barvy popisujeme a mícháme (RGB × CMYK). Pak řekni, jak se barvy CMYK tisknou nejrozšířenější technikou – <b>ofsetem</b>, tedy tiskem z plochy.</p>
+<div class="v1-one"><span class="lbl">Tvoje úvodní věta</span>„Barva je světlo, které dopadne do oka. Na monitoru se barvy <b>sčítají</b> ze světla (RGB), v tisku se <b>odčítají</b> tiskovými barvami (CMYK). Nejčastěji se tiskne <b>ofsetem</b> – to je nepřímý <b>tisk z plochy</b>, kde se nesnáší <b>voda a mastná barva</b>.“</div>
+<div class="v1-g2">
+<div class="v1-card"><h3>Co si načrtnout na papír (5 minut)</h3><ol><li><b>Pruh spektra</b> 380–780 nm a pod něj „zdroj + předmět + oko“.</li><li><b>Dva kruhy</b>: RGB (sčítání → bílá) a CMY (odčítání → tmavá).</li><li><b>Odstín · sytost · jas</b> – tři slova pod sebou.</li><li><b>Tři válce ofsetu</b>: deskový → přenosový (guma) → tlakový.</li><li><b>Deska</b>: tisknoucí místo = barva, netisknoucí = voda.</li></ol><p class="v1-muted">Náčrtek je tvůj tahák: když se zasekneš, podíváš se na něj a pokračuješ dál.</p></div>
+<div class="v1-card"><h3>Rozvrh 15 minut mluvení</h3><div class="v1-tbar" aria-hidden="true"><i style="flex:1;background:#888"></i><i style="flex:4;background:var(--v1-c)"></i><i style="flex:3;background:var(--v1-m)"></i><i style="flex:4;background:var(--v1-y)"></i><i style="flex:3;background:#1b1c1f"></i><i style="flex:1;background:#888"></i></div><ul class="v1-tl"><li><span class="tm">0–1</span><span>Úvod: barva = světlo, v tisku ji přenáší ofset</span></li><li><span class="tm">1–4</span><span><b>Světlo, oko, vlastnosti barvy</b> (C): spektrum, čípky, odstín–sytost–jas, D50</span></li><li><span class="tm">4–7</span><span><b>Míchání barev</b> (M): RGB × CMYK, proč černá K, doplňkové barvy, gamut</span></li><li><span class="tm">7–11</span><span><b>Tisk z plochy</b> (Y): princip voda × mastná barva, litografie, ofset a 3 válce</span></li><li><span class="tm">11–14</span><span><b>Stroje a použití</b> (K): archové × kotoučové, suchý ofset, výhody a nevýhody</span></li><li><span class="tm">14–15</span><span>Závěr: ofset tiskne barvy CMYK – nejrozšířenější technika</span></li></ul></div>
+</div></div></section>
 
-  <div class="mapa">
-    <div class="center">TÉMA 9<span>barvy (jak vznikají a jak je mícháme) + tisk z plochy (ofset)</span></div>
+<!-- ============ MAPA (1. varianta) ============ -->
+<section id="mapa" class="v1 v1-dk"><div class="v1-wrap">
+<div class="v1-sh"><span class="v1-dot m"></span><span class="v1-kick">1 · Myšlenková mapa</span></div>
+<h2>Mapa otázky ve čtyřech barvách CMYK</h2>
+<p>Mluv v pořadí <b>C → M → Y → K</b>, stejně jako se tisknou barvy. Klepni na heslo a uvidíš, co k němu říct. Odkaz pod větví tě pak pošle přímo na jeho podnadpis v souhrnu.</p>
+<div class="v1-tools"><button class="v1-btn" type="button" id="v1Open">Rozbalit všechna hesla</button><button class="v1-btn" type="button" id="v1Close">Sbalit</button></div>
+<div class="v1-mm" id="v1mm"></div>
+</div></section>
 
-    <div class="branch a">
-      <h4>🎨 A) Teorie barevnosti</h4>
-      <p class="q"><span class="step">1.</span> Co je barva?</p>
-      <div class="nodes">
-        <a href="#a-svetlo" data-map="a1">světlo 380–780 nm</a>
-        <a href="#a-svetlo" data-map="a1b">spektrum</a>
-        <a href="#a-podminky" data-map="a2">zdroj + předmět + oko</a>
-      </div>
-      <p class="q"><span class="step">2.</span> Jak barvy vidíme?</p>
-      <div class="nodes">
-        <a href="#a-oko" data-map="a3">oko, sítnice</a>
-        <a href="#a-oko" data-map="a4">čípky × tyčinky</a>
-        <a href="#a-poruchy" data-map="a5">barvoslepost</a>
-      </div>
-      <p class="q"><span class="step">3.</span> Jak barvu popíšeme?</p>
-      <div class="nodes">
-        <a href="#a-vlastnosti" data-map="a6">odstín · sytost · jas</a>
-        <a href="#a-vlastnosti" data-map="a6b">pestré × nepestré</a>
-        <a href="#a-osvetleni" data-map="a7">D50, metamerie</a>
-        <a href="#a-kontrast" data-map="a7b">kontrast okolí</a>
-      </div>
-      <p class="q"><span class="step">4.</span> Jak barvy mícháme?</p>
-      <div class="nodes">
-        <a href="#a-aditivni" data-map="a8">aditivní RGB</a>
-        <a href="#a-subtraktivni" data-map="a9">subtraktivní CMYK</a>
-        <a href="#a-cerna" data-map="a9b">proč K (černá)</a>
-        <a href="#a-doplnkove" data-map="a10">doplňkové barvy</a>
-        <a href="#a-psychologie" data-map="a10b">psychologie barev</a>
-      </div>
-      <p class="q"><span class="step">5.</span> Barvy v praxi grafika</p>
-      <div class="nodes">
-        <a href="#a-gamut" data-map="a11">gamut RGB × CMYK</a>
-        <a href="#a-modely" data-map="a12">RGB, CMY, CIELAB, ICC</a>
-        <a href="#a-mereni" data-map="a13">měření barev</a>
-      </div>
-    </div>
-
-    <div class="branch b">
-      <h4>🖨️ B) Tisk z plochy</h4>
-      <p class="q"><span class="step">1.</span> Kam patří?</p>
-      <div class="nodes">
-        <a href="#b-techniky" data-map="b1">4 tiskové techniky</a>
-      </div>
-      <p class="q"><span class="step">2.</span> Na jakém principu tiskne?</p>
-      <div class="nodes">
-        <a href="#b-princip" data-map="b2">jedna rovina</a>
-        <a href="#b-princip" data-map="b3">voda × mastná barva</a>
-        <a href="#b-historie" data-map="b4">litografie, Senefelder</a>
-      </div>
-      <p class="q"><span class="step">3.</span> Jak funguje ofset?</p>
-      <div class="nodes">
-        <a href="#b-ofset" data-map="b5">nepřímý tisk</a>
-        <a href="#b-valce" data-map="b6">3 válce</a>
-        <a href="#b-vlhceni" data-map="b7">vlhčení + barvení</a>
-        <a href="#b-desky" data-map="b8">tiskové desky</a>
-        <a href="#b-barvy" data-map="b8b">barvy a papíry</a>
-      </div>
-      <p class="q"><span class="step">4.</span> Jaké jsou stroje?</p>
-      <div class="nodes">
-        <a href="#b-stroje" data-map="b9">typy strojů</a>
-        <a href="#b-stroje" data-map="b9d">papíry a náklady</a>
-        <a href="#b-stroje" data-map="b9b">heatset × coldset</a>
-        <a href="#b-stroje" data-map="b9c">malý ofset</a>
-        <a href="#b-suchy" data-map="b10">suchý ofset</a>
-      </div>
-      <p class="q"><span class="step">5.</span> Kvalita a hodnocení</p>
-      <div class="nodes">
-        <a href="#b-vady" data-map="b11">vady tisku</a>
-        <a href="#b-kontrola" data-map="b12">kontrola barev</a>
-        <a href="#b-vyhody" data-map="b13">výhody × nevýhody</a>
-        <a href="#b-pouziti" data-map="b14">použití dnes</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ================= CO MÁM UMĚT ================= -->
 <section id="umet">
@@ -1170,6 +1171,46 @@ function renderKviz(){
 }
 function resetKviz(){ renderKviz(); document.getElementById('kviz').scrollIntoView({behavior:'smooth'}); }
 renderKviz();
+</script>
+
+<script id="v1-mapa">
+/* ---------- myšlenková mapa (1. varianta): heslo → krátké vysvětlení → proklik na podnadpis ---------- */
+(function(){
+ const M=[{"k": "c", "t": "Světlo, oko a vlastnosti barvy", "items": [["světlo 380–780 nm", "a-svetlo", "Barva je světlo – elektromagnetické záření. Oko vidí jen jeho malou část: 380–780 nm."], ["spektrum", "a-svetlo", "Bílé světlo se hranolem rozloží na duhu: fialová, modrá, zelená, žlutá, oranžová, červená."], ["zdroj + předmět + oko", "a-podminky", "Barvu vidím, jen když je světlo (zdroj), předmět, který ho odráží, a oko s mozkem."], ["oko, sítnice", "a-oko", "Světlo projde čočkou a dopadne na sítnici. Signál jde zrakovým nervem do mozku."], ["čípky × tyčinky", "a-oko", "Čípky vidí barvy (červené, zelené, modré) a potřebují světlo. Tyčinky vidí jen světlo a tmu, i v šeru."], ["barvoslepost", "a-poruchy", "Daltonismus – člověk nejčastěji špatně rozliší červenou a zelenou. Týká se asi 8 % mužů."], ["odstín · sytost · jas", "a-vlastnosti", "Tři vlastnosti barvy: odstín (jaká barva), sytost (jak čistá), jas (jak světlá)."], ["pestré × nepestré", "a-vlastnosti", "Pestré barvy mají odstín (červená, modrá). Nepestré jsou bílá, šedé a černá."], ["D50, metamerie", "a-osvetleni", "Barvy se hodnotí pod normovaným světlem D50 (5 000 K). Metamerie: dvě barvy jsou stejné jen pod jedním světlem."], ["kontrast okolí", "a-kontrast", "Stejná barva vypadá jinak podle okolí. Proto se barvy hodnotí na neutrálně šedém pozadí."]]}, {"k": "m", "t": "Míchání barev a barvy v praxi", "items": [["aditivní RGB", "a-aditivni", "Sčítání světel: R + G + B = bílá. Monitor, mobil, projektor."], ["subtraktivní CMYK", "a-subtraktivni", "Odčítání: tiskové barvy světlo pohlcují. C + M + Y = tmavá barva. Tisk."], ["proč K (černá)", "a-cerna", "C + M + Y dají jen tmavě hnědou. Černá K dá hlubokou černou, ostrý text a ušetří barvy."], ["doplňkové barvy", "a-doplnkove", "Leží v kruhu naproti sobě: R–C, G–M, B–Y."], ["psychologie barev", "a-psychologie", "Rozšiřující: barvy působí na city – červená vzrušuje, modrá uklidňuje."], ["gamut RGB × CMYK", "a-gamut", "Gamut = rozsah barev zařízení. CMYK má menší gamut než RGB – zářivé barvy nevytiskne."], ["RGB, CMY, CIELAB, ICC", "a-modely", "Rozšiřující (téma 10): Lab je nezávislý „překladač“ mezi RGB a CMYK, převod řídí ICC profil."], ["měření barev", "a-mereni", "Rozšiřující (téma 10): denzitometr měří hustotu barvy, spektrofotometr přesný odstín."]]}, {"k": "y", "t": "Tisk z plochy a ofset", "items": [["4 tiskové techniky", "b-techniky", "Z výšky, z plochy, z hloubky a průtisk – podle toho, kde jsou na formě tisknoucí místa."], ["jedna rovina", "b-princip", "Tisknoucí i netisknoucí místa leží prakticky v jedné rovině."], ["voda × mastná barva", "b-princip", "Netisknoucí místa přijímají vodu, tisknoucí mastnou barvu. Voda a mastnota se nesnášejí."], ["litografie, Senefelder", "b-historie", "Tisk z plochy vynalezl Alois Senefelder v Mnichově (1796–1798) – litografie z kamene."], ["nepřímý tisk", "b-ofset", "Ofset tiskne nepřímo: deska → gumový potah přenosového válce → papír."], ["3 válce", "b-valce", "Deskový válec s deskou, přenosový válec s gumou a tlakový válec, který přitlačí papír."], ["vlhčení + barvení", "b-vlhceni", "Desku nejdřív navlhčí vlhčicí válce, potom barevník nanese barvu jen na tisknoucí místa."], ["tiskové desky", "b-desky", "Tenké hliníkové desky, osvícené v CtP. Podrobně v tématech 10 a 23."], ["barvy a papíry", "b-barvy", "Ofsetová barva = pigment + pojivo + přísady. Tiskne hlavně na papír a karton."]]}, {"k": "k", "t": "Stroje, kvalita a použití", "items": [["typy strojů", "b-stroje", "Archové stroje tisknou na archy, kotoučové z role. Podle počtu barev 1–8 tiskových jednotek."], ["papíry a náklady", "b-stroje", "Archový ofset – střední náklady, kotoučový – velké náklady (noviny, časopisy, letáky)."], ["heatset × coldset", "b-stroje", "Heatset suší barvu horkým vzduchem (časopisy), coldset bez sušení – barva se vsákne (noviny)."], ["malý ofset", "b-stroje", "Malé stroje pro jednoduché tiskoviny v menších nákladech."], ["suchý ofset", "b-suchy", "Tiskne bez vlhčení – netisknoucí místa tvoří silikonová vrstva, která barvu odpuzuje."], ["vady tisku", "b-vady", "Rozšiřující (témata 10 a 23): tónování, zdvojení, nesoutisk, obtiskování."], ["kontrola barev", "b-kontrola", "Rozšiřující (témata 10 a 23): měrný proužek na archu se měří denzitometrem."], ["výhody × nevýhody", "b-vyhody", "Levný při větším nákladu a kvalitní. Nevyplatí se pro malý náklad – drahá příprava."], ["použití dnes", "b-pouziti", "Nejrozšířenější technika: knihy, časopisy, katalogy, letáky, plakáty, obaly."]]}], C={"n": 9, "t": "Barva vzniká ze světla", "s": "a do tisku ji přenese ofset"};
+ const root=document.getElementById('v1mm');if(!root)return;
+ const center=document.createElement('div');center.className='v1-mc';
+ center.innerHTML='<div class="n">Otázka č. '+C.n+'</div><div class="t">'+C.t+'</div><div class="s">'+C.s+'<br>C → M → Y → K</div>';
+ const pos={c:[1,1],m:[1,2],y:[3,1],k:[3,2]};
+ const els=[];
+ M.forEach(b=>{
+  const el=document.createElement('div');el.className='v1-br '+b.k+' '+(b.k==='c'||b.k==='m'?'left':'right');el.id='mm-'+b.k;
+  let h='<h4><span class="num">'+b.k.toUpperCase()+'</span>'+b.t+'</h4><div class="v1-chips">';
+  b.items.forEach((it,i)=>{h+='<button class="v1-chip" type="button" aria-expanded="false" data-i="'+i+'">'+it[0]+'</button>';});
+  h+='</div><div class="v1-hint" aria-live="polite"></div><a class="v1-goto" href="#'+b.items[0][1]+'">→ podrobně v souhrnu</a>';
+  el.innerHTML=h;
+  const hint=el.querySelector('.v1-hint'),go=el.querySelector('.v1-goto');
+  el.querySelectorAll('.v1-chip').forEach(ch=>ch.addEventListener('click',()=>{
+   const open=ch.getAttribute('aria-expanded')==='true';
+   el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+   if(open){hint.classList.remove('show');go.href='#'+b.items[0][1];go.textContent='→ podrobně v souhrnu';return;}
+   ch.setAttribute('aria-expanded','true');const it=b.items[+ch.dataset.i];
+   hint.innerHTML='<b>'+it[0]+'</b>'+it[2];hint.classList.add('show');
+   go.href='#'+it[1];go.textContent='→ „'+it[0]+'“ podrobně v souhrnu';
+  }));
+  go.addEventListener('click',e=>{const t=document.getElementById(go.getAttribute('href').slice(1));if(!t)return;
+   let d=t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+   setTimeout(()=>{t.classList.remove('v1-flash');void t.offsetWidth;t.classList.add('v1-flash');setTimeout(()=>t.classList.remove('v1-flash'),2600);},350);});
+  el._b=b;els.push(el);
+ });
+ const byK={};els.forEach(e=>byK[e._b.k]=e);
+ [byK.c,center,byK.y,byK.m,byK.k].forEach(e=>e&&root.appendChild(e));
+ function reorder(){const wide=window.matchMedia('(min-width:861px)').matches;
+  els.forEach(el=>{const k=el._b.k;el.style.gridColumn=wide?pos[k][0]:'';el.style.gridRow=wide?pos[k][1]:'';el.style.order=wide?'':({c:1,m:2,y:3,k:4})[k];});
+  center.style.order=wide?'':0;}
+ reorder();window.addEventListener('resize',reorder);
+ document.getElementById('v1Open').onclick=()=>els.forEach(el=>{const b=el._b;const hint=el.querySelector('.v1-hint');hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[2]).join('<br style="margin-bottom:6px">');hint.classList.add('show');el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','true'));});
+ document.getElementById('v1Close').onclick=()=>{root.querySelectorAll('.v1-hint').forEach(h=>h.classList.remove('show'));root.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));};
+})();
 </script>
 </body>
 </html>

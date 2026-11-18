@@ -307,110 +307,117 @@ figure img{max-width:100%;height:auto}
   body.tisk-vyluh .say{font-size:9.5px;padding:5px 7px;margin:5px 0 0}
 }
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="v1-styl">
+/* ===== 1. varianta (styl otázek 1–8): úvod, potítko, myšlenková mapa ===== */
+.v1{--v1-bg:#f7f7f4;--v1-s:#fff;--v1-s2:#f0f0ec;--v1-ink:#1b1c1f;--v1-mu:#5d6068;--v1-line:#dcdcd6;--v1-c:#00a3e0;--v1-m:#e6007e;--v1-y:#f2c500;--v1-k:#1b1c1f;--v1-sh:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--v1-ink)}
+@media (prefers-color-scheme: dark){.v1.v1-dk{--v1-bg:#131417;--v1-s:#1c1d21;--v1-s2:#24262b;--v1-ink:#ececec;--v1-mu:#a3a6ad;--v1-line:#34363c;--v1-k:#e4e4e4}}
+.v1 *{box-sizing:border-box}
+.v1-bar{height:6px;background:linear-gradient(90deg,#00a3e0 0 25%,#e6007e 25% 50%,#f2c500 50% 75%,#1b1c1f 75%)}
+.v1-wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.v1{padding:30px 0 24px;background:var(--v1-s);border-bottom:1px solid var(--v1-line)}
+header.v1 .v1-back{display:inline-block;font-size:.9rem;color:var(--v1-mu);text-decoration:none;margin-bottom:12px}
+header.v1 .v1-badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:#1b1c1f;color:#fff;padding:4px 10px;border-radius:99px}
+header.v1 h1{font-size:clamp(1.5rem,5vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:.35em 0 .3em;color:var(--v1-ink)}
+header.v1 h1 .sep{color:#e6007e}
+header.v1 .v1-lead{font-size:1.05rem;color:var(--v1-mu);max-width:720px;margin:0 0 6px;line-height:1.55}
+header.v1 .v1-easy{display:inline-flex;align-items:center;gap:8px;margin-top:6px;background:#e6007e;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:12px;font-size:1.02rem}
+nav.v1{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--v1-bg) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--v1-line)}
+nav.v1 .v1-wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.v1 .v1-wrap::-webkit-scrollbar{display:none}
+nav.v1 a{flex:0 0 auto;text-decoration:none;color:var(--v1-ink);font-size:.88rem;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--v1-s);border:1px solid var(--v1-line)}
+nav.v1 a.v1-pri{background:#e6007e;border-color:#e6007e;color:#fff}
+section.v1{padding:40px 0 10px;line-height:1.6}
+section.v1 p{margin:.4em 0 .9em}
+.v1-sh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.v1-dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+.v1-dot.c{background:var(--v1-c)}.v1-dot.m{background:var(--v1-m)}.v1-dot.y{background:var(--v1-y)}.v1-dot.k{background:var(--v1-k)}
+.v1-kick{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--v1-mu)}
+section.v1 h2{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:800;letter-spacing:-.01em;margin:0 0 .5em;line-height:1.2;border:0;padding:0;background:none;color:var(--v1-ink)}
+section.v1 h3{font-size:1.1rem;font-weight:700;margin:0 0 .5em}
+.v1-card{background:var(--v1-s);border:1px solid var(--v1-line);border-radius:14px;padding:16px 18px;box-shadow:var(--v1-sh)}
+.v1-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+@media (max-width:760px){.v1-g2{grid-template-columns:1fr}}
+.v1-one{border-left:6px solid var(--v1-k);background:var(--v1-s);padding:14px 18px;border-radius:0 12px 12px 0;font-size:1.04rem;margin:14px 0;box-shadow:var(--v1-sh)}
+.v1-one .lbl{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--v1-mu);margin-bottom:2px}
+.v1 ol{padding-left:1.3em;margin:.3em 0} .v1 ol li{margin:.25em 0}
+.v1-muted{color:var(--v1-mu);font-size:.88rem}
+.v1-tl{list-style:none;padding:0;margin:10px 0}
+.v1-tl li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--v1-line)}
+.v1-tl .tm{font-weight:800;font-variant-numeric:tabular-nums}
+.v1-tbar{height:12px;border-radius:99px;overflow:hidden;display:flex;margin:6px 0 2px}.v1-tbar i{display:block;height:100%}
+.v1-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.v1-btn{font:inherit;font-weight:600;font-size:.9rem;border:1px solid var(--v1-line);background:var(--v1-s);color:var(--v1-ink);border-radius:99px;padding:7px 14px;cursor:pointer}
+.v1-mm{display:grid;grid-template-columns:1fr 230px 1fr;grid-template-rows:auto auto;gap:18px 34px;align-items:start;position:relative}
+.v1-mc{grid-column:2;grid-row:1 / span 2;align-self:center;text-align:center;background:#1b1c1f;color:#fff;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:24px;position:relative;z-index:2}
+.v1-mc .n{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.v1-mc .t{font-weight:800;font-size:1.08rem;line-height:1.25;margin:6px 0}
+.v1-mc .s{font-size:.8rem;opacity:.85}
+.v1-br{background:var(--v1-s);border:2px solid var(--v1-line);border-radius:18px;padding:14px 14px 12px;position:relative;box-shadow:var(--v1-sh)}
+.v1-br.c{border-color:var(--v1-c)}.v1-br.m{border-color:var(--v1-m)}.v1-br.y{border-color:var(--v1-y)}.v1-br.k{border-color:#1b1c1f}
+.v1-br::after{content:"";position:absolute;top:50%;width:34px;height:3px}
+.v1-br.left::after{right:-36px}.v1-br.right::after{left:-36px}
+.v1-br.c::after{background:var(--v1-c)}.v1-br.m::after{background:var(--v1-m)}.v1-br.y::after{background:var(--v1-y)}.v1-br.k::after{background:#1b1c1f}
+.v1-br h4{display:flex;align-items:center;gap:8px;font-size:1.02rem;margin:0 0 10px;color:var(--v1-ink)}
+.v1-br h4 .num{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex:0 0 auto}
+.v1-br.c .num{background:var(--v1-c)}.v1-br.m .num{background:var(--v1-m)}.v1-br.y .num{background:var(--v1-y);color:#1b1c1f}.v1-br.k .num{background:#1b1c1f}
+.v1-chips{display:flex;flex-wrap:wrap;gap:6px}
+.v1-chip{font:inherit;font-size:.85rem;font-weight:600;border-radius:99px;padding:5px 11px;border:1px solid var(--v1-line);background:var(--v1-s2);color:var(--v1-ink);cursor:pointer;text-align:left}
+.v1-br.c .v1-chip[aria-expanded="true"]{background:var(--v1-c);color:#fff;border-color:var(--v1-c)}
+.v1-br.m .v1-chip[aria-expanded="true"]{background:var(--v1-m);color:#fff;border-color:var(--v1-m)}
+.v1-br.y .v1-chip[aria-expanded="true"]{background:var(--v1-y);color:#1b1c1f;border-color:var(--v1-y)}
+.v1-br.k .v1-chip[aria-expanded="true"]{background:#1b1c1f;color:#fff;border-color:#1b1c1f}
+.v1-hint{font-size:.92rem;margin-top:10px;padding:9px 11px;border-radius:10px;background:var(--v1-s2);display:none;line-height:1.45}
+.v1-hint.show{display:block}.v1-hint b{display:block;margin-bottom:2px}
+.v1-goto{display:inline-block;margin-top:10px;font-size:.86rem;font-weight:700;color:var(--v1-mu)}
+@media (max-width:860px){
+ .v1-mm{grid-template-columns:1fr;gap:14px;padding-left:18px}
+ .v1-mm::before{content:"";position:absolute;left:4px;top:40px;bottom:30px;width:3px;background:linear-gradient(#1b1c1f,#00a3e0,#e6007e,#f2c500,#1b1c1f);border-radius:3px}
+ .v1-mc{grid-column:1;grid-row:auto;border-radius:18px;aspect-ratio:auto;padding:18px}
+ .v1-br{grid-column:1!important;grid-row:auto!important}
+ .v1-br.left::after,.v1-br.right::after{left:-16px;right:auto;width:14px}
+}
+.v1-flash{animation:v1flash 2.4s ease-out;border-radius:8px}
+@keyframes v1flash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0)}}
+html{scroll-padding-top:64px}
+</style>
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <small>ÚSTNÍ ZKOUŠKA · REPRODUKČNÍ GRAFIK · TÉMA Č. 12</small>
-    <h1>Kniha – popis jednotlivých částí knihy, popis knižní dvoustrany · Průtisk – popis, příklady tiskových technik, příklady použití tisku</h1>
-    <p>Mapa → souhrn → výluh → test → kvíz</p>
-  </div>
-</header>
+<div class="v1-bar"></div>
+<header class="v1 v1-dk"><div class="v1-wrap">
+<a class="v1-back" href="../">← zpět na rozcestník</a><br>
+<span class="v1-badge">Ústní zkouška · Téma č. 12</span>
+<h1>Kniha – popis jednotlivých částí knihy, popis knižní dvoustrany <span class="sep">/</span> Průtisk – popis, příklady tiskových technik, příklady použití tisku</h1>
+<p class="v1-lead">Všechno, co potřebuješ, abys u zkoušky 15 minut mluvil/a v souvislostech, a ne v heslech. Nejdřív si přečti, o čem otázka je, pak si projdi myšlenkovou mapu, potom souhrn a nakonec se vyzkoušej.</p>
+<a class="v1-easy" href="jednoduse.html">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
+</div></header>
+<nav class="v1 v1-dk" aria-label="Obsah"><div class="v1-wrap"><a class="v1-pri" href="jednoduse.html">⚡ Jednoduše</a><a href="#potitko">💡 Jak na potítko</a><a href="#mapa">🧠 Myšlenková mapa</a><a href="#vyluh">⭐ Výluh</a><a href="#umet">✅ Co mám umět</a><a href="#cast-a">📖 Kniha</a><a href="#a-dvoustrana">📖 Dvoustrana</a><a href="#a-pismo">🔤 Písmo a odstavec</a><a href="#cast-b">🟦 Průtisk</a><a href="#b-video">▶️ Video</a><a href="#test">✍️ Test psaním</a><a href="#kviz">❓ Kvíz</a><a href="../">🏠 Rozcestník</a></div></nav>
 
-<nav class="menu">
-  <div class="wrap">
-    <a href="#mapa" class="hl">🗺️ Mapa</a>
-    <a href="#vyluh">⭐ Výluh</a>
-    <a href="#umet">✅ Co mám umět</a>
-    <a href="#cast-a">📖 Kniha</a>
-    <a href="#a-dvoustrana">📖 Dvoustrana</a>
-    <a href="#a-pismo">🔤 Písmo a odstavec</a>
-    <a href="#cast-b">🟦 Průtisk</a>
-    <a href="#b-video">▶️ Video</a>
-    <a href="#test">✍️ Test psaním</a>
-    <a href="#kviz">❓ Kvíz</a>
-  </div>
-</nav>
 
 <main class="wrap">
 
 <!-- ================= MAPA ================= -->
-<section id="mapa">
-  <h2><span class="num">1</span>Myšlenková mapa</h2>
-  <div class="key"><b>Na potítku:</b> jdi po větvích <b>shora dolů</b>. Ke každému pojmu řekni <b>1–2 věty</b>. Klikni na pojem = podrobnosti. <b>Žluté pojmy</b> jsou nejdůležitější.</div>
+<!-- ============ POTÍTKO (1. varianta) ============ -->
+<section id="potitko" class="v1 v1-dk"><div class="v1-wrap">
+<div class="v1-sh"><span class="v1-dot k"></span><span class="v1-kick">Než začneš</span></div>
+<h2>Jak o otázce přemýšlet na potítku</h2>
+<p>Otázka má dvě části: <b>knihu</b> a <b>průtisk</b>. Vypadají jako dvě různá témata, ale obě jsou o tom, <b>jak vzniká tiskovina</b>: jak se kniha skládá a sází – a jak funguje technika, kde barva projde sítem.</p><p>Nejdřív popiš knihu <b>zvenku a uvnitř</b> (pořadí stran), pak <b>knižní dvoustranu</b> a pravidla sazby. Ve druhé části vysvětli <b>princip průtisku</b>, tiskovou formu, techniky a kde se používá. Most: knihy se tisknou ofsetem, sítotiskem se na ně dělá jen vystouplý lak.</p>
+<div class="v1-one"><span class="lbl">Tvoje úvodní věta</span>„Kniha se skládá z <b>knižního bloku</b>, <b>desek</b> a <b>hřbetu</b>. Uvnitř má úvodní, hlavní a závěrečnou část. Na <b>dvoustraně</b> je vlevo sudá a vpravo lichá strana. U <b>průtisku</b> se barva protlačí <b>sítem</b>, netisknoucí místa zakrývá <b>šablona</b>.“</div>
+<div class="v1-g2">
+<div class="v1-card"><h3>Co si načrtnout na papír (5 minut)</h3><ol><li><b>Knihu z boku</b>: blok, desky, hřbet, předsádka.</li><li><b>Pořadí stran</b>: 1 patitul, 2 protititul, 3 titul … tiráž.</li><li><b>Dvoustranu</b> s okraji 2 : 3 : 4 : 6.</li><li><b>Řez sítem</b>: rám, síťovina, šablona, těrka, materiál.</li></ol><p class="v1-muted">Náčrtek je tvůj tahák: když se zasekneš, podíváš se na něj a pokračuješ dál.</p></div>
+<div class="v1-card"><h3>Rozvrh 15 minut mluvení</h3><div class="v1-tbar" aria-hidden="true"><i style="flex:1;background:#888"></i><i style="flex:4;background:var(--v1-c)"></i><i style="flex:3;background:var(--v1-m)"></i><i style="flex:4;background:var(--v1-y)"></i><i style="flex:3;background:#1b1c1f"></i><i style="flex:1;background:#888"></i></div><ul class="v1-tl"><li><span class="tm">0–1</span><span>Úvod: kniha a průtisk – jak vzniká tiskovina</span></li><li><span class="tm">1–5</span><span><b>Kniha zvenku a uvnitř</b> (C): blok, desky, hřbet, titulní listy, tiráž</span></li><li><span class="tm">5–9</span><span><b>Dvoustrana a sazba</b> (M): zrcadlo, okraje, záhlaví, písmo, odstavec, chyby</span></li><li><span class="tm">9–11</span><span><b>Princip průtisku</b> (Y): síto, šablona, těrka, barvy</span></li><li><span class="tm">11–14</span><span><b>Techniky a použití</b> (K): plochý, rotační, karuselový sítotisk, serigrafie, použití</span></li><li><span class="tm">14–15</span><span>Závěr: výhody a nevýhody průtisku</span></li></ul></div>
+</div></div></section>
 
-  <div class="mapa">
-    <div class="center">TÉMA 12<span>z čeho se skládá kniha a jak vypadá její dvoustrana + tisk, při kterém barva projde sítem</span></div>
+<!-- ============ MAPA (1. varianta) ============ -->
+<section id="mapa" class="v1 v1-dk"><div class="v1-wrap">
+<div class="v1-sh"><span class="v1-dot m"></span><span class="v1-kick">1 · Myšlenková mapa</span></div>
+<h2>Mapa otázky ve čtyřech barvách CMYK</h2>
+<p>Mluv v pořadí <b>C → M → Y → K</b>, stejně jako se tisknou barvy. Klepni na heslo a uvidíš, co k němu říct. Odkaz pod větví tě pak pošle přímo na jeho podnadpis v souhrnu.</p>
+<div class="v1-tools"><button class="v1-btn" type="button" id="v1Open">Rozbalit všechna hesla</button><button class="v1-btn" type="button" id="v1Close">Sbalit</button></div>
+<div class="v1-mm" id="v1mm"></div>
+</div></section>
 
-    <div class="branch a">
-      <h4>📖 A) Kniha</h4>
-      <p class="q"><span class="step">1.</span> Kniha zvenku (knihařské části)</p>
-      <div class="nodes">
-        <a href="#a-zvenku" class="labstar">blok, desky, hřbet</a>
-        <a href="#a-zvenku-dalsi">předsádka, kapitálek, ořízka</a>
-        <a href="#a-hrbet">výpočet hřbetu</a>
-        <a href="#a-obalka">obálka × přebal</a>
-      </div>
-      <p class="q"><span class="step">2.</span> Kniha uvnitř (pořadí stran)</p>
-      <div class="nodes">
-        <a href="#a-tri-casti" class="labstar">úvodní – hlavní – závěrečná část</a>
-        <a href="#a-titulni" class="labstar">patitul, protititul, hlavní titul</a>
-        <a href="#a-tiraz">impresum, tiráž, ISBN</a>
-        <a href="#a-listovani">listuj knihou</a>
-        <a href="#a-zaverecna">rejstřík, poznámky, literatura</a>
-      </div>
-      <p class="q"><span class="step">3.</span> Knižní dvoustrana</p>
-      <div class="nodes">
-        <a href="#a-dvoustrana" class="labstar">sudá vlevo, lichá vpravo</a>
-        <a href="#a-zrcadlo" class="labstar">zrcadlo sazby</a>
-        <a href="#a-okraje">okraje 2 : 3 : 4 : 6</a>
-        <a href="#a-zahlavi">živé záhlaví, pagina</a>
-        <a href="#a-poznamky">poznámka pod čarou, marginálie</a>
-        <a href="#a-kapitola">stránková zarážka, východová strana, vakát</a>
-        <a href="#a-pravidla">pravidla sazby dvoustrany</a>
-        <a href="#a-rejstrik">řádkový a stránkový rejstřík</a>
-      </div>
-      <p class="q"><span class="step">4.</span> Sazba textu v knize</p>
-      <div class="nodes">
-        <a href="#a-pismo" class="labstar">písmo podle věku čtenáře</a>
-        <a href="#a-patkove">patkové × bezpatkové</a>
-        <a href="#a-odstavec">formátování odstavce</a>
-        <a href="#a-vychodova" class="labstar">východová řádka</a>
-        <a href="#a-chyby">řeky, předložky, dělení slov</a>
-        <a href="#a-parchanti">sirotci a vdovy</a>
-      </div>
-    </div>
-
-    <div class="branch b">
-      <h4>🟦 B) Průtisk</h4>
-      <p class="q"><span class="step">1.</span> Popis – princip</p>
-      <div class="nodes">
-        <a href="#b-princip" class="labstar">barva projde otvory v sítu</a>
-        <a href="#b-ctyri">4 principy tisku</a>
-        <a href="#b-forma" class="labstar">rám, síťovina, šablona</a>
-        <a href="#b-terka">těrka (tříč)</a>
-        <a href="#b-barvy">husté barvy</a>
-      </div>
-      <p class="q"><span class="step">2.</span> Příklady tiskových technik</p>
-      <div class="nodes">
-        <a href="#b-sitotisk" class="labstar">sítotisk plochý</a>
-        <a href="#b-rotacni">rotační sítotisk</a>
-        <a href="#b-karusel">karuselový stroj</a>
-        <a href="#b-serigrafie">serigrafie</a>
-        <a href="#b-sablonovy">šablonový tisk</a>
-        <a href="#b-riso">risograf, cyklostyl</a>
-      </div>
-      <p class="q"><span class="step">3.</span> Příklady použití tisku</p>
-      <div class="nodes">
-        <a href="#b-pouziti" class="labstar">textil, reklama, obaly, sklo</a>
-        <a href="#b-lak">vystouplý lak</a>
-        <a href="#b-vyhody">výhody × nevýhody</a>
-        <a href="#b-video">video</a>
-      </div>
-    </div>
-  </div>
-  <div class="term" style="margin-top:12px"><b>Most mezi A a B:</b> knihy se tisknou hlavně <b>ofsetem</b>. Ofsetem se nanáší i <b>parciální (místní) lak</b> na přebalu nebo na deskách – v další tiskové věži stroje se místo barvy přidá <b>lak</b>. Sítotiskem se dělá jen silný <b>vystouplý (reliéfní) lak</b>, který jde nahmatat.</div>
-</section>
 
 <!-- ================= CO MÁM UMĚT ================= -->
 <section id="umet">
@@ -1906,5 +1913,45 @@ renderKviz();
 </script>
 <script>/* otočné kartičky: na přední straně jen obrázek – popisky by prozradily odpověď (text s class="keep" zůstane) */
 document.querySelectorAll('.flip .f text:not(.keep)').forEach(t=>{if(/[A-Za-z\u00C0-\u017F]/.test(t.textContent))t.remove();});</script>
+
+<script id="v1-mapa">
+/* ---------- myšlenková mapa (1. varianta): heslo → krátké vysvětlení → proklik na podnadpis ---------- */
+(function(){
+ const M=[{"k": "c", "t": "Kniha zvenku a uvnitř", "items": [["blok, desky, hřbet", "a-zvenku", "Knižní blok = svázané listy, desky nebo obálka ho chrání, hřbet spojuje listy."], ["předsádka, kapitálek, ořízka", "a-zvenku-dalsi", "Předsádka drží blok v deskách, kapitálek zdobí hřbet, ořízka jsou ořezané okraje bloku."], ["výpočet hřbetu", "a-hrbet", "Čím víc stran a silnější papír, tím širší hřbet. Grafik ho musí spočítat."], ["obálka × přebal", "a-obalka", "Desky jsou tuhé, obálka měkká. Přebal je volný papírový obal na deskách."], ["úvodní – hlavní – závěrečná část", "a-tri-casti", "Strany mají pevné pořadí: úvodní část, hlavní text, závěrečná část."], ["patitul, protititul, hlavní titul", "a-titulni", "Strana 1 patitul, 2 protititul, 3 hlavní titul (vpravo)."], ["impresum, tiráž, ISBN", "a-tiraz", "Tiráž je „rodný list“ knihy: kdo knihu napsal, vydal a vytiskl, kdy a v jakém nákladu."], ["listuj knihou", "a-listovani", "Vyzkoušej si pořadí stran: vlevo je vždy sudá, vpravo lichá."], ["rejstřík, poznámky, literatura", "a-zaverecna", "Závěrečná část: doslov, poznámky, seznam literatury, rejstřík, tiráž."]]}, {"k": "m", "t": "Dvoustrana a sazba textu", "items": [["sudá vlevo, lichá vpravo", "a-dvoustrana", "Dvoustrana se navrhuje jako celek: vlevo sudá, vpravo lichá strana, uprostřed hřbet."], ["zrcadlo sazby", "a-zrcadlo", "Plocha strany, do které se sází text a obrázky. Kolem jsou okraje."], ["okraje 2 : 3 : 4 : 6", "a-okraje", "Hřbet 2, hlava 3, vnější okraj 4, pata 6 – nejmenší u hřbetu, největší dole."], ["živé záhlaví, pagina", "a-zahlavi", "Živé záhlaví se mění podle kapitoly. Pagina = číslo strany."], ["poznámka pod čarou, marginálie", "a-poznamky", "Poznámka pod čarou je dole menším písmem, marginálie na okraji vedle textu."], ["stránková zarážka, východová strana, vakát", "a-kapitola", "Kapitola začíná vpravo, stránková zarážka je volné místo nahoře. Vakát = prázdná strana."], ["pravidla sazby dvoustrany", "a-pravidla", "Hladká sazba: jedna rodina písma, stejná úprava v celé knize, dvoustrana jako celek."], ["řádkový a stránkový rejstřík", "a-rejstrik", "Řádky i zrcadla na líci a rubu leží přesně na sobě, aby text neprosvítal."], ["písmo podle věku čtenáře", "a-pismo", "Dospělí 10/12 pt, malé děti 16/20 pt. Čím menší dítě, tím větší písmo."], ["patkové × bezpatkové", "a-patkove", "Patkové písmo vede oko po řádku – pro dlouhé čtení. Bezpatkové pro začínající čtenáře."], ["formátování odstavce", "a-odstavec", "Odstavec má první řádek se zarážkou, plné řádky a kratší východovou řádku."], ["východová řádka", "a-vychodova", "Poslední řádek odstavce, aspoň 3 znaky a delší než zarážka."], ["řeky, předložky, dělení slov", "a-chyby", "Řeky = bílé mezery pod sebou. Jednopísmenné předložky nesmí zůstat na konci řádku."], ["sirotci a vdovy", "a-parchanti", "Sirotek = první řádek sám na konci strany, vdova = poslední řádek sám nahoře. Obojí je parchant."]]}, {"k": "y", "t": "Průtisk – princip a forma", "items": [["barva projde otvory v sítu", "b-princip", "Barva se protlačí otvory v sítu. Netisknoucí místa zakrývá šablona."], ["4 principy tisku", "b-ctyri", "Z výšky, z plochy, z hloubky – a průtisk: barva formou prochází."], ["rám, síťovina, šablona", "b-forma", "Tisková forma = rám + napnutá síťovina + šablona."], ["těrka (tříč)", "b-terka", "Pryžový břit, který barvu protlačí sítem na materiál."], ["husté barvy", "b-barvy", "Sítotiskové barvy jsou husté a pomalu schnou. Je jich nejvíc druhů."]]}, {"k": "k", "t": "Techniky a použití průtisku", "items": [["sítotisk plochý", "b-sitotisk", "Rovná forma – rám se sítem. Stroje ruční, poloautomatické a automatické."], ["rotační sítotisk", "b-rotacni", "Síto je válec, těrka uvnitř. Textil a tapety z role."], ["karuselový stroj", "b-karusel", "Síta dokola jako kolotoč – trička a mikiny."], ["serigrafie", "b-serigrafie", "Umělecký sítotisk: formu dělá výtvarník ručně, malý náklad. Andy Warhol."], ["šablonový tisk", "b-sablonovy", "Barva se nanese přes vyřezanou šablonu sprejem nebo štětcem. Síto tu není."], ["risograf, cyklostyl", "b-riso", "Barva projde propálenou blánou – rozmnožovače."], ["textil, reklama, obaly, sklo", "b-pouziti", "Průtisk potiskne skoro cokoli: trička, sklo, keramiku, plasty, cedule."], ["vystouplý lak", "b-lak", "Sítotiskem se dělá silný vystouplý lak. Běžný parciální lak se nanáší ofsetem."], ["výhody × nevýhody", "b-vyhody", "Jakýkoli materiál a silná vrstva barvy. Horší detaily, pomalejší, dlouho schne."], ["video", "b-video", "Podívej se, jak se tiskne sítotiskem."]]}], C={"n": 12, "t": "Kniha a průtisk", "s": "části knihy · sazba · síto"};
+ const root=document.getElementById('v1mm');if(!root)return;
+ const center=document.createElement('div');center.className='v1-mc';
+ center.innerHTML='<div class="n">Otázka č. '+C.n+'</div><div class="t">'+C.t+'</div><div class="s">'+C.s+'<br>C → M → Y → K</div>';
+ const pos={c:[1,1],m:[1,2],y:[3,1],k:[3,2]};
+ const els=[];
+ M.forEach(b=>{
+  const el=document.createElement('div');el.className='v1-br '+b.k+' '+(b.k==='c'||b.k==='m'?'left':'right');el.id='mm-'+b.k;
+  let h='<h4><span class="num">'+b.k.toUpperCase()+'</span>'+b.t+'</h4><div class="v1-chips">';
+  b.items.forEach((it,i)=>{h+='<button class="v1-chip" type="button" aria-expanded="false" data-i="'+i+'">'+it[0]+'</button>';});
+  h+='</div><div class="v1-hint" aria-live="polite"></div><a class="v1-goto" href="#'+b.items[0][1]+'">→ podrobně v souhrnu</a>';
+  el.innerHTML=h;
+  const hint=el.querySelector('.v1-hint'),go=el.querySelector('.v1-goto');
+  el.querySelectorAll('.v1-chip').forEach(ch=>ch.addEventListener('click',()=>{
+   const open=ch.getAttribute('aria-expanded')==='true';
+   el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+   if(open){hint.classList.remove('show');go.href='#'+b.items[0][1];go.textContent='→ podrobně v souhrnu';return;}
+   ch.setAttribute('aria-expanded','true');const it=b.items[+ch.dataset.i];
+   hint.innerHTML='<b>'+it[0]+'</b>'+it[2];hint.classList.add('show');
+   go.href='#'+it[1];go.textContent='→ „'+it[0]+'“ podrobně v souhrnu';
+  }));
+  go.addEventListener('click',e=>{const t=document.getElementById(go.getAttribute('href').slice(1));if(!t)return;
+   let d=t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+   setTimeout(()=>{t.classList.remove('v1-flash');void t.offsetWidth;t.classList.add('v1-flash');setTimeout(()=>t.classList.remove('v1-flash'),2600);},350);});
+  el._b=b;els.push(el);
+ });
+ const byK={};els.forEach(e=>byK[e._b.k]=e);
+ [byK.c,center,byK.y,byK.m,byK.k].forEach(e=>e&&root.appendChild(e));
+ function reorder(){const wide=window.matchMedia('(min-width:861px)').matches;
+  els.forEach(el=>{const k=el._b.k;el.style.gridColumn=wide?pos[k][0]:'';el.style.gridRow=wide?pos[k][1]:'';el.style.order=wide?'':({c:1,m:2,y:3,k:4})[k];});
+  center.style.order=wide?'':0;}
+ reorder();window.addEventListener('resize',reorder);
+ document.getElementById('v1Open').onclick=()=>els.forEach(el=>{const b=el._b;const hint=el.querySelector('.v1-hint');hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[2]).join('<br style="margin-bottom:6px">');hint.classList.add('show');el.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','true'));});
+ document.getElementById('v1Close').onclick=()=>{root.querySelectorAll('.v1-hint').forEach(h=>h.classList.remove('show'));root.querySelectorAll('.v1-chip').forEach(c=>c.setAttribute('aria-expanded','false'));};
+})();
+</script>
 </body>
 </html>
