@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Téma č. 16 – Barvové prostory – RGB, CMYK popis; způsoby míšení barev – přístrojově závislé/nezávislé barvové prostory (RGB, CMY/Lab); výtažkování (separace) barev · Tuhé knižní vazby – dělení, využití, zhotovení vazby V8</title>
+<meta name="description" content="Příprava k ústní zkoušce, obor reprodukční grafik: barvové prostory RGB a CMYK, aditivní a subtraktivní míšení, přístrojově závislé a nezávislé prostory, CIELAB, výtažkování (separace) barev; tuhé knižní vazby V7, V8, V9 a zhotovení vazby V8 krok za krokem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f4; --surface:#ffffff; --surface2:#f0f0ec; --ink:#1b1c1f; --muted:#5d6068; --line:#dcdcd6;
+  --c:#00a3e0; --c-soft:#e3f5fc; --c-ink:#006e98;
+  --m:#e6007e; --m-soft:#fde6f2; --m-ink:#a8005c;
+  --y:#f2c500; --y-soft:#fff8d6; --y-ink:#806600;
+  --k:#1b1c1f; --k-soft:#ececea; --k-ink:#1b1c1f;
+  --ok:#1f8a4c; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131417; --surface:#1c1d21; --surface2:#24262b; --ink:#ececec; --muted:#a3a6ad; --line:#34363c;
+    --c-soft:#0c2a36; --c-ink:#5fd0ff; --m-soft:#3a0f25; --m-ink:#ff6fb9;
+    --y-soft:#342b06; --y-ink:#ffd84d; --k:#e4e4e4; --k-soft:#2a2b30; --k-ink:#f0f0f0;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131417; --surface:#1c1d21; --surface2:#24262b; --ink:#ececec; --muted:#a3a6ad; --line:#34363c;
+  --c-soft:#0c2a36; --c-ink:#5fd0ff; --m-soft:#3a0f25; --m-ink:#ff6fb9;
+  --y-soft:#342b06; --y-ink:#ffd84d; --k:#e4e4e4; --k-soft:#2a2b30; --k-ink:#f0f0f0;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto;display:block;border-radius:10px;margin:0 auto}
+figure.pic img{max-height:420px;width:auto}
+h1,h2,h3,h4{line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.45rem,4vw,2rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700;margin-top:1.4em}
+p{margin:.4em 0 .9em}
+ul{padding-left:1.2em;margin:.3em 0 1em} li{margin:.2em 0}
+b,strong{font-weight:700}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+
+/* registrační proužek */
+.cmyk-bar{height:6px;background:linear-gradient(90deg,var(--c) 0 25%,var(--m) 25% 50%,var(--y) 50% 75%,#1b1c1f 75%)}
+
+/* hero */
+header.hero{padding:34px 0 26px;background:var(--surface);border-bottom:1px solid var(--line)}
+.back{display:inline-block;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.back:hover{color:var(--ink)}
+.badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:var(--k);color:var(--bg);padding:4px 10px;border-radius:99px}
+.hero h1{font-size:clamp(1.7rem,5.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin:.35em 0 .3em}
+.hero h1 .sep{color:var(--m)}
+.hero p.lead{font-size:1.08rem;color:var(--muted);max-width:720px;margin:0}
+.reg{display:inline-block;width:22px;height:22px;vertical-align:-3px;margin-right:6px}
+
+/* nav */
+nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:.88rem;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+nav.toc a.active{background:var(--k);color:var(--bg);border-color:var(--k)}
+
+section{padding:44px 0 10px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+.dot.c{background:var(--c)} .dot.m{background:var(--m)} .dot.y{background:var(--y)} .dot.k{background:var(--k)}
+.kicker{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.grid2>.card,.grid3>.card{margin:0}
+
+.oneliner{border-left:6px solid var(--k);background:var(--surface);padding:14px 18px;border-radius:0 12px 12px 0;font-size:1.05rem;margin:14px 0;box-shadow:var(--shadow)}
+.oneliner .lbl{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.oneliner.c{border-color:var(--c)} .oneliner.m{border-color:var(--m)} .oneliner.y{border-color:var(--y)} .oneliner.k{border-color:var(--k)}
+
+.tip,.warn,.say{border-radius:12px;padding:12px 16px;margin:14px 0;font-size:.97rem}
+.tip{background:var(--c-soft)} .warn{background:var(--m-soft)} .say{background:var(--y-soft)}
+.tip b.t,.warn b.t,.say b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.tip b.t{color:var(--c-ink)} .warn b.t{color:var(--m-ink)} .say b.t{color:var(--y-ink)}
+
+figure{margin:14px 0}
+figure.pic{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px}
+figcaption{font-size:.86rem;color:var(--muted);margin-top:6px;padding:0 4px}
+figure.pic figcaption{color:#5d6068}
+.svgfig{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.svgfig svg{width:100%;height:auto;display:block}
+
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tablewrap table{min-width:640px}
+
+details.qa{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:8px 0}
+details.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none;position:relative;padding-right:40px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+";position:absolute;right:16px;top:9px;font-size:1.3rem;color:var(--muted)}
+details.qa[open] summary::after{content:"–"}
+details.qa .ans{padding:0 16px 14px;color:var(--ink)}
+
+/* MYŠLENKOVÁ MAPA */
+.mm-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+button.btn{font:inherit;font-weight:600;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:7px 14px;cursor:pointer}
+button.btn:hover{border-color:var(--ink)}
+.mindmap{display:grid;grid-template-columns:1fr 240px 1fr;grid-template-rows:auto auto;gap:18px 34px;align-items:start;position:relative}
+.mm-center{grid-column:2;grid-row:1 / span 2;align-self:center;text-align:center;background:var(--k);color:var(--bg);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:26px;position:relative;z-index:2}
+.mm-center .n{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.mm-center .t{font-weight:800;font-size:1.12rem;line-height:1.25;margin:6px 0}
+.mm-center .s{font-size:.8rem;opacity:.85}
+.mm-branch{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:14px 14px 12px;position:relative;box-shadow:var(--shadow)}
+.mm-branch.c{border-color:var(--c)} .mm-branch.m{border-color:var(--m)} .mm-branch.y{border-color:var(--y)} .mm-branch.k{border-color:var(--k)}
+.mm-branch::after{content:"";position:absolute;top:50%;width:34px;height:3px}
+.mm-branch.left::after{right:-36px} .mm-branch.right::after{left:-36px}
+.mm-branch.c::after{background:var(--c)} .mm-branch.m::after{background:var(--m)} .mm-branch.y::after{background:var(--y)} .mm-branch.k::after{background:var(--k)}
+.mm-branch h4{display:flex;align-items:center;gap:8px;font-size:1.02rem;margin:0 0 10px}
+.mm-branch h4 .num{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex:0 0 auto}
+.mm-branch.c .num{background:var(--c)} .mm-branch.m .num{background:var(--m)} .mm-branch.y .num{background:var(--y);color:#1b1c1f} .mm-branch.k .num{background:#1b1c1f}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:.85rem;font-weight:600;border-radius:99px;padding:5px 11px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;text-align:left}
+.mm-branch.c .chip[aria-expanded="true"]{background:var(--c);color:#fff;border-color:var(--c)}
+.mm-branch.m .chip[aria-expanded="true"]{background:var(--m);color:#fff;border-color:var(--m)}
+.mm-branch.y .chip[aria-expanded="true"]{background:var(--y);color:#1b1c1f;border-color:var(--y)}
+.mm-branch.k .chip[aria-expanded="true"]{background:#1b1c1f;color:#fff;border-color:#1b1c1f}
+.hint{font-size:.9rem;margin-top:10px;padding:9px 11px;border-radius:10px;background:var(--surface2);display:none}
+.hint.show{display:block}
+.hint b{display:block;margin-bottom:2px}
+.mm-branch .goto{display:inline-block;margin-top:10px;font-size:.84rem;font-weight:600;color:var(--muted)}
+@media (max-width:860px){
+  .mindmap{grid-template-columns:1fr;gap:14px;padding-left:18px}
+  .mindmap::before{content:"";position:absolute;left:4px;top:40px;bottom:30px;width:3px;background:linear-gradient(var(--k),var(--c),var(--m),var(--y),var(--k));border-radius:3px}
+  .mm-center{grid-column:1;grid-row:auto;border-radius:18px;aspect-ratio:auto;padding:18px}
+  .mm-branch.left::after,.mm-branch.right::after{left:-16px;right:auto;width:14px}
+}
+
+/* cesta zakázky */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:12px 0}
+.step{flex:1 1 120px;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:10px 12px;position:relative}
+.step .no{font-size:.72rem;font-weight:800;color:var(--muted)}
+.step .nm{font-weight:800;font-size:1rem}
+.step .ds{font-size:.82rem;color:var(--muted);line-height:1.35}
+.step.c{border-top-color:var(--c)} .step.m{border-top-color:var(--m)} .step.y{border-top-color:var(--y)} .step.k{border-top-color:var(--k)}
+.mnemo{font-size:1.15rem;font-weight:700;background:var(--surface);border:2px dashed var(--line);border-radius:14px;padding:14px 18px;margin:14px 0}
+.mnemo span.L{font-size:1.4rem;font-weight:800}
+
+/* timeline potítko */
+.timeline{list-style:none;padding:0;margin:10px 0}
+.timeline li{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.timeline .tm{font-weight:800;font-variant-numeric:tabular-nums}
+.bar{height:12px;border-radius:99px;overflow:hidden;display:flex;margin:6px 0 2px}
+.bar i{display:block;height:100%}
+
+/* checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--m);flex:0 0 auto}
+
+/* kvíz */
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:12px 0}
+.q .qt{font-weight:700;margin-bottom:10px}
+.q .opts{display:grid;gap:7px}
+.q button.o{font:inherit;text-align:left;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.q button.o.right{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+.q button.o.wrong{background:#c62828;border-color:#c62828;color:#fff}
+.q .fb{display:none;margin-top:10px;font-size:.93rem}
+.q.done .fb{display:block}
+.score{font-weight:800;font-size:1.1rem}
+
+.pill{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);border:1px solid var(--line);margin:2px 2px 2px 0}
+.kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+audio{width:100%;margin-top:8px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
+.theme-toggle{position:fixed;right:14px;bottom:14px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow)}
+@media print{nav.toc,.theme-toggle,.mm-tools{display:none} .hint{display:block} details.qa .ans{display:block}}
+
+/* ===== doplňky pro téma 2 ===== */
+.fab-map{position:fixed;left:14px;bottom:14px;z-index:30;display:none;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.9rem;border:0;border-radius:99px;padding:11px 16px 11px 13px;background:var(--m);color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.fab-map.show{display:inline-flex}
+.fab-map .ar{font-size:1.15rem;line-height:1}
+.ret{display:inline-block;margin:6px 0 0;font-size:.85rem;font-weight:600;color:var(--m-ink);text-decoration:none}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.calc .st{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.calc .st:last-child{border-bottom:0}
+.calc .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+.calc .res{font-weight:800;background:var(--y-soft);padding:2px 8px;border-radius:6px}
+.eq{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:600;background:var(--surface2);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.sim-ctrl{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.sim-ctrl button{font:inherit;font-weight:700;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 13px;cursor:pointer}
+.sim-ctrl button.on{background:var(--m);border-color:var(--m);color:#fff}
+.sheets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.sheet .h{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sheet .row{display:flex;align-items:center;gap:6px;margin:4px 0;font-size:.82rem}
+.sheet .row .lb{width:30px;color:var(--muted);font-weight:700}
+.sheet .pg{flex:1;display:flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden}
+.sheet .pg span{flex:1;text-align:center;font-weight:800;padding:5px 0}
+.sheet .pg span:first-child{border-right:1.5px dashed var(--m)}
+.sheet .sum{font-size:.75rem;color:var(--muted);margin-top:4px}
+.inline-in{font:inherit;font-weight:700;width:90px;padding:7px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+/* test psaním */
+.wt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.wt .qt{font-weight:800;font-size:1.05rem;margin-bottom:4px}
+.wt .qh{font-size:.88rem;color:var(--muted);margin-bottom:10px}
+.wt textarea{width:100%;min-height:150px;font:inherit;font-size:16px;line-height:1.5;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical}
+.wt textarea:focus{outline:none;border-color:var(--m)}
+.wt .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.wt .acts .wc{font-size:.82rem;color:var(--muted);margin-left:auto}
+button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
+.wt .out{display:none;margin-top:14px}
+.wt .out.show{display:block}
+.meter{height:12px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:6px 0 4px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--c),var(--m));border-radius:99px;transition:width .5s}
+.verdict{font-weight:800;font-size:1.02rem}
+.fbbox{border-radius:12px;padding:10px 14px;margin:10px 0}
+.fbbox h4{margin:0 0 6px;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase}
+.fbbox ul{margin:0;padding-left:1.1em}
+.fbbox li{margin:.3em 0;font-size:.94rem}
+.fb-ok{background:color-mix(in srgb,var(--ok) 12%,transparent)} .fb-ok h4{color:var(--ok)}
+.fb-miss{background:var(--y-soft)} .fb-miss h4{color:var(--y-ink)}
+.fb-err{background:var(--m-soft)} .fb-err h4{color:var(--m-ink)}
+.star{color:var(--m);font-weight:800}
+.model{display:none;border-left:5px solid var(--c);background:var(--c-soft);border-radius:0 12px 12px 0;padding:12px 16px;margin-top:10px;font-size:.96rem}
+.model.show{display:block}
+.model b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--c-ink);margin-bottom:4px}
+.svgfig text{font-family:Inter,system-ui,sans-serif}
+.legend-row{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted);margin-top:6px}
+@media print{.fab-map{display:none!important}}
+
+.svgfig.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:700px){.svgfig.wide svg{min-width:640px}.svgfig.wide::after{content:"↔ obrázek posuň do strany";display:block;font-size:.78rem;color:var(--muted);margin-top:4px;position:sticky;left:0}}
+
+
+.check li{flex-wrap:wrap}.check li label{flex:1 1 220px}
+.svp-go{margin-left:auto;align-self:center;white-space:nowrap;font-size:.82rem;font-weight:700;color:var(--m-ink);text-decoration:none;padding:2px 0 2px 30px}
+/* ===== doplňky pro téma 6 ===== */
+.ctrl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:8px 0 12px}
+.ctrl label{font-size:.9rem;font-weight:600}
+.ctrl input[type=range]{flex:1 1 200px;accent-color:var(--m)}
+.ctrl output{font-weight:800;min-width:70px}
+canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#fff;border:1px solid var(--line)}
+.bits{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;letter-spacing:.04em}
+.bits i{font-style:normal;display:inline-block;min-width:1.05em;text-align:center;border-radius:4px;margin:1px}
+.bits i.b1{background:#1b1c1f;color:#fff}.bits i.b0{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.pxgrid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;max-width:260px;margin:6px auto}
+.pxgrid span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;border:1px solid #c9ccd1}
+.steps-bar{display:flex;height:46px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.steps-bar i{flex:1;display:block}
+.big{font-size:1.5rem;font-weight:800}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+.pro{color:var(--ok);font-weight:700}.con{color:var(--bad);font-weight:700}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid rgba(0,0,0,.15)}
+.calc,.card{overflow-wrap:anywhere}
+@media (max-width:560px){.eq{white-space:normal}}
+.angle-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.angle-row .a{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 4px}
+.angle-row .a b{display:block;font-size:1.25rem}
+.angle-row svg{width:56px;height:56px;display:block;margin:0 auto 4px}
+@media (max-width:420px){.angle-row{grid-template-columns:repeat(2,1fr)}}
+/* ===== doplňky pro téma 7 ===== */
+.photo-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:16px 0}
+.photo-strip figure{margin:0}
+.photo-strip img{aspect-ratio:4/3;object-fit:cover;width:100%;max-height:none}
+@media (max-width:860px){.photo-strip{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){.photo-strip{grid-template-columns:repeat(2,1fr)}}
+figure.pic img{max-height:340px}
+.game{background:var(--surface);border:2px dashed var(--line);border-radius:16px;padding:16px 18px;margin:18px 0}
+.game-h{display:flex;flex-direction:column;gap:2px;margin-bottom:10px}
+.og-done{margin:0 0 10px;padding-left:1.6em;display:grid;gap:4px}
+.og-done li{font-weight:600;font-size:.92rem;padding:4px 10px;border-radius:8px;background:var(--surface2);border-left:5px solid var(--k)}
+.og-done li.c{border-left-color:var(--c)} .og-done li.m{border-left-color:var(--m)} .og-done li.k{border-left-color:#1b1c1f}
+.og-pool{display:flex;flex-wrap:wrap;gap:8px}
+.og-card{font:inherit;font-weight:600;font-size:.9rem;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.og-card:hover{border-color:var(--ink)}
+.shake{animation:shake .4s;background:#c62828!important;color:#fff!important;border-color:#c62828!important}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.sg-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.sg-t{font-weight:600;font-size:.95rem}
+.sg-b{display:flex;gap:5px;flex-wrap:wrap}
+.sg-b button{font:inherit;font-size:.82rem;font-weight:700;padding:5px 10px;border-radius:99px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.sg-b button.right{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+.sg-b button.wrong{background:#c62828;border-color:#c62828;color:#fff}
+.sg-f{grid-column:1 / -1;display:none}
+.sg-row.done .sg-f{display:block}
+@media (max-width:560px){.sg-row{grid-template-columns:1fr}}
+#ppiOut .st{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+#ppiOut .st:last-child{border-bottom:0}
+#ppiOut .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+h4{font-size:1.02rem;margin-top:1.3em}
+/* ===== doplňky pro téma 8 ===== */
+select.inline-in{width:auto}
+.svgfig svg circle[role=button]:focus{outline:none;stroke:#888;stroke-width:3}
+#sepSvg,#regSvg{max-height:360px}
+.castStep:focus{outline:none}
+.mir{display:flex;flex-wrap:wrap;gap:3px;margin:6px 0;min-height:52px}
+.mir span{display:inline-flex;align-items:center;justify-content:center;width:34px;height:46px;border-radius:4px;font:700 1.5rem/1 Georgia,serif}
+.mir:not(.print) span{background:#8fb8a3;color:#5b3d12;border:1px solid #3f6b55}
+.mir:not(.print) span i{font-style:normal;display:inline-block;transform:scaleX(-1)}
+.mir.print span{background:#fff;color:#1b1c1f;border:1px dashed var(--line);width:28px}
+.timeline.evo li{grid-template-columns:96px 1fr}
+@media (max-width:480px){.timeline.evo li{grid-template-columns:1fr;gap:2px}}
+#fpSvg [data-p]{transition:opacity .3s}
+
+/* ===== doplňky pro téma 15 ===== */
+figure.pic>div>svg,figure.pic>div{display:block;width:100%}
+figure.pic svg{width:100%;height:auto;display:block;max-height:340px}
+#obrStroj svg{max-height:none}
+@media (max-width:700px){figure.svgfig.wide #obrStroj svg{min-width:560px}}
+figure.pic.svgfig{background:#fff}
+.pisemka{border:2px solid #1f8a4c;background:color-mix(in srgb,#1f8a4c 9%,var(--surface));border-radius:12px;padding:10px 14px;margin:14px 0;font-size:.95rem}
+.pisemka .stitek{display:block;font-size:.76rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1f8a4c;margin-bottom:4px}
+:root[data-theme="dark"] .pisemka .stitek{color:#5fd38d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pisemka .stitek{color:#5fd38d}}
+.pro{color:var(--ok)} .con{color:var(--bad)}
+.sim-ctrl{justify-content:center}
+h4[id]{margin-top:1.2em;font-size:1.02rem}
+.am-in{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.am-in label{display:flex;flex-direction:column;font-size:.85rem;font-weight:700;color:var(--muted);gap:4px}
+@media(max-width:600px){.am-in{grid-template-columns:1fr}}
+.tablewrap[style] table{min-width:var(--mw)}
+
+/* ===== doplňky pro téma 16 ===== */
+/* krokovač */
+.stepper{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:14px 0;box-shadow:var(--shadow)}
+.sp-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sp-g{padding:2px 9px;border-radius:99px;background:var(--surface2)}
+.sp-g.blok{background:var(--c-soft);color:var(--c-ink)}.sp-g.desky{background:var(--y-soft);color:var(--y-ink)}.sp-g.spojeni{background:var(--m-soft);color:var(--m-ink)}
+.sp-stage{background:#fff;border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:6px;touch-action:pan-y}
+.sp-stage svg{display:block;width:100%;height:auto;max-height:340px}
+.sp-stage svg text{font-family:Inter,system-ui,sans-serif}
+.sp-t{font-size:1.15rem;margin:.2em 0 .3em}
+.sp-d{min-height:4.8em}
+.sp-nav{display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap}
+.sp-nav .btn:disabled{opacity:.4;cursor:default}
+.sp-dots{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;flex:1 1 140px}
+.sp-dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line);padding:0;cursor:pointer}
+.sp-dots button.on{background:var(--m);transform:scale(1.25)}
+.sp-all{margin-top:12px;font-size:.92rem}
+.sp-all summary{cursor:pointer;font-weight:700;color:var(--muted)}
+.sp-all li{margin:.35em 0}
+.sim-ctrl button{margin:0}
+#ptSvg svg,#obSvg svg{display:block;width:100%;height:auto}
+@media (max-width:700px){#ptSvg svg{min-width:560px}}
+.form label span{font-weight:600;color:var(--ink)}
+@media print{.sp-nav,.sp-dots{display:none}.sp-all{display:block}}
+.sp-g:empty{display:none}
+@media (max-width:560px){.sp-dots{order:-1;flex-basis:100%;margin-bottom:6px}}
+.mixbox svg{display:block;width:100%;height:auto;border-radius:10px}
+#mixAddBtns button.on,#mixSubBtns button.on{background:var(--bc);border-color:var(--bc);color:#fff}
+#mixSubBtns button.on[data-k="Y"],#mixAddBtns button.on[data-k="G"]{color:#1b1c1f}
+.sim-ctrl{justify-content:center}
+.labout{display:flex;gap:12px;align-items:center;margin-top:6px}
+.labsw{flex:0 0 72px;height:72px;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
+#sepSvg svg{display:block;margin:0 auto;width:100%;max-width:420px;height:auto}
+.ctrl label{min-width:150px}
+</style>
+</head>
+<body>
+<div class="cmyk-bar"></div>
+<header class="hero">
+  <div class="wrap">
+    <a class="back" href="../">← zpět na rozcestník</a><br>
+    <span class="badge">Ústní zkouška · Téma č. 16</span>
+    <h1>Barvové prostory – RGB, CMYK popis; způsoby míšení barev – přístrojově závislé/nezávislé barvové prostory (RGB, CMY/Lab); výtažkování (separace) barev <span class="sep">/</span> Tuhé knižní vazby – dělení, využití, zhotovení vazby V8</h1>
+    <p class="lead">Všechno, co potřebuješ, abys u zkoušky 15 minut mluvil/a v souvislostech a ne v heslech. Nejdřív si přečti, o čem otázka je, pak si projdi myšlenkovou mapu, potom souhrn a nakonec se vyzkoušej.</p>
+    <a class="easy-link" href="jednoduse.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:6px;background:#e6007e;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:12px;font-size:1.02rem">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Obsah">
+  <div class="wrap">
+    <a href="jednoduse.html">⚡ Jednoduše</a>
+    <a href="#potitko">Jak na potítko</a>
+    <a href="#mapa">Myšlenková mapa</a>
+    <a href="#cesta">Cesta knihy</a>
+    <a href="#prostory">RGB a CMYK</a>
+    <a href="#miseni">Míšení a Lab</a>
+    <a href="#separace">Separace</a>
+    <a href="#vazby">Tuhé vazby</a>
+    <a href="#v8">Vazba V8</a>
+    <a href="#svp">Co musím umět</a>
+    <a href="#test">Test psaním</a>
+    <a href="#kviz">Kvíz</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ POTÍTKO ============ -->
+<section id="potitko">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">Než začneš</span></div>
+  <h2>Jak o otázce přemýšlet na potítku</h2>
+  <p>Otázka má dvě části a vypadají jako dvě různá témata: <b>barvy</b> a <b>knihařská výroba</b>. Ve skutečnosti jde o <b>jeden příběh</b>: jak vznikne <b>barevná kniha v tuhých deskách</b> – třeba fotokniha nebo kronika. Nejdřív musím správně připravit barvy pro tisk, pak se z vytištěných archů vyrobí kniha.</p>
+  <p>Začni tím, jak se barva popisuje čísly: monitor používá <b>RGB</b>, tisk <b>CMYK</b>. Vysvětli, jak se barvy míchají a proč stejná čísla nevypadají všude stejně – a jak pomáhá <b>Lab</b>. Pak řekni, jak se barevný obraz rozdělí na <b>výtažky</b> pro tisk. Ve druhé části rozděl <b>knižní vazby</b>, popiš <b>tuhé vazby</b> a krok za krokem <b>výrobu vazby V8</b>.</p>
+
+  <div class="oneliner k"><span class="lbl">Tvoje úvodní věta</span>„<b>Barvový prostor</b> je způsob, jak barvu popsat čísly. Monitor používá <b>RGB</b> – barvy vznikají <b>aditivně</b>, sčítáním světla. Tisk používá <b>CMYK</b> – barvy vznikají <b>subtraktivně</b>, tiskové barvy světlo pohlcují. RGB i CMYK jsou <b>přístrojově závislé</b>, <b>nezávislý</b> je <b>Lab</b>. Pro tisk se barevný obraz rozdělí na <b>výtažky</b>. Z vytištěných archů se pak vyrobí kniha, například v <b>tuhé vazbě V8</b>.“</div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Co si načrtnout na papír (5 minut)</h3>
+      <ol>
+        <li><b>Dva kruhy:</b> RGB na černém pozadí (sčítání → bílá) a CMY na bílém (odčítání → tmavá).</li>
+        <li><b>RGB a pod ním CMY</b> – co je pod sebou, je doplňkové.</li>
+        <li><b>Kouli Lab:</b> L svisle (černá–bílá), a zelená–červená, b modrá–žlutá.</li>
+        <li><b>Obrázek → 4 výtažky C M Y K → 4 desky</b> a úhly 75° · 15° · 0° · 45°.</li>
+        <li><b>Strom vazeb:</b> měkké V1–V4 · polotuhé V5–V6 · <b>tuhé V7–V9</b>.</li>
+        <li><b>V8 jako tři kroky:</b> blok → desky → zavěšení.</li>
+      </ol>
+      <p class="muted small">Náčrtek je tvůj tahák: když se zasekneš, podíváš se na něj a pokračuješ dál.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Rozvrh 15 minut mluvení</h3>
+      <div class="bar" aria-hidden="true"><i style="flex:1;background:#888"></i><i style="flex:3;background:var(--c)"></i><i style="flex:4;background:var(--m)"></i><i style="flex:2;background:var(--y)"></i><i style="flex:4;background:#1b1c1f"></i><i style="flex:1;background:#888"></i></div>
+      <ul class="timeline">
+        <li><span class="tm">0–1</span><span>Úvod: barevná kniha = <b>správné barvy + pevná vazba</b></span></li>
+        <li><span class="tm">1–4</span><span><b>Barvové prostory</b> (C): co je barvový prostor, <b>RGB</b>, <b>CMYK</b>, proč černá K, gamut</span></li>
+        <li><span class="tm">4–8</span><span><b>Míšení barev</b> (M): <b>aditivní × subtraktivní</b>, doplňkové barvy, <b>závislé × nezávislé</b>, <b>Lab</b></span></li>
+        <li><span class="tm">8–10</span><span><b>Výtažkování</b> (Y): výtažek, RIP, natočení rastru, kolik desek</span></li>
+        <li><span class="tm">10–14</span><span><b>Tuhé vazby</b> (K): dělení vazeb, <b>V7, V8, V9</b>, využití, <b>zhotovení V8</b></span></li>
+        <li><span class="tm">14–15</span><span>Závěr: výtažky → vytištěné archy → kniha V8</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAPA ============ -->
+<section id="mapa">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">1 · Myšlenková mapa</span></div>
+  <h2>Mapa otázky ve čtyřech barvách CMYK</h2>
+  <p>Každá větev má jednu tiskovou barvu a <b>mluv v pořadí C → M → Y → K</b>, stejně jako se barvy tisknou. Klepni na heslo a uvidíš, co k němu říct. Když je vybrané jedno heslo, odkaz pod větví tě pošle přímo na jeho podnadpis v souhrnu.</p>
+  <div class="mm-tools">
+    <button class="btn" id="mmOpen">Rozbalit všechna hesla</button>
+    <button class="btn" id="mmClose">Sbalit</button>
+  </div>
+  <div class="mindmap" id="mindmap"></div>
+</section>
+
+<!-- ============ CESTA ============ -->
+<section id="cesta">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">Červená nit</span></div>
+  <h2>Cesta barevné knihy</h2>
+  <p>Tohle je pořadí, ve kterém o otázce mluvíš. Fotka z fotoaparátu je v RGB. Přes Lab se převede do CMYK a rozdělí se na výtažky. Z výtažků vzniknou desky, vytisknou se archy a z archů se vyrobí kniha v tuhé vazbě.</p>
+  <div class="flow">
+    <div class="step c"><div class="no">1</div><div class="nm">Fotka RGB</div><div class="ds">fotoaparát, monitor – světlo</div></div>
+    <div class="step m"><div class="no">2</div><div class="nm">Lab → CMYK</div><div class="ds">převod přes nezávislý Lab (ICC profil)</div></div>
+    <div class="step y"><div class="no">3</div><div class="nm">Výtažky</div><div class="ds">RIP: C, M, Y, K → 4 desky</div></div>
+    <div class="step y"><div class="no">4</div><div class="nm">Tisk archů</div><div class="ds">barvy v soutisku</div></div>
+    <div class="step k"><div class="no">5</div><div class="nm">Knižní blok</div><div class="ds">složky šité nití</div></div>
+    <div class="step k"><div class="no">6</div><div class="nm">Desky</div><div class="ds">lepenka + potah</div></div>
+    <div class="step k"><div class="no">7</div><div class="nm">Kniha V8</div><div class="ds">blok zavěšený do desek</div></div>
+  </div>
+  <div class="tip"><b class="t">Most mezi oběma částmi</b>Výtažky se v tiskovém stroji vytisknou přes sebe na <b>tiskové archy</b>. Archy se sfalcují na <b>složky</b>, ze složek vznikne <b>knižní blok</b> a ten se u vazby V8 <b>zavěsí do tuhých desek</b>.</div>
+</section>
+
+<!-- ============ C: BARVOVÉ PROSTORY ============ -->
+<section id="prostory">
+  <div class="sec-head"><span class="dot c"></span><span class="kicker">2 · Souhrn · větev C</span></div>
+  <h2>Barvové prostory RGB a CMYK</h2>
+  <div class="oneliner c"><span class="lbl">Jednou větou</span><b>Barvový prostor</b> (barevný model) je způsob, jak barvu popsat čísly. <b>RGB</b> popisuje barvu jako množství <b>světla</b> (monitor), <b>CMYK</b> jako procenta <b>tiskových barev</b> (tisk).</div>
+
+  <h3 id="a1">Co je barvový prostor</h3>
+  <figure class="pic"><div data-img="prostor"></div></figure>
+  <p><b>Barvový prostor</b> (barevný model) = <b>způsob, jak barvu zapsat čísly</b>. Stejnou barvu můžu zapsat různými čísly – podle toho, v jakém prostoru pracuji. Všechny barvy, které daný prostor nebo zařízení umí, se jmenují <b>gamut</b>.</p>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Prostor</th><th>Co popisuje</th><th>Kde se používá</th></tr>
+    <tr><td><b>RGB</b></td><td>kolik <b>světla</b> červeného, zeleného a modrého</td><td>monitor, mobil, fotoaparát, skener, web</td></tr>
+    <tr><td><b>CMYK</b></td><td>kolik <b>tiskové barvy</b> (v %) se nanese na papír</td><td>tisk – ofset, digitální tisk, flexotisk…</td></tr>
+    <tr><td><b>Lab</b> (CIELAB)</td><td>jak barvu <b>vidí člověk</b></td><td>převody barev, měření barev</td></tr>
+  </table></div>
+  <details class="qa"><summary>➕ Rozšiřující učivo: HSB a HEX</summary><div class="ans"><b>HSB</b> (odstín 0–360°, sytost, jas) používá grafik, když ladí barvy ve Photoshopu nebo Illustratoru. <b>HEX</b> je zápis RGB pro web, např. #FF0000 = R 255, G 0, B 0. Podrobně: <a href="../tema-08-barevna-reprodukce/#hex">téma 8 – HEX krok za krokem</a>.</div></details>
+
+  <h3 id="a2">RGB – popis</h3>
+  <figure class="pic"><div data-img="rgb"></div></figure>
+  <ul>
+    <li><b>R</b> = red (červená), <b>G</b> = green (zelená), <b>B</b> = blue (modrá) – <b>základní barvy světla</b>.</li>
+    <li>Každý obrazový bod monitoru má tři malá světélka R, G, B. Jejich světlo se <b>sčítá</b> = <a href="#a5">aditivní míšení</a>.</li>
+    <li>Každá složka má hodnotu <b>0–255</b> (8 bitů). <b>0, 0, 0 = černá</b> (nic nesvítí), <b>255, 255, 255 = bílá</b> (všechno svítí naplno).</li>
+    <li>3 kanály × 8 bitů = <b>24 bitů</b> → asi <b>16,7 milionu barev</b>.</li>
+    <li>Používají ho zařízení, která <b>vyzařují nebo snímají světlo</b>: monitor, mobil, televize, projektor, fotoaparát, skener. Pracuje se v něm pro <b>web</b> a <b>video</b>.</li>
+  </ul>
+  <details class="qa"><summary>➕ Rozšiřující učivo: sRGB a Adobe RGB</summary><div class="ans">RGB má víc variant (pracovních prostorů). <b>sRGB</b> je menší, standard pro web a běžné monitory. <b>Adobe RGB</b> má větší gamut (víc zelených a azurových), používá se při práci s fotografiemi pro tisk. Víc: <a href="../tema-10-color-management/#a-pracovni">téma 10 – pracovní prostory RGB</a>.</div></details>
+
+  <h3 id="a3">CMYK – popis</h3>
+  <figure class="pic"><div data-img="cmyk"></div></figure>
+  <ul>
+    <li><b>C</b> = cyan (azurová), <b>M</b> = magenta (purpurová), <b>Y</b> = yellow (žlutá), <b>K</b> = key (černá) – <b>základní tiskové barvy</b>.</li>
+    <li>Hodnoty jsou v <b>procentech krytí 0–100 %</b>: kolik barvy se nanese na papír.</li>
+    <li><b>Bílá</b> se netiskne – je to <b>barva papíru</b> (0 % všech barev).</li>
+    <li>Tiskové barvy světlo <b>pohlcují</b> = <a href="#a6">subtraktivní míšení</a>.</li>
+    <li>V CMYK musí být <b>data pro tisk</b> – fotky se do CMYK převádějí podle ICC profilu tiskárny.</li>
+  </ul>
+  <h4 id="a3k">Proč má CMYK čtvrtou barvu, černou (K)</h4>
+  <figure class="pic"><div data-img="cernaK"></div></figure>
+  <p>Skutečné tiskové barvy nejsou dokonale čisté. Když se smíchá azurová, purpurová a žlutá, vznikne <b>tmavě hnědá</b>, ne černá. Proto se přidává čtvrtá barva – <b>černá K</b>:</p>
+  <ul>
+    <li><b>hluboká černá</b> a kresba ve stínech,</li>
+    <li><b>ostrý text</b> – písmo se tiskne jen černou z jedné desky, nehrozí rozmazání při nepřesném soutisku,</li>
+    <li><b>méně barvy</b> na papíře – barva rychleji schne a tisk je levnější.</li>
+  </ul>
+  <p class="small">K = <b>key</b> (klíčová barva) – k černé se při tisku sesazovaly ostatní barvy. Proč nepoužívat registrační černou: <a href="../tema-08-barevna-reprodukce/#registracni">téma 8</a>.</p>
+
+  <h3 id="a4">RGB × CMYK a gamut</h3>
+  <div class="tablewrap" style="--mw:560px"><table>
+    <tr><th></th><th>RGB</th><th>CMYK</th></tr>
+    <tr><td><b>Míšení</b></td><td>aditivní – světla se sčítají</td><td>subtraktivní – barvy světlo pohlcují</td></tr>
+    <tr><td><b>Začínám od</b></td><td>černé (tma)</td><td>bílé (papír)</td></tr>
+    <tr><td><b>Hodnoty</b></td><td>0–255 pro každou složku</td><td>0–100 % pro každou barvu</td></tr>
+    <tr><td><b>Všechno naplno</b></td><td>bílá</td><td>teoreticky černá, prakticky příliš mnoho barvy</td></tr>
+    <tr><td><b>Kanály</b></td><td>3 × 8 bitů = 24 bitů</td><td>4 × 8 bitů = 32 bitů</td></tr>
+    <tr><td><b>Gamut</b></td><td>větší – zářivé barvy</td><td>menší – zářivé zelené, modré a oranžové nevytiskne</td></tr>
+    <tr><td><b>Použití</b></td><td>monitor, web, video, fotoaparát</td><td>tisk: knihy, letáky, plakáty, obaly</td></tr>
+  </table></div>
+  <figure class="pic"><div data-img="gamut"></div><figcaption>Gamut = rozsah barev, které zařízení umí zobrazit nebo vytisknout. Celá barevná plocha jsou barvy, které vidí oko (Lab). Uvnitř je menší RGB a ještě menší CMYK.</figcaption></figure>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Barevný režim a bity:</b> pérová předloha – 1 kanál, 1 bit = 2 barvy · stupně šedi – 1 kanál, 8 bitů = 256 odstínů · <b>RGB</b> – 3 kanály, 8 × 3 = <b>24 bitů</b> = 16,7 milionu barev · <b>CMYK</b> – 4 kanály, 8 × 4 = <b>32 bitů</b>. Bity krok za krokem: <a href="../tema-06-predlohy-a-rastr/">téma 6</a>.</div>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„RGB je barvový prostor světla – červená, zelená a modrá, hodnoty 0 až 255. Používá ho monitor. CMYK jsou tiskové barvy – azurová, purpurová, žlutá a černá, v procentech krytí. Černá se přidává, protože ze tří barev vznikne jen tmavě hnědá. CMYK má menší gamut než RGB.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ M: MÍŠENÍ A LAB ============ -->
+<section id="miseni">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">2 · Souhrn · větev M</span></div>
+  <h2>Způsoby míšení barev a Lab</h2>
+  <div class="oneliner m"><span class="lbl">Jednou větou</span>RGB se míchá <b>aditivně</b> (světla se sčítají), CMY <b>subtraktivně</b> (barvy světlo pohlcují). RGB a CMY(K) jsou <b>přístrojově závislé</b> – stejná čísla vypadají na každém zařízení jinak. <b>Lab</b> je <b>přístrojově nezávislý</b> – popisuje barvu tak, jak ji vidí člověk.</div>
+
+  <h3 id="a5">Aditivní míšení (RGB)</h3>
+  <h4 id="a5v">🧪 Vyzkoušej si: zapínej a vypínej barvy</h4>
+  <div class="grid2">
+    <div class="card"><b>Aditivní · RGB</b> <span class="muted small">(světla na černé stěně)</span><div class="sim-ctrl" id="mixAddBtns"></div><div class="mixbox" id="mixAdd"></div></div>
+    <div class="card"><b>Subtraktivní · CMY</b> <span class="muted small">(barvy na bílém papíře)</span><div class="sim-ctrl" id="mixSubBtns"></div><div class="mixbox" id="mixSub"></div></div>
+  </div>
+  <p><b>Aditivní</b> = sčítací (latinsky <i>addere</i> = přidat). Mícháme <b>světla</b>. Začínáme od <b>tmy (černé)</b> – čím víc světla přidáme, tím je barva světlejší.</p>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Smícháme světla</th><th>Vznikne</th></tr>
+    <tr><td><span class="swatch" style="background:#f00"></span>R + <span class="swatch" style="background:#0f0"></span>G</td><td><span class="swatch" style="background:#ff0"></span><b>žlutá</b></td></tr>
+    <tr><td><span class="swatch" style="background:#0f0"></span>G + <span class="swatch" style="background:#00f"></span>B</td><td><span class="swatch" style="background:#0ff"></span><b>azurová</b></td></tr>
+    <tr><td><span class="swatch" style="background:#f00"></span>R + <span class="swatch" style="background:#00f"></span>B</td><td><span class="swatch" style="background:#f0f"></span><b>purpurová</b></td></tr>
+    <tr><td>R + G + B</td><td><span class="swatch" style="background:#fff"></span><b>bílá</b></td></tr>
+  </table></div>
+  <p class="small">Kde: monitory, mobily, televize, projektory, fotoaparáty a skenery – všechno, co vyzařuje nebo snímá světlo.</p>
+
+  <h3 id="a6">Subtraktivní míšení (CMY, CMYK)</h3>
+  <p><b>Subtraktivní</b> = odčítací (latinsky <i>subtrahere</i> = odebrat). Mícháme <b>barvy</b>. Začínáme od <b>bílého papíru</b>. Každá tisková barva část světla <b>pohltí</b> – čím víc barvy, tím je výsledek tmavší.</p>
+  <div class="grid2">
+    <div class="tablewrap" style="--mw:0"><table>
+      <tr><th>Tisková barva</th><th>Pohltí</th><th>Odrazí</th></tr>
+      <tr><td><span class="swatch" style="background:#00aeef"></span><b>azurová C</b></td><td>červenou</td><td>zelenou + modrou</td></tr>
+      <tr><td><span class="swatch" style="background:#ec008c"></span><b>purpurová M</b></td><td>zelenou</td><td>červenou + modrou</td></tr>
+      <tr><td><span class="swatch" style="background:#fff200"></span><b>žlutá Y</b></td><td>modrou</td><td>červenou + zelenou</td></tr>
+    </table></div>
+    <div class="tablewrap" style="--mw:0"><table>
+      <tr><th>Přetiskneme</th><th>Vznikne</th></tr>
+      <tr><td>C + M</td><td><span class="swatch" style="background:#2e3192"></span><b>modrá</b></td></tr>
+      <tr><td>M + Y</td><td><span class="swatch" style="background:#ed1c24"></span><b>červená</b></td></tr>
+      <tr><td>C + Y</td><td><span class="swatch" style="background:#00a651"></span><b>zelená</b></td></tr>
+      <tr><td>C + M + Y</td><td><span class="swatch" style="background:#3b2a24"></span>teoreticky <b>černá</b>, ve skutečnosti tmavě hnědá</td></tr>
+    </table></div>
+  </div>
+  <p class="small">Kde: tisk (ofset, digitální tisk, inkoustové tiskárny), malování barvami. Podrobně o světle a vnímání barev: <a href="../tema-09-teorie-barevnosti/#a-subtraktivni">téma 9</a>.</p>
+
+  <h3 id="a7">Doplňkové barvy</h3>
+  <figure class="pic"><div data-img="doplnek"></div></figure>
+  <div class="mnemo">🧠 Pomůcka: napiš <span class="L">RGB</span> a pod něj <span class="L">CMY</span>.<br><span class="muted small">Co je pod sebou, je doplňkové (komplementární): červená ↔ azurová, zelená ↔ purpurová, modrá ↔ žlutá. Ze dvou světel RGB vznikne barva CMY, ze dvou tiskových barev CMY vznikne barva RGB.</span></div>
+  <p>Doplňkové barvy dají při aditivním míšení <b>bílou</b> a při subtraktivním <b>tmavou</b>. Vedle sebe tvoří <b>největší kontrast</b>.</p>
+
+  <h3 id="a8">Přístrojově závislé × nezávislé barvové prostory</h3>
+  <figure class="pic"><div data-img="zavisle"></div></figure>
+  <div class="grid2">
+    <div class="card"><b>📱🖨️ Přístrojově ZÁVISLÉ: RGB, CMY(K)</b><br>Čísla jsou jen <b>„recept“ pro jedno zařízení</b>. Stejná čísla RGB vypadají na každém monitoru trochu jinak, stejná čísla CMYK na každém stroji a papíře jinak. Výsledná barva <b>závisí na zařízení</b>.</div>
+    <div class="card"><b>🌐 Přístrojově NEZÁVISLÝ: Lab (CIELAB)</b><br>Čísla popisují barvu tak, <b>jak ji vidí člověk</b>. Stejná čísla Lab znamenají <b>vždy stejnou barvu</b>, ať je zařízení jakékoli.</div>
+  </div>
+  <div class="warn"><b class="t">Pozor na chyták</b>RGB není „lepší“ ani „horší“ než CMYK. Oba jsou <b>závislé</b> – každý patří k jinému zařízení. Nezávislý je jen <b>Lab</b>.</div>
+
+  <h3 id="a9">CIELAB a barvová koule</h3>
+  <figure class="pic"><div data-img="koule"></div></figure>
+  <p><b>CIELAB</b> (krátce <b>Lab</b>) zavedla mezinárodní komise pro osvětlování <b>CIE</b> v roce 1976. Obsahuje <b>všechny barvy, které vidí lidské oko</b> – je to největší barvový prostor, vejdou se do něj barvy z RGB i z CMYK.</p>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Osa</th><th>Kam vede</th><th>Hodnoty</th></tr>
+    <tr><td><b>L</b> – světlost</td><td>svisle: černá ↕ bílá</td><td>0 = černá, 100 = bílá</td></tr>
+    <tr><td><b>a</b></td><td>zelená (−) ↔ červená (+)</td><td>asi −128 až +127</td></tr>
+    <tr><td><b>b</b></td><td>modrá (−) ↔ žlutá (+)</td><td>asi −128 až +127</td></tr>
+  </table></div>
+  <div class="mnemo">🧠 Pomůcka: koule jako <span class="L">zeměkoule</span>.<br><span class="muted small">Severní pól = bílá, jižní pól = černá, osa uprostřed = šedé. Na „rovníku“ jsou pestré barvy dokola – čím dál od osy, tím sytější.</span></div>
+  <h4 id="a9v">🧪 Vyzkoušej si: posouvej L, a, b</h4>
+  <div class="card">
+    <div class="ctrl"><label for="labL">L (světlost)</label><input type="range" id="labL" min="0" max="100" value="50"><output id="oL">50</output></div>
+    <div class="ctrl"><label for="labA">a (zelená ↔ červená)</label><input type="range" id="labA" min="-100" max="100" value="60"><output id="oA">60</output></div>
+    <div class="ctrl"><label for="labB">b (modrá ↔ žlutá)</label><input type="range" id="labB" min="-100" max="100" value="40"><output id="oB">40</output></div>
+    <div class="labout"><span class="labsw" id="labSw"></span><span id="labTxt" class="small"></span></div>
+    <p class="muted small" style="margin:6px 0 0">Barvy na monitoru jsou jen přibližné.</p>
+  </div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>CIELAB (Lab)</b> je barvový prostor <b>nezávislý na zařízení</b>. Zavedla ho komise CIE (1976). <b>L</b> = světlost (0 černá – 100 bílá), <b>a</b> = osa zelená ↔ červená, <b>b</b> = osa modrá ↔ žlutá. Obsahuje <b>všechny barvy, které vidí lidské oko</b>, proto slouží jako <b>prostředník při převodu barev</b> mezi RGB a CMYK (ICC profily) a při <b>měření barev</b>.</div>
+
+  <h3 id="a10">Lab jako „překladač“ mezi RGB a CMYK</h3>
+  <div class="flow">
+    <div class="step c"><div class="no">monitor</div><div class="nm">RGB</div><div class="ds">„mluví řečí RGB“</div></div>
+    <div class="step k"><div class="no">společný jazyk</div><div class="nm">Lab</div><div class="ds">jak barvu vidí oko</div></div>
+    <div class="step m"><div class="no">tisk</div><div class="nm">CMYK</div><div class="ds">„mluví řečí CMYK“</div></div>
+  </div>
+  <p>Monitor a tiskový stroj si přímo nerozumí. Proto se barva převádí <b>přes Lab</b>. K převodu slouží <b>ICC profily</b> – každé zařízení má svůj profil, který popisuje, jak jeho čísla vypadají v Lab.</p>
+  <div class="tip"><b class="t">Přirovnání</b>Čech a Japonec si nerozumí, ale oba umí anglicky. <b>Angličtina = Lab</b>. Slovník čeština–angličtina a japonština–angličtina = <b>ICC profily</b>. ICC profily a způsoby převodu podrobně: <a href="../tema-10-color-management/#a-prevod">téma 10</a>.</div>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„RGB se míchá aditivně – světla se sčítají a dohromady dají bílou. CMY se míchá subtraktivně – barvy světlo pohlcují a dohromady dají tmavou. RGB a CMYK jsou přístrojově závislé, stejná čísla vypadají na každém zařízení jinak. Lab je nezávislý, popisuje barvu, jak ji vidí oko, a slouží jako překladač při převodu z RGB do CMYK.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ Y: SEPARACE ============ -->
+<section id="separace">
+  <div class="sec-head"><span class="dot y"></span><span class="kicker">2 · Souhrn · větev Y</span></div>
+  <h2>Výtažkování (separace) barev</h2>
+  <div class="oneliner y"><span class="lbl">Jednou větou</span><b>Výtažkování (separace)</b> = rozdělení barevného obrazu na <b>barevné výtažky</b> – jeden pro každou tiskovou barvu <b>C, M, Y, K</b> a pro každou <b>přímou barvu</b>. Z každého výtažku vznikne <b>jedna tisková forma</b>.</div>
+
+  <h3 id="a11">Co je barevný výtažek</h3>
+  <figure class="pic"><div data-img="separace"></div></figure>
+  <p><b>Barevný výtažek</b> = jedna barevná složka obrazu pro <b>jednu tiskovou barvu</b>. Ukazuje, <b>kde a kolik</b> této barvy se má vytisknout. V tiskovém stroji se výtažky vytisknou přes sebe v <b>soutisku</b> a oko je složí zpět do barevného obrazu.</p>
+  <h4 id="a11v">🧪 Vyzkoušej si: náhled separací obálky kroniky</h4>
+  <p class="small">Takhle vypadá <b>Náhled separací</b> v InDesignu nebo <b>Náhled výstupu</b> v Acrobatu. Obálka má 4 výtažky CMYK a jednu <b>přímou zlatou</b> barvu (rámeček). Klepni na výtažek.</p>
+  <div class="sim-ctrl" id="sepBtns"></div>
+  <figure class="pic svgfig"><div id="sepSvg"></div></figure>
+  <label class="small" style="display:flex;gap:8px;align-items:center;justify-content:center"><input type="checkbox" id="sepDeska"> ukázat, jak vypadá výtažek na tiskové desce (jen černobíle)</label>
+  <div class="tip" id="sepPopis"></div>
+
+  <h3 id="a12">Jak se výtažky dělají – dříve a dnes</h3>
+  <div class="calc">
+    <div class="st"><span class="n">1</span><div>Fotka je v <b>RGB</b> (fotoaparát, skener, monitor).</div></div>
+    <div class="st"><span class="n">2</span><div>Převede se do <b>CMYK</b> podle ICC profilu tisku (přes Lab). Obraz se rozdělí na <b>4 kanály</b> – ve Photoshopu je vidíš v panelu <b>Kanály</b>, každý vypadá jako černobílá fotka.</div></div>
+    <div class="st"><span class="n">3</span><div><b>RIP</b> (Raster Image Processor) přečte tiskové PDF, rozdělí ho na výtažky a každý <b>zrastruje</b> s vlastním úhlem.</div></div>
+    <div class="st"><span class="n">4</span><div>Z každého výtažku se osvitem vyrobí <b>tisková deska</b> (CtP).</div></div>
+    <div class="st"><span class="n">5</span><div>Stroj vytiskne barvy přes sebe v <b>soutisku</b>.</div></div>
+  </div>
+  <figure class="pic"><div data-img="rip"></div></figure>
+  <h4 id="a12d">Jak se to dělalo dřív: barevné filtry</h4>
+  <figure class="pic"><div data-img="filtry"></div></figure>
+  <p>Výtažky se <b>fotografovaly přes barevné filtry v doplňkové barvě</b>: přes <b>červený</b> filtr vznikl <b>azurový</b> výtažek, přes <b>zelený</b> filtr <b>purpurový</b> a přes <b>modrý</b> filtr <b>žlutý</b>. Černý výtažek se dělal zvlášť. Výsledkem byly <b>filmy</b> (Computer to Film – <a href="../tema-11-ctf-ctp-ctpr-cts/">téma 11</a>).</p>
+
+  <h3 id="a13">Natočení rastru</h3>
+  <figure class="pic"><div data-img="uhly"></div></figure>
+  <p>Každý výtažek se zrastruje s <b>jiným úhlem natočení</b> sítě. Správné úhly dají pravidelný vzorek – <b>rozetu</b>. Špatné úhly dají rušivé <b>moaré</b>.</p>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Výtažek</th><th>Úhel</th><th>Proč</th></tr>
+    <tr><td><b>K</b> černá</td><td><b>45°</b></td><td>nejtmavší barva → úhel, který oko vnímá nejméně</td></tr>
+    <tr><td><b>C</b> azurová</td><td><b>75°</b></td><td>45° + 30°</td></tr>
+    <tr><td><b>M</b> purpurová</td><td><b>15°</b></td><td>45° − 30°</td></tr>
+    <tr><td><b>Y</b> žlutá</td><td><b>0° (90°)</b></td><td>nejsvětlejší → moaré na ní skoro není vidět</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span>Autotypické sítě se kvůli soutisku musí natáčet: <b>K 45°, Y 90° (0°), C 75°, M 15°</b>. Správným překrýváním vzniká pravidelný vzorek – <b>rozeta</b>, nesprávným rušivý vzorek – <b>moaré</b>. <b>Barevný výtažek</b> je jedna barevná složka obrazu pro jednu tiskovou barvu, každý výtažek má vlastní tiskovou formu. Vyzkoušej si natáčení sítí: <a href="../tema-06-predlohy-a-rastr/#vytazky">téma 6</a>.</div>
+
+  <h3 id="a14">Kolik výtažků, tolik desek</h3>
+  <p><b>Počet desek = počet výtažků</b> na každé straně archu. Přímá barva (např. Pantone, zlatá) má <b>vlastní výtažek</b> a vlastní desku.</p>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Zápis</th><th>Co znamená</th><th>Desek</th></tr>
+    <tr><td><b>4/0</b></td><td>CMYK na lícové straně, rub bez tisku</td><td>4</td></tr>
+    <tr><td><b>4/4</b></td><td>CMYK na obou stranách</td><td>8</td></tr>
+    <tr><td><b>4+1/0</b></td><td>CMYK + 1 přímá barva na líci</td><td>5</td></tr>
+    <tr><td><b>1/1</b></td><td>jen černá na obou stranách</td><td>2</td></tr>
+  </table></div>
+  <h4 id="a14k">🧮 Spočítej desky</h4>
+  <div class="card">
+    <div class="am-in" style="grid-template-columns:repeat(2,1fr)">
+      <label>Líc: CMYK?<select class="inline-in" id="dLc"><option value="4">ano (4)</option><option value="1">jen černá (1)</option><option value="0">ne (0)</option></select></label>
+      <label>Líc: přímé barvy<select class="inline-in" id="dLp"><option>0</option><option selected>1</option><option>2</option></select></label>
+      <label>Rub: CMYK?<select class="inline-in" id="dRc"><option value="4">ano (4)</option><option value="1" selected>jen černá (1)</option><option value="0">ne (0)</option></select></label>
+      <label>Rub: přímé barvy<select class="inline-in" id="dRp"><option selected>0</option><option>1</option><option>2</option></select></label>
+    </div>
+    <div class="calc" id="dOut" style="margin-bottom:0"></div>
+  </div>
+  <p class="small">Platí pro tisk s tiskovou formou (ofset, flexotisk). Digitální tisk desky nepotřebuje. Tisk na obrátku: <a href="../tema-05-archova-montaz/">téma 5</a>.</p>
+  <details class="qa"><summary>➕ Rozšiřující učivo: celkové krytí barvou, UCR a GCR</summary><div class="ans"><b>Celkové krytí (TAC)</b> = součet C + M + Y + K v nejtmavším místě. Pro ofset na natíraném papíře nejvýš asi <b>300 %</b>, pro novinový papír asi 240 %. Jinak barva neschne a archy se obtiskují. Proto se při separaci část barev C + M + Y nahrazuje černou: <b>UCR</b> (jen ve stínech) a <b>GCR</b> (v celém obrazu). Podrobně: <a href="../tema-08-barevna-reprodukce/#ucr">téma 8</a>.</div></details>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Separace</b> je rozdělení barevného obrazu na barevné výtažky C, M, Y, K a přímé barvy. Každý výtažek se zrastruje s vlastním úhlem natočení a vznikne z něj jedna tisková forma. Separaci provádí <b>RIP</b>. Kontroluje se v <b>náhledu separací</b>. Celkové krytí barvou nemá u ofsetu na natíraném papíře přesáhnout asi <b>300 %</b>. Separace s náhledem etikety: <a href="../tema-08-barevna-reprodukce/#separace">téma 8</a>.</div>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Výtažkování neboli separace je rozdělení barevného obrazu na výtažky – pro každou tiskovou barvu C, M, Y, K a pro každou přímou barvu jeden. Dnes separaci dělá RIP, dříve se výtažky fotografovaly přes barevné filtry. Každý výtažek má jiný úhel rastru, aby nevzniklo moaré, a z každého vznikne jedna tisková deska.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ K: TUHÉ VAZBY ============ -->
+<section id="vazby">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
+  <h2>Tuhé knižní vazby</h2>
+  <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Knižní vazba</b> spojí listy nebo složky do <b>knižního bloku</b> a dá mu obal. <b>Tuhé vazby V7–V9</b> mají <b>desky z tuhé lepenky nebo plastu</b>. Nejběžnější je <b>V8</b> – blok šitý nití, zavěšený do desek s <b>jednodílným potahem</b>.</div>
+
+  <h3 id="b1">Knižní vazba a dělení vazeb</h3>
+  <figure class="pic"><div data-img="strom"></div></figure>
+  <p><b>Knižní vazba</b> = 1) <b>postup</b>, kterým se z jednotlivých složek nebo listů vytvoří pevný celek – <b>knižní blok</b>, a 2) <b>obal</b>, který knihu chrání a zdobí.</p>
+  <div class="tablewrap" style="--mw:560px"><table>
+    <tr><th>Skupina</th><th>Vazby</th><th>Obal</th></tr>
+    <tr><td><b>měkké</b></td><td>V1 sešitová (drát), V2 lepená, V3 bloková, V4 šitá nití</td><td>papírová nebo kartonová obálka</td></tr>
+    <tr><td><b>polotuhé</b></td><td>V5 s deskami z lehčí lepenky, V6 leporela</td><td>lehčí lepenka</td></tr>
+    <tr><td><b>tuhé</b></td><td><b>V7</b> poloplátěná, <b>V8</b> s jednodílným potahem, <b>V9</b> s plastovými deskami</td><td><b>tuhé desky</b> z lepenky nebo plastu</td></tr>
+    <tr><td><b>speciální</b></td><td>kroužková, spirálová, hřebenová</td><td>jednotlivé listy s otvory</td></tr>
+  </table></div>
+  <div class="mnemo">🧠 Pomůcka: <span class="L">čím vyšší číslo, tím tvrdší</span>, pevnější a dražší vazba.<br><span class="muted small">1 = skobka · 2 = lepidlo · 4 = nit + měkká obálka · 8 = nit + tuhé desky</span></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Dělení knižních vazeb:</b> měkké (V1 sešitová, V2 lepená, V3 bloková, V4 šitá nití) · polotuhé (V5 s deskami z lehčí lepenky, V6 leporela) · <b>tuhé (V7 poloplátěná, V8 s jednodílným potahem, V9 s plastovými deskami)</b> · speciální (kroužková, spirálová, hřebenová). Podle spojení bloku se vazby dělí na <b>šité</b> a <b>lepené</b>. Měkké vazby V1 a V2: téma 22 · polotuhé a leporelo: téma 24 (obě témata připravujeme) · přehled V1–V9 s fotkami: <a href="../tema-03-dtp-studio-a-knizni-vazba/#tabulka-vazeb">téma 3</a>.</div>
+
+  <h3 id="b2">Tuhé vazby V7, V8, V9</h3>
+  <figure class="pic"><div data-img="tuhe"></div></figure>
+  <div class="tablewrap" style="--mw:560px"><table>
+    <tr><th>Vazba</th><th>Popis</th><th>Použití</th></tr>
+    <tr><td><b>V7</b> poloplátěná</td><td>tuhé desky s <b>kombinovaným potahem</b>: desky potažené papírem, hřbet (a někdy rohy) plátnem nebo jiným materiálem</td><td>dnes méně, klasické knihy</td></tr>
+    <tr><td><b>V8</b> s jednodílným potahem</td><td>blok <b>šitý nití</b>, tuhé desky z lepenky potažené <b>jedním kusem jednoho materiálu</b></td><td>knihy, encyklopedie, kroniky, fotoknihy</td></tr>
+    <tr><td><b>V9</b> plastová</td><td>desky z <b>plastu</b>, vyztužené lepenkou nebo neměkčeným plastem (PVC)</td><td>diáře, pracovní sešity, odolné manuály</td></tr>
+  </table></div>
+  <h4 id="b2p">V8a, V8b, V8c – podle potahu</h4>
+  <ul>
+    <li><b>V8a</b> – <b>laminovaný</b> potah: potištěný papír s fólií (lesklou nebo matnou). Typická dětská kniha nebo fotokniha s fotkou na deskách.</li>
+    <li><b>V8b</b> – <b>papírový</b> potah.</li>
+    <li><b>V8c</b> – potah z <b>jiného materiálu</b>: knihařské plátno, kůže, koženka.</li>
+  </ul>
+  <h4 id="b2h">Rovný × kulatý hřbet</h4>
+  <p>Tuhá vazba může mít <b>rovný hřbet</b>, nebo <b>kulatý hřbet</b>. Kulatý hřbet se vyklene ven, kniha se lépe otevírá a hřbet se časem „nepropadne“. Rovný hřbet je jednodušší a moderní.</p>
+
+  <h3 id="b3">Využití tuhých vazeb</h3>
+  <figure class="pic"><div data-img="vyuziti"></div></figure>
+  <p>Tuhá vazba se volí pro knihy, které se <b>hodně používají</b> nebo mají <b>vydržet dlouho</b>: beletrie v pevné vazbě, encyklopedie, slovníky, dětské knihy, kroniky, fotoknihy, pamětní a dárkové knihy, diáře (V9).</p>
+  <div class="grid2">
+    <div class="card"><b class="pro">✔ Výhody</b><br><b>odolná</b> a pevná, <b>dlouhá životnost</b>, chrání blok, reprezentativní vzhled, lze zušlechtit (ražba, lak, přebal)</div>
+    <div class="card"><b class="con">✘ Nevýhody</b><br><b>dražší</b>, výroba je <b>náročnější a delší</b>, kniha je těžší. Proto se rozšířily měkké vazby (paperback).</div>
+  </div>
+
+  <h3 id="b4">Části knihy v tuhé vazbě</h3>
+  <figure class="pic"><div data-img="casti"></div></figure>
+  <div class="tablewrap" style="--mw:0"><table>
+    <tr><th>Část</th><th>Co to je</th></tr>
+    <tr><td><b>knižní blok</b></td><td>složky sešité nití a slepené ve hřbetu</td></tr>
+    <tr><td><b>desky</b></td><td>2 přířezy tuhé lepenky + hřbetní vložka, potažené potahem</td></tr>
+    <tr><td><b>předsádka</b></td><td>dvoulist silnějšího papíru (120–150 g/m²) – <b>spojuje blok s deskami</b></td></tr>
+    <tr><td><b>drážka</b></td><td>mezera mezi deskou a hřbetem – díky ní se desky snadno otevírají</td></tr>
+    <tr><td><b>kapitálek</b></td><td>barevný proužek látky na hlavě a patě hřbetu bloku – zpevňuje a zdobí</td></tr>
+    <tr><td><b>záložka</b></td><td>stužka vlepená do hřbetu</td></tr>
+    <tr><td><b>gáza</b></td><td>řídká tkanina na hřbetu bloku – zpevňuje ho a drží blok v deskách</td></tr>
+  </table></div>
+  <p class="small">Všechny části knihy a knižní dvoustrana: <a href="../tema-12-casti-publikace-a-prutisk/#a-zvenku">téma 12</a>.</p>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ K: VAZBA V8 ============ -->
+<section id="v8">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K · postup výroby</span></div>
+  <h2>Zhotovení vazby V8 krok za krokem</h2>
+  <div class="oneliner k"><span class="lbl">Jednou větou</span>Kniha ve vazbě V8 má dvě části, které se vyrábějí <b>zvlášť</b>: <b>knižní blok</b> a <b>knižní desky</b>. Nakonec se blok <b>zavěsí do desek</b> a kniha se zalisuje.</div>
+
+  <h3 id="b5">Tři fáze výroby</h3>
+  <div class="flow">
+    <div class="step c"><div class="no">A · kroky 1–9</div><div class="nm">Knižní blok</div><div class="ds">falcování, předsádky, snášení, šití nití, klížení, trojřez, kulacení, kapitálek, přelepení hřbetu</div></div>
+    <div class="step y"><div class="no">B · kroky 10–12</div><div class="nm">Knižní desky</div><div class="ds">přířezy lepenky a potahu, potahování, ražba titulu</div></div>
+    <div class="step m"><div class="no">C · kroky 13–14</div><div class="nm">Spojení</div><div class="ds">zavěšení bloku do desek, lisování a drážka</div></div>
+  </div>
+  <div class="mnemo">🧠 Pomůcka: <span class="L">B</span>lok – <span class="L">D</span>esky – <span class="L">Z</span>avěšení.<br><span class="muted small">Nejdřív knižní blok, potom desky a nakonec se blok zavěsí do desek.</span></div>
+
+  <h3 id="b6">🧪 Projdi výrobu krok za krokem</h3>
+  <div class="stepper" id="stV8"></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Vazba V8</b> je tuhá vazba s nekombinovaným (jednodílným) potahem. Archy se sfalcují na složky, k první a poslední složce se přilepí <b>předsádky</b>, složky se snesou <b>na sebe</b> a sešijí <b>nití</b> na gázu. Hřbet se zaklíží, blok se ořízne <b>trojřezem</b>, zkulatí se, přilepí se <b>kapitálek</b> a záložka a hřbet se přelepí. Zvlášť se vyrobí <b>desky</b>: přířezy lepenky (2 desky + hřbet) se nalepí na potah, okraje potahu se zahnou dovnitř a na desky se vyrazí titul. Nakonec se blok <b>zavěsí do desek</b> (předsádky se přilepí k deskám), kniha se zalisuje a vytvoří se <b>drážka</b>.</div>
+
+  <h3 id="b7">Stroje a materiály</h3>
+  <div class="tablewrap" style="--mw:560px"><table>
+    <tr><th>Krok</th><th>Stroj</th></tr>
+    <tr><td>falcování</td><td><b>falcovací stroj</b></td></tr>
+    <tr><td>snášení složek</td><td><b>snášecí stroj</b></td></tr>
+    <tr><td>šití nití</td><td><b>niťovka</b> (šicí stroj)</td></tr>
+    <tr><td>ořez ze tří stran</td><td><b>třínožová řezačka</b> (trojřez)</td></tr>
+    <tr><td>kulacení a oblení hřbetu</td><td>stroj na kulacení a oblení hřbetu</td></tr>
+    <tr><td>výroba desek</td><td><b>stroj na výrobu desek</b>, stohová řezačka na přířezy</td></tr>
+    <tr><td>ražba titulu</td><td><b>ražební lis</b> s vyhřátou raznicí</td></tr>
+    <tr><td>zavěšení a drážka</td><td>zavěšovací stroj, <b>drážkovací lis</b></td></tr>
+  </table></div>
+  <div class="tablewrap" style="--mw:520px;margin-top:10px"><table>
+    <tr><th>Materiál</th><th>K čemu</th></tr>
+    <tr><td><b>tuhá lepenka</b> (asi 2 mm)</td><td>desky a hřbetní vložka</td></tr>
+    <tr><td><b>potah</b></td><td>laminovaný papír (V8a), papír (V8b), plátno, kůže, koženka (V8c)</td></tr>
+    <tr><td><b>nit, gáza</b></td><td>šití a zpevnění hřbetu bloku</td></tr>
+    <tr><td><b>předsádkový papír</b> 120–150 g/m²</td><td>spojení bloku s deskami</td></tr>
+    <tr><td><b>lepidla</b></td><td>disperzní (PVAc) na desky a předsádky, klíh nebo tavné lepidlo na hřbet</td></tr>
+  </table></div>
+  <div class="warn"><b class="t">Nezapomeň na směr vlákna</b>Ve všech částech knihy – v bloku, předsádce, lepence i potahu – musí vlákno vést <b>rovnoběžně se hřbetem</b>. Jinak se desky kroutí a kniha se špatně otevírá. Směr vlákna: <a href="../tema-15-predlohy-a-papirovina/#b6">téma 15</a>.</div>
+  <h4 id="b7p">Potah desek – jak velký kus uříznout</h4>
+  <p>Šířka potahu = <span class="eq">ohyb + deska + drážka + hřbet + drážka + deska + ohyb</span>. Výška potahu = <span class="eq">ohyb + výška desky + ohyb</span>. Ohyb (okraj zahnutý dovnitř) bývá 15–20 mm. Kalkulačka krok za krokem: <a href="../tema-03-dtp-studio-a-knizni-vazba/#potah">téma 3</a> · archová montáž knihy V8: <a href="../tema-05-archova-montaz/#am-v8">téma 5</a>.</p>
+  <div class="say"><b class="t">Řekni u zkoušky (závěr)</b>„U vazby V8 se nejdřív vyrobí knižní blok: archy se sfalcují, přilepí se předsádky, složky se snesou na sebe a sešijí nití. Hřbet se zaklíží, blok se ořízne trojřezem, zkulatí se a přilepí se kapitálek. Zvlášť se vyrobí desky z lepenky s jednodílným potahem a vyrazí se titul. Nakonec se blok zavěsí do desek a v lisu se vytvoří drážka. Tak z barevných výtažků a vytištěných archů vznikne hotová kniha.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ ŠVP ============ -->
+<section id="svp">
+  <div class="sec-head"><span class="dot c"></span><span class="kicker">Podle ŠVP</span></div>
+  <h2>Co musíš umět (odškrtej si)</h2>
+  <p class="muted">Technologie 2. roč. (barva: aditivní a subtraktivní míšení, barvové prostory RGB a CMY – přístrojově závislé × CIELAB – nezávislý; standardizace barevné reprodukce a rastrování), Všeobecná polygrafie 3. roč. (knihařská výroba – operace, knižní vazby, materiály) a Odborný výcvik 2. a 3. roč. (barevná reprodukce, správa barev, kontrola kvality). Odkaz „kde to najdu“ tě pošle do správné části.</p>
+  <ul class="check" id="svpList">
+    <li><input type="checkbox" id="s1"><label for="s1">Vysvětlím, co je <b>barvový prostor</b>, a vyjmenuji RGB, CMYK a Lab.</label><a class="svp-go" href="#a1">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s2"><label for="s2">Popíšu <b>RGB</b>: základní barvy, hodnoty 0–255, 24 bitů, použití.</label><a class="svp-go" href="#a2">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s3"><label for="s3">Popíšu <b>CMYK</b>: tiskové barvy, procenta krytí, bílá = papír.</label><a class="svp-go" href="#a3">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s4"><label for="s4">Vysvětlím, <b>proč se přidává černá K</b>.</label><a class="svp-go" href="#a3k">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s5"><label for="s5">Porovnám RGB a CMYK a vysvětlím <b>gamut</b>.</label><a class="svp-go" href="#a4">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s6"><label for="s6">Vysvětlím <b>aditivní míšení</b> a řeknu, co vznikne smícháním světel.</label><a class="svp-go" href="#a5">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s7"><label for="s7">Vysvětlím <b>subtraktivní míšení</b> a řeknu, co vznikne přetiskem barev.</label><a class="svp-go" href="#a6">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s8"><label for="s8">Vyjmenuji <b>doplňkové barvy</b> (RGB nad CMY).</label><a class="svp-go" href="#a7">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s9"><label for="s9">Rozliším <b>přístrojově závislé</b> (RGB, CMY) a <b>nezávislé</b> (Lab) barvové prostory.</label><a class="svp-go" href="#a8">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s10"><label for="s10">Popíšu <b>CIELAB</b>: osy L, a, b a barvovou kouli.</label><a class="svp-go" href="#a9">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s11"><label for="s11">Vysvětlím, proč je Lab <b>„překladač“</b> mezi RGB a CMYK (ICC profily).</label><a class="svp-go" href="#a10">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s12"><label for="s12">Vysvětlím, co je <b>výtažkování (separace)</b> a <b>barevný výtažek</b>.</label><a class="svp-go" href="#a11">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s13"><label for="s13">Popíšu, jak se výtažky dělají dnes (<b>RIP</b>) a dříve (<b>filtry</b>).</label><a class="svp-go" href="#a12">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s14"><label for="s14">Řeknu <b>úhly natočení rastru</b> a vysvětlím rozetu a moaré.</label><a class="svp-go" href="#a13">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s15"><label for="s15">Spočítám, <b>kolik desek</b> potřebuji (4/0, 4/4, 4+1/0).</label><a class="svp-go" href="#a14">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s16"><label for="s16">Vysvětlím, co je <b>knižní vazba</b>, a rozdělím vazby (měkké, polotuhé, tuhé, speciální).</label><a class="svp-go" href="#b1">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s17"><label for="s17">Popíšu <b>tuhé vazby V7, V8, V9</b> a varianty V8a, V8b, V8c.</label><a class="svp-go" href="#b2">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s18"><label for="s18">Řeknu, kde se tuhé vazby <b>používají</b>, a jejich výhody a nevýhody.</label><a class="svp-go" href="#b3">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s19"><label for="s19">Pojmenuji <b>části knihy v tuhé vazbě</b> (předsádka, drážka, kapitálek…).</label><a class="svp-go" href="#b4">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s20"><label for="s20">Popíšu <b>zhotovení vazby V8</b> krok za krokem (blok – desky – zavěšení).</label><a class="svp-go" href="#b6">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s21"><label for="s21">Vyjmenuji <b>stroje a materiály</b> pro vazbu V8.</label><a class="svp-go" href="#b7">→ kde to najdu</a></li>
+  </ul>
+  <p class="small muted" id="svpCount"></p>
+</section>
+
+<!-- ============ TEST PSANÍM ============ -->
+<section id="test">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">Ověř se · 1</span></div>
+  <h2>Test psaním: odpověz vlastními slovy</h2>
+  <p>Otázky odpovídají <b>písemnému testu</b> a ústní zkoušce. Napiš odpověď a klepni na <b>Vyhodnotit</b>. Uvidíš, co jsi zmínil/a ✔, co ti chybí, případné chyby a vzorovou odpověď. Body označené <span class="star">★</span> jsou nejdůležitější.</p>
+  <div class="tip"><b class="t">Jak na to</b>Piš celé věty, klidně s chybami v pravopisu. Test hledá <b>odborné pojmy a souvislosti</b>. Odpověď se průběžně ukládá v tomto prohlížeči.</div>
+  <div id="writeTest"></div>
+</section>
+
+<!-- ============ KVÍZ ============ -->
+<section id="kviz">
+  <div class="sec-head"><span class="dot y"></span><span class="kicker">Ověř se · 2</span></div>
+  <h2>Rychlý kvíz</h2>
+  <p><span id="qCount"></span> otázek. Klepni na odpověď a hned uvidíš vysvětlení.</p>
+  <div id="quiz"></div>
+  <p class="score" id="score"></p>
+  <button class="btn" id="quizReset">Zkusit znovu</button>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cmyk-bar" style="margin-bottom:14px;border-radius:3px"></div>
+    Ústní zkouška · obor Reprodukční grafik (34-53-H/01) · Téma č. 16.<br>
+    Zpracováno z podkladů vyučující k písemné a ústní zkoušce a podle ŠVP. Schémata jsou zjednodušená, barvy na monitoru jsou jen přibližné.
+    <br><a class="back" href="../" style="margin-top:10px">← zpět na rozcestník</a>
+  </div>
+</footer>
+
+<button class="fab-map" id="fabMap" aria-label="Zpět na myšlenkovou mapu"><span class="ar">↑</span> Zpět na mapu</button>
+<button class="theme-toggle" id="themeBtn" aria-label="Přepnout světlý / tmavý režim">◐</button>
+
+<script>
+/* ---------- bezpečné úložiště ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const fmt=(n,d=0)=>(Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toLocaleString('cs-CZ');
+
+
+
+/* ===== Společná data a obrázky pro téma 16 (podrobná lekce i výluh) ===== */
+const T=(x,y,t,o={})=>`<text x="${x}" y="${y}" font-size="${o.s||9}" font-weight="${o.w||700}" fill="${o.f||'#1f2937'}" text-anchor="${o.a||'middle'}" font-family="system-ui,Arial,sans-serif"${o.k?' class="keep"':''}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:''}>${t}</text>`;
+const SIP=(id,b)=>`<defs><marker id="${id}" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="${b}"/></marker></defs>`;
+const S=(vb,obsah)=>`<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${obsah}</svg>`;
+const SIPKA=(x1,y1,x2,y2,id,b='#334155',w=1.8)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${b}" stroke-width="${w}" fill="none" marker-end="url(#${id})"/>`;
+/* převody barev (zjednodušené, jen pro názornost) */
+function cmyk2rgb(c,m,y,k){c/=100;m/=100;y/=100;k/=100;return [255*(1-c)*(1-k),255*(1-m)*(1-k),255*(1-y)*(1-k)].map(v=>Math.round(v));}
+function lab2rgb(L,a,b){let y=(L+16)/116,x=a/500+y,z=y-b/200;
+  const f=t=>t*t*t>0.008856?t*t*t:(t-16/116)/7.787;
+  x=0.95047*f(x);y=1.0*f(y);z=1.08883*f(z);
+  let r=x*3.2406+y*-1.5372+z*-0.4986,g=x*-0.9689+y*1.8758+z*0.0415,bl=x*0.0557+y*-0.2040+z*1.0570;
+  const gm=v=>v>0.0031308?1.055*Math.pow(v,1/2.4)-0.055:12.92*v;
+  const out=[r,g,bl].map(gm);const inG=out.every(v=>v>=-0.001&&v<=1.001);
+  return {rgb:out.map(v=>Math.max(0,Math.min(255,Math.round(v*255)))),inGamut:inG};}
+const hex=a=>'#'+a.map(v=>v.toString(16).padStart(2,'0')).join('');
+const cm=(c,m,y,k)=>hex(cmyk2rgb(c,m,y,k));
+/* malé prvky */
+const monitor=(x,y,w,h,barva)=>`<g transform="translate(${x},${y})"><rect width="${w}" height="${h}" rx="3" fill="#1f2937"/><rect x="3" y="3" width="${w-6}" height="${h-6}" rx="1.5" fill="${barva}"/><rect x="${w/2-4}" y="${h}" width="8" height="5" fill="#475569"/><rect x="${w/2-11}" y="${h+5}" width="22" height="3" rx="1.5" fill="#475569"/></g>`;
+const plechovka=(x,y,barva,pis,svetla)=>`<g transform="translate(${x},${y})"><ellipse cx="15" cy="4" rx="15" ry="4" fill="#cbd5e1" stroke="#334155" stroke-width=".8"/><path d="M0 4 V40 A15 4 0 0 0 30 40 V4" fill="#e2e8f0" stroke="#334155" stroke-width=".8"/><rect x="0" y="14" width="30" height="18" fill="${barva}"/><ellipse cx="15" cy="4" rx="11" ry="2.6" fill="${barva}"/>${T(15,26.5,pis,{s:10,w:900,f:svetla?'#1b1c1f':'#fff'})}</g>`;
+const oko=(x,y,s=1)=>`<g transform="translate(${x},${y}) scale(${s})"><path d="M-14 0 Q0 -11 14 0 Q0 11 -14 0Z" fill="#fff" stroke="#334155" stroke-width="1.2"/><circle r="5" fill="#2563eb"/><circle r="2.2" fill="#111"/><circle cx="1.6" cy="-1.6" r=".9" fill="#fff"/></g>`;
+/* obrázek „krajina“ v barvách CMYK (pro separaci) – každý tvar má hodnoty C, M, Y, K */
+const SCENA=[
+  {d:'M0 0 H100 V70 H0Z',v:[45,8,0,0]},                         /* nebe */
+  {c:[78,18,11],v:[0,25,100,0]},                                 /* slunce */
+  {d:'M0 52 Q30 36 60 50 T100 46 V70 H0Z',v:[70,10,100,10]},    /* kopec */
+  {d:'M34 40 H58 V60 H34Z',v:[0,10,25,0]},                       /* dům */
+  {d:'M31 41 L46 29 L61 41Z',v:[5,90,85,0]},                     /* střecha */
+  {d:'M43 49 H50 V60 H43Z',v:[30,55,85,25]},                     /* dveře */
+  {d:'M76 44 h4 v16 h-4z',v:[30,55,85,35]},                      /* kmen */
+  {c:[78,38,10],v:[85,20,95,20]},                                /* koruna */
+  {d:'M0 70 H100 V92 H0Z',v:[0,0,0,0]},                          /* papír – titul */
+];
+function scenaSVG(rezim,deska){ /* rezim: 'all','c','m','y','k','z' */
+  const ink={c:'#00a3e0',m:'#e6007e',y:'#f2c500',k:'#1b1c1f',z:'#b8892a'},idx={c:0,m:1,y:2,k:3};
+  let s=`<rect width="100" height="92" fill="#fff"/>`;
+  const shape=(o,fill,op)=>o.c?`<circle cx="${o.c[0]}" cy="${o.c[1]}" r="${o.c[2]}" fill="${fill}" fill-opacity="${op}"/>`:`<path d="${o.d}" fill="${fill}" fill-opacity="${op}"/>`;
+  SCENA.forEach(o=>{
+    if(rezim==='all')s+=shape(o,cm(...o.v),1);
+    else if(rezim!=='z'){const v=o.v[idx[rezim]]/100;if(v>0)s+=shape(o,deska?'#1b1c1f':ink[rezim],v);}
+  });
+  /* text KRONIKA = 100 % K, zlatý rámeček = přímá barva */
+  const txt=`<text x="50" y="85" font-size="12" font-weight="900" text-anchor="middle" font-family="Georgia,serif" class="keep"`;
+  if(rezim==='all'||rezim==='k')s+=txt+` fill="${rezim==='all'?'#1b1c1f':(deska?'#1b1c1f':ink.k)}">KRONIKA</text>`;
+  if(rezim==='all'||rezim==='z')s+=`<rect x="3" y="3" width="94" height="86" fill="none" stroke="${rezim==='all'?'#c9a13b':(deska?'#1b1c1f':ink.z)}" stroke-width="3"/>`;
+  return s;}
+
+const IMG={
+/* 1 barvový prostor – jedna barva, tři zápisy */
+prostor:()=>{let s=SIP('sipPr','#334155');
+ s+=`<rect x="78" y="22" width="64" height="64" rx="10" fill="#d93d36" stroke="#334155"/>`+T(110,100,'jedna barva',{s:8,w:600});
+ s+=`<rect x="4" y="12" width="64" height="26" rx="6" fill="#fee2e2"/>`+T(36,23,'RGB',{s:8,f:'#991b1b',w:800})+T(36,33,'217 · 61 · 54',{s:8,k:1});
+ s+=`<rect x="4" y="48" width="64" height="26" rx="6" fill="#e0f2fe"/>`+T(36,59,'CMYK',{s:8,f:'#075985',w:800})+T(36,69,'5 · 90 · 80 · 0',{s:8,k:1});
+ s+=`<rect x="152" y="30" width="64" height="26" rx="6" fill="#ede9fe"/>`+T(184,41,'Lab',{s:8,f:'#5b21b6',w:800})+T(184,51,'50 · 60 · 40',{s:8,k:1});
+ s+=SIPKA(68,25,80,36,'sipPr')+SIPKA(68,61,80,58,'sipPr')+SIPKA(152,43,143,48,'sipPr');
+ s+=`<rect x="22" y="104" width="176" height="11" rx="5.5" fill="#f1f5f9"/>`+T(110,112,'barvový prostor = barva zapsaná čísly',{s:7.5,f:'#334155'});
+ return S('0 0 220 118',s);},
+/* 2 RGB – monitor svítí třemi světly */
+rgb:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#0f172a"/>`;
+ s+=`<g transform="translate(14,14)">`;
+ for(let r=0;r<5;r++)for(let c=0;c<5;c++){['#ef4444','#22c55e','#3b82f6'].forEach((b,i)=>{s+=`<rect x="${c*18+i*5.5}" y="${r*16}" width="4.5" height="13" rx="1" fill="${b}" opacity="${0.55+0.45*((r+c+i)%3===0)}"/>`;});}
+ s+=`</g>`+T(56,104,'obrazové body = R + G + B',{s:7.5,f:'#e2e8f0',w:600});
+ [['R','#ef4444',26],['G','#22c55e',54],['B','#3b82f6',82]].forEach(([p,b,y])=>{s+=`<circle cx="128" cy="${y-4}" r="9" fill="${b}"/>`+T(128,y-0.5,p,{s:10,w:900,f:'#fff'})+`<rect x="142" y="${y-8}" width="62" height="8" rx="4" fill="#334155"/><rect x="142" y="${y-8}" width="${p==='R'?62:p==='G'?40:18}" height="8" rx="4" fill="${b}"/>`;});
+ s+=T(173,104,'0–255',{s:9,f:'#e2e8f0',k:1});
+ return S('0 0 220 118',s);},
+/* 3 CMYK – čtyři tiskové barvy */
+cmyk:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=plechovka(12,14,'#00a3e0','C')+plechovka(62,14,'#e6007e','M')+plechovka(112,14,'#f2c500','Y',1)+plechovka(162,14,'#1b1c1f','K');
+ [[12,'#00a3e0',100],[62,'#e6007e',60],[112,'#f2c500',30],[162,'#1b1c1f',10]].forEach(([x,b,p])=>{s+=`<rect x="${x-2}" y="72" width="34" height="8" rx="4" fill="#e2e8f0"/><rect x="${x-2}" y="72" width="${34*p/100}" height="8" rx="4" fill="${b}"/>`+T(x+15,92,p+' %',{s:8.5,k:1});});
+ s+=T(110,110,'krytí barvou 0–100 %',{s:7.5,w:600,f:'#475569'});
+ return S('0 0 220 118',s);},
+/* 4 proč černá K */
+cernaK:()=>{let s=SIP('sipK','#334155')+`<rect x="2" y="2" width="216" height="114" rx="10" fill="#fff"/>`;
+ s+=`<g style="isolation:isolate"><circle cx="34" cy="40" r="20" fill="#00a3e0" style="mix-blend-mode:multiply"/><circle cx="56" cy="40" r="20" fill="#e6007e" style="mix-blend-mode:multiply"/><circle cx="45" cy="59" r="20" fill="#f2c500" style="mix-blend-mode:multiply"/></g>`;
+ s+=T(45,96,'C + M + Y',{s:8,k:1})+T(45,107,'= tmavě hnědá',{s:7.5,w:600});
+ s+=`<rect x="92" y="34" width="28" height="22" rx="4" fill="#5a3b2e"/>`+T(106,70,'≠',{s:16,k:1});
+ s+=`<circle cx="166" cy="48" r="26" fill="#1b1c1f"/>`+T(166,52.5,'K',{s:14,w:900,f:'#fff',k:1})+T(166,96,'černá K',{s:8});
+ s+=T(166,107,'hluboká černá, ostrý text',{s:7,w:600});
+ return S('0 0 220 118',s);},
+/* 5 aditivní míšení */
+aditivni:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#000"/>`;
+ s+=`<g style="isolation:isolate"><circle cx="92" cy="44" r="30" fill="#ff0000" style="mix-blend-mode:screen"/><circle cx="128" cy="44" r="30" fill="#00ff00" style="mix-blend-mode:screen"/><circle cx="110" cy="74" r="30" fill="#0000ff" style="mix-blend-mode:screen"/></g>`;
+ s+=T(30,24,'světlo',{s:8,f:'#e2e8f0',w:600})+T(30,34,'se sčítá',{s:8,f:'#e2e8f0',w:600});
+ s+=T(188,96,'R + G + B',{s:8,f:'#fff',k:1})+T(188,107,'= bílá',{s:8,f:'#fff',w:600});
+ return S('0 0 220 118',s);},
+/* 6 subtraktivní míšení */
+subtraktivni:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#fff" stroke="#e2e8f0"/>`;
+ s+=`<g style="isolation:isolate"><circle cx="92" cy="44" r="30" fill="#00aeef" style="mix-blend-mode:multiply"/><circle cx="128" cy="44" r="30" fill="#ec008c" style="mix-blend-mode:multiply"/><circle cx="110" cy="74" r="30" fill="#fff200" style="mix-blend-mode:multiply"/></g>`;
+ s+=T(30,24,'barvy',{s:8,w:600})+T(30,34,'pohlcují',{s:8,w:600})+T(30,44,'světlo',{s:8,w:600});
+ s+=T(188,96,'C + M + Y',{s:8,k:1})+T(188,107,'= tmavá',{s:8,w:600});
+ return S('0 0 220 118',s);},
+/* 7 přístrojově závislé × nezávislé */
+zavisle:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<rect x="6" y="6" width="130" height="106" rx="8" fill="#fee2e2"/>`+T(71,18,'ZÁVISLÝ: RGB, CMYK',{s:7.5,f:'#991b1b',w:800});
+ [['#d8343a',12],['#c0505a',52],['#e8452a',92]].forEach(([b,x])=>{s+=monitor(x,26,36,26,b);});
+ s+=T(71,78,'R 200 · G 30 · B 40',{s:7.5,k:1})+T(71,90,'stejná čísla →',{s:7,w:600})+T(71,100,'jiná barva',{s:7,w:600});
+ s+=`<rect x="142" y="6" width="72" height="106" rx="8" fill="#ede9fe"/>`+T(178,18,'NEZÁVISLÝ: Lab',{s:7.5,f:'#5b21b6',w:800});
+ s+=oko(178,38,1.2)+`<rect x="160" y="54" width="36" height="20" rx="4" fill="#d93d36"/>`+T(178,86,'L 50 a 60 b 40',{s:7})+T(178,98,'= vždy stejná',{s:7,w:600});
+ return S('0 0 220 118',s);},
+/* 8 barvová koule Lab */
+koule:()=>{let s=`<defs><radialGradient id="kGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#9ca3af"/><stop offset="1" stop-color="#9ca3af" stop-opacity="0"/></radialGradient><linearGradient id="kL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#111"/></linearGradient></defs>`;
+ s+=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ const cx=96,cy=60,R=42;
+ for(let i=0;i<36;i++){const a1=i*10*Math.PI/180,a2=(i+1)*10*Math.PI/180;const lab=lab2rgb(60,70*Math.cos(a1),70*Math.sin(a1)).rgb;
+  s+=`<path d="M${cx} ${cy} L${(cx+R*Math.cos(-a1)).toFixed(1)} ${(cy+R*0.42*Math.sin(-a1)).toFixed(1)} A${R} ${R*0.42} 0 0 0 ${(cx+R*Math.cos(-a2)).toFixed(1)} ${(cy+R*0.42*Math.sin(-a2)).toFixed(1)}Z" fill="${hex(lab)}"/>`;}
+ s+=`<ellipse cx="${cx}" cy="${cy}" rx="18" ry="7.5" fill="url(#kGlow)"/>`;
+ s+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="#334155" stroke-width="1"/>`;
+ s+=`<rect x="${cx-2.5}" y="${cy-R}" width="5" height="${2*R}" fill="url(#kL)" stroke="#334155" stroke-width=".6"/>`;
+ s+=`<path d="M${cx-R-6} ${cy} H${cx+R+6}" stroke="#334155" stroke-width="1" stroke-dasharray="3 2"/>`;
+ s+=T(cx,cy-R-4,'L 100 bílá',{s:7.5})+T(cx,cy+R+10,'L 0 černá',{s:7.5});
+ s+=T(cx+R+3,cy+3,'+a',{s:8,f:'#b91c1c',a:'start'})+T(cx-R-3,cy+3,'−a',{s:8,f:'#15803d',a:'end'});
+ s+=T(cx+16,cy+27,'+b',{s:8,f:'#a16207'})+T(cx-16,cy-21,'−b',{s:8,f:'#1d4ed8'});
+ s+=T(154,40,'L = světlost',{s:7,a:'start'})+T(154,54,'a = zelená–červená',{s:6.2,a:'start',w:600})+T(154,66,'b = modrá–žlutá',{s:6.2,a:'start',w:600})+oko(186,90,1);
+ return S('0 0 220 118',s);},
+/* 9 separace – obrázek na 4 výtažky */
+separace:()=>{let s=SIP('sipSe','#334155')+`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<g transform="translate(8,18) scale(.62)">${scenaSVG('all')}</g>`;
+ s+=SIPKA(74,47,92,47,'sipSe');
+ ['c','m','y','k'].forEach((r,i)=>{const x=98+(i%2)*58,y=8+Math.floor(i/2)*54;s+=`<g transform="translate(${x},${y}) scale(.5)"><rect width="100" height="92" fill="#fff" stroke="#94a3b8" stroke-width="2"/>${scenaSVG(r)}</g>`+`<rect x="${x+1}" y="${y+1}" width="11" height="11" rx="2" fill="#fff"/>`+T(x+6.5,y+10,r.toUpperCase(),{s:9,w:900,f:{c:'#00a3e0',m:'#e6007e',y:'#a37f00',k:'#1b1c1f'}[r],k:1});});
+ s+=T(40,90,'1 obrázek',{s:7.5,w:600})+T(40,100,'→ 4 výtažky',{s:7.5,w:600});
+ return S('0 0 220 118',s);},
+/* 10 výtažek = tisková deska */
+deska:()=>{let s=SIP('sipDe','#334155')+`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<g transform="translate(8,24) scale(.52)"><rect width="100" height="92" fill="#fff" stroke="#94a3b8" stroke-width="2"/>${scenaSVG('m')}</g>`+T(34,82,'výtažek M',{s:7.5});
+ s+=SIPKA(62,48,78,48,'sipDe');
+ s+=`<g transform="translate(82,20) skewY(-8)"><rect width="50" height="52" rx="2" fill="#cbd5e1" stroke="#475569"/><g transform="translate(4,6) scale(.42)">${scenaSVG('m',1)}</g></g>`+T(107,86,'deska (CtP)',{s:7.5});
+ s+=SIPKA(138,48,152,48,'sipDe');
+ s+=`<circle cx="182" cy="42" r="18" fill="#e2e8f0" stroke="#475569"/><circle cx="182" cy="42" r="6" fill="#94a3b8"/><path d="M160 68 H204" stroke="#e6007e" stroke-width="5"/>`+T(182,86,'tisková jednotka',{s:7.5});
+ s+=`<rect x="34" y="96" width="152" height="14" rx="7" fill="#fde6f2"/>`+T(110,106,'4 výtažky = 4 desky = 4 jednotky',{s:7.5,f:'#a8005c'});
+ return S('0 0 220 118',s);},
+/* 11 natočení rastru */
+uhly:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#fff" stroke="#e2e8f0"/>`;
+ [['C',75,'#00a3e0'],['M',15,'#e6007e'],['Y',0,'#d4a900'],['K',45,'#1b1c1f']].forEach(([p,u,b],i)=>{const x=30+i*53,y=46;
+  s+=`<clipPath id="clU${i}"><circle cx="${x}" cy="${y}" r="21"/></clipPath><g clip-path="url(#clU${i})"><g transform="rotate(${-u} ${x} ${y})">`;
+  for(let a=-30;a<=30;a+=7)for(let c=-30;c<=30;c+=7)s+=`<circle cx="${x+a}" cy="${y+c}" r="2.4" fill="${b}"/>`;
+  s+=`</g></g><circle cx="${x}" cy="${y}" r="21" fill="none" stroke="#94a3b8"/><path d="M${x} ${y} L${(x+24*Math.cos(-u*Math.PI/180)).toFixed(1)} ${(y+24*Math.sin(-u*Math.PI/180)).toFixed(1)}" stroke="#334155" stroke-width="1.4"/>`;
+  s+=T(x,y+36,p,{s:10,w:900,f:b,k:1})+T(x,y+48,u+'°',{s:9,k:1});});
+ s+=T(110,112,'každý výtažek má jiný úhel',{s:7.5,w:600,f:'#475569'});
+ return S('0 0 220 118',s);},
+/* 12 RIP dělá separaci */
+rip:()=>{let s=SIP('sipRi','#334155')+`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<g transform="translate(14,30)"><path d="M0 0 h26 l10 10 v40 h-36z" fill="#fff" stroke="#b91c1c" stroke-width="1.6"/><path d="M26 0 v10 h10" fill="none" stroke="#b91c1c" stroke-width="1.6"/></g>`+T(32,62,'PDF',{s:9,w:900,f:'#b91c1c'});
+ s+=SIPKA(54,55,72,55,'sipRi');
+ s+=`<rect x="76" y="34" width="52" height="42" rx="6" fill="#1f2937"/><circle cx="88" cy="46" r="3" fill="#22c55e"/>`+T(102,62,'RIP',{s:12,w:900,f:'#fff'});
+ s+=SIPKA(130,55,144,55,'sipRi');
+ ['#00a3e0','#e6007e','#f2c500','#1b1c1f'].forEach((b,i)=>{const y=18+i*20;s+=`<rect x="150" y="${y}" width="56" height="16" rx="2" fill="#fff" stroke="${b}" stroke-width="1.6"/>`;for(let k=0;k<8;k++)s+=`<circle cx="${156+k*6.4}" cy="${y+8}" r="${1+((k*3+i)%4)*0.55}" fill="${b}"/>`;});
+ s+=T(110,108,'RIP rozdělí a zrastruje barvy',{s:7.5,w:600,f:'#475569'});
+ return S('0 0 220 118',s);},
+/* 13 strom vazeb */
+strom:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<rect x="70" y="6" width="80" height="18" rx="9" fill="#1b1c1f"/>`+T(110,18.5,'knižní vazby',{s:8.5,f:'#fff'});
+ const vet=[[30,'měkké','V1–V4','#00a3e0'],[86,'polotuhé','V5–V6','#e6007e'],[142,'tuhé','V7–V9','#b45309'],[194,'speciální','kroužky','#64748b']];
+ vet.forEach(([x,n,v,b])=>{s+=`<path d="M110 24 V32 H${x} V42" fill="none" stroke="#94a3b8" stroke-width="1.4"/><rect x="${x-25}" y="42" width="50" height="34" rx="7" fill="#fff" stroke="${b}" stroke-width="2"/>`+T(x,55,n,{s:7.5,f:b})+T(x,68,v,{s:8.5,k:1});});
+ /* ikonky */
+ s+=`<path d="M20 88 l10 -4 l10 4 v16 l-10 -4 l-10 4z" fill="#e0f2fe" stroke="#00a3e0"/>`;
+ s+=`<path d="M74 86 h8 v18 h-8z M84 86 h8 v18 h-8z M94 86 h-0" fill="#fde6f2" stroke="#e6007e"/>`;
+ s+=`<rect x="130" y="84" width="24" height="22" rx="2" fill="#b45309"/><rect x="132" y="86" width="3" height="18" fill="#7c2d12"/>`;
+ s+=`<rect x="184" y="86" width="22" height="20" fill="#fff" stroke="#64748b"/>`;for(let i=0;i<5;i++)s+=`<circle cx="${188+i*3.6}" cy="86" r="1.8" fill="none" stroke="#64748b"/>`;
+ return S('0 0 220 118',s);},
+/* 14 tuhé vazby V7, V8, V9 */
+tuhe:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ const kniha=(x,front,spine,extra='')=>`<g transform="translate(${x},16)"><path d="M10 0 L50 0 L54 4 L14 4Z" fill="#f1f5f9" stroke="#334155" stroke-width=".8"/><rect x="0" y="4" width="14" height="68" fill="${spine}" stroke="#334155" stroke-width=".8"/><rect x="14" y="4" width="40" height="68" rx="1" fill="${front}" stroke="#334155" stroke-width=".8"/>${extra}</g>`;
+ s+=kniha(14,'#e8d9b5','#7c2d12',`<rect x="14" y="4" width="8" height="68" fill="#7c2d12"/><path d="M26 18 h22 M26 24 h16" stroke="#7c2d12" stroke-width="2"/>`);
+ s+=kniha(82,'#1e3a8a','#1e3a8a',`<path d="M24 20 h22" stroke="#f6dc8a" stroke-width="3"/><path d="M28 28 h14" stroke="#f6dc8a" stroke-width="1.6"/>`);
+ s+=kniha(150,'#0f766e','#0f766e',`<path d="M16 6 L52 6 L52 30 Z" fill="#fff" opacity=".28"/><circle cx="34" cy="44" r="6" fill="none" stroke="#fff" stroke-width="1.4"/>`);
+ s+=T(44,102,'V7',{s:11,w:900})+T(112,102,'V8',{s:11,w:900})+T(180,102,'V9',{s:11,w:900});
+ s+=T(44,112,'papír + plátno',{s:6.8,w:600})+T(112,112,'jeden potah',{s:6.8,w:600})+T(180,112,'plast',{s:6.8,w:600});
+ return S('0 0 220 118',s);},
+/* 15 vazba V8 – popis */
+v8:()=>{let s=SIP('sipV8','#334155')+`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ /* otevřená kniha shora: desky, hřbet, blok */
+ s+=`<rect x="20" y="22" width="82" height="76" rx="2" fill="#1e3a8a"/><rect x="104" y="22" width="12" height="76" fill="#1e3a8a"/><rect x="118" y="22" width="82" height="76" rx="2" fill="#1e3a8a"/>`;
+ s+=`<rect x="24" y="26" width="76" height="68" fill="#fef3c7"/><rect x="120" y="26" width="76" height="68" fill="#fef3c7"/>`;
+ for(let i=0;i<6;i++)s+=`<path d="M${104-i*1.2} 30 Q110 ${34+i} ${116+i*1.2} 30" fill="none" stroke="#e6007e" stroke-width="1.1"/>`;
+ s+=T(62,62,'deska',{s:8,f:'#1e3a8a'})+T(158,62,'deska',{s:8,f:'#1e3a8a'});
+ s+=T(110,14,'nit',{s:8,f:'#a8005c'})+T(62,110,'tuhá lepenka',{s:7.5,w:600})+T(158,110,'jeden potah',{s:7.5,w:600});
+ s+=`<circle cx="62" cy="42" r="8" fill="#fff"/>`+T(62,45.5,'V8',{s:9,w:900,k:1});
+ return S('0 0 220 118',s);},
+/* 16 využití tuhých vazeb */
+vyuziti:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ /* encyklopedie – řada knih */
+ ['#1e3a8a','#7c2d12','#0f766e','#1e3a8a','#7c2d12'].forEach((b,i)=>{s+=`<rect x="${10+i*11}" y="${22+(i%2)*3}" width="10" height="${52-(i%2)*3}" fill="${b}" stroke="#334155" stroke-width=".6"/><path d="M${11+i*11} 30 h8 M${11+i*11} 64 h8" stroke="#f6dc8a" stroke-width="1.4"/>`;});
+ s+=T(37,90,'encyklopedie',{s:7})+T(37,100,'slovníky',{s:7});
+ /* kronika */
+ s+=`<rect x="76" y="20" width="44" height="56" rx="2" fill="#7c2d12" stroke="#334155" stroke-width=".8"/><rect x="82" y="30" width="32" height="12" fill="none" stroke="#f6dc8a"/>`+T(98,39,'1926',{s:7,f:'#f6dc8a',k:1})+T(98,90,'kroniky',{s:7});
+ /* fotokniha */
+ s+=`<rect x="130" y="24" width="38" height="50" rx="2" fill="#fff" stroke="#334155" stroke-width=".8"/><rect x="134" y="28" width="30" height="24" fill="#93c5fd"/><circle cx="156" cy="35" r="4" fill="#facc15"/><path d="M134 52 l9 -12 l8 9 l6 -6 l7 9z" fill="#65a30d"/>`+T(149,90,'fotoknihy',{s:7});
+ /* dětská kniha */
+ s+=`<rect x="176" y="30" width="36" height="44" rx="4" fill="#f472b6" stroke="#334155" stroke-width=".8"/><circle cx="194" cy="48" r="9" fill="#fde047"/><circle cx="191" cy="46" r="1.3" fill="#111"/><circle cx="197" cy="46" r="1.3" fill="#111"/><path d="M190 51 q4 3 8 0" stroke="#111" fill="none"/>`+T(194,90,'dětské knihy',{s:7});
+ s+=T(110,110,'odolné knihy na dlouhé roky',{s:7.5,w:600,f:'#475569'});
+ return S('0 0 220 118',s);},
+/* 17 knižní blok – složky šité nití */
+blok:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ const xs=[44,72,100,128,156];
+ xs.forEach(c=>{for(let j=0;j<3;j++){const l=c-12+j*3,r=c+12-j*3,b=86-j*3;s+=`<path d="M${l} 20 V${b-3} Q${l} ${b} ${l+3} ${b} H${r-3} Q${r} ${b} ${r} ${b-3} V20" fill="none" stroke="#334155" stroke-width="1.3"/>`;}});
+ let p='M24 94';xs.forEach(c=>{p+=` L${c-7} 94 L${c-7} 76 L${c+7} 76 L${c+7} 94`;});p+=' L176 94';
+ s+=`<path d="${p}" fill="none" stroke="#e6007e" stroke-width="2"/><rect x="24" y="97" width="152" height="5" fill="#d4effa" stroke="#00a3e0" stroke-dasharray="2 2"/>`;
+ s+=T(198,80,'nit',{s:8,f:'#a8005c'})+T(198,104,'gáza',{s:8,f:'#006e98'})+T(100,14,'složky na sebe',{s:7.5,w:600});
+ return S('0 0 220 118',s);},
+/* 18 desky a zavěšení bloku */
+zaveseni:()=>{let s=SIP('sipZa','#334155')+`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<path d="M14 92 H96 L104 98 H116 L124 92 H206" fill="none" stroke="#e6007e" stroke-width="3"/>`;
+ s+=`<rect x="20" y="82" width="74" height="8" fill="#c9b99a" stroke="#6d5d45"/><rect x="104" y="88" width="12" height="8" fill="#c9b99a" stroke="#6d5d45"/><rect x="126" y="82" width="74" height="8" fill="#c9b99a" stroke="#6d5d45"/>`;
+ s+=`<rect x="20" y="78" width="74" height="4" fill="#f2c500"/><rect x="126" y="78" width="74" height="4" fill="#f2c500"/>`;
+ for(let x=96;x<=124;x+=3.5)s+=`<line x1="${x}" y1="14" x2="${x}" y2="62" stroke="#9aa3ad" stroke-width="1.3"/>`;
+ s+=`<path d="M95 14 V62 M125 14 V62" stroke="#00a3e0" stroke-width="2.2"/>`;
+ s+=SIPKA(84,40,98,64,'sipZa','#1b1c1f')+SIPKA(136,40,122,64,'sipZa','#1b1c1f');
+ s+=T(52,70,'lepidlo',{s:7.5,f:'#806600'})+T(168,70,'lepidlo',{s:7.5,f:'#806600'})+T(160,24,'blok',{s:8,a:'start'})+T(160,34,'s předsádkou',{s:7,a:'start',w:600});
+ s+=T(110,112,'desky z lepenky + potah',{s:7.5,w:600,f:'#475569'});
+ return S('0 0 220 118',s);},
+/* --- jen v podrobné lekci --- */
+gamut:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<defs><linearGradient id="gmP" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#6d28d9"/><stop offset=".35" stop-color="#2563eb"/><stop offset=".55" stop-color="#16a34a"/><stop offset=".8" stop-color="#eab308"/><stop offset="1" stop-color="#dc2626"/></linearGradient></defs>`;
+ s+=`<path d="M40 104 C22 70 30 22 70 10 C96 4 116 30 150 64 C164 78 172 92 176 104 Z" fill="url(#gmP)" opacity=".85" stroke="#334155"/>`;
+ s+=`<path d="M58 94 L84 28 L146 86 Z" fill="none" stroke="#fff" stroke-width="2.2"/>`;
+ s+=`<path d="M66 88 L74 58 L92 38 L116 58 L136 82 Z" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="4 2"/>`;
+ s+=`<rect x="160" y="14" width="10" height="8" fill="url(#gmP)"/>`+T(174,21,'Lab – oko',{s:7.5,a:'start'});
+ s+=`<path d="M160 36 h10" stroke="#fff" stroke-width="3"/><path d="M160 36 h10" stroke="#334155" stroke-width=".6"/>`+T(174,39,'RGB',{s:7.5,a:'start'});
+ s+=`<path d="M160 54 h10" stroke="#111" stroke-width="2" stroke-dasharray="4 2"/>`+T(174,57,'CMYK',{s:7.5,a:'start'});
+ s+=T(190,84,'Lab > RGB',{s:7.5,k:1})+T(190,95,'> CMYK',{s:7.5,k:1});
+ return S('0 0 220 118',s);},
+doplnek:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#fff" stroke="#e2e8f0"/>`;
+ [['R','#ff0000','C','#00aeef'],['G','#00c000','M','#ec008c'],['B','#0000ff','Y','#fff200']].forEach(([a,ab,b,bb],i)=>{const x=46+i*64;
+  s+=`<circle cx="${x}" cy="34" r="20" fill="${ab}"/>`+T(x,39,a,{s:14,w:900,f:'#fff',k:1});
+  s+=`<path d="M${x} 58 v6" stroke="#334155" stroke-width="2"/><path d="M${x-4} 61 l4 4 l4 -4" fill="none" stroke="#334155" stroke-width="1.6"/>`;
+  s+=`<circle cx="${x}" cy="88" r="20" fill="${bb}" stroke="#cbd5e1"/>`+T(x,93,b,{s:14,w:900,f:b==='Y'?'#1b1c1f':'#fff',k:1});});
+ return S('0 0 220 118',s);},
+filtry:()=>{let s=SIP('sipFi','#334155')+`<rect x="2" y="2" width="216" height="114" rx="10" fill="#f8fafc"/>`;
+ s+=`<g transform="translate(8,30) scale(.5)">${scenaSVG('all')}</g>`+T(33,86,'předloha',{s:7.5});
+ [['#ef4444','c','červený'],['#22c55e','m','zelený'],['#3b82f6','y','modrý']].forEach(([f,r,n],i)=>{const y=8+i*35;
+  s+=SIPKA(60,52,86,y+15,'sipFi','#94a3b8',1.2);
+  s+=`<rect x="90" y="${y+3}" width="10" height="24" rx="2" fill="${f}" opacity=".85"/>`+T(95,y+36,n,{s:6.2,w:600});
+  s+=SIPKA(102,y+15,122,y+15,'sipFi','#94a3b8',1.2);
+  s+=`<g transform="translate(126,${y}) scale(.32)"><rect width="100" height="92" fill="#fff" stroke="#94a3b8" stroke-width="3"/>${scenaSVG(r)}</g>`+T(176,y+18,r==='c'?'azurový':r==='m'?'purpurový':'žlutý',{s:7,a:'start',f:r==='c'?'#006e98':r==='m'?'#a8005c':'#806600'});});
+ return S('0 0 220 118',s);},
+casti:()=>{let s=`<rect x="2" y="2" width="216" height="114" rx="10" fill="#fff" stroke="#e2e8f0"/>`;
+ /* zavřená kniha v prostoru: hlava nahoře, hřbet vlevo */
+ const x=88,y=26,w=74,h=72,d=22,dy=11;
+ s+=`<path d="M${x} ${y} L${x-d} ${y-dy} L${x+w-d} ${y-dy} L${x+w} ${y}Z" fill="#fef3c7" stroke="#334155" stroke-width=".8"/>`;
+ for(let i=1;i<6;i++){const f=i/6;s+=`<line x1="${x-d*f+3}" y1="${y-dy*f}" x2="${x+w-d*f-3}" y2="${y-dy*f}" stroke="#cbd5e1" stroke-width=".8"/>`;}
+ s+=`<path d="M${x} ${y} L${x-d} ${y-dy} L${x-d} ${y+h-dy} L${x} ${y+h}Z" fill="#1e3a8a" stroke="#334155" stroke-width=".8"/>`;
+ s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#1e3a8a" stroke="#334155" stroke-width=".8"/>`;
+ s+=`<path d="M${x+5} ${y} V${y+h}" stroke="#0f1f4d" stroke-width="1.6"/>`; /* drážka */
+ s+=`<path d="M${x-d+2} ${y-dy+1} L${x-2} ${y+1}" stroke="#e6007e" stroke-width="3"/>`; /* kapitálek */
+ s+=`<path d="M${x+30} ${y+h} v14 l3 -3 l3 3 v-14" fill="#e6007e"/>`; /* záložka */
+ s+=`<path d="M${x+18} ${y+22} h44 M${x+24} ${y+30} h32" stroke="#f6dc8a" stroke-width="2"/>`;
+ const L=(x1,y1,t,x2,y2,a)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#334155" stroke-width=".7"/>`+T(x2+(a==='start'?2:a==='end'?-2:0),y2+3,t,{s:7,a:a||'middle'});
+ s+=L(x+56,y+52,'deska',178,72,'start')+L(x-12,y+40,'hřbet',50,60,'end')+L(x+5,y+64,'drážka',50,86,'end')+L(x-12,y-6,'kapitálek',50,14,'end');
+ s+=L(x+36,y-6,'ořízka',178,16,'start')+L(x+34,y+h+8,'záložka',178,104,'start')+L(x+44,y-3,'knižní blok',178,42,'start');
+ return S('0 0 220 118',s);}
+};
+
+/* ---------- MYŠLENKOVÁ MAPA ---------- */
+const MAP=[
+{k:"c",side:"left",n:"C",t:"Barvové prostory RGB a CMYK",link:"#prostory",items:[
+ ["Barvový prostor","Způsob, jak barvu zapsat čísly. Hlavní jsou RGB, CMYK a Lab. Rozsah barev, které prostor umí, je gamut."],
+ ["RGB","Red, Green, Blue – barvy světla. Hodnoty 0–255, 3 × 8 = 24 bitů, asi 16,7 milionu barev. Monitor, fotoaparát, web."],
+ ["CMYK","Cyan, Magenta, Yellow, Key – tiskové barvy v procentech krytí 0–100 %. Bílá je barva papíru."],
+ ["Proč černá K","Z C + M + Y vznikne jen tmavě hnědá. Černá dá hlubokou černou, ostrý text a na papíře je méně barvy."],
+ ["RGB × CMYK","RGB začíná od černé (tma), CMYK od bílé (papír). RGB 24 bitů, CMYK 32 bitů. Data pro tisk musí být v CMYK."],
+ ["Gamut","Rozsah barev zařízení: Lab (oko) > RGB > CMYK. Zářivé barvy z monitoru se nevytisknou."]]},
+{k:"m",side:"left",n:"M",t:"Míšení barev a Lab",link:"#miseni",items:[
+ ["Aditivní míšení","Světla se sčítají: R + G = žlutá, G + B = azurová, R + B = purpurová, R + G + B = bílá. Monitor."],
+ ["Subtraktivní míšení","Barvy světlo pohlcují: C + M = modrá, M + Y = červená, C + Y = zelená, C + M + Y = tmavá. Tisk."],
+ ["Doplňkové barvy","Napiš RGB a pod něj CMY: červená–azurová, zelená–purpurová, modrá–žlutá."],
+ ["Přístrojově závislé","RGB a CMY(K): čísla jsou jen recept pro jedno zařízení. Stejná čísla vypadají na každém zařízení jinak."],
+ ["Přístrojově nezávislý","Lab (CIELAB): popisuje barvu, jak ji vidí člověk. Stejná čísla = vždy stejná barva."],
+ ["Koule Lab","CIE 1976. L = světlost 0–100, a = zelená ↔ červená, b = modrá ↔ žlutá. Obsahuje všechny barvy, které vidí oko."],
+ ["Lab = překladač","RGB → Lab → CMYK. Převod dělají ICC profily – „slovníky“ jednotlivých zařízení."]]},
+{k:"y",side:"right",n:"Y",t:"Výtažkování (separace)",link:"#separace",items:[
+ ["Separace","Rozdělení barevného obrazu na barevné výtažky C, M, Y, K a přímé barvy."],
+ ["Barevný výtažek","Jedna barevná složka obrazu pro jednu tiskovou barvu – ukazuje, kde a kolik barvy se vytiskne."],
+ ["RIP","Dnes separaci dělá RIP: rozdělí PDF na výtažky a každý zrastruje. Z výtažků se osvítí desky (CtP)."],
+ ["Filtry (dříve)","Výtažky se fotografovaly přes filtr v doplňkové barvě: červený → azurový, zelený → purpurový, modrý → žlutý výtažek."],
+ ["Natočení rastru","K 45°, C 75°, M 15°, Y 0°. Správné úhly = rozeta, špatné = moaré."],
+ ["Počet desek","Kolik výtažků, tolik desek: 4/0 = 4, 4/4 = 8, 4+1/0 = 5. Přímá barva má vlastní desku."]]},
+{k:"k",side:"right",n:"K",t:"Tuhé knižní vazby a V8",link:"#vazby",items:[
+ ["Knižní vazba","Postup, kterým se ze složek vytvoří knižní blok, a obal, který knihu chrání a zdobí."],
+ ["Dělení vazeb","Měkké V1–V4, polotuhé V5–V6, tuhé V7–V9, speciální (kroužková, spirálová, hřebenová)."],
+ ["V7, V8, V9","V7 poloplátěná (kombinovaný potah), V8 s jednodílným potahem, V9 s plastovými deskami."],
+ ["V8a, V8b, V8c","Podle potahu: V8a laminovaný, V8b papírový, V8c jiný materiál (plátno, kůže, koženka)."],
+ ["Využití","Knihy, encyklopedie, kroniky, fotoknihy, dětské knihy, diáře (V9). Odolné, ale dražší."],
+ ["Části knihy","Knižní blok, desky, předsádka, drážka, kapitálek, záložka, gáza."],
+ ["Zhotovení V8","A blok: falcování, předsádky, snášení, šití nití, klížení, trojřez, kulacení. B desky. C zavěšení a drážka."],
+ ["Stroje a materiály","Niťovka, trojřez, stroj na desky, drážkovací lis. Lepenka, potah, nit, gáza, předsádkový papír."]]}
+];
+const MM_CENTER='<div class="n">Otázka č. 16</div><div class="t">Barvy pro tisk + pevná vazba = barevná kniha</div><div class="s">C → M → Y → K<br>mluv v pořadí barev</div>';
+const MM_T={"c":["@#a1","@#a2","@#a3","@#a3k","@#a4","@#a4"],"m":["@#a5","@#a6","@#a7","@#a8","@#a8","@#a9","@#a10"],"y":["@#a11","@#a11","@#a12","@#a12d","@#a13","@#a14"],"k":["@#b1","@#b1","@#b2","@#b2p","@#b3","@#b4","@#b6","@#b7"]};
+
+/* ---------- KVÍZ ---------- */
+const QUIZ=[
+["Co je barvový prostor?",["způsob, jak barvu zapsat čísly","vzorník přímých barev Pantone","rozsah barev jedné tiskárny","program pro úpravu fotografií"],0,"Barvový prostor (barevný model) = způsob, jak barvu popsat čísly. Rozsah barev zařízení je gamut."],
+["Co znamenají písmena RGB?",["azurová, purpurová, žlutá","červená, žlutá, modrá","červená, zelená, modrá","červená, zelená, černá"],2,"R = red (červená), G = green (zelená), B = blue (modrá) – základní barvy světla."],
+["Jaké hodnoty má jedna složka RGB?",["0–100 %","0–255","0–360°","−128 až +127"],1,"Každá složka RGB má 8 bitů = 256 hodnot (0–255)."],
+["Kolik bitů má barevný obraz RGB?",["8 bitů","16 bitů","32 bitů","24 bitů"],3,"3 kanály × 8 bitů = 24 bitů (asi 16,7 milionu barev). CMYK má 4 × 8 = 32 bitů."],
+["V jakých jednotkách se zapisuje CMYK?",["v procentech krytí","v bodech na palec","v hodnotách 0–255","ve stupních"],0,"CMYK = procenta krytí 0–100 %: kolik tiskové barvy se nanese na papír."],
+["Co znamená K v CMYK?",["kontrastní bílou","černou (key)","korekční barvu","kombinovanou barvu"],1,"K = key, klíčová barva – černá. K černé se sesazovaly ostatní barvy."],
+["Proč se k CMY přidává černá?",["aby papír po tisku vypadal bělejší","aby se zvětšil gamut monitoru RGB","protože C + M + Y dá jen tmavě hnědou","protože bez černé nejde rastrovat obraz"],2,"Tiskové barvy nejsou čisté, ze tří vznikne tmavě hnědá. Černá dá hlubokou černou a ostrý text."],
+["Který prostor má nejmenší gamut?",["CMYK","RGB","Lab","sRGB a Adobe RGB stejně"],0,"Lab (vše, co vidí oko) > RGB > CMYK. Zářivé barvy z monitoru se nevytisknou."],
+["Co vznikne aditivním smícháním R + G + B?",["černá","tmavě hnědá","šedá","bílá"],3,"Aditivní míšení = světla se sčítají. Všechna tři světla naplno dají bílou."],
+["Co vznikne aditivním smícháním R + G?",["azurová","žlutá","purpurová","modrá"],1,"Červené a zelené světlo dají žlutou. G + B = azurová, R + B = purpurová."],
+["Které míšení probíhá při tisku?",["aditivní","světelné","subtraktivní","optické sčítání"],2,"Tiskové barvy světlo pohlcují (odčítají) = subtraktivní míšení."],
+["Co vznikne přetiskem C + Y?",["zelená","modrá","červená","fialová"],0,"Azurová + žlutá = zelená. C + M = modrá, M + Y = červená."],
+["Která barva je doplňková k červené?",["žlutá","purpurová","zelená","azurová"],3,"Napiš RGB a pod něj CMY: červená ↔ azurová, zelená ↔ purpurová, modrá ↔ žlutá."],
+["Který barvový prostor je přístrojově nezávislý?",["CMYK","Lab","RGB","sRGB"],1,"Lab (CIELAB) popisuje barvu tak, jak ji vidí člověk – nezávisle na zařízení."],
+["Co znamená „přístrojově závislý“?",["prostor funguje jen v jedné tiskárně","prostor obsahuje všechny barvy, co vidí oko","stejná čísla vypadají na každém zařízení jinak","barvy z něj nejdou převést do jiného prostoru"],2,"RGB i CMYK jsou jen „recept“ pro jedno zařízení – výsledek závisí na monitoru, stroji a papíru."],
+["Co udává osa L v Lab?",["světlost od černé po bílou","sytost barvy","odstín ve stupních","množství černé barvy"],0,"L = světlost, 0 = černá, 100 = bílá. Osa a = zelená ↔ červená, osa b = modrá ↔ žlutá."],
+["Kam vede osa b v Lab?",["od zelené k červené","od černé k bílé","od azurové k purpurové","od modré ke žluté"],3,"b: modrá (−) ↔ žlutá (+). a: zelená (−) ↔ červená (+)."],
+["K čemu slouží Lab při převodu RGB do CMYK?",["jako společný překladač","jako formát souboru pro tisk","jako vzorník přímých barev","jako náhrada ICC profilu"],0,"Barva se převádí RGB → Lab → CMYK. Převod řídí ICC profily zařízení."],
+["Co je barevný výtažek?",["tiskový arch po ořezu","jedna barevná složka obrazu pro jednu barvu","zkušební tisk pro zákazníka","vzorník barev tiskárny"],1,"Výtažek ukazuje, kde a kolik jedné tiskové barvy se vytiskne. Z každého vznikne jedna deska."],
+["Co dnes provádí separaci barev?",["falcovací stroj","denzitometr","RIP","kalandr"],2,"RIP (Raster Image Processor) rozdělí PDF na výtažky a zrastruje je."],
+["Přes jaký filtr vznikal dříve azurový výtažek?",["přes modrý","přes zelený","přes žlutý","přes červený"],3,"Fotografovalo se přes filtr v doplňkové barvě: červený → azurový, zelený → purpurový, modrý → žlutý."],
+["Jaký úhel natočení rastru má černá K?",["45°","15°","75°","0°"],0,"K 45° (oko ho vnímá nejméně), C 75°, M 15°, Y 0°."],
+["Co vzniká při špatném natočení rastru?",["rozeta","moaré","soutisk","přetisk"],1,"Špatné úhly = rušivé moaré. Správné úhly = pravidelná rozeta."],
+["Kolik desek potřebuješ na leták 4+1/0?",["4","8","5","9"],2,"4 desky CMYK + 1 deska přímé barvy na líci, rub bez tisku = 5 desek."],
+["Které vazby patří mezi tuhé?",["V1–V4","V5–V6","speciální","V7–V9"],3,"Tuhé V7–V9, měkké V1–V4, polotuhé V5–V6."],
+["Čím se liší V7 od V8?",["V7 má kombinovaný potah, V8 jednodílný","V7 je lepená, V8 sešitá drátem","V7 má plastové desky, V8 papírové","V7 je měkká, V8 polotuhá"],0,"V7 poloplátěná: desky potažené papírem, hřbet plátnem. V8: potah z jednoho kusu jednoho materiálu."],
+["Jakou vazbu mají plastové desky?",["V8","V9","V5","V2"],1,"V9 – desky z plastu, vyztužené lepenkou nebo PVC (diáře, pracovní sešity)."],
+["Co znamená V8a?",["potah z kůže","papírový potah","laminovaný potah","plastové desky"],2,"V8a laminovaný, V8b papírový, V8c jiný materiál (plátno, kůže, koženka)."],
+["Jak je spojen knižní blok u vazby V8?",["drátěnými skobkami","jen tavným lepidlem","kroužky","šitím nití"],3,"U V8 se složky snesou na sebe a sešijí nití (niťovkou) na gázu."],
+["Co spojuje knižní blok s deskami?",["předsádka","kapitálek","záložka","ořízka"],0,"Předsádka se přilepí k první a poslední složce a pak k deskám – tomu se říká zavěšení bloku."],
+["Jak se jmenuje stroj, který ořízne blok ze tří stran?",["kalandr","trojřez (třínožová řezačka)","niťovka","falcovací stroj"],1,"Trojřez ořízne hlavu, patu a přední ořízku. Hřbet se neřeže."],
+["Co je drážka?",["proužek látky na hřbetu","stužka vlepená do hřbetu","mezera mezi deskou a hřbetem","ořez přední strany bloku"],2,"Drážka vznikne v drážkovacím lisu a umožní snadné otevírání desek."]
+];
+
+/* ---------- TEST PSANÍM ---------- */
+const WT=[
+{q:'Popiš barvové prostory RGB a CMYK. <span class="pill">6 bodů</span>',h:'Tip: co znamenají písmena, jaké mají hodnoty, kde se používají, proč je v CMYK černá.',
+ p:[["RGB = červená, zelená, modrá",["cerven&&zelen&&modr","red&&green&&blue"],1,"Vysvětli písmena RGB: červená, zelená, modrá."],
+    ["RGB = světlo, monitor",["svetl|monitor|obrazovk|displej"],1,"RGB je barvový prostor světla – monitor, fotoaparát, web."],
+    ["hodnoty 0–255 (24 bitů)",["255|24 bit"],0,"Bonus: každá složka 0–255, celkem 24 bitů."],
+    ["CMYK = azurová, purpurová, žlutá, černá",["azur|cyan&&purpur|magent&&zlut|yellow","azur&&purpur"],1,"Vyjmenuj tiskové barvy: azurová, purpurová, žlutá, černá."],
+    ["CMYK = tisk, procenta krytí",["tisk|%|procent"],1,"CMYK se používá pro tisk, hodnoty jsou v procentech krytí."],
+    ["černá kvůli tmavě hnědé / ostrému textu",["hned|text|hlubok|key|klicov"],0,"Bonus: černá se přidává, protože C + M + Y dá jen tmavě hnědou; text je ostrý."]],
+ e:[["cmyk[^.]{0,40}(monitor|obrazovk)","CMYK nepatří k monitoru – monitor zobrazuje RGB. CMYK je pro tisk."],["rgb[^.]{0,30}(tisk(arn|ov|u)|ofset)","RGB není prostor pro tisk. Data pro tisk se převádějí do CMYK."]],
+ m:"Barvový prostor je způsob, jak barvu zapsat čísly. RGB tvoří barvy světla – červená, zelená a modrá. Každá složka má hodnotu 0–255, celkem 24 bitů, asi 16,7 milionu barev. Používá ho monitor, fotoaparát, skener a web. CMYK tvoří tiskové barvy – azurová, purpurová, žlutá a černá (key). Hodnoty jsou v procentech krytí 0–100 %, bílá je barva papíru. Černá se přidává, protože ze tří barev vznikne jen tmavě hnědá, a černou se tiskne ostrý text. CMYK má menší gamut než RGB."},
+{q:'Vysvětli aditivní a subtraktivní míšení barev. <span class="pill">6 bodů</span>',h:'Tip: světla × barvy, od černé × od bílé, co vznikne smícháním, kde se používá.',
+ p:[["aditivní = sčítání světel",["aditiv[^.]{0,80}(scit|svetl)","(scit|svetl)[^.]{0,80}aditiv"],1,"Aditivní míšení = sčítání světel (RGB)."],
+    ["R + G + B = bílá",["bil"],1,"Všechna tři světla dohromady dají bílou."],
+    ["subtraktivní = barvy pohlcují světlo",["subtrakt[^.]{0,80}(pohlc|odcit|odebir|barv)","(pohlc|odcit)[^.]{0,80}subtrakt"],1,"Subtraktivní míšení = tiskové barvy světlo pohlcují (odčítají)."],
+    ["C + M + Y = tmavá (černá)",["cern|tmav|hned"],1,"Tři tiskové barvy dají tmavou (teoreticky černou)."],
+    ["příklady: R + G = žlutá, C + Y = zelená…",["zlut|zelen|azur|purpur"],0,"Bonus: uveď, co vznikne – R + G = žlutá, C + Y = zelená…"],
+    ["kde: monitor × tisk",["monitor|obrazov&&tisk"],0,"Bonus: aditivní – monitor, subtraktivní – tisk."]],
+ e:[["aditiv[^.]{0,60}(tisk|cmy)","Aditivní míšení patří ke světlu (RGB, monitor), ne k tisku."],["subtrakt[^.]{0,60}(monitor|rgb)","Subtraktivní míšení patří k tiskovým barvám (CMY), ne k monitoru."]],
+ m:"Aditivní míšení je sčítání světel RGB. Začíná se od tmy, čím víc světla, tím je barva světlejší. Červená a zelená dají žlutou, zelená a modrá azurovou, červená a modrá purpurovou, všechna tři světla bílou. Používá ho monitor a projektor. Subtraktivní míšení je odčítání: tiskové barvy C, M, Y na bílém papíře pohlcují část světla. Azurová a purpurová dají modrou, purpurová a žlutá červenou, azurová a žlutá zelenou, všechny tři teoreticky černou, ve skutečnosti tmavě hnědou. Používá se při tisku."},
+{q:'Co jsou přístrojově závislé a nezávislé barvové prostory? Popiš Lab. <span class="pill">6 bodů</span>',h:'Tip: RGB, CMY × Lab, co znamenají stejná čísla, osy L, a, b, k čemu je Lab.',
+ p:[["závislé = RGB, CMY(K)",["zavisl[^.]{0,80}(rgb|cmy)","(rgb|cmy)[^.]{0,80}zavisl"],1,"Uveď, že RGB a CMY(K) jsou přístrojově závislé."],
+    ["stejná čísla vypadají na každém zařízení jinak",["jinak|lis[ie]|kazd\\w* zarizen"],1,"Vysvětli: stejná čísla vypadají na každém zařízení jinak."],
+    ["nezávislý = Lab",["nezavisl[^.]{0,60}lab|lab[^.]{0,60}nezavisl"],1,"Lab (CIELAB) je přístrojově nezávislý."],
+    ["Lab = jak barvu vidí oko / všechny barvy",["oko|clovek|vid"],1,"Lab popisuje barvu tak, jak ji vidí člověk, obsahuje všechny viditelné barvy."],
+    ["osy L, a, b",["svetlost|l = |osa|ose|osy"],1,"Popiš osy: L světlost, a zelená–červená, b modrá–žlutá."],
+    ["Lab = překladač, ICC profily",["preklad|prevod|icc|prostrednik"],0,"Bonus: Lab slouží jako překladač při převodu RGB → CMYK (ICC profily)."]],
+ e:[["lab[^.]{0,30}(je |jsou )?(prist\\w* )?zavisl","Lab je NEZÁVISLÝ. Závislé jsou RGB a CMYK."],["(rgb|cmyk)[^.]{0,30}(je |jsou )nezavisl","RGB ani CMYK nejsou nezávislé – nezávislý je jen Lab."]],
+ m:"Přístrojově závislé barvové prostory jsou RGB a CMY(K). Jejich čísla jsou jen recept pro jedno zařízení, takže stejná čísla vypadají na každém monitoru nebo tiskovém stroji jinak. Přístrojově nezávislý je Lab (CIELAB), který zavedla komise CIE v roce 1976. Popisuje barvu tak, jak ji vidí člověk, a obsahuje všechny barvy, které vidí oko. Má tři osy: L = světlost od černé (0) po bílou (100), a = zelená ↔ červená, b = modrá ↔ žlutá. Lab slouží jako překladač při převodu RGB → Lab → CMYK pomocí ICC profilů a používá se při měření barev."},
+{q:'Co je výtažkování (separace) barev a jak se dělá? <span class="pill">5 bodů</span>',h:'Tip: výtažky C, M, Y, K a přímé barvy, RIP, deska, dříve filtry.',
+ p:[["rozdělení obrazu na výtažky",["vytaz"],1,"Separace = rozdělení barevného obrazu na barevné výtažky."],
+    ["pro každou barvu C, M, Y, K",["cmyk|c, m, y|kazd\\w* (tiskov\\w* )?barv","azur&&purpur"],1,"Pro každou tiskovou barvu C, M, Y, K jeden výtažek."],
+    ["přímá barva = vlastní výtažek",["prim|pantone|direkt"],0,"Bonus: přímá barva má vlastní výtažek."],
+    ["každý výtažek = jedna tisková deska",["desk|forma|form"],1,"Z každého výtažku vznikne jedna tisková forma (deska)."],
+    ["dnes RIP",["rip"],1,"Dnes separaci dělá RIP."],
+    ["dříve filtry v doplňkové barvě",["filtr"],0,"Bonus: dříve se výtažky fotografovaly přes barevné filtry v doplňkové barvě."]],
+ e:[["(vytaz|separac)[^.]{0,60}(rgb)[^.]{0,20}(desk|form)","Výtažky pro tisk jsou C, M, Y, K (a přímé barvy), ne RGB."]],
+ m:"Výtažkování neboli separace je rozdělení barevného obrazu na barevné výtažky – jeden pro každou tiskovou barvu C, M, Y, K a pro každou přímou barvu. Výtažek ukazuje, kde a kolik dané barvy se vytiskne. Dnes separaci provádí RIP: přečte tiskové PDF, rozdělí ho na výtažky a každý zrastruje s vlastním úhlem. Z každého výtažku se vyrobí jedna tisková deska (CtP). Dříve se výtažky fotografovaly přes barevné filtry v doplňkové barvě na filmy. Kontroluje se v náhledu separací."},
+{q:'Proč se natáčí rastr a jaké úhly mají jednotlivé výtažky? <span class="pill">4 body</span>',h:'Tip: soutisk, rozeta × moaré, úhly K, C, M, Y.',
+ p:[["K 45°",["(\\bk|cern\\w*)[^.]{0,15}45|45[^.]{0,10}(\\bk\\b|cern)"],1,"Černá K má 45°."],
+    ["C 75° a M 15°",["75&&15"],1,"Azurová 75°, purpurová 15° (mohou se prohodit)."],
+    ["Y 0° (90°)",["\\b0 ?°|\\b90|nul"],1,"Žlutá má 0° (90°)."],
+    ["správně = rozeta, špatně = moaré",["moar|rozet"],1,"Správné úhly dají rozetu, špatné moaré."]],
+ e:[["zlut\\w*\\W{0,10}45","Žlutá nemá 45° – ten úhel patří černé. Žlutá má 0° (90°)."],["moar\\w*[^.]{0,30}(spravn|pekn|pravideln)","Moaré je rušivý vzor při ŠPATNÉM natočení. Pravidelný vzorek je rozeta."]],
+ m:"Každý barevný výtažek se zrastruje s jiným úhlem natočení sítě, aby se rastrové body v soutisku pravidelně překrývaly. Černá má 45°, protože tento úhel oko vnímá nejméně, azurová 75°, purpurová 15° a nejsvětlejší žlutá 0° (90°). Při správném natočení vznikne pravidelný vzorek – rozeta, při špatném rušivý vzorek – moaré."},
+{q:'Rozděl knižní vazby a popiš tuhé vazby. <span class="pill">6 bodů</span>',h:'Tip: měkké, polotuhé, tuhé, speciální; V7, V8 (a, b, c), V9.',
+ p:[["měkké V1–V4",["mekk"],1,"Měkké vazby V1–V4."],
+    ["polotuhé V5–V6",["polotuh"],1,"Polotuhé vazby V5 a V6 (leporela)."],
+    ["tuhé V7–V9",["(^|[^o])tuh"],1,"Tuhé vazby V7–V9."],
+    ["V7 poloplátěná – kombinovaný potah",["v7|poloplaten|kombinovan"],1,"V7 – poloplátěná, kombinovaný potah (papír + plátno)."],
+    ["V8 – jednodílný potah, V8a, b, c",["v8|jednodiln|celoplaten"],1,"V8 – potah z jednoho materiálu (V8a laminovaný, V8b papírový, V8c plátno, kůže)."],
+    ["V9 – plastové desky",["v9|plast"],1,"V9 – desky z plastu."],
+    ["speciální: kroužková, spirálová",["krouzk|spiral|hreben|specialn"],0,"Bonus: speciální vazby – kroužková, spirálová, hřebenová."]],
+ e:[["v8[^.]{0,40}(drat|skobk|sesitov)","V8 není sešitá drátem – blok je šitý NITÍ. Drátěné skobky má V1."],["v9[^.]{0,40}(kuz|platn|papir\\w* desk)","V9 má desky z PLASTU."]],
+ m:"Knižní vazby se dělí na měkké (V1 sešitová, V2 lepená, V3 bloková, V4 šitá nití), polotuhé (V5 s deskami z lehčí lepenky, V6 leporela), tuhé (V7–V9) a speciální (kroužková, spirálová, hřebenová). Tuhé vazby mají desky z tuhé lepenky nebo plastu. V7 je poloplátěná – desky jsou potažené papírem a hřbet plátnem (kombinovaný potah). V8 má blok šitý nití a desky potažené jedním kusem jednoho materiálu: V8a laminovaný, V8b papírový, V8c plátno, kůže nebo koženka. V9 má desky z plastu."},
+{q:'Popiš postup zhotovení vazby V8. <span class="pill">8 bodů</span>',h:'Tip: blok (falcování, předsádky, snášení, šití, klížení, trojřez, kulacení, kapitálek) → desky (lepenka, potah, ražba) → zavěšení a drážka.',
+ p:[["falcování archů na složky",["falc|sklad|slozk"],1,"Archy se sfalcují na složky."],
+    ["předsádky",["predsad"],1,"K první a poslední složce se přilepí předsádky."],
+    ["snášení složek na sebe",["snas|na sebe"],0,"Bonus: složky se snesou na sebe."],
+    ["šití nití (na gázu)",["sit\\w* nit|nit\\w*|nitovk"],1,"Složky se sešijí nití."],
+    ["klížení hřbetu",["kliz|lepidl|hrbet"],0,"Bonus: hřbet se zaklíží."],
+    ["ořez trojřezem",["trojrez|orez|orizn|rezac"],1,"Blok se ořízne trojřezem ze tří stran."],
+    ["kulacení, kapitálek, záložka",["kulac|kulat|kapital|zalozk"],0,"Bonus: hřbet se zkulatí, přilepí se kapitálek a záložka."],
+    ["desky: lepenka + potah",["lepenk&&potah","desk&&potah"],1,"Desky se vyrobí zvlášť: přířezy lepenky nalepené na potah."],
+    ["ražba titulu",["razb|razi|vyraz"],0,"Bonus: na desky se vyrazí titul."],
+    ["zavěšení bloku do desek",["zaves|zavis|zavesi"],1,"Blok se zavěsí do desek – předsádky se přilepí k deskám."],
+    ["lisování a drážka",["drazk|lis"],1,"Kniha se zalisuje a vytvoří se drážka."]],
+ e:[["v8[^.]{0,60}(skobk|drat)","U V8 se blok nešije drátem, ale nití."],["(frez|tavn)[^.]{0,40}v8|v8[^.]{0,40}(frez)","Frézování hřbetu patří k lepené vazbě V2. U V8 se blok šije nití."]],
+ m:"Vazba V8 se vyrábí ve třech fázích. A – knižní blok: vytištěné archy se sfalcují na složky, k první a poslední složce se přilepí předsádky, složky se snesou na sebe a sešijí nití na gázu. Hřbet se zaklíží, blok se ořízne trojřezem, hřbet se zkulatí, přilepí se kapitálek a záložka a hřbet se přelepí. B – desky: připraví se přířezy lepenky (2 desky + hřbet) a potah, lepenky se nalepí na potah s mezerami pro drážky, okraje potahu se zahnou dovnitř a vyrazí se titul. C – spojení: blok se zavěsí do desek (předsádky se přilepí k deskám), kniha se zalisuje a v drážkovacím lisu se vytvoří drážka."},
+{q:'Kde se používají tuhé vazby a jaké mají výhody a nevýhody? <span class="pill">4 body</span>',h:'Tip: příklady knih, odolnost, cena, výroba.',
+ p:[["příklady: knihy, encyklopedie, kroniky, fotoknihy",["encyklop|kronik|fotokni|slovnik|detsk|diar|knih"],1,"Uveď příklady: encyklopedie, kroniky, fotoknihy, dětské knihy…"],
+    ["výhoda: odolná, dlouhá životnost",["odoln|pevn|vydrz|zivotnost|dlouh"],1,"Výhoda: tuhá vazba je odolná a vydrží dlouho."],
+    ["nevýhoda: dražší",["drah|draz|cen|naklad"],1,"Nevýhoda: je dražší."],
+    ["náročnější a delší výroba",["narocn|slozit|pomal|del"],0,"Bonus: výroba je náročnější a delší, kniha je těžší."]],
+ e:[["(tuh)[^.]{0,40}(levn)","Tuhá vazba není levná – je DRAŽŠÍ než měkká vazba."]],
+ m:"Tuhé vazby se používají pro knihy, které se hodně používají nebo mají vydržet dlouho: knihy v pevné vazbě, encyklopedie, slovníky, dětské knihy, kroniky, fotoknihy a dárkové knihy, plastová vazba V9 pro diáře. Výhodou je odolnost, pevnost a dlouhá životnost, kniha vypadá reprezentativně a desky lze zušlechtit. Nevýhodou je vyšší cena, náročnější a delší výroba a vyšší hmotnost."}
+];
+
+window.MM_T16=MM_T;
+/* ---------- MYŠLENKOVÁ MAPA ---------- */
+let lastBranch=null;
+(function buildMap(){
+  const root=document.getElementById('mindmap');
+  const center=document.createElement('div');
+  center.className='mm-center';
+  center.innerHTML=MM_CENTER;
+  const pos={c:[1,1],m:[1,2],y:[3,1],k:[3,2]};
+  [MAP[0],center,MAP[2],MAP[1],MAP[3]].forEach(b=>{
+    if(b===center){root.appendChild(center);return;}
+    const el=document.createElement('div');
+    el.className='mm-branch '+b.k+' '+b.side;
+    el.dataset.k=b.k;el.id='mm-'+b.k;
+    let h='<h4><span class="num">'+b.n+'</span>'+b.t+'</h4><div class="chips">';
+    b.items.forEach((it,i)=>{h+='<button class="chip" aria-expanded="false" data-i="'+i+'">'+it[0]+'</button>';});
+    h+='</div><div class="hint" aria-live="polite"></div><a class="goto" href="'+b.link+'">→ podrobně v souhrnu</a>';
+    el.innerHTML=h;
+    const hint=el.querySelector('.hint');
+    el.querySelectorAll('.chip').forEach(ch=>{
+      ch.addEventListener('click',()=>{
+        const open=ch.getAttribute('aria-expanded')==='true';
+        el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+        if(open){hint.classList.remove('show');return;}
+        ch.setAttribute('aria-expanded','true');
+        const it=b.items[+ch.dataset.i];
+        hint.innerHTML='<b>'+it[0]+'</b>'+it[1];
+        hint.classList.add('show');lastBranch=el;
+      });
+    });
+    el.querySelector('.goto').addEventListener('click',()=>{lastBranch=el;});
+    el._b=b;
+    root.appendChild(el);
+  });
+  function reorder(){
+    const wide=window.matchMedia('(min-width:861px)').matches;
+    root.querySelectorAll('.mm-branch').forEach(el=>{
+      const k=el.dataset.k;
+      el.style.gridColumn=wide?pos[k][0]:'';el.style.gridRow=wide?pos[k][1]:'';
+      el.style.order=wide?'':({c:1,m:2,y:3,k:4})[k];
+    });
+    center.style.order=wide?'':0;
+  }
+  reorder();window.addEventListener('resize',reorder);
+  document.getElementById('mmOpen').onclick=()=>{
+    root.querySelectorAll('.mm-branch').forEach(el=>{
+      const b=el._b;const hint=el.querySelector('.hint');
+      hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[1]).join('<br style="margin-bottom:6px">');
+      hint.classList.add('show');
+      el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','true'));
+    });
+  };
+  document.getElementById('mmClose').onclick=()=>{
+    root.querySelectorAll('.hint').forEach(h=>h.classList.remove('show'));
+    root.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+  };
+})();
+
+
+/* ---------- ŠVP checklist ---------- */
+(function(){
+  const boxes=[...document.querySelectorAll('#svpList input')];
+  const out=document.getElementById('svpCount');
+  let st={};try{st=JSON.parse(store.get('t16-svp','{}'))}catch(e){}
+  function upd(){const n=boxes.filter(b=>b.checked).length;out.textContent='Umím: '+n+' / '+boxes.length+(n===boxes.length?' 🎉 Jsi připraven/a!':'');}
+  boxes.forEach(b=>{b.checked=!!st[b.id];b.addEventListener('change',()=>{st[b.id]=b.checked;store.set('t16-svp',JSON.stringify(st));upd();});});
+  upd();
+})();
+
+
+/* ---------- KVÍZ ---------- */
+(function(){
+  const box=document.getElementById('quiz'),sc=document.getElementById('score');
+  document.getElementById('qCount').textContent=QUIZ.length;
+  let right=0,done=0;
+  function render(){
+    box.innerHTML='';right=0;done=0;sc.textContent='';
+    QUIZ.forEach((q,qi)=>{
+      const d=document.createElement('div');d.className='q';
+      d.innerHTML='<div class="qt">'+(qi+1)+'. '+q[0]+'</div><div class="opts">'+q[1].map((o,i)=>'<button class="o" data-i="'+i+'">'+o+'</button>').join('')+'</div><div class="fb"></div>';
+      d.querySelectorAll('.o').forEach(b=>b.addEventListener('click',()=>{
+        if(d.classList.contains('done'))return;
+        d.classList.add('done');done++;
+        const i=+b.dataset.i;
+        d.querySelectorAll('.o')[q[2]].classList.add('right');
+        if(i===q[2]){right++;d.querySelector('.fb').innerHTML='<b style="color:var(--ok)">Správně!</b> '+q[3];}
+        else{b.classList.add('wrong');d.querySelector('.fb').innerHTML='<b style="color:var(--bad)">Tentokrát ne.</b> '+q[3];}
+        if(done===QUIZ.length)sc.textContent='Výsledek: '+right+' / '+QUIZ.length+(right>=QUIZ.length*0.9?' · výborně, jsi připraven/a!':right>=QUIZ.length*0.7?' · dobrý výsledek, projdi si ještě otázky, ve kterých jsi chyboval/a.':' · vrať se k myšlenkové mapě a zkus to znovu.');
+      }));
+      box.appendChild(d);
+    });
+  }
+  render();document.getElementById('quizReset').onclick=render;
+})();
+
+
+/* ---------- plovoucí šipka zpět na mapu ---------- */
+(function(){
+  const fab=document.getElementById('fabMap'),mapa=document.getElementById('mapa');
+  function goBack(e){if(e)e.preventDefault();const t=lastBranch||mapa;t.scrollIntoView({behavior:'smooth',block:lastBranch?'center':'start'});}
+  fab.addEventListener('click',goBack);
+  document.querySelectorAll('[data-ret]').forEach(a=>a.addEventListener('click',goBack));
+  function upd(){fab.classList.toggle('show', mapa.getBoundingClientRect().bottom < 0);}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+
+/* ---------- TEST PSANÍM ---------- */
+(function(){
+  const root=document.getElementById('writeTest');
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ');
+  const test=(t,alts)=>alts.some(a=>a.split('&&').every(part=>{try{return new RegExp(part).test(t)}catch(e){return false}}));
+  WT.forEach((w,i)=>{
+    const d=document.createElement('div');d.className='wt';
+    d.innerHTML='<div class="qt">'+(i+1)+'. '+w.q+'</div><div class="qh">'+w.h+'</div>'+
+      '<textarea placeholder="Napiš odpověď vlastními slovy, jako bys psal/a test nebo mluvil/a u zkoušky…" aria-label="Odpověď na otázku '+(i+1)+'"></textarea>'+
+      '<div class="acts"><button class="btn pri" data-a="eval">Vyhodnotit</button><button class="btn" data-a="model">Ukázat vzorovou odpověď</button><button class="btn" data-a="clear">Smazat</button><span class="wc">0 slov</span></div>'+
+      '<div class="out"></div><div class="model"><b class="t">Vzorová odpověď</b>'+w.m+'</div>';
+    const ta=d.querySelector('textarea'),out=d.querySelector('.out'),model=d.querySelector('.model'),wc=d.querySelector('.wc');
+    const key='t16-wt-'+i;
+    ta.value=store.get(key,'');
+    const count=()=>{const n=(ta.value.trim().match(/\S+/g)||[]).length;wc.textContent=n+(n===1?' slovo':n>=2&&n<=4?' slova':' slov');return n;};
+    count();
+    ta.addEventListener('input',()=>{store.set(key,ta.value);count();});
+    d.querySelector('[data-a=eval]').onclick=()=>{
+      const n=count();
+      if(n<10){out.innerHTML='<div class="fbbox fb-miss"><h4>Napiš víc</h4>Na vyhodnocení je to zatím málo (počet slov: '+n+'). Napiš aspoň 3–4 věty.</div>';out.classList.add('show');return;}
+      const t=norm(ta.value);
+      const hit=[],miss=[];
+      w.p.forEach(p=>{(test(t,p[1])?hit:miss).push(p);});
+      const errs=w.e.filter(e=>{try{return new RegExp(e[0]).test(t)}catch(x){return false}});
+      const core=w.p.filter(p=>p[2]),coreHit=hit.filter(p=>p[2]).length;
+      const pct=Math.round(hit.length/w.p.length*100);
+      let v;
+      if(coreHit===core.length&&!errs.length) v='🎉 Výborně! Máš všechny hlavní body'+(miss.length?', přidej ještě bonusy níže.':' i všechny bonusy.');
+      else if(coreHit>=Math.ceil(core.length*0.6)) v='👍 Dobrý základ. Doplň chybějící body a odpověď bude na jedničku.';
+      else v='💪 Zatím chybí dost důležitých věcí. Projdi si souhrn a zkus to znovu.';
+      let h='<div class="verdict">'+v+'</div><div class="meter"><i style="width:'+pct+'%"></i></div><div class="small muted">Zmínil/a jsi '+hit.length+' z '+w.p.length+' bodů · hlavních '+coreHit+' z '+core.length+'</div>';
+      if(hit.length)h+='<div class="fbbox fb-ok"><h4>✔ Zmínil/a jsi</h4><ul>'+hit.map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+p[0]+'</li>').join('')+'</ul></div>';
+      if(miss.length)h+='<div class="fbbox fb-miss"><h4>✚ Chybí ti</h4><ul>'+miss.sort((a,b)=>b[2]-a[2]).map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+'<b>'+p[0]+'</b>: '+p[3]+'</li>').join('')+'</ul></div>';
+      if(errs.length)h+='<div class="fbbox fb-err"><h4>⚠ Zkontroluj, jestli tu nemáš chybu</h4><ul>'+errs.map(e=>'<li>'+e[1]+'</li>').join('')+'</ul></div>';
+      h+='<p class="small muted">Vyhodnocení hledá klíčová slova, takže není dokonalé. Porovnej si svou odpověď se vzorovou.</p>';
+      out.innerHTML=h;out.classList.add('show');model.classList.add('show');
+    };
+    d.querySelector('[data-a=model]').onclick=()=>model.classList.toggle('show');
+    d.querySelector('[data-a=clear]').onclick=()=>{ta.value='';store.set(key,'');count();out.classList.remove('show');model.classList.remove('show');};
+    root.appendChild(d);
+  });
+})();
+
+
+
+
+const V8=(function(){
+const $=id=>document.getElementById(id);
+/* ---------- ILUSTRACE (SVG) ---------- */
+const K='#1b1c1f',M='#e6007e',C='#00a3e0',Y='#f2c500',G='#7a7d85',LP='#c9b99a',LPS='#6d5d45',PG='#9aa3ad',PINK='#fde6f2',SOFT='#d4effa';
+const SV=(inner,vb)=>'<svg viewBox="'+(vb||'0 0 400 240')+'" role="img" xmlns="http://www.w3.org/2000/svg">'+inner+'</svg>';
+function tx(x,y,s,o){o=o||{};return '<text x="'+x+'" y="'+y+'" font-size="'+(o.fs||12)+'"'+(o.b?' font-weight="800"':' font-weight="600"')+' fill="'+(o.c||K)+'"'+(o.a?' text-anchor="'+o.a+'"':'')+(o.r?' transform="rotate('+o.r+' '+x+' '+y+')"':'')+'>'+s+'</text>';}
+function ar(x1,y1,x2,y2,c,w){c=c||M;w=w||2.5;const a=Math.atan2(y2-y1,x2-x1),h=10;
+  const p1=[x2-h*Math.cos(a-0.45),y2-h*Math.sin(a-0.45)],p2=[x2-h*Math.cos(a+0.45),y2-h*Math.sin(a+0.45)];
+  const xe=x2-6*Math.cos(a),ye=y2-6*Math.sin(a);
+  return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xe.toFixed(1)+'" y2="'+ye.toFixed(1)+'" stroke="'+c+'" stroke-width="'+w+'" stroke-linecap="round"/><path d="M'+x2+' '+y2+' L'+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+' L'+p2[0].toFixed(1)+' '+p2[1].toFixed(1)+' Z" fill="'+c+'"/>';}
+function lead(x1,y1,x2,y2,c){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(c||K)+'" stroke-width="1"/>';}
+/* jedna složka v řezu (vnořená U, hřbet dole) */
+function sigU(cx,yt,yb,w,k,col){let s='';for(let j=0;j<k;j++){const l=cx-w/2+j*3.2,r=cx+w/2-j*3.2,b=yb-j*3.2;s+='<path d="M'+l+' '+yt+' V'+(b-3)+' Q'+l+' '+b+' '+(l+3)+' '+b+' H'+(r-3)+' Q'+r+' '+b+' '+r+' '+(b-3)+' V'+yt+'" fill="none" stroke="'+(col||K)+'" stroke-width="1.4"/>';}return s;}
+/* jednotlivé listy v řezu */
+function sheets(x1,x2,yt,yb,gap){let s='';for(let x=x1;x<=x2;x+=gap)s+='<line x1="'+x+'" y1="'+yt+'" x2="'+x+'" y2="'+yb+'" stroke="'+PG+'" stroke-width="1.3"/>';return s;}
+/* kniha v prostoru: přední strana, hřbet vlevo, hlava nahoře */
+function bk(x,y,w,h,d,o){o=o||{};const dx=d,dy=d/2;
+  let s='<path d="M'+x+' '+y+' L'+(x-dx)+' '+(y-dy)+' L'+(x+w-dx)+' '+(y-dy)+' L'+(x+w)+' '+y+' Z" fill="'+(o.head||'#fff')+'" stroke="'+K+'" stroke-width="1.3"/>';
+  if(o.headLines){for(let i=1;i<6;i++){const f=i/6;s+='<line x1="'+(x-dx*f+3)+'" y1="'+(y-dy*f)+'" x2="'+(x+w-dx*f-2)+'" y2="'+(y-dy*f)+'" stroke="'+PG+'" stroke-width="1"/>';}}
+  s+='<path d="M'+x+' '+y+' L'+(x-dx)+' '+(y-dy)+' L'+(x-dx)+' '+(y+h-dy)+' L'+x+' '+(y+h)+' Z" fill="'+(o.spine||'#fff')+'" stroke="'+K+'" stroke-width="1.3"/>';
+  s+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+(o.front||'#fff')+'" stroke="'+K+'" stroke-width="1.3"/>';
+  return s;}
+
+/* --- kroky sdílené --- */
+const IL={};
+IL.fold=SV(
+  tx(95,24,'tiskový arch',{b:1,a:'middle'})+
+  '<rect x="20" y="36" width="150" height="110" fill="#fff" stroke="'+K+'" stroke-width="1.6"/>'+
+  '<g fill="#f0f0ec" stroke="#dcdcd6"><rect x="26" y="42" width="26" height="42"/><rect x="63" y="42" width="26" height="42"/><rect x="101" y="42" width="26" height="42"/><rect x="138" y="42" width="26" height="42"/><rect x="26" y="98" width="26" height="42"/><rect x="63" y="98" width="26" height="42"/><rect x="101" y="98" width="26" height="42"/><rect x="138" y="98" width="26" height="42"/></g>'+
+  '<line x1="95" y1="30" x2="95" y2="152" stroke="'+M+'" stroke-width="2" stroke-dasharray="6 4"/>'+
+  '<line x1="14" y1="91" x2="176" y2="91" stroke="'+C+'" stroke-width="2" stroke-dasharray="6 4"/>'+
+  '<line x1="57.5" y1="36" x2="57.5" y2="146" stroke="'+Y+'" stroke-width="2" stroke-dasharray="6 4"/><line x1="132.5" y1="36" x2="132.5" y2="146" stroke="'+Y+'" stroke-width="2" stroke-dasharray="6 4"/>'+
+  tx(95,170,'přerušované čáry = lomy',{a:'middle',fs:11,c:'#5d6068'})+
+  ar(184,91,236,91)+tx(210,80,'falcování',{a:'middle',fs:11,c:'#a8005c'})+
+  '<rect x="266" y="48" width="96" height="124" fill="#fff" stroke="'+K+'"/><rect x="262" y="52" width="96" height="124" fill="#fff" stroke="'+K+'"/><rect x="258" y="56" width="96" height="124" fill="#fff" stroke="'+K+'" stroke-width="1.4"/>'+
+  '<line x1="258" y1="56" x2="258" y2="180" stroke="'+K+'" stroke-width="4"/>'+
+  tx(306,122,'složka',{a:'middle',b:1,fs:14})+tx(306,140,'16 stran',{a:'middle',fs:12})+
+  tx(250,206,'lom = hřbet složky',{a:'end',fs:11})+lead(252,200,258,176)
+);
+IL.gather=(function(){let s=tx(200,22,'pohled na hřbety snesených složek',{a:'middle',b:1});
+  for(let i=0;i<6;i++){const y=34+i*25;s+='<rect x="50" y="'+y+'" width="280" height="25" fill="#fff" stroke="'+K+'" stroke-width="1.3"/>';
+    s+='<rect x="'+(60+i*42)+'" y="'+(y+6)+'" width="26" height="13" fill="'+K+'"/>';s+=tx(338,y+17,(i+1)+'. složka',{fs:11});}
+  s+='<path d="M73 50 L115 75 L157 100 L199 125 L241 150 L283 175" fill="none" stroke="'+M+'" stroke-width="2" stroke-dasharray="4 4"/>';
+  s+=tx(200,206,'hřbetní signatury tvoří souvislé „schody“',{a:'middle',fs:12,b:1,c:'#a8005c'});
+  s+=tx(200,224,'→ složky jsou ve správném pořadí a žádná nechybí',{a:'middle',fs:11});
+  return SV(s);})();
+function trim(front,label,extra){let s=bk(150,52,150,160,22,{front:front,spine:front,head:'#fff',headLines:1})+(extra||'');
+  s+='<line x1="128" y1="47" x2="318" y2="47" stroke="'+M+'" stroke-width="2" stroke-dasharray="6 4"/>';
+  s+='<line x1="140" y1="218" x2="318" y2="218" stroke="'+M+'" stroke-width="2" stroke-dasharray="6 4"/>';
+  s+='<line x1="306" y1="36" x2="306" y2="226" stroke="'+M+'" stroke-width="2" stroke-dasharray="6 4"/>';
+  s+='<path d="M210 18 L240 18 L225 40 Z" fill="'+G+'"/><path d="M340 120 L340 150 L314 135 Z" fill="'+G+'"/><path d="M210 240 L240 240 L225 222 Z" fill="'+G+'"/>';
+  s+=tx(250,32,'hlava',{b:1,c:'#a8005c'})+tx(250,236,'pata',{b:1,c:'#a8005c'})+tx(352,112,'přední',{b:1,c:'#a8005c',fs:11})+tx(352,126,'ořízka',{b:1,c:'#a8005c',fs:11});
+  s+=tx(118,140,'hřbet',{a:'end',b:1})+tx(118,154,'se neřeže',{a:'end',fs:11});
+  s+=tx(225,140,label,{a:'middle',b:1,fs:13});
+  return SV(s);}
+
+
+/* ---------- V8 ---------- */
+const BLOCK_SIG=(cxs,yt,yb)=>cxs.map(c=>sigU(c,yt,yb,24,3)).join('');
+const V8_STEPS=[
+ {g:'blok',t:'Falcování',d:'Vytištěné archy se na falcovacím stroji přeloží do <b>složek</b> (obvykle 16 nebo 32 stran). Vlákno papíru musí vést rovnoběžně se hřbetem.',svg:IL.fold},
+ {g:'blok',t:'Přilepení předsádek',d:'K první a k poslední složce se přilepí <b>předsádka</b>: dvoulist ze silnějšího papíru (120–150 g/m²). Lepí se jen <b>úzkým proužkem 3–5 mm u hřbetu</b>. Předsádka později drží blok v deskách. (V některých provozech se předsádky lepí až po šití.)',svg:SV(
+   sigU(115,40,180,26,3,C)+BLOCK_SIG([150,180,210,240],40,180)+sigU(275,40,180,26,3,C)+
+   '<rect x="127" y="160" width="7" height="20" fill="'+Y+'"/><rect x="256" y="160" width="7" height="20" fill="'+Y+'"/>'+
+   tx(56,214,'předsádka',{b:1,c:'#006e98'})+lead(90,206,108,184,C)+
+   tx(250,214,'předsádka',{b:1,c:'#006e98'})+lead(280,204,276,184,C)+
+   tx(195,30,'složky knižního bloku',{a:'middle',fs:11})+
+   tx(330,150,'lepidlo jen',{fs:11,b:1,c:'#806600'})+tx(330,164,'3–5 mm',{fs:11,b:1,c:'#806600'})+lead(328,160,266,170,'#806600')
+ )},
+ {g:'blok',t:'Snášení složek na sebe',d:'Složky se kladou <b>na sebe</b> ve správném pořadí. Kontrola: hřbetní signatury tvoří souvislé schody.',svg:IL.gather},
+ {g:'blok',t:'Šití nití',d:'Šicí stroj <b>niťovka</b> šije složku po složce: nit vede uvnitř lomu každé složky a spojuje ji se sousední. Na hřbet se přišívá nebo přilepuje <b>gáza</b> (řídká tkanina), která blok zpevní.',svg:SV(
+   BLOCK_SIG([130,160,190,220,250],40,172)+
+   (function(){let p='M112 182';[130,160,190,220,250].forEach(c=>{p+=' L'+(c-8)+' 182 L'+(c-8)+' 162 L'+(c+8)+' 162 L'+(c+8)+' 182';});p+=' L268 182';return '<path d="'+p+'" fill="none" stroke="'+M+'" stroke-width="2.2"/>';})()+
+   '<rect x="108" y="186" width="164" height="6" fill="'+SOFT+'" stroke="'+C+'" stroke-dasharray="2 2"/>'+
+   tx(300,170,'nit',{b:1,c:'#a8005c'})+lead(298,168,262,178,M)+
+   tx(300,196,'gáza',{b:1,c:'#006e98'})+lead(298,193,274,190,C)+
+   tx(190,26,'nit prochází lomem každé složky',{a:'middle',fs:11})
+ )},
+ {g:'blok',t:'Klížení hřbetu',d:'Hřbet se natře lepidlem (klíh nebo disperzní lepidlo). Lepidlo zpevní šití a spojí složky i s gázou do jednoho bloku.',svg:SV(
+   BLOCK_SIG([130,160,190,220,250],40,172)+
+   '<rect x="108" y="180" width="164" height="6" fill="'+SOFT+'" stroke="'+C+'" stroke-dasharray="2 2"/><rect x="106" y="186" width="168" height="7" fill="'+Y+'" stroke="#806600" stroke-width=".8"/>'+
+   '<path d="M300 222 L250 200" stroke="#8a6d3b" stroke-width="7" stroke-linecap="round"/><rect x="232" y="191" width="22" height="12" rx="3" fill="#5d4a2a" transform="rotate(24 243 197)"/>'+
+   tx(40,214,'vrstva lepidla',{b:1,c:'#806600'})+lead(110,208,140,192,'#806600')
+ )},
+ {g:'blok',t:'Trojřez',d:'<b>Třínožová řezačka</b> ořízne blok ze tří stran: hlavu, patu a přední ořízku. Blok má teď čistý formát.',svg:trim('#fff','knižní blok')},
+ {g:'blok',t:'Kulacení a oblení',d:'Válce <b>zkulatí hřbet</b>: hřbet se vyklene ven a přední ořízka se prohne dovnitř. Kniha se pak hezky otevírá a hřbet se časem „nepropadne“. <b>Oblením</b> se vytvoří po stranách hřbetu ramínka, o která se později opře deska v drážce. (Kniha může mít i <b>rovný hřbet</b>, pak se tento krok vynechá.)',svg:(function(){
+   let s=tx(95,26,'rovný hřbet',{a:'middle',b:1})+sheets(55,135,46,176,4)+tx(300,26,'kulatý hřbet',{a:'middle',b:1});
+   for(let i=0;i<=20;i++){const u=(i-10)/10,x=260+i*4,yt=46+12*(1-u*u),yb=176+12*(1-u*u);s+='<line x1="'+x+'" y1="'+yt.toFixed(1)+'" x2="'+(x+(u*4)).toFixed(1)+'" y2="'+yb.toFixed(1)+'" stroke="'+PG+'" stroke-width="1.3"/>';}
+   s+='<path d="M262 178 Q300 202 344 178" fill="none" stroke="'+M+'" stroke-width="2.5"/>';
+   s+=ar(160,110,226,110);
+   s+=tx(300,224,'hřbet vyklenutý ven',{a:'middle',fs:11,b:1,c:'#a8005c'})+tx(360,60,'ořízka',{fs:11})+tx(360,74,'prohnutá',{fs:11})+tx(95,200,'hřbet',{a:'middle',fs:11});
+   return SV(s);})()},
+ {g:'blok',t:'Kapitálek, záložka, barvení ořízky',d:'Na horní a dolní konec hřbetu se přilepí <b>kapitálek</b> (barevný proužek látky), který zpevňuje a zdobí. Vlepí se <b>záložka</b> (stužka). Ořízka se může <b>obarvit</b> nebo pozlatit.',svg:SV(
+   bk(150,50,150,160,30,{front:'#fff',spine:'#fff',head:'#bfe6f6',headLines:1})+
+   '<path d="M150 50 L120 35 L120 44 L150 59 Z" fill="'+M+'"/><path d="M128 39 v8 M136 43 v8 M144 47 v8" stroke="#fff" stroke-width="2"/>'+
+   '<path d="M160 205 L160 236 L165 230 L170 236 L170 205 Z" fill="'+M+'"/><path d="M160 210 V205" stroke="'+M+'" stroke-width="10"/>'+
+   tx(40,30,'kapitálek',{b:1,c:'#a8005c'})+lead(96,30,124,40,M)+
+   tx(230,26,'barevná ořízka',{b:1,c:'#006e98'})+lead(244,30,230,40,C)+
+   tx(186,232,'záložka (stužka)',{b:1,c:'#a8005c'})+tx(225,135,'knižní blok',{a:'middle',b:1})
+ )},
+ {g:'blok',t:'Přelepení hřbetu',d:'Hřbet se přelepí ještě jednou: <b>gázou</b>, která přesahuje na obě strany (křidélka) a později se přilepí k deskám, potom <b>hřbetním papírem</b>. U silnějších knih se na hřbet lepí <b>dutinka</b> – papírová trubička, díky které se kniha lépe otevírá.',svg:(function(){
+   let s='';for(let i=0;i<=20;i++){const u=(i-10)/10,x=160+i*4,yt=40+10*(1-u*u),yb=160+12*(1-u*u);s+='<line x1="'+x+'" y1="'+yt.toFixed(1)+'" x2="'+(x+u*4).toFixed(1)+'" y2="'+yb.toFixed(1)+'" stroke="'+PG+'" stroke-width="1.3"/>';}
+   const arc=(o)=>'M'+(160-o)+' '+(160+o*.2)+' Q200 '+(196+o)+' '+(244+o)+' '+(160+o*.2);
+   s+='<path d="M110 140 L156 158 Q200 192 248 158 L294 140" fill="none" stroke="'+C+'" stroke-width="3" stroke-dasharray="5 3"/>';
+   s+='<path d="'+arc(5)+'" fill="none" stroke="'+G+'" stroke-width="3"/>';
+   s+='<path d="M'+(160-10)+' 164 Q200 214 254 164 L'+(254)+' 170 Q200 226 150 170 Z" fill="'+PINK+'" stroke="'+M+'" stroke-width="2"/>';
+   s+=tx(22,132,'gáza – křidélka',{b:1,c:'#006e98',fs:11})+tx(300,134,'gáza',{b:1,c:'#006e98',fs:11});
+   s+=tx(280,190,'hřbetní papír',{fs:11,b:1})+lead(278,186,244,176,G);
+   s+=tx(258,226,'dutinka',{fs:11,b:1,c:'#a8005c'})+lead(256,222,234,204,M);
+   s+=tx(200,24,'kulatý hřbet bloku v řezu',{a:'middle',fs:11,c:'#5d6068'});
+   return SV(s);})()},
+ {g:'desky',t:'Přířezy lepenky a potahu',d:'Desky se vyrábějí zvlášť. Na stohové řezačce se připraví <b>přířezy lepenky</b> (2 desky + 1 hřbetní vložka) a <b>potah</b> (plátno, papír, laminovaný papír, kůže). Potah je o ohyb 15–20 mm větší na každé straně. Rozměry spočítáš v kalkulačce níže.',svg:SV(
+   '<rect x="54" y="30" width="292" height="180" fill="'+PINK+'" stroke="'+M+'" stroke-width="1.6"/>'+
+   '<rect x="74" y="50" width="110" height="140" fill="'+LP+'" stroke="'+LPS+'" stroke-width="1.4"/><rect x="192" y="50" width="16" height="140" fill="'+LP+'" stroke="'+LPS+'" stroke-width="1.4"/><rect x="216" y="50" width="110" height="140" fill="'+LP+'" stroke="'+LPS+'" stroke-width="1.4"/>'+
+   tx(129,124,'deska',{a:'middle',b:1})+tx(271,124,'deska',{a:'middle',b:1})+tx(200,120,'hřbet',{a:'middle',b:1,fs:11,r:-90})+
+   tx(188,228,'drážka',{a:'end',fs:11,b:1,c:'#a8005c'})+lead(190,224,188,192,M)+tx(212,228,'drážka',{fs:11,b:1,c:'#a8005c'})+lead(210,224,212,192,M)+
+   tx(200,22,'potah – přesahuje o ohyb 15–20 mm',{a:'middle',fs:11,b:1,c:'#a8005c'})
+ )},
+ {g:'desky',t:'Potahování desek',d:'Potah se natře lepidlem a lepenky se na něj položí přesně s mezerami pro <b>drážky</b>. Rohy potahu se <b>zastřihnou</b> šikmo a přesahující okraje se <b>zahnou dovnitř</b> přes hrany lepenky a přitlačí. V průmyslu to dělá stroj na výrobu desek.',svg:SV(
+   '<path d="M70 30 H330 L346 46 V194 L330 210 H70 L54 194 V46 Z" fill="'+PINK+'" stroke="'+M+'" stroke-width="1.6"/>'+
+   '<path d="M70 30 H330 L346 46 V194 L330 210 H70 L54 194 V46 Z" fill="'+Y+'" opacity=".25"/>'+
+   '<rect x="74" y="50" width="110" height="140" fill="'+LP+'" stroke="'+LPS+'" stroke-width="1.4"/><rect x="192" y="50" width="16" height="140" fill="'+LP+'" stroke="'+LPS+'" stroke-width="1.4"/><rect x="216" y="50" width="110" height="140" fill="'+LP+'" stroke="'+LPS+'" stroke-width="1.4"/>'+
+   ar(129,30,129,62)+ar(271,30,271,62)+ar(129,210,129,178)+ar(271,210,271,178)+ar(54,120,86,120)+ar(346,120,314,120)+
+   tx(24,22,'zastřižený roh',{fs:11,b:1})+lead(50,26,60,38)+
+   tx(200,232,'okraje potahu se zahnou dovnitř přes lepenku',{a:'middle',fs:11,b:1,c:'#a8005c'})
+ )},
+ {g:'desky',t:'Ražba titulu',d:'Na desky a na hřbet se <b>vyrazí titul</b>: rozehřátá <b>raznice (štoček)</b> přitlačí ražební fólii (zlatou, stříbrnou) na potah a fólie se na desky přenese. Lze použít i slepotisk nebo potisk.',svg:SV(
+   '<rect x="120" y="70" width="170" height="160" rx="3" fill="#2d4f8a" stroke="'+K+'"/><rect x="100" y="70" width="16" height="160" fill="#2d4f8a" stroke="'+K+'"/>'+
+   '<defs><linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#b8892a"/><stop offset=".5" stop-color="#f6dc8a"/><stop offset="1" stop-color="#b8892a"/></linearGradient></defs>'+
+   '<rect x="140" y="20" width="130" height="22" rx="3" fill="'+G+'"/><path d="M150 14 q5 -6 0 -12 M170 14 q5 -6 0 -12 M190 14 q5 -6 0 -12" stroke="#c62828" stroke-width="2" fill="none"/>'+
+   '<rect x="110" y="50" width="190" height="6" fill="url(#gold)"/>'+ar(205,44,205,66,K)+
+   tx(205,128,'KRONIKA',{a:'middle',b:1,fs:20,c:'url(#gold)'})+tx(205,150,'obce',{a:'middle',fs:13,c:'#f6dc8a'})+tx(108,150,'KRONIKA',{a:'middle',b:1,fs:9,c:'#f6dc8a',r:-90})+
+   tx(282,30,'raznice + teplo + tlak',{fs:11,b:1})+tx(306,58,'ražební fólie',{fs:11,b:1,c:'#806600'})+lead(304,55,296,54,'#806600')
+ )},
+ {g:'spojeni',t:'Zavěšení bloku do desek',d:'Na vnější listy předsádek (a na křidélka gázy) se nanese lepidlo. Blok se vloží do desek a desky se k předsádkám přiklopí. Tomu se říká <b>zavěšení knižního bloku do desek</b>. Blok nikde jinde k deskám přilepený není.',svg:SV(
+   '<path d="M30 206 H170 L178 214 H222 L230 206 H370" fill="none" stroke="'+M+'" stroke-width="3"/>'+
+   '<rect x="40" y="194" width="128" height="10" fill="'+LP+'" stroke="'+LPS+'"/><rect x="180" y="200" width="40" height="10" fill="'+LP+'" stroke="'+LPS+'"/><rect x="232" y="194" width="128" height="10" fill="'+LP+'" stroke="'+LPS+'"/>'+
+   '<rect x="40" y="188" width="128" height="5" fill="'+Y+'"/><rect x="232" y="188" width="128" height="5" fill="'+Y+'"/>'+
+   sheets(186,214,40,150,3)+'<path d="M184 40 V152 M216 40 V152" stroke="'+C+'" stroke-width="2.5"/>'+
+   ar(200,14,200,34,K)+ar(176,150,176,182,K)+ar(224,150,224,182,K)+
+   tx(80,176,'lepidlo',{b:1,c:'#806600'})+tx(272,176,'lepidlo',{b:1,c:'#806600'})+
+   tx(240,70,'blok s předsádkami',{b:1,fs:11})+tx(240,84,'(modře)',{fs:11,c:'#006e98'})+
+   tx(200,234,'rozevřené desky (pohled na hlavu)',{a:'middle',fs:11,c:'#5d6068'})
+ )},
+ {g:'spojeni',t:'Lisování a drážka → hotová kniha',d:'Kniha se vloží do <b>drážkovacího lisu</b>: vyhřáté lišty vytlačí podél hřbetu <b>drážku</b> a kniha zůstane v lisu, dokud lepidlo nezaschne. Drážka umožní, aby se desky snadno otevíraly. Hotovou knihu lze ještě obalit <b>přebalem</b>.',svg:SV(
+   '<path d="M330 50 H96 Q40 120 96 190 H330" fill="none" stroke="'+M+'" stroke-width="3"/>'+
+   '<path d="M118 54 H326" stroke="'+LP+'" stroke-width="9"/><path d="M118 186 H326" stroke="'+LP+'" stroke-width="9"/>'+
+   '<path d="M88 64 Q58 120 88 176" fill="none" stroke="'+LP+'" stroke-width="6"/>'+
+   '<path d="M108 54 q4 10 10 10 M108 186 q4 -10 10 -10" fill="none" stroke="'+K+'" stroke-width="2"/>'+
+   (function(){let s='';for(let y=74;y<=166;y+=8)s+='<line x1="112" y1="'+y+'" x2="320" y2="'+y+'" stroke="'+PG+'" stroke-width="1.2"/>';return s;})()+
+   '<path d="M112 72 Q94 120 112 168" fill="none" stroke="'+K+'" stroke-width="2"/>'+
+   '<path d="M320 64 H118 Q104 66 110 72 H320" fill="none" stroke="'+C+'" stroke-width="2"/><path d="M320 176 H118 Q104 174 110 168 H320" fill="none" stroke="'+C+'" stroke-width="2"/>'+
+   '<rect x="100" y="22" width="22" height="16" rx="2" fill="#c62828"/><rect x="100" y="202" width="22" height="16" rx="2" fill="#c62828"/>'+ar(111,30,111,46,K)+ar(111,210,111,194,K)+
+   tx(130,30,'vyhřáté lišty vytlačí drážku',{fs:11,b:1,c:'#c62828'})+
+   tx(220,124,'knižní blok',{a:'middle',b:1})+tx(340,70,'předsádka',{fs:11,c:'#006e98',b:1})+tx(340,190,'deska',{fs:11,b:1})+
+   tx(24,124,'hřbet',{fs:11,b:1})
+ )}
+];
+function stepper(id,steps,groups){
+  const root=$(id);let i=0;
+  root.innerHTML='<div class="sp-top"><span class="sp-n"></span><span class="sp-g"></span></div><div class="sp-stage"></div><h4 class="sp-t"></h4><p class="sp-d"></p>'+
+    '<div class="sp-nav"><button class="btn" data-a="prev">← Předchozí</button><div class="sp-dots">'+steps.map((s,k)=>'<button aria-label="Krok '+(k+1)+'" data-k="'+k+'"></button>').join('')+'</div><button class="btn pri" data-a="next">Další →</button></div>'+
+    '<details class="sp-all"><summary>Zobrazit všechny kroky najednou (přehled)</summary><ol>'+steps.map(s=>'<li><b>'+s.t+'</b> – '+s.d+'</li>').join('')+'</ol></details>';
+  const stage=root.querySelector('.sp-stage'),dots=[...root.querySelectorAll('.sp-dots button')];
+  function show(){
+    const s=steps[i];stage.innerHTML=s.svg;root.querySelector('.sp-t').textContent=(i+1)+'. '+s.t;root.querySelector('.sp-d').innerHTML=s.d;
+    root.querySelector('.sp-n').textContent='Krok '+(i+1)+' / '+steps.length;
+    root.querySelector('.sp-g').textContent=groups&&s.g?groups[s.g]:'';root.querySelector('.sp-g').className='sp-g '+(s.g||'');
+    dots.forEach((d,k)=>d.classList.toggle('on',k===i));
+    root.querySelector('[data-a=prev]').disabled=i===0;
+    const nx=root.querySelector('[data-a=next]');nx.textContent=i===steps.length-1?'Znovu od začátku ↺':'Další →';
+  }
+  root.querySelector('[data-a=prev]').onclick=()=>{if(i>0){i--;show();}};
+  root.querySelector('[data-a=next]').onclick=()=>{i=i<steps.length-1?i+1:0;show();};
+  dots.forEach(d=>d.onclick=()=>{i=+d.dataset.k;show();});
+  let x0=null;stage.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+  stage.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){if(dx<0&&i<steps.length-1)i++;else if(dx>0&&i>0)i--;show();}x0=null;});
+  show();
+}
+
+return {steps:V8_STEPS,stepper:stepper};
+})();
+
+function vyplnObrazky(){document.querySelectorAll('[data-img]').forEach(d=>{d.innerHTML=IMG[d.dataset.img]();});}
+vyplnObrazky();
+
+/* ---------- míšení barev: zapínání a vypínání ---------- */
+(function(){
+  function mix(id,btnId,kind){
+    const box=document.getElementById(id),bx=document.getElementById(btnId);
+    const add=kind==='add';
+    const P=add?[['R','#ff0000',92,44],['G','#00ff00',128,44],['B','#0000ff',110,75]]:[['C','#00aeef',92,44],['M','#ec008c',128,44],['Y','#fff200',110,75]];
+    const on={};P.forEach(p=>on[p[0]]=true);
+    bx.innerHTML=P.map(p=>'<button data-k="'+p[0]+'" class="on" style="--bc:'+p[1]+'">'+p[0]+'</button>').join('');
+    function draw(){
+      let s='<rect width="220" height="118" rx="10" fill="'+(add?'#000':'#fff')+'"'+(add?'':' stroke="#e2e8f0"')+'/><g style="isolation:isolate">';
+      P.forEach(p=>{if(on[p[0]])s+='<circle cx="'+p[2]+'" cy="'+p[3]+'" r="31" fill="'+p[1]+'" style="mix-blend-mode:'+(add?'screen':'multiply')+'"/>';});
+      s+='</g>';
+      const n=P.filter(p=>on[p[0]]).map(p=>p[0]);
+      const vys=add?{'':'černá (tma)','R':'červená','G':'zelená','B':'modrá','RG':'žlutá','GB':'azurová','RB':'purpurová','RGB':'bílá'}:{'':'bílá (papír)','C':'azurová','M':'purpurová','Y':'žlutá','CM':'modrá','MY':'červená','CY':'zelená','CMY':'tmavá (teoreticky černá)'};
+      const txt=(n.length?n.join(' + '):'nic')+' = '+vys[n.join('')];
+      s+='<text x="110" y="112" font-size="9" font-weight="800" text-anchor="middle" fill="'+(add?'#fff':'#1b1c1f')+'" font-family="system-ui,Arial,sans-serif">'+txt+'</text>';
+      box.innerHTML='<svg viewBox="0 0 220 118" xmlns="http://www.w3.org/2000/svg">'+s+'</svg>';
+    }
+    bx.querySelectorAll('button').forEach(b=>b.onclick=()=>{on[b.dataset.k]=!on[b.dataset.k];b.classList.toggle('on',on[b.dataset.k]);draw();});
+    draw();
+  }
+  mix('mixAdd','mixAddBtns','add');mix('mixSub','mixSubBtns','sub');
+})();
+
+/* ---------- Lab: posuvníky ---------- */
+(function(){
+  const L=document.getElementById('labL'),A=document.getElementById('labA'),B=document.getElementById('labB');
+  const sw=document.getElementById('labSw'),tx=document.getElementById('labTxt');
+  function popis(l,a,b){
+    const sv=l<25?'velmi tmavá':l<45?'tmavší':l<70?'středně světlá':l<90?'světlá':'velmi světlá';
+    let od=[];if(a>15)od.push('do červena');else if(a<-15)od.push('do zelena');
+    if(b>15)od.push('do žluta');else if(b<-15)od.push('do modra');
+    const syt=Math.sqrt(a*a+b*b);
+    return sv+(syt<12?', skoro šedá (blízko osy L)':', '+(syt>60?'sytá':'méně sytá')+' barva '+od.join(' a '));}
+  function u(){const l=+L.value,a=+A.value,b=+B.value;
+    document.getElementById('oL').textContent=l;document.getElementById('oA').textContent=(a>0?'+':'')+a;document.getElementById('oB').textContent=(b>0?'+':'')+b;
+    const r=lab2rgb(l,a,b);sw.style.background=hex(r.rgb);
+    tx.innerHTML='<b>L '+l+' · a '+a+' · b '+b+'</b> → '+popis(l,a,b)+'.'+(r.inGamut?'':' <span style="color:var(--bad);font-weight:700">Tuhle barvu monitor neumí přesně ukázat (je mimo gamut RGB).</span>');}
+  [L,A,B].forEach(i=>i.addEventListener('input',u));u();
+})();
+
+/* ---------- náhled separací ---------- */
+(function(){
+  const o=document.getElementById('sepSvg'),bx=document.getElementById('sepBtns'),ch=document.getElementById('sepDeska'),pp=document.getElementById('sepPopis');
+  const R=[['all','Všechny barvy','Takhle vypadá hotový tisk: všechny výtažky přes sebe v soutisku.'],
+    ['c','Azurová C','Azurová je hlavně v nebi, v kopci a ve stromu. Kde je výtažek sytější, tam bude víc azurové.'],
+    ['m','Purpurová M','Purpurová je hlavně ve střeše – s žlutou z ní udělá červenou.'],
+    ['y','Žlutá Y','Žlutá je ve slunci, v kopci a ve střeše. S azurovou dá zelenou trávu.'],
+    ['k','Černá K','Černá je v textu KRONIKA (100 %) a trochu ve stínech – v kmeni a dveřích.'],
+    ['z','Zlatá (přímá)','Přímá zlatá barva má vlastní výtažek a vlastní desku. Tady je to jen rámeček.']];
+  let cur='all';
+  bx.innerHTML=R.map(r=>'<button data-r="'+r[0]+'">'+r[1]+'</button>').join('');
+  function show(){
+    const r=R.find(x=>x[0]===cur);
+    o.innerHTML='<svg viewBox="0 0 100 92" xmlns="http://www.w3.org/2000/svg" style="max-height:340px">'+scenaSVG(cur,ch.checked&&cur!=='all')+'</svg>';
+    bx.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.r===cur));
+    pp.innerHTML='<b class="t">'+r[1]+'</b>'+r[2]+(ch.checked&&cur!=='all'?' Na desce je výtažek jen jako černobílá předloha – barvu dodá až barevník tiskové jednotky. (Ve skutečnosti je výtažek zrastrovaný.)':'');
+  }
+  bx.querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.dataset.r;show();});
+  ch.addEventListener('change',show);show();
+})();
+
+/* ---------- kolik desek ---------- */
+(function(){
+  const g=id=>+document.getElementById(id).value;
+  const dsk=n=>n===1?'1 deska':(n>=2&&n<=4?n+' desky':n+' desek');
+  const nazev=c=>c===4?' (CMYK)':c===1?' (černá)':'';
+  function u(){const lc=g('dLc'),lp=g('dLp'),rc=g('dRc'),rp=g('dRp'),l=lc+lp,r=rc+rp;
+    document.getElementById('dOut').innerHTML=
+      '<div class="st"><span class="n">1</span><div>Líc: '+lc+nazev(lc)+' + '+lp+' přímé = <b>'+dsk(l)+'</b></div></div>'+
+      '<div class="st"><span class="n">2</span><div>Rub: '+rc+nazev(rc)+' + '+rp+' přímé = <b>'+dsk(r)+'</b></div></div>'+
+      '<div class="st"><span class="n">3</span><div>Zápis <span class="eq">'+lc+(lp?'+'+lp:'')+'/'+rc+(rp?'+'+rp:'')+'</span> · celkem '+l+' + '+r+' = <span class="res">'+dsk(l+r)+'</span></div></div>';}
+  ['dLc','dLp','dRc','dRp'].forEach(i=>document.getElementById(i).addEventListener('change',u));u();
+})();
+
+/* ---------- vazba V8: krokovač (ilustrace stejné jako v tématu 3) ---------- */
+V8.stepper('stV8',V8.steps,{blok:'A · knižní blok',desky:'B · knižní desky',spojeni:'C · spojení bloku a desek'});
+
+/* ---------- navigace: aktivní sekce ---------- */
+(function(){
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a){a.classList.add('active');const w=a.parentElement;w.scrollTo({left:a.offsetLeft-w.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});}}});},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section').forEach(s=>obs.observe(s));
+})();
+
+/* ---------- přepínač motivu ---------- */
+(function(){
+  const btn=document.getElementById('themeBtn'),r=document.documentElement;
+  const t=store.get('t16-theme','');if(t)r.setAttribute('data-theme',t);
+  btn.onclick=()=>{
+    const dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const n=dark?'light':'dark';r.setAttribute('data-theme',n);store.set('t16-theme',n);
+  };
+})();
+
+
+</script>
+<!-- ===== návrat mezi tématy (tlačítko „Zpět na téma“) ===== -->
+<style>
+.nav-back{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.92rem;border:0;border-radius:99px;padding:11px 18px 11px 14px;background:#00a3e0;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28);max-width:calc(100% - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-back .ar{font-size:1.15rem;line-height:1}
+.nav-back .x{margin-left:6px;opacity:.75;font-weight:800;padding:0 2px}
+@media (max-width:520px){.nav-back{bottom:68px;left:14px;transform:none;max-width:calc(100% - 28px)}}
+@media print{.nav-back{display:none!important}}
+</style>
+<script>
+(function(){
+  const ss={get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}};
+  const norm=p=>p.replace(/index\.html$/,'').replace(/\/?$/,'/');
+  const here=norm(location.pathname);
+  const badge=document.querySelector('.badge');
+  const m=((badge&&badge.textContent)||document.title).match(/Téma č\. ?(\d+)/);
+  const name=m?'téma č. '+m[1]:'předchozí téma';
+  let st=[];try{st=JSON.parse(ss.get('navBackStack')||'[]')}catch(e){}
+  const save=()=>ss.set('navBackStack',JSON.stringify(st.slice(-10)));
+  /* vrátil/a jsem se sem: obnov místo čtení */
+  let r=null;try{r=JSON.parse(ss.get('navRestore')||'null')}catch(e){}
+  if(r&&r.path===here){
+    ss.set('navRestore','null');
+    const go=()=>window.scrollTo({top:r.y,left:0,behavior:'instant'});
+    go();window.addEventListener('load',()=>{go();setTimeout(go,250);});
+  }
+  /* záznamy, které začínají na této stránce, jsou už vyřízené */
+  while(st.length&&st[st.length-1].path===here)st.pop();
+  save();
+  /* proklik na jiné téma: zapamatuj si, odkud jdu */
+  document.addEventListener('click',e=>{
+    const a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
+    let u;try{u=new URL(a.href,location.href)}catch(x){return}
+    if(u.origin!==location.origin)return;
+    const to=norm(u.pathname);
+    if(to===here||!/\/tema-\d+[^/]*\/$/.test(to))return;
+    st.push({path:here,href:location.href.split('#')[0],y:Math.round(window.scrollY),name:name,to:to});save();
+  },true);
+  /* přišel/přišla jsem odjinud: ukaž tlačítko zpět */
+  const top=st[st.length-1];
+  if(top&&top.to===here){
+    const b=document.createElement('button');
+    b.className='nav-back';b.type='button';
+    b.setAttribute('aria-label','Zpět na '+top.name+' tam, kde jsi četl/a');
+    b.innerHTML='<span class="ar">←</span> Zpět na '+top.name+'<span class="x" title="Skrýt" aria-label="Skrýt">×</span>';
+    b.addEventListener('click',e=>{
+      if(e.target.classList.contains('x')){st.pop();save();b.remove();return;}
+      st.pop();save();
+      ss.set('navRestore',JSON.stringify({path:top.path,y:top.y}));
+      location.href=top.href;
+    });
+    document.body.appendChild(b);
+  }
+})();
+</script>
+<script id="mm-jump">
+/* ---------- skok z pojmu v myšlenkové mapě přímo na jeho podnadpis v souhrnu ----------
+   MM_T: pro každou větev (c, m, y, k) seznam cílů ve stejném pořadí jako pojmy v mapě.
+   Cíl = začátek textu podnadpisu (nebo zvýrazněné položky); "@selektor" = prvek podle CSS. */
+(function(){
+  const MM_T=window.MM_T16;
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
+  const HEAD='h2,h3,h4,h5,summary';
+  const ANY=HEAD+',.nm,.t,.lbl,dt,th,figcaption,b,strong,li,p,dd,td';
+  const LINKS=new Set([...document.querySelectorAll('.mm-branch .goto')].map(a=>a.getAttribute('href').slice(1)));
+  const END=new Set(['svp','test','kviz','potitko','mapa','cesta']);
+  function scopeOf(sec){
+    const all=[...document.querySelectorAll('section[id]')];let i=all.indexOf(sec);
+    if(i<0)return [sec];const out=[sec];
+    for(i++;i<all.length;i++){const id=all[i].id;if(LINKS.has(id)||END.has(id))break;out.push(all[i]);}
+    return out;
+  }
+  const bad=el=>el.closest('.mm-branch,#mapa,#svp,#test,#kviz');
+  function locate(roots,target){
+    if(target.charAt(0)==='@'){for(const r of roots){const e=r.querySelector(target.slice(1));if(e&&!bad(e))return e;}return null;}
+    const n=norm(target);
+    for(const sel of [HEAD,ANY]){
+      for(const r of roots){
+        const els=[...r.querySelectorAll(sel)].filter(e=>!bad(e));
+        const ex=els.find(e=>norm(e.textContent)===n);if(ex)return ex;
+        const st=els.find(e=>norm(e.textContent).startsWith(n));if(st)return st;
+      }
+    }
+    return null;
+  }
+  function findTarget(br,i){
+    const list=MM_T[br.dataset.k];if(!list||!list[i])return null;
+    const sec=document.querySelector(br.querySelector('.goto').getAttribute('href'));if(!sec)return null;
+    return locate(scopeOf(sec),list[i])||locate([document.body],list[i]);
+  }
+  function reveal(el){
+    if(el.tagName==='SUMMARY'&&el.parentElement.tagName==='DETAILS')el.parentElement.open=true;
+    let d=el.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+  }
+  function blockOf(el){
+    if(/^(H2|H3|H4|H5|SUMMARY)$/.test(el.tagName))return el;
+    return el.closest('li,dt,tr,p,figure,.card,.warn,.mnemo,.oneliner,.step,details')||el;
+  }
+  const css=document.createElement('style');
+  css.textContent='.hint b:not(:first-child){display:inline;margin:0}.mm-branch .hint b{display:block;margin-bottom:2px}.mm-flash{animation:mmflash 2.4s ease-out;border-radius:8px}@keyframes mmflash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0);background:transparent}}';
+  document.head.appendChild(css);
+  document.querySelectorAll('.mm-branch').forEach(br=>{
+    const go=br.querySelector('.goto');if(!go)return;
+    const base=go.textContent;
+    const sel=()=>[...br.querySelectorAll('.chip[aria-expanded="true"]')];
+    const upd=()=>{const ch=sel();go.textContent=ch.length===1?'→ „'+ch[0].textContent+'“ podrobně v souhrnu':base;};
+    br.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>setTimeout(upd,0)));
+    ['mmOpen','mmClose'].forEach(id=>{const b=document.getElementById(id);if(b)b.addEventListener('click',()=>setTimeout(upd,0));});
+    go.addEventListener('click',e=>{
+      const ch=sel();if(ch.length!==1)return; /* žádný nebo všechny pojmy → začátek tématu jako dřív */
+      const hit=findTarget(br,+ch[0].dataset.i);if(!hit)return;
+      e.preventDefault();
+      reveal(hit);
+      const blk=blockOf(hit);
+      const top=blk.getBoundingClientRect().top+window.scrollY-80;
+      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      blk.classList.remove('mm-flash');void blk.offsetWidth;blk.classList.add('mm-flash');
+      setTimeout(()=>blk.classList.remove('mm-flash'),2600);
+    });
+  });
+  window.__mmTarget=findTarget;
+})();
+</script>
+</body>
+</html>
