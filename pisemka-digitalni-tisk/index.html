@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technologické procesy – digitální tisk · výcuc k písemné závěrečné zkoušce</title>
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d1d24;--muted:#5d5d6b;--line:#dedbd3;--c:#00a0e3;--m:#e5007e;--y:#ffd500;--accent:#6a3fd0;--ok:#1f8a4c;--bad:#c62828;--pis:#1f8a4c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:17px}
+.wrap{max-width:920px;margin:0 auto;padding:0 14px 90px}
+header.top{background:linear-gradient(120deg,var(--c),var(--m) 55%,var(--y));color:#fff;padding:26px 14px 20px}
+header.top .wrap{padding-bottom:0}header.top small{font-weight:700;letter-spacing:.04em;opacity:.95}
+header.top h1{margin:.2em 0 .1em;font-size:1.65em;line-height:1.2;text-shadow:0 1px 3px rgba(0,0,0,.25)}
+header.top p{margin:0;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+nav.menu{position:sticky;top:0;z-index:20;background:rgba(246,245,242,.96);border-bottom:1px solid var(--line)}
+nav.menu .wrap{display:flex;gap:6px;overflow-x:auto;padding:8px 14px}
+nav.menu a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.88em;font-weight:600}
+h2{font-size:1.4em;margin:1.6em 0 .5em;padding-top:8px}
+h2 .num{display:inline-block;background:var(--ink);color:#fff;border-radius:8px;padding:0 9px;margin-right:6px;font-size:.85em}
+h3{font-size:1.12em;margin:1.3em 0 .4em}
+section,h2,h3,.card,.pis{scroll-margin-top:58px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+.simple{background:#eaf7ef;border:1px solid #bfe3cc;border-radius:10px;padding:10px 12px;margin:10px 0}
+.pozor{background:#fdecec;border:1px solid #f3baba;border-radius:10px;padding:10px 12px;margin:10px 0}
+.key{background:#fff8d6;border:1px solid #f1df8a;border-radius:10px;padding:10px 12px;margin:10px 0}
+.rozsir{background:#f1f1f3;border:1px dashed #b9b9c3;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:.95em}
+.rozsir .tag{display:inline-block;background:#6b6b78;color:#fff;border-radius:6px;padding:0 8px;font-size:.82em;font-weight:700}
+figure{margin:12px 0;text-align:center}figure svg{max-width:100%;height:auto}
+figcaption{font-size:.85em;color:var(--muted);margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.95em}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#f0eee8}td.c{text-align:center;white-space:nowrap}tr.sec td{background:#f0eee8;font-weight:800}.muted{color:var(--muted);font-weight:400}
+.tablewrap{overflow-x:auto}a{color:var(--accent)}
+.xlink{display:inline-block;background:#f1ecff;border:1px solid #d8ccfa;border-radius:8px;padding:1px 8px;text-decoration:none;font-size:.88em;font-weight:600;margin:2px 0}
+.xlink::before{content:"↗ "}
+.pis{background:#f3fbf6;border:2px solid var(--pis);border-radius:14px;padding:0 14px 10px;margin:16px 0}
+.pis-h{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;background:var(--pis);color:#fff;margin:0 -14px 8px;padding:6px 14px;border-radius:11px 11px 0 0;font-weight:700;font-size:.92em}
+.pis-q{font-weight:700;margin:.3em 0}.pis-meta{font-size:.82em;color:var(--muted);margin:.1em 0 .5em}
+.napis{background:#fff;border:1px solid #bfe3cc;border-radius:10px;padding:8px 12px}.napis ul{margin:.3em 0 0 1.1em;padding:0}.napis li{margin:3px 0}
+details{margin:8px 0}summary{cursor:pointer;font-weight:700;color:var(--ok)}details p{margin:.4em 0}
+.links{font-size:.9em;margin:.5em 0 0}
+.mapa{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:760px){.mapa{grid-template-columns:1fr 1fr}}
+.mapa .center{grid-column:1/-1;text-align:center;background:var(--ink);color:#fff;border-radius:14px;padding:12px;font-weight:700}
+.mapa .center span{display:block;font-weight:400;font-size:.88em;opacity:.85}
+.branch{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.branch h4{margin:.1em 0 .3em;font-size:1.05em}.branch h4 a{color:var(--ink);text-decoration:none}
+.branch .q{font-size:.88em;color:var(--muted);margin:.2em 0 .5em}
+.nodes{display:flex;flex-wrap:wrap;gap:6px}.nodes a{text-decoration:none;color:var(--ink);background:#f6f5f2;border:1px solid var(--line);border-radius:9px;padding:4px 9px;font-size:.9em}
+.nodes a:hover{background:#efe9ff}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;justify-content:center;margin:10px 0}
+.flow span{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:5px 10px;font-weight:700;font-size:.92em}.flow i{font-style:normal;color:var(--accent);font-weight:800}
+.btns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+button{font:inherit;cursor:pointer;border:2px solid var(--ink);background:#fff;border-radius:10px;padding:6px 12px;font-weight:700}
+button.on{background:var(--ink);color:#fff}button.go{background:var(--accent);border-color:var(--accent);color:#fff}
+#laserTxt{min-height:3.2em;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;text-align:left}
+.lz{transition:opacity .3s}
+.cellwrap{display:grid;grid-template-columns:1fr;gap:12px;align-items:center}@media(min-width:620px){.cellwrap{grid-template-columns:auto 1fr}}
+#cell{display:grid;grid-template-columns:repeat(16,14px);gap:1px;background:#cfcfd6;border:2px solid var(--ink);width:max-content;margin:0 auto}
+#cell div{width:14px;height:14px;background:#fff}#cell div.on{background:var(--ink)}
+input[type=range]{width:100%}input[type=number]{font:inherit;width:7em;padding:4px 8px;border:2px solid var(--ink);border-radius:8px}
+.calc{background:#f3fbf6;border:1px solid #bfe3cc;border-radius:12px;padding:12px 14px;margin:12px 0}
+.calc .res{display:inline-block;background:var(--ok);color:#fff;border-radius:8px;padding:2px 10px;font-weight:700}
+.fmt{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.fmt div{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.fmt b{display:block;font-size:1.3em}.fmt span{font-size:.88em;color:var(--muted)}
+.lab3{display:grid;grid-template-columns:1fr;gap:8px}@media(min-width:620px){.lab3{grid-template-columns:repeat(3,1fr)}}
+.lab3 div{background:#fff;border:3px solid;border-radius:12px;padding:10px;text-align:center}
+/* test */
+.tq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:10px 0}
+.tq textarea{width:100%;min-height:90px;font:inherit;border:2px solid var(--line);border-radius:8px;padding:8px}
+.tq .fb{margin-top:8px}.chip{display:inline-block;border-radius:8px;padding:1px 8px;margin:2px;font-size:.88em;font-weight:700}
+.chip.ok{background:#dff3e6;color:#145c33}.chip.no{background:#fde2e2;color:#8c1d1d}
+.sum{font-weight:800;font-size:1.1em;background:var(--ink);color:#fff;border-radius:10px;padding:8px 12px;display:inline-block}
+.kq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:10px 0}
+.kq .opts{display:grid;gap:6px;margin-top:6px}.kq button{text-align:left;font-weight:500;border-width:1px}
+.kq button.right{background:#dff3e6;border-color:var(--ok)}.kq button.wrong{background:#fde2e2;border-color:var(--bad)}
+#fab{position:fixed;right:14px;bottom:16px;z-index:30;background:var(--ink);color:#fff;border-radius:30px;padding:10px 16px;text-decoration:none;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+@media print{nav.menu,#fab,.noprint,button{display:none!important}details{display:block}details>*{display:block}.pis{break-inside:avoid}body{font-size:12pt;background:#fff}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<small>34-53-H/01 REPRODUKČNÍ GRAFIK · PÍSEMNÁ ZÁVĚREČNÁ ZKOUŠKA</small>
+<h1>Technologické procesy – digitální tisk</h1>
+<p>Digitální tiskové stroje · osvit a osvitové jednotky · datové formáty · standardizace tisku</p>
+</div></header>
+<nav class="menu"><div class="wrap">
+<a href="#jak">Jak přemýšlet</a><a href="#mapa">Mapa</a><a href="#prehled">📝 Písemka</a>
+<a href="#sec-A">🖨️ Stroje</a><a href="#sec-B">💡 Osvit</a><a href="#sec-C">📁 Formáty</a><a href="#sec-D">📏 Standardizace</a>
+<a href="#test">✍️ Test psaním</a><a href="#kviz">Kvíz</a>
+</div></nav>
+<main class="wrap">
+
+<section id="jak">
+<h2><span class="num">1</span>Jak o tomhle učivu přemýšlet</h2>
+<div class="card">
+<p>Všechno je to <b>jedna cesta dat z počítače až na papír</b>. Ptej se postupně:</p>
+<div class="flow"><span>📁 v jakém souboru?</span><i>→</i><span>⚙️ RIP</span><i>→</i><span>💡 osvit formy</span><i>nebo</i><span>🖨️ digitální stroj bez formy</span><i>→</i><span>📏 kontrola podle standardu</span></div>
+<div class="key"><b>⭐ Když si zapamatuješ jen tohle:</b>
+<ol>
+<li><b>Digitální tisk = bez tiskové formy</b>, od 1 kusu. Laser + <b>toner</b> (fixace teplem a tlakem), nebo tryska + <b>inkoust</b>.</li>
+<li><b>CtF</b> = laser svítí na film (2 kroky). <b>CtP</b> = laser svítí <b>přímo na desku</b>. Osvitová jednotka: <b>vnitřní buben + UV</b> / <b>vnější buben + IR</b>. <b>dpi = lpi × 16</b>.</li>
+<li>Data cestují v <b>PDF</b> (z PostScriptu). Celou zakázku provází <b>JDF</b>, chyby hlídá <b>preflight</b>.</li>
+<li>Kvalita se měří <b>denzitometrem</b> na <b>měrném proužku</b>; barvy se ověří <b>nátiskem</b> (stejný papír, barvy, technika – ČSN).</li>
+</ol></div>
+</div>
+</section>
+
+<section id="mapa">
+<h2><span class="num">2</span>Myšlenková mapa</h2>
+<p>Klikni na pojem – skočíš přímo na vysvětlení a vzorovou odpověď do písemky. Tlačítko <b>↑ Mapa</b> vpravo dole tě vrátí sem.</p>
+<div class="mapa">
+<div class="center">Technologické procesy – digitální tisk<span>od souboru v počítači přes formu (nebo bez ní) až po kontrolu tisku</span></div>
+<div class="branch" style="border-color:#e5007e"><h4><a href="#sec-A">🖨️ Digitální tiskové stroje</a></h4><p class="q">Jak stroj tiskne <b>bez tiskové formy</b>? Čím (toner, inkoust)?</p><div class="nodes"><a href="#q-druhy">klasický × digitální × digitalizovaný</a><a href="#rip-vsude">potřebuje klasický tisk RIP?</a><a href="#q-laser">laserový tisk</a><a href="#q-inkjet">inkoustový tisk</a><a href="#q-tonery">tonery</a><a href="#q-inkousty">inkousty</a><a href="#q-uv">UV barvy</a></div></div>
+<div class="branch" style="border-color:#00a0e3"><h4><a href="#sec-B">💡 Osvit a osvitové jednotky</a></h4><p class="q">Jak laser „nakreslí“ data na <b>film, desku, válec nebo síto</b>?</p><div class="nodes"><a href="#q-forma">výroba formy dnes</a><a href="#q-ctf">CtF</a><a href="#ctf-princip">jak funguje CtF</a><a href="#q-ctp">CtP</a><a href="#q-desky">CtP desky</a><a href="#q-moznosti">osvit flexo / hlubo / síto</a><a href="#q-jednotky">dělení osvitových jednotek</a><a href="#q-dpi">výpočet dpi</a><a href="#q-rip">RIP a tónová buňka</a><a href="#q-faze">RIP → osvit → vyvolání</a><a href="#q-vrstvy">pozitivní × negativní vrstva</a></div></div>
+<div class="branch" style="border-color:#6a3fd0"><h4><a href="#sec-C">📁 Datové formáty mezi fázemi výroby</a></h4><p class="q">V jakém <b>souboru</b> data cestují a kdo je hlídá?</p><div class="nodes"><a href="#q-dtp">DTP</a><a href="#q-ps">PostScript</a><a href="#q-formaty">PDF · EPS · TIFF · JPEG</a><a href="#q-prijem">příjem dat (FTP, JPEG, TIFF, DOC)</a><a href="#q-workflow">digitální workflow</a><a href="#q-jdf">JDF a preflight</a></div></div>
+<div class="branch" style="border-color:#2e9e48"><h4><a href="#sec-D">📏 Standardizace tisku</a></h4><p class="q">Jak poznám, že tisk je <b>správně</b> – a podle čeho?</p><div class="nodes"><a href="#q-grafika">1 200 / 300 dpi, ICC</a><a href="#q-kontrola">měrný proužek, denzitometr</a><a href="#q-faktory">co ovlivní kvalitu</a><a href="#q-hodnoceni">co se hodnotí</a><a href="#q-nastroje">náhled × nátisk</a><a href="#q-nahled">náhled</a><a href="#q-natisk">nátisk (ČSN)</a></div></div>
+</div>
+</section>
+
+<section id="prehled">
+<h2><span class="num">📝</span>Co z toho je v písemné zkoušce</h2>
+<p>Všechny otázky níže jsou <b>skutečné úlohy z 12 zadání písemné závěrečné zkoušky</b>. V textu je najdeš v <b>zeleném rámečku 📝</b> se zněním, body a vzorovou odpovědí. Celkem <b>29 úloh za 119 bodů</b> (v jednom zadání je jich jen několik).</p>
+<div class="tablewrap"><table>
+<tr><th>Úloha</th><th>Body</th><th>Zadání č.</th></tr>
+<tr class="sec"><td colspan="3">🖨️ Digitální tiskové stroje <span class="muted">(26 b)</span></td></tr>
+<tr><td><a href="#q-druhy">Klasický, digitální, digitalizovaný tisk</a></td><td class="c">6 b</td><td class="c">7</td></tr>
+<tr><td><a href="#q-laser">Laserový tisk</a></td><td class="c">5 b</td><td class="c">2, 12</td></tr>
+<tr><td><a href="#q-inkjet">Inkoustový tisk</a></td><td class="c">5 b</td><td class="c">2, 12</td></tr>
+<tr><td><a href="#q-tonery">Tonery</a></td><td class="c">2 b</td><td class="c">3</td></tr>
+<tr><td><a href="#q-inkousty">Inkousty</a></td><td class="c">4 b</td><td class="c">3</td></tr>
+<tr><td><a href="#q-uv">Vlastnosti barev vytvrzovaných UV zářením</a></td><td class="c">4 b</td><td class="c">3</td></tr>
+<tr class="sec"><td colspan="3">💡 Osvit a osvitové jednotky <span class="muted">(45 b)</span></td></tr>
+<tr><td><a href="#q-forma">Výroba tiskové formy – dnešní trendy</a></td><td class="c">7 b</td><td class="c">2</td></tr>
+<tr><td><a href="#q-ctf">Technologie CtF</a></td><td class="c">3 b</td><td class="c">3, 11</td></tr>
+<tr><td><a href="#q-ctp">Technologie CtP</a></td><td class="c">2 b</td><td class="c">7</td></tr>
+<tr><td><a href="#q-desky">CtP ofsetové desky</a></td><td class="c">8 b</td><td class="c">7</td></tr>
+<tr><td><a href="#q-moznosti">Možnosti osvitu tiskové formy</a></td><td class="c">3 b</td><td class="c">2</td></tr>
+<tr><td><a href="#q-jednotky">Dělení osvitových jednotek</a></td><td class="c">5 b</td><td class="c">6</td></tr>
+<tr><td><a href="#q-dpi">Výpočet rozlišení osvitové jednotky</a></td><td class="c">5 b</td><td class="c">6</td></tr>
+<tr><td><a href="#q-rip">RIP, elektronický bod</a></td><td class="c">4 b</td><td class="c">2, 11</td></tr>
+<tr><td><a href="#q-faze">Závěrečné fáze zpracování stran (po montáži)</a></td><td class="c">4 b</td><td class="c">6</td></tr>
+<tr><td><a href="#q-vrstvy">Pozitivně a negativně pracující vrstva</a></td><td class="c">4 b</td><td class="c">4</td></tr>
+<tr class="sec"><td colspan="3">📁 Datové formáty mezi fázemi výroby <span class="muted">(24 b)</span></td></tr>
+<tr><td><a href="#q-dtp">DTP a datové formáty</a></td><td class="c">4 b</td><td class="c">1, 12</td></tr>
+<tr><td><a href="#q-ps">Jazyk pro popis stránky – PostScript</a></td><td class="c">2 b</td><td class="c">1, 12</td></tr>
+<tr><td><a href="#q-formaty">Datové formáty PDF, EPS, TIFF, JPEG</a></td><td class="c">4 b</td><td class="c">1, 12</td></tr>
+<tr><td><a href="#q-prijem">Příjem a kontrola dat</a></td><td class="c">4 b</td><td class="c">7, 12</td></tr>
+<tr><td><a href="#q-workflow">Digitální workflow</a></td><td class="c">6 b</td><td class="c">3, 10</td></tr>
+<tr><td><a href="#q-jdf">JDF a preflighting</a></td><td class="c">4 b</td><td class="c">3, 10</td></tr>
+<tr class="sec"><td colspan="3">📏 Standardizace tisku <span class="muted">(24 b)</span></td></tr>
+<tr><td><a href="#q-grafika">Úprava grafiky (rozlišení, sítě, ICC)</a></td><td class="c">4 b</td><td class="c">1</td></tr>
+<tr><td><a href="#q-kontrola">Kontrola kvality tisku</a></td><td class="c">2 b</td><td class="c">7</td></tr>
+<tr><td><a href="#q-faktory">Faktory ovlivňující kvalitu tisku</a></td><td class="c">5 b</td><td class="c">7</td></tr>
+<tr><td><a href="#q-hodnoceni">Hodnotící prvky kvality tisku</a></td><td class="c">3 b</td><td class="c">7</td></tr>
+<tr><td><a href="#q-nastroje">Nástroje kontroly tisku (náhled × nátisk)</a></td><td class="c">1 b</td><td class="c">3</td></tr>
+<tr><td><a href="#q-nahled">Náhled</a></td><td class="c">4 b</td><td class="c">3</td></tr>
+<tr><td><a href="#q-natisk">Nátisk</a></td><td class="c">5 b</td><td class="c">3</td></tr>
+</table></div>
+</section>
+
+<!-- ================= A ================= -->
+<section id="sec-A">
+<h2><span class="num">A</span>🖨️ Digitální tiskové stroje</h2>
+<div class="card">
+<div class="simple"><b>🟢 Jednoduše:</b> digitální stroj dostane data <b>přímo z počítače</b> a tiskne hned – <b>žádná deska, žádný válec</b>. Každý výtisk se „kreslí“ znovu, proto může být každý jiný (personalizace). Tiskne buď <b>tonerem</b> (laser), nebo <b>inkoustem</b> (tryska).</div>
+<figure><svg viewBox="0 0 640 190" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="Klasický tisk: forma mimo stroj. Digitalizovaný: forma vypálená ve stroji. Digitální: bez formy">
+<g transform="translate(10,10)">
+<rect width="196" height="170" rx="14" fill="#fff" stroke="#5d5d6b" stroke-width="3"/>
+<text x="98" y="26" text-anchor="middle" font-size="15" font-weight="800">KLASICKÝ</text>
+<path d="M30 62 L100 62 L114 82 L44 82 Z" fill="#c9ccd1" stroke="#7d828a" stroke-width="2"/>
+<path d="M120 72 H146" stroke="#1d1d24" stroke-width="3"/><path d="M140 66 L150 72 L140 78Z"/>
+<rect x="152" y="50" width="34" height="46" rx="6" fill="#d9dde2" stroke="#1d1d24" stroke-width="2"/>
+<text x="98" y="124" text-anchor="middle" font-size="12">forma se vyrobí</text>
+<text x="98" y="140" text-anchor="middle" font-size="12" font-weight="800">MIMO stroj</text>
+<text x="98" y="156" text-anchor="middle" font-size="12">a upne se do věží</text></g>
+<g transform="translate(222,10)">
+<rect width="196" height="170" rx="14" fill="#fff" stroke="#2e9e48" stroke-width="3"/>
+<text x="98" y="26" text-anchor="middle" font-size="15" font-weight="800">DIGITALIZOVANÝ</text>
+<rect x="48" y="44" width="100" height="58" rx="8" fill="#d9dde2" stroke="#1d1d24" stroke-width="2"/>
+<circle cx="98" cy="73" r="20" fill="#c9ccd1" stroke="#1d1d24" stroke-width="2"/>
+<path d="M126 36 L108 62" stroke="#e53935" stroke-width="4"/>
+<text x="98" y="124" text-anchor="middle" font-size="12">forma se vypálí laserem</text>
+<text x="98" y="140" text-anchor="middle" font-size="12" font-weight="800">VE stroji</text>
+<text x="98" y="156" text-anchor="middle" font-size="12">bez vyvolání</text></g>
+<g transform="translate(434,10)">
+<rect width="196" height="170" rx="14" fill="#fff" stroke="#b08a00" stroke-width="3"/>
+<text x="98" y="26" text-anchor="middle" font-size="15" font-weight="800">DIGITÁLNÍ</text>
+<rect x="56" y="44" width="84" height="44" rx="8" fill="#1d1d24"/><rect x="66" y="88" width="64" height="20" fill="#fff" stroke="#1d1d24" stroke-width="2"/>
+<path d="M30 56 L48 74 M48 56 L30 74" stroke="#e53935" stroke-width="4"/>
+<text x="98" y="124" text-anchor="middle" font-size="12" font-weight="800">BEZ hmotné formy</text>
+<text x="98" y="140" text-anchor="middle" font-size="12">tiskne přímo z dat</text>
+<text x="98" y="156" text-anchor="middle" font-size="12">od 1 kusu</text></g>
+</svg><figcaption>Tři druhy tisku podle tiskové formy.</figcaption></figure>
+<div class="pozor"><b>Nepleť si:</b> digit<b>ali</b>zovaný = deska <b>je</b>, jen vzniká ve stroji. Digit<b>ální</b> = deska <b>není</b> vůbec.</div>
+</div>
+<div class="pis" id="q-druhy">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Klasický, digitální, digitalizovaný tisk · <b>6 b</b></span></div>
+  <p class="pis-q">„Vysvětlete pojmy: klasický (analogový), digitální a digitalizovaný tisk.“</p>
+  <p class="pis-meta">Oddíl: Tiskové techniky · zadání č. 7</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>Klasický:</b> hmotná forma se vyrobí <b>mimo stroj</b> a upne se do věží; příprava stroje trvá déle.</li><li><b>Digitální:</b> <b>bez hmotné formy</b>, tiskne přímo z počítače <b>od 1 kusu</b>; laser nebo inkoust; nahrazuje ofset v <b>malých nákladech</b>.</li><li><b>Digitalizovaný:</b> hmotná forma se vypálí laserem <b>přímo ve věžích stroje</b>, <b>bez vyvolání</b>, stroj je připraven za pár minut; nejčastěji <b>ofset bez vlhčení</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p><b>Klasický (analogový) tisk:</b> Mimo tiskový stroj se vyrobí hmotná tisková forma, která se musí umístit do věží tiskového stroje. Příprava stroje k tisku a jeho seřízení trvá déle než u digitalizovaného tisku, kde se všechny formy vypalují zároveň, a tím je zajištěn správný soutisk.</p><p><b>Digitální tisk:</b> Tisk bez použití hmotné tiskové formy. Umožňuje vytvořit tiskoviny už od jednoho kusu přímo z počítače. Dnes nahrazuje ofsetový tisk v malých nákladech. Nejčastěji se používají digitální tiskárny s laserovou nebo inkoustovou technologií – buď jen ke zhotovení náhledu (kontrolní výtisk pro tiskárnu a zákazníka), nebo i k vytištění celého nákladu.</p><p><b>Digitalizovaný tisk:</b> Tisk z hmotných tiskových forem, které se vypalují laserem přímo ve věžích tiskového stroje. Formy nevyžadují vyvolání, stroj je během několika minut připraven k tisku. Celý proces řídí automaticky pult dálkového ovládání. Nejčastěji se používá u ofsetového tisku bez vlhčení.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-druhy-tisku" target="_blank" rel="noopener">Téma 11 – druhy tisku</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#digitalni" target="_blank" rel="noopener">Téma 6 – digitální tisk</a> </p>
+</div>
+<h3 id="rip-vsude">Potřebuje klasický tisk RIP?</h3>
+<div class="card">
+<div class="simple"><b>🟢 Ano.</b> RIP potřebuje <b>každý tisk, který začíná v počítači</b> – klasický, digitalizovaný i digitální. RIP převede PDF na body (rastr) pro každou barvu C, M, Y, K, protože laser umí jen „svítit / nesvítit“. Druhy tisku se neliší RIPem, ale tím, <b>kde vzniká tisková forma</b>.</div>
+<div class="tablewrap"><table>
+<tr><th></th><th>Klasický</th><th>Digitalizovaný</th><th>Digitální</th></tr>
+<tr><td><b>RIP</b></td><td>ano</td><td>ano</td><td>ano</td></tr>
+<tr><td><b>Tisková forma</b></td><td>ano – vyrobí se <b>mimo stroj</b> (CtP v předtiskové přípravě) a upne se do věží</td><td>ano – laser ji vypálí <b>přímo ve stroji</b>, všechny desky najednou, bez vyvolání</td><td><b>žádná</b> – tiskne přímo z dat</td></tr>
+<tr><td><b>Příprava stroje</b></td><td>delší (upínání, seřízení soutisku)</td><td>pár minut, soutisk sedí hned</td><td>téměř žádná</td></tr>
+</table></div>
+<div class="pozor"><b>Proč to plete:</b> „klasický“ neznamená „starý, bez počítače“. Znamená jen, že <b>forma se vyrábí mimo stroj a do stroje se upíná</b>. Dnešní klasický ofset má počítač, RIP i CtP. Bez RIPu se tisklo jen před nástupem počítačů – film vznikal reprofotografií a na desku se kopíroval ručně.</div>
+<div class="key"><b>🗣️ Řekni komisi:</b> „RIP potřebují všechny tři druhy tisku. Liší se tím, kde a jestli vzniká tisková forma – mimo stroj, ve stroji, nebo vůbec.“<br><b>✍️ Do písemky:</b> RIP psát nemusíš – stačí, kde vzniká forma.</div>
+</div>
+
+<h3>Laserový tisk krok za krokem</h3>
+<div class="card">
+<div class="simple"><b>🟢 Jednoduše:</b> hlavní díl je <b>fotoválec</b> – kovová trubka s vrstvou, která <b>ve tmě drží elektrický náboj</b>, ale <b>na světle ho ztratí</b>. Laser na něj „nakreslí“ obrázek z elektřiny a toner se chytí jen tam, kde laser náboj smazal.</div>
+<figure id="laserFig"><svg viewBox="0 0 640 340" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="Laserová tiskárna: nabíjecí váleček nabije fotoválec, laser vybije místa obrázku, toner se usadí na vybitá místa, přenosový váleček ho přenese na papír, horké válce ho zažehlí">
+<defs><marker id="arL2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#0F6E56"/></marker>
+<marker id="arP2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#888780"/></marker></defs>
+<circle cx="250" cy="160" r="78" fill="#9FE1CB" stroke="#0F6E56" stroke-width="2"/>
+<circle cx="250" cy="160" r="22" fill="#B4B2A9" stroke="#5F5E5A"/><text x="250" y="165" text-anchor="middle" font-size="12">kov</text>
+<text x="250" y="126" text-anchor="middle" font-size="12" fill="#085041" font-weight="700">fotoválec</text>
+<path d="M210 204 A60 60 0 0 1 194 146" fill="none" stroke="#0F6E56" stroke-width="2" marker-end="url(#arL2)"/>
+<g class="mks"><text class="mk" data-a="0" x="342.0" y="165.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">·</text><text class="mk" data-a="15" x="338.9" y="188.8" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">·</text><text class="mk" data-a="30" x="329.7" y="211.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">●</text><text class="mk" data-a="45" x="315.1" y="230.1" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">●</text><text class="mk" data-a="60" x="296.0" y="244.7" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">●</text><text class="mk" data-a="75" x="273.8" y="253.9" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">●</text><text class="mk" data-a="90" x="250.0" y="257.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="105" x="226.2" y="253.9" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="120" x="204.0" y="244.7" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="135" x="184.9" y="230.1" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="150" x="170.3" y="211.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="165" x="161.1" y="188.8" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="180" x="158.0" y="165.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="195" x="161.1" y="141.2" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="210" x="170.3" y="119.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="225" x="184.9" y="99.9" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="240" x="204.0" y="85.3" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="255" x="226.2" y="76.1" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="270" x="250.0" y="73.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="285" x="273.8" y="76.1" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="300" x="296.0" y="85.3" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="315" x="315.1" y="99.9" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">−</text><text class="mk" data-a="330" x="329.7" y="119.0" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">·</text><text class="mk" data-a="345" x="338.9" y="141.2" text-anchor="middle" font-size="16" font-weight="700" fill="#1d1d24">·</text></g>
+<g class="lz lz1"><circle cx="250" cy="66" r="15" fill="#FAC775" stroke="#854F0B"/><circle cx="150" cy="50" r="12" fill="#1d1d24"/><text x="150" y="55" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">1</text><text x="96" y="80" font-size="13" font-weight="700">nabíjecí váleček</text><text x="96" y="96" font-size="12" fill="#5d5d6b">nanese náboj −</text></g>
+<g class="lz lz2"><rect x="440" y="26" width="80" height="30" rx="5" fill="#444441"/><text x="480" y="46" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">laser</text>
+<line x1="444" y1="54" x2="321.5" y2="119.0" stroke="#E24B4A" stroke-width="4"/><circle cx="540" cy="41" r="12" fill="#1d1d24"/><text x="540" y="46" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">2</text><text x="558" y="38" font-size="13" font-weight="700">osvit</text><text x="558" y="54" font-size="12" fill="#5d5d6b">náboj zmizí</text></g>
+<g class="lz lz3"><circle cx="352" cy="214" r="24" fill="#D3D1C7" stroke="#5F5E5A"/>
+<g fill="#2C2C2A"><circle cx="342" cy="205" r="3"/><circle cx="358" cy="208" r="3"/><circle cx="348" cy="222" r="3"/><circle cx="363" cy="223" r="3"/><circle cx="354" cy="197" r="3"/></g>
+<circle cx="398" cy="196" r="12" fill="#1d1d24"/><text x="398" y="201" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">3</text><text x="416" y="194" font-size="13" font-weight="700">toner</text><text x="416" y="210" font-size="12" fill="#5d5d6b">sedne jen na vybitá místa</text></g>
+<rect x="30" y="252" width="580" height="8" fill="#fff" stroke="#888780"/>
+<line x1="40" y1="276" x2="120" y2="276" stroke="#888780" stroke-width="2" marker-end="url(#arP2)"/><text x="40" y="296" font-size="12" fill="#5d5d6b">papír</text>
+<g class="lz lz4"><circle cx="250" cy="278" r="15" fill="#CECBF6" stroke="#534AB7"/>
+<g class="onpaper" fill="#2C2C2A"><circle cx="330" cy="249" r="3"/><circle cx="340" cy="249" r="3"/><circle cx="350" cy="249" r="3"/><circle cx="360" cy="249" r="3"/><circle cx="370" cy="249" r="3"/></g>
+<circle cx="200" cy="312" r="12" fill="#1d1d24"/><text x="200" y="317" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">4</text><text x="218" y="309" font-size="13" font-weight="700">přenos</text><text x="218" y="325" font-size="12" fill="#5d5d6b">váleček + přitáhne toner</text></g>
+<g class="lz lz5"><circle cx="520" cy="236" r="15" fill="#F09595" stroke="#A32D2D"/><circle cx="520" cy="276" r="15" fill="#F09595" stroke="#A32D2D"/>
+<rect x="545" y="250" width="50" height="4" fill="#2C2C2A"/>
+<circle cx="450" cy="312" r="12" fill="#1d1d24"/><text x="450" y="317" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">5</text><text x="468" y="309" font-size="13" font-weight="700">zažehlení</text><text x="468" y="325" font-size="12" fill="#5d5d6b">teplo + tlak (asi 180 °C)</text></g>
+</svg></figure>
+<div class="btns noprint"><button data-s="0" class="on">vše</button><button data-s="1">1 nabití</button><button data-s="2">2 osvit</button><button data-s="3">3 toner</button><button data-s="4">4 přenos</button><button data-s="5">5 zažehlení</button></div>
+<div id="laserTxt">Klikni na krok a uvidíš, co se právě děje.</div>
+<div class="pozor"><b>Pozor na rozpor s učebnicí:</b> v podkladech se píše, že toner má <b>opačný</b> náboj než válec. To je zjednodušení – u běžných tiskáren má toner <b>stejný</b> náboj jako nabitý válec, proto ho nabitá místa odpuzují. <b>Do písemky napiš:</b> toner se přichytí jen na místa <b>vybitá laserem</b>. To platí vždy.</div>
+</div>
+<div class="pis" id="q-laser">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Laserový tisk · <b>5 b</b></span></div>
+  <p class="pis-q">„Popište princip laserového (elektrografického) tisku.“</p>
+  <p class="pis-meta">Oddíl: Tiskové techniky · zadání č. 2, 12</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Laserový tisk = <b>elektrografie</b>, digitální tisk z plochy.</li><li>1. <b>nabití</b> fotovodivého (selenového) válce → 2. <b>laser</b> osvítí obraz, osvícená místa se <b>vybijí</b> → 3. <b>toner</b> se chytí jen na místa <b>vybitá laserem</b> → 4. přenos na papír a <b>fixace teplem a tlakem</b> (horké přítlačné válce).</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Laserový tisk neboli elektrografie je digitální tisk z plochy. Využívá fotovodivý materiál, který se ve tmě chová jako nevodič a při osvitu se stává vodivým. Fotovodivý (selenový) válec se nejdřív rovnoměrně nabije elektrickým nábojem. Laserový paprsek na něj vykreslí obraz – místa, kam dopadne, se vybijí. Na válec se nanese práškový toner, který se přichytí jen na místa vybitá laserem. Toner se přenese na papír. Aby na papíru vydržel, používá se tepelná a tlaková fixace – papír projde přítlačnými válci zahřátými na vysokou teplotu.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#digitalni" target="_blank" rel="noopener">Téma 6 – elektrofotografie</a> </p>
+</div>
+
+<h3>Inkoustový tisk</h3>
+<div class="card"><figure><svg viewBox="0 0 640 210" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="Inkoustový tisk: tisková hlava s tryskami vystřikuje kapky přímo na papír">
+<defs><marker id="arI" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6a3fd0"/></marker></defs>
+<g transform="translate(20,0)">
+<text x="140" y="18" text-anchor="middle" font-size="14" font-weight="800">pohyblivá hlava</text>
+<rect x="80" y="30" width="120" height="50" rx="8" fill="#1d1d24"/>
+<text x="140" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">tisková hlava</text>
+<g fill="#00a0e3"><rect x="92" y="80" width="6" height="8"/><rect x="112" y="80" width="6" height="8"/><rect x="132" y="80" width="6" height="8"/><rect x="152" y="80" width="6" height="8"/><rect x="172" y="80" width="6" height="8"/></g>
+<g fill="#00a0e3"><circle cx="95" cy="104" r="4"/><circle cx="115" cy="116" r="4"/><circle cx="135" cy="100" r="4"/><circle cx="155" cy="120" r="4"/><circle cx="175" cy="108" r="4"/></g>
+<path d="M76 55 H30" stroke="#6a3fd0" stroke-width="3" marker-end="url(#arI)"/><path d="M204 55 H250" stroke="#6a3fd0" stroke-width="3" marker-end="url(#arI)"/>
+<rect x="20" y="140" width="240" height="14" fill="#fff" stroke="#1d1d24" stroke-width="2"/>
+<text x="140" y="178" text-anchor="middle" font-size="12" fill="#5d5d6b">hlava jezdí ze strany na stranu</text>
+<text x="140" y="196" text-anchor="middle" font-size="12" fill="#5d5d6b">nad projíždějícím papírem</text>
+</g>
+<g transform="translate(340,0)">
+<text x="140" y="18" text-anchor="middle" font-size="14" font-weight="800">průmyslový stroj</text>
+<rect x="10" y="30" width="260" height="40" rx="8" fill="#1d1d24"/>
+<text x="140" y="55" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">statická hlava přes celou šířku</text>
+<g fill="#e5007e"><circle cx="30" cy="96" r="4"/><circle cx="60" cy="104" r="4"/><circle cx="90" cy="92" r="4"/><circle cx="120" cy="108" r="4"/><circle cx="150" cy="96" r="4"/><circle cx="180" cy="102" r="4"/><circle cx="210" cy="94" r="4"/><circle cx="240" cy="106" r="4"/></g>
+<rect x="10" y="140" width="260" height="14" fill="#fff" stroke="#1d1d24" stroke-width="2"/>
+<path d="M20 168 H260" stroke="#6a3fd0" stroke-width="3" marker-end="url(#arI)"/>
+<text x="140" y="196" text-anchor="middle" font-size="12" fill="#5d5d6b">hýbe se jen papír → vyšší rychlost</text>
+</g>
+</svg><figcaption>Hlava s tryskami stříká kapky inkoustu přímo na materiál – nic se nepřenáší přes válec.</figcaption></figure></div>
+<div class="pis" id="q-inkjet">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Inkoustový tisk · <b>5 b</b></span></div>
+  <p class="pis-q">„Popište princip inkoustového tisku.“</p>
+  <p class="pis-meta">Oddíl: Tiskové techniky · zadání č. 2, 12</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Inkoustový (inkjetový, tryskový) tisk = <b>nejjednodušší</b> digitální technika, <b>přímý</b> tisk.</li><li><b>Tisková hlava</b> má řadu kanálů zakončených <b>tryskami</b> a vystřikuje <b>kapičky inkoustu přímo</b> na materiál. Hlava jezdí ze strany na stranu; rychlé stroje mají <b>více hlav</b> nebo jednu hlavu přes celou šíři.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Inkoustový (inkjetový, tryskový) tisk je z hlediska vytvoření obrazu nejjednodušší digitální tiskovou technikou – inkoust se vystřikuje přímo na potiskovaný materiál, jde tedy o přímou tiskovou techniku. Tisková hlava je tvořena řadou kanálů, do nichž je z jedné strany přiváděn inkoust a na druhé straně jsou zakončeny deskou s tryskami. Je-li potiskovaný materiál širší než tisková hlava, pohybuje se hlava tak, aby potiskla celou šíři, nebo výkonnější stroje používají více tiskových hlav.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#digitalni" target="_blank" rel="noopener">Téma 6 – inkjet</a> </p>
+</div>
+
+<h3>Barvy pro digitální tisk</h3>
+<div class="card">
+<div class="tablewrap"><table>
+<tr><th></th><th>🟫 TONER (laser)</th><th>💧 INKOUST (inkjet)</th></tr>
+<tr><td><b>Co to je</b></td><td>barva pro digitální tisk</td><td>nízkoviskózní kapalina nebo tuhý tavný inkoust</td></tr>
+<tr><td><b>Jak drží</b></td><td><b>teplo + tlak</b></td><td>zapití, odpaření rozpouštědla, <b>UV polymerace</b>; tavný ztuhne po ochlazení</td></tr>
+<tr><td><b>Druhy / složení</b></td><td><b>práškový</b> × <b>kapalný</b></td><td>barvotvorná složka: <b>pigmenty</b>, <b>barviva</b> nebo obojí</td></tr>
+</table></div>
+</div>
+<div class="pis" id="q-tonery">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Tonery · <b>2 b</b></span></div>
+  <p class="pis-q">„Definujte tonery. Jaké základní typy tonerů rozlišujeme?“</p>
+  <p class="pis-meta">Oddíl: Polygrafické materiály · zadání č. 3</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Tonery = barvy pro digitální tisk, fixují se <b>tlakem a teplotou</b>.</li><li>Typy: <b>práškové</b> a <b>kapalné</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Tonery jsou barvy pro digitální tisk, které se na potiskovaném materiálu fixují pomocí tlaku a teploty. Rozlišujeme tonery práškové a kapalné.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#digitalni" target="_blank" rel="noopener">Téma 6 – HP Indigo má kapalný toner</a> </p>
+</div>
+<div class="pis" id="q-inkousty">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Inkousty · <b>4 b</b></span></div>
+  <p class="pis-q">„Definujte inkousty a jejich funkci při digitálním tisku. Co tvoří barvotvornou složku inkoustů? (za každou část 2 body)“</p>
+  <p class="pis-meta">Oddíl: Polygrafické materiály · zadání č. 3</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Inkousty = <b>nízkoviskózní kapaliny</b> (zasychají <b>zapitím, odpařením rozpouštědla nebo UV polymerací</b>), nebo <b>tuhé – tavné</b> inkousty (nanášejí se zahřáté, po ochlazení ztuhnou).</li><li>Barvotvorná složka: <b>pigmenty, barviva</b> nebo jejich <b>kombinace</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Inkousty jsou buď nízkoviskózní kapaliny, které zasychají zapitím, odpařením rozpouštědla nebo UV polymerací, nebo tuhé látky (tavné inkousty), které se nanášejí při vyšší teplotě v kapalném stavu a po ochlazení ztuhnou. Barvotvornou složku inkoustů tvoří pigmenty, barviva nebo kombinace pigmentů a barviv.</p></details>
+  
+</div>
+<div class="pis" id="q-uv">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Vlastnosti barev vytvrzovaných UV zářením · <b>4 b</b></span></div>
+  <p class="pis-q">„Jmenujte minimálně dvě výhody a dvě nevýhody barev vytvrzovaných UV zářením oproti barvám klasickým.“</p>
+  <p class="pis-meta">Oddíl: Polygrafické materiály · zadání č. 3</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>👍 menší spotřeba energie, vysoká rychlost, <b>bez VOC</b> (ekologické), vysoký lesk, odolnost.</li><li>👎 vyšší cena, špatně se vytvrzují silné vrstvy, bobtnání pryžových válců.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p><b>Výhody:</b> menší energetická náročnost, vysoká produkční rychlost, ekologické vlastnosti – neuvolňují se VOC (těkavé organické látky), vysoký lesk, odolnost proti mechanickým a chemickým vlivům.</p><p><b>Nevýhody:</b> vyšší cena surovin, obtížné protvrzení silnějších vrstev, bobtnání pryžových válců.</p></details>
+  
+</div>
+<div class="rozsir"><span class="tag">➕ Rozšiřující</span> Výhody a nevýhody digitálního tisku a porovnání s ofsetem (proč se ofset vyplatí až u velkého nákladu) patří k ústní zkoušce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#digitalni-vyhody" target="_blank" rel="noopener">Téma 6 – výhody a nevýhody</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#digitalni-ofset" target="_blank" rel="noopener">Téma 6 – digitál × ofset</a></div>
+</section>
+
+<!-- ================= B ================= -->
+<section id="sec-B">
+<h2><span class="num">B</span>💡 Osvit a osvitové jednotky</h2>
+<div class="card">
+<div class="simple"><b>🟢 Jednoduše:</b> <b>osvitová jednotka</b> je přístroj, ve kterém <b>laser podle dat z RIPu „nakreslí“ obraz</b> na film nebo na tiskovou desku. Z osvícené desky vznikne tisková forma.</div>
+<figure><svg viewBox="0 0 640 170" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="CtF: data, film, kopírování na desku. CtP: data, laser přímo na desku">
+<defs><marker id="arC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6a3fd0"/></marker></defs>
+<g font-size="13" font-weight="700">
+<rect x="10" y="20" width="70" height="40" rx="8" fill="#e5007e"/><text x="45" y="45" text-anchor="middle" fill="#fff">CtF</text>
+<rect x="110" y="20" width="90" height="40" rx="6" fill="#1d1d24"/><text x="155" y="45" text-anchor="middle" fill="#fff">PDF + RIP</text>
+<rect x="250" y="20" width="90" height="40" rx="4" fill="#555"/><text x="295" y="45" text-anchor="middle" fill="#fff">FILM</text>
+<rect x="390" y="20" width="110" height="40" rx="6" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="445" y="45" text-anchor="middle">kopírování UV</text>
+<path d="M540 24 L610 24 L624 56 L554 56 Z" fill="#c9ccd1" stroke="#7d828a" stroke-width="2"/><text x="588" y="78" text-anchor="middle">deska</text>
+<g stroke="#6a3fd0" stroke-width="3" marker-end="url(#arC)"><path d="M202 40 H244"/><path d="M342 40 H384"/><path d="M502 40 H536"/></g>
+<text x="300" y="80" text-anchor="middle" font-weight="400" fill="#5d5d6b">2 kroky – starší, s chemií na film</text>
+<rect x="10" y="100" width="70" height="40" rx="8" fill="#00a0e3"/><text x="45" y="125" text-anchor="middle" fill="#fff">CtP</text>
+<rect x="110" y="100" width="90" height="40" rx="6" fill="#1d1d24"/><text x="155" y="125" text-anchor="middle" fill="#fff">PDF + RIP</text>
+<rect x="250" y="100" width="90" height="40" rx="6" fill="#1d1d24"/><text x="295" y="125" text-anchor="middle" fill="#fff">LASER</text>
+<path d="M540 104 L610 104 L624 136 L554 136 Z" fill="#c9ccd1" stroke="#7d828a" stroke-width="2"/><text x="588" y="158" text-anchor="middle">deska</text>
+<g stroke="#6a3fd0" stroke-width="3" marker-end="url(#arC)"><path d="M202 120 H244"/><path d="M342 120 H536"/></g>
+<text x="440" y="114" text-anchor="middle" font-weight="400" fill="#5d5d6b">bodově přímo na desku</text>
+<text x="300" y="160" text-anchor="middle" font-weight="400" fill="#5d5d6b">1 krok – bez filmu, dnes nejčastější</text>
+</g></svg><figcaption>CtF = přes film (2 kroky). CtP = přímo na desku (1 krok).</figcaption></figure>
+</div>
+<div class="pis" id="q-forma">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Výroba tiskové formy – dnešní trendy · <b>7 b</b></span></div>
+  <p class="pis-q">„Popište obecně výrobu tiskové formy. Čím se vyznačují současné trendy oproti minulosti?“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 2</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Data z <b>elektronické archové montáže</b> se v <b>osvitové jednotce</b> osvítí na <b>film</b> nebo <b>přímo na tiskovou formu</b>.</li><li>Přímo na formu = <b>bez filmů</b>: kratší čas, žádné chyby při kopírování filmů, úspora materiálu a chemie.</li><li>Po schválení <b>nátisku</b> se ofsetové desky svítí <b>laserem</b> (světlocitlivé nebo termocitlivé vrstvy). Trend: <b>bezprocesní</b> desky – bez vyvolání.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Kopírovací předloha se dnes nejčastěji upravuje v programech pro elektronickou archovou montáž a potom se v osvitových jednotkách osvítí na film nebo přímo na tiskovou formu. Při osvitu přímo na tiskovou formu se nepoužívají filmy, zkracuje se čas výroby, nevznikají chyby při kopírování filmů a ušetří se materiál i chemikálie potřebné k vyvolání filmů. Po předložení a schválení nátisku se data pro ofsetové formy svítí laserem na plastové či hliníkové desky se světlocitlivými nebo termocitlivými vrstvami. Výroba forem směřuje k bezprocesním technologiím, kdy forma po osvitu laserem nepotřebuje žádné další zpracování (vyvolání).</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-ctp-vyhody" target="_blank" rel="noopener">Téma 11 – proč CtP vyhrálo</a> </p>
+</div>
+<h3 id="ctf-princip">Jak funguje CtF – krok za krokem</h3>
+<div class="card">
+<div class="simple"><b>🟢 Představ si opalování s nálepkou:</b> kde je nálepka, tam slunce neprojde a kůže zůstane světlá. <b>Film je taková nálepka</b> – kde je černý, UV světlo na desku neprojde.</div>
+<figure><svg viewBox="0 0 680 300" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="CtF: laser osvítí film, film se vyvolá, přes film se UV lampou osvítí deska, deska se vyvolá">
+<defs><marker id="arF2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#888780"/></marker></defs>
+<g font-size="12" fill="#5d5d6b" text-anchor="middle">
+<text x="100" y="22" font-size="14" font-weight="800" fill="#1d1d24">1 laser → film</text>
+<rect x="70" y="36" width="60" height="26" rx="4" fill="#444441"/><text x="100" y="54" fill="#fff" font-weight="700">laser</text>
+<line x1="100" y1="62" x2="100" y2="146" stroke="#E24B4A" stroke-width="3"/>
+<rect x="40" y="146" width="120" height="14" fill="#D3D1C7" stroke="#5F5E5A"/>
+<text x="100" y="186">film = fólie se</text><text x="100" y="202">světlocitlivou vrstvou</text>
+<line x1="166" y1="153" x2="190" y2="153" stroke="#888780" stroke-width="2" marker-end="url(#arF2)"/>
+<text x="260" y="22" font-size="14" font-weight="800" fill="#1d1d24">2 vyvolání filmu</text>
+<rect x="200" y="106" width="120" height="80" fill="#F6F5F2" stroke="#5F5E5A" stroke-dasharray="4 3"/>
+<rect x="235" y="126" width="50" height="40" fill="#2C2C2A"/>
+<text x="260" y="210">černé = co se tiskne</text><text x="260" y="226">jinde průhledný</text>
+<line x1="326" y1="146" x2="350" y2="146" stroke="#888780" stroke-width="2" marker-end="url(#arF2)"/>
+<text x="420" y="22" font-size="14" font-weight="800" fill="#1d1d24">3 kopírování UV</text>
+<rect x="370" y="36" width="100" height="22" rx="4" fill="#FAC775" stroke="#854F0B"/><text x="420" y="51" fill="#633806" font-weight="700">UV lampa</text>
+<g stroke="#BA7517" stroke-width="1.5"><line x1="380" y1="60" x2="380" y2="128"/><line x1="395" y1="60" x2="395" y2="128"/><line x1="420" y1="60" x2="420" y2="112"/><line x1="445" y1="60" x2="445" y2="128"/><line x1="460" y1="60" x2="460" y2="128"/></g>
+<rect x="365" y="114" width="110" height="8" fill="#F6F5F2" stroke="#5F5E5A"/><rect x="402" y="114" width="36" height="8" fill="#2C2C2A"/>
+<rect x="365" y="130" width="110" height="10" fill="#85B7EB" stroke="#185FA5"/><rect x="365" y="140" width="110" height="10" fill="#B4B2A9" stroke="#5F5E5A"/>
+<text x="420" y="172">film leží na desce,</text><text x="420" y="188">černé místo stíní</text>
+<line x1="480" y1="140" x2="504" y2="140" stroke="#888780" stroke-width="2" marker-end="url(#arF2)"/>
+<text x="580" y="22" font-size="14" font-weight="800" fill="#1d1d24">4 hotová deska</text>
+<rect x="520" y="130" width="120" height="10" fill="#B4B2A9" stroke="#5F5E5A"/><rect x="562" y="120" width="36" height="10" fill="#85B7EB" stroke="#185FA5"/>
+<text x="580" y="172">osvícená vrstva se smyla,</text><text x="580" y="188">ve stínu zůstala</text><text x="580" y="204" font-weight="700" fill="#185FA5">= tisknoucí místo</text>
+</g>
+<rect x="40" y="244" width="600" height="48" rx="8" fill="#EEEDFE" stroke="#534AB7"/>
+<text x="340" y="264" text-anchor="middle" font-size="14" font-weight="800" fill="#3C3489">CtF = 2 kroky: laser → film, potom film → deska</text>
+<text x="340" y="282" text-anchor="middle" font-size="12" fill="#534AB7">CtP film vynechá: laser svítí rovnou na desku</text>
+</svg><figcaption>Pozitivní deska: osvícená vrstva se smyje, ve stínu černého místa zůstane a tiskne.</figcaption></figure>
+</div>
+<div class="pis" id="q-ctf">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Technologie CtF · <b>3 b</b></span></div>
+  <p class="pis-q">„Vysvětlete zkratku CTF. Co představuje v předtiskové přípravě postup CTF?“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 3, 11</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>CTF = <b>Computer to Film</b>.</li><li>Zhotovení tiskové formy z dat <b>dvoustupňově</b>: data se osvítí na <b>film</b> a film se <b>kopíruje na desku</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>CTF (Computer to Film) je zhotovení tiskových forem z digitálně zpracovaných dat dvoustupňově. Nejdříve se tisková data exponují na film a potom se film kopíruje na tiskovou desku.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-ctf" target="_blank" rel="noopener">Téma 11 – CtF</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-ctf-deska" target="_blank" rel="noopener">Téma 11 – postup výroby desky CtF (7 b)</a> </p>
+</div>
+<div class="pis" id="q-ctp">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Technologie CtP · <b>2 b</b></span></div>
+  <p class="pis-q">„Vysvětlete zkratku CTP. Co představuje v předtiskové přípravě postup CTP?“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 7</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>CTP = <b>Computer to Plate</b>.</li><li>Tisková deska se z dat osvítí <b>přímo, bodově laserem</b> (bez filmu).</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>CTP (Computer to Plate) je zhotovení tiskových forem z digitálně zpracovaných dat, kdy se tisková deska exponuje přímo, bodově laserem.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-ctp" target="_blank" rel="noopener">Téma 11 – CtP</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-03-dtp-studio-a-knizni-vazba/#nahledy-ctp" target="_blank" rel="noopener">Téma 3 – CtP osvitová jednotka (foto)</a> </p>
+</div>
+<div class="pis" id="q-desky">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>CtP ofsetové desky · <b>8 b</b></span></div>
+  <p class="pis-q">„Rozdělte CTP ofsetové desky a popište jejich vlastnosti, uveďte popř. příklady.“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 7</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>Světlocitlivé</b> – reagují na viditelné světlo, nejčastěji <b>UV laser</b>; po osvitu se musí <b>vyvolat</b> = <b>procesní</b>.</li><li><b>Termocitlivé</b> – reagují na <b>IR laser</b> (teplo); <b>procesní</b> nebo <b>bezprocesní</b> (bez vyvolání), např. <b>termoablační</b> (termoodparné) desky.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p><b>Světlocitlivé CTP desky</b> reagují na viditelnou část spektra, nejčastěji na UV laser. Po osvitu vyžadují vyvolání, jsou tzv. procesní.</p><p><b>Termocitlivé CTP desky</b> reagují na IR laser. Mohou být procesní (vyžadují vyvolání), nebo bezprocesní (nevyžadují vyvolání) – příkladem jsou termoablační (termoodparné) desky.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-ctp-desky" target="_blank" rel="noopener">Téma 11 – druhy CtP desek</a> </p>
+</div>
+<div class="pis" id="q-moznosti">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Možnosti osvitu tiskové formy · <b>3 b</b></span></div>
+  <p class="pis-q">„Uveďte možnosti osvitu tiskové formy v případě flexotisku, hlubotisku a sítotisku.“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 2</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>Flexotisk</b> – osvit <b>fotopolymerních pružných desek</b>.</li><li><b>Hlubotisk</b> – laserem se <b>vypaluje povrch válce</b>.</li><li><b>Sítotisk</b> – svítí se na <b>síto se světlocitlivou vrstvou</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Flexotisk – osvit fotopolymerních pružných desek. Hlubotisk – laserem se vypaluje povrch válce. Sítotisk – svítí se na síto opatřené světlocitlivou vrstvou.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-cts" target="_blank" rel="noopener">Téma 11 – CtS (síto)</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#b-valec" target="_blank" rel="noopener">Téma 11 – hlubotiskový válec</a> </p>
+</div>
+
+<h3>Jak vypadá osvitová jednotka uvnitř</h3>
+<div class="card">
+<figure><svg viewBox="0 0 640 262" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="Osvitové jednotky podle konstrukce: plochá, s vnitřním bubnem, s vnějším bubnem">
+<g transform="translate(10,0)">
+<text x="95" y="20" text-anchor="middle" font-size="14" font-weight="800">plochá</text>
+<rect x="20" y="110" width="150" height="14" fill="#c9ccd1" stroke="#1d1d24" stroke-width="2"/>
+<rect x="60" y="50" width="50" height="26" rx="5" fill="#1d1d24"/>
+<path d="M85 76 L85 108" stroke="#e53935" stroke-width="4"/>
+<path d="M40 63 H56 M130 63 H114" stroke="#6a3fd0" stroke-width="3"/>
+<text x="95" y="150" text-anchor="middle" font-size="12" fill="#5d5d6b">deska leží rovně,</text>
+<text x="95" y="166" text-anchor="middle" font-size="12" fill="#5d5d6b">laser jezdí nad ní</text>
+<text x="95" y="224" text-anchor="middle" font-size="12" font-weight="800">Kde: starší jednotky</text><text x="95" y="240" text-anchor="middle" font-size="12" font-weight="800">na film, malý formát,</text><text x="95" y="256" text-anchor="middle" font-size="12" font-weight="800">flexo desky, síta</text></g>
+<g transform="translate(225,0)">
+<text x="95" y="20" text-anchor="middle" font-size="14" font-weight="800">vnitřní buben</text>
+<path d="M30 70 A65 65 0 0 0 160 70" fill="none" stroke="#7d828a" stroke-width="14"/>
+<path d="M30 70 A65 65 0 0 0 160 70" fill="none" stroke="#1d1d24" stroke-width="2"/>
+<circle cx="95" cy="70" r="10" fill="#1d1d24"/>
+<path d="M95 80 L60 118" stroke="#e53935" stroke-width="4"/>
+<text x="95" y="160" text-anchor="middle" font-size="12" fill="#5d5d6b">deska uvnitř bubnu,</text>
+<text x="95" y="176" text-anchor="middle" font-size="12" fill="#5d5d6b">laser se točí uprostřed</text>
+<text x="95" y="200" text-anchor="middle" font-size="12" font-weight="800" fill="#1e5bd8">UV dioda · světlocitlivé desky</text>
+<text x="95" y="224" text-anchor="middle" font-size="12" font-weight="800">Kde: tiskárny novin,</text><text x="95" y="240" text-anchor="middle" font-size="12" font-weight="800">filmové osvitové</text><text x="95" y="256" text-anchor="middle" font-size="12" font-weight="800">jednotky</text></g>
+<g transform="translate(440,0)">
+<text x="95" y="20" text-anchor="middle" font-size="14" font-weight="800">vnější buben</text>
+<circle cx="80" cy="85" r="46" fill="#d9dde2" stroke="#1d1d24" stroke-width="2"/>
+<circle cx="80" cy="85" r="52" fill="none" stroke="#7d828a" stroke-width="8"/>
+<rect x="148" y="70" width="36" height="30" rx="5" fill="#1d1d24"/>
+<path d="M148 85 L134 85" stroke="#e53935" stroke-width="4"/>
+<text x="95" y="160" text-anchor="middle" font-size="12" fill="#5d5d6b">deska na povrchu bubnu,</text>
+<text x="95" y="176" text-anchor="middle" font-size="12" fill="#5d5d6b">laserová hlava venku</text>
+<text x="95" y="200" text-anchor="middle" font-size="12" font-weight="800" fill="#c62828">IR dioda · termocitlivé desky</text>
+<text x="95" y="224" text-anchor="middle" font-size="12" font-weight="800">Kde: velké komerční</text><text x="95" y="240" text-anchor="middle" font-size="12" font-weight="800">tiskárny, obaly,</text><text x="95" y="256" text-anchor="middle" font-size="12" font-weight="800">flexo desky</text></g>
+</svg><figcaption>Dělení podle konstrukce. Pod obrázkem: který laser a jaké desky k ní patří.</figcaption></figure>
+<div class="term" style="background:#eef3ff;border:1px solid #c9d6fb;border-radius:10px;padding:10px 12px;margin:10px 0"><b>Jak to vypadá uvnitř:</b> <b>plochá</b> – deska leží jako na stole, laser jezdí nad ní. <b>Vnitřní buben</b> – deska se přisaje dovnitř nehybného žlabu, uprostřed se rychle točí zrcátko s laserem. <b>Vnější buben</b> – deska se ovine kolem bubnu jako etiketa kolem plechovky, buben se točí a laserová hlava jede podél. <i>V praxi svítí u světlocitlivých desek fialový laser (asi 405 nm), který je těsně vedle UV – proto podklady píšou „UV dioda“.</i></div>
+<div class="key"><b>Pomůcka:</b> <b>V</b>nitřní buben = <b>V</b>iditelné/UV světlo → <b>světlo</b>citlivé desky. Vnější buben = <b>IR = teplo</b> → <b>termo</b>citlivé desky.</div>
+</div>
+<div class="pis" id="q-jednotky">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Dělení osvitových jednotek · <b>5 b</b></span></div>
+  <p class="pis-q">„Rozdělte osvitové jednotky podle osvěcovaného materiálu, konstrukce, použitého laseru, formátu a použití.“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 6</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>Materiál:</b> filmové · pro osvit desek (světlocitlivých nebo termocitlivých).</li><li><b>Konstrukce:</b> ploché · s vnitřním bubnem · s vnějším bubnem.</li><li><b>Laser:</b> UV diody · IR diody.</li><li><b>Formát:</b> malo- (2× A4) · středně- (4× A4) · velkoformátové (8 a více A4).</li><li><b>Použití:</b> světlocitlivé desky = vnitřní buben + UV · termocitlivé desky = vnější buben + IR.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p><b>Podle osvěcovaného materiálu:</b> filmové; pro osvit desek – světlocitlivých nebo termocitlivých.<br><b>Podle konstrukce:</b> ploché; s vnitřním bubnem; s vnějším bubnem.<br><b>Podle použitého laseru:</b> ultrafialové (UV) diody; infračervené (IR) diody.<br><b>Podle formátu:</b> maloformátové (2× A4); středněformátové (4× A4); velkoformátové (8 a více A4).<br><b>Podle použití:</b> pro osvit světlocitlivých desek (vnitřní buben, UV dioda); pro osvit termocitlivých desek (vnější buben, IR dioda).</p></details>
+  
+</div>
+
+<h3>Tónová buňka a výpočet rozlišení</h3>
+<div class="card">
+<div class="simple"><b>🟢 Jednoduše:</b> osvitová jednotka umí jen <b>svítit / nesvítit</b>. Šedou proto skládá z malých bodů v <b>tónové buňce 16 × 16 = 256</b> bodíků. Čím víc bodíků svítí, tím je tiskový bod větší.</div>
+<div class="cellwrap">
+<div id="cell" aria-label="Tónová buňka 16 × 16"></div>
+<div><label for="cellR"><b>Zaplnění buňky: <span id="cellP">25</span> %</b></label>
+<input id="cellR" type="range" min="0" max="100" value="25">
+<p id="cellT"></p></div>
+</div>
+<div class="calc"><b>🧮 Kalkulačka: rozlišení osvitové jednotky</b><br>
+<label>Jemnost rastru: <input id="lpiIn" type="number" value="150" min="1" max="400"> lpi</label>
+<ol>
+<li>Tónová buňka má <b>256</b> stupňů šedi = <b>16 × 16</b> bodů → strana buňky = <b>√256 = 16</b>.</li>
+<li>Na 1 palec je <b id="lpiV">150</b> buněk (lpi), každá má <b>16</b> bodů.</li>
+<li>dpi = lpi × 16 = <b id="lpiV2">150</b> × 16 = <span class="res" id="dpiV">2 400 dpi</span></li>
+</ol></div>
+</div>
+<div class="pis" id="q-dpi">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Výpočet rozlišení osvitové jednotky · <b>5 b</b></span></div>
+  <p class="pis-q">„Vypočtěte rozlišení osvitové jednotky pro 150 lpi.“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 6</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>dpi = lpi × √256 = lpi × 16</li><li>150 × 16 = <b>2 400 dpi</b></li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>dpi = lpi × √256 (256 stupňů šedi → tónová buňka 16 × 16 bodů)<br>150 × 16 = 2 400 dpi</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#lpi" target="_blank" rel="noopener">Téma 6 – jemnost rastru (lpi)</a> </p>
+</div>
+<div class="pis" id="q-rip">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>RIP, elektronický bod · <b>4 b</b></span></div>
+  <p class="pis-q">„Vysvětlete pojem RIP a k čemu slouží. Jak vzniká elektronický bod?“</p>
+  <p class="pis-meta">Oddíl: Reprodukce tónů a barev · zadání č. 2, 11</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>RIP</b> (Raster Image Processor) = program pro <b>elektronické rastrování</b>; nastaví se počet separací, typ rastru (<b>AM, FM</b>), <b>lpi</b> a <b>tvar bodu</b>.</li><li>Elektronický bod vzniká v <b>tónové buňce 16 × 16 pixelů</b> → <b>256</b> velikostí bodu; tvar: kruh, čtverec, kosočtverec, elipsa.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>RIP (Raster Image Processor) je počítačový program, pomocí kterého se provádí elektronické rastrování. Nastavuje se v něm počet barevných separací, typ rastrování (AM, FM), lpi a tvar bodu.</p><p>Každý elektronický bod vzniká v tónové buňce, která má 16 × 16 pixelů. V jedné buňce tak může vzniknout 256 různě velkých tiskových bodů. Tvar tiskového bodu může být kruh, čtverec, kosočtverec nebo elipsa.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-05-archova-montaz/#rip" target="_blank" rel="noopener">Téma 5 – RIP</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-06-predlohy-a-rastr/#amfm" target="_blank" rel="noopener">Téma 6 – AM a FM rastr</a> </p>
+</div>
+<div class="pis" id="q-faze">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Závěrečné fáze zpracování stran (po montáži) · <b>4 b</b></span></div>
+  <p class="pis-q">„Vyjmenujte závěrečné fáze zpracování stran časopisu v DTP studiu, které následují po montáži.“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 6</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>ripování</b> (zpracování jednotkou RIP) → <b>osvit</b> → <b>vyvolání desky</b> → <b>předání tiskových forem do tisku</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Ripování – zpracování jednotkou RIP; osvit; vyvolání desky; předání tiskových forem do tisku.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-05-archova-montaz/#cesta" target="_blank" rel="noopener">Téma 5 – cesta zakázky</a> </p>
+</div>
+<div class="pis" id="q-vrstvy">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Pozitivně a negativně pracující vrstva · <b>4 b</b></span></div>
+  <p class="pis-q">„Vysvětlete pojmy pozitivně a negativně pracující vrstva.“</p>
+  <p class="pis-meta">Oddíl: Analogový a digitální záznam obrazu · zadání č. 4</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>Pozitivní:</b> osvícená vrstva se stane <b>rozpustnou</b> ve vývojce → po vyvolání <b>zmizí</b>.</li><li><b>Negativní:</b> osvícená vrstva se stane <b>nerozpustnou</b> → <b>ztvrdne</b> a zůstane jako tisknoucí místo.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p><b>Pozitivně pracující vrstva:</b> působením světla (UV záření) se stává rozpustnou ve vývojce. Po osvitu a vyvolání se ozářená část kopírovací vrstvy odstraní.</p><p><b>Negativně pracující vrstva:</b> působením světla (UV záření) se stává nerozpustnou ve vývojce. Ozářená místa ztvrdnou a po vyvolání desky zůstávají jako tisknoucí prvky.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-11-ctf-ctp-ctpr-cts/#a-ctf-deska" target="_blank" rel="noopener">Téma 11 – pozitivní deska CtF</a> </p>
+</div>
+</section>
+
+<!-- ================= C ================= -->
+<section id="sec-C">
+<h2><span class="num">C</span>📁 Datové formáty mezi fázemi výroby</h2>
+<div class="card">
+<div class="simple"><b>🟢 Jednoduše:</b> zákazník pošle texty a fotky → DTP studio z nich udělá <b>tiskové PDF</b> → tiskárna ho zkontroluje, zmontuje a zripuje. Aby si všichni rozuměli, používají se <b>domluvené formáty souborů</b>.</div>
+<div class="fmt">
+<div><b>DOC</b><span>texty od zákazníka</span></div>
+<div><b>JPEG</b><span>fotky · ztrátová komprese</span></div>
+<div><b>TIFF</b><span>bitmapa · bezztrátová komprese · do tisku bez vrstev</span></div>
+<div><b>EPS</b><span>postscriptová grafika mezi programy</span></div>
+<div><b>PDF</b><span>hotové stránky pro tisk</span></div>
+<div><b>PDF/X</b><span>PDF pro tisk · mezinárodní norma ISO</span></div>
+<div><b>JDF</b><span>popis zakázky pro stroje</span></div>
+</div>
+</div>
+<div class="pis" id="q-dtp">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>DTP a datové formáty · <b>4 b</b></span></div>
+  <p class="pis-q">„Co znamená zkratka DTP a jakou fázi polygrafické výroby představuje? Co jsou datové formáty, k čemu se používají?“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 1, 12</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>DTP</b> (DeskTop Publishing) = <b>předtisková příprava</b> pomocí počítače; text a obrázky se zpracují do datových souborů.</li><li><b>Datové formáty</b> slouží k <b>ukládání, přenosu a tisku</b> datových souborů.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>DTP (DeskTop Publishing) je předtisková příprava realizovaná pomocí výpočetní techniky. Textové a obrazové předlohy se zpracovávají v podobě jednoho nebo více datových souborů ve vhodném formátu. Datové formáty se používají k ukládání, přenosu a tisku datových souborů.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-03-dtp-studio-a-knizni-vazba/#dtp-vyroba" target="_blank" rel="noopener">Téma 3 – DTP studio ve výrobě</a> </p>
+</div>
+<div class="pis" id="q-ps">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Jazyk pro popis stránky – PostScript · <b>2 b</b></span></div>
+  <p class="pis-q">„Definujte pojem PostScript.“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 1, 12</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>PostScript = <b>programovací jazyk pro popis stránky</b>, neoficiální <b>standard</b> tištěné stránky <b>nezávislý na zařízení</b>; zná 3 objekty: <b>text, vektory, rastrové obrazy</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Jeden z nejvýznamnějších programovacích jazyků pro popis stránky, který se stal neoficiálním standardem pro reprezentaci tištěné stránky nezávisle na tiskovém zařízení. Pracuje s množstvím grafických operátorů. Rozlišuje tři typy objektů – text, vektorové objekty a rastrové obrazy.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-14-pdf-pro-tisk/#a2" target="_blank" rel="noopener">Téma 14 – PostScript a RIP</a> </p>
+</div>
+<div class="pis" id="q-formaty">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Datové formáty PDF, EPS, TIFF, JPEG · <b>4 b</b></span></div>
+  <p class="pis-q">„Vysvětlete význam těchto zkratek: PDF, EPS, TIFF, JPEG.“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 1, 12</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>PDF</b> – univerzální formát pro sdílení a tisk, <b>nezávislý</b> na programu i počítači; od Adobe, odvozený z <b>PostScriptu</b>, menší soubory.</li><li><b>EPS</b> – přenos <b>postscriptové</b> grafiky mezi programy.</li><li><b>TIFF</b> – <b>bitmapové</b> (rastrové) obrázky ČB i barevné; formát s <b>bezztrátovou kompresí</b> pro DTP. Udrží v sobě <b>rastr i vektor</b> (cesty, text z Photoshopu); do tisku se ukládá <b>sloučený – bez vrstev</b>.</li><li><b>JPEG</b> – <b>ztrátová komprese</b> pro fotografie.</li><li><b>PDF/X</b> – PDF pro tisk, <b>mezinárodně uznávaná norma</b> (ISO).</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p><b>PDF</b> (Portable Document Format) je univerzální datový formát pro spolehlivé sdílení a prohlížení digitálních dokumentů nezávisle na prostředí, aplikaci, operačním systému a typu počítače. Ukládají se v něm data grafická i textová. Vyvinula ho firma Adobe odvozením z PostScriptu, přičemž řeší některé jeho nevýhody; soubory jsou výrazně menší.</p><p><b>EPS</b> – formát pro přenos obrazové postscriptové informace z jednoho programu do jiného.</p><p><b>TIFF</b> – popis černobílých nebo barevných bitmapových souborů.</p><p><b>JPEG</b> – standardní metoda ztrátové komprese pro ukládání fotografií.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-13-bitmapova-a-vektorova-grafika/#a8" target="_blank" rel="noopener">Téma 13 – formáty pro tisk</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-14-pdf-pro-tisk/#a1" target="_blank" rel="noopener">Téma 14 – co je PDF</a> </p>
+</div>
+<div class="pis" id="q-prijem">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Příjem a kontrola dat · <b>4 b</b></span></div>
+  <p class="pis-q">„Popište 1. fázi při zhotovování akcidenčních tiskovin – příjem a kontrolu obrazových a textových dat. Uveďte nejčastější formáty obrazových a textových dat.“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 7, 12</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Data přicházejí <b>digitálně</b> – na datových nosičích nebo vzdáleně přes <b>FTP server</b>. Papírové (analogové) předlohy se <b>naskenují na 300 dpi</b>.</li><li>Formáty: obraz = <b>JPEG, TIFF</b>; text = <b>DOC</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Podklady se přijímají v digitální podobě na datových nosičích, případně vzdáleným přenosem a uložením na FTP server. Pokud jsou obrazové předlohy předány v analogové podobě, je třeba je naskenovat v požadované kvalitě 300 dpi. Obrazová data: JPEG, TIFF. Textová data: DOC.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-04-software-a-cena-tisku/#formaty" target="_blank" rel="noopener">Téma 4 – odkud se berou texty a obrázky</a> </p>
+</div>
+<h3>Digitální workflow – cesta zakázky</h3>
+<div class="card"><figure><svg viewBox="0 0 640 120" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="Digitální workflow: digitalizace, preflighting, oprava barev, nátisk, archová montáž, RIP, tvorba desek, tisk a kontrola barev; vše provází JDF">
+<defs><marker id="arW" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6a3fd0"/></marker></defs>
+<g font-size="11" font-weight="700" text-anchor="middle">
+<rect x="2" y="14" width="66" height="44" rx="8" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="35" y="34">digitali-</text><text x="35" y="48">zace</text>
+<rect x="82" y="14" width="66" height="44" rx="8" fill="#fff8d6" stroke="#b26a00" stroke-width="2"/><text x="115" y="40">preflight</text>
+<rect x="162" y="14" width="66" height="44" rx="8" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="195" y="34">oprava</text><text x="195" y="48">barev</text>
+<rect x="242" y="14" width="66" height="44" rx="8" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="275" y="40">nátisk</text>
+<rect x="322" y="14" width="66" height="44" rx="8" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="355" y="34">archová</text><text x="355" y="48">montáž</text>
+<rect x="402" y="14" width="66" height="44" rx="8" fill="#1d1d24"/><text x="435" y="40" fill="#fff">RIP</text>
+<rect x="482" y="14" width="66" height="44" rx="8" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="515" y="34">tiskové</text><text x="515" y="48">desky</text>
+<rect x="562" y="14" width="76" height="44" rx="8" fill="#fff" stroke="#1d1d24" stroke-width="2"/><text x="600" y="34">tisk +</text><text x="600" y="48">kontrola barev</text>
+</g>
+<g stroke="#6a3fd0" stroke-width="2.5" marker-end="url(#arW)"><path d="M68 36 H78"/><path d="M148 36 H158"/><path d="M228 36 H238"/><path d="M308 36 H318"/><path d="M388 36 H398"/><path d="M468 36 H478"/><path d="M548 36 H558"/></g>
+<rect x="2" y="78" width="636" height="30" rx="10" fill="#f1ecff" stroke="#6a3fd0" stroke-width="2"/>
+<text x="320" y="98" text-anchor="middle" font-size="13" font-weight="800" fill="#4a2a9a">JDF – elektronický popis zakázky provází všechny kroky (místo papírové průvodky)</text>
+</svg><figcaption>Řetěz kroků od digitalizace po hotový tisk. JDF je „digitální průvodka“.</figcaption></figure></div>
+<div class="pis" id="q-workflow">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Digitální workflow · <b>6 b</b></span></div>
+  <p class="pis-q">„Co v polygrafii představuje pojem „digitální workflow“? Popište ho.“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 3, 10</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Digitální workflow = <b>pracovní proces</b>, celý výrobní řetězec <b>od digitalizace textu a obrazu po hotovou tiskovinu</b>.</li><li>Patří do něj: <b>preflighting, oprava barev, nátisk, archová montáž, RIP, tvorba tiskových desek, kontrola barev při tisku</b>; celý proces může provázet <b>JDF</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Digitální workflow (z angl. „pracovní proces“) představuje produkční řetězec, tedy všechny fáze polygrafické výroby – proces publikování a tisku. Začíná digitalizací obrázku a textu a končí hotovou tiskovinou. Do pracovního procesu patří preflighting, oprava barev, nátisk, archová montáž, raster image processing, tvorba tiskových desek a kontrola barev při tisku. Součástí digitálního workflow může být také elektronický pracovní výkaz – JDF (Job Definition Format).</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-05-archova-montaz/#cesta" target="_blank" rel="noopener">Téma 5 – cesta zakázky (workflow)</a> </p>
+</div>
+<div class="pis" id="q-jdf">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>JDF a preflighting · <b>4 b</b></span></div>
+  <p class="pis-q">„Vysvětlete pojmy „JDF“ a „preflighting“.“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 3, 10</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>JDF</b> (Job Definition Format) = <b>elektronický popis zakázky</b>, nahrazuje papírovou průvodku; propojí <b>stroje různých výrobců</b>, které se samy nastaví, a uchová data zakázky po celou dobu výroby.</li><li><b>Preflighting</b> = <b>kontrola chyb</b> v PDF (rozlišení, písma…) <b>před tiskem</b>, aby nevznikly drahé chyby a zdržení.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p><b>JDF</b> (Job Definition Format) je elektronický pracovní výkaz – formát pro popis zakázky. Jeho cílem je umožnit provázanost všech zařízení v polygrafickém průmyslu bez ohledu na dodavatele a uchovat data zakázky po celou dobu jejího životního cyklu.</p><p><b>Preflighting</b> (z angl. „kontrola a příprava pro osvit“) zajišťuje bezchybné dodání souboru PDF nebo originálního dokumentu předtiskové přípravy do tiskárny. Zabrání problémům, které by se mohly objevit později ve výrobě a způsobit zdržení zakázky nebo vyšší náklady.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-04-software-a-cena-tisku/#jdfTip" target="_blank" rel="noopener">Téma 4 – JDF a MIS</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-14-pdf-pro-tisk/#a9" target="_blank" rel="noopener">Téma 14 – preflight</a> </p>
+</div>
+<div class="rozsir"><span class="tag">➕ Rozšiřující</span> <b>PDF/X</b> je mezinárodně uznávaná norma (ISO 15930) pro tiskové PDF – např. PDF/X-1a, PDF/X-4; pro archivaci se používá PDF/A: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-14-pdf-pro-tisk/#a4" target="_blank" rel="noopener">Téma 14 – druhy PDF</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-05-archova-montaz/#kontrola" target="_blank" rel="noopener">Téma 5 – co musí mít tiskové PDF</a></div>
+</section>
+
+<!-- ================= D ================= -->
+<section id="sec-D">
+<h2><span class="num">D</span>📏 Standardizace tisku</h2>
+<div class="card">
+<div class="simple"><b>🟢 Jednoduše:</b> standardizace = <b>všichni dělají podle stejných pravidel</b> (ČSN, ISO). Grafik připraví data podle profilu, nátisk se udělá podle stejného profilu a tiskař tiskne podle normy. Pak tisk <b>odpovídá nátisku</b> – a dá se to <b>změřit</b>.</div>
+</div>
+<div class="pis" id="q-grafika">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Úprava grafiky (rozlišení, sítě, ICC) · <b>4 b</b></span></div>
+  <p class="pis-q">„Popište 4. fázi zhotovování akcidenčních tiskovin – úpravu grafiky.“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 1</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>Vektory</b> (loga, texty) = <b>1 200 dpi</b>, <b>fotky</b> = <b>300 dpi</b>.</li><li><b>Natočení sítě</b> závisí na tiskové technice, <b>hustota sítě</b> na papíru, <b>ICC profil</b> (při ukládání do PDF) na papíru a technice.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Vektorovou grafiku upravíme ve vektorových programech, výstupní kvalita 1 200 dpi. Rastrovou grafiku (fotografie) upravíme v rastrovém programu (Photoshop), kvalita 300 dpi. Úhel natočení tiskového bodu se nastaví podle použité tiskové techniky, hustota sítě podle kvality potiskového materiálu. Při převodu dokumentu do PDF zvolíme vhodný ICC profil s ohledem na papír a tiskovou techniku.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-10-color-management/#a-icc" target="_blank" rel="noopener">Téma 10 – ICC profil</a> </p>
+</div>
+<h3>Měrný proužek a denzitometr</h3>
+<div class="card"><figure><svg viewBox="0 0 640 200" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="Tiskový arch s měrným proužkem na výběhové straně a soutiskovými značkami">
+<rect x="20" y="10" width="420" height="180" fill="#fff" stroke="#1d1d24" stroke-width="2"/>
+<g fill="#e8e8ee" stroke="#cfcfd6"><rect x="50" y="30" width="80" height="110"/><rect x="140" y="30" width="80" height="110"/><rect x="240" y="30" width="80" height="110"/><rect x="330" y="30" width="80" height="110"/></g>
+<text x="230" y="95" text-anchor="middle" font-size="13" fill="#5d5d6b">strany na tiskovém archu</text>
+<g transform="translate(30,156)">
+<rect x="0" width="28" height="22" fill="#00a0e3"/><rect x="28" width="28" height="22" fill="#e5007e"/><rect x="56" width="28" height="22" fill="#ffd500"/><rect x="84" width="28" height="22" fill="#1d1d24"/>
+<rect x="112" width="28" height="22" fill="#33b3e9"/><rect x="140" width="28" height="22" fill="#ea3398"/><rect x="168" width="28" height="22" fill="#ffdd33"/><rect x="196" width="28" height="22" fill="#4a4a50"/>
+<rect x="224" width="28" height="22" fill="#99d9f4"/><rect x="252" width="28" height="22" fill="#f599cb"/><rect x="280" width="28" height="22" fill="#ffee99"/><rect x="308" width="28" height="22" fill="#a5a5a7"/>
+<rect x="336" width="28" height="22" fill="#00a0e3"/><rect x="364" width="28" height="22" fill="#e5007e"/></g>
+<g stroke="#1d1d24" stroke-width="1.5" fill="none"><circle cx="230" cy="20" r="6"/><path d="M220 20 H240 M230 10 V30"/></g>
+<path d="M450 167 H470" stroke="#6a3fd0" stroke-width="3"/>
+<g font-size="13"><text x="476" y="160" font-weight="800">měrný proužek (škála)</text>
+<text x="476" y="177">po celé šířce archu</text><text x="476" y="194">na <tspan font-weight="800">výběhové</tspan> straně</text>
+<path d="M245 20 H470" stroke="#6a3fd0" stroke-width="3"/>
+<text x="476" y="16" font-weight="800">soutiskový křížek</text><text x="476" y="33">barvy přesně na sobě?</text>
+<text x="476" y="80" font-weight="800">políčka:</text><text x="476" y="97">100 % · 80 % · 40 %</text><text x="476" y="114">+ smyková pole</text>
+<text x="476" y="134">měří se <tspan font-weight="800">denzitometrem</tspan></text></g>
+</svg><figcaption>Kontrolní prvky na tiskovém archu.</figcaption></figure></div>
+<div class="pis" id="q-kontrola">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Kontrola kvality tisku · <b>2 b</b></span></div>
+  <p class="pis-q">„Jakým způsobem se měří parametry kvality tisku?“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 7</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li><b>Denzitometrem</b> na <b>měrném proužku (škále)</b> po celé šířce archu na <b>výběhové</b> straně; políčka <b>100 %, 80 %, 40 %</b> a <b>smyková pole</b>.</li><li>Měří se plošná vyrovnanost, tiskový kontrast, nárůst bodu a <b>smyk</b>; na soutiskových značkách <b>soutisk</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Parametry kvality tisku se měří na políčkách měrného proužku (škály) denzitometrem. Měrný proužek je umístěn po celé šířce tiskového archu na výběhové straně. Obsahuje políčka 100 %, 40 %, 80 % a smyková pole. Na 100% políčkách se měří plošná vyrovnanost, dále tiskový kontrast, nárůst tiskového bodu a smyk, na soutiskových znaménkách se kontroluje překrývání barev – soutisk.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-10-color-management/#b-standard" target="_blank" rel="noopener">Téma 10 – standardizovaný ofset a kontrola kvality</a> </p>
+</div>
+<div class="pis" id="q-faktory">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Faktory ovlivňující kvalitu tisku · <b>5 b</b></span></div>
+  <p class="pis-q">„Které faktory ovlivňují kvalitu tisku a vzhled tiskovin?“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 7</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>typ tiskoviny · formát · grafický návrh · <b>kvalita a typ papíru</b> · <b>technologický postup</b> (předtisková příprava, tisk, zušlechťování a dokončování).</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Typ tiskoviny; formát tiskoviny; grafický návrh (rozsah textu, kresby nebo fotografie); kvalita a typ potiskovaného materiálu (plošná hmotnost, povrchová úprava); technologický postup výroby – předtisková příprava, tisk (barevnost), zušlechťování (ražba, lakování, výsek) a dokončování (knihařské zpracování).</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-07-polygrafie-a-dokoncovani/#kvalita" target="_blank" rel="noopener">Téma 7 – faktory kvality</a> </p>
+</div>
+<div class="pis" id="q-hodnoceni">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Hodnotící prvky kvality tisku · <b>3 b</b></span></div>
+  <p class="pis-q">„Vyjmenujte alespoň tři vlastnosti tiskového výrobku, které jsou obvykle předmětem hodnocení kvality.“</p>
+  <p class="pis-meta">Oddíl: Polygrafické pojmy a grafické technologie · zadání č. 7</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>vzhled · obrazové a textové informace · povrchová úprava · užitné vlastnosti · soulad s předpisy hygieny a bezpečnosti · odolnost vůči prostředí (stačí 3).</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Vzhled; obrazové a textové informace; povrchová úprava; užitné vlastnosti; soulad s platnými předpisy hygieny a bezpečného používání; odolnost vůči vlivům prostředí.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-07-polygrafie-a-dokoncovani/#hodnoceni" target="_blank" rel="noopener">Téma 7 – hodnocení kvality</a> </p>
+</div>
+<h3>Náhled × nátisk</h3>
+<div class="card"><figure><svg viewBox="0 0 640 192" font-family="system-ui,Segoe UI,Arial,sans-serif" role="img" aria-label="Náhled je na obrazovce, nátisk je fyzický zkušební výtisk">
+<g transform="translate(30,10)">
+<rect x="20" y="10" width="200" height="120" rx="8" fill="#1d1d24"/><rect x="30" y="20" width="180" height="96" fill="#cfe8f7"/>
+<rect x="50" y="34" width="60" height="68" fill="#fff"/><rect x="130" y="34" width="60" height="68" fill="#fff"/>
+<rect x="100" y="130" width="40" height="16" fill="#1d1d24"/>
+<text x="120" y="166" text-anchor="middle" font-size="15" font-weight="800">NÁHLED = obrazovka</text></g>
+<g transform="translate(350,10)">
+<path d="M40 20 L200 20 L200 130 L40 130 Z" fill="#fff" stroke="#1d1d24" stroke-width="2"/>
+<rect x="60" y="34" width="56" height="70" fill="#e5007e" opacity=".75"/><rect x="124" y="34" width="56" height="70" fill="#00a0e3" opacity=".75"/>
+<g transform="translate(60,110)"><rect width="14" height="10" fill="#00a0e3"/><rect x="14" width="14" height="10" fill="#e5007e"/><rect x="28" width="14" height="10" fill="#ffd500"/><rect x="42" width="14" height="10" fill="#1d1d24"/></g>
+<path d="M170 106 l10 8 l18 -22" stroke="#1f8a4c" stroke-width="5" fill="none"/>
+<text x="120" y="166" text-anchor="middle" font-size="15" font-weight="800">NÁTISK = fyzický výtisk</text></g>
+</svg></figure>
+<div class="pozor"><b>Pozor:</b> na <b>náhledu</b> (monitor) nejsou barvy závazné – vytištěné budou spíš horší. Závazný je až <b>nátisk</b> podepsaný zákazníkem.</div></div>
+<div class="pis" id="q-nastroje">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Nástroje kontroly tisku (náhled × nátisk) · <b>1 b</b></span></div>
+  <p class="pis-q">„Jakou funkci plní náhled a nátisk v předtiskové přípravě?“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 3</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Zadavatel i zpracovatel jimi <b>kontrolují data před tiskem nákladu</b>; nátisk je na rozdíl od náhledu <b>fyzická kopie</b>.</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Pomocí náhledu a nátisku kontrolují zadavatel i zpracovatel digitální podklady ještě před vlastním produkčním tiskem. Při nátisku se na rozdíl od náhledu zhotoví fyzická kopie podkladu.</p></details>
+  
+</div>
+<div class="pis" id="q-nahled">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Náhled · <b>4 b</b></span></div>
+  <p class="pis-q">„Co představuje v předtiskové přípravě náhled?“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 3</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Náhled = <b>vizuální kontrola na obrazovce</b>; co vidím, bude víceméně vytištěno – ale <b>barvy</b> budou spíš <b>horší</b> (méně).</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Náhled slouží k vizuální kontrole tiskových informací na obrazovce. U většiny programů se předpokládá, že to, co je vidět, bude víceméně vytištěno. U barev je ale třeba počítat s tím, že výsledek bude spíše horší.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-10-color-management/#a-nahled" target="_blank" rel="noopener">Téma 10 – náhled na monitoru</a> </p>
+</div>
+<div class="pis" id="q-natisk">
+  <div class="pis-h"><span>📝 PÍSEMNÁ ZKOUŠKA</span><span>Nátisk · <b>5 b</b></span></div>
+  <p class="pis-q">„Co představuje v předtiskové přípravě nátisk?“</p>
+  <p class="pis-meta">Oddíl: Předtisková příprava · zadání č. 3</p>
+  <div class="napis"><b>✍️ Do testu napiš:</b><ul><li>Nátisk = <b>zkušební otisk</b> před tiskem nákladu; posoudí ho tiskárna i zadavatel (barvy).</li><li>Podmínky jsou v <b>ČSN</b>, má <b>technický i právní</b> význam: <b>stejný papír, stejné barvy, stejná technika</b>, stanovený počet výtisků; dělá se na <b>kalibrovatelných</b> nátiskových zařízeních (plotrech).</li></ul></div>
+  <details><summary>Celá vzorová odpověď (podle řešení písemky)</summary><p>Nátisk je zkušební otisk tiskové formy, zejména ilustrační, ve více barvách před tiskem vlastního nákladu. Slouží zpracovateli (tiskárně) i zadavateli k posouzení grafického účinku nebo u barvotisku k přezkoušení barev z dílčích forem. Podmínky nátisku jsou obsaženy v ČSN a mají technický i právní význam – nátisk musí být proveden na stejném papíru, stejnými barvami, stejnou technikou tisku, ve stanoveném počtu výtisků. U barvotisku je závazný i postupný soutisk dílčích barev. Nátisk lze realizovat na nátiskových zařízeních (většinou plotrech), která jsou kalibrovatelná.</p></details>
+  <p class="links">Podrobně v ústní otázce: <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-10-color-management/#a-natisk" target="_blank" rel="noopener">Téma 10 – nátisk a verifikovaný nátisk</a> </p>
+</div>
+<div class="rozsir"><span class="tag">➕ Rozšiřující</span> Normy, které se k tomu váží: <b>ISO 12647-2</b> (ofsetový tisk), <b>ISO 12647-7</b> (nátisk), <b>ISO 3664</b> (prohlížení pod světlem D50), <b>ISO 15930</b> (PDF/X), <b>PSO</b> (certifikace tiskáren). Spektrofotometr měří barvu v Lab, odchylka = ΔE. <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-10-color-management/#a-normy" target="_blank" rel="noopener">Téma 10 – normy</a> <a class="xlink" href="https://graficka-koduje.github.io/ustni-zkouska/tema-10-color-management/#b-standard" target="_blank" rel="noopener">Téma 10 – standardizovaný tisk</a></div>
+</section>
+
+<!-- ================= TEST ================= -->
+<section id="test">
+<h2><span class="num">✍️</span>Test psaním – jako v písemce</h2>
+<p>Dostaneš <b>6 skutečných úloh</b>. Odpověz vlastními slovy (diakritika ani překlepy nevadí). Test ukáže, která <b>hesla</b> jsi napsal/a, co chybí, odhad bodů a vzorovou odpověď.</p>
+<div class="btns noprint"><button class="go" id="tNew">🔀 Nová sada úloh</button><button id="tCheck">✅ Vyhodnotit</button></div>
+<div id="tBox"></div>
+<div id="tSum"></div>
+</section>
+
+<section id="kviz">
+<h2><span class="num">?</span>Rychlý kvíz</h2>
+<div id="kBox"></div>
+<p><span class="sum" id="kScore">0 / 0</span> <button id="kReset">↺ znovu</button></p>
+</section>
+
+</main>
+<a id="fab" href="#mapa">↑ Mapa</a>
+<script>
+// laser
+(function(){
+ const t={0:"Všechny kroky: <b>nabití → osvit laserem → toner → přenos → zažehlení</b>.",
+ 1:"<b>1. Nabití:</b> nabíjecí váleček (dříve drátek pod napětím) nanese na celý povrch fotoválce <b>stejný náboj</b> (−). Ve tmě ho válec drží – jako balónek, když ho otřeš o svetr.",
+ 2:"<b>2. Osvit:</b> laser přes otáčivé zrcátko přejíždí po válci řádek po řádku a bliká podle obrázku. Kam posvítí, tam vrstva vede proud a <b>náboj odteče do kovu</b>. Vznikne neviditelný obrázek z elektřiny: nabité = bílé, vybité = bude se tisknout.",
+ 3:"<b>3. Toner:</b> toner jsou drobné kuličky plastu s barvivem, také nabité. Nabitá místa válce je <b>odpuzují</b>, a tak se usadí <b>jen na místa vybitá laserem</b>.",
+ 4:"<b>4. Přenos:</b> pod papírem je váleček s opačným nábojem (+). Ten <b>přitáhne toner z válce na papír</b>. Toner zatím jen leží – dal by se setřít prstem.",
+ 5:"<b>5. Zažehlení (fixace):</b> papír projde mezi <b>horkými přítlačnými válci</b>. Teplo a tlak roztaví plast v toneru a zapečou ho do vláken papíru. Proto je papír z laserovky teplý."};
+ const fig=document.getElementById('laserFig'), out=document.getElementById('laserTxt');
+ document.querySelectorAll('#sec-A .btns button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#sec-A .btns button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  const s=+b.dataset.s; fig.querySelectorAll('.lz').forEach(g=>g.style.opacity=(s===0||g.classList.contains('lz'+s))?1:.18);
+  fig.querySelectorAll('.mk').forEach(m=>{const a=+m.dataset.a,hit=(a>=330||a<=75),ton=(a>=30&&a<=75);
+   m.textContent = s===1 ? '−' : s===2 ? (hit?'·':'−') : s===3 ? (ton?'●':(hit?'·':'−')) : s===0 ? (ton?'●':(hit?'·':'−')) : (hit?'·':'−');});
+  fig.querySelector('.onpaper').style.opacity=(s===0||s>=4)?1:0;
+  out.innerHTML=t[s];});
+})();
+// tónová buňka
+(function(){
+ const c=document.getElementById('cell'),r=document.getElementById('cellR');
+ const order=[];for(let y=0;y<16;y++)for(let x=0;x<16;x++)order.push([x,y]);
+ order.sort((a,b)=>((a[0]-7.5)**2+(a[1]-7.5)**2)-((b[0]-7.5)**2+(b[1]-7.5)**2)||a[1]-b[1]||a[0]-b[0]);
+ const cells=[];for(let i=0;i<256;i++){const d=document.createElement('div');c.appendChild(d);cells.push(d);}
+ function draw(){const p=+r.value,n=Math.round(256*p/100),on=new Set(order.slice(0,n).map(a=>a[1]*16+a[0]));
+  cells.forEach((d,i)=>d.classList.toggle('on',on.has(i)));
+  document.getElementById('cellP').textContent=p;
+  document.getElementById('cellT').innerHTML='Svítí <b>'+n+' z 256</b> bodíků → tiskový bod pokryje <b>'+p+' %</b> buňky.';}
+ r.oninput=draw;draw();
+ const li=document.getElementById('lpiIn');
+ function calc(){const v=Math.max(0,+li.value||0);document.getElementById('lpiV').textContent=v;document.getElementById('lpiV2').textContent=v;
+  document.getElementById('dpiV').textContent=(v*16).toLocaleString('cs-CZ')+' dpi';}
+ li.oninput=calc;calc();
+})();
+// test psaním
+const TQ=[{"id": "q-druhy", "t": "Klasický, digitální, digitalizovaný tisk", "q": "Vysvětlete pojmy: klasický (analogový), digitální a digitalizovaný tisk.", "p": 6, "k": [["mimo stroj", "mimo stroj", "mimo tiskov"], ["bez hmotné formy", "bez hmotn", "hmotne", "bez formy", "bez tiskove formy"], ["od 1 kusu", "jednoho kusu", "1 kus", "od jednoho"], ["ve věžích stroje", "ve vezich", "ve stroji", "primo ve"], ["bez vyvolání", "vyvolani"], ["soutisk", "soutisk", "bez vlhceni", "minut"]], "v": "<p><b>Klasický (analogový) tisk:</b> Mimo tiskový stroj se vyrobí hmotná tisková forma, která se musí umístit do věží tiskového stroje. Příprava stroje k tisku a jeho seřízení trvá déle než u digitalizovaného tisku, kde se všechny formy vypalují zároveň, a tím je zajištěn správný soutisk.</p><p><b>Digitální tisk:</b> Tisk bez použití hmotné tiskové formy. Umožňuje vytvořit tiskoviny už od jednoho kusu přímo z počítače. Dnes nahrazuje ofsetový tisk v malých nákladech. Nejčastěji se používají digitální tiskárny s laserovou nebo inkoustovou technologií – buď jen ke zhotovení náhledu (kontrolní výtisk pro tiskárnu a zákazníka), nebo i k vytištění celého nákladu.</p><p><b>Digitalizovaný tisk:</b> Tisk z hmotných tiskových forem, které se vypalují laserem přímo ve věžích tiskového stroje. Formy nevyžadují vyvolání, stroj je během několika minut připraven k tisku. Celý proces řídí automaticky pult dálkového ovládání. Nejčastěji se používá u ofsetového tisku bez vlhčení.</p>"}, {"id": "q-laser", "t": "Laserový tisk", "q": "Popište princip laserového (elektrografického) tisku.", "p": 5, "k": [["elektrografie", "elektrograf"], ["fotovodivý válec", "fotovodiv", "selen", "valec"], ["nabití", "nabi", "naboj"], ["laser", "laser"], ["vybití", "vybij", "vybit", "osvit"], ["toner", "toner"], ["teplo", "tepl", "zahrat", "horke"], ["tlak", "tlak", "pritlac"]], "v": "<p>Laserový tisk neboli elektrografie je digitální tisk z plochy. Využívá fotovodivý materiál, který se ve tmě chová jako nevodič a při osvitu se stává vodivým. Fotovodivý (selenový) válec se nejdřív rovnoměrně nabije elektrickým nábojem. Laserový paprsek na něj vykreslí obraz – místa, kam dopadne, se vybijí. Na válec se nanese práškový toner, který se přichytí jen na místa vybitá laserem. Toner se přenese na papír. Aby na papíru vydržel, používá se tepelná a tlaková fixace – papír projde přítlačnými válci zahřátými na vysokou teplotu.</p>"}, {"id": "q-inkjet", "t": "Inkoustový tisk", "q": "Popište princip inkoustového tisku.", "p": 5, "k": [["nejjednodušší", "nejjednodus"], ["přímo", "prim"], ["tisková hlava", "hlav"], ["trysky", "trysk"], ["kapky", "kapk", "kapic", "vystrik"], ["pohyb hlavy", "pohyb", "vice hlav", "vice tiskovych"]], "v": "<p>Inkoustový (inkjetový, tryskový) tisk je z hlediska vytvoření obrazu nejjednodušší digitální tiskovou technikou – inkoust se vystřikuje přímo na potiskovaný materiál, jde tedy o přímou tiskovou techniku. Tisková hlava je tvořena řadou kanálů, do nichž je z jedné strany přiváděn inkoust a na druhé straně jsou zakončeny deskou s tryskami. Je-li potiskovaný materiál širší než tisková hlava, pohybuje se hlava tak, aby potiskla celou šíři, nebo výkonnější stroje používají více tiskových hlav.</p>"}, {"id": "q-tonery", "t": "Tonery", "q": "Definujte tonery. Jaké základní typy tonerů rozlišujeme?", "p": 2, "k": [["pro digitální tisk", "digitalni tisk", "digitalniho tisku"], ["tlak", "tlak"], ["teplo", "tepl"], ["práškové", "praskov"], ["kapalné", "kapaln"]], "v": "<p>Tonery jsou barvy pro digitální tisk, které se na potiskovaném materiálu fixují pomocí tlaku a teploty. Rozlišujeme tonery práškové a kapalné.</p>"}, {"id": "q-inkousty", "t": "Inkousty", "q": "Definujte inkousty a jejich funkci při digitálním tisku. Co tvoří barvotvornou složku inkoustů? (za každou část 2 body)", "p": 4, "k": [["kapalina", "kapalin", "nizkoviskoz"], ["zasychání", "zapit", "odpar", "uv"], ["tavné", "tavn", "tuh"], ["pigmenty", "pigment"], ["barviva", "barviv"]], "v": "<p>Inkousty jsou buď nízkoviskózní kapaliny, které zasychají zapitím, odpařením rozpouštědla nebo UV polymerací, nebo tuhé látky (tavné inkousty), které se nanášejí při vyšší teplotě v kapalném stavu a po ochlazení ztuhnou. Barvotvornou složku inkoustů tvoří pigmenty, barviva nebo kombinace pigmentů a barviv.</p>"}, {"id": "q-uv", "t": "Vlastnosti barev vytvrzovaných UV zářením", "q": "Jmenujte minimálně dvě výhody a dvě nevýhody barev vytvrzovaných UV zářením oproti barvám klasickým.", "p": 4, "k": [["méně energie", "energ"], ["rychlost", "rychl"], ["bez VOC", "voc", "ekolog"], ["lesk, odolnost", "lesk", "odoln"], ["vyšší cena", "cena", "drahe", "drazsi"], ["silné vrstvy", "silnejsich", "silne vrstvy", "protvrz"], ["bobtnání válců", "bobtn"]], "v": "<p><b>Výhody:</b> menší energetická náročnost, vysoká produkční rychlost, ekologické vlastnosti – neuvolňují se VOC (těkavé organické látky), vysoký lesk, odolnost proti mechanickým a chemickým vlivům.</p><p><b>Nevýhody:</b> vyšší cena surovin, obtížné protvrzení silnějších vrstev, bobtnání pryžových válců.</p>"}, {"id": "q-forma", "t": "Výroba tiskové formy – dnešní trendy", "q": "Popište obecně výrobu tiskové formy. Čím se vyznačují současné trendy oproti minulosti?", "p": 7, "k": [["archová montáž", "archov", "montaz"], ["osvitová jednotka", "osvitov"], ["film", "film"], ["přímo", "primo"], ["úspora času, chemie", "cas", "chyb", "chemi", "material"], ["nátisk", "natisk"], ["laser", "laser"], ["bezprocesní", "bezprocesn", "bez vyvolani", "nevyzaduj"]], "v": "<p>Kopírovací předloha se dnes nejčastěji upravuje v programech pro elektronickou archovou montáž a potom se v osvitových jednotkách osvítí na film nebo přímo na tiskovou formu. Při osvitu přímo na tiskovou formu se nepoužívají filmy, zkracuje se čas výroby, nevznikají chyby při kopírování filmů a ušetří se materiál i chemikálie potřebné k vyvolání filmů. Po předložení a schválení nátisku se data pro ofsetové formy svítí laserem na plastové či hliníkové desky se světlocitlivými nebo termocitlivými vrstvami. Výroba forem směřuje k bezprocesním technologiím, kdy forma po osvitu laserem nepotřebuje žádné další zpracování (vyvolání).</p>"}, {"id": "q-ctf", "t": "Technologie CtF", "q": "Vysvětlete zkratku CTF. Co představuje v předtiskové přípravě postup CTF?", "p": 3, "k": [["Computer to Film", "computer to film"], ["dvoustupňově", "dvoustup", "dva kroky", "2 kroky"], ["film", "film"], ["kopírování na desku", "kopir"]], "v": "<p>CTF (Computer to Film) je zhotovení tiskových forem z digitálně zpracovaných dat dvoustupňově. Nejdříve se tisková data exponují na film a potom se film kopíruje na tiskovou desku.</p>"}, {"id": "q-ctp", "t": "Technologie CtP", "q": "Vysvětlete zkratku CTP. Co představuje v předtiskové přípravě postup CTP?", "p": 2, "k": [["Computer to Plate", "computer to plate"], ["přímo", "primo", "prima"], ["laser", "laser"], ["tiskové desky", "desk"]], "v": "<p>CTP (Computer to Plate) je zhotovení tiskových forem z digitálně zpracovaných dat, kdy se tisková deska exponuje přímo, bodově laserem.</p>"}, {"id": "q-desky", "t": "CtP ofsetové desky", "q": "Rozdělte CTP ofsetové desky a popište jejich vlastnosti, uveďte popř. příklady.", "p": 8, "k": [["světlocitlivé", "svetlocitliv"], ["UV", "uv"], ["procesní", "procesn"], ["termocitlivé", "termocitliv"], ["IR", "ir", "infra"], ["bezprocesní", "bezprocesn"], ["termoablační", "termoablac", "termoodpar"]], "v": "<p><b>Světlocitlivé CTP desky</b> reagují na viditelnou část spektra, nejčastěji na UV laser. Po osvitu vyžadují vyvolání, jsou tzv. procesní.</p><p><b>Termocitlivé CTP desky</b> reagují na IR laser. Mohou být procesní (vyžadují vyvolání), nebo bezprocesní (nevyžadují vyvolání) – příkladem jsou termoablační (termoodparné) desky.</p>"}, {"id": "q-moznosti", "t": "Možnosti osvitu tiskové formy", "q": "Uveďte možnosti osvitu tiskové formy v případě flexotisku, hlubotisku a sítotisku.", "p": 3, "k": [["fotopolymer", "fotopolymer"], ["pružné desky", "pruzn"], ["válec", "valc", "valec"], ["síto", "sito", "sita", "sitotisk"], ["světlocitlivé", "svetlocitliv"]], "v": "<p>Flexotisk – osvit fotopolymerních pružných desek. Hlubotisk – laserem se vypaluje povrch válce. Sítotisk – svítí se na síto opatřené světlocitlivou vrstvou.</p>"}, {"id": "q-jednotky", "t": "Dělení osvitových jednotek", "q": "Rozdělte osvitové jednotky podle osvěcovaného materiálu, konstrukce, použitého laseru, formátu a použití.", "p": 5, "k": [["filmové", "filmov"], ["plochá", "ploch"], ["vnitřní buben", "vnitrn"], ["vnější buben", "vnejs"], ["UV", "uv", "ultrafial"], ["IR", "ir", "infra"], ["formát (A4)", "maloformat", "a4"], ["malo-/velkoformátové", "velkoformat", "stredneformat"]], "v": "<p><b>Podle osvěcovaného materiálu:</b> filmové; pro osvit desek – světlocitlivých nebo termocitlivých.<br><b>Podle konstrukce:</b> ploché; s vnitřním bubnem; s vnějším bubnem.<br><b>Podle použitého laseru:</b> ultrafialové (UV) diody; infračervené (IR) diody.<br><b>Podle formátu:</b> maloformátové (2× A4); středněformátové (4× A4); velkoformátové (8 a více A4).<br><b>Podle použití:</b> pro osvit světlocitlivých desek (vnitřní buben, UV dioda); pro osvit termocitlivých desek (vnější buben, IR dioda).</p>"}, {"id": "q-dpi", "t": "Výpočet rozlišení osvitové jednotky", "q": "Vypočtěte rozlišení osvitové jednotky pro 150 lpi.", "p": 5, "k": [["2 400 dpi", "2400", "2 400"]], "v": "<p>dpi = lpi × √256 (256 stupňů šedi → tónová buňka 16 × 16 bodů)<br>150 × 16 = 2 400 dpi</p>"}, {"id": "q-rip", "t": "RIP, elektronický bod", "q": "Vysvětlete pojem RIP a k čemu slouží. Jak vzniká elektronický bod?", "p": 4, "k": [["Raster Image Processor", "raster image processor"], ["rastrování", "rastrov"], ["AM / FM", "am", "fm"], ["lpi", "lpi"], ["tvar bodu", "tvar"], ["16 × 16 / 256", "16", "256"]], "v": "<p>RIP (Raster Image Processor) je počítačový program, pomocí kterého se provádí elektronické rastrování. Nastavuje se v něm počet barevných separací, typ rastrování (AM, FM), lpi a tvar bodu.</p><p>Každý elektronický bod vzniká v tónové buňce, která má 16 × 16 pixelů. V jedné buňce tak může vzniknout 256 různě velkých tiskových bodů. Tvar tiskového bodu může být kruh, čtverec, kosočtverec nebo elipsa.</p>"}, {"id": "q-faze", "t": "Závěrečné fáze zpracování stran (po montáži)", "q": "Vyjmenujte závěrečné fáze zpracování stran časopisu v DTP studiu, které následují po montáži.", "p": 4, "k": [["RIP", "rip"], ["osvit", "osvit"], ["vyvolání", "vyvol"], ["předání do tisku", "predani", "predat", "do tisku"]], "v": "<p>Ripování – zpracování jednotkou RIP; osvit; vyvolání desky; předání tiskových forem do tisku.</p>"}, {"id": "q-vrstvy", "t": "Pozitivně a negativně pracující vrstva", "q": "Vysvětlete pojmy pozitivně a negativně pracující vrstva.", "p": 4, "k": [["rozpustná", "rozpustn"], ["nerozpustná", "nerozpustn"], ["odstraní se", "odstran", "zmiz"], ["tisknoucí místa", "tisknouc", "zustav"]], "v": "<p><b>Pozitivně pracující vrstva:</b> působením světla (UV záření) se stává rozpustnou ve vývojce. Po osvitu a vyvolání se ozářená část kopírovací vrstvy odstraní.</p><p><b>Negativně pracující vrstva:</b> působením světla (UV záření) se stává nerozpustnou ve vývojce. Ozářená místa ztvrdnou a po vyvolání desky zůstávají jako tisknoucí prvky.</p>"}, {"id": "q-dtp", "t": "DTP a datové formáty", "q": "Co znamená zkratka DTP a jakou fázi polygrafické výroby představuje? Co jsou datové formáty, k čemu se používají?", "p": 4, "k": [["DeskTop Publishing", "desktop publishing"], ["předtisková příprava", "predtiskov", "prepress"], ["ukládání", "ukladan"], ["přenos", "prenos"], ["tisk", "tisk"]], "v": "<p>DTP (DeskTop Publishing) je předtisková příprava realizovaná pomocí výpočetní techniky. Textové a obrazové předlohy se zpracovávají v podobě jednoho nebo více datových souborů ve vhodném formátu. Datové formáty se používají k ukládání, přenosu a tisku datových souborů.</p>"}, {"id": "q-ps", "t": "Jazyk pro popis stránky – PostScript", "q": "Definujte pojem PostScript.", "p": 2, "k": [["jazyk", "jazyk"], ["popis stránky", "popis strank"], ["nezávislý na zařízení", "nezavisl"], ["text", "text"], ["vektory", "vektor"], ["rastr", "rastr"]], "v": "<p>Jeden z nejvýznamnějších programovacích jazyků pro popis stránky, který se stal neoficiálním standardem pro reprezentaci tištěné stránky nezávisle na tiskovém zařízení. Pracuje s množstvím grafických operátorů. Rozlišuje tři typy objektů – text, vektorové objekty a rastrové obrazy.</p>"}, {"id": "q-formaty", "t": "Datové formáty PDF, EPS, TIFF, JPEG", "q": "Vysvětlete význam těchto zkratek: PDF, EPS, TIFF, JPEG.", "p": 4, "k": [["Portable Document Format", "portable"], ["nezávislý na zařízení", "nezavisl"], ["PostScript", "postscript"], ["bitmapa", "bitmap", "rastr"], ["ztrátová komprese", "ztratov"], ["fotografie", "fotograf"]], "v": "<p><b>PDF</b> (Portable Document Format) je univerzální datový formát pro spolehlivé sdílení a prohlížení digitálních dokumentů nezávisle na prostředí, aplikaci, operačním systému a typu počítače. Ukládají se v něm data grafická i textová. Vyvinula ho firma Adobe odvozením z PostScriptu, přičemž řeší některé jeho nevýhody; soubory jsou výrazně menší.</p><p><b>EPS</b> – formát pro přenos obrazové postscriptové informace z jednoho programu do jiného.</p><p><b>TIFF</b> – popis černobílých nebo barevných bitmapových souborů.</p><p><b>JPEG</b> – standardní metoda ztrátové komprese pro ukládání fotografií.</p>"}, {"id": "q-prijem", "t": "Příjem a kontrola dat", "q": "Popište 1. fázi při zhotovování akcidenčních tiskovin – příjem a kontrolu obrazových a textových dat. Uveďte nejčastější formáty obrazových a textových dat.", "p": 4, "k": [["FTP", "ftp"], ["datové nosiče", "nosic"], ["skenování", "sken"], ["300 dpi", "300"], ["JPEG", "jpeg", "jpg"], ["TIFF", "tiff", "tif"], ["DOC", "doc"]], "v": "<p>Podklady se přijímají v digitální podobě na datových nosičích, případně vzdáleným přenosem a uložením na FTP server. Pokud jsou obrazové předlohy předány v analogové podobě, je třeba je naskenovat v požadované kvalitě 300 dpi. Obrazová data: JPEG, TIFF. Textová data: DOC.</p>"}, {"id": "q-workflow", "t": "Digitální workflow", "q": "Co v polygrafii představuje pojem „digitální workflow“? Popište ho.", "p": 6, "k": [["pracovní proces", "pracovni proces", "retez", "vsechny faze"], ["digitalizace", "digitalizac"], ["preflighting", "preflight"], ["barvy", "barev"], ["nátisk", "natisk"], ["montáž", "montaz"], ["RIP", "rip", "raster image"], ["tiskové desky", "desk", "desek", "desky"], ["JDF", "jdf"]], "v": "<p>Digitální workflow (z angl. „pracovní proces“) představuje produkční řetězec, tedy všechny fáze polygrafické výroby – proces publikování a tisku. Začíná digitalizací obrázku a textu a končí hotovou tiskovinou. Do pracovního procesu patří preflighting, oprava barev, nátisk, archová montáž, raster image processing, tvorba tiskových desek a kontrola barev při tisku. Součástí digitálního workflow může být také elektronický pracovní výkaz – JDF (Job Definition Format).</p>"}, {"id": "q-jdf", "t": "JDF a preflighting", "q": "Vysvětlete pojmy „JDF“ a „preflighting“.", "p": 4, "k": [["Job Definition Format", "job definition"], ["popis zakázky", "popis zakazky", "pruvodk", "vykaz"], ["zařízení", "zarizeni", "stroj"], ["různí výrobci", "vyrobc", "dodavatel"], ["kontrola", "kontrol"], ["chyby", "chyb", "problem"], ["před tiskem", "pred"]], "v": "<p><b>JDF</b> (Job Definition Format) je elektronický pracovní výkaz – formát pro popis zakázky. Jeho cílem je umožnit provázanost všech zařízení v polygrafickém průmyslu bez ohledu na dodavatele a uchovat data zakázky po celou dobu jejího životního cyklu.</p><p><b>Preflighting</b> (z angl. „kontrola a příprava pro osvit“) zajišťuje bezchybné dodání souboru PDF nebo originálního dokumentu předtiskové přípravy do tiskárny. Zabrání problémům, které by se mohly objevit později ve výrobě a způsobit zdržení zakázky nebo vyšší náklady.</p>"}, {"id": "q-grafika", "t": "Úprava grafiky (rozlišení, sítě, ICC)", "q": "Popište 4. fázi zhotovování akcidenčních tiskovin – úpravu grafiky.", "p": 4, "k": [["1 200 dpi", "1200", "1 200"], ["300 dpi", "300"], ["natočení sítě", "natoc", "uhel"], ["hustota sítě", "hustot"], ["ICC profil", "icc"]], "v": "<p>Vektorovou grafiku upravíme ve vektorových programech, výstupní kvalita 1 200 dpi. Rastrovou grafiku (fotografie) upravíme v rastrovém programu (Photoshop), kvalita 300 dpi. Úhel natočení tiskového bodu se nastaví podle použité tiskové techniky, hustota sítě podle kvality potiskového materiálu. Při převodu dokumentu do PDF zvolíme vhodný ICC profil s ohledem na papír a tiskovou techniku.</p>"}, {"id": "q-kontrola", "t": "Kontrola kvality tisku", "q": "Jakým způsobem se měří parametry kvality tisku?", "p": 2, "k": [["denzitometr", "denzitometr"], ["měrný proužek", "proužek", "prouzek", "skal"], ["výběhová strana", "vybehov"], ["soutisk", "soutisk"], ["nárůst, kontrast", "narust", "kontrast", "vyrovnan"]], "v": "<p>Parametry kvality tisku se měří na políčkách měrného proužku (škály) denzitometrem. Měrný proužek je umístěn po celé šířce tiskového archu na výběhové straně. Obsahuje políčka 100 %, 40 %, 80 % a smyková pole. Na 100% políčkách se měří plošná vyrovnanost, dále tiskový kontrast, nárůst tiskového bodu a smyk, na soutiskových znaménkách se kontroluje překrývání barev – soutisk.</p>"}, {"id": "q-faktory", "t": "Faktory ovlivňující kvalitu tisku", "q": "Které faktory ovlivňují kvalitu tisku a vzhled tiskovin?", "p": 5, "k": [["typ tiskoviny", "typ tiskoviny", "druh tiskoviny"], ["formát", "format"], ["grafický návrh", "navrh", "grafick"], ["papír / materiál", "material", "papir"], ["technologický postup", "postup", "predtiskov", "zuslecht", "dokonc"]], "v": "<p>Typ tiskoviny; formát tiskoviny; grafický návrh (rozsah textu, kresby nebo fotografie); kvalita a typ potiskovaného materiálu (plošná hmotnost, povrchová úprava); technologický postup výroby – předtisková příprava, tisk (barevnost), zušlechťování (ražba, lakování, výsek) a dokončování (knihařské zpracování).</p>"}, {"id": "q-hodnoceni", "t": "Hodnotící prvky kvality tisku", "q": "Vyjmenujte alespoň tři vlastnosti tiskového výrobku, které jsou obvykle předmětem hodnocení kvality.", "p": 3, "k": [["vzhled", "vzhled"], ["obraz. a text. informace", "informac"], ["povrchová úprava", "povrch"], ["užitné vlastnosti", "uzitn"], ["hygiena, bezpečnost", "hygien", "bezpecn"], ["odolnost", "odoln"]], "v": "<p>Vzhled; obrazové a textové informace; povrchová úprava; užitné vlastnosti; soulad s platnými předpisy hygieny a bezpečného používání; odolnost vůči vlivům prostředí.</p>"}, {"id": "q-nastroje", "t": "Nástroje kontroly tisku (náhled × nátisk)", "q": "Jakou funkci plní náhled a nátisk v předtiskové přípravě?", "p": 1, "k": [["kontrola", "kontrol"], ["před tiskem", "pred"], ["fyzická kopie", "fyzick"]], "v": "<p>Pomocí náhledu a nátisku kontrolují zadavatel i zpracovatel digitální podklady ještě před vlastním produkčním tiskem. Při nátisku se na rozdíl od náhledu zhotoví fyzická kopie podkladu.</p>"}, {"id": "q-nahled", "t": "Náhled", "q": "Co představuje v předtiskové přípravě náhled?", "p": 4, "k": [["obrazovka", "obrazov", "monitor"], ["vizuální kontrola", "vizualn", "kontrol"], ["barvy (horší)", "barv", "barev"]], "v": "<p>Náhled slouží k vizuální kontrole tiskových informací na obrazovce. U většiny programů se předpokládá, že to, co je vidět, bude víceméně vytištěno. U barev je ale třeba počítat s tím, že výsledek bude spíše horší.</p>"}, {"id": "q-natisk", "t": "Nátisk", "q": "Co představuje v předtiskové přípravě nátisk?", "p": 5, "k": [["zkušební otisk", "zkusebn"], ["před tiskem", "pred tiskem", "nakladu"], ["ČSN", "csn"], ["právní význam", "prav"], ["stejný papír, barvy, technika", "stejn"], ["kalibrovatelné", "kalibr", "plotr"]], "v": "<p>Nátisk je zkušební otisk tiskové formy, zejména ilustrační, ve více barvách před tiskem vlastního nákladu. Slouží zpracovateli (tiskárně) i zadavateli k posouzení grafického účinku nebo u barvotisku k přezkoušení barev z dílčích forem. Podmínky nátisku jsou obsaženy v ČSN a mají technický i právní význam – nátisk musí být proveden na stejném papíru, stejnými barvami, stejnou technikou tisku, ve stanoveném počtu výtisků. U barvotisku je závazný i postupný soutisk dílčích barev. Nátisk lze realizovat na nátiskových zařízeních (většinou plotrech), která jsou kalibrovatelná.</p>"}];
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ');}
+function lev1(a,b){ // povolí 1 překlep u delších hesel
+ if(Math.abs(a.length-b.length)>1)return false;let i=0,j=0,e=0;
+ while(i<a.length&&j<b.length){if(a[i]===b[j]){i++;j++;continue;}if(++e>1)return false;
+  if(a.length>b.length)i++;else if(b.length>a.length)j++;else{i++;j++;}}
+ return e+(a.length-i)+(b.length-j)<=1;}
+function hit(txt,alts){const t=norm(txt),words=t.split(/[^a-z0-9]+/);
+ return alts.some(a=>{a=norm(a);if(a.length<=3)return words.includes(a);if(t.includes(a))return true;
+  if(a.length>=6&&!a.includes(' '))return words.some(w=>w.length>=a.length&&lev1(w.slice(0,a.length),a));return false;});}
+let cur=[];
+function newSet(){const pool=[...TQ];cur=[];while(cur.length<6&&pool.length)cur.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);
+ document.getElementById('tBox').innerHTML=cur.map((q,i)=>`<div class="tq"><b>${i+1}. ${q.q}</b> <span class="muted">(${q.p} b)</span><textarea id="ta${i}" placeholder="Napiš odpověď…"></textarea><div class="fb" id="tf${i}"></div></div>`).join('');
+ document.getElementById('tSum').innerHTML='';}
+function check(){let got=0,max=0;cur.forEach((q,i)=>{const v=document.getElementById('ta'+i).value;
+ const res=q.k.map(alts=>[alts[0],hit(v,alts.slice(1))]);const n=res.filter(r=>r[1]).length;
+ const b=Math.round(q.p*n/q.k.length*2)/2;got+=b;max+=q.p;
+ document.getElementById('tf'+i).innerHTML='<div>'+res.map(r=>`<span class="chip ${r[1]?'ok':'no'}">${r[1]?'✔':'✘'} ${r[0]}</span>`).join('')+'</div>'+
+ `<p>Hesla: <b>${n} z ${q.k.length}</b> → odhad <b>${b} z ${q.p} b</b>. <a href="#${q.id}">↗ vysvětlení v textu</a></p><details><summary>Vzorová odpověď</summary>${q.v}</details>`;});
+ document.getElementById('tSum').innerHTML=`<p><span class="sum">Odhad: ${got} z ${max} bodů</span></p><p class="muted">Odhad počítá hesla. U skutečné písemky hodnotí učitel/ka celou odpověď.</p>`;}
+document.getElementById('tNew').onclick=newSet;document.getElementById('tCheck').onclick=check;newSet();
+// kvíz
+const KQ=[["Který druh tisku tiskne bez hmotné tiskové formy?", ["digitalizovaný tisk", "klasický tisk", "digitální tisk", "ofset bez vlhčení"], 2], ["Co se stane s místy fotovodivého válce, kam dopadne laser?", ["vybijí se", "nabijí se silněji", "zahřejí se a roztaví toner", "začnou odpuzovat toner"], 0], ["Jak se toner fixuje na papír?", ["UV zářením", "odpařením rozpouštědla", "zapitím do papíru", "teplem a tlakem"], 3], ["Co tvoří barvotvornou složku inkoustů?", ["pojiva a rozpouštědla", "pigmenty a barviva", "sikativy a vosky", "vývojka a ustalovač"], 1], ["Osvitová jednotka pro termocitlivé desky má obvykle…", ["vnitřní buben a UV diodu", "plochou konstrukci a UV diodu", "vnější buben a IR diodu", "vnitřní buben a IR diodu"], 2], ["Jaké rozlišení potřebuje osvitová jednotka pro 150 lpi?", ["2 400 dpi", "1 200 dpi", "300 dpi", "38 400 dpi"], 0], ["Kolik pixelů má tónová buňka, ve které vzniká elektronický bod?", ["8 × 8", "12 × 12", "32 × 32", "16 × 16"], 3], ["Technologie CtF je…", ["osvit přímo na desku", "osvit na film a kopírování na desku", "vypálení formy ve stroji", "osvit síta bez filmu"], 1], ["Co je JDF?", ["elektronický popis zakázky", "jazyk pro popis stránky", "formát se ztrátovou kompresí", "program pro ripování dat"], 0], ["Ve kterém formátu se nejčastěji předávají texty do DTP studia?", ["TIFF", "EPS", "DOC", "JPEG"], 2], ["Kde je na tiskovém archu měrný proužek (škála)?", ["u straniček na nakládací straně", "uprostřed archu mezi stranami", "jen v rohu u popisky", "po celé šířce na výběhové straně"], 3], ["Čím se měří políčka měrného proužku?", ["kalibrační sondou", "denzitometrem", "fadenzählerem (lupou)", "skenerem"], 1], ["Čím se nátisk liší od náhledu?", ["je to fyzický zkušební výtisk", "je to kontrola na monitoru", "tiskne se až po nákladu", "nemá žádný právní význam"], 0]];let ks=0,ka=0;
+function kviz(){ks=0;ka=0;document.getElementById('kBox').innerHTML=KQ.map((q,i)=>`<div class="kq"><b>${i+1}. ${q[0]}</b><div class="opts">${q[1].map((o,j)=>`<button data-q="${i}" data-o="${j}">${o}</button>`).join('')}</div></div>`).join('');
+ document.querySelectorAll('.kq button').forEach(b=>b.onclick=()=>{const q=KQ[+b.dataset.q],box=b.parentNode;if(box.dataset.done)return;box.dataset.done=1;ka++;
+  const ok=+b.dataset.o===q[2];if(ok)ks++;b.classList.add(ok?'right':'wrong');box.children[q[2]].classList.add('right');
+  document.getElementById('kScore').textContent=ks+' / '+ka;});
+ document.getElementById('kScore').textContent='0 / 0';}
+document.getElementById('kReset').onclick=kviz;kviz();
+</script>
+</body>
+</html>
