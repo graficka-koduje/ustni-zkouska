@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Téma č. 17 – Počítačová typografie – popis písma, druhy písma, písmo v počítači – font (typy souborů) · Digitální tisk. Porovnání digitálního a ofsetového tisku</title>
+<meta name="description" content="Příprava k ústní zkoušce, obor reprodukční grafik: počítačová typografie, velikost písma, proklad, zarovnání, pravidla hladké sazby, popis a druhy písma, font a typy souborů (Type 1, TrueType, OpenType, WOFF); digitální tisk a porovnání s ofsetem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Great+Vibes&family=Courier+Prime&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f4; --surface:#ffffff; --surface2:#f0f0ec; --ink:#1b1c1f; --muted:#5d6068; --line:#dcdcd6;
+  --c:#00a3e0; --c-soft:#e3f5fc; --c-ink:#006e98;
+  --m:#e6007e; --m-soft:#fde6f2; --m-ink:#a8005c;
+  --y:#f2c500; --y-soft:#fff8d6; --y-ink:#806600;
+  --k:#1b1c1f; --k-soft:#ececea; --k-ink:#1b1c1f;
+  --ok:#1f8a4c; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131417; --surface:#1c1d21; --surface2:#24262b; --ink:#ececec; --muted:#a3a6ad; --line:#34363c;
+    --c-soft:#0c2a36; --c-ink:#5fd0ff; --m-soft:#3a0f25; --m-ink:#ff6fb9;
+    --y-soft:#342b06; --y-ink:#ffd84d; --k:#e4e4e4; --k-soft:#2a2b30; --k-ink:#f0f0f0;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131417; --surface:#1c1d21; --surface2:#24262b; --ink:#ececec; --muted:#a3a6ad; --line:#34363c;
+  --c-soft:#0c2a36; --c-ink:#5fd0ff; --m-soft:#3a0f25; --m-ink:#ff6fb9;
+  --y-soft:#342b06; --y-ink:#ffd84d; --k:#e4e4e4; --k-soft:#2a2b30; --k-ink:#f0f0f0;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto;display:block;border-radius:10px;margin:0 auto}
+figure.pic img{max-height:420px;width:auto}
+h1,h2,h3,h4{line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.45rem,4vw,2rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700;margin-top:1.4em}
+p{margin:.4em 0 .9em}
+ul{padding-left:1.2em;margin:.3em 0 1em} li{margin:.2em 0}
+b,strong{font-weight:700}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+
+/* registrační proužek */
+.cmyk-bar{height:6px;background:linear-gradient(90deg,var(--c) 0 25%,var(--m) 25% 50%,var(--y) 50% 75%,#1b1c1f 75%)}
+
+/* hero */
+header.hero{padding:34px 0 26px;background:var(--surface);border-bottom:1px solid var(--line)}
+.back{display:inline-block;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.back:hover{color:var(--ink)}
+.badge{display:inline-block;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:var(--k);color:var(--bg);padding:4px 10px;border-radius:99px}
+.hero h1{font-size:clamp(1.7rem,5.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin:.35em 0 .3em}
+.hero h1 .sep{color:var(--m)}
+.hero p.lead{font-size:1.08rem;color:var(--muted);max-width:720px;margin:0}
+.reg{display:inline-block;width:22px;height:22px;vertical-align:-3px;margin-right:6px}
+
+/* nav */
+nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:.88rem;font-weight:600;padding:6px 12px;border-radius:99px;background:var(--surface);border:1px solid var(--line)}
+nav.toc a.active{background:var(--k);color:var(--bg);border-color:var(--k)}
+
+section{padding:44px 0 10px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.dot{width:16px;height:16px;border-radius:50%;flex:0 0 auto}
+.dot.c{background:var(--c)} .dot.m{background:var(--m)} .dot.y{background:var(--y)} .dot.k{background:var(--k)}
+.kicker{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.grid2>.card,.grid3>.card{margin:0}
+
+.oneliner{border-left:6px solid var(--k);background:var(--surface);padding:14px 18px;border-radius:0 12px 12px 0;font-size:1.05rem;margin:14px 0;box-shadow:var(--shadow)}
+.oneliner .lbl{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.oneliner.c{border-color:var(--c)} .oneliner.m{border-color:var(--m)} .oneliner.y{border-color:var(--y)} .oneliner.k{border-color:var(--k)}
+
+.tip,.warn,.say{border-radius:12px;padding:12px 16px;margin:14px 0;font-size:.97rem}
+.tip{background:var(--c-soft)} .warn{background:var(--m-soft)} .say{background:var(--y-soft)}
+.tip b.t,.warn b.t,.say b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.tip b.t{color:var(--c-ink)} .warn b.t{color:var(--m-ink)} .say b.t{color:var(--y-ink)}
+
+figure{margin:14px 0}
+figure.pic{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px}
+figcaption{font-size:.86rem;color:var(--muted);margin-top:6px;padding:0 4px}
+figure.pic figcaption{color:#5d6068}
+.svgfig{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.svgfig svg{width:100%;height:auto;display:block}
+
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tablewrap table{min-width:640px}
+
+details.qa{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:8px 0}
+details.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none;position:relative;padding-right:40px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+";position:absolute;right:16px;top:9px;font-size:1.3rem;color:var(--muted)}
+details.qa[open] summary::after{content:"–"}
+details.qa .ans{padding:0 16px 14px;color:var(--ink)}
+
+/* MYŠLENKOVÁ MAPA */
+.mm-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+button.btn{font:inherit;font-weight:600;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:7px 14px;cursor:pointer}
+button.btn:hover{border-color:var(--ink)}
+.mindmap{display:grid;grid-template-columns:1fr 240px 1fr;grid-template-rows:auto auto;gap:18px 34px;align-items:start;position:relative}
+.mm-center{grid-column:2;grid-row:1 / span 2;align-self:center;text-align:center;background:var(--k);color:var(--bg);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:26px;position:relative;z-index:2}
+.mm-center .n{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.mm-center .t{font-weight:800;font-size:1.12rem;line-height:1.25;margin:6px 0}
+.mm-center .s{font-size:.8rem;opacity:.85}
+.mm-branch{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:14px 14px 12px;position:relative;box-shadow:var(--shadow)}
+.mm-branch.c{border-color:var(--c)} .mm-branch.m{border-color:var(--m)} .mm-branch.y{border-color:var(--y)} .mm-branch.k{border-color:var(--k)}
+.mm-branch::after{content:"";position:absolute;top:50%;width:34px;height:3px}
+.mm-branch.left::after{right:-36px} .mm-branch.right::after{left:-36px}
+.mm-branch.c::after{background:var(--c)} .mm-branch.m::after{background:var(--m)} .mm-branch.y::after{background:var(--y)} .mm-branch.k::after{background:var(--k)}
+.mm-branch h4{display:flex;align-items:center;gap:8px;font-size:1.02rem;margin:0 0 10px}
+.mm-branch h4 .num{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex:0 0 auto}
+.mm-branch.c .num{background:var(--c)} .mm-branch.m .num{background:var(--m)} .mm-branch.y .num{background:var(--y);color:#1b1c1f} .mm-branch.k .num{background:#1b1c1f}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:.85rem;font-weight:600;border-radius:99px;padding:5px 11px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer;text-align:left}
+.mm-branch.c .chip[aria-expanded="true"]{background:var(--c);color:#fff;border-color:var(--c)}
+.mm-branch.m .chip[aria-expanded="true"]{background:var(--m);color:#fff;border-color:var(--m)}
+.mm-branch.y .chip[aria-expanded="true"]{background:var(--y);color:#1b1c1f;border-color:var(--y)}
+.mm-branch.k .chip[aria-expanded="true"]{background:#1b1c1f;color:#fff;border-color:#1b1c1f}
+.hint{font-size:.9rem;margin-top:10px;padding:9px 11px;border-radius:10px;background:var(--surface2);display:none}
+.hint.show{display:block}
+.hint b{display:block;margin-bottom:2px}
+.mm-branch .goto{display:inline-block;margin-top:10px;font-size:.84rem;font-weight:600;color:var(--muted)}
+@media (max-width:860px){
+  .mindmap{grid-template-columns:1fr;gap:14px;padding-left:18px}
+  .mindmap::before{content:"";position:absolute;left:4px;top:40px;bottom:30px;width:3px;background:linear-gradient(var(--k),var(--c),var(--m),var(--y),var(--k));border-radius:3px}
+  .mm-center{grid-column:1;grid-row:auto;border-radius:18px;aspect-ratio:auto;padding:18px}
+  .mm-branch.left::after,.mm-branch.right::after{left:-16px;right:auto;width:14px}
+}
+
+/* cesta zakázky */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:12px 0}
+.step{flex:1 1 120px;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:10px 12px;position:relative}
+.step .no{font-size:.72rem;font-weight:800;color:var(--muted)}
+.step .nm{font-weight:800;font-size:1rem}
+.step .ds{font-size:.82rem;color:var(--muted);line-height:1.35}
+.step.c{border-top-color:var(--c)} .step.m{border-top-color:var(--m)} .step.y{border-top-color:var(--y)} .step.k{border-top-color:var(--k)}
+.mnemo{font-size:1.15rem;font-weight:700;background:var(--surface);border:2px dashed var(--line);border-radius:14px;padding:14px 18px;margin:14px 0}
+.mnemo span.L{font-size:1.4rem;font-weight:800}
+
+/* timeline potítko */
+.timeline{list-style:none;padding:0;margin:10px 0}
+.timeline li{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.timeline .tm{font-weight:800;font-variant-numeric:tabular-nums}
+.bar{height:12px;border-radius:99px;overflow:hidden;display:flex;margin:6px 0 2px}
+.bar i{display:block;height:100%}
+
+/* checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--m);flex:0 0 auto}
+
+/* kvíz */
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:12px 0}
+.q .qt{font-weight:700;margin-bottom:10px}
+.q .opts{display:grid;gap:7px}
+.q button.o{font:inherit;text-align:left;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.q button.o.right{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+.q button.o.wrong{background:#c62828;border-color:#c62828;color:#fff}
+.q .fb{display:none;margin-top:10px;font-size:.93rem}
+.q.done .fb{display:block}
+.score{font-weight:800;font-size:1.1rem}
+
+.pill{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);border:1px solid var(--line);margin:2px 2px 2px 0}
+.kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+audio{width:100%;margin-top:8px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem}
+.theme-toggle{position:fixed;right:14px;bottom:14px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow)}
+@media print{nav.toc,.theme-toggle,.mm-tools{display:none} .hint{display:block} details.qa .ans{display:block}}
+
+/* ===== doplňky pro téma 2 ===== */
+.fab-map{position:fixed;left:14px;bottom:14px;z-index:30;display:none;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.9rem;border:0;border-radius:99px;padding:11px 16px 11px 13px;background:var(--m);color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.fab-map.show{display:inline-flex}
+.fab-map .ar{font-size:1.15rem;line-height:1}
+.ret{display:inline-block;margin:6px 0 0;font-size:.85rem;font-weight:600;color:var(--m-ink);text-decoration:none}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.calc .st{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.calc .st:last-child{border-bottom:0}
+.calc .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+.calc .res{font-weight:800;background:var(--y-soft);padding:2px 8px;border-radius:6px}
+.eq{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:600;background:var(--surface2);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.sim-ctrl{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.sim-ctrl button{font:inherit;font-weight:700;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 13px;cursor:pointer}
+.sim-ctrl button.on{background:var(--m);border-color:var(--m);color:#fff}
+.sheets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.sheet .h{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sheet .row{display:flex;align-items:center;gap:6px;margin:4px 0;font-size:.82rem}
+.sheet .row .lb{width:30px;color:var(--muted);font-weight:700}
+.sheet .pg{flex:1;display:flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden}
+.sheet .pg span{flex:1;text-align:center;font-weight:800;padding:5px 0}
+.sheet .pg span:first-child{border-right:1.5px dashed var(--m)}
+.sheet .sum{font-size:.75rem;color:var(--muted);margin-top:4px}
+.inline-in{font:inherit;font-weight:700;width:90px;padding:7px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+/* test psaním */
+.wt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.wt .qt{font-weight:800;font-size:1.05rem;margin-bottom:4px}
+.wt .qh{font-size:.88rem;color:var(--muted);margin-bottom:10px}
+.wt textarea{width:100%;min-height:150px;font:inherit;font-size:16px;line-height:1.5;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical}
+.wt textarea:focus{outline:none;border-color:var(--m)}
+.wt .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.wt .acts .wc{font-size:.82rem;color:var(--muted);margin-left:auto}
+button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
+.wt .out{display:none;margin-top:14px}
+.wt .out.show{display:block}
+.meter{height:12px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:6px 0 4px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--c),var(--m));border-radius:99px;transition:width .5s}
+.verdict{font-weight:800;font-size:1.02rem}
+.fbbox{border-radius:12px;padding:10px 14px;margin:10px 0}
+.fbbox h4{margin:0 0 6px;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase}
+.fbbox ul{margin:0;padding-left:1.1em}
+.fbbox li{margin:.3em 0;font-size:.94rem}
+.fb-ok{background:color-mix(in srgb,var(--ok) 12%,transparent)} .fb-ok h4{color:var(--ok)}
+.fb-miss{background:var(--y-soft)} .fb-miss h4{color:var(--y-ink)}
+.fb-err{background:var(--m-soft)} .fb-err h4{color:var(--m-ink)}
+.star{color:var(--m);font-weight:800}
+.model{display:none;border-left:5px solid var(--c);background:var(--c-soft);border-radius:0 12px 12px 0;padding:12px 16px;margin-top:10px;font-size:.96rem}
+.model.show{display:block}
+.model b.t{display:block;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--c-ink);margin-bottom:4px}
+.svgfig text{font-family:Inter,system-ui,sans-serif}
+.legend-row{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted);margin-top:6px}
+@media print{.fab-map{display:none!important}}
+
+.svgfig.wide{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:700px){.svgfig.wide svg{min-width:640px}.svgfig.wide::after{content:"↔ obrázek posuň do strany";display:block;font-size:.78rem;color:var(--muted);margin-top:4px;position:sticky;left:0}}
+
+
+.check li{flex-wrap:wrap}.check li label{flex:1 1 220px}
+.svp-go{margin-left:auto;align-self:center;white-space:nowrap;font-size:.82rem;font-weight:700;color:var(--m-ink);text-decoration:none;padding:2px 0 2px 30px}
+/* ===== doplňky pro téma 6 ===== */
+.ctrl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:8px 0 12px}
+.ctrl label{font-size:.9rem;font-weight:600}
+.ctrl input[type=range]{flex:1 1 200px;accent-color:var(--m)}
+.ctrl output{font-weight:800;min-width:70px}
+canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#fff;border:1px solid var(--line)}
+.bits{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;letter-spacing:.04em}
+.bits i{font-style:normal;display:inline-block;min-width:1.05em;text-align:center;border-radius:4px;margin:1px}
+.bits i.b1{background:#1b1c1f;color:#fff}.bits i.b0{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.pxgrid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;max-width:260px;margin:6px auto}
+.pxgrid span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;border:1px solid #c9ccd1}
+.steps-bar{display:flex;height:46px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.steps-bar i{flex:1;display:block}
+.big{font-size:1.5rem;font-weight:800}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+.pro{color:var(--ok);font-weight:700}.con{color:var(--bad);font-weight:700}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid rgba(0,0,0,.15)}
+.calc,.card{overflow-wrap:anywhere}
+@media (max-width:560px){.eq{white-space:normal}}
+.angle-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.angle-row .a{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 4px}
+.angle-row .a b{display:block;font-size:1.25rem}
+.angle-row svg{width:56px;height:56px;display:block;margin:0 auto 4px}
+@media (max-width:420px){.angle-row{grid-template-columns:repeat(2,1fr)}}
+/* ===== doplňky pro téma 7 ===== */
+.photo-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:16px 0}
+.photo-strip figure{margin:0}
+.photo-strip img{aspect-ratio:4/3;object-fit:cover;width:100%;max-height:none}
+@media (max-width:860px){.photo-strip{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){.photo-strip{grid-template-columns:repeat(2,1fr)}}
+figure.pic img{max-height:340px}
+.game{background:var(--surface);border:2px dashed var(--line);border-radius:16px;padding:16px 18px;margin:18px 0}
+.game-h{display:flex;flex-direction:column;gap:2px;margin-bottom:10px}
+.og-done{margin:0 0 10px;padding-left:1.6em;display:grid;gap:4px}
+.og-done li{font-weight:600;font-size:.92rem;padding:4px 10px;border-radius:8px;background:var(--surface2);border-left:5px solid var(--k)}
+.og-done li.c{border-left-color:var(--c)} .og-done li.m{border-left-color:var(--m)} .og-done li.k{border-left-color:#1b1c1f}
+.og-pool{display:flex;flex-wrap:wrap;gap:8px}
+.og-card{font:inherit;font-weight:600;font-size:.9rem;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.og-card:hover{border-color:var(--ink)}
+.shake{animation:shake .4s;background:#c62828!important;color:#fff!important;border-color:#c62828!important}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.sg-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.sg-t{font-weight:600;font-size:.95rem}
+.sg-b{display:flex;gap:5px;flex-wrap:wrap}
+.sg-b button{font:inherit;font-size:.82rem;font-weight:700;padding:5px 10px;border-radius:99px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);cursor:pointer}
+.sg-b button.right{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+.sg-b button.wrong{background:#c62828;border-color:#c62828;color:#fff}
+.sg-f{grid-column:1 / -1;display:none}
+.sg-row.done .sg-f{display:block}
+@media (max-width:560px){.sg-row{grid-template-columns:1fr}}
+#ppiOut .st{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+#ppiOut .st:last-child{border-bottom:0}
+#ppiOut .st .n{width:28px;height:28px;border-radius:50%;background:var(--k);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+h4{font-size:1.02rem;margin-top:1.3em}
+/* ===== doplňky pro téma 8 ===== */
+select.inline-in{width:auto}
+.svgfig svg circle[role=button]:focus{outline:none;stroke:#888;stroke-width:3}
+#sepSvg,#regSvg{max-height:360px}
+.castStep:focus{outline:none}
+.mir{display:flex;flex-wrap:wrap;gap:3px;margin:6px 0;min-height:52px}
+.mir span{display:inline-flex;align-items:center;justify-content:center;width:34px;height:46px;border-radius:4px;font:700 1.5rem/1 Georgia,serif}
+.mir:not(.print) span{background:#8fb8a3;color:#5b3d12;border:1px solid #3f6b55}
+.mir:not(.print) span i{font-style:normal;display:inline-block;transform:scaleX(-1)}
+.mir.print span{background:#fff;color:#1b1c1f;border:1px dashed var(--line);width:28px}
+.timeline.evo li{grid-template-columns:96px 1fr}
+@media (max-width:480px){.timeline.evo li{grid-template-columns:1fr;gap:2px}}
+#fpSvg [data-p]{transition:opacity .3s}
+
+/* ===== doplňky pro téma 15 ===== */
+figure.pic>div>svg,figure.pic>div{display:block;width:100%}
+figure.pic svg{width:100%;height:auto;display:block;max-height:340px}
+#obrStroj svg{max-height:none}
+@media (max-width:700px){figure.svgfig.wide #obrStroj svg{min-width:560px}}
+figure.pic.svgfig{background:#fff}
+.pisemka{border:2px solid #1f8a4c;background:color-mix(in srgb,#1f8a4c 9%,var(--surface));border-radius:12px;padding:10px 14px;margin:14px 0;font-size:.95rem}
+.pisemka .stitek{display:block;font-size:.76rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1f8a4c;margin-bottom:4px}
+:root[data-theme="dark"] .pisemka .stitek{color:#5fd38d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pisemka .stitek{color:#5fd38d}}
+.pro{color:var(--ok)} .con{color:var(--bad)}
+.sim-ctrl{justify-content:center}
+h4[id]{margin-top:1.2em;font-size:1.02rem}
+.am-in{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.am-in label{display:flex;flex-direction:column;font-size:.85rem;font-weight:700;color:var(--muted);gap:4px}
+@media(max-width:600px){.am-in{grid-template-columns:1fr}}
+.tablewrap[style] table{min-width:var(--mw)}
+
+/* ===== doplňky pro téma 16 ===== */
+/* krokovač */
+.stepper{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:14px 0;box-shadow:var(--shadow)}
+.sp-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sp-g{padding:2px 9px;border-radius:99px;background:var(--surface2)}
+.sp-g.blok{background:var(--c-soft);color:var(--c-ink)}.sp-g.desky{background:var(--y-soft);color:var(--y-ink)}.sp-g.spojeni{background:var(--m-soft);color:var(--m-ink)}
+.sp-stage{background:#fff;border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:6px;touch-action:pan-y}
+.sp-stage svg{display:block;width:100%;height:auto;max-height:340px}
+.sp-stage svg text{font-family:Inter,system-ui,sans-serif}
+.sp-t{font-size:1.15rem;margin:.2em 0 .3em}
+.sp-d{min-height:4.8em}
+.sp-nav{display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap}
+.sp-nav .btn:disabled{opacity:.4;cursor:default}
+.sp-dots{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;flex:1 1 140px}
+.sp-dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line);padding:0;cursor:pointer}
+.sp-dots button.on{background:var(--m);transform:scale(1.25)}
+.sp-all{margin-top:12px;font-size:.92rem}
+.sp-all summary{cursor:pointer;font-weight:700;color:var(--muted)}
+.sp-all li{margin:.35em 0}
+.sim-ctrl button{margin:0}
+#ptSvg svg,#obSvg svg{display:block;width:100%;height:auto}
+@media (max-width:700px){#ptSvg svg{min-width:560px}}
+.form label span{font-weight:600;color:var(--ink)}
+@media print{.sp-nav,.sp-dots{display:none}.sp-all{display:block}}
+.sp-g:empty{display:none}
+@media (max-width:560px){.sp-dots{order:-1;flex-basis:100%;margin-bottom:6px}}
+.mixbox svg{display:block;width:100%;height:auto;border-radius:10px}
+#mixAddBtns button.on,#mixSubBtns button.on{background:var(--bc);border-color:var(--bc);color:#fff}
+#mixSubBtns button.on[data-k="Y"],#mixAddBtns button.on[data-k="G"]{color:#1b1c1f}
+.sim-ctrl{justify-content:center}
+.labout{display:flex;gap:12px;align-items:center;margin-top:6px}
+.labsw{flex:0 0 72px;height:72px;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
+#sepSvg svg{display:block;margin:0 auto;width:100%;max-width:420px;height:auto}
+.ctrl label{min-width:150px}
+
+/* ===== doplňky pro téma 17 ===== */
+.sg-b button{white-space:normal;line-height:1.25}
+.game .sg-t{font-size:.98rem}
+#drGame .sg-t span{display:inline-block;margin-top:4px;color:var(--ink)}
+.ctrl label{min-width:150px}
+</style>
+
+</head>
+<body>
+<div class="cmyk-bar"></div>
+<header class="hero">
+  <div class="wrap">
+    <a class="back" href="../">← zpět na rozcestník</a><br>
+    <span class="badge">Ústní zkouška · Téma č. 17</span>
+    <h1>Počítačová typografie – popis písma, druhy písma, písmo v počítači – font (typy souborů) <span class="sep">/</span> Digitální tisk. Porovnání digitálního a ofsetového tisku</h1>
+    <p class="lead">Všechno, co potřebuješ, abys u zkoušky 15 minut mluvil/a v souvislostech a ne v heslech. Nejdřív si přečti, o čem otázka je, pak si projdi myšlenkovou mapu, potom souhrn a nakonec se vyzkoušej.</p>
+    <a class="easy-link" href="jednoduse.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:6px;background:#e6007e;color:#fff;font-weight:800;text-decoration:none;padding:12px 18px;border-radius:12px;font-size:1.02rem">⚡ Jednoduše: jen to hlavní (obrázky, hesla, samozkoušení)</a>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Obsah">
+  <div class="wrap">
+    <a href="jednoduse.html">⚡ Jednoduše</a>
+    <a href="#potitko">Jak na potítko</a>
+    <a href="#mapa">Myšlenková mapa</a>
+    <a href="#cesta">Cesta textu</a>
+    <a href="#typografie">Typografie</a>
+    <a href="#popis">Popis písma</a>
+    <a href="#druhy">Druhy písma</a>
+    <a href="#font">Font</a>
+    <a href="#digitalni">Digitální tisk</a>
+    <a href="#porovnani">Digitál × ofset</a>
+    <a href="#svp">Co musím umět</a>
+    <a href="#test">Test psaním</a>
+    <a href="#kviz">Kvíz</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ POTÍTKO ============ -->
+<section id="potitko">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">Než začneš</span></div>
+  <h2>Jak o otázce přemýšlet na potítku</h2>
+  <p>Otázka má dvě části: <b>písmo v počítači</b> a <b>digitální tisk</b>. Spojuje je jeden příběh: <b>grafik vysází text v počítači a pak se rozhodne, kde ho vytisknout.</b> Malý náklad se vytiskne digitálně, velký ofsetem.</p>
+  <p>Začni tím, co je <b>počítačová typografie</b> – úprava textu v programu: velikost písma, proklad, zarovnání a pravidla hladké sazby. Pak <b>popiš písmo</b> (osnova, druh, řez, rodina) a vyjmenuj <b>druhy písma</b>. Potom vysvětli, že písmo je v počítači <b>soubor – font</b>, a řekni typy souborů: <b>Type 1, TrueType, OpenType</b>. Ve druhé části vysvětli <b>digitální tisk</b> a porovnej ho s <b>ofsetem</b>.</p>
+  <div class="tip"><b class="t">Část otázky už znáš</b>Písmové pojmy jsou podrobně v <a href="../tema-01-pismo-a-papir/#pojmy">tématu 1</a>, digitální tisk a porovnání s ofsetem v <a href="../tema-06-predlohy-a-rastr/#digitalni">tématu 6</a>. Tady najdeš krátké shrnutí a prokliky. <b>Nové</b> je hlavně: <a href="#typografie">počítačová typografie</a> a <a href="#font">font a typy souborů</a>.</div>
+
+  <div class="oneliner k"><span class="lbl">Tvoje úvodní věta</span>„<b>Počítačová typografie</b> je úprava textu v počítači – grafik volí <b>písmo</b>, jeho <b>velikost v bodech</b>, <b>proklad</b> a <b>zarovnání</b> a dodržuje <b>pravidla hladké sazby</b>. Písmo je v počítači uložené jako soubor – <b>font</b>, dnes nejčastěji <b>OpenType</b>. Hotová sazba se vytiskne buď <b>digitálně</b> – bez tiskové formy, pro malé náklady – nebo <b>ofsetem</b>, který se vyplatí pro velké náklady.“</div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Co si načrtnout na papír (5 minut)</h3>
+      <ol>
+        <li><b>Písmovou osnovu:</b> 5 linek – akcentová linie, horní dotažnice, střední výška, účaří, dolní dotažnice.</li>
+        <li><b>Druh × řez × rodina:</b> Garamond → kurzíva, tučné → všechno dohromady = rodina.</li>
+        <li><b>5 druhů písma:</b> patkové · bezpatkové · psací · psací stroj · lomené.</li>
+        <li><b>Přípony fontů:</b> .pfb + .pfm (Type 1) · .ttf (TrueType) · <b>.otf (OpenType)</b> · .woff (web).</li>
+        <li><b>Graf ceny:</b> digitál = rovná čára, ofset = klesající křivka, kde se protnou, je zlom.</li>
+      </ol>
+      <p class="muted small">Náčrtek je tvůj tahák: když se zasekneš, podíváš se na něj a pokračuješ dál.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Rozvrh 15 minut mluvení</h3>
+      <div class="bar" aria-hidden="true"><i style="flex:1;background:#888"></i><i style="flex:4;background:var(--c)"></i><i style="flex:3;background:var(--m)"></i><i style="flex:3;background:var(--y)"></i><i style="flex:3;background:#1b1c1f"></i><i style="flex:1;background:#888"></i></div>
+      <ul class="timeline">
+        <li><span class="tm">0–1</span><span>Úvod: text se vysází v počítači a pak vytiskne</span></li>
+        <li><span class="tm">1–5</span><span><b>Počítačová typografie</b> (C): velikost v bodech, proklad, zarovnání, prostrkání, <b>hladká sazba</b></span></li>
+        <li><span class="tm">5–8</span><span><b>Popis a druhy písma</b> (M): osnova, druh, řez, rodina, 5 druhů písma, klasifikace</span></li>
+        <li><span class="tm">8–11</span><span><b>Font</b> (Y): co je font, bitmapový × vektorový, <b>Type 1, TrueType, OpenType</b>, písmo v PDF</span></li>
+        <li><span class="tm">11–14</span><span><b>Digitální tisk × ofset</b> (K): laser a inkoust, výhody, kdy se vyplatí který</span></li>
+        <li><span class="tm">14–15</span><span>Závěr: malý náklad → digitál, velký náklad → ofset</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAPA ============ -->
+<section id="mapa">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">1 · Myšlenková mapa</span></div>
+  <h2>Mapa otázky ve čtyřech barvách CMYK</h2>
+  <p>Každá větev má jednu tiskovou barvu a <b>mluv v pořadí C → M → Y → K</b>, stejně jako se barvy tisknou. Klepni na heslo a uvidíš, co k němu říct. Když je vybrané jedno heslo, odkaz pod větví tě pošle přímo na jeho podnadpis v souhrnu.</p>
+  <div class="mm-tools">
+    <button class="btn" id="mmOpen">Rozbalit všechna hesla</button>
+    <button class="btn" id="mmClose">Sbalit</button>
+  </div>
+  <div class="mindmap" id="mindmap"></div>
+</section>
+
+<!-- ============ CESTA ============ -->
+<section id="cesta">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">Červená nit</span></div>
+  <h2>Cesta textu: od fontu k výtisku</h2>
+  <p>Tohle je pořadí, ve kterém o otázce mluvíš. Text se vysází <b>fontem</b> podle pravidel <b>typografie</b>, uloží se do <b>tiskového PDF</b> s vloženými písmy a vytiskne se – digitálně, nebo ofsetem.</p>
+  <div class="flow">
+    <div class="step c"><div class="no">1</div><div class="nm">Text</div><div class="ds">rukopis od zákazníka (Word)</div></div>
+    <div class="step y"><div class="no">2</div><div class="nm">Font</div><div class="ds">nainstalované písmo, např. .otf</div></div>
+    <div class="step c"><div class="no">3</div><div class="nm">Sazba</div><div class="ds">InDesign: velikost, proklad, zarovnání, hladká sazba</div></div>
+    <div class="step m"><div class="no">4</div><div class="nm">Tiskové PDF</div><div class="ds">písma vložená do PDF</div></div>
+    <div class="step k"><div class="no">5</div><div class="nm">RIP</div><div class="ds">rozloží stránku na body</div></div>
+    <div class="step k"><div class="no">6</div><div class="nm">Tisk</div><div class="ds">malý náklad → digitál, velký → ofset</div></div>
+  </div>
+  <div class="tip"><b class="t">Most mezi oběma částmi</b>Ať se tiskne digitálně, nebo ofsetem, data jsou stejná: <b>tiskové PDF s vloženými písmy</b>. Rozdíl je až v tisku: digitální stroj tiskne <b>přímo z dat</b>, ofset potřebuje nejdřív vyrobit <b>tiskové desky</b>.</div>
+</section>
+
+<!-- ============ C: POČÍTAČOVÁ TYPOGRAFIE ============ -->
+<section id="typografie">
+  <div class="sec-head"><span class="dot c"></span><span class="kicker">2 · Souhrn · větev C</span></div>
+  <h2>Počítačová typografie</h2>
+  <div class="oneliner c"><span class="lbl">Jednou větou</span><b>Typografie</b> je nauka o písmu a o tom, jak s ním správně pracovat. <b>Počítačová typografie</b> = úprava textu v počítači: grafik v sázecím programu volí <b>písmo, velikost, proklad, zarovnání</b> a dodržuje <b>pravidla hladké sazby</b>, aby se text dobře četl.</div>
+
+  <h3 id="c1">Co je počítačová typografie</h3>
+  <figure class="pic"><div data-img="typo"></div></figure>
+  <p>Dříve sázeč skládal text z kovových liter ručně nebo na sázecím stroji. Dnes se text <b>sází v počítači</b> – v programu pro sazbu (DTP). Pravidla typografie zůstala stejná, jen je grafik nastavuje v programu.</p>
+  <ul>
+    <li><b>Programy:</b> Adobe <b>InDesign</b> (sazba knih, časopisů, letáků), Illustrator (krátké texty, loga), QuarkXPress, Affinity Publisher. <b>Word</b> není sázecí program – slouží jen na přípravu textu.</li>
+    <li><b>Co grafik nastavuje:</b> druh a řez písma, <a href="#c2">velikost písma</a>, <a href="#c3">proklad</a>, <a href="#c4">zarovnání</a>, <a href="#c5">prostrkání a vyrovnání párů</a>, odstavcovou zarážku a dělení slov.</li>
+    <li><b>Odstavcové a znakové styly</b> = uložené nastavení písma. Změním jeden styl a změní se celý dokument.</li>
+  </ul>
+  <p class="small">Jaký program na co a co umí sázecí program: <a href="../tema-04-software-a-cena-tisku/#sazba">téma 4</a> · vybavení DTP studia: <a href="../tema-03-dtp-studio-a-knizni-vazba/#software">téma 3</a>.</p>
+
+  <h3 id="c2">Velikost písma v bodech</h3>
+  <figure class="pic"><div data-img="bod"></div></figure>
+  <p><b>Velikost písma</b> se neudává v milimetrech, ale v <b>typografických bodech</b>. Grafické programy používají bod <b>angloamerické soustavy (pica)</b> – <b>1 pt = 0,353 mm</b>. Velikost odpovídá výšce kuželky – od dolní dotažnice po horní okraj s místem pro akcenty.</p>
+  <ul>
+    <li>běžný text knihy: <b>9–12 pt</b>, noviny 8–9 pt, knihy pro malé děti 12–20 pt,</li>
+    <li>nadpisy a plakáty: podle potřeby, klidně stovky bodů.</li>
+  </ul>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Písmové pojmy 1 (4 body):</b> velikost (stupeň) písma udává <b>výšku písma v bodech (pointech) angloamerické soustavy</b>. Druh a řez písma: <a href="#m2">níže</a>. Měrné soustavy Didot a pica a výpočty: <a href="../tema-01-pismo-a-papir/#mery">téma 1</a>.</div>
+
+  <h3 id="c3">Proklad (řádkování)</h3>
+  <figure class="pic"><div data-img="proklad"></div></figure>
+  <p><b>Proklad</b> = vzdálenost mezi řádky, přesněji od účaří jednoho řádku k účaří dalšího. Měří se v bodech a zapisuje se spolu s velikostí písma: <b>10/12 pt</b> = písmo 10 bodů, proklad 12 bodů. Proklad bývá o <b>1–3 body větší</b> než písmo.</p>
+  <h4 id="c3v">🧪 Vyzkoušej si: velikost písma a proklad</h4>
+  <div class="card">
+    <div class="ctrl"><label for="prVel">Velikost písma</label><input type="range" id="prVel" min="8" max="14" value="10"><output id="oVel">10 pt</output></div>
+    <div class="ctrl"><label for="prPro">Proklad</label><input type="range" id="prPro" min="7" max="22" value="12"><output id="oPro">12 pt</output></div>
+    <div id="prUkazka" style="background:#fff;color:#1b1c1f;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-family:'EB Garamond',Georgia,serif;max-width:420px;margin:0 auto">Grafik v programu nastaví velikost písma a proklad. Když jsou řádky příliš blízko, slévají se. Když jsou příliš daleko, odstavec se rozpadá a oko ztrácí řádek.</div>
+    <p class="small" id="prVerdikt" style="margin-top:8px"></p>
+  </div>
+
+  <h3 id="c4">Zarovnání odstavce</h3>
+  <figure class="pic"><div data-img="zarovnani"></div></figure>
+  <p><b>Zarovnání</b> (zalomení odstavce) říká, jak stojí řádky vůči okrajům sazby.</p>
+  <div class="sim-ctrl" id="zarBtns"></div>
+  <div class="card"><div id="zarUkazka" lang="cs" style="background:#fff;color:#1b1c1f;border-radius:10px;padding:10px 14px;font-family:'EB Garamond',Georgia,serif;max-width:340px;margin:0 auto;hyphens:auto;-webkit-hyphens:auto">Typografie je nauka o písmu. Grafik volí písmo, velikost, proklad a zarovnání tak, aby se text dobře četl a odstavec působil klidně a jednotně.</div><p class="small" id="zarPopis" style="margin:8px 0 0"></p></div>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Zarovnání</th><th>Jak vypadá</th><th>Kde se používá</th></tr>
+    <tr><td><b>do bloku</b></td><td>řádky rovné vlevo i vpravo, mezery mezi slovy se mění</td><td>knihy, noviny, časopisy</td></tr>
+    <tr><td><b>vlevo</b> (levý praporek)</td><td>rovné vlevo, vpravo „vlají“</td><td>letáky, web, krátké texty</td></tr>
+    <tr><td><b>na osu</b> (na střed)</td><td>řádky souměrně kolem středu</td><td>nadpisy, pozvánky, básně</td></tr>
+    <tr><td><b>vpravo</b> (pravý praporek)</td><td>rovné vpravo</td><td>jen krátké texty, popisky</td></tr>
+  </table></div>
+
+  <h3 id="c5">Prostrkání a vyrovnání párů (kerning)</h3>
+  <figure class="pic"><div data-img="kerning"></div></figure>
+  <ul>
+    <li><b>Prostrkání</b> (tracking) = zvětšení nebo zmenšení mezer mezi <b>všemi písmeny</b> ve slově nebo v řádku. Prostrkat se dá nadpis z verzálek, nikdy ne běžný text.</li>
+    <li><b>Vyrovnání párů</b> (kerning) = úprava mezery mezi <b>dvěma konkrétními písmeny</b>, která by jinak byla vidět jako díra: <b>AV, To, Ty, LT</b>. Kvalitní font má páry uložené v sobě.</li>
+  </ul>
+  <h4 id="c5v">🧪 Vyzkoušej si: posuň písmena</h4>
+  <div class="card">
+    <div class="ctrl"><label for="kePar">Vyrovnání páru AV</label><input type="range" id="kePar" min="-30" max="20" value="0"><output id="oPar">0</output></div>
+    <div class="ctrl"><label for="keTr">Prostrkání slova</label><input type="range" id="keTr" min="-5" max="40" value="0"><output id="oTr">0</output></div>
+    <div style="background:#fff;color:#1b1c1f;border-radius:10px;padding:8px;text-align:center;font:700 2.4rem/1.2 Inter,Arial,sans-serif"><span>A</span><span id="keV">V</span><span style="display:inline-block;width:.6em"></span><span id="keSlovo">TISK</span></div>
+    <p class="small" id="keVerdikt" style="margin:8px 0 0"></p>
+  </div>
+
+  <h3 id="c6">Pravidla hladké sazby</h3>
+  <figure class="pic"><div data-img="hladka"></div></figure>
+  <p><b>Hladká sazba</b> = souvislý text v odstavcích (knihy, články). Pravidla říkají, jak správně sázet znaménka, čísla a zkratky. Počítač je sám neohlídá – musí je znát grafik.</p>
+  <h4 id="c6a">Hladká sazba 1: znaménka, předložky, čísla</h4>
+  <div class="tablewrap" style="--mw:560px"><table>
+    <tr><th>Prvek</th><th>Pravidlo</th><th>Správně</th></tr>
+    <tr><td><b>interpunkce</b> , . ! ? ; :</td><td>těsně za slovo, za ní mezera</td><td>slovo, slovo · Ano, přijdu. Kdy? V pět!</td></tr>
+    <tr><td><b>výpustka</b> …</td><td>je to jeden zvláštní znak, ne tři tečky</td><td>Jestli si to nepřečteš, tak…</td></tr>
+    <tr><td><b>jednopísmenné předložky a spojky</b> k, s, v, z, o, u, i</td><td>nesmí zůstat na konci řádku (výjimka: malé „a“ a úzká novinová sazba) → <b>pevná mezera</b></td><td>v&nbsp;lese, k&nbsp;nám, s&nbsp;tebou, i&nbsp;když</td></tr>
+    <tr><td><b>telefonní čísla</b></td><td>po trojicích s mezerou</td><td>+420 607 340 340</td></tr>
+    <tr><td><b>datum</b></td><td>arabské číslice s tečkou a mezerou za tečkou, letopočet bez mezer</td><td>2. 5. 2026 · 2025/2026</td></tr>
+    <tr><td><b>hodiny a minuty</b></td><td>tečka nebo dvojtečka bez mezer</td><td>12.14 · 12:14</td></tr>
+  </table></div>
+  <div class="tip"><b class="t">Pevná mezera</b>Nezlomitelná mezera drží předložku u dalšího slova. <b>Word:</b> <span class="kbd">Ctrl + Shift + mezerník</span> · <b>InDesign:</b> <span class="kbd">Ctrl + Alt + X</span>. Patří i mezi číslo a jednotku (5&nbsp;kg) a mezi titul a jméno.</div>
+  <h4 id="c6b">Hladká sazba 2: spojovník, pomlčka, uvozovky, závorky, apostrof, zkratky, dělení slov</h4>
+  <div class="tablewrap" style="--mw:600px"><table>
+    <tr><th>Prvek</th><th>Pravidlo</th><th>Správně</th></tr>
+    <tr><td><b>spojovník</b> -</td><td>kratší než pomlčka, ve spojených výrazech a při dělení slov, <b>bez mezer</b></td><td>Praha-Libeň · česko-anglický · je-li</td></tr>
+    <tr><td><b>pomlčka</b> –</td><td>přestávka v řeči = <b>s mezerami</b>; místo „a“, „od–do“, „versus“ = <b>bez mezer</b></td><td>„Pozor!“ – vykřikl. · Suchý–Šlitr · 8–10 hodin · Praha–Brno · Sparta–Slavia</td></tr>
+    <tr><td><b>uvozovky</b> „ “</td><td>nejdřív <b>dolní</b> „ a na konci <b>horní</b> “, <b>těsně</b> k textu</td><td>„Babička“ · Řekl: „Přijdu zítra.“ · kniha „Malý princ“</td></tr>
+    <tr><td><b>závorky</b> ( )</td><td>oblé, <b>těsně</b> k výrazu</td><td>(23 + 3) · (viz obr. 3)</td></tr>
+    <tr><td><b>apostrof</b> ’</td><td>těsně, tvar čísla 9</td><td>Řekl’s to dobře.</td></tr>
+    <tr><td><b>zkratky</b></td><td>slov: malá písmena a tečka · iniciálové: verzálky bez tečky · tituly: velké písmeno a tečka</td><td>atd., např., tzv., č. · ČR, OSN, EU · Ing. Jana Nováková, Mgr.</td></tr>
+    <tr><td><b>dělení slov</b></td><td>na řádku zůstanou aspoň <b>2</b> písmena, na další přejdou aspoň <b>3</b>; nejvýš <b>3× pod sebou</b>; nedělí se čísla, zkratky, číslo s jednotkou, datum, titul se jménem</td><td>tis-kárna · pa-pír · ty-pografie</td></tr>
+  </table></div>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Pravidla hladké sazby 1 (3 body):</b> interpunkce těsně za slovo, za ní mezera · jednohláskové předložky a spojky (kromě „a“ a úzké novinové sazby) nesmí být na konci řádku · telefonní čísla po trojicích · datum s mezerami za tečkami, letopočty bez mezer · hodiny od minut tečkou.<br><b>Pravidla hladké sazby 2 (7 bodů):</b> spojovník bez mezer · pomlčka s mezerami (přestávka v řeči), bez mezer místo „a“, „od–do“, „versus“ · uvozovky nejdřív dolní, pak horní, těsně k textu · závorky oblé těsně · apostrof těsně · zkratky ustálené · dělení slov: 2 písmena zůstanou, 3 přejdou, nejvýš 3× pod sebou.</div>
+  <h4 id="c6g">🧪 Vyzkoušej si: který zápis je správný?</h4>
+  <div class="game"><div id="hsGame"></div><p class="score small" id="hsScore"></p></div>
+
+  <h3 id="c7">Chyby v sazbě: sirotek a vdova</h3>
+  <figure class="pic"><div data-img="parchant"></div></figure>
+  <p><b>Parchant</b> = osamělý řádek odstavce, který se odtrhl na jinou stranu nebo do jiného sloupce. <b>Sirotek</b> je první řádek odstavce, který zůstal sám na konci strany. <b>Vdova</b> je poslední řádek odstavce, který zůstal sám na začátku další strany. <b>Sirotek i vdova jsou parchanti</b> – obojí je chyba a grafik ji musí opravit. Poslední řádek odstavce (<b>východová řádka</b>) musí mít aspoň <b>3 znaky</b>.</p>
+  <p class="small">Řeky, předložky na konci řádku, dělení slov a jak parchanty odstranit: <a href="../tema-12-casti-publikace-a-prutisk/#a-parchanti">téma 12</a>.</p>
+  <details class="qa"><summary>➕ Rozšiřující učivo: rejstřík – podrobně patří k tématu č. 12</summary><div class="ans"><b>Rejstřík</b> = sazba na líci a na rubu listu leží přesně na sobě, takže při prosvítání nejsou mezi řádky vidět řádky z druhé strany. <b>Řádkový rejstřík</b>: řádky jsou ve stejné výšce (v InDesignu zarovnání na mřížku účaří). <b>Stránkový rejstřík</b>: zrcadlo sazby je na obou stranách na stejném místě. <a href="../tema-12-casti-publikace-a-prutisk/#a-rejstrik">↗ Téma 12</a></div></details>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Počítačová typografie je úprava textu v počítači, nejčastěji v InDesignu. Grafik volí druh a řez písma, velikost v bodech – 1 bod je 0,353 milimetru –, proklad, tedy vzdálenost řádků, a zarovnání: do bloku, vlevo, na osu nebo vpravo. Upravuje prostrkání a vyrovnání párů. Dodržuje pravidla hladké sazby – například jednopísmenné předložky nesmí zůstat na konci řádku, pomlčka se liší od spojovníku a uvozovky jsou dole a nahoře.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ M: POPIS PÍSMA ============ -->
+<section id="popis">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">2 · Souhrn · větev M</span></div>
+  <h2>Popis písma</h2>
+  <div class="oneliner m"><span class="lbl">Jednou větou</span>Písmo popíšu podle <b>písmové osnovy</b> (na jakých linkách písmena stojí) a podle pojmů <b>druh, řez, rodina a velikost</b>. Podrobně se to učíš v <a href="../tema-01-pismo-a-papir/#pojmy">tématu 1</a> – tady je krátké shrnutí.</div>
+
+  <h3 id="m1">Písmová osnova</h3>
+  <figure class="pic"><div data-img="osnova"></div></figure>
+  <p>Písmena v řádku stojí na pěti pomyslných linkách: <b>akcentová linie</b> (akcenty nad verzálkami), <b>horní dotažnice</b> (verzálky, b, d, l), <b>střední výška</b> (a, x, n), <b>účaří</b> (na něm písmena stojí) a <b>dolní dotažnice</b> (g, p, y).</p>
+  <ul>
+    <li><b>verzálky</b> = velká písmena · <b>minusky</b> = malá písmena · <b>kapitálky</b> = tvar velkých písmen ve výšce malých,</li>
+    <li><b>dřík</b> = hlavní svislý tah písmene · <b>serif</b> (patka) = zakončení tahu · <b>stínování</b> = zesílené tahy.</li>
+  </ul>
+  <p class="small">Nákres osnovy z písemky s tlačítkem „Vyzkoušej se“: <a href="../tema-01-pismo-a-papir/#osnova">téma 1</a>.</p>
+
+  <h3 id="m2">Druh, řez, rodina a velikost písma</h3>
+  <figure class="pic"><div data-img="rodina"></div></figure>
+  <div class="tablewrap" style="--mw:520px"><table>
+    <tr><th>Pojem</th><th>Co to je</th><th>Příklad</th></tr>
+    <tr><td><b>druh písma</b></td><td>konkrétní písmo s vlastním jménem (často podle autora)</td><td>Garamond, Bodoni, Futura, Arial</td></tr>
+    <tr><td><b>řez písma</b></td><td>kresebná verze druhu, slouží ke zvýraznění</td><td>kurzíva, polotučné, tučné, kapitálky</td></tr>
+    <tr><td><b>písmová rodina</b></td><td>jeden druh písma ve všech řezech a velikostech</td><td>Garamond úplně celý</td></tr>
+    <tr><td><b>velikost (stupeň)</b></td><td>výška písma v bodech</td><td>10 pt, 12 pt</td></tr>
+  </table></div>
+  <div class="mnemo">🧠 Pomůcka: <span class="L">druh</span> = jméno · <span class="L">řez</span> = oblečení · <span class="L">rodina</span> = celá rodina pohromadě.<br><span class="muted small">Garamond je jméno, kurzíva je jeho oblečení, Garamond ve všech řezech a velikostech je rodina.</span></div>
+  <h3 id="m3">Serif a stínování</h3>
+  <figure class="pic"><div data-img="serif"></div></figure>
+  <p><b>Serif</b> (patka) ukončuje tahy písma – příčný, svislý nebo klínový. Serify vedou oko po řádku. <b>Stínování</b> = zesílená kresba dříků a oblouků. <b>Antikva</b> má serify a stínování, <b>grotesk</b> nemá serify ani stínování.</p>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Písmové pojmy 1 (4 body):</b> druh, řez a velikost písma. <b>Písmové pojmy 2 (6 bodů):</b> klasifikační skupina, písmová rodina, osa stínování, serif, grotesk, antikva. <b>Písmová osnova (8 bodů):</b> pojmenovat 5 linek a písmena v nákresu. Definice z písemky a vzorové odpovědi: <a href="../tema-01-pismo-a-papir/#pojmy">téma 1 – písmové pojmy</a> · <a href="../tema-01-pismo-a-papir/#osnova">téma 1 – osnova</a>.</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ M: DRUHY PÍSMA ============ -->
+<section id="druhy">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">2 · Souhrn · větev M</span></div>
+  <h2>Druhy písma</h2>
+  <div class="oneliner m"><span class="lbl">Jednou větou</span>Podle tvaru rozlišujeme <b>5 druhů písma</b>: <b>patkové, bezpatkové, psací, písmo psacího stroje a lomené</b>. Podrobněji se písma třídí do <b>11 klasifikačních skupin</b>.</div>
+
+  <h3 id="m4">Druhy písma podle tvaru</h3>
+  <figure class="pic"><div data-img="druhy"></div></figure>
+  <div class="tablewrap" style="--mw:600px"><table>
+    <tr><th>Druh</th><th>Poznám ho podle</th><th>Příklad · použití</th></tr>
+    <tr><td><b>patkové</b> (serifové, antikva)</td><td>patky na konci tahů, stínování</td><td>Times New Roman, Garamond · knihy, delší texty</td></tr>
+    <tr><td><b>bezpatkové</b> (grotesk)</td><td>bez patek, tahy stejně silné</td><td>Arial, Helvetica · plakáty, obrazovky, navigace</td></tr>
+    <tr><td><b>psací</b> (kaligrafické)</td><td>napodobuje ruční písmo, písmena bývají spojená</td><td>pozvánky, diplomy, svatební oznámení</td></tr>
+    <tr><td><b>písmo psacího stroje</b></td><td>všechna písmena stejně široká (neproporcionální)</td><td>Courier · programový kód, „úřední“ vzhled</td></tr>
+    <tr><td><b>lomené</b> (gotické)</td><td>úzká písmena s lomenými tahy</td><td>fraktura, švabach · Gutenberg, tradiční značky</td></tr>
+  </table></div>
+  <p class="small">V počítači se ještě setkáš s <b>ozdobnými</b> (dekorativními) písmy na nadpisy a se <b>symbolovými</b> fonty, které místo písmen obsahují značky (např. Wingdings).</p>
+  <h4 id="m4v">🧪 Vyzkoušej si: poznej druh písma</h4>
+  <div class="game"><div id="drGame"></div><p class="score small" id="drScore"></p></div>
+
+  <h3 id="m5">Klasifikace písma</h3>
+  <p>Podrobněji se písma dělí do <b>11 klasifikačních skupin</b> podle kresebných znaků – tvaru serifů, stínování a oblouků. Česká klasifikace (Jan Solpera) řadí písma od <b>dynamických</b> (psaných perem, šikmé stínování, např. renesanční antikva) po <b>statická</b> (konstruovaná, svislé stínování, např. klasicistní antikva) a <b>lineární</b> písma bez stínování (grotesky). Všech 11 skupin s ukázkami: <a href="../tema-01-pismo-a-papir/#klasifikace">téma 1</a>.</p>
+
+  <h3 id="m6">Jaké písmo kam použít</h3>
+  <ul>
+    <li><b>delší text v knize</b> → patkové písmo, serify vedou oko po řádku,</li>
+    <li><b>obrazovka, web, plakát, orientační tabule</b> → bezpatkové písmo, je čitelné i zdálky a v malém rozlišení,</li>
+    <li><b>pozvánka, diplom</b> → psací písmo, ale jen na krátký text,</li>
+    <li>v jedné tiskovině stačí <b>1–2 rodiny písma</b>, zvýrazňuje se <b>řezem</b>, ne dalším druhem písma.</li>
+  </ul>
+  <p class="small">Písmo podle čtenáře a patkové × bezpatkové v knize: <a href="../tema-12-casti-publikace-a-prutisk/#a-patkove">téma 12</a>.</p>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„Písmo popíšu podle písmové osnovy – akcentová linie, horní dotažnice, střední výška, účaří a dolní dotažnice. Druh písma je konkrétní písmo s vlastním jménem, třeba Garamond. Řez je jeho verze – kurzíva nebo tučné. Rodina je druh písma ve všech řezech a velikostech. Podle tvaru rozlišujeme písmo patkové, bezpatkové, psací, písmo psacího stroje a lomené. Podrobněji se písma dělí do 11 klasifikačních skupin.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ Y: FONT ============ -->
+<section id="font">
+  <div class="sec-head"><span class="dot y"></span><span class="kicker">2 · Souhrn · větev Y</span></div>
+  <h2>Písmo v počítači – font (typy souborů)</h2>
+  <div class="oneliner y"><span class="lbl">Jednou větou</span><b>Font</b> je <b>soubor</b>, ve kterém je uložené písmo – tvary všech znaků (glyfů) jednoho řezu a mezery mezi nimi. Dnešní fonty jsou <b>vektorové</b>. Hlavní typy souborů: <b>PostScript Type 1</b>, <b>TrueType</b> a <b>OpenType</b>, pro web <b>WOFF</b>.</div>
+
+  <h3 id="y1">Co je font</h3>
+  <figure class="pic"><div data-img="font"></div></figure>
+  <ul>
+    <li><b>Písmo</b> = vzhled, kresba písmen (Garamond). <b>Font</b> = počítačový soubor, ve kterém je toto písmo uložené.</li>
+    <li>Font obsahuje <b>glyfy</b> (všechna písmena, číslice, interpunkci, symboly), <b>šířky znaků</b> a <b>páry pro vyrovnání</b> (kerning).</li>
+    <li><b>Jeden řez = obvykle jeden soubor</b>: Inter-Regular.otf, Inter-Bold.otf, Inter-Italic.otf. Soubory jednoho druhu dohromady tvoří <b>rodinu</b>.</li>
+    <li>Font musí obsahovat <b>české znaky</b> (ě, š, č, ř, ž, ů). Když znak chybí, program ho ukáže jiným písmem nebo prázdným rámečkem.</li>
+  </ul>
+
+  <h3 id="y2">Bitmapový × vektorový font</h3>
+  <figure class="pic"><div data-img="bitvek"></div></figure>
+  <div class="grid2">
+    <div class="card"><b>▦ Bitmapový (rastrový) font</b><br>Každé písmeno je složené z <b>pixelů</b>. Pro každou velikost je potřeba zvláštní sada. Při zvětšení jsou vidět <b>schody</b>. Používal se u prvních počítačů a tiskáren.</div>
+    <div class="card"><b>✒️ Vektorový (obrysový) font</b><br>Písmeno je popsané <b>křivkami</b> (obrysem). Jedno písmo jde <b>zvětšit na libovolnou velikost</b> bez ztráty kvality. Všechny dnešní fonty – Type 1, TrueType, OpenType – jsou vektorové.</div>
+  </div>
+  <h4 id="y2v">🧪 Vyzkoušej si: zvětši písmeno</h4>
+  <div class="card">
+    <div class="ctrl"><label for="zoomR">Zvětšení</label><input type="range" id="zoomR" min="1" max="8" value="1"><output id="oZoom">1×</output></div>
+    <div class="grid2" style="gap:10px"><div><b class="small">bitmapový</b><div id="zoomBit" style="background:#fff;border:1px solid var(--line);border-radius:10px;height:180px;overflow:hidden;display:flex;align-items:center;justify-content:center"></div></div><div><b class="small">vektorový</b><div id="zoomVek" style="background:#fff;border:1px solid var(--line);border-radius:10px;height:180px;overflow:hidden;display:flex;align-items:center;justify-content:center"></div></div></div>
+    <p class="small" style="margin:8px 0 0">Bitmapové písmeno se při zvětšení „rozsype“ na čtverečky. Vektorové zůstane hladké, protože počítač obrys pokaždé znovu vykreslí. Bitmapa × vektor obecně: <a href="../tema-13-bitmapova-a-vektorova-grafika/#a1">téma 13</a>.</p>
+  </div>
+
+  <h3 id="y3">Typy souborů fontů</h3>
+  <figure class="pic"><div data-img="formaty"></div></figure>
+  <div class="tablewrap" style="--mw:640px"><table>
+    <tr><th>Typ fontu</th><th>Přípona</th><th>Kdo a kdy</th><th>Co si zapamatovat</th></tr>
+    <tr><td><b>PostScript Type 1</b></td><td>.pfb + .pfm (.afm)</td><td>Adobe, 1984</td><td><b>2 soubory</b> (obrysy + míry), pro tisk přes PostScript; zvlášť verze pro Windows a Mac; Adobe ho od roku 2023 ve svých programech <b>nepodporuje</b></td></tr>
+    <tr><td><b>TrueType</b></td><td>.ttf (.ttc = sada fontů)</td><td>Apple 1991, pak Microsoft</td><td><b>1 soubor</b>, dobré zobrazení na obrazovce, běžné systémové fonty Windows (Arial, Times New Roman)</td></tr>
+    <tr><td><b>OpenType</b> ⭐</td><td>.otf (nebo .ttf)</td><td>Adobe + Microsoft, 1996</td><td><b>dnešní standard</b>: 1 soubor pro Windows i Mac, <b>Unicode</b> – až 65 536 znaků, všechny jazyky; ligatury, kapitálky, alternativní znaky</td></tr>
+    <tr><td><b>webové fonty</b></td><td>.woff, .woff2</td><td>W3C, od roku 2010</td><td><b>zabalený (komprimovaný)</b> font pro weby, stáhne se rychle; na tisk se nepoužívá</td></tr>
+  </table></div>
+  <h4 id="y3a">PostScript Type 1</h4>
+  <p>Vznikl spolu s jazykem <b>PostScript</b> pro tisk a osvitové jednotky. Font tvoří dva soubory: <b>.pfb</b> s obrysy písmen a <b>.pfm</b> (nebo .afm) s mírami znaků. Když jeden chybí, font nefunguje. Umí jen 256 znaků, proto existovaly zvláštní české verze (CE). Dnes se nahrazuje OpenType. PostScript a PDF: <a href="../tema-14-pdf-pro-tisk/#a2">téma 14</a>.</p>
+  <h4 id="y3b">TrueType</h4>
+  <p>Vyvinula ho firma <b>Apple</b> jako levnější náhradu Type 1, rychle ho převzal <b>Microsoft</b> do Windows. Celý font je v <b>jednom souboru .ttf</b>. Obsahuje pokyny (hinting), aby písmo bylo ostré i v malé velikosti na obrazovce.</p>
+  <h4 id="y3c">OpenType</h4>
+  <figure class="pic"><div data-img="opentype"></div></figure>
+  <p>Společný formát firem <b>Adobe a Microsoft</b>. Spojuje výhody obou předchůdců – uvnitř může mít obrysy typu PostScript (.otf) i TrueType (.ttf).</p>
+  <ul>
+    <li><b>jeden soubor</b> funguje ve Windows i na Macu,</li>
+    <li>kódování <b>Unicode</b> – až <b>65 536 znaků</b>: čeština, ruština, řečtina i další jazyky v jednom fontu,</li>
+    <li><b>typografické funkce</b>: ligatury (fi, fl), pravé kapitálky, minuskové číslice, alternativní tvary znaků.</li>
+  </ul>
+  <h4 id="y3d">Webové fonty WOFF</h4>
+  <p><b>WOFF</b> a <b>WOFF2</b> (Web Open Font Format) jsou fonty <b>zabalené pro web</b>. Prohlížeč si je stáhne spolu se stránkou. Tato lekce je napsaná písmem Inter, které se stahuje právě jako webový font.</p>
+  <div class="mnemo">🧠 Pomůcka: <span class="L">T</span>ype 1 = <b>dva</b> soubory · <span class="L">T</span>rueType = <b>jeden</b> soubor · <span class="L">O</span>penType = <b>jeden pro všechny</b>.<br><span class="muted small">Přípona .otf = OpenType, .ttf = TrueType, .pfb + .pfm = Type 1, .woff = web.</span></div>
+  <h4 id="y3g">🧪 Vyzkoušej si: poznej font podle přípony</h4>
+  <div class="game"><div id="extGame"></div><p class="score small" id="extScore"></p></div>
+
+  <h3 id="y4">Instalace a licence fontů</h3>
+  <ul>
+    <li><b>Instalace:</b> ve Windows dvojklik na soubor → <b>Instalovat</b> (fonty jsou ve složce <span class="kbd">C:\Windows\Fonts</span>), na Macu aplikace <b>Kniha písem</b>. Grafici používají <b>správce písem</b>, aby nemuseli mít zapnutých tisíce fontů najednou.</li>
+    <li><b>Adobe Fonts:</b> písma z předplatného Adobe Creative Cloud se jen <b>aktivují</b> a hned je mají InDesign i Photoshop.</li>
+    <li><b>Licence:</b> font je software. Licence říká, jestli ho smím použít v tisku, na webu nebo v logu a jestli ho smím vložit do PDF. Některé fonty jsou zdarma (např. Google Fonts), jiné se kupují.</li>
+  </ul>
+
+  <h3 id="y5">Písmo v tiskových datech</h3>
+  <figure class="pic"><div data-img="pdf"></div></figure>
+  <ul>
+    <li>Tiskárna nemá stejné fonty jako grafik. Proto musí být písma <b>vložená do tiskového PDF</b> (PDF/X to vyžaduje).</li>
+    <li><b>Chybějící písmo</b>: program ho nahradí jiným – v InDesignu je takový text zvýrazněný <b>růžově</b>. Preflight chybějící písma ohlásí.</li>
+    <li><b>Logo</b> se převádí na <b>křivky</b> – pak z písma zůstanou jen obrysy a v tiskárně vypadá vždy stejně.</li>
+    <li>Když se tiskárně posílají otevřená data, použije se v InDesignu funkce <b>Sbalit</b> – zkopíruje dokument, obrázky i fonty do jedné složky.</li>
+  </ul>
+  <p class="small">Pravidla tiskového PDF: <a href="../tema-14-pdf-pro-tisk/#a6">téma 14</a> · písmo v logu na křivky: <a href="../tema-07-polygrafie-a-dokoncovani/#krivky">téma 7</a> · kontrola tiskových dat: <a href="../tema-05-archova-montaz/#kontrola">téma 5</a>.</p>
+  <details class="qa"><summary>➕ Rozšiřující učivo: variabilní font</summary><div class="ans"><b>Variabilní font</b> (od roku 2016, součást OpenType) má v jednom souboru <b>všechny řezy najednou</b>. Tloušťku nebo šířku písma lze plynule měnit posuvníkem – od velmi tenkého po velmi tučné. Výhoda: jeden menší soubor místo deseti. Používá se hlavně na webu.</div></details>
+  <div class="say"><b class="t">Řekni u zkoušky</b>„V počítači je písmo uložené jako soubor – font. Obsahuje všechny znaky jednoho řezu, jejich šířky a vyrovnání párů. Dnešní fonty jsou vektorové, takže jdou zvětšit bez ztráty kvality. Starší typ je PostScript Type 1 – dva soubory .pfb a .pfm. TrueType má jeden soubor .ttf. Dnešní standard je OpenType .otf – jeden soubor pro Windows i Mac, Unicode a všechny jazyky. Pro web se používá WOFF. Do tiskového PDF se písma musí vložit.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ K: DIGITÁLNÍ TISK ============ -->
+<section id="digitalni">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
+  <h2>Digitální tisk</h2>
+  <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Digitální tisk</b> tiskne <b>přímo z dat v počítači, bez tiskové formy</b> – tonerem (laser) nebo inkoustem (inkjet). Vyplatí se pro <b>malé náklady</b> a umí <b>personalizaci</b> – každý kus může být jiný.</div>
+  <div class="tip"><b class="t">Tohle už znáš</b>Digitální tisk je podrobně v <a href="../tema-06-predlohy-a-rastr/#digitalni">tématu 6</a> a ve výcucu <a href="../pisemka-digitalni-tisk/#sec-A">Technologické procesy – digitální tisk</a> (laser krok za krokem, inkoust, barvy). Tady je krátké shrnutí.</div>
+
+  <h3 id="k1">Co je digitální tisk</h3>
+  <figure class="pic"><div data-img="digital"></div></figure>
+  <ul>
+    <li>Data jdou z počítače přes <b>RIP</b> rovnou do stroje. <b>Tisková forma (deska) se nevyrábí.</b></li>
+    <li>Každý arch se vykreslí znovu, proto může být <b>každý kus jiný</b> – jméno, číslo, adresa (personalizace, proměnná data).</li>
+    <li>Dvě hlavní technologie: <a href="#k2">laserový tisk</a> (toner) a <a href="#k3">inkoustový tisk</a> (inkoust).</li>
+  </ul>
+
+  <h3 id="k2">Laserový tisk (elektrografie)</h3>
+  <figure class="pic"><div data-img="laser"></div></figure>
+  <ol>
+    <li><b>Nabití:</b> fotovodivý (selenový) válec se celý nabije elektrickým nábojem.</li>
+    <li><b>Osvit:</b> laser vykreslí obraz – osvícená místa se <b>vybijí</b>.</li>
+    <li><b>Toner:</b> práškový toner se přichytí jen na <b>místa vybitá laserem</b>.</li>
+    <li><b>Přenos a fixace:</b> toner se přenese na papír a zažehlí se <b>teplem a tlakem</b> (horké přítlačné válce).</li>
+  </ol>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Laserový tisk (5 bodů):</b> laserový tisk neboli elektrografie je <b>digitální tisk z plochy</b>. Fotovodivý válec se nabije, laser osvítí obraz a osvícená místa se vybijí, toner se přichytí jen na vybitá místa, přenese se na papír a zafixuje se teplem a tlakem. Krok za krokem s animací: <a href="../pisemka-digitalni-tisk/#sec-A">výcuc Digitální tisk</a>.</div>
+
+  <h3 id="k3">Inkoustový tisk (inkjet)</h3>
+  <figure class="pic"><div data-img="inkjet"></div></figure>
+  <p><b>Tisková hlava</b> s řadou kanálků zakončených <b>tryskami</b> vystřikuje kapičky inkoustu <b>přímo na materiál</b>. Hlava jezdí ze strany na stranu nad papírem. Rychlé průmyslové stroje mají víc hlav vedle sebe nebo pevnou hlavu přes celou šířku – pak se pohybuje jen papír. Velkoformátové tiskárny tisknou plakáty, bannery a polepy.</p>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Inkoustový tisk (5 bodů):</b> nejjednodušší digitální technika – inkoust se <b>vystřikuje přímo na potiskovaný materiál</b>. Tisková hlava má řadu kanálů zakončených tryskami. Je-li materiál širší než hlava, hlava se pohybuje, výkonnější stroje mají víc hlav.<br><b>Tonery (2 body):</b> barvy pro digitální tisk fixované <b>teplem a tlakem</b>; <b>práškové a kapalné</b>. <b>Inkousty (4 body):</b> kapaliny, které zasychají zapitím, odpařením nebo UV zářením, nebo tavné inkousty; barvotvorná složka = <b>pigmenty, barviva</b> nebo obojí.</div>
+
+  <h3 id="k4">Klasický × digitální × digitalizovaný tisk</h3>
+  <figure class="pic"><div data-img="trojice"></div></figure>
+  <ul>
+    <li><b>Klasický</b> (analogový): tisková forma se vyrobí <b>mimo stroj</b> a upne se do něj (ofset).</li>
+    <li><b>Digitalizovaný</b>: forma se vypálí laserem <b>přímo ve stroji</b> (nejčastěji ofset bez vlhčení).</li>
+    <li><b>Digitální</b>: <b>žádná hmotná forma</b>, tiskne se přímo z dat.</li>
+  </ul>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Klasický, digitální a digitalizovaný tisk (6 bodů)</b> – vzorová odpověď: <a href="../tema-11-ctf-ctp-ctpr-cts/#a-druhy-tisku">téma 11</a>.</div>
+
+  <h3 id="k5">Kde se digitální tisk používá</h3>
+  <ul>
+    <li>vizitky, pozvánky, svatební oznámení, diplomy,</li>
+    <li>fotoknihy, kalendáře s vlastními fotkami,</li>
+    <li>malé náklady letáků, brožur, katalogů a <b>dotisky knih</b> na objednávku,</li>
+    <li>personalizované dopisy, vstupenky s čísly, etikety s kódy,</li>
+    <li><b>náhledy</b> pro zákazníka a velkoformátová reklama (inkjet).</li>
+  </ul>
+  <p class="small">Víc příkladů: <a href="../tema-06-predlohy-a-rastr/#digitalni-pouziti">téma 6</a>.</p>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ K: POROVNÁNÍ ============ -->
+<section id="porovnani">
+  <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
+  <h2>Porovnání digitálního a ofsetového tisku</h2>
+  <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Ofset</b> potřebuje <b>tiskové desky</b> a seřízení stroje, proto je drahý pro malé náklady, ale <b>levný pro velké</b>. <b>Digitální tisk</b> desky nepotřebuje, jeden kus stojí stále stejně – vyplatí se pro <b>malé náklady</b> a <b>personalizaci</b>.</div>
+
+  <h3 id="k6">Digitální tisk × ofset v tabulce</h3>
+  <div class="tablewrap" style="--mw:560px"><table>
+    <tr><th></th><th>Digitální tisk</th><th>Ofset</th></tr>
+    <tr><td><b>Tisková forma</b></td><td>není</td><td>hliníková deska pro každou barvu (CtP)</td></tr>
+    <tr><td><b>Příprava</b></td><td>téměř žádná, tiskne se hned</td><td>výroba desek, seřízení stroje, makulatura</td></tr>
+    <tr><td><b>Náklad</b></td><td>malý: 1 až stovky kusů</td><td>velký: tisíce kusů a víc</td></tr>
+    <tr><td><b>Cena 1 kusu</b></td><td>stále stejná</td><td>čím víc kusů, tím levnější</td></tr>
+    <tr><td><b>Personalizace</b></td><td>ano – každý kus jiný</td><td>ne</td></tr>
+    <tr><td><b>Rychlost dodání</b></td><td>na počkání</td><td>delší (desky, schnutí)</td></tr>
+    <tr><td><b>Kvalita, materiály</b></td><td>dobrá, menší výběr papírů a menší formát</td><td>nejvyšší, téměř všechny papíry, přímé barvy, laky</td></tr>
+    <tr><td><b>Přímé barvy</b></td><td>jen napodobí z CMYK</td><td>ano (Pantone)</td></tr>
+  </table></div>
+  <p class="small">Výhody a nevýhody ofsetu: <a href="../tema-10-color-management/#b-vyhody">téma 10</a> · porovnání s grafem: <a href="../tema-06-predlohy-a-rastr/#digitalni-ofset">téma 6</a>.</p>
+
+  <h3 id="k7">Kdy se vyplatí který</h3>
+  <figure class="pic"><div data-img="naklad"></div><figcaption>Cena jednoho kusu: u digitálního tisku je stále stejná, u ofsetu s nákladem klesá, protože desky a seřízení se zaplatí jen jednou. Kde se čáry protnou, začíná se vyplácet ofset.</figcaption></figure>
+  <h4 id="k7g">🧪 Vyzkoušej si: digitál, nebo ofset?</h4>
+  <div class="game"><div id="volGame"></div><p class="score small" id="volScore"></p></div>
+  <p class="small">Jak volit tiskovou techniku podle nákladu: <a href="../tema-05-archova-montaz/#naklad">téma 5</a>.</p>
+  <div class="say"><b class="t">Řekni u zkoušky (závěr)</b>„Digitální tisk tiskne přímo z dat bez tiskové formy, laserem s tonerem nebo inkoustem. Je rychlý, vyplatí se od jednoho kusu a umí personalizaci. Ofset potřebuje desky a seřízení stroje, proto se vyplatí až pro velké náklady – pak je jeden kus levnější a kvalita nejvyšší. Takže vysázený text vytisknu malým nákladem digitálně a velkým nákladem ofsetem.“</div>
+  <a class="ret" href="#mapa" data-ret>↑ zpět na myšlenkovou mapu</a>
+</section>
+
+<!-- ============ ŠVP ============ -->
+<section id="svp">
+  <div class="sec-head"><span class="dot c"></span><span class="kicker">Podle ŠVP</span></div>
+  <h2>Co musíš umět (odškrtej si)</h2>
+  <p class="muted">Technologie 1. roč. (typometrie, písmo – klasifikace, konstrukce, názvosloví; pracoviště předtiskové přípravy), 2. roč. (typografie písma a odstavce, chyby v sazbě, korektury) a 3. roč. (výstupní periferie – digitální tiskové stroje, produkční digitální tisk), Všeobecná polygrafie 2. roč. (digitální tisk, ofset, porovnání technik) a Odborný výcvik (písmo, zlom v grafických programech, digitální tisk). Odkaz „kde to najdu“ tě pošle do správné části.</p>
+  <ul class="check" id="svpList">
+    <li><input type="checkbox" id="s1"><label for="s1">Vysvětlím, co je <b>počítačová typografie</b> a v jakém programu se sází.</label><a class="svp-go" href="#c1">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s2"><label for="s2">Řeknu, v čem se měří <b>velikost písma</b> (1 pt = 0,353 mm).</label><a class="svp-go" href="#c2">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s3"><label for="s3">Vysvětlím <b>proklad</b> a zápis 10/12 pt.</label><a class="svp-go" href="#c3">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s4"><label for="s4">Vyjmenuji 4 způsoby <b>zarovnání odstavce</b> a kde se používají.</label><a class="svp-go" href="#c4">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s5"><label for="s5">Rozliším <b>prostrkání</b> a <b>vyrovnání párů</b>.</label><a class="svp-go" href="#c5">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s6"><label for="s6">Popíšu <b>pravidla hladké sazby 1</b>: interpunkce, předložky, čísla, datum, čas.</label><a class="svp-go" href="#c6a">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s7"><label for="s7">Popíšu <b>pravidla hladké sazby 2</b>: spojovník, pomlčka, uvozovky, závorky, apostrof, zkratky, dělení slov.</label><a class="svp-go" href="#c6b">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s8"><label for="s8">Vysvětlím <b>sirotka a vdovu</b> (parchanty).</label><a class="svp-go" href="#c7">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s9"><label for="s9">Pojmenuji linky <b>písmové osnovy</b>.</label><a class="svp-go" href="#m1">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s10"><label for="s10">Vysvětlím <b>druh, řez, rodinu a velikost</b> písma.</label><a class="svp-go" href="#m2">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s11"><label for="s11">Vysvětlím <b>serif a stínování</b>, antikvu a grotesk.</label><a class="svp-go" href="#m3">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s12"><label for="s12">Vyjmenuji <b>5 druhů písma</b> podle tvaru a jejich použití.</label><a class="svp-go" href="#m4">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s13"><label for="s13">Řeknu, že se písma dělí do <b>11 klasifikačních skupin</b>.</label><a class="svp-go" href="#m5">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s14"><label for="s14">Vysvětlím, co je <b>font</b> a co obsahuje.</label><a class="svp-go" href="#y1">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s15"><label for="s15">Porovnám <b>bitmapový a vektorový</b> font.</label><a class="svp-go" href="#y2">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s16"><label for="s16">Popíšu typy souborů fontů: <b>Type 1, TrueType, OpenType, WOFF</b> a jejich přípony.</label><a class="svp-go" href="#y3">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s17"><label for="s17">Řeknu, jak se font <b>instaluje</b> a proč má <b>licenci</b>.</label><a class="svp-go" href="#y4">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s18"><label for="s18">Vysvětlím, proč musí být písma <b>vložená v PDF</b>.</label><a class="svp-go" href="#y5">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s19"><label for="s19">Vysvětlím, co je <b>digitální tisk</b>.</label><a class="svp-go" href="#k1">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s20"><label for="s20">Popíšu princip <b>laserového tisku</b> ve 4 krocích.</label><a class="svp-go" href="#k2">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s21"><label for="s21">Popíšu princip <b>inkoustového tisku</b>, tonery a inkousty.</label><a class="svp-go" href="#k3">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s22"><label for="s22">Rozliším <b>klasický, digitální a digitalizovaný</b> tisk.</label><a class="svp-go" href="#k4">→ kde to najdu</a></li>
+    <li><input type="checkbox" id="s23"><label for="s23">Porovnám <b>digitální tisk a ofset</b> a řeknu, kdy se vyplatí který.</label><a class="svp-go" href="#k6">→ kde to najdu</a></li>
+  </ul>
+  <p class="small muted" id="svpCount"></p>
+</section>
+
+<!-- ============ TEST PSANÍM ============ -->
+<section id="test">
+  <div class="sec-head"><span class="dot m"></span><span class="kicker">Ověř se · 1</span></div>
+  <h2>Test psaním: odpověz vlastními slovy</h2>
+  <p>Otázky odpovídají <b>písemnému testu</b> a ústní zkoušce. Napiš odpověď a klepni na <b>Vyhodnotit</b>. Uvidíš, co jsi zmínil/a ✔, co ti chybí, případné chyby a vzorovou odpověď. Body označené <span class="star">★</span> jsou nejdůležitější.</p>
+  <div class="tip"><b class="t">Jak na to</b>Piš celé věty, klidně s chybami v pravopisu. Test hledá <b>odborné pojmy a souvislosti</b>. Odpověď se průběžně ukládá v tomto prohlížeči.</div>
+  <div id="writeTest"></div>
+</section>
+
+<!-- ============ KVÍZ ============ -->
+<section id="kviz">
+  <div class="sec-head"><span class="dot y"></span><span class="kicker">Ověř se · 2</span></div>
+  <h2>Rychlý kvíz</h2>
+  <p><span id="qCount"></span> otázek. Klepni na odpověď a hned uvidíš vysvětlení.</p>
+  <div id="quiz"></div>
+  <p class="score" id="score"></p>
+  <button class="btn" id="quizReset">Zkusit znovu</button>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cmyk-bar" style="margin-bottom:14px;border-radius:3px"></div>
+    Ústní zkouška · obor Reprodukční grafik (34-53-H/01) · Téma č. 17.<br>
+    Zpracováno z podkladů vyučující k písemné a ústní zkoušce a podle ŠVP. Schémata jsou zjednodušená, barvy na monitoru jsou jen přibližné.
+    <br><a class="back" href="../" style="margin-top:10px">← zpět na rozcestník</a>
+  </div>
+</footer>
+
+<button class="fab-map" id="fabMap" aria-label="Zpět na myšlenkovou mapu"><span class="ar">↑</span> Zpět na mapu</button>
+<button class="theme-toggle" id="themeBtn" aria-label="Přepnout světlý / tmavý režim">◐</button>
+
+<script>
+/* ---------- bezpečné úložiště ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const fmt=(n,d=0)=>(Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toLocaleString('cs-CZ');
+
+const OSNOVA_SVG="<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 262\" role=\"img\" aria-label=\"Písmová osnova s písmeny Á, a, kapitálka A, p a jejími pěti linkami\"><g class=\"ol\" data-i=\"0\"><line x1=\"16\" y1=\"76.9\" x2=\"470\" y2=\"76.9\" stroke=\"#5d6068\" stroke-width=\"1.6\"/><circle cx=\"482\" cy=\"76.9\" r=\"10\" fill=\"#5d6068\"/><text font-family=\"system-ui,Arial,sans-serif\" x=\"482\" y=\"81.4\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"800\" fill=\"#fff\">1</text><text font-family=\"system-ui,Arial,sans-serif\" class=\"olab\" x=\"498\" y=\"81.9\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1b1c1f\">akcentová linie</text></g><g class=\"ol\" data-i=\"1\"><line x1=\"16\" y1=\"106.1\" x2=\"470\" y2=\"106.1\" stroke=\"#00a3e0\" stroke-width=\"1.6\"/><circle cx=\"482\" cy=\"106.1\" r=\"10\" fill=\"#00a3e0\"/><text font-family=\"system-ui,Arial,sans-serif\" x=\"482\" y=\"110.6\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"800\" fill=\"#fff\">2</text><text font-family=\"system-ui,Arial,sans-serif\" class=\"olab\" x=\"498\" y=\"111.1\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1b1c1f\">horní dotažnice</text></g><g class=\"ol\" data-i=\"2\"><line x1=\"16\" y1=\"134.2\" x2=\"470\" y2=\"134.2\" stroke=\"#f2c500\" stroke-width=\"1.6\"/><circle cx=\"482\" cy=\"134.2\" r=\"10\" fill=\"#f2c500\"/><text font-family=\"system-ui,Arial,sans-serif\" x=\"482\" y=\"138.7\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"800\" fill=\"#fff\">3</text><text font-family=\"system-ui,Arial,sans-serif\" class=\"olab\" x=\"498\" y=\"139.2\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1b1c1f\">střední výška</text></g><g class=\"ol\" data-i=\"3\"><line x1=\"16\" y1=\"200.0\" x2=\"470\" y2=\"200.0\" stroke=\"#e6007e\" stroke-width=\"2.6\"/><circle cx=\"482\" cy=\"200.0\" r=\"10\" fill=\"#e6007e\"/><text font-family=\"system-ui,Arial,sans-serif\" x=\"482\" y=\"204.5\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"800\" fill=\"#fff\">4</text><text font-family=\"system-ui,Arial,sans-serif\" class=\"olab\" x=\"498\" y=\"205.0\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1b1c1f\">účaří</text></g><g class=\"ol\" data-i=\"4\"><line x1=\"16\" y1=\"230.5\" x2=\"470\" y2=\"230.5\" stroke=\"#00a3e0\" stroke-width=\"1.6\"/><circle cx=\"482\" cy=\"230.5\" r=\"10\" fill=\"#00a3e0\"/><text font-family=\"system-ui,Arial,sans-serif\" x=\"482\" y=\"235.0\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"800\" fill=\"#fff\">5</text><text font-family=\"system-ui,Arial,sans-serif\" class=\"olab\" x=\"498\" y=\"235.5\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1b1c1f\">dolní dotažnice</text></g><g fill=\"#1b1c1f\"><path d=\"M72.27000000000001 196.29V200.0H41.4V196.29L52.04 194.4L84.03 105.35999999999999H97.33000000000001L130.58 194.4L142.48000000000002 196.29V200.0H102.79V196.29L115.39 194.4L106.08000000000001 167.31H69.12L59.67 194.4ZM87.32000000000001 115.44 71.22 161.01H103.91ZM82.77 98.28999999999999V95.97999999999999L96.49 76.94H111.4V79.53L86.61999999999999 98.28999999999999Z\"/><path d=\"M204.08000000000004 132.73Q214.86000000000004 132.73 219.93500000000006 137.14Q225.01000000000005 141.55 225.01000000000005 150.65V195.1L233.20000000000005 196.85V200.0H215.14000000000004L213.81000000000003 193.42Q205.83000000000004 201.4 193.44000000000003 201.4Q176.57000000000002 201.4 176.57000000000002 181.8Q176.57000000000002 175.22 179.12500000000003 170.91500000000002Q181.68000000000004 166.61 187.28000000000003 164.335Q192.88000000000002 162.06 203.52000000000004 161.85L213.39000000000004 161.57V151.28Q213.39000000000004 144.49 210.90500000000003 141.27Q208.42000000000002 138.05 203.24000000000004 138.05Q196.24000000000004 138.05 190.43000000000004 141.34L188.05000000000004 149.53H184.13000000000002V135.18Q195.47000000000003 132.73 204.08000000000004 132.73ZM213.39000000000004 166.47 204.22000000000003 166.75Q194.84000000000003 167.1 191.51500000000004 170.39Q188.19000000000003 173.68 188.19000000000003 181.38Q188.19000000000003 193.7 198.20000000000005 193.7Q202.96000000000004 193.7 206.42500000000004 192.615Q209.89000000000004 191.53 213.39000000000004 189.85Z\"/><path d=\"M287.5899060402685 197.39940343027592V200.0H264.2198657718121V197.39940343027592L272.2748456375839 196.07457121551082L296.49277852348996 133.66025354213272H306.56150335570476L331.73331543624164 196.07457121551082L340.74217449664434 197.39940343027592V200.0H310.69497986577187V197.39940343027592L320.2337718120806 196.07457121551082L313.1856644295302 177.08530947054436H285.2052080536913L278.05111409395977 196.07457121551082ZM298.98346308724837 140.72602535421328 286.7950067114094 172.66920208799402H311.5428724832215Z\"/><path d=\"M380.1770738255034 139.1 372.6870738255034 137.35V134.2H391.1670738255034L391.3070738255034 138.05Q394.2470738255034 135.52999999999997 399.1820738255034 133.98999999999998Q404.1170738255034 132.45 409.2270738255034 132.45Q421.8270738255034 132.45 428.72207382550346 141.2Q435.61707382550344 149.95 435.61707382550344 166.32999999999998Q435.61707382550344 183.06 428.09207382550346 192.23000000000002Q420.5670738255034 201.4 406.3570738255034 201.4Q398.4470738255034 201.4 391.3070738255034 199.86Q391.7270738255034 204.9 391.7270738255034 207.77V225.55L403.2070738255034 227.23000000000002V230.52H371.8470738255034V227.23000000000002L380.1770738255034 225.55ZM423.0170738255034 166.32999999999998Q423.0170738255034 152.89 418.6420738255034 146.345Q414.2670738255034 139.8 405.37707382550343 139.8Q397.1870738255034 139.8 391.7270738255034 142.10999999999999V194.68Q397.9570738255034 195.87 405.37707382550343 195.87Q423.0170738255034 195.87 423.0170738255034 166.32999999999998Z\"/></g><g class=\"glab\" font-size=\"12\" font-weight=\"700\" fill=\"#a8005c\" text-anchor=\"middle\"><text font-family=\"system-ui,Arial,sans-serif\" x=\"91.9\" y=\"254\">verzálka</text><text font-family=\"system-ui,Arial,sans-serif\" x=\"204.9\" y=\"254\">minuska</text><text font-family=\"system-ui,Arial,sans-serif\" x=\"302.5\" y=\"254\">kapitálka</text><text font-family=\"system-ui,Arial,sans-serif\" x=\"403.7\" y=\"254\">minuska</text></g></svg>";
+/* ===== Obrázky pro téma 17 (podrobná lekce i výluh) ===== */
+const F_SERIF="'EB Garamond',Georgia,'Times New Roman',serif",F_SANS="Inter,Arial,Helvetica,sans-serif",F_SCRIPT="'Great Vibes','Brush Script MT',cursive",F_MONO="'Courier Prime','Courier New',monospace",F_FRAK="'UnifrakturMaguntia','Old English Text MT',serif";
+const T=(x,y,t,o={})=>`<text x="${x}" y="${y}" font-size="${o.s||9}" font-weight="${o.w||700}" fill="${o.f||'#1f2937'}" text-anchor="${o.a||'middle'}" font-family="${o.fam||'system-ui,Arial,sans-serif'}"${o.k?' class="keep"':''}${o.ls?` letter-spacing="${o.ls}"`:''}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:''}>${t}</text>`;
+const SIP=(id,b)=>`<defs><marker id="${id}" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="${b}"/></marker></defs>`;
+const S=(vb,obsah)=>`<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${obsah}</svg>`;
+const SIPKA=(x1,y1,x2,y2,id,b='#334155',w=1.8)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${b}" stroke-width="${w}" fill="none" marker-end="url(#${id})"/>`;
+const PRUH=(t)=>`<rect x="20" y="104" width="180" height="11" rx="5.5" fill="#f1f5f9"/>`+T(110,112,t,{s:7.5,f:'#334155'});
+const radky=(x,y,w,n,gap,col='#94a3b8',last=0.6)=>{let s='';for(let i=0;i<n;i++){const ww=i===n-1?w*last:w;s+=`<rect x="${x}" y="${y+i*gap}" width="${ww}" height="2.2" rx="1" fill="${col}"/>`;}return s;};
+/* ikona souboru */
+const soubor=(x,y,pripona,barva,jmeno)=>`<g transform="translate(${x},${y})"><path d="M0 0 H22 L30 8 V40 H0Z" fill="#fff" stroke="#334155" stroke-width="1"/><path d="M22 0 V8 H30" fill="#e2e8f0" stroke="#334155" stroke-width="1"/><rect x="-3" y="22" width="36" height="11" rx="2" fill="${barva}"/>${T(15,30,pripona,{s:7,f:'#fff',w:800,k:1})}${jmeno?T(15,50,jmeno,{s:6,w:600,k:1}):''}</g>`;
+
+const IMG={
+/* 1 počítačová typografie */
+typo:()=>S('0 0 220 118',SIP('sipTy','#334155')+
+ `<rect x="6" y="8" width="104" height="70" rx="5" fill="#1f2937"/><rect x="10" y="12" width="96" height="58" rx="2" fill="#f8fafc"/><rect x="50" y="78" width="16" height="8" fill="#475569"/><rect x="38" y="86" width="40" height="4" rx="2" fill="#475569"/>`+
+ `<rect x="14" y="16" width="44" height="50" fill="#fff" stroke="#cbd5e1"/>`+T(36,26,'Nadpis',{s:7,w:800,fam:F_SERIF,k:1})+radky(18,31,36,8,4.2)+
+ `<rect x="62" y="16" width="41" height="50" rx="2" fill="#eef2f7" stroke="#cbd5e1"/>`+
+ T(65,24,'Minion Pro',{s:5.5,a:'start',w:700,k:1})+T(65,33,'10 pt',{s:5.5,a:'start',k:1})+T(84,33,'12 pt',{s:5.5,a:'start',k:1})+
+ `<path d="M66 40 h6 M66 42.5 h6 M66 45 h6" stroke="#e6007e" stroke-width="1.2"/><path d="M76 40 h6 M76 42.5 h4 M76 45 h6" stroke="#334155" stroke-width="1"/><path d="M86 40 h6 M87 42.5 h4 M86 45 h6" stroke="#334155" stroke-width="1"/>`+
+ T(65,56,'AV',{s:7,a:'start',w:800,k:1})+T(78,56,'−50',{s:5.5,a:'start',k:1})+
+ SIPKA(114,44,140,44,'sipTy')+
+ `<rect x="146" y="10" width="62" height="80" fill="#fff" stroke="#334155"/>`+T(177,24,'Nadpis',{s:9,w:800,fam:F_SERIF,k:1})+radky(152,31,50,11,4.6,'#475569')+
+ T(58,100,'písmo · velikost · proklad · zarovnání',{s:6.5})+T(177,100,'hotová sazba',{s:7})),
+/* 2 velikost písma v bodech */
+bod:()=>S('0 0 220 118',
+ `<rect x="18" y="14" width="96" height="76" fill="#fde6f2" stroke="#e6007e" stroke-dasharray="3 2"/>`+
+ T(66,70,'Ag',{s:66,w:400,fam:F_SERIF,f:'#1b1c1f',k:1})+
+ `<path d="M10 14 V90 M6 14 H14 M6 90 H14" stroke="#e6007e" stroke-width="1.6"/>`+T(8,54,'velikost písma',{s:7,r:-90,f:'#a8005c'})+
+ `<rect x="128" y="18" width="84" height="22" rx="6" fill="#e3f5fc"/>`+T(170,28,'1 pt = 0,353 mm',{s:8,w:800})+T(170,36,'(DTP point)',{s:6,w:600})+
+ `<rect x="128" y="46" width="84" height="22" rx="6" fill="#fff8d6"/>`+T(170,56,'12 pt ≈ 4,2 mm',{s:8,w:800})+T(170,64,'běžný text knihy 9–12 pt',{s:6,w:600})+
+ `<rect x="128" y="74" width="84" height="16" rx="6" fill="#ececea"/>`+T(170,85,'72 pt = 1 palec',{s:7,w:700})+
+ PRUH('velikost = výška kuželky v bodech (pt)')),
+/* 3 proklad */
+proklad:()=>S('0 0 220 118',
+ `<rect x="10" y="10" width="62" height="86" rx="4" fill="#fff" stroke="#cbd5e1"/>`+radky(16,18,50,6,3,'#334155',0.7)+
+ `<rect x="80" y="10" width="62" height="86" rx="4" fill="#fff" stroke="#1f8a4c" stroke-width="1.6"/>`+radky(86,18,50,6,7,'#334155',0.7)+
+ `<rect x="150" y="10" width="62" height="86" rx="4" fill="#fff" stroke="#cbd5e1"/>`+radky(156,18,50,6,13,'#334155',0.7)+
+ T(41,92,'malý',{s:7,f:'#c62828'})+T(111,92,'správný',{s:7,f:'#1f8a4c'})+T(181,92,'velký',{s:7,f:'#c62828'})+
+ `<path d="M146 25 v7" stroke="#e6007e" stroke-width="1.5"/>`+
+ PRUH('proklad = vzdálenost řádků, např. 10/12 pt')),
+/* 4 zarovnání */
+zarovnani:()=>{const z=(x,typ,lbl)=>{let s=`<rect x="${x}" y="12" width="46" height="62" rx="4" fill="#fff" stroke="#cbd5e1"/>`;const w=[38,30,36,26,38,22];for(let i=0;i<6;i++){let ww=typ==='blok'?(i===5?20:38):w[i];let xx=x+4;if(typ==='osa')xx=x+4+(38-ww)/2;if(typ==='pravy')xx=x+42-ww;s+=`<rect x="${xx}" y="${20+i*8}" width="${ww}" height="3" rx="1" fill="#334155"/>`;}return s+T(x+23,86,lbl,{s:6.5});};
+ return S('0 0 220 118',z(6,'blok','do bloku')+z(59,'levy','vlevo')+z(112,'osa','na osu')+z(165,'pravy','vpravo')+PRUH('zarovnání odstavce: 4 způsoby'));},
+/* 5 prostrkání a vyrovnání párů */
+kerning:()=>S('0 0 220 118',
+ T(36,46,'A',{s:40,w:700,fam:F_SANS,f:'#1b1c1f',k:1})+T(80,46,'V',{s:40,w:700,fam:F_SANS,f:'#1b1c1f',k:1})+`<path d="M52 30 H64" stroke="#e6007e" stroke-width="2"/><path d="M52 26 V34 M64 26 V34" stroke="#e6007e" stroke-width="1.4"/>`+
+ T(150,46,'A',{s:40,w:700,fam:F_SANS,f:'#1b1c1f',k:1})+T(172,46,'V',{s:40,w:700,fam:F_SANS,f:'#1b1c1f',k:1})+
+ T(57,60,'bez vyrovnání',{s:7,f:'#c62828'})+T(161,60,'s vyrovnáním párů',{s:7,f:'#1f8a4c'})+
+ `<line x1="10" y1="68" x2="210" y2="68" stroke="#e2e8f0"/>`+
+ T(57,88,'TISK',{s:16,w:800,fam:F_SANS,f:'#1b1c1f',k:1})+T(161,88,'TISK',{s:16,w:800,fam:F_SANS,f:'#1b1c1f',k:1,ls:6})+
+ T(57,98,'normálně',{s:6.5})+T(161,98,'prostrkáno',{s:6.5})+PRUH('vyrovnání párů = 2 písmena · prostrkání = celé slovo')),
+/* 6 hladká sazba */
+hladka:()=>S('0 0 220 118',
+ `<rect x="8" y="8" width="98" height="40" rx="6" fill="#e3f4ea"/>`+T(57,24,'„Babička“',{s:11,w:700,fam:F_SERIF,k:1})+T(57,40,'8–10 h · 2. 5. 2026',{s:9,w:600,fam:F_SERIF,k:1})+
+ `<rect x="114" y="8" width="98" height="40" rx="6" fill="#fdecea"/>`+T(163,24,'"Babička"',{s:11,w:700,fam:F_SERIF,k:1,f:'#c62828'})+T(163,40,'8 - 10 h · 2.5.2026',{s:9,w:600,fam:F_SERIF,k:1,f:'#c62828'})+
+ T(57,60,'✓',{s:12,f:'#1f8a4c',k:1})+T(163,60,'✗',{s:12,f:'#c62828',k:1})+
+ `<rect x="36" y="66" width="148" height="28" rx="6" fill="#fff" stroke="#cbd5e1"/>`+T(106,84,'šli jsme v',{s:11,w:600,fam:F_SERIF,k:1,a:'end'})+T(114,84,'lese',{s:11,w:600,fam:F_SERIF,k:1,a:'start'})+
+ `<path d="M105 86 q5 5 10 0" stroke="#e6007e" stroke-width="1.6" fill="none"/>`+
+ PRUH('typograficky správný zápis textu')),
+/* 7 sirotek a vdova */
+parchant:()=>S('0 0 220 118',
+ `<rect x="16" y="8" width="80" height="88" fill="#fff" stroke="#334155"/>`+radky(24,16,64,8,5,'#94a3b8',0.5)+`<rect x="30" y="86" width="58" height="3" rx="1" fill="#e6007e"/>`+
+ `<rect x="124" y="8" width="80" height="88" fill="#fff" stroke="#334155"/>`+`<rect x="132" y="16" width="30" height="3" rx="1" fill="#e6007e"/>`+radky(132,28,64,10,5,'#94a3b8',0.6)+
+ T(56,80,'sirotek ↓',{s:7,f:'#a8005c'})+T(178,26,'← vdova',{s:7,f:'#a8005c'})+
+ PRUH('osamělý řádek odstavce = parchant (chyba)')),
+/* 8 písmová osnova (podle tématu 1) */
+osnova:()=>OSNOVA_SVG,
+/* 9 druh, řez, rodina */
+rodina:()=>S('0 0 220 118',
+ `<rect x="8" y="8" width="204" height="74" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>`+
+ T(110,22,'Garamond',{s:12,w:700,fam:F_SERIF,k:1})+
+ T(40,44,'Aa',{s:16,w:400,fam:F_SERIF,k:1})+`<text x="85" y="44" font-size="16" font-style="italic" font-family="${F_SERIF}" text-anchor="middle" fill="#1f2937" class="keep">Aa</text>`+T(130,44,'Aa',{s:16,w:700,fam:F_SERIF,k:1})+T(178,44,'AA',{s:11,w:500,fam:F_SERIF,k:1})+
+ T(40,56,'základní',{s:6.5})+T(85,56,'kurzíva',{s:6.5})+T(130,56,'tučné',{s:6.5})+T(178,56,'kapitálky',{s:6.5})+
+ `<path d="M18 64 Q18 70 24 70 H196 Q202 70 202 64" stroke="#e6007e" stroke-width="1.4" fill="none"/>`+T(110,78,'všechny řezy a velikosti = písmová rodina',{s:7,f:'#a8005c'})+
+`<rect x="70" y="11" width="80" height="15" rx="4" fill="none" stroke="#00a3e0" stroke-width="1.2"/>`+T(176,22,'= druh',{s:7,f:'#006e98',a:'start'})+
+ PRUH('druh = jméno · řez = varianta · rodina = vše')),
+/* 10 druhy písma podle tvaru */
+druhy:()=>{const b=(x,y,t,fam,lbl,o={})=>`<rect x="${x}" y="${y}" width="66" height="40" rx="6" fill="#fff" stroke="#cbd5e1"/>`+(o.it?`<text x="${x+33}" y="${y+25}" font-size="${o.s||16}" font-family="${fam}" text-anchor="middle" fill="#1b1c1f" class="keep">${t}</text>`:T(x+33,y+25,t,{s:o.s||16,w:o.w||400,fam:fam,f:'#1b1c1f',k:1}))+T(x+33,y+36,lbl,{s:6});
+ return S('0 0 220 118',b(4,6,'Písmo',F_SERIF,'patkové')+b(77,6,'Písmo',F_SANS,'bezpatkové',{w:500})+b(150,6,'Písmo',F_SCRIPT,'psací',{s:20,it:1})+b(40,54,'Písmo',F_MONO,'psací stroj',{s:14})+b(113,54,'Písmo',F_FRAK,'lomené',{s:17})+PRUH('5 druhů písma podle tvaru'));},
+/* 11 serif a stínování */
+serif:()=>S('0 0 220 118',
+ T(55,78,'H',{s:70,w:400,fam:F_SERIF,f:'#1b1c1f',k:1})+`<circle cx="32" cy="76" r="8" fill="none" stroke="#e6007e" stroke-width="1.6"/><circle cx="32" cy="27" r="8" fill="none" stroke="#e6007e" stroke-width="1.6"/>`+
+ T(160,78,'H',{s:70,w:500,fam:F_SANS,f:'#1b1c1f',k:1})+
+ T(55,92,'antikva – se serify',{s:7})+T(160,92,'grotesk – bez serifů',{s:7})+PRUH('serif = zakončení tahu písmene')),
+/* 12 co je font */
+font:()=>S('0 0 220 118',SIP('sipFo','#334155')+
+ `<path d="M6 22 h30 l6 -6 h40 v68 h-76z" fill="#fde68a" stroke="#b45309"/>`+T(44,32,'Rodina Inter',{s:7,w:800,f:'#7c2d12'})+
+ soubor(14,40,'.otf','#e6007e','Regular')+soubor(48,40,'.otf','#e6007e','Bold')+
+ SIPKA(92,50,112,50,'sipFo')+
+ `<rect x="118" y="10" width="96" height="78" rx="6" fill="#fff" stroke="#cbd5e1"/>`+
+ (()=>{const g='AaBbČčŘř12?!€@';let s='';for(let i=0;i<12;i++){const x=126+(i%4)*22,y=28+Math.floor(i/4)*24;s+=`<rect x="${x-8}" y="${y-14}" width="18" height="20" rx="3" fill="#f1f5f9"/>`+T(x+1,y,g[i],{s:12,w:600,fam:F_SANS,f:'#1b1c1f',k:1});}return s;})()+
+ T(166,100,'glyfy = všechny znaky',{s:7})+T(46,100,'1 řez = 1 soubor',{s:7})+PRUH('font = soubor s písmem v počítači')),
+/* 13 bitmapový × vektorový font */
+bitvek:()=>{let px='';const A=['..XXX..','.X...X.','.....X.','.XXXXX.','X....X.','X...XX.','.XXX.XX'];A.forEach((r,j)=>{[...r].forEach((c,i)=>{if(c==='X')px+=`<rect x="${14+i*11}" y="${14+j*11}" width="11" height="11" fill="#1b1c1f"/>`;});});
+ return S('0 0 220 118',`<rect x="10" y="10" width="85" height="85" fill="#fff" stroke="#cbd5e1"/>`+px+
+ `<rect x="125" y="10" width="85" height="85" fill="#fff" stroke="#cbd5e1"/>`+
+ `<path d="M150 40 Q152 26 168 26 Q186 26 186 42 V78 Q186 82 192 82 M186 52 Q160 52 152 60 Q146 68 152 76 Q160 84 174 80 Q184 76 186 66" stroke="#1b1c1f" stroke-width="8" fill="none" stroke-linecap="round"/>`+
+ `<circle cx="150" cy="40" r="2.6" fill="#e6007e"/><circle cx="168" cy="26" r="2.6" fill="#e6007e"/><circle cx="186" cy="42" r="2.6" fill="#e6007e"/><circle cx="186" cy="66" r="2.6" fill="#e6007e"/><circle cx="152" cy="76" r="2.6" fill="#e6007e"/>`+
+ T(52,103,'bitmapový – schody',{s:7,f:'#c62828'})+T(168,103,'vektorový – hladký',{s:7,f:'#1f8a4c'})+T(110,56,'zvětšeno',{s:6.5,f:'#64748b'}));},
+/* 14 typy souborů fontů */
+formaty:()=>S('0 0 220 118',
+ soubor(8,12,'.pfb','#64748b')+soubor(30,20,'.pfm','#94a3b8')+T(34,78,'Type 1',{s:8,w:800})+T(34,87,'1984 · 2 soubory',{s:6})+
+ soubor(72,14,'.ttf','#00a3e0')+T(87,78,'TrueType',{s:8,w:800})+T(87,87,'1991',{s:6,k:1})+
+ soubor(122,14,'.otf','#e6007e')+T(137,78,'OpenType',{s:8,w:800})+T(137,87,'1996 · dnes standard',{s:6})+
+ soubor(172,14,'.woff2','#1f8a4c')+T(187,78,'web',{s:8,w:800})+T(187,87,'pro weby',{s:6})+
+ `<path d="M140 2 l3 6 6 1 -4.5 4 1 6 -5.5 -3 -5.5 3 1 -6 -4.5 -4 6 -1z" fill="#f2c500"/>`+
+ PRUH('přípona souboru prozradí typ fontu')),
+/* 15 co umí OpenType */
+opentype:()=>S('0 0 220 118',
+ `<rect x="6" y="8" width="66" height="44" rx="6" fill="#fff" stroke="#cbd5e1"/>`+T(39,34,'fi → ﬁ',{s:15,w:400,fam:F_SERIF,k:1})+T(39,47,'ligatura',{s:6.5})+
+ `<rect x="77" y="8" width="66" height="44" rx="6" fill="#fff" stroke="#cbd5e1"/>`+T(110,34,'ř ů ß Ω',{s:14,w:500,fam:F_SERIF,k:1})+T(110,47,'všechny jazyky',{s:6.5})+
+ `<rect x="148" y="8" width="66" height="44" rx="6" fill="#fff" stroke="#cbd5e1"/>`+T(181,34,'Win + Mac',{s:10,w:800,k:1})+T(181,47,'jeden soubor',{s:6.5})+
+ soubor(70,58,'.otf','#e6007e')+T(108,80,'až 65 536 znaků',{s:8,w:700,k:1,a:'start'})+
+ PRUH('OpenType = moderní font, Unicode')),
+/* 16 písmo v tiskovém PDF */
+pdf:()=>S('0 0 220 118',SIP('sipPd','#334155')+
+ `<path d="M14 10 H54 L64 20 V82 H14Z" fill="#fff" stroke="#334155"/>`+`<rect x="10" y="40" width="34" height="12" rx="2" fill="#c62828"/>`+T(27,49,'PDF',{s:8,f:'#fff',w:800,k:1})+
+ `<rect x="40" y="58" width="20" height="16" rx="3" fill="#e6007e"/>`+T(50,69,'Aa',{s:8,f:'#fff',w:800,fam:F_SERIF,k:1})+T(40,94,'písma vložená ✓',{s:7,f:'#1f8a4c'})+
+ SIPKA(70,46,96,46,'sipPd')+
+ `<rect x="100" y="30" width="34" height="30" rx="4" fill="#1b1c1f"/>`+T(117,49,'RIP',{s:9,f:'#fff',w:800,k:1})+
+ `<rect x="148" y="12" width="64" height="62" rx="4" fill="#fff" stroke="#334155"/>`+T(180,32,'Tisk',{s:11,w:700,fam:F_SERIF,k:1})+
+ `<rect x="156" y="42" width="48" height="11" fill="#fbcfe8"/>`+T(180,50,'Font chybí',{s:7,w:700,f:'#a8005c'})+T(180,64,'nahrazen jiným ✗',{s:6,f:'#c62828'})+
+ T(180,94,'chybějící písmo',{s:7,f:'#c62828'})+PRUH('písmo musí být v PDF vložené')),
+/* 17 digitální tisk – bez desky */
+digital:()=>S('0 0 220 118',SIP('sipDi','#334155')+
+ `<rect x="6" y="14" width="40" height="28" rx="3" fill="#1f2937"/><rect x="9" y="17" width="34" height="20" fill="#e3f5fc"/><rect x="20" y="42" width="12" height="4" fill="#475569"/>`+
+ SIPKA(48,28,66,28,'sipDi')+`<rect x="68" y="16" width="26" height="24" rx="4" fill="#1b1c1f"/>`+T(81,31,'RIP',{s:7,f:'#fff',w:800,k:1})+
+ SIPKA(96,28,116,28,'sipDi')+
+ `<rect x="118" y="10" width="66" height="38" rx="5" fill="#e2e8f0" stroke="#334155"/><rect x="124" y="16" width="54" height="8" rx="2" fill="#94a3b8"/><rect x="184" y="30" width="22" height="3" fill="#fff" stroke="#334155" stroke-width=".7"/><rect x="186" y="34" width="22" height="3" fill="#fff" stroke="#334155" stroke-width=".7"/>`+
+ T(151,40,'digitální stroj',{s:6.5,w:700})+
+ `<rect x="70" y="58" width="40" height="28" rx="3" fill="#fff" stroke="#cbd5e1" stroke-dasharray="3 2"/>`+`<path d="M72 60 L108 84 M108 60 L72 84" stroke="#c62828" stroke-width="2"/>`+T(90,96,'deska není',{s:7,f:'#c62828'})+
+ T(160,64,'Jana',{s:9,w:700,fam:F_SCRIPT,k:1})+T(160,76,'Petr',{s:9,w:700,fam:F_SCRIPT,k:1})+T(160,88,'Eva',{s:9,w:700,fam:F_SCRIPT,k:1})+`<rect x="138" y="54" width="44" height="38" rx="3" fill="none" stroke="#cbd5e1"/>`+T(160,100,'každý kus jiný',{s:6.5})+
+ PRUH('digitální tisk = z dat rovnou na papír')),
+/* 18 laserový tisk */
+laser:()=>S('0 0 220 118',SIP('sipLa','#e6007e')+
+ `<circle cx="110" cy="50" r="30" fill="#e2e8f0" stroke="#334155" stroke-width="1.4"/>`+
+ (()=>{let s='';for(let a=0;a<360;a+=30){const r=30,x=110+Math.cos(a*Math.PI/180)*(r-5),y=50+Math.sin(a*Math.PI/180)*(r-5);if(a<200||a>300)s+=T(x,y+2,'+',{s:7,f:'#00a3e0',k:1});}return s;})()+
+ `<rect x="150" y="8" width="26" height="12" rx="2" fill="#1b1c1f"/>`+T(163,17,'laser',{s:6,f:'#fff'})+`<path d="M158 20 L128 30" stroke="#e6007e" stroke-width="2" marker-end="url(#sipLa)"/>`+
+ `<rect x="150" y="62" width="30" height="20" rx="3" fill="#475569"/>`+T(165,75,'toner',{s:6,f:'#fff'})+
+ `<rect x="40" y="86" width="140" height="5" fill="#fff" stroke="#334155" stroke-width=".8"/>`+`<circle cx="60" cy="96" r="7" fill="#f87171" stroke="#334155"/><circle cx="60" cy="80" r="7" fill="#f87171" stroke="#334155"/>`+T(60,72,'teplo',{s:6})+
+ T(26,30,'1 nabití',{s:7,a:'start',f:'#006e98'})+T(148,46,'2 osvit',{s:7,a:'start',f:'#a8005c'})+T(184,75,'3 toner',{s:7,a:'start'})+T(12,108,'4 přenos a zapečení',{s:7,a:'start'})),
+/* 19 inkoustový tisk */
+inkjet:()=>S('0 0 220 118',
+ `<rect x="70" y="10" width="80" height="30" rx="4" fill="#334155"/>`+T(110,28,'tisková hlava',{s:7,f:'#fff'})+
+ (()=>{let s='';const c=['#00a3e0','#e6007e','#f2c500','#1b1c1f'];for(let i=0;i<8;i++){const x=78+i*9;s+=`<rect x="${x}" y="40" width="4" height="5" fill="#1b1c1f"/><circle cx="${x+2}" cy="${54+(i%3)*6}" r="2" fill="${c[i%4]}"/>`;}return s;})()+
+ `<rect x="20" y="78" width="180" height="6" fill="#fff" stroke="#334155" stroke-width=".8"/>`+`<path d="M20 90 H60" stroke="#334155" stroke-width="1.2" marker-end="url(#sipIn)"/>`+SIP('sipIn','#334155')+
+ `<path d="M60 25 H40 M160 25 H180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="2 2"/>`+T(30,22,'←',{s:9,k:1})+T(190,22,'→',{s:9,k:1})+
+ T(110,104,'kapky inkoustu přímo na papír',{s:7})+T(200,74,'papír',{s:6,a:'end'})),
+/* 20 cena jednoho kusu: digitál × ofset */
+naklad:()=>S('0 0 220 118',
+ `<path d="M24 10 V90 H210" stroke="#334155" stroke-width="1.2" fill="none"/>`+
+ `<path d="M24 50 H206" stroke="#e6007e" stroke-width="2.6"/>`+`<path d="M24 14 Q60 70 110 78 T206 84" stroke="#00a3e0" stroke-width="2.6" fill="none"/>`+
+ `<circle cx="84" cy="50" r="4" fill="#f2c500" stroke="#334155"/>`+
+ T(150,45,'digitální tisk',{s:7.5,f:'#a8005c'})+T(160,76,'ofset',{s:7.5,f:'#006e98'})+
+ T(14,50,'cena 1 kusu',{s:6.5,r:-90})+T(160,100,'náklad (počet kusů) →',{s:6.5})+T(84,40,'zlom',{s:6.5})+
+ `<rect x="26" y="92" width="58" height="8" fill="#fde6f2"/>`+T(55,98,'malý náklad',{s:5.5,k:1})),
+/* 21 klasický × digitální × digitalizovaný */
+trojice:()=>{const box=(x,t,c,deska,kde)=>`<rect x="${x}" y="10" width="64" height="70" rx="6" fill="#fff" stroke="${c}" stroke-width="1.6"/>`+`<rect x="${x+12}" y="22" width="40" height="22" rx="3" fill="#e2e8f0" stroke="#334155" stroke-width=".8"/>`+(deska?`<rect x="${x+(kde==='mimo'?2:20)}" y="${kde==='mimo'?52:28}" width="${kde==='mimo'?20:24}" height="${kde==='mimo'?14:10}" fill="#cbd5e1" stroke="#64748b"/>`:`<path d="M${x+22} 54 l20 14 M${x+42} 54 l-20 14" stroke="#c62828" stroke-width="2"/>`)+T(x+32,92,t,{s:7,f:c});
+ return S('0 0 220 118',box(6,'klasický','#334155',1,'mimo')+box(78,'digitalizovaný','#00a3e0',1,'ve')+box(150,'digitální','#e6007e',0)+PRUH('kde vzniká tisková forma?'));}
+};
+
+/* ---------- MYŠLENKOVÁ MAPA ---------- */
+const MAP=[
+{k:"c",side:"left",n:"C",t:"Počítačová typografie",link:"#typografie",items:[
+ ["Co to je","Úprava textu v počítači – v sázecím programu (InDesign). Grafik volí písmo, velikost, proklad a zarovnání."],
+ ["Velikost písma","V typografických bodech (pointech): 1 pt = 0,353 mm. Text knihy 9–12 pt."],
+ ["Proklad","Vzdálenost řádků (od účaří k účaří). Zápis 10/12 pt. Bývá o 1–3 body větší než písmo."],
+ ["Zarovnání","Do bloku (knihy), vlevo (letáky, web), na osu (nadpisy, pozvánky), vpravo (popisky)."],
+ ["Prostrkání a páry","Prostrkání = mezery mezi všemi písmeny. Vyrovnání párů (kerning) = mezera mezi dvěma písmeny, např. AV."],
+ ["Hladká sazba 1","Interpunkce těsně za slovo · předložky k, s, v, z, o, u, i ne na konci řádku · telefon po trojicích · 2. 5. 2026 · 12:14."],
+ ["Hladká sazba 2","Spojovník bez mezer · pomlčka s mezerami, ale 8–10 bez mezer · „uvozovky“ · (závorky) těsně · zkratky · dělení 2/3."],
+ ["Sirotek a vdova","Osamělý řádek odstavce = parchant. Sirotek na konci strany, vdova na začátku další strany."]]},
+{k:"m",side:"left",n:"M",t:"Popis a druhy písma",link:"#popis",items:[
+ ["Písmová osnova","Akcentová linie, horní dotažnice, střední výška, účaří, dolní dotažnice."],
+ ["Druh, řez, rodina","Druh = jméno (Garamond). Řez = verze (kurzíva, tučné). Rodina = druh ve všech řezech a velikostech."],
+ ["Serif a stínování","Serif = zakončení tahu. Antikva má serify a stínování, grotesk ne."],
+ ["5 druhů písma","Patkové · bezpatkové · psací · písmo psacího stroje · lomené."],
+ ["Klasifikace","11 klasifikačních skupin podle kresby: od dynamických po statická a lineární písma."],
+ ["Jaké písmo kam","Kniha → patkové. Obrazovka, plakát → bezpatkové. Pozvánka → psací. Nejvýš 1–2 rodiny."]]},
+{k:"y",side:"right",n:"Y",t:"Písmo v počítači – font",link:"#font",items:[
+ ["Font","Soubor s písmem: glyfy jednoho řezu, šířky znaků, páry. 1 řez = 1 soubor."],
+ ["Bitmapový × vektorový","Bitmapový = pixely, při zvětšení schody. Vektorový = křivky, zvětší se bez ztráty kvality."],
+ ["PostScript Type 1","Adobe 1984, 2 soubory .pfb + .pfm. Dnes končí, Adobe ho nepodporuje."],
+ ["TrueType","Apple 1991, pak Windows. 1 soubor .ttf, dobře vypadá na obrazovce."],
+ ["OpenType","Adobe + Microsoft 1996. .otf, 1 soubor pro Win i Mac, Unicode, až 65 536 znaků. Dnešní standard."],
+ ["WOFF","Webový font .woff, .woff2 – zabalený pro rychlé stažení na webu."],
+ ["Instalace a licence","Windows: složka Fonts, Mac: Kniha písem, Adobe Fonts. Font je software s licencí."],
+ ["Písmo v PDF","Písma vložit do tiskového PDF, logo převést na křivky. Chybějící font = náhrada (InDesign růžově)."]]},
+{k:"k",side:"right",n:"K",t:"Digitální tisk × ofset",link:"#digitalni",items:[
+ ["Digitální tisk","Tisk přímo z dat bez tiskové formy. Malé náklady, personalizace."],
+ ["Laserový tisk","Nabití válce → laser vybije obraz → toner na vybitá místa → přenos a zažehlení teplem a tlakem."],
+ ["Inkoustový tisk","Tisková hlava s tryskami stříká kapky inkoustu přímo na materiál."],
+ ["Tonery a inkousty","Toner: práškový nebo kapalný, fixuje se teplem a tlakem. Inkoust: pigmenty nebo barviva."],
+ ["Tři druhy tisku","Klasický – forma mimo stroj. Digitalizovaný – forma ve stroji. Digitální – bez formy."],
+ ["Digitál × ofset","Digitál: bez desek, cena kusu stejná, personalizace. Ofset: desky, levný při velkém nákladu, nejvyšší kvalita."],
+ ["Kdy který","Malý náklad a každý kus jiný → digitál. Tisíce kusů, přímé barvy → ofset."]]}
+];
+const MM_CENTER='<div class="n">Otázka č. 17</div><div class="t">Písmo v počítači → tisk</div><div class="s">C → M → Y → K<br>mluv v pořadí barev</div>';
+const MM_T={"c":["@#c1","@#c2","@#c3","@#c4","@#c5","@#c6a","@#c6b","@#c7"],"m":["@#m1","@#m2","@#m3","@#m4","@#m5","@#m6"],"y":["@#y1","@#y2","@#y3a","@#y3b","@#y3c","@#y3d","@#y4","@#y5"],"k":["@#k1","@#k2","@#k3","@#k3","@#k4","@#k6","@#k7"]};
+
+/* ---------- KVÍZ ---------- */
+const QUIZ=[
+["Co je počítačová typografie?",["úprava textu v sázecím programu","výroba tiskových desek laserem","převod obrázků z RGB do CMYK","kontrola tiskového PDF v tiskárně"],0,"Grafik v programu (InDesign) volí písmo, velikost, proklad, zarovnání a dodržuje pravidla sazby."],
+["Ve kterém programu se dnes nejčastěji sází knihy a časopisy?",["v Adobe Photoshopu","v Microsoft Wordu","v Adobe InDesignu","v Adobe Acrobatu"],2,"Sazba = InDesign. Photoshop je na fotky, Word na přípravu textu, Acrobat na kontrolu PDF."],
+["V jakých jednotkách se udává velikost písma?",["v milimetrech","v typografických bodech","v pixelech na palec","v procentech krytí"],1,"Velikost písma = výška v bodech (pointech) angloamerické soustavy, 1 pt = 0,353 mm."],
+["Co je proklad?",["vzdálenost mezi řádky","mezera mezi dvěma písmeny","odsazení prvního řádku","okraj kolem zrcadla sazby"],0,"Proklad = vzdálenost řádků (od účaří k účaří). Zápis 10/12 pt."],
+["Co znamená zápis 10/12 pt?",["písmo 12 pt, proklad 10 pt","10 řádků na 12 cm","písmo 10 pt, proklad 12 pt","10 písmen a 12 mezer"],2,"První číslo je velikost písma, druhé proklad. Proklad bývá o 1–3 body větší."],
+["Jaké zarovnání se používá v knihách a novinách?",["na osu","do bloku","na pravý praporek","na levý praporek"],1,"Do bloku – řádky jsou rovné vlevo i vpravo, mezery mezi slovy se mění."],
+["Co je vyrovnání párů (kerning)?",["úprava mezery mezi dvěma písmeny","zvětšení mezer v celém slově","rozdělení slova na konci řádku","zarovnání řádků na mřížku účaří"],0,"Kerning upraví mezeru mezi dvojicí písmen (AV, To). Prostrkání mění mezery mezi všemi písmeny."],
+["Co nesmí zůstat na konci řádku?",["tečka za větou","dlouhé slovo","jednopísmenná předložka","číslo strany"],2,"Předložky a spojky k, s, v, z, o, u, i se pevnou mezerou přesunou k dalšímu slovu (výjimka: malé „a“)."],
+["Jak se správně zapíše datum?",["2.5.2026","2. 5. 2026","2 .5 .2026","2. 5. 20 26"],1,"Arabské číslice s tečkou a mezerou za tečkou, letopočet bez mezer."],
+["Jak se sází telefonní číslo?",["+420607340340","+420 60 73 40 340","+420-607-340-340","+420 607 340 340"],3,"Telefonní čísla se sázejí po trojicích s mezerou."],
+["Který zápis je typograficky správně?",["Praha - Libeň","Praha–Libeň","Praha-Libeň","Praha -Libeň"],2,"Spojovník ve spojených výrazech se sází bez mezer a je kratší než pomlčka."],
+["Kdy se pomlčka sází bez mezer?",["když nahrazuje „od–do“","když je přestávka v řeči","vždy na začátku věty","vždy za uvozovkami"],0,"Bez mezer: 8–10 hodin, Suchý–Šlitr, Sparta–Slavia. S mezerami: přestávka v řeči."],
+["Jak vypadají české uvozovky?",["“text„","\"text\"","„text“","« text »"],2,"Dolní a horní, těsně k textu: „Babička“."],
+["Jak se píše iniciálová zkratka?",["verzálkami bez teček","mínuskami s tečkou","verzálkami s tečkami","mínuskami bez tečky"],0,"ČR, OSN, EU. Zkratky slov se píšou mínuskami s tečkou (atd., např.)."],
+["Které dělení je správné?",["t-iskárna","tis-kárna","tiskár-na","tiskárn-a"],1,"Na řádku zůstanou aspoň 2 písmena, na další přejdou aspoň 3."],
+["Co je sirotek?",["poslední řádek odstavce na nové straně","řádek bez písmen","první řádek odstavce sám na konci strany","slovo rozdělené přes stranu"],2,"Sirotek = první řádek sám na konci strany, vdova = poslední řádek sám na začátku další. Obojí jsou parchanti."],
+["Na které lince písmena stojí?",["na střední výšce","na účaří","na horní dotažnici","na akcentové linii"],1,"Účaří je linka, na které písmena stojí. Střední výška = výška malých písmen."],
+["Co je řez písma?",["kresebná verze druhu písma","konkrétní písmo s vlastním jménem","druh ve všech velikostech a řezech","výška písma v bodech"],0,"Řez = kurzíva, polotučné, tučné, kapitálky. Druh = jméno, rodina = vše dohromady."],
+["Co je písmová rodina?",["skupina písem podobného tvaru","jeden řez ve všech velikostech","písma jednoho autora","druh písma ve všech řezech a velikostech"],3,"Rodina = konkrétní druh písma ve všech řezech a velikostech."],
+["Které písmo je bezpatkové?",["Garamond","Arial","Times New Roman","Bodoni"],1,"Arial a Helvetica jsou grotesky – bez patek a bez stínování."],
+["Které písmo má všechna písmena stejně široká?",["písmo psacího stroje","lomené písmo","psací písmo","patkové písmo"],0,"Písmo psacího stroje (Courier) je neproporcionální – i a m zaberou stejné místo."],
+["Kolik je klasifikačních skupin písma?",["5","7","11","15"],2,"Klasifikace dělí písma do 11 skupin podle kresebných znaků."],
+["Co je font?",["soubor, ve kterém je uložené písmo","jeden znak abecedy","kresba písma na papíře","program pro sazbu textu"],0,"Font = počítačový soubor s glyfy jednoho řezu, šířkami znaků a páry."],
+["Proč se vektorový font dá libovolně zvětšit?",["protože má víc pixelů","protože je uložený ve vyšším rozlišení","protože je popsaný křivkami","protože je komprimovaný"],2,"Obrys z křivek počítač vykreslí znovu v každé velikosti. Bitmapový font by měl schody."],
+["Který typ fontu se skládá ze dvou souborů?",["OpenType","PostScript Type 1","TrueType","WOFF"],1,"Type 1: .pfb (obrysy) + .pfm nebo .afm (míry znaků)."],
+["Jakou příponu má font OpenType?",[".pfb",".woff",".otf",".pdf"],2,"OpenType = .otf (může mít i .ttf). TrueType = .ttf, Type 1 = .pfb + .pfm, web = .woff."],
+["Proč je OpenType dnešní standard?",["jeden soubor pro Windows i Mac a Unicode","obsahuje jen bitmapové znaky","funguje jen v programech Adobe","nepotřebuje se instalovat"],0,"OpenType: jeden soubor pro všechny systémy, Unicode – až 65 536 znaků, typografické funkce."],
+["K čemu slouží font WOFF?",["k tisku na osvitové jednotce","k sazbě knih v InDesignu","k zobrazení písma na webu","k převodu písma na křivky"],2,"WOFF a WOFF2 jsou fonty zabalené pro web, prohlížeč je stáhne se stránkou."],
+["Co se stane, když v tiskovém PDF chybí font?",["PDF se nedá otevřít","písmo se nahradí jiným","text se vytiskne tučně","text se převede na RGB"],1,"Chybějící písmo se nahradí jiným. Proto se písma vkládají do PDF a logo se převádí na křivky."],
+["Co je digitální tisk?",["tisk z desky vypálené ve stroji","tisk přímo z dat bez tiskové formy","tisk z hliníkové desky přes gumu","tisk přes síto s šablonou"],1,"Digitální tisk nemá hmotnou tiskovou formu, tiskne přímo z počítače."],
+["Na která místa se u laserového tisku přichytí toner?",["na místa nabitá elektřinou","na celý válec rovnoměrně","na místa vybitá laserem","na místa natřená vodou"],2,"Válec se nabije, laser osvícená místa vybije a toner se chytí jen tam."],
+["Jak se u laserového tisku toner upevní na papír?",["teplem a tlakem","UV zářením","odpařením vody","vsáknutím do papíru"],0,"Papír projde horkými přítlačnými válci, které toner roztaví a zapečou."],
+["Co dělá tisková hlava inkoustové tiskárny?",["přenáší toner z válce","stříká kapky inkoustu na materiál","vypaluje obraz do desky","přitlačuje gumový válec"],1,"Inkjet: tisková hlava s tryskami vystřikuje inkoust přímo na materiál."],
+["Čím se liší digitalizovaný tisk od digitálního?",["nemá žádný RIP","tiskne jen tonerem","forma se vyrobí mimo stroj","forma se vypálí přímo ve stroji"],3,"Digitalizovaný = forma je, jen vzniká laserem ve stroji. Digitální = forma není vůbec."],
+["Pro jakou zakázku se hodí digitální tisk?",["50 pozvánek, každá se jménem","100 000 výtisků týdeníku","20 000 letáků s Pantone","kniha v nákladu 5 000 kusů"],0,"Malý náklad a každý kus jiný (personalizace) = digitální tisk."],
+["Proč je ofset levný pro velký náklad?",["protože nepotřebuje desky","protože tiskne bez barvy","desky a seřízení se zaplatí jen jednou","protože každý kus je jiný"],2,"Čím víc kusů, tím menší podíl ceny desek a přípravy připadne na jeden kus."],
+["Co digitální tisk neumí tak dobře jako ofset?",["tisknout od jednoho kusu","tisknout přímé barvy Pantone","tisknout proměnná data","tisknout na počkání"],1,"Přímé barvy digitální tisk jen napodobí z CMYK. Ofset je tiskne zvláštní deskou."]
+];
+
+/* ---------- TEST PSANÍM ---------- */
+const WT=[
+{q:'Co je počítačová typografie a co v ní grafik nastavuje? <span class="pill">5 bodů</span>',h:'Tip: program, velikost písma, proklad, zarovnání, prostrkání.',
+ p:[["úprava textu v počítači / sazba v programu",["uprav|sazb|saz[ie]|pocitac"],1,"Vysvětli, že jde o úpravu (sazbu) textu v počítači."],
+    ["program InDesign (DTP)",["indesign|dtp|sazeci program|quark"],0,"Bonus: sází se v InDesignu (DTP program)."],
+    ["velikost písma v bodech",["bod|point|\\bpt\\b|velikost"],1,"Velikost písma se udává v typografických bodech."],
+    ["proklad = vzdálenost řádků",["proklad|radkovan"],1,"Proklad = vzdálenost mezi řádky."],
+    ["zarovnání (do bloku, vlevo, na osu, vpravo)",["zarovn|do bloku|praporek|na osu|na stred"],1,"Zarovnání odstavce: do bloku, vlevo, na osu, vpravo."],
+    ["prostrkání, vyrovnání párů (kerning)",["prostrk|kerning|vyrovnan|par"],0,"Bonus: prostrkání a vyrovnání párů."],
+    ["pravidla hladké sazby",["hladk|pravidl"],1,"Grafik dodržuje pravidla hladké sazby."]],
+ e:[["proklad[^.]{0,40}(mezi pismen|mezi dvema pismen)","Proklad není mezera mezi písmeny – to je prostrkání. Proklad je vzdálenost ŘÁDKŮ."],["velikost[^.]{0,40}(milimetr|\\bmm\\b|pixel)","Velikost písma se neudává v milimetrech ani pixelech, ale v typografických BODECH."]],
+ m:"Počítačová typografie je úprava textu v počítači – sazba v sázecím programu, nejčastěji v Adobe InDesignu. Grafik volí druh a řez písma a velikost písma v typografických bodech (1 pt = 0,353 mm). Nastavuje proklad, tedy vzdálenost mezi řádky, například 10/12 pt. Volí zarovnání odstavce: do bloku, vlevo, na osu nebo vpravo. Upravuje prostrkání (mezery mezi všemi písmeny) a vyrovnání párů (mezera mezi dvěma písmeny, např. AV). Dodržuje pravidla hladké sazby."},
+{q:'Popiš pravidla hladké sazby pro interpunkční znaménka, jednohláskové předložky a spojky, telefonní čísla, datum, hodiny a minuty. <span class="pill">3 body</span>',h:'Tip: mezera před a za znaménkem, konec řádku, trojice, tečky a mezery.',
+ p:[["interpunkce těsně za slovo, pak mezera",["tesne|za slov|mezer"],1,"Interpunkční znaménka se sázejí těsně za slovo, za nimi následuje mezera."],
+    ["předložky a spojky ne na konci řádku",["konec|konci|na konci rad"],1,"Jednohláskové předložky a spojky nesmí zůstat na konci řádku."],
+    ["výjimka „a“ / novinová sazba",["\\ba\\b|novin"],0,"Bonus: výjimka je malé „a“ a úzká novinová sazba."],
+    ["pevná mezera",["pevn|nezlomitel"],0,"Bonus: použije se pevná mezera."],
+    ["telefon po trojicích",["trojic|po tre|3 cisl"],1,"Telefonní čísla se sázejí po trojicích s mezerou."],
+    ["datum: mezera za tečkou, letopočet bez mezer",["datum|za teck|letopoc"],1,"Datum: tečka a mezera za tečkou, letopočet bez mezer."],
+    ["hodiny a minuty tečkou (dvojtečkou) bez mezer",["hodin|minut|dvojteck|teck"],0,"Bonus: hodiny od minut tečkou nebo dvojtečkou bez mezer."]],
+ e:[["pred (carkou|teckou|znamenk)[^.]{0,20}mezer","Před interpunkčním znaménkem se mezera NEdělá. Znaménko je těsně za slovem."]],
+ m:"Interpunkční znaménka (čárka, tečka, vykřičník, otazník, středník, dvojtečka) se sázejí těsně za slovo a za nimi následuje mezera. Jednohláskové předložky a spojky (k, s, v, z, o, u, i) nesmějí zůstat na konci řádku – s výjimkou malého „a“ a úzké novinové sazby. Použije se pevná mezera. Telefonní čísla se sázejí po trojicích s mezerou (+420 607 340 340). Datum se sází arabskými číslicemi s tečkou a mezerami za tečkami, letopočty bez mezer (2. 5. 2026). Hodiny se od minut oddělují tečkou nebo dvojtečkou bez mezer (12.14, 12:14)."},
+{q:'Popiš pravidla hladké sazby pro spojovník, pomlčku, uvozovky, závorky, apostrof, zkratky a dělení slov. <span class="pill">7 bodů</span>',h:'Tip: s mezerami nebo bez, tvar uvozovek, druhy zkratek, kolik písmen při dělení.',
+ p:[["spojovník bez mezer, kratší než pomlčka",["spojovnik"],1,"Spojovník je kratší než pomlčka a sází se bez mezer (Praha-Libeň)."],
+    ["pomlčka s mezerami (přestávka v řeči)",["pomlck[^.]{0,80}(s mezer|mezer[^.]{0,20}obou)","prestavk"],1,"Pomlčka jako přestávka v řeči se sází s mezerami z obou stran."],
+    ["pomlčka bez mezer místo „a“, od–do, versus",["od.?do|versus|bez mezer[^.]{0,40}(a\\b|spojk)|8.?10"],1,"Když nahrazuje „a“, „od–do“ nebo „versus“, sází se bez mezer."],
+    ["uvozovky dolní a horní, těsně",["uvozov"],1,"Uvozovky jsou dolní a horní a sázejí se těsně k textu."],
+    ["závorky oblé, těsně",["zavork"],1,"Závorky jsou oblé a sázejí se těsně k výrazu."],
+    ["apostrof těsně",["apostrof"],0,"Bonus: apostrof se sází těsně."],
+    ["zkratky (tečka / verzálky bez tečky / tituly)",["zkratk"],1,"Zkratky slov mínuskami s tečkou, iniciálové verzálkami bez tečky, tituly s velkým písmenem a tečkou."],
+    ["dělení: 2 písmena zůstanou, 3 přejdou, max. 3× pod sebou",["del[ie]n|rozdel"],1,"Dělení slov: aspoň 2 písmena zůstanou, aspoň 3 přejdou, nejvýš 3× pod sebou."]],
+ e:[["spojovnik[^.]{0,40}(s mezer|mezerami)","Spojovník se sází BEZ mezer. S mezerami se sází pomlčka (přestávka v řeči)."],["uvozov[^.]{0,60}(obe|dve) horni","České uvozovky jsou dolní a horní: „text“."]],
+ m:"Spojovník se používá ve spojených výrazech nebo jako rozdělovací znaménko, je kratší než pomlčka a sází se bez mezer (Praha-Libeň). Pomlčka, která vyjadřuje přestávku v řeči, se sází s mezerami z obou stran. Když nahrazuje spojku „a“ (Suchý–Šlitr), „od–do“ (8–10 hodin) nebo „versus“ (Sparta–Slavia), sází se bez mezer. Uvozovky jsou dolní a horní a sázejí se těsně k textu („Babička“). Závorky jsou oblé a sázejí se těsně k výrazu. Apostrof se sází těsně. Zkratky se používají ustálené: zkratky slov mínuskami s tečkou (atd.), iniciálové verzálkami bez tečky (ČR), tituly začínají velkým písmenem a končí tečkou (Ing.). Slova se dělí tak, aby na řádku zůstala aspoň dvě písmena a na další přešla aspoň tři, nejvýš třikrát pod sebou. Nedělí se čísla, zkratky, číslo s jednotkou, datum ani titul se jménem."},
+{q:'Vysvětli pojmy druh, řez a velikost písma a popiš písmovou osnovu. <span class="pill">6 bodů</span>',h:'Tip: jméno písma, kurzíva a tučné, body, pět linek.',
+ p:[["druh = konkrétní písmo s vlastním jménem",["druh[^.]{0,80}(jmen|nazev|konkret|autor)"],1,"Druh písma = konkrétní písmo pojmenované vlastním názvem."],
+    ["řez = kresebná verze (kurzíva, tučné)",["rez[^.]{0,80}(kurziv|tucn|verz|kresb)","kurziv"],1,"Řez = kresebná verze druhu: kurzíva, polotučné, tučné, kapitálky."],
+    ["velikost v bodech (pointech)",["bod|point|\\bpt\\b"],1,"Velikost písma = výška v bodech (pointech) angloamerické soustavy."],
+    ["rodina = všechny řezy a velikosti",["rodin"],0,"Bonus: rodina = druh písma ve všech řezech a velikostech."],
+    ["účaří",["ucar"],1,"Účaří = linka, na které písmena stojí."],
+    ["dotažnice (horní, dolní)",["dotazn"],1,"Horní a dolní dotažnice."],
+    ["střední výška, akcentová linie",["stredn|akcent"],0,"Bonus: střední výška a akcentová linie."]],
+ e:[["druh\\w* (pism\\w* )?(je|jsou) (kurziv|tucn)","Kurzíva a tučné nejsou druhy písma, ale ŘEZY. Druh je např. Garamond."]],
+ m:"Druh písma je konkrétní písmo charakteristické kresby pojmenované vlastním názvem, často podle autora – například Garamond nebo Bodoni. Řez písma je kresebná verze druhu, slouží ke zvýraznění: kurzíva, polotučné, tučné, velmi tučné písmo, tučná kurzíva a kapitálky. Velikost (stupeň) písma udává výšku písma v bodech (pointech) angloamerické soustavy, 1 pt = 0,353 mm. Písmová rodina je druh písma ve všech řezech a velikostech. Písmová osnova má pět linek: akcentovou linii, horní dotažnici, střední výšku, účaří, na kterém písmena stojí, a dolní dotažnici."},
+{q:'Vyjmenuj druhy písma podle tvaru a řekni, kde se používají. <span class="pill">5 bodů</span>',h:'Tip: s patkami, bez patek, ručně psané, stejně široká písmena, gotika.',
+ p:[["patkové (antikva) – knihy",["patkov|serifov|antikv"],1,"Patkové písmo (antikva) – knihy a delší texty."],
+    ["bezpatkové (grotesk) – plakáty, obrazovky",["bezpatk|grotesk|bezserif"],1,"Bezpatkové písmo (grotesk) – plakáty, obrazovky, navigace."],
+    ["psací (kaligrafické)",["psaci(?! stroj)|kaligraf|rucn"],1,"Psací písmo napodobuje ruční písmo – pozvánky, diplomy."],
+    ["písmo psacího stroje",["psaciho stroj|psaci stroj|neproporc|courier|stejne sirok"],1,"Písmo psacího stroje – všechna písmena stejně široká."],
+    ["lomené (gotické)",["lomen|gotick|fraktur|svabach"],1,"Lomené písmo (gotické) – fraktura, švabach."],
+    ["11 klasifikačních skupin",["11|jedenact|klasifik"],0,"Bonus: podrobněji se písma dělí do 11 klasifikačních skupin."]],
+ e:[["bezpatk[^.]{0,50}(knih|delsi text)","Na delší text v knize se hodí PATKOVÉ písmo. Bezpatkové je na plakáty a obrazovky."]],
+ m:"Podle tvaru rozlišujeme pět druhů písma. Patkové (serifové) písmo neboli antikva má patky a stínování a dobře se čte v delších textech, proto se používá v knihách (Times New Roman, Garamond). Bezpatkové písmo neboli grotesk nemá patky a tahy jsou stejně silné – plakáty, obrazovky, orientační systémy (Arial, Helvetica). Psací (kaligrafické) písmo napodobuje ruční písmo a hodí se na pozvánky a diplomy. Písmo psacího stroje má všechna písmena stejně široká (Courier). Lomené (gotické) písmo má lomené tahy – fraktura, švabach. Podrobněji se písma dělí do 11 klasifikačních skupin."},
+{q:'Co je font? Popiš typy souborů fontů. <span class="pill">6 bodů</span>',h:'Tip: soubor, vektor, Type 1, TrueType, OpenType, web, přípony.',
+ p:[["font = soubor s písmem",["soubor"],1,"Font je počítačový soubor, ve kterém je uložené písmo."],
+    ["obsahuje znaky (glyfy) jednoho řezu",["glyf|znak|rez"],0,"Bonus: obsahuje glyfy jednoho řezu, šířky znaků a páry."],
+    ["vektorový – zvětší se bez ztráty kvality",["vektor|krivk|obrys"],1,"Dnešní fonty jsou vektorové (křivky) – zvětší se bez ztráty kvality."],
+    ["PostScript Type 1 (.pfb + .pfm)",["type ?1|pfb|pfm|postscript"],1,"PostScript Type 1 – dva soubory .pfb a .pfm."],
+    ["TrueType (.ttf)",["truetype|true type|ttf"],1,"TrueType – jeden soubor .ttf."],
+    ["OpenType (.otf), Unicode, Win i Mac",["opentype|open type|otf"],1,"OpenType – .otf, jeden soubor pro Windows i Mac, Unicode. Dnešní standard."],
+    ["web: WOFF",["woff|web"],0,"Bonus: pro web se používá WOFF a WOFF2."]],
+ e:[["(opentype|otf)[^.]{0,40}(dva soubor|2 soubor)","Dva soubory má PostScript Type 1. OpenType má jeden soubor."],["(bitmap|pixel)[^.]{0,40}(dnes|dnesn|standard)","Dnešní fonty nejsou bitmapové, ale VEKTOROVÉ."]],
+ m:"Font je počítačový soubor, ve kterém je uložené písmo – glyfy (znaky) jednoho řezu, jejich šířky a páry pro vyrovnání. Dnešní fonty jsou vektorové, písmena jsou popsaná křivkami, takže se dají zvětšit bez ztráty kvality. Starší bitmapové fonty byly složené z pixelů. PostScript Type 1 od firmy Adobe (1984) má dva soubory: .pfb s obrysy a .pfm s mírami znaků, dnes se už nepodporuje. TrueType (Apple, 1991, pak Windows) má jeden soubor .ttf. OpenType (Adobe a Microsoft, 1996) má příponu .otf, jeden soubor funguje ve Windows i na Macu, používá Unicode – až 65 536 znaků pro všechny jazyky – a typografické funkce jako ligatury a kapitálky. Je to dnešní standard. Pro web se používají fonty WOFF a WOFF2. Do tiskového PDF se písma musí vložit."},
+{q:'Popiš princip laserového (elektrografického) tisku. <span class="pill">5 bodů</span>',h:'Tip: válec, nabití, laser, toner, přenos, fixace.',
+ p:[["elektrografie, digitální tisk z plochy",["elektrograf|z plochy|digital"],0,"Bonus: laserový tisk = elektrografie, digitální tisk z plochy."],
+    ["fotovodivý (selenový) válec se nabije",["nabi|naboj"],1,"Fotovodivý válec se nejdřív nabije elektrickým nábojem."],
+    ["laser osvítí, osvícená místa se vybijí",["vybi|vybij|osvit|exp"],1,"Laser osvítí obraz – osvícená místa se vybijí."],
+    ["toner se chytí na vybitá místa",["toner"],1,"Toner se přichytí jen na místa vybitá laserem."],
+    ["přenos na papír",["prenes|papir"],1,"Toner se přenese na papír."],
+    ["fixace teplem a tlakem",["tepl|tlak|zazehl|zapec|fixac"],1,"Toner se zafixuje teplem a tlakem (horké přítlačné válce)."]],
+ e:[["inkoust[^.]{0,40}laser|laser[^.]{0,40}inkoust","Laserový tisk nepoužívá inkoust, ale TONER."],["toner[^.]{0,40}(nabit\\w* mist|na nabit)","Toner se chytí na místa VYBITÁ laserem (do písemky to tak napiš)."]],
+ m:"Laserový tisk neboli elektrografie je digitální tisk z plochy. Využívá fotovodivý materiál, který se ve tmě chová jako nevodič a při osvitu se stává vodivým. Fotovodivý (selenový) válec se nejdřív rovnoměrně nabije elektrickým nábojem. Laserový paprsek na něj vykreslí obraz – osvícená místa se vybijí. Na válec se nanese práškový toner, který se přichytí jen na místa vybitá laserem. Toner se přenese na papír a zafixuje se teplem a tlakem – papír projde přítlačnými válci zahřátými na vysokou teplotu."},
+{q:'Porovnej digitální a ofsetový tisk. Kdy zvolíš který? <span class="pill">6 bodů</span>',h:'Tip: tisková forma, příprava, náklad, cena kusu, personalizace, kvalita.',
+ p:[["digitální = bez tiskové formy",["bez (tiskov\\w* )?(form|desk)|neni (tiskov\\w* )?(form|desk)|zadn\\w* (form|desk)"],1,"Digitální tisk nemá tiskovou formu, tiskne přímo z dat."],
+    ["ofset = desky, seřízení stroje",["desk|serizen|priprav"],1,"Ofset potřebuje tiskové desky a seřízení stroje."],
+    ["digitál = malý náklad",["mal\\w* naklad|maly pocet|od (1|jednoho) kus"],1,"Digitální tisk se vyplatí pro malé náklady."],
+    ["ofset = velký náklad, levnější kus",["velk\\w* naklad|tisic|levn"],1,"Ofset se vyplatí pro velké náklady – čím víc kusů, tím levnější kus."],
+    ["personalizace jen digitál",["personaliz|kazd\\w* (kus )?jin|promenn|jmen"],1,"Jen digitální tisk umí personalizaci – každý kus jiný."],
+    ["ofset: vyšší kvalita, přímé barvy, víc papírů",["kvalit|prim\\w* barv|pantone|papir"],0,"Bonus: ofset má nejvyšší kvalitu, přímé barvy a víc druhů papírů."],
+    ["digitál: rychlý, na počkání",["rychl|pockan|hned"],0,"Bonus: digitální tisk je rychlý, na počkání."]],
+ e:[["ofset[^.]{0,40}(bez desk|bez form|bez tiskov)","Ofset tiskovou formu MÁ – hliníkové desky. Bez formy je digitální tisk."],["digital\\w*[^.]{0,40}velk\\w* naklad","Pro velký náklad je výhodnější OFSET. Digitální tisk je pro malé náklady."]],
+ m:"Digitální tisk tiskne přímo z dat bez tiskové formy, tonerem nebo inkoustem. Příprava je téměř žádná, tiskne se na počkání a cena jednoho kusu je stále stejná. Vyplatí se pro malé náklady – od jednoho kusu do stovek – a umí personalizaci, každý kus může být jiný. Ofset potřebuje hliníkové tiskové desky pro každou barvu a seřízení stroje. Proto je drahý pro malé náklady, ale u velkých nákladů – tisíce kusů – je jeden kus levnější, protože desky se zaplatí jen jednou. Ofset má nejvyšší kvalitu, tiskne přímé barvy a téměř na všechny papíry. 50 pozvánek se jmény vytisknu digitálně, 20 000 letáků ofsetem."}
+];
+
+/* ---------- HRY ---------- */
+const HS=[ /* hladká sazba: [otázka, [možnosti], správná, vysvětlení] */
+["Interpunkce",["slovo , slovo","slovo, slovo","slovo ,slovo"],1,"Čárka těsně za slovo, za ní mezera."],
+["Výpustka na konci věty",["Jestli si to nepřečteš, tak…","Jestli si to nepřečteš, tak …","Jestli si to nepřečteš, tak . . ."],0,"Výpustka je jeden znak a sází se těsně za slovo, když věta zůstane nedokončená."],
+["Předložka na konci řádku",["Šli jsme do lesa a v<br>lese bylo ticho.","Šli jsme do lesa a<br>v lese bylo ticho."],1,"Jednopísmenná předložka nesmí zůstat na konci řádku. Malé „a“ smí."],
+["Telefonní číslo",["+420607340340","+420 60 73 40 340","+420 607 340 340"],2,"Po trojicích s mezerou."],
+["Datum",["2.5.2026","2. 5. 2026","2. 5. 20 26"],1,"Mezera za tečkou, letopočet bez mezer."],
+["Čas",["12 : 14","12: 14","12:14"],2,"Hodiny od minut tečkou nebo dvojtečkou bez mezer."],
+["Spojovník",["Praha - Libeň","Praha-Libeň","Praha – Libeň"],1,"Spojovník je krátký a bez mezer."],
+["Pomlčka – přestávka v řeči",["Jeho barva - ta, kterou nosí - je modrá.","Jeho barva–ta, kterou nosí–je modrá.","Jeho barva – ta, kterou nosí – je modrá."],2,"Pomlčka (delší než spojovník) s mezerami z obou stran."],
+["Pomlčka – od–do",["8 – 10 hodin","8–10 hodin","8-10 hodin"],1,"Pomlčka místo „od–do“ bez mezer."],
+["Uvozovky",["“Babička„","„ Babička “","„Babička“"],2,"Nejdřív dolní, pak horní uvozovky, těsně k textu."],
+["Uvozovky v přímé řeči",["Řekl: \"Přijdu zítra.\"","Řekl: „Přijdu zítra.“","Řekl: “Přijdu zítra.„"],1,"České uvozovky: nejdřív dolní „, na konci horní “."],
+["Titul a jméno",["ing Jana Nováková","Ing Jana Nováková","Ing. Jana Nováková"],2,"Titul začíná velkým písmenem a končí tečkou."],
+["Pomlčka – trasa",["Praha–Brno","Praha - Brno","Praha-Brno"],0,"Pomlčka místo „až do“ (trasa) bez mezer."],
+["Závorky",["( 23 + 3 )","(23 + 3)","(23+3 )"],1,"Závorky těsně k výrazu, kolem + mezery."],
+["Apostrof",["Řekl ’s to dobře.","Řekl’s to dobře."],1,"Apostrof se sází těsně."],
+["Zkratka",["atd .","ATD.","atd."],2,"Zkratka slov mínuskami a tečka těsně za ní."],
+["Iniciálová zkratka",["O.S.N.","OSN","o. s. n."],1,"Iniciálové zkratky verzálkami bez teček."],
+["Dělení slova",["tiskár-<br>na","tis-<br>kárna","t-<br>iskárna"],1,"Na řádku zůstanou aspoň 2 písmena, na další přejdou aspoň 3."]
+];
+const DR=[ /* poznej druh písma: [text, font-family, styl, správná] */
+["Hradec Králové","'EB Garamond',Georgia,serif","",0],
+["Hradec Králové","Inter,Arial,sans-serif","font-weight:600",1],
+["Hradec Králové","'Great Vibes','Brush Script MT',cursive","font-size:1.9rem",2],
+["Hradec Králové","'Courier Prime','Courier New',monospace","",3],
+["Hradec Kralove","'UnifrakturMaguntia','Old English Text MT',serif","",4]
+];
+const DR_N=["patkové","bezpatkové","psací","psací stroj","lomené"];
+const DR_V=["Patkové písmo (antikva): patky a stínování.","Bezpatkové písmo (grotesk): bez patek, tahy stejně silné.","Psací písmo: napodobuje ruční písmo, písmena jsou spojená.","Písmo psacího stroje: všechna písmena stejně široká.","Lomené písmo (fraktura): úzké, lomené tahy."];
+const EXT=[ /* přípona: [soubor, [možnosti], správná, vysvětlení] */
+["Garamond.otf",["OpenType","Type 1","webový font"],0,".otf = OpenType – dnešní standard."],
+["arial.ttf",["Type 1","TrueType","webový font"],1,".ttf = TrueType (uvnitř může být i OpenType s obrysy TrueType)."],
+["Times.pfb + Times.pfm",["OpenType","TrueType","PostScript Type 1"],2,"Dva soubory .pfb a .pfm = PostScript Type 1."],
+["inter.woff2",["webový font","TrueType","PostScript Type 1"],0,".woff2 = zabalený font pro web."],
+["Logo.pdf",["OpenType","není font","TrueType"],1,"PDF je dokument, ne font. Písma se do něj vkládají."]
+];
+const VOL=[ /* digitál, nebo ofset: [zakázka, 0 = digitál, 1 = ofset, vysvětlení] */
+["50 svatebních oznámení, na každém jméno hosta",0,"Malý náklad a každý kus jiný – personalizaci umí jen digitální tisk."],
+["20 000 letáků pro supermarket",1,"Velký náklad – desky se zaplatí jednou a kus vyjde levněji."],
+["1 fotokniha z dovolené",0,"Jeden kus – desky by se nevyplatily."],
+["5 000 výtisků knihy se zlatou přímou barvou na obálce",1,"Velký náklad a přímá barva – ofset."],
+["200 vstupenek s pořadovými čísly",0,"Proměnná data (čísla) a malý náklad – digitál."],
+["Týdeník v nákladu 60 000 kusů",1,"Obrovský náklad – kotoučový ofset."],
+["Dotisk 30 kusů vyprodané knihy",0,"Malý dotisk na objednávku – digitál."],
+["3 plakáty A1 na výstavu",0,"Pár kusů velkého formátu – inkoustová (velkoformátová) tiskárna."]
+];
+
+window.MM_T17=MM_T;
+/* ---------- MYŠLENKOVÁ MAPA ---------- */
+let lastBranch=null;
+(function buildMap(){
+  const root=document.getElementById('mindmap');
+  const center=document.createElement('div');
+  center.className='mm-center';
+  center.innerHTML=MM_CENTER;
+  const pos={c:[1,1],m:[1,2],y:[3,1],k:[3,2]};
+  [MAP[0],center,MAP[2],MAP[1],MAP[3]].forEach(b=>{
+    if(b===center){root.appendChild(center);return;}
+    const el=document.createElement('div');
+    el.className='mm-branch '+b.k+' '+b.side;
+    el.dataset.k=b.k;el.id='mm-'+b.k;
+    let h='<h4><span class="num">'+b.n+'</span>'+b.t+'</h4><div class="chips">';
+    b.items.forEach((it,i)=>{h+='<button class="chip" aria-expanded="false" data-i="'+i+'">'+it[0]+'</button>';});
+    h+='</div><div class="hint" aria-live="polite"></div><a class="goto" href="'+b.link+'">→ podrobně v souhrnu</a>';
+    el.innerHTML=h;
+    const hint=el.querySelector('.hint');
+    el.querySelectorAll('.chip').forEach(ch=>{
+      ch.addEventListener('click',()=>{
+        const open=ch.getAttribute('aria-expanded')==='true';
+        el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+        if(open){hint.classList.remove('show');return;}
+        ch.setAttribute('aria-expanded','true');
+        const it=b.items[+ch.dataset.i];
+        hint.innerHTML='<b>'+it[0]+'</b>'+it[1];
+        hint.classList.add('show');lastBranch=el;
+      });
+    });
+    el.querySelector('.goto').addEventListener('click',()=>{lastBranch=el;});
+    el._b=b;
+    root.appendChild(el);
+  });
+  function reorder(){
+    const wide=window.matchMedia('(min-width:861px)').matches;
+    root.querySelectorAll('.mm-branch').forEach(el=>{
+      const k=el.dataset.k;
+      el.style.gridColumn=wide?pos[k][0]:'';el.style.gridRow=wide?pos[k][1]:'';
+      el.style.order=wide?'':({c:1,m:2,y:3,k:4})[k];
+    });
+    center.style.order=wide?'':0;
+  }
+  reorder();window.addEventListener('resize',reorder);
+  document.getElementById('mmOpen').onclick=()=>{
+    root.querySelectorAll('.mm-branch').forEach(el=>{
+      const b=el._b;const hint=el.querySelector('.hint');
+      hint.innerHTML=b.items.map(it=>'<b>'+it[0]+'</b>'+it[1]).join('<br style="margin-bottom:6px">');
+      hint.classList.add('show');
+      el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','true'));
+    });
+  };
+  document.getElementById('mmClose').onclick=()=>{
+    root.querySelectorAll('.hint').forEach(h=>h.classList.remove('show'));
+    root.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-expanded','false'));
+  };
+})();
+
+
+/* ---------- ŠVP checklist ---------- */
+(function(){
+  const boxes=[...document.querySelectorAll('#svpList input')];
+  const out=document.getElementById('svpCount');
+  let st={};try{st=JSON.parse(store.get('t17-svp','{}'))}catch(e){}
+  function upd(){const n=boxes.filter(b=>b.checked).length;out.textContent='Umím: '+n+' / '+boxes.length+(n===boxes.length?' 🎉 Jsi připraven/a!':'');}
+  boxes.forEach(b=>{b.checked=!!st[b.id];b.addEventListener('change',()=>{st[b.id]=b.checked;store.set('t17-svp',JSON.stringify(st));upd();});});
+  upd();
+})();
+
+
+/* ---------- KVÍZ ---------- */
+(function(){
+  const box=document.getElementById('quiz'),sc=document.getElementById('score');
+  document.getElementById('qCount').textContent=QUIZ.length;
+  let right=0,done=0;
+  function render(){
+    box.innerHTML='';right=0;done=0;sc.textContent='';
+    QUIZ.forEach((q,qi)=>{
+      const d=document.createElement('div');d.className='q';
+      d.innerHTML='<div class="qt">'+(qi+1)+'. '+q[0]+'</div><div class="opts">'+q[1].map((o,i)=>'<button class="o" data-i="'+i+'">'+o+'</button>').join('')+'</div><div class="fb"></div>';
+      d.querySelectorAll('.o').forEach(b=>b.addEventListener('click',()=>{
+        if(d.classList.contains('done'))return;
+        d.classList.add('done');done++;
+        const i=+b.dataset.i;
+        d.querySelectorAll('.o')[q[2]].classList.add('right');
+        if(i===q[2]){right++;d.querySelector('.fb').innerHTML='<b style="color:var(--ok)">Správně!</b> '+q[3];}
+        else{b.classList.add('wrong');d.querySelector('.fb').innerHTML='<b style="color:var(--bad)">Tentokrát ne.</b> '+q[3];}
+        if(done===QUIZ.length)sc.textContent='Výsledek: '+right+' / '+QUIZ.length+(right>=QUIZ.length*0.9?' · výborně, jsi připraven/a!':right>=QUIZ.length*0.7?' · dobrý výsledek, projdi si ještě otázky, ve kterých jsi chyboval/a.':' · vrať se k myšlenkové mapě a zkus to znovu.');
+      }));
+      box.appendChild(d);
+    });
+  }
+  render();document.getElementById('quizReset').onclick=render;
+})();
+
+
+/* ---------- plovoucí šipka zpět na mapu ---------- */
+(function(){
+  const fab=document.getElementById('fabMap'),mapa=document.getElementById('mapa');
+  function goBack(e){if(e)e.preventDefault();const t=lastBranch||mapa;t.scrollIntoView({behavior:'smooth',block:lastBranch?'center':'start'});}
+  fab.addEventListener('click',goBack);
+  document.querySelectorAll('[data-ret]').forEach(a=>a.addEventListener('click',goBack));
+  function upd(){fab.classList.toggle('show', mapa.getBoundingClientRect().bottom < 0);}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+
+/* ---------- TEST PSANÍM ---------- */
+(function(){
+  const root=document.getElementById('writeTest');
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ');
+  const test=(t,alts)=>alts.some(a=>a.split('&&').every(part=>{try{return new RegExp(part).test(t)}catch(e){return false}}));
+  WT.forEach((w,i)=>{
+    const d=document.createElement('div');d.className='wt';
+    d.innerHTML='<div class="qt">'+(i+1)+'. '+w.q+'</div><div class="qh">'+w.h+'</div>'+
+      '<textarea placeholder="Napiš odpověď vlastními slovy, jako bys psal/a test nebo mluvil/a u zkoušky…" aria-label="Odpověď na otázku '+(i+1)+'"></textarea>'+
+      '<div class="acts"><button class="btn pri" data-a="eval">Vyhodnotit</button><button class="btn" data-a="model">Ukázat vzorovou odpověď</button><button class="btn" data-a="clear">Smazat</button><span class="wc">0 slov</span></div>'+
+      '<div class="out"></div><div class="model"><b class="t">Vzorová odpověď</b>'+w.m+'</div>';
+    const ta=d.querySelector('textarea'),out=d.querySelector('.out'),model=d.querySelector('.model'),wc=d.querySelector('.wc');
+    const key='t17-wt-'+i;
+    ta.value=store.get(key,'');
+    const count=()=>{const n=(ta.value.trim().match(/\S+/g)||[]).length;wc.textContent=n+(n===1?' slovo':n>=2&&n<=4?' slova':' slov');return n;};
+    count();
+    ta.addEventListener('input',()=>{store.set(key,ta.value);count();});
+    d.querySelector('[data-a=eval]').onclick=()=>{
+      const n=count();
+      if(n<10){out.innerHTML='<div class="fbbox fb-miss"><h4>Napiš víc</h4>Na vyhodnocení je to zatím málo (počet slov: '+n+'). Napiš aspoň 3–4 věty.</div>';out.classList.add('show');return;}
+      const t=norm(ta.value);
+      const hit=[],miss=[];
+      w.p.forEach(p=>{(test(t,p[1])?hit:miss).push(p);});
+      const errs=w.e.filter(e=>{try{return new RegExp(e[0]).test(t)}catch(x){return false}});
+      const core=w.p.filter(p=>p[2]),coreHit=hit.filter(p=>p[2]).length;
+      const pct=Math.round(hit.length/w.p.length*100);
+      let v;
+      if(coreHit===core.length&&!errs.length) v='🎉 Výborně! Máš všechny hlavní body'+(miss.length?', přidej ještě bonusy níže.':' i všechny bonusy.');
+      else if(coreHit>=Math.ceil(core.length*0.6)) v='👍 Dobrý základ. Doplň chybějící body a odpověď bude na jedničku.';
+      else v='💪 Zatím chybí dost důležitých věcí. Projdi si souhrn a zkus to znovu.';
+      let h='<div class="verdict">'+v+'</div><div class="meter"><i style="width:'+pct+'%"></i></div><div class="small muted">Zmínil/a jsi '+hit.length+' z '+w.p.length+' bodů · hlavních '+coreHit+' z '+core.length+'</div>';
+      if(hit.length)h+='<div class="fbbox fb-ok"><h4>✔ Zmínil/a jsi</h4><ul>'+hit.map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+p[0]+'</li>').join('')+'</ul></div>';
+      if(miss.length)h+='<div class="fbbox fb-miss"><h4>✚ Chybí ti</h4><ul>'+miss.sort((a,b)=>b[2]-a[2]).map(p=>'<li>'+(p[2]?'<span class="star">★</span> ':'')+'<b>'+p[0]+'</b>: '+p[3]+'</li>').join('')+'</ul></div>';
+      if(errs.length)h+='<div class="fbbox fb-err"><h4>⚠ Zkontroluj, jestli tu nemáš chybu</h4><ul>'+errs.map(e=>'<li>'+e[1]+'</li>').join('')+'</ul></div>';
+      h+='<p class="small muted">Vyhodnocení hledá klíčová slova, takže není dokonalé. Porovnej si svou odpověď se vzorovou.</p>';
+      out.innerHTML=h;out.classList.add('show');model.classList.add('show');
+    };
+    d.querySelector('[data-a=model]').onclick=()=>model.classList.toggle('show');
+    d.querySelector('[data-a=clear]').onclick=()=>{ta.value='';store.set(key,'');count();out.classList.remove('show');model.classList.remove('show');};
+    root.appendChild(d);
+  });
+})();
+
+
+function vyplnObrazky(){document.querySelectorAll('[data-img]').forEach(d=>{d.innerHTML=IMG[d.dataset.img]();});}
+vyplnObrazky();
+
+/* ---------- proklad ---------- */
+(function(){
+  const v=document.getElementById('prVel'),p=document.getElementById('prPro'),u=document.getElementById('prUkazka'),o=document.getElementById('prVerdikt');
+  function upd(){const a=+v.value,b=+p.value;
+    document.getElementById('oVel').textContent=a+' pt';document.getElementById('oPro').textContent=b+' pt';
+    u.style.fontSize=(a*1.6)+'px';u.style.lineHeight=(b*1.6)+'px';
+    const d=b-a;let t;
+    if(d<0)t='<b style="color:var(--bad)">Proklad je menší než písmo</b> – řádky se překrývají.';
+    else if(d===0)t='<b style="color:var(--bad)">Proklad je stejný jako písmo</b> – řádky se skoro dotýkají, text se špatně čte.';
+    else if(d<=3)t='<b style="color:var(--ok)">Dobře čitelné.</b> Zápis <b>'+a+'/'+b+' pt</b> – proklad je o '+d+' '+(d===1?'bod':'body')+' větší než písmo.';
+    else if(d<=5)t='<b>Vzdušné.</b> Hodí se na krátké texty, v knize by odstavec působil řídce.';
+    else t='<b style="color:var(--bad)">Proklad je moc velký</b> – odstavec se rozpadá a oko ztrácí řádek.';
+    o.innerHTML=t;}
+  [v,p].forEach(i=>i.addEventListener('input',upd));upd();
+})();
+
+/* ---------- zarovnání ---------- */
+(function(){
+  const Z=[['justify','do bloku','Řádky jsou rovné vlevo i vpravo. Program mění mezery mezi slovy. Knihy, noviny.'],
+    ['left','vlevo','Řádky jsou rovné vlevo, vpravo „vlají“ jako praporek. Letáky, web.'],
+    ['center','na osu','Řádky jsou souměrně kolem středu. Nadpisy, pozvánky, básně.'],
+    ['right','vpravo','Řádky jsou rovné vpravo. Jen krátké texty a popisky.']];
+  const bx=document.getElementById('zarBtns'),u=document.getElementById('zarUkazka'),pp=document.getElementById('zarPopis');
+  bx.innerHTML=Z.map((z,i)=>'<button data-i="'+i+'">'+z[1]+'</button>').join('');
+  function set(i){u.style.textAlign=Z[i][0];pp.innerHTML='<b>'+Z[i][1]+':</b> '+Z[i][2];bx.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j===i));}
+  bx.querySelectorAll('button').forEach(b=>b.onclick=()=>set(+b.dataset.i));set(0);
+})();
+
+/* ---------- prostrkání a vyrovnání párů ---------- */
+(function(){
+  const p=document.getElementById('kePar'),t=document.getElementById('keTr'),v=document.getElementById('keV'),s=document.getElementById('keSlovo'),o=document.getElementById('keVerdikt');
+  function upd(){const a=+p.value,b=+t.value;
+    document.getElementById('oPar').textContent=a;document.getElementById('oTr').textContent=b;
+    v.style.marginLeft=(a/100)+'em';s.style.letterSpacing=(b/100)+'em';
+    let x=a===0?'Pár AV bez vyrovnání – mezi A a V je vidět díra.':a<0&&a>=-15?'<b style="color:var(--ok)">Pár AV je vyrovnaný</b> – písmena se k sobě přiblížila a mezera vypadá jako ostatní.':a<-15?'<b style="color:var(--bad)">Příliš těsně</b> – písmena se překrývají.':'<b style="color:var(--bad)">Pár je ještě víc od sebe.</b>';
+    x+=' '+(b>15?'Slovo TISK je <b>prostrkané</b> – to jde u nadpisu z verzálek, ne v běžném textu.':b<0?'Slovo TISK je <b>stažené</b> – písmena se tlačí.':'');
+    o.innerHTML=x;}
+  [p,t].forEach(i=>i.addEventListener('input',upd));upd();
+})();
+
+/* ---------- obecná hra „vyber správně“ ---------- */
+function hra(boxId,scoreId,rows){
+  const box=document.getElementById(boxId),sc=document.getElementById(scoreId);let ok=0,done=0;
+  rows.forEach((r,ri)=>{
+    const d=document.createElement('div');d.className='sg-row';
+    const order=shuffle(r.opts.map((o,i)=>i));
+    d.innerHTML='<div class="sg-t">'+(ri+1)+'. '+r.q+'</div><div class="sg-b">'+order.map(i=>'<button type="button" data-i="'+i+'" style="'+(r.style||'')+'">'+r.opts[i]+'</button>').join('')+'</div><div class="sg-f small"></div>';
+    d.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+      if(d.classList.contains('done'))return;d.classList.add('done');done++;
+      const i=+b.dataset.i,right=i===r.ok;if(right)ok++;
+      d.querySelector('button[data-i="'+r.ok+'"]').classList.add('right');if(!right)b.classList.add('wrong');
+      d.querySelector('.sg-f').innerHTML=(right?'<b style="color:var(--ok)">Správně!</b> ':'<b style="color:var(--bad)">Tentokrát ne.</b> ')+r.why;
+      sc.textContent='Správně '+ok+' z '+done+(done===rows.length?(ok===rows.length?' · výborně!':' · projdi si ještě vysvětlení u chyb.'):'');
+    });
+    box.appendChild(d);
+  });
+}
+hra('hsGame','hsScore',HS.map(h=>({q:h[0],opts:h[1],ok:h[2],why:h[3],style:"font-family:'EB Garamond',Georgia,serif;font-size:1rem;font-weight:600;text-align:left"})));
+hra('extGame','extScore',EXT.map(h=>({q:'Soubor <span class="kbd">'+h[0]+'</span> je…',opts:h[1],ok:h[2],why:h[3]})));
+hra('volGame','volScore',VOL.map(h=>({q:h[0],opts:['digitální tisk','ofset'],ok:h[1],why:h[2]})));
+(function(){
+  const rows=shuffle(DR).map(d=>({q:'<span style="font-family:'+d[1].replace(/"/g,'&quot;')+';font-size:1.6rem;font-weight:400;'+d[2]+'">'+d[0]+'</span>',opts:DR_N,ok:d[3],why:DR_V[d[3]]}));
+  hra('drGame','drScore',rows);
+})();
+
+/* ---------- bitmapový × vektorový font: zvětšení ---------- */
+(function(){
+  const r=document.getElementById('zoomR'),b=document.getElementById('zoomBit'),v=document.getElementById('zoomVek');
+  const A=['..XXX..','.X...X.','.....X.','.XXXXX.','X....X.','X...XX.','.XXX.XX'];
+  let px='';A.forEach((row,j)=>[...row].forEach((c,i)=>{if(c==='X')px+='<rect x="'+i+'" y="'+j+'" width="1.02" height="1.02" fill="#1b1c1f"/>';}));
+  const vec='<path d="M1.2 2.2 Q1.4 0.6 3.2 0.6 Q5.4 0.6 5.4 2.6 V6 Q5.4 6.5 6.2 6.5 M5.4 3.3 Q2.4 3.3 1.4 4.2 Q0.6 5.1 1.3 5.9 Q2.2 6.8 3.8 6.4 Q5 6 5.4 4.9" stroke="#1b1c1f" stroke-width="0.95" fill="none" stroke-linecap="round"/>';
+  function upd(){const z=+r.value;document.getElementById('oZoom').textContent=z+'×';const s=22*z;
+    b.innerHTML='<svg viewBox="0 0 7 7" width="'+s+'" height="'+s+'" shape-rendering="crispEdges">'+px+'</svg>';
+    v.innerHTML='<svg viewBox="0 0 7 7" width="'+s+'" height="'+s+'">'+vec+'</svg>';}
+  r.addEventListener('input',upd);upd();
+})();
+
+/* ---------- navigace: aktivní sekce ---------- */
+(function(){
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a){a.classList.add('active');const w=a.parentElement;w.scrollTo({left:a.offsetLeft-w.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});}}});},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section').forEach(s=>obs.observe(s));
+})();
+
+/* ---------- přepínač motivu ---------- */
+(function(){
+  const btn=document.getElementById('themeBtn'),r=document.documentElement;
+  const t=store.get('t17-theme','');if(t)r.setAttribute('data-theme',t);
+  btn.onclick=()=>{
+    const dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const n=dark?'light':'dark';r.setAttribute('data-theme',n);store.set('t17-theme',n);
+  };
+})();
+
+</script>
+<!-- ===== návrat mezi tématy (tlačítko „Zpět na téma“) ===== -->
+<style>
+.nav-back{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:700;font-size:.92rem;border:0;border-radius:99px;padding:11px 18px 11px 14px;background:#00a3e0;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28);max-width:calc(100% - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-back .ar{font-size:1.15rem;line-height:1}
+.nav-back .x{margin-left:6px;opacity:.75;font-weight:800;padding:0 2px}
+@media (max-width:520px){.nav-back{bottom:68px;left:14px;transform:none;max-width:calc(100% - 28px)}}
+@media print{.nav-back{display:none!important}}
+</style>
+<script>
+(function(){
+  const ss={get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}};
+  const norm=p=>p.replace(/index\.html$/,'').replace(/\/?$/,'/');
+  const here=norm(location.pathname);
+  const badge=document.querySelector('.badge');
+  const m=((badge&&badge.textContent)||document.title).match(/Téma č\. ?(\d+)/);
+  const name=m?'téma č. '+m[1]:'předchozí téma';
+  let st=[];try{st=JSON.parse(ss.get('navBackStack')||'[]')}catch(e){}
+  const save=()=>ss.set('navBackStack',JSON.stringify(st.slice(-10)));
+  /* vrátil/a jsem se sem: obnov místo čtení */
+  let r=null;try{r=JSON.parse(ss.get('navRestore')||'null')}catch(e){}
+  if(r&&r.path===here){
+    ss.set('navRestore','null');
+    const go=()=>window.scrollTo({top:r.y,left:0,behavior:'instant'});
+    go();window.addEventListener('load',()=>{go();setTimeout(go,250);});
+  }
+  /* záznamy, které začínají na této stránce, jsou už vyřízené */
+  while(st.length&&st[st.length-1].path===here)st.pop();
+  save();
+  /* proklik na jiné téma: zapamatuj si, odkud jdu */
+  document.addEventListener('click',e=>{
+    const a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
+    let u;try{u=new URL(a.href,location.href)}catch(x){return}
+    if(u.origin!==location.origin)return;
+    const to=norm(u.pathname);
+    if(to===here||!/\/tema-\d+[^/]*\/$/.test(to))return;
+    st.push({path:here,href:location.href.split('#')[0],y:Math.round(window.scrollY),name:name,to:to});save();
+  },true);
+  /* přišel/přišla jsem odjinud: ukaž tlačítko zpět */
+  const top=st[st.length-1];
+  if(top&&top.to===here){
+    const b=document.createElement('button');
+    b.className='nav-back';b.type='button';
+    b.setAttribute('aria-label','Zpět na '+top.name+' tam, kde jsi četl/a');
+    b.innerHTML='<span class="ar">←</span> Zpět na '+top.name+'<span class="x" title="Skrýt" aria-label="Skrýt">×</span>';
+    b.addEventListener('click',e=>{
+      if(e.target.classList.contains('x')){st.pop();save();b.remove();return;}
+      st.pop();save();
+      ss.set('navRestore',JSON.stringify({path:top.path,y:top.y}));
+      location.href=top.href;
+    });
+    document.body.appendChild(b);
+  }
+})();
+</script>
+<script id="mm-jump">
+/* ---------- skok z pojmu v myšlenkové mapě přímo na jeho podnadpis v souhrnu ----------
+   MM_T: pro každou větev (c, m, y, k) seznam cílů ve stejném pořadí jako pojmy v mapě.
+   Cíl = začátek textu podnadpisu (nebo zvýrazněné položky); "@selektor" = prvek podle CSS. */
+(function(){
+  const MM_T=window.MM_T17;
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
+  const HEAD='h2,h3,h4,h5,summary';
+  const ANY=HEAD+',.nm,.t,.lbl,dt,th,figcaption,b,strong,li,p,dd,td';
+  const LINKS=new Set([...document.querySelectorAll('.mm-branch .goto')].map(a=>a.getAttribute('href').slice(1)));
+  const END=new Set(['svp','test','kviz','potitko','mapa','cesta']);
+  function scopeOf(sec){
+    const all=[...document.querySelectorAll('section[id]')];let i=all.indexOf(sec);
+    if(i<0)return [sec];const out=[sec];
+    for(i++;i<all.length;i++){const id=all[i].id;if(LINKS.has(id)||END.has(id))break;out.push(all[i]);}
+    return out;
+  }
+  const bad=el=>el.closest('.mm-branch,#mapa,#svp,#test,#kviz');
+  function locate(roots,target){
+    if(target.charAt(0)==='@'){for(const r of roots){const e=r.querySelector(target.slice(1));if(e&&!bad(e))return e;}return null;}
+    const n=norm(target);
+    for(const sel of [HEAD,ANY]){
+      for(const r of roots){
+        const els=[...r.querySelectorAll(sel)].filter(e=>!bad(e));
+        const ex=els.find(e=>norm(e.textContent)===n);if(ex)return ex;
+        const st=els.find(e=>norm(e.textContent).startsWith(n));if(st)return st;
+      }
+    }
+    return null;
+  }
+  function findTarget(br,i){
+    const list=MM_T[br.dataset.k];if(!list||!list[i])return null;
+    const sec=document.querySelector(br.querySelector('.goto').getAttribute('href'));if(!sec)return null;
+    return locate(scopeOf(sec),list[i])||locate([document.body],list[i]);
+  }
+  function reveal(el){
+    if(el.tagName==='SUMMARY'&&el.parentElement.tagName==='DETAILS')el.parentElement.open=true;
+    let d=el.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+  }
+  function blockOf(el){
+    if(/^(H2|H3|H4|H5|SUMMARY)$/.test(el.tagName))return el;
+    return el.closest('li,dt,tr,p,figure,.card,.warn,.mnemo,.oneliner,.step,details')||el;
+  }
+  const css=document.createElement('style');
+  css.textContent='.hint b:not(:first-child){display:inline;margin:0}.mm-branch .hint b{display:block;margin-bottom:2px}.mm-flash{animation:mmflash 2.4s ease-out;border-radius:8px}@keyframes mmflash{0%,35%{box-shadow:0 0 0 4px #ffd400;background:rgba(255,212,0,.28)}100%{box-shadow:0 0 0 4px rgba(255,212,0,0);background:transparent}}';
+  document.head.appendChild(css);
+  document.querySelectorAll('.mm-branch').forEach(br=>{
+    const go=br.querySelector('.goto');if(!go)return;
+    const base=go.textContent;
+    const sel=()=>[...br.querySelectorAll('.chip[aria-expanded="true"]')];
+    const upd=()=>{const ch=sel();go.textContent=ch.length===1?'→ „'+ch[0].textContent+'“ podrobně v souhrnu':base;};
+    br.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>setTimeout(upd,0)));
+    ['mmOpen','mmClose'].forEach(id=>{const b=document.getElementById(id);if(b)b.addEventListener('click',()=>setTimeout(upd,0));});
+    go.addEventListener('click',e=>{
+      const ch=sel();if(ch.length!==1)return; /* žádný nebo všechny pojmy → začátek tématu jako dřív */
+      const hit=findTarget(br,+ch[0].dataset.i);if(!hit)return;
+      e.preventDefault();
+      reveal(hit);
+      const blk=blockOf(hit);
+      const top=blk.getBoundingClientRect().top+window.scrollY-80;
+      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      blk.classList.remove('mm-flash');void blk.offsetWidth;blk.classList.add('mm-flash');
+      setTimeout(()=>blk.classList.remove('mm-flash'),2600);
+    });
+  });
+  window.__mmTarget=findTarget;
+})();
+</script>
+<!-- zpet-v1: tlačítko Zpět na stránku, odkud žák přišel -->
+<a id="zpetBtn" href="#" style="position:fixed;left:14px;bottom:70px;z-index:60;display:none;align-items:center;gap:6px;max-width:calc(100vw - 90px);background:#1d1d24;color:#fff;border-radius:22px;padding:9px 14px;font:600 14px/1.2 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.28)"><span aria-hidden="true">←</span><span id="zpetTxt" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span></a>
+<script>
+(function(){
+  var K='zpetStack', R='zpetRestore', st=[];
+  try{ st=JSON.parse(sessionStorage.getItem(K)||'[]'); }catch(e){ st=[]; }
+  function page(u){ var a=document.createElement('a'); a.href=u; return a.origin+a.pathname.replace(/index\.html$/,''); }
+  function save(){ try{ sessionStorage.setItem(K, JSON.stringify(st.slice(-20))); }catch(e){} }
+  function name(){
+    var t=document.title||'předchozí stránka', m=t.match(/^Téma č\.\s*\d+/);
+    if(m) return m[0]+(/jednoduše|výluh/i.test(t)||/jednoduse/.test(location.pathname)?' (jednoduše)':'');
+    if(/25 okruhů/.test(t)) return 'Rozcestník';
+    return t.split(/\s[·|–]\s/)[0].slice(0,40);
+  }
+  var here=page(location.href);
+  while(st.length && page(st[st.length-1].u)===here){ st.pop(); }
+  save();
+  try{
+    var r=JSON.parse(sessionStorage.getItem(R)||'null');
+    if(r && page(r.u)===here){ sessionStorage.removeItem(R); window.addEventListener('load',function(){ setTimeout(function(){ window.scrollTo(0,r.y); },60); }); }
+  }catch(e){}
+  var btn=document.getElementById('zpetBtn');
+  if(st.length){
+    var top=st[st.length-1];
+    document.getElementById('zpetTxt').textContent='Zpět: '+top.t;
+    btn.title='Zpět na: '+top.t;
+    btn.style.display='inline-flex';
+    btn.addEventListener('click',function(e){
+      e.preventDefault(); var t=st.pop(); save();
+      try{ sessionStorage.setItem(R, JSON.stringify(t)); }catch(x){}
+      location.href=t.u.split('#')[0];
+    });
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest && e.target.closest('a[href]');
+    if(!a || a.id==='zpetBtn') return;
+    var h=a.getAttribute('href'); if(!h || h.charAt(0)==='#' || /^(mailto|tel|javascript):/i.test(h)) return;
+    var u; try{ u=new URL(a.href, location.href); }catch(x){ return; }
+    var same = (u.origin===location.origin && location.protocol!=='file:') || (location.protocol==='file:' && u.protocol==='file:');
+    if(!same || page(u.href)===here) return;
+    if(location.hostname.indexOf('github.io')>-1 && u.pathname.split('/')[1]!==location.pathname.split('/')[1]) return;
+    a.removeAttribute('target');
+    st.push({u:location.href.split('#')[0], y:window.scrollY, t:name()}); save();
+  }, true);
+})();
+</script>
+<!-- /zpet-v1 -->
+</body>
+</html>
