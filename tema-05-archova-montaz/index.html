@@ -312,6 +312,7 @@ details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opac
 details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
 details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 </style>
+<style>.xlink{display:inline-block;background:#f1ecff;border:1px solid #d8ccfa;border-radius:8px;padding:1px 8px;text-decoration:none;font-size:.85em;font-weight:600;margin:2px 2px 0 0;color:#4b2bb3}.xlink::before{content:"↗ "}.xsoon{display:inline-block;border:1px dashed #bbb;border-radius:8px;padding:1px 8px;font-size:.85em;color:#777;margin:2px 2px 0 0}</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -416,7 +417,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ KONTROLA ============ -->
 <section id="kontrola">
   <div class="sec-head"><span class="dot c"></span><span class="kicker">2 · Souhrn · větev C</span></div>
-  <h2>Kontrola tiskových dat</h2>
+  <h2>Kontrola tiskových dat – co kontrolujeme</h2>
   <div class="oneliner c"><span class="lbl">Jednou větou</span>Tisková data se kontrolují <b>na vstupu</b> (preflight PDF), <b>mezioperačně</b> (náhled a nátisk před výrobou desek) a <b>na výstupu</b> (měření barev na archu). Chyba nalezená na monitoru stojí minuty, chyba nalezená na vytištěném nákladu stojí celou zakázku.</div>
 
   <h3>Tiskové PDF: co tiskárna chce</h3>
@@ -475,11 +476,14 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
     </div>
   </div>
 
-  <h3 id="sonda">Kalibrační sonda</h3><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Podrobně patří k tématu č. <a href="../tema-10-color-management/#a-kalibrace">10</a> (správa barev).</p>
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – Kalibrační sonda<span class="rv-pozn">Podrobně patří k tématu č. <a href="../tema-10-color-management/#a-kalibrace">10</a> (správa barev). Klepni pro rozbalení.</span></summary>
+<h3 id="sonda">Kalibrační sonda</h3>
   <div class="card"><b>🎯 K čemu je kalibrační sonda</b><br><span class="small">Sonda se přiloží na obrazovku a změří, jaké barvy monitor skutečně ukazuje. Program pak vytvoří <b>ICC profil monitoru</b> a barvy na obrazovce odpovídají tisku. Bez kalibrace nemá náhled barev na monitoru (soft proof) smysl. Kalibruje se pravidelně, asi jednou za měsíc.</span></div>
 
 
-  <h3>Měření barev: denzitometr × spektrofotometr</h3><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Podrobně patří k tématům č. <a href="../tema-09-teorie-barevnosti/#a-mereni">9</a> a <a href="../tema-10-color-management/#b-kontrola">10</a>.</p>
+  </details>
+<details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – Měření barev: denzitometr × spektrofotometr<span class="rv-pozn">Podrobně patří k tématům č. <a href="../tema-09-teorie-barevnosti/#a-mereni">9</a> a <a href="../tema-10-color-management/#b-kontrola">10</a>. Klepni pro rozbalení.</span></summary>
+<h3>Měření barev: denzitometr × spektrofotometr</h3>
   <div class="grid2">
     <div class="card" style="margin:0"><b>Denzitometr</b> měří <b>optickou hustotu</b> (kolik světla se odrazí nebo projde). <i>Odrazový</i> pro tisk na papír, <i>průsvitový</i> pro filmy. Zjistí sytost barvy, nárůst tónové hodnoty a vyvážení šedé.<br><span class="pill">Jak tmavá je barva?</span></div>
     <div class="card" style="margin:0"><b>Spektrofotometr</b> měří odražené světlo v jednotlivých vlnových délkách. Výsledek je v <b>CIELAB</b> (L*, a*, b*) a odchylka se udává jako <b>ΔE</b>. Používá se na certifikované nátisky, profily ICC a porovnání s Pantone.<br><span class="pill">Jaká přesně je to barva?</span></div>
@@ -488,13 +492,14 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
   <details class="qa"><summary>Může padnout: Jaký je rozdíl mezi náhledem a nátiskem?</summary><div class="ans">Náhled je vizuální kontrola, buď na monitoru, nebo jako výtisk na běžné tiskárně. Slouží hlavně ke kontrole obsahu a není závazný pro barvy. Nátisk je <b>fyzická kopie, která simuluje výsledný tisk</b> (stejné barvy, profil, ideálně i papír). Má technický i právní význam: zákazník ho schválí a tiskárna podle něj tiskne.</div></details>
   <details class="qa"><summary>Může padnout: Co je preflight a proč se dělá?</summary><div class="ans">Automatická kontrola tiskových dat před osvitem. Hlídá formát PDF/X, spadávku a značky, rozlišení obrázků, barevný prostor (CMYK), přímé barvy, krytí barvou, vložená písma a průhlednosti. Odhalí chyby dřív, než se vyrobí desky a potiskne papír, a tím šetří čas i peníze.</div></details>
   <details class="qa"><summary>Může padnout: Co je FOGRA39?</summary><div class="ans">ICC profil (Coated FOGRA39) popisující standardizovaný ofsetový tisk na natíraný papír podle normy <b>ISO 12647-2</b>. Fogra je německý výzkumný ústav pro polygrafii. Profil zajistí, že barvy v PDF odpovídají tomu, co dokáže vytisknout kalibrovaný stroj.</div></details>
-  <a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
+  </details>
+<a class="ret" href="#mapa" data-ret>↑ zpět na mapu</a>
 </section>
 
 <!-- ============ MONTÁŽ ============ -->
 <section id="montaz">
   <div class="sec-head"><span class="dot m"></span><span class="kicker">2 · Souhrn · větev M</span></div>
-  <h2>Archová montáž</h2>
+  <h2>Archová montáž – popis a software</h2>
   <div class="oneliner m"><span class="lbl">Jednou větou</span><b>Archová montáž</b> (angl. <i>imposition</i>) je rozmístění stran nebo tiskovin na tiskový arch tak, aby po tisku, složení a ořezu šly strany ve správném pořadí. Doplňují se k tomu tiskové a knihařské značky. Z tohoto souboru se vyrábí tisková forma, nebo se tiskne rovnou (digitální tisk).</div>
 
   <div class="grid2">
@@ -727,7 +732,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ RIP ============ -->
 <section id="rip">
   <div class="sec-head"><span class="dot y"></span><span class="kicker">2 · Souhrn · větev Y</span></div>
-  <h2>RIP a výstup na tiskovou formu</h2>
+  <h2>RIP – co to je</h2>
   <div class="oneliner y"><span class="lbl">Jednou větou</span><b>RIP</b> (Raster Image Processor) je software (dříve i hardware), který „přeloží“ PDF z řeči vektorů a pixelů do řeči <b>tiskových bodů</b>. Pro každou tiskovou barvu vytvoří jednobitovou bitmapu (výtažek), kterou pak laser osvítí na desku nebo ji rovnou vytiskne digitální stroj.</div>
 
   <div class="flow">
@@ -757,14 +762,16 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
     </div>
   </div>
 
-  <h3>AM × FM rastr</h3><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Podrobně patří k tématu č. <a href="../tema-06-predlohy-a-rastr/#amfm">6</a> (rastr). U této otázky stačí říct, že RIP převede data na rastrové body.</p>
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – AM × FM rastr<span class="rv-pozn">Podrobně patří k tématu č. <a href="../tema-06-predlohy-a-rastr/#amfm">6</a> (rastr). U této otázky stačí říct, že RIP převede data na rastrové body. Klepni pro rozbalení.</span></summary>
+<h3>AM × FM rastr</h3>
   <div class="grid2">
     <div class="svgfig"><svg id="amSvg" viewBox="0 0 300 120" role="img" aria-label="AM rastr: pravidelná mřížka, roste velikost bodu"></svg><p class="small" style="margin:6px 4px 0"><b>AM (amplitudově modulovaný)</b>: pravidelná mřížka, stálá vzdálenost středů bodů, mění se <b>velikost</b> bodu. Stabilní tisk, ale riziko moaré.</p></div>
     <div class="svgfig"><svg id="fmSvg" viewBox="0 0 300 120" role="img" aria-label="FM rastr: stejně malé body, mění se hustota"></svg><p class="small" style="margin:6px 4px 0"><b>FM (frekvenčně modulovaný, stochastický)</b>: body stejně malé, náhodně rozmístěné, mění se jejich <b>hustota</b>. Bez moaré, jemné detaily, ale náročné na tiskovou formu.</p></div>
   </div>
   <p class="small muted">XM (hybridní) rastr kombinuje obojí: ve středních tónech AM, ve světlech a hloubkách FM.</p>
 
-  <h3>Jak vzniká elektronický bod</h3>
+  </details>
+<h3>Jak vzniká elektronický bod</h3>
   <div class="grid2">
     <div class="svgfig"><svg id="cellSvg" style="max-width:280px;margin:0 auto" viewBox="0 0 170 170" role="img" aria-label="Tónová buňka 16 krát 16 s vyplněnými 52 dílky pro 20 procent"></svg></div>
     <div>
@@ -791,7 +798,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ TECHNIKY ============ -->
 <section id="techniky">
   <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
-  <h2>Dělení tiskových technik</h2>
+  <h2>Dělení tiskových technik a příklady použití</h2>
   <div class="oneliner k"><span class="lbl">Jednou větou</span>Tiskové techniky dělíme hlavně <b>podle tiskové formy</b>, tedy podle toho, jak jsou na ní uložena tisknoucí místa vůči netisknoucím: <b>z výšky, z plochy, z hloubky a průtisk</b>. K nim přibývá <b>digitální tisk</b> bez hmotné tiskové formy.</div>
 
   <div class="svgfig">
@@ -1122,7 +1129,7 @@ const QUIZ=[
  ['Proč se dělá archová montáž?',['aby byly barvy sytější','aby se na jeden arch vešlo víc stran a ušetřil se papír, čas i desky','aby byla kniha pevnější','aby se nemusel dělat nátisk'],1,'Montáž dá víc stran nebo tiskovin na jeden arch a strany vyřadí tak, aby po složení šly správně za sebou.'],
  ['Vizitka má čistý formát 90 × 50 mm a spadávku 3 mm. Jaký má rozměr se spadávkou?',['93 × 53 mm','96 × 56 mm','90 × 50 mm','99 × 59 mm'],1,'Spadávka je z obou stran: 90 + 3 + 3 = 96 a 50 + 3 + 3 = 56.'],
  ['Jak se správně montují vizitky se spadávkou na tiskový arch?',['na sraz, bez mezer','každá s vlastní spadávkou, mezi nimi je mezera 6 mm','přes sebe','na arch se dává vždy jen jedna vizitka'],1,'Každá vizitka má svou spadávku 3 mm. Mezi čistými formáty je proto mezera 6 mm a dělají se dva řezy.'],
- ['Kolik vizitek se spadávkou (96 × 56 mm) se vejde na arch SRA3 při okraji 10 mm?',['16','18','21','24'],2,'300 : 96 = 3 vedle sebe, 430 : 56 = 7 pod sebou, 3 × 7 = 21.']
+ ['Co je SRA3?',['tiskový arch 320 × 450 mm','formát vizitky 90 × 50 mm','křídový papír 150 g/m²','barevný prostor pro tisk'],0,'SRA3 je superhrubý formát tiskového archu, 320 × 450 mm.']
 ];
 (function(){
   const box=document.getElementById('quiz'),sc=document.getElementById('score');

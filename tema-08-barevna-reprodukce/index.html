@@ -316,6 +316,7 @@ details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opac
 details.rozsir-vypocet>summary .rv-pozn{display:block;font-weight:400;font-size:.85em;opacity:.8}
 details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 </style>
+<style>.xlink{display:inline-block;background:#f1ecff;border:1px solid #d8ccfa;border-radius:8px;padding:1px 8px;text-decoration:none;font-size:.85em;font-weight:600;margin:2px 2px 0 0;color:#4b2bb3}.xlink::before{content:"↗ "}.xsoon{display:inline-block;border:1px dashed #bbb;border-radius:8px;padding:1px 8px;font-size:.85em;color:#777;margin:2px 2px 0 0}</style>
 </head>
 <body>
 <div class="cmyk-bar"></div>
@@ -440,7 +441,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ C: RGB × CMYK ============ -->
 <section id="reprodukce">
   <div class="sec-head"><span class="dot c"></span><span class="kicker">2 · Souhrn · větev C</span></div>
-  <h2>Barevná reprodukce: RGB × CMYK</h2>
+  <h2>Barevná reprodukce – způsoby tisku obrazu: RGB, CMYK</h2>
   <div class="oneliner c"><span class="lbl">Jednou větou</span><b>Barevná reprodukce</b> je převedení barevné předlohy do tisku tak, aby výtisk co nejvěrněji odpovídal originálu. Obrazovky skládají barvy ze světla <b>aditivně</b> v modelu <b>RGB</b>, tisk skládá barvy z tiskových barev <b>subtraktivně</b> v modelu <b>CMYK</b>. Barevná reprodukce je vlastně „překlad“ mezi těmito dvěma světy.</div>
 
   <h3>Postup barevné reprodukce</h3>
@@ -547,7 +548,8 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
     <p class="small muted" style="margin-bottom:0">Převod na CMYK je jen <b>orientační</b> (jednoduchý vzorec bez ICC profilu). Skutečný převod udělá Photoshop nebo Illustrator podle profilu tisku a výsledek se může lišit.</p>
   </div>
 
-  <h3 id="hex">HEX krok za krokem: jak přečíst #38C4F0</h3><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Pro zájemce, u zkoušky se nevyžaduje.</p>
+  <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – HEX krok za krokem: jak přečíst #38C4F0<span class="rv-pozn">Pro zájemce, u zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
+<h3 id="hex">HEX krok za krokem: jak přečíst #38C4F0</h3>
   <p>HEX je jen jiný zápis RGB. Každé dva znaky jsou jedna složka (R, G, B) v <b>šestnáctkové soustavě</b>. Ta má kromě číslic 0–9 ještě písmena: <b>A = 10, B = 11, C = 12, D = 13, E = 14, F = 15</b>.</p>
   <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: převod HEX → RGB<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
 <div class="calc">
@@ -565,6 +567,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
   </div>
 
   </details>
+</details>
 <h3 id="gamut">Gamut: co zařízení umí a co ne</h3>
   <div class="grid2">
     <div class="svgfig">
@@ -710,7 +713,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ Y: SEPARACE ============ -->
 <section id="separace">
   <div class="sec-head"><span class="dot y"></span><span class="kicker">2 · Souhrn · větev Y</span></div>
-  <h2>Separace: rozdělení barev na výtažky</h2>
+  <h2>Barevná separace (výtažky)</h2>
   <div class="oneliner y"><span class="lbl">Jednou větou</span><b>Separace</b> (barevné dělení) je rozdělení barevného obrazu na <b>barevné výtažky</b>: jeden výtažek pro každou tiskovou barvu C, M, Y, K a pro každou přímou barvu. Z každého výtažku vznikne <b>jedna tisková forma</b>. Kolik výtažků, tolik desek a tolik tiskových jednotek ve stroji.</div>
 
   <p>Separaci dnes provádí <b>RIP</b> (Raster Image Processor). Přečte tiskové PDF, rozdělí ho na výtažky a každý výtažek zrastruje s vlastním úhlem natočení sítě (viz <a href="../tema-06-predlohy-a-rastr/#vytazky">výtažky a natočení rastru v tématu 6</a> a <a href="../tema-05-archova-montaz/#rip">RIP v tématu 5</a>). Dříve se výtažky fotografovaly přes barevné filtry v doplňkové barvě na filmy.</p>
@@ -870,7 +873,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ K: TISK Z VÝŠKY ============ -->
 <section id="vyska">
   <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
-  <h2>Tisk z výšky</h2>
+  <h2>Tisk z výšky – popis, příklady technik a použití</h2>
   <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Tisk z výšky</b> je tisková technika, u které jsou <b>tisknoucí místa vyvýšená</b> nad netisknoucími. Barva se nanese jen na vrcholky tisknoucích míst a tlakem se přenese na potiskovaný materiál, přesně jako u <b>razítka</b>. Strojově se tiskne <b>knihtiskem</b> a <b>flexotiskem</b>, ručně např. dřevořezem nebo linorytem.</div>
 
   <div class="mnemo">🧠 Pomůcka: <span class="L">tisk z výšky = razítko</span><br><span class="small">Knihtisk = tvrdé kovové razítko a hustá barva. Flexotisk = pružné „gumové“ razítko na válci a řídká barva. U obou je obraz na formě <b>zrcadlově</b>, protože tisknou přímo na papír.</span></div>
@@ -924,7 +927,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ K: KNIHTISK ============ -->
 <section id="knihtisk">
   <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K · knihtisk</span></div>
-  <h2>Knihtisk: od Gutenberga po současnost</h2><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Podrobná historie patří k tématu č. 24 (historický vývoj tisku). U této otázky stačí: Gutenberg, kovové litery, knihtisk = tisk z výšky.</p>
+  <h2>Příklad tisku z výšky: knihtisk</h2><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Podrobná historie patří k tématu č. 24 (historický vývoj tisku). U této otázky stačí: Gutenberg, kovové litery, knihtisk = tisk z výšky.</p>
   <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Knihtisk</b> je první tisková technika pro tisk knih. Tiskne se z tvrdé formy složené z <b>kovových liter</b> (pohyblivá sazba) hustou <b>mastnou barvou</b>. Vynalezl ho <b>Johannes Gutenberg</b> v Mohuči. Na vynálezu pracoval asi <b>16 let</b> (1439–1455) a jako první knihu vytiskl <b>42řádkovou bibli</b>.</div>
 
   <h3 id="predgutenberg">Jak vznikaly knihy před Gutenbergem</h3>
@@ -1338,7 +1341,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ K: FLEXOTISK ============ -->
 <section id="flexo">
   <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K · flexotisk</span></div>
-  <h2>Flexotisk</h2><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Podrobnosti o strojích, válcích a formách patří k tématu č. 20 (flexotisk). U této otázky stačí princip, pružná forma a použití.</p>
+  <h2>Příklad tisku z výšky: flexotisk</h2><p class="navic" style="margin:2px 0 12px;font-size:.9rem;color:#5d6068;border-left:4px solid #b9bcc2;padding:3px 10px">➕ <b>Rozšiřující učivo.</b> Podrobnosti o strojích, válcích a formách patří k tématu č. 20 (flexotisk). U této otázky stačí princip, pružná forma a použití.</p>
   <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Flexotisk</b> (flexografie, dříve <b>gumotisk</b>) je <b>přímý rotační tisk z výšky</b> z <b>pružné reliéfní formy</b> řídkou, rychle zasychající barvou. Barvu na formu přenáší <b>aniloxový válec</b>. Po ofsetu je to <b>druhá nejpoužívanější technika tisku</b> a hlavní technika pro tisk <b>obalů</b>.</div>
 
   <h3 id="flexodnes">K čemu se flexotisk používá dnes</h3>
@@ -2672,7 +2675,7 @@ const WT=[
    MM_T: pro každou větev (c, m, y, k) seznam cílů ve stejném pořadí jako pojmy v mapě.
    Cíl = začátek textu podnadpisu (nebo zvýrazněné položky); "@selektor" = prvek podle CSS. */
 (function(){
-  const MM_T={"c": ["Postup barevné reprodukce", "Aditivní míchání · RGB", "Dva světy: sčítání světla a odčítání barev", "doplňkové", "Proč má CMYK čtvrtou barvu, černou (K)", "Gamut: co zařízení umí a co ne", "Jak se RGB převede do CMYK", "HEX krok za krokem: jak přečíst #38C4F0"], "y": ["Separace", "Může padnout: Kolik desek potřebuji na leták 4+1/1?", "Náhled separací", "Celkové krytí barvou (TAC)", "Soutisk", "Co se stane při nesoutisku a proč vzniká", "Přesahy (trapping) a přetisk", "Přesahy (trapping) a přetisk"], "m": ["Přímé barvy", "Vzorníky přímých barev", "Kdy použít přímou barvu", "@.pro", "@.con", "Přímá barva v tiskových datech", "Technické přímé barvy: lak, bílá, výsek", "Pantone Color Bridge", "Registrační černá: proč ne do textu a ploch"], "k": ["Tisk z výšky", "Jak vznikaly knihy před Gutenbergem", "Johannes Gutenberg: 16 let práce", "V čem spočíval Gutenbergův vynález", "Na co se ve středověku tisklo", "Jak knihtisk změnil svět", "Litera a kuželka", "Liteřina", "Jak se odlévaly litery", "Příprava tiskové formy (ruční sazba)", "Vývoj knihtisku až do současnosti", "K čemu se flexotisk používá dnes", "Princip tisku", "Štoček × sleeve: v čem je rozdíl", "Flexotiskové stroje", "Výhody a nevýhody flexotisku", "Duktor: odkud se bere barva"]};
+  const MM_T={"c": ["Postup barevné reprodukce", "Aditivní míchání · RGB", "Dva světy: sčítání světla a odčítání barev", "doplňkové", "Proč má CMYK čtvrtou barvu, černou (K)", "Gamut: co zařízení umí a co ne", "Jak se RGB převede do CMYK", "HEX krok za krokem: jak přečíst #38C4F0"], "y": ["Barevná separace (výtažky)", "Může padnout: Kolik desek potřebuji na leták 4+1/1?", "Náhled separací", "Celkové krytí barvou (TAC)", "Soutisk", "Co se stane při nesoutisku a proč vzniká", "Přesahy (trapping) a přetisk", "Přesahy (trapping) a přetisk"], "m": ["Přímé barvy", "Vzorníky přímých barev", "Kdy použít přímou barvu", "@.pro", "@.con", "Přímá barva v tiskových datech", "Technické přímé barvy: lak, bílá, výsek", "Pantone Color Bridge", "Registrační černá: proč ne do textu a ploch"], "k": ["Tisk z výšky", "Jak vznikaly knihy před Gutenbergem", "Johannes Gutenberg: 16 let práce", "V čem spočíval Gutenbergův vynález", "Na co se ve středověku tisklo", "Jak knihtisk změnil svět", "Litera a kuželka", "Liteřina", "Jak se odlévaly litery", "Příprava tiskové formy (ruční sazba)", "Vývoj knihtisku až do současnosti", "K čemu se flexotisk používá dnes", "Princip tisku", "Štoček × sleeve: v čem je rozdíl", "Flexotiskové stroje", "Výhody a nevýhody flexotisku", "Duktor: odkud se bere barva"]};
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
   const HEAD='h2,h3,h4,h5,summary';
   const ANY=HEAD+',.nm,.t,.lbl,dt,th,figcaption,b,strong,li,p,dd,td';

@@ -371,7 +371,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ PŘEDLOHY ============ -->
 <section id="predlohy">
   <div class="sec-head"><span class="dot c"></span><span class="kicker">2 · Souhrn · větev C</span></div>
-  <h2>Obrazové předlohy a jejich digitální zápis</h2>
+  <h2>Reprodukce obrazu – druhy obrazových předloh: pérové, tónové</h2>
   <div class="oneliner c"><span class="lbl">Jednou větou</span><b>Obrazová předloha</b> je originál obrázku, který chceme reprodukovat (kresba, fotografie, diapozitiv nebo digitální soubor). Podle tónů ji dělíme na <b>pérovou</b> (jen barva / papír) a <b>tónovou</b> (plynulé přechody). V počítači se zapisuje jako mřížka pixelů a každý pixel je popsán pomocí <b>bitů</b>.</div>
 
   <h3>Pérová × tónová předloha</h3>
@@ -562,7 +562,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ RASTR ============ -->
 <section id="rastr">
   <div class="sec-head"><span class="dot m"></span><span class="kicker">2 · Souhrn · větev M</span></div>
-  <h2>Tiskový rastr a jeho jemnost</h2>
+  <h2>Rastr a jeho jemnost</h2>
   <div class="oneliner m"><span class="lbl">Jednou větou</span><b>Tiskový rastr</b> tvoří všechny tiskové body, ze kterých se skládá vytištěný obrázek. Body jsou tak malé, že je oko z běžné vzdálenosti nerozezná a <b>slije je do plynulého tónu</b>. Hustotu rastru udáváme v <b>lpi</b> (linky na palec).</div>
 
   <h3>Proč se vůbec rastruje</h3>
@@ -641,7 +641,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ AM FM HYBRID ============ -->
 <section id="amfm">
   <div class="sec-head"><span class="dot m"></span><span class="kicker">2 · Souhrn · větev M</span></div>
-  <h2>AM, FM a hybridní rastr</h2>
+  <h2>Typy rastrů: AM, FM a hybridní</h2>
   <div class="oneliner m"><span class="lbl">Jednou větou</span><b>AM rastr</b> mění <b>velikost</b> bodů v pravidelné mřížce, <b>FM rastr</b> mění <b>hustotu</b> stejně malých, náhodně rozmístěných bodů a <b>hybridní rastr</b> obojí kombinuje: ve středních tónech pracuje jako AM, ve světlech a hloubkách jako FM.</div>
 
   <div class="card">
@@ -714,7 +714,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ NATOČENÍ A VÝTAŽKY ============ -->
 <section id="vytazky">
   <div class="sec-head"><span class="dot y"></span><span class="kicker">2 · Souhrn · větev Y</span></div>
-  <h2>Barevné výtažky a natočení rastru</h2>
+  <h2>Natočení rastru a barevné výtažky</h2>
   <div class="oneliner y"><span class="lbl">Jednou větou</span><b>Barevný výtažek</b> je jedna barevná složka obrazu pro jednu tiskovou barvu (C, M, Y nebo K). Každý výtažek se zrastruje zvlášť, dostane <b>vlastní úhel natočení</b> a vlastní tiskovou formu. Správné úhly dají pravidelnou <b>rozetu</b>, špatné dají rušivé <b>moaré</b>.</div>
 
   <h3>Jak vznikají barevné výtažky (separace)</h3>
@@ -773,7 +773,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ TISKOVÉ TECHNIKY ============ -->
 <section id="techniky">
   <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
-  <h2>Tiskové techniky a rastr</h2>
+  <h2>Dělení tiskových technik</h2>
   <div class="oneliner k"><span class="lbl">Jednou větou</span>Tiskové techniky dělíme podle tiskové formy na tisk <b>z výšky</b>, <b>z plochy</b>, <b>z hloubky</b> a <b>průtisk</b>. Samostatně stojí <b>digitální tisk</b> bez tiskové formy. Každá technika dokáže přenést jinak malé body, a proto má <b>jiný vhodný rastr a lineaturu</b>.</div>
   <p class="small">Podrobné dělení tiskových technik a jejich forem najdeš v <a href="../tema-05-archova-montaz/#techniky">tématu 5</a>. Tady se soustřeď na to, jak technika ovlivní rastr.</p>
 
@@ -817,7 +817,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
 <!-- ============ DIGITÁLNÍ TISK ============ -->
 <section id="digitalni">
   <div class="sec-head"><span class="dot k"></span><span class="kicker">2 · Souhrn · větev K</span></div>
-  <h2>Digitální tisk a jeho porovnání s ofsetem</h2>
+  <h2>Digitální tisk – co to je, výhody a nevýhody, porovnání s ofsetem</h2>
   <div class="oneliner k"><span class="lbl">Jednou větou</span><b>Digitální tisk</b> tiskne přímo z dat v počítači, <b>bez tiskové formy</b>. Vyplatí se pro <b>malé náklady</b> a umí, aby byl <b>každý kus jiný</b> (personalizace). Pro velké náklady je levnější <b>ofset</b>.</div>
 
   <h3>Co je digitální tisk</h3>
@@ -1525,7 +1525,7 @@ const WT=[
    MM_T: pro každou větev (c, m, y, k) seznam cílů ve stejném pořadí jako pojmy v mapě.
    Cíl = začátek textu podnadpisu (nebo zvýrazněné položky); "@selektor" = prvek podle CSS. */
 (function(){
-  const MM_T={"c": ["Pérová předloha", "Pérová × tónová předloha", "Náležitosti předlohy: co musí grafik vědět", "Jak se obraz zapisuje do bitů – krok za krokem", "Barvová hloubka pro jednotlivé předlohy", "Bitová × barvová hloubka", "Barvový prostor", "Rozlišení: dpi, ppi, lpi"], "y": ["Barevný výtažek", "Jak vznikají barevné výtažky (separace)", "Proč je v CMYK černá (K)", "přímé barvy", "Natočení rastru", "Rozeta", "Rozeta × moaré"], "m": ["Proč se vůbec rastruje", "Elektronický bod a rozlišení osvitu", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "AM", "AM, FM a hybridní rastr", "Hybrid (XM)"], "k": ["Ofset archový", "Ofset kotoučový novinový", "Flexotisk", "Může padnout: Proč má hlubotisk rastrovaný i text?", "Sítotisk", "digitální tisk", "Pravidlo pro volbu rastru", "Co je digitální tisk", "Výhody a nevýhody digitálního tisku", "Příklady použití digitálního tisku", "Digitální tisk × ofset"]};
+  const MM_T={"c": ["Pérová předloha", "Pérová × tónová předloha", "Náležitosti předlohy: co musí grafik vědět", "Jak se obraz zapisuje do bitů – krok za krokem", "Barvová hloubka pro jednotlivé předlohy", "Bitová × barvová hloubka", "Barvový prostor", "Rozlišení: dpi, ppi, lpi"], "y": ["Barevný výtažek", "Jak vznikají barevné výtažky (separace)", "Proč je v CMYK černá (K)", "přímé barvy", "Natočení rastru", "Rozeta", "Rozeta × moaré"], "m": ["Proč se vůbec rastruje", "Elektronický bod a rozlišení osvitu", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "Jemnost (hustota) rastru: kdy hrubý a kdy jemný", "Typy rastrů: AM, FM a hybridní", "Typy rastrů: AM, FM a hybridní", "Hybrid (XM)"], "k": ["Ofset archový", "Ofset kotoučový novinový", "Flexotisk", "Může padnout: Proč má hlubotisk rastrovaný i text?", "Sítotisk", "digitální tisk", "Pravidlo pro volbu rastru", "Co je digitální tisk", "Výhody a nevýhody digitálního tisku", "Příklady použití digitálního tisku", "Digitální tisk × ofset"]};
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
   const HEAD='h2,h3,h4,h5,summary';
   const ANY=HEAD+',.nm,.t,.lbl,dt,th,figcaption,b,strong,li,p,dd,td';
