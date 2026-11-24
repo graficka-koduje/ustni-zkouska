@@ -266,7 +266,7 @@ canvas.demo{width:100%;height:auto;display:block;border-radius:10px;background:#
 .angle-row .a b{display:block;font-size:1.25rem}
 .angle-row svg{width:56px;height:56px;display:block;margin:0 auto 4px}
 @media (max-width:420px){.angle-row{grid-template-columns:repeat(2,1fr)}}
-</style>
+.pisemka{border:2px solid #1f8a4c;background:#eef7ee;color:#1b1c1f;border-radius:12px;padding:10px 14px;margin:14px 0;font-size:.95rem}.pisemka .stitek{display:block;font-weight:700;color:#1f6b3a;font-size:.85rem;margin-bottom:4px}.pisemka ul{margin:6px 0 2px 18px;padding:0}.pisemka details{margin-top:6px}</style>
 <style id="rozsir-vypocet-css">
 details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
 details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
@@ -830,7 +830,8 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
   </div>
   <figure class="pic"><div style="max-width:420px;margin:0 auto"><svg viewBox="0 0 240 150" role="img" aria-label="Digitální tisk: z počítače rovnou na papír, bez tiskové formy" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif"><rect x="8" y="30" width="62" height="44" rx="4" fill="#3a3d42"/><rect x="14" y="36" width="50" height="32" fill="#00a3e0"/><rect x="30" y="76" width="18" height="8" fill="#3a3d42"/><path d="M76 56 h18" stroke="#5d6068" stroke-width="3"/><path d="M98 56 l-8 -6 v12z" fill="#5d6068"/><rect x="104" y="36" width="80" height="50" rx="8" fill="#d9dbde" stroke="#6b7078" stroke-width="2"/><rect x="116" y="80" width="56" height="30" fill="#fff" stroke="#9aa0a6" stroke-width="2"/><rect x="124" y="88" width="40" height="6" fill="#e6007e"/><text x="144" y="62" font-size="11" font-weight="900" text-anchor="middle" fill="#1b1c1f">tiskárna</text><rect x="196" y="40" width="34" height="44" fill="#c9ccd1" stroke="#888" stroke-width="2"/><path d="M192 36 L234 88 M234 36 L192 88" stroke="#c62828" stroke-width="5"/><text x="213" y="104" font-size="11" font-weight="900" text-anchor="middle" fill="#c62828">deska</text><text x="120" y="140" font-size="13" font-weight="900" text-anchor="middle" fill="#a8005c">bez tiskové formy</text></svg></div><figcaption>Digitální tisk: data jdou z počítače rovnou do tiskárny, deska se nevyrábí.</figcaption></figure>
 
-  <h3 id="digitalni-vyhody">Výhody a nevýhody digitálního tisku</h3>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Klasický, digitální a digitalizovaný tisk – v písemce 3 úkoly (6 + 5 + 5 bodů)</b><ul><li><b>Klasický (analogový) tisk (6 b):</b> hmotná tisková forma se vyrobí <b>mimo stroj</b> a vloží se do věží. Příprava a seřízení stroje trvá <b>déle</b>.</li><li><b>Digitální tisk (5 b):</b> tisk <b>bez hmotné tiskové formy</b>, přímo z počítače, <b>od 1 kusu</b>. Nahrazuje ofset u <b>malých nákladů</b>. Tiskárny <b>laserové</b> nebo <b>inkoustové</b> – náhled i celý náklad.</li><li><b>Digitalizovaný tisk (5 b):</b> hmotné formy se <b>vypalují laserem přímo ve věžích stroje</b>, nevyvolávají se, stroj je připraven za <b>pár minut</b>; řídí ho pult dálkového ovládání. Nejčastěji <b>ofset bez vlhčení</b>.</li></ul><details><summary>Odpověď do písemky (vzor)</summary><p>Klasický tisk: mimo tiskový stroj se vyrobí hmotná tisková forma, která se umístí do věží stroje; příprava a seřízení stroje trvá déle než u digitalizovaného tisku. Digitální tisk: tisk bez hmotné tiskové formy, tiskoviny už od jednoho kusu přímo z počítače; nahrazuje ofset u malých nákladů; tiskárny laserové nebo inkoustové. Digitalizovaný tisk: hmotné formy se vypalují laserem přímo ve věžích stroje, nevyžadují vyvolání, stroj je připraven za několik minut; nejčastěji ofset bez vlhčení.</p></details></div>
+<h3 id="digitalni-vyhody">Výhody a nevýhody digitálního tisku</h3>
   <div class="tablewrap"><table>
     <tr><th>👍 Výhody</th><th>👎 Nevýhody</th></tr>
     <tr><td>vyplatí se <b>od 1 kusu</b></td><td>u <b>velkého nákladu</b> je jeden kus drahý</td></tr>
@@ -1276,7 +1277,7 @@ const WT=[
    ['tonov\\w* (predloh\\w* )?(ma|obsahuje) [^.;]{0,15}(jen|pouze) (dve|2)','Tónová předloha má mnoho tónů (polotónů), ne jen dva.']
   ],
   m:'<b>Pérová předloha</b> má velmi <b>ostrou kresbu</b> a <b>velký kontrast</b> proti pozadí, jako černý fix na bílém papíře. Skládá se jen z jednolitých ploch a čar, <b>nemá tónové přechody</b> a má jen <b>dvě hodnoty hustoty</b>: barva je, nebo není (logo, perokresba, text). <b>Tónová předloha</b> má <b>plynulé tónové přechody</b> mezi světlem a stínem a širokou stupnici <b>polotónů</b>. Jsou to <b>fotografie, malby, diapozitivy a negativy</b>. Pro tisk se musí zrastrovat. <b>Náležitosti předlohy:</b> <b>konečný rozměr</b> (zda se bude zvětšovat nebo zmenšovat, % reprodukce), <b>barevný režim</b> (CMYK, stupně šedi), <b>rozlišení</b> a <b>výřezy</b>.'},
- {q:'Vysvětli pojmy bitová hloubka a barvová hloubka. V jakých jednotkách se udávají? <span class="pill">3 body</span>',
+ {q:'Vysvětli pojmy bitová hloubka a barvová hloubka. V jakých jednotkách se udávají? <span class="pill">4 body</span>',
   h:'Tip: jeden kanál × všechny kanály, jednotky.',
   p:[
    ['Bitová = bity na jeden kanál',['bitov&&kanal'],1,'Bitová hloubka = počet bitů, které připadají na jeden barvový kanál.'],
@@ -1311,7 +1312,7 @@ const WT=[
    ['(stupn\\w* sedi|sed[ai])[^.;,]{0,25}\\b(1|24|32) ?bit','Stupně šedi mají 8 bitů (256 odstínů).']
   ],
   m:'<b>Pérová (černobílá) předloha</b> je obraz bez stínování: 1 kanál, barvová hloubka <b>1 bit</b> (černá a bílá). <b>Stupně šedi</b> jsou jednobarevný stínovaný obraz v černé: 1 kanál, <b>8 bitů</b> = 2⁸ = <b>256 odstínů</b>. <b>Barevná tónová předloha</b> v <b>RGB</b> (monitor) má 3 kanály: 8 × 3 = <b>24 bitů</b>, 256 × 256 × 256 = <b>16,7 milionu barev</b>. V <b>CMYK</b> (tisk) má 4 kanály: 8 × 4 = <b>32 bitů</b>, teoreticky <b>4,3 miliardy</b> kombinací. Přesto má CMYK <b>menší gamut</b>. Bity určují jen to, jak jemně dávkuji barvy, ne jak jsou syté. Monitor <b>svítí</b> (aditivní míchání světla), kdežto tiskové barvy na papíře světlo jen <b>odrážejí</b> (subtraktivní míchání), a tak zářivé odstíny vytvořit nedokážou. Navíc mnoho kombinací CMYK <b>splyne ve stejnou</b> tmavou „špinavou“ barvu, protože černou lze složit z C + M + Y i z K. Papír také neunese příliš vysoké krytí barvou.'},
- {q:'Vysvětli pojem barvový prostor a uveď 3 příklady. <span class="pill">4 body</span>',
+ {q:'Vysvětli pojem barvový prostor a uveď 3 příklady. <span class="pill">7 + 3 body</span>',
   h:'Tip: čísla, souřadnice, závislé × nezávislé na zařízení.',
   p:[
    ['Matematické / číselné vyjádření barev v souřadném systému',['matematick|cisel|souradn|cisl'],1,'Barvový prostor slouží k matematickému a číselnému vyjádření barev v souřadném systému.'],
@@ -1343,7 +1344,7 @@ const WT=[
    ['150 ?lpi[^.;,]{0,30}\\b(150|600|75) ?dpi','Pro 150 lpi: 150 × 2 = 300 dpi.']
   ],
   m:'<b>dpi</b> (dots per inch) je počet obrazových bodů na palec, používá se pro <b>digitalizované předlohy (skeny)</b>. <b>ppi</b> (pixels per inch) je počet pixelů na palec u <b>monitorů</b>. <b>lpi</b> (lines per inch) je počet linek tiskových bodů na palec, tedy <b>hustota tiskového rastru</b>. 1 palec = 2,54 cm. Aby fotka v tisku vypadala dobře, musí mít obrázek zhruba <b>dvakrát vyšší rozlišení</b> než rastr: <b>dpi = lpi × 2</b>, u velkých dat úsporně dpi = lpi × 1,5. Výpočty: 100 lpi → 100 × 2 = <b>200 dpi</b>, 150 lpi → 150 × 2 = <b>300 dpi</b>, 200 lpi → 200 × 1,5 = <b>300 dpi</b>.'},
- {q:'Rozděl sítě podle hustoty. Jaké natočení sítě se používá při čtyřbarvotisku (CMYK)? Vysvětli pojmy rozeta a moaré. <span class="pill">7 bodů</span>',
+ {q:'Rozděl sítě podle hustoty. Jaké natočení sítě se používá při čtyřbarvotisku (CMYK)? Vysvětli pojmy rozeta a moaré. <span class="pill">7 + 3 body</span>',
   h:'Tip: hrubá / střední / jemná, rozmezí v ofsetu, 4 úhly, rozeta × moaré.',
   p:[
    ['Hrubá síť 100–120 lpi',['hrub'],1,'Hrubá síť: 100–120 lpi (novinový papír).'],
@@ -1364,11 +1365,11 @@ const WT=[
    ['jemn\\w* (sit|rastr)\\w*[^.;,]{0,20}\\b(85|100|120)\\b','Jemná síť je 175–200 lpi. 100–120 lpi je hrubá síť.']
   ],
   m:'Sítě se dělí na <b>hrubé</b> (100–120 lpi, např. novinový papír), <b>střední</b> (150 lpi) a <b>jemné</b> (175–200 lpi). Pro <b>ofset</b> je obvyklé rozmezí <b>115–200 lpi</b>. Autotypické sítě se kvůli soutisku musí <b>natáčet</b>: <b>K 45°</b>, <b>Y 90° (0°)</b>, <b>C 75°</b> (nebo 15°), <b>M 15°</b> (nebo 75°). Body se pak překrývají jen svými částmi. Správným překrýváním vzniká pravidelný, oku příjemný vzorek – <b>rozeta</b>. Nesprávným vzniká rušivý vzorek – <b>moaré</b>.'},
- {q:'Vysvětli pojem RIP a k čemu slouží. Jak vzniká elektronický bod a jaký je rozdíl mezi AM, FM a hybridním rastrem? Uveď výhody a nevýhody. <span class="pill">8 bodů</span>',
+ {q:'Vysvětli pojem RIP a k čemu slouží. Jak vzniká elektronický bod a jaký je rozdíl mezi AM, FM a hybridním rastrem? Uveď výhody a nevýhody. <span class="pill">4 + 6 bodů</span>',
   h:'Tip: RIP = program, tónová buňka 16 × 16, co se mění u AM a u FM, kde se hodí hybridní rastr.',
   p:[
    ['RIP = Raster Image Processor, program',['raster image|rip[^.]{0,40}(program|software|rastr)'],1,'RIP (Raster Image Processor) je program, který provádí elektronické rastrování.'],
-   ['Nastavuje se tvar bodu, úhel, lpi',['tvar|uhel|uhl|natoc|lpi|hustot'],0,'Bonus: v RIPu se nastavuje tvar bodu, úhel natočení a hustota rastru (lpi).'],
+   ['Nastavuje se tvar bodu, úhel, lpi',['tvar|uhel|uhl|natoc|lpi|hustot'],0,'Bonus: v RIPu se nastavuje počet barevných separací, typ rastrování (AM, FM), hustota rastru (lpi) a tvar bodu.'],
    ['Tónová buňka 16 × 16',['16 ?[x×*] ?16|tonov\\w* bunk|bunk'],1,'Elektronický bod vzniká uvnitř tónové buňky 16 × 16 pixelů (laserových bodů).'],
    ['AM: pravidelná mřížka',['\\bam\\b[^.]{0,60}(mrizk|pravideln|konstant|stejn\\w* vzdal)','amplitud[^.]{0,80}(mrizk|pravideln)'],1,'AM: body v pravidelné mřížce se stálou vzdáleností.'],
    ['AM: mění se velikost bodu',['\\bam\\b[^.]{0,60}(velikost|vetsi|mensi|zvets)','amplitud[^.]{0,80}(velikost|vetsi|mensi)'],1,'AM: tón se mění velikostí bodu.'],
@@ -1383,7 +1384,7 @@ const WT=[
    ['\\bfm\\b[^.;,]{0,40}(vznik\\w* moar|ma moar|dela moar)','FM rastr moaré nedělá, nemá pravidelnou mřížku.'],
    ['rip[^.;,]{0,30}(kontrol|preflight)','RIP data nekontroluje, převádí je na rastr. Kontrola dat je preflight.']
   ],
-  m:'<b>RIP</b> (Raster Image Processor) je program, který provádí <b>elektronické rastrování</b>: převede data na tiskové body. Nastavuje se v něm tvar bodu, úhel natočení a hustota rastru (lpi). <b>Elektronický bod</b> vzniká uvnitř <b>tónové buňky 16 × 16</b> pixelů (laserových bodů osvitu), což dává 256 tónů. <b>AM rastr</b> (amplitudově modulovaný) má body v <b>pravidelné mřížce</b> se stálou vzdáleností a tón se mění <b>velikostí bodu</b>. Je stabilní a má hladké plochy, ale hrozí moaré a ztrácí jemné detaily. <b>FM rastr</b> (frekvenčně modulovaný, stochastický) má body <b>stejně velké</b>, rozmístěné <b>náhodně</b>, a mění se jejich <b>hustota (frekvence)</b>. Nedělá moaré a má ostré detaily, ale plochy jsou zrnité a rastr je náročný na výrobu desky. <b>Hybridní rastr</b> ve středních tónech pracuje jako AM, ve světlech a stínech jako FM. Používá se pro kvalitní katalogy a umělecké tisky nad 200 lpi a ve flexotisku obalů.'},
+  m:'<b>RIP</b> (Raster Image Processor) je program, který provádí <b>elektronické rastrování</b>: převede data na tiskové body. Nastavuje se v něm počet barevných separací, typ rastrování (AM, FM), hustota rastru (lpi) a tvar bodu. <b>Elektronický bod</b> vzniká uvnitř <b>tónové buňky 16 × 16</b> pixelů (laserových bodů osvitu), což dává 256 tónů. <b>AM rastr</b> (amplitudově modulovaný) má body v <b>pravidelné mřížce</b> se stálou vzdáleností a tón se mění <b>velikostí bodu</b>. Je stabilní a má hladké plochy, ale hrozí moaré a ztrácí jemné detaily. <b>FM rastr</b> (frekvenčně modulovaný, stochastický) má body <b>stejně velké</b>, rozmístěné <b>náhodně</b>, a mění se jejich <b>hustota (frekvence)</b>. Nedělá moaré a má ostré detaily, ale plochy jsou zrnité a rastr je náročný na výrobu desky. <b>Hybridní rastr</b> ve středních tónech pracuje jako AM, ve světlech a stínech jako FM. Používá se pro kvalitní katalogy a umělecké tisky nad 200 lpi a ve flexotisku obalů.'},
  {q:'Ústní část: Jaký rastr a jakou hustotu zvolíš pro noviny, časopis, kvalitní katalog, obal ve flexotisku a tričko v sítotisku? Proč?',
   h:'Tip: čísla lpi, papír, technika, pozorovací vzdálenost.',
   p:[

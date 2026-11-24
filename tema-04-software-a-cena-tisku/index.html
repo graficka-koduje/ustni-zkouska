@@ -327,7 +327,7 @@ button.btn.pri{background:var(--m);border-color:var(--m);color:#fff}
 .gsub .pill{font-weight:700}
 .gnote{grid-column:1 / -1;font-size:.84rem;color:var(--muted);margin:-2px 0 0}
 .hl{background:var(--y-soft);border-radius:4px;padding:0 4px;font-weight:700}
-</style>
+.pisemka{border:2px solid #1f8a4c;background:#eef7ee;color:#1b1c1f;border-radius:12px;padding:10px 14px;margin:14px 0;font-size:.95rem}.pisemka .stitek{display:block;font-weight:700;color:#1f6b3a;font-size:.85rem;margin-bottom:4px}.pisemka ul{margin:6px 0 2px 18px;padding:0}.pisemka details{margin-top:6px}</style>
 <style id="rozsir-vypocet-css">
 details.rozsir-vypocet{border:2px dashed #9ca3af;border-radius:12px;padding:6px 12px;margin:14px 0;background:rgba(127,127,127,.07)}
 details.rozsir-vypocet>summary{cursor:pointer;font-weight:700;color:inherit;opacity:.85;padding:4px 0}
@@ -506,6 +506,7 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
   <div class="card"><b>Volba okrajů</b><br><span class="small">Nejmenší je okraj u <b>hřbetu</b> (vnitřní), větší <b>hlava</b> (nahoře), ještě větší <b>vnější</b> okraj a největší <b>pata</b> (dole). Na dvoustraně se dva hřbetní okraje sečtou, takže prostor uprostřed vypadá stejně jako vnější okraj.</span></div>
 
   </details>
+<div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Datové formáty (4 b) a PostScript (2 b)</b><ul><li><b>PDF</b> – univerzální formát pro <b>sdílení a tisk dokumentů</b> (Adobe, vznikl z PostScriptu).</li><li><b>EPS</b> – přenos <b>postscriptové grafiky</b> mezi programy.</li><li><b>TIFF</b> – <b>bitmapové</b> obrázky, černobílé i barevné.</li><li><b>JPEG</b> – <b>ztrátová komprese</b> fotografií.</li><li><b>PostScript</b> – <b>jazyk pro popis tištěné stránky</b>; rozlišuje <b>text, vektory a rastry</b>.</li></ul></div>
 <h3 id="formaty">Odkud se berou texty a obrázky</h3>
   <div class="grid2">
     <div class="card"><b>📝 Texty z Wordu</b><br><span class="small">Autor napíše text ve <b>Wordu</b> (.doc, .docx). Grafik ho do InDesignu <b>umístí</b> (Soubor → Umístit) a teprve tam ho typograficky upraví. Ve Wordu se tisková data nepřipravují.</span></div>
@@ -602,7 +603,8 @@ details.rozsir-vypocet[open]>summary{margin-bottom:8px}
   </div>
   <div class="tip"><b class="t">Workflow = celá linka v jednom systému</b>Velké tiskárny mají <b>workflow systém</b> (Kodak Prinergy, Heidelberg Prinect, Agfa Apogee). Ten v jednom celku zajistí příjem PDF, předtiskovou kontrolu, montáž, nátisk, RIP a osvit desek. Řídí ho <b>JDF</b>: elektronický pracovní list s údaji o zakázce z kalkulace.</div>
 
-  <h3 id="uzitek">Montáž a cena: kolik archů spotřebuji</h3>
+  <div class="pisemka"><span class="stitek">📝 Je i v písemné zkoušce – naučíš se jednou, využiješ dvakrát</span><b>Úprava fotografií a histogram (6 b), úprava grafiky (4 b), úprava vektorové grafiky (4 b)</b><ul><li>Fotografie: <b>Photoshop</b> – převzorkovat na rozměr a <b>300 dpi</b>, kontrast, ostrost, barevný režim (<b>CMYK</b>, duplex, stupně šedi), retuš, výřez.</li><li><b>Histogram</b> = <b>graf rozložení jasu</b>: kolik pixelů má danou úroveň jasu (pozná se tmavá nebo přesvícená fotka).</li><li>Grafika do PDF: vektory <b>1 200 dpi</b>, fotografie <b>300 dpi</b>, vhodný <b>ICC profil</b> podle papíru a tiskové techniky.</li><li>Vektory (loga): <b>Illustrator</b> – překreslí se <b>perem</b> a tvary, nastaví se tah a výplň.</li></ul></div>
+<h3 id="uzitek">Montáž a cena: kolik archů spotřebuji</h3>
   <p>Montáž rozhoduje i o ceně. Čím víc tiskovin se vejde na jeden arch, tím méně archů tiskárna potiskne a tím je zakázka levnější. Ukážeme si to na <b>50 vizitkách</b> z příkladu vyučující (vizitka 90 × 50 mm, arch digitálního tisku SRA3 = 320 × 450 mm).</p>
   <details class="rozsir-vypocet"><summary>➕ Rozšiřující učivo – výpočet: kolik vizitek se vejde na arch a kolik archů spotřebuji<span class="rv-pozn">U ústní zkoušky se nevyžaduje. Klepni pro rozbalení.</span></summary>
 <div class="calc">
